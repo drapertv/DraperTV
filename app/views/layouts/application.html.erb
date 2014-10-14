@@ -1,20 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="app">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Ignitetv" %></title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title><%= content_for?(:title) ? yield(:title) : "Ignitetv" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ignitetv" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+
+
+
   </head>
-  <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+  <body class="">
+    <section class="vbox">
+
+       <%= render "layouts/topbar" %>
+
+      <section>
+        <section class="hbox stretch">
+
+          <!-- .aside -->
+          <%= render "layouts/aside" %>
+          <!-- /.aside -->
+
+          <%= yield %>
+
+        </section>
+      </section>
+    </section>
+    <!-- Bootstrap -->
+    <!-- App -->
+
   </body>
 </html>
