@@ -31,3 +31,11 @@ end
 
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'font-awesome-sass', '~> 4.2.0'
+
+
+gem "aws-sdk"
+gem 'fog'
+#Images:
+gem 'carrierwave'
+gem 'rmagick', :require => false
+gem 'mini_magick'
