@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  resources :videos
-
-  devise_for :users
-  resources :users
-
 
   authenticated :user do
       root :to => 'videos#index', as: :authenticated_root
@@ -13,6 +8,19 @@ Rails.application.routes.draw do
     root to: 'visitors#index'
   end
 
+  devise_for :users
+
+  resources :videos
+  resources :users
+
+
+
+
+
+
+
+  get 'profile_edit/:id', to: 'users#profile_edit', as: :profile_edit, via: :all
+  get 'profile/:id', to: 'users#profile', as: :profile
 
 
 end

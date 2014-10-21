@@ -72,11 +72,13 @@
                 </div>
               </section>
             </section>
+
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="<%= asset_url('assets/a0.png') %>" alt="...">
+              <%= image_tag current_user.avatar.url(:thumb).to_s %>
+
               </span>
               <%= User.find(current_user.id).name %> <b class="caret"></b>
             </a>
@@ -86,7 +88,11 @@
                 <%= link_to 'Edit account', edit_user_registration_path %>
               </li>
               <li>
-                <a href="profile.html">Profile</a>
+                <%= link_to 'Profile', profile_path(current_user) %>
+              </li>
+
+              <li>
+                <%= link_to 'Profile Edit', profile_edit_path(current_user) %>
               </li>
               <li>
                 <a href="#">

@@ -5,6 +5,7 @@ class CreateVideos < ActiveRecord::Migration
       t.integer :author_id
       t.integer :speaker
       t.text :description
+      t.text :thumbnail
       t.string :url
       t.integer :value
 

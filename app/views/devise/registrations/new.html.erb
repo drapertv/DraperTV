@@ -1,31 +1,37 @@
+
+
+
+
 <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
   <div class="container aside-xl">
-    <a class="navbar-brand block" href="index.html"><span class="h1 font-bold">Musik</span></a>
+    <a class="navbar-brand block" href="<%= root_path %>"><span class="h1 font-bold">Ignite TV</span></a>
     <section class="m-b-lg">
       <header class="wrapper text-center">
         <strong>Sign in to get in touch</strong>
       </header>
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
-          <h3>Sign up</h3>
-          <%= devise_error_messages! %>
-          <div class="form-group">
-            <%= f.label :name %>
-            <%= f.text_field :name, :autofocus => true, class: 'form-control rounded input-lg text-center no-border' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :email %>
-            <%= f.email_field :email, class: 'form-control rounded input-lg text-center no-border' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :password %>
-            <%= f.password_field :password, class: 'form-control rounded input-lg text-center no-border' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, class: 'form-control rounded input-lg text-center no-border' %>
-          </div>
-           <%= f.submit 'Sign up', :class => 'btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded' %>
-        <% end %>
+
+
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+    <div class="form-group">
+      <%= f.input :email, required: true, autofocus: true, input_html: { class: 'form-control rounded input-lg text-center no-border'} %>
+    </div>
+    <fieldset>
+      <div class="form-group">
+        <%= f.input :password, required: true, input_html: { class: 'form-control rounded input-lg text-center no-border' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :password_confirmation, required: true, input_html: { class: 'form-control rounded input-lg text-center no-border'} %>
+      </div>
+    </fieldset>
+    <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign Up</span></button>
+
+  <% end %>
+
+<%= render "devise/shared/links" %>
+
+      </div>
       </section>
     </div>
   </section>

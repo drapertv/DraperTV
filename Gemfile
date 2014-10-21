@@ -26,6 +26,8 @@ group :development do
   gem 'binding_of_caller', :platforms=>[:mri_19]
   gem 'quiet_assets'
   gem 'rails_layout'
+	gem 'ffaker'
+	gem 'populator'
 end
 
 
@@ -39,3 +41,4 @@ gem 'fog'
 gem 'carrierwave'
 gem 'rmagick', :require => false
 gem 'mini_magick'
+
