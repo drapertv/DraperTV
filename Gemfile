@@ -37,6 +37,9 @@ gem 'font-awesome-sass', '~> 4.2.0'
 
 gem "aws-sdk"
 gem 'fog'
+
+gem 'aws_cf_signer'
+
 #Images:
 gem 'carrierwave'
 gem 'rmagick', :require => false
