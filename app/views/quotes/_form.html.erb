@@ -1,0 +1,15 @@
+<%= simple_form_for(@quote) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :author_id %>
+    <%= f.input :speaker_id %>
+    <%= f.input :content %>
+    <%= f.input :shared %>
+    <%= f.input :sharedCounter %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

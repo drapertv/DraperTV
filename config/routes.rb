@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :quotes
+
   authenticated :user do
       root :to => 'videos#index', as: :authenticated_root
   end
@@ -14,8 +16,9 @@ Rails.application.routes.draw do
   resources :users
 
 
-
-
+  resources :videos do
+    resources :comments
+  end
 
 
 

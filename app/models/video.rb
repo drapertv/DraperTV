@@ -2,6 +2,11 @@ class Video < ActiveRecord::Base
   acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :category
 
+
+
+	has_many :comments, :as => :commentable
+
+
 	#aws CF Sginer
 	def signed_html5
 	  parsed_uri = URI.parse(cf_url)
@@ -20,7 +25,7 @@ class Video < ActiveRecord::Base
 
 	def sign(url="")
 	  # 1 hour expiration on the URL
-	  url = SIGNER.sign(url.to_s, :ending => Time.now + 3600)
+	  url = SIGNER.sign(ur	l.to_s, :ending => Time.now + 3600)
 	end
 
 

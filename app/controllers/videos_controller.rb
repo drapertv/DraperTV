@@ -12,6 +12,9 @@ class VideosController < ApplicationController
   # GET /videos/1.json
   def show
     @video = Video.find(params[:id])
+    @commentable = @video
+    @comments = @commentable.comments.order('created_at ASC')
+    @comment = Comment.new
   end
 
   # GET /videos/new

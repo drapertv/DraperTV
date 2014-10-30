@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @quote.author_id %>
+</p>
+
+<p>
+  <strong>Speaker:</strong>
+  <%= @quote.speaker_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @quote.content %>
+</p>
+
+<p>
+  <strong>Shared:</strong>
+  <%= @quote.shared %>
+</p>
+
+<p>
+  <strong>Sharedcounter:</strong>
+  <%= @quote.sharedCounter %>
+</p>
+
+<%= link_to 'Edit', edit_quote_path(@quote) %> |
+<%= link_to 'Back', quotes_path %>
