@@ -53,16 +53,17 @@
 
 
               <script src="http://jwpsrv.com/library/pzxPblMbEeSrqiIACy4B0g.js"></script>
-
-              <div id='playerPNPOPQfhLFkg'></div>
-              <script type='text/javascript'>
-                  jwplayer('playerPNPOPQfhLFkg').setup({
+                      <div id='mediaplayer'></div>
+                      <script type="text/javascript">
+                      jwplayer('mediaplayer').setup({
                       file: <%= sanitize(@video.signed.inspect) %>,
                       image: '//www.longtailvideo.com/content/images/jw-player/lWMJeVvV-876.jpg',
                       width: '100%',
                       aspectratio: '16:9'
-                  });
-              </script>
+                      });
+                      </script>
+
+
 
 
                     <!-- / video player -->
