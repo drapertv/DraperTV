@@ -52,18 +52,18 @@ class ApplicationController < ActionController::Base
   end
 
 
-    # if Rails.env.production?
+    if Rails.env.production?
 
-    #   before_filter :authenticate
+      before_filter :authenticate
 
-    #   protected
+      protected
 
-    #   def authenticate
-    #     authenticate_or_request_with_http_basic do |username, password|
-    #       username == "MOFO1990" && password == "MOFO1990"
-    #     end
-    #   end
-    # end
+      def authenticate
+        authenticate_or_request_with_http_basic do |username, password|
+          username == "Cassandra" && password == "Cassandra"
+        end
+      end
+    end
 
 
 end
