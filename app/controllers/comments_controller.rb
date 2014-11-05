@@ -23,8 +23,6 @@ class CommentsController < ApplicationController
 	  @comment.user_id = current_user[:id]
     @user = User.find(@comment.user_id)
 
-    Propono.publish(@comment.user_id, "The Best Message Ever")
-
     if @comment.save
 
         respond_to do |format|
