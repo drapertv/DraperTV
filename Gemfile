@@ -48,3 +48,7 @@ gem 'carrierwave'
 gem 'rmagick', :require => false
 gem 'mini_magick'
 
+
+
+#Getting Social:
+
