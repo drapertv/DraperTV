@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
 
   helper ApplicationHelper
 
-
-
   if Rails.env.production?
       before_filter :cors_preflight_check
       after_filter :cors_set_access_control_headers
@@ -31,9 +29,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-
-
 	helper_method :resource, :resource_name, :devise_mapping
   def resource_name
     :user
@@ -51,19 +46,16 @@ class ApplicationController < ActionController::Base
    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :remember_me, :email, :password, :password_confirmation) }
   end
 
+  # if Rails.env.production?
 
-    # if Rails.env.production?
+  #   before_filter :authenticate
 
-    #   before_filter :authenticate
+  #   protected
 
-    #   protected
-
-    #   def authenticate
-    #     authenticate_or_request_with_http_basic do |username, password|
-    #       username == "MOFO1990" && password == "MOFO1990"
-    #     end
-    #   end
-    # end
-
-
+  #   def authenticate
+  #     authenticate_or_request_with_http_basic do |username, password|
+  #       username == "MOFO1990" && password == "MOFO1990"
+  #     end
+  #   end
+  # end
 end

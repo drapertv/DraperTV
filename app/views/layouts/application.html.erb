@@ -1,62 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" class="app">
   <head>
-  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title><%= content_for?(:title) ? yield(:title) : "Ignitetv" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ignitetv" %>">
-    <%= stylesheet_link_tag 'application', media: 'all'%>
-    <%= javascript_include_tag 'application' %>
-    <%= csrf_meta_tags %>
+    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title><%= content_for?(:title) ? yield(:title) : "Ignitetv" %></title>
+      <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ignitetv" %>">
+      <%= stylesheet_link_tag 'application', media: 'all'%>
+      <%= javascript_include_tag 'application' %>
+      <%= csrf_meta_tags %>
 
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
-
-
-
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
   </head>
 
   <% if user_signed_in? %>
-  <body class="">
-
-    <section class="vbox">
-
-       <%= render "layouts/topbar" %>
-
-      <section>
-        <section class="hbox stretch">
-          <!-- .aside -->
-          <%= render "layouts/aside" %>
-          <!-- /.aside -->
-          <%= yield %>
-
+  
+    <body class="">
+      <section class="vbox">
+        <%= render "layouts/topbar" %>
+        <section>
+          <section class="hbox stretch">
+            <!-- .aside -->
+            <%= render "layouts/aside" %>
+            <!-- /.aside -->
+            <%= yield %>
+          </section>
         </section>
-
-      </section>
-
-
     </section>
     <!-- Bootstrap -->
     <!-- App -->
   </body>
 
   <% else %>
-<body class="bg-info dker">
 
-    <section class="vbox">
-
-
-      <section>
-        <section class="hbox stretch">
-
-          <!-- .aside -->
-          <!-- /.aside -->
-
-          <%= yield %>
-
+    <body class="bg-info dker">
+      <section class="vbox">
+        <section>
+          <section class="hbox stretch">
+            <!-- .aside -->
+            <!-- /.aside -->
+            <%= yield %>
+          </section>
         </section>
       </section>
-    </section>
-  </body>
+    </body>
 
   <% end %>
 

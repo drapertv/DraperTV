@@ -1,17 +1,15 @@
-		  <!-- Talk -->
-
-
-
-  <section id="comment-list" class="comment-list block">
-
+<!-- Talk -->
+<section id="comment-list" class="comment-list block">
 
   <% @comments.each do |comment| %>
   <% @comment_user = User.find_by_id(comment.user_id) %>
 
     <article id="comment-id-<%=  @comment_user.id %>" class="comment-item">
+
       <a class="pull-left thumb-sm">
         <img src="<%= @comment_user.avatar.url(:thumb).to_s %>" class="img-circle">
       </a>
+
       <section class="comment-body m-b">
         <header>
           <a href="#"><strong><%=  @comment_user.name %></strong></a>
@@ -21,15 +19,13 @@
           </span>
         </header>
 
-
         <div class="m-t-sm">
         	<%=  comment.content %>
         </div>
 
-
       </section>
     </article>
 
-    <% end %>
+  <% end %>
 
-  </section>
+</section>

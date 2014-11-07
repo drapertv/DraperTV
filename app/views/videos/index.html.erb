@@ -39,39 +39,39 @@
   <section id="content">
     <section class="vbox" id="bjax-el">
       <section class="scrollable padder-lg">
-        <h2 class="font-thin m-b">Video</h2>
+        <h2 class="font-thin m-b">Videos</h2>
         <div class="row row-sm">
 
-        <% @videos.each do |video| %>
+          <% @videos.each do |video| %>
 
-          <div class="col-xs-12 col-sm-4">
-            <div class="item">
-              <div class="pos-rlt">
-                <div class="item-overlay opacity r r-2x bg-black">
-                  <div class="center text-center m-t-n">
-                    <a href="<%= video_path(video) %>"><i class="fa fa-play-circle i-2x"></i></a>
+            <div class="col-xs-12 col-sm-4">
+              <div class="item">
+                <div class="pos-rlt">
+                  <div class="item-overlay opacity r r-2x bg-black">
+                    <div class="center text-center m-t-n">
+                      <a href="<%= video_path(video) %>"><i class="fa fa-play-circle i-2x"></i></a>
+                    </div>
                   </div>
-                </div>
-                <div class="top">
-                  <span class="badge bg-dark m-l-sm m-t-sm"><%= video.author_id %></span>
-                  <span class="badge bg-dark m-l-sm m-t-sm pull-right"></span>
 
+                  <div class="top">
+                    <span class="badge bg-dark m-l-sm m-t-sm"><%= video.author_id %></span>
+                    <span class="badge bg-dark m-l-sm m-t-sm pull-right"></span>
+                  </div>
+
+                  <a href="video-detail.html"><img src="<%= asset_url('assets/m40.jpg') %>" alt="" class="r r-2x img-full"></a>
                 </div>
-                <a href="video-detail.html"><img src="<%= asset_url('assets/m40.jpg') %>" alt="" class="r r-2x img-full"></a>
-              </div>
-              <div class="padder-v">
-                <a href="video-detail.html" class="text-ellipsis"><%= video.title %></a>
-                <a href="video-detail.html" class="text-ellipsis text-xs text-muted"><%= video.description %></a>
+                <div class="padder-v">
+                  <a href="video-detail.html" class="text-ellipsis"><%= video.title %></a>
+                  <a href="video-detail.html" class="text-ellipsis text-xs text-muted"><%= video.description %></a>
+                </div>
               </div>
             </div>
-          </div>
 
-         <% end %>
+           <% end %>
 
-        </div>
+        </div><!-- row row-sm -->
 
-
-<!--         <ul class="pagination pagination">
+<!--      <ul class="pagination pagination">
           <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
           <li class="active"><a href="#">1</a></li>
           <li><a href="#">2</a></li>
@@ -80,13 +80,9 @@
           <li><a href="#">5</a></li>
           <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
         </ul> -->
-      </section>
+      </section><!-- scrollable padder-lg -->
     </section>
     <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
   </section>
-
-
-
-
-</section>
+</section><!-- vbox -->
 

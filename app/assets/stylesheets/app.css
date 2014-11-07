@@ -653,6 +653,7 @@ body.container {
     position: relative;
     height: 100%;
     width: 100%;
+    background-color: white;
   }
   .vbox > section,
   .vbox > footer {
