@@ -34,6 +34,7 @@
 
 <%= link_to 'New Video', new_video_path %>
  -->
+<%= render "layouts/cat" %>
 
 <section class="vbox">
   <section id="content">
@@ -41,6 +42,7 @@
       <section class="scrollable padder-lg">
         <h2 class="font-thin m-b">Videos</h2>
         <div class="row row-sm">
+<<<<<<< HEAD
 
           <% @videos.each do |video| %>
 
@@ -56,6 +58,15 @@
                   <div class="top">
                     <span class="badge bg-dark m-l-sm m-t-sm"><%= video.author_id %></span>
                     <span class="badge bg-dark m-l-sm m-t-sm pull-right"></span>
+=======
+        <% @videos.each do |video| %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="item">
+              <div class="pos-rlt">
+                <div class="item-overlay opacity r r-2x bg-black">
+                  <div class="center text-center m-t-n">
+                    <a href="<%= video_path(video) %>"><i class="fa fa-play-circle i-2x"></i></a>
+>>>>>>> 8d5965875ea05a38b328948cb05a72559af59d33
                   </div>
 
                   <a href="video-detail.html"><img src="<%= asset_url('assets/m40.jpg') %>" alt="" class="r r-2x img-full"></a>

@@ -50,23 +50,32 @@
 
 
                     <!-- video player -->
-
-
-              <script type='text/javascript' src='https://d3s3tctdnnjurp.cloudfront.net/jwplayer.js'></script>
+                    <script src="https://ignitetv.s3.amazonaws.com/jwplayer.js"></script>
                       <div id='mediaplayer'></div>
                       <script type="text/javascript">
                       jwplayer('mediaplayer').setup({
-                          file: "https://ignitetv.s3.amazonaws.com/ruby.mp4?AWSAccessKeyId=AKIAJYJWRFZLXAZVFNDQ&Expires=1414046306&Signature=PmfoKZqvwjq7Ziii2hp9rE%2BrFK4%3D",
-                          width: "100%",
-                          height: "480"
+                      file: <%= sanitize(@video.signed.inspect) %>,
+                      image: '//www.longtailvideo.com/content/images/jw-player/lWMJeVvV-876.jpg',
+                      width: '100%',
+                      aspectratio: '16:9'
                       });
                       </script>
+
+
+
+
                     <!-- / video player -->
                     <div class="wrapper-lg">
                       <h2 class="m-t-none text-black"><%= @video.title %></h2>
                       <div class="post-sum">
                         <p>
                           <%= @video.description %>
+                          <br><br><br>
+                          <%= @video.signed_html5 %>
+                          <br><br><br>
+                          <%= @video.signed_flash %>
+                          <br><br><br>
+                          <%= @video.signed %>
                         </p>
                       </div>
                       <div class="line b-b"></div>
@@ -90,7 +99,6 @@
                 </div>
 
                 <%= render "quotes/quotes", video: @video %>
-
 
 
 

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
 
-
+  get 'tags/:tag', to: 'videos#index', as: :tag
   get 'profile_edit/:id', to: 'users#profile_edit', as: :profile_edit, via: :all
   get 'profile/:id', to: 'users#profile', as: :profile
 

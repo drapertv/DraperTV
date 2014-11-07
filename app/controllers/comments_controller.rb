@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 	  @comment.user_id = current_user[:id]
     @user = User.find(@comment.user_id)
 
-	  if @comment.save
+    if @comment.save
 
         respond_to do |format|
           format.html {  }

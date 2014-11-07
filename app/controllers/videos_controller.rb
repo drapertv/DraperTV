@@ -5,7 +5,18 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    @arr = []
+    @tags = Video.tag_counts_on(:category)
+    @tags.each do |tag|
+     @arr << tag
+    end
+
+    if params[:tag]
+      @videos = Video.tagged_with(params[:tag])
+    else
+      @videos = Video.all
+    end
+
   end
 
   # GET /videos/1

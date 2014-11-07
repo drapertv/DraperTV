@@ -8,7 +8,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
-
+gem 'rails_12factor', group: :production
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '~> 4.0.3'
@@ -19,6 +19,8 @@ gem 'devise_invitable'
 gem 'pg'
 gem 'simple_form'
 gem 'thin'
+
+gem 'propono'
 
 
 group :development do
