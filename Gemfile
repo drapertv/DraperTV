@@ -51,6 +51,14 @@ gem 'mini_magick'
 
 
 #Getting Social:
+gem 'twitter'
+gem 'json'
+gem 'koala'
+gem 'linkedin'
 gem 'omniauth'
-gem 'omniauth-twitter'
+gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-linkedin'
+gem 'omniauth-twitter'
