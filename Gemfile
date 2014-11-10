@@ -51,4 +51,6 @@ gem 'mini_magick'
 
 
 #Getting Social:
-
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
