@@ -8,6 +8,7 @@
 	      <header class="panel-heading font-bold">Profile Edit</header>
 	      <div class="panel-body">
 
+      <%= render "layouts/messages" %>
 	    	<%= simple_form_for(@user) do |f| %>
 			  <%= f.error_notification %>
 	      	<div class="form-actions pull-right">

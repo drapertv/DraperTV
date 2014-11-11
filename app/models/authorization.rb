@@ -33,4 +33,5 @@ class Authorization < ActiveRecord::Base
 	def fetch_details_from_google_oauth2
 
 	end
+
 end

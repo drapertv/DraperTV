@@ -5,17 +5,22 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @arr = []
-    @tags = Video.tag_counts_on(:category)
-    @tags.each do |tag|
-     @arr << tag
+
+    if current_user.email.nil?
+      redirect_to profile_edit_path(current_user), notice: "Enter Your Email Please"
+    else
+      @arr = []
+      @tags = Video.tag_counts_on(:category)
+      @tags.each do |tag|
+        @arr << tag
+      end
+      if params[:tag]
+        @videos = Video.tagged_with(params[:tag])
+      else
+        @videos = Video.all
+      end
     end
 
-    if params[:tag]
-      @videos = Video.tagged_with(params[:tag])
-    else
-      @videos = Video.all
-    end
 
   end
 
