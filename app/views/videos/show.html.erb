@@ -54,10 +54,18 @@
                       <div id='mediaplayer'></div>
                       <script type="text/javascript">
                       jwplayer('mediaplayer').setup({
-                      file: <%= sanitize(@video.signed.inspect) %>,
                       image: '//www.longtailvideo.com/content/images/jw-player/lWMJeVvV-876.jpg',
-                      width: '100%',
-                      aspectratio: '16:9'
+                      sources: [{
+                                file: <%= sanitize(@video.signed.inspect) %>,
+                                label: "720p HD"
+                              },{
+                                file: <%= sanitize(@video.signed.inspect) %>,
+                                label: "360p SD",
+                                "default": "true"
+                              },{
+                                file: <%= sanitize(@video.signed.inspect) %>,
+                                label: "180p Web"
+                              }]
                       });
                       </script>
 

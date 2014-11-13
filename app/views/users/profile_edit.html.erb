@@ -8,7 +8,21 @@
 	      <header class="panel-heading font-bold">Profile Edit</header>
 	      <div class="panel-body">
 
-      <%= render "layouts/messages" %>
+				<br>
+				<h1>Connect more stuff</h1>
+				<br>
+				<% ['facebook', 'twitter'].each do |provider| %>
+
+				  <% if current_user.authorizations.pluck(:provider).include?(provider.to_s) %>
+				    <%= provider.to_s.titleize %> Connected
+				  <% else %>
+				      <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path('user', provider) %>
+				  <% end %>
+				<br/>
+				<% end %>
+
+<br><br>
+				<%= render "layouts/messages" %>
 	    	<%= simple_form_for(@user) do |f| %>
 			  <%= f.error_notification %>
 	      	<div class="form-actions pull-right">
@@ -67,6 +81,8 @@
 
 	      </div>
 	    </section>
+
+
 	  </div>
 	</div>
 
