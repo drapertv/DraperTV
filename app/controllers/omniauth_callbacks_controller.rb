@@ -13,11 +13,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		end
 	end
 
-	  def failure
-      #handle you logic here..
-      #and delegate to super.
-      super
-   end
+	def failure
+		#handle you logic here..
+		#and delegate to super.
+		super
+	end
 
 
 	alias_method :facebook, :all

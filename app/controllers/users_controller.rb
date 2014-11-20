@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def profile_edit
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
   # POST /users
   # POST /users.json
@@ -50,19 +50,19 @@ class UsersController < ApplicationController
     end
   end
 
- private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def validate_authorization_for_user
-       redirect_to root_path unless @user == current_user
-    end
+  def validate_authorization_for_user
+    redirect_to root_path unless @user == current_user
+  end
 
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation,:avatar,:remember_me,:about)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,:avatar,:remember_me,:about)
+  end
 
 
 end

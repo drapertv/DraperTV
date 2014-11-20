@@ -1,79 +1,62 @@
-
 <section class="vbox">
   <section id="content">
-
-	<div class="row">
-	  <div class="col-sm-6">
-	    <section class="panel panel-default">
-	      <header class="panel-heading font-bold">Profile Edit</header>
-	      <div class="panel-body">
-
-      <%= render "layouts/messages" %>
-	    	<%= simple_form_for(@user) do |f| %>
-			  <%= f.error_notification %>
-	      	<div class="form-actions pull-right">
-				    <button class="btn btn-sm btn-default" type="submit">Update</button>
-				  </div>
-				<div class="wrapper">
-	        <div class="text-center m-b m-t">
-	          <a class="thumb-lg" href="#">
-	            <%= image_tag current_user.avatar.url(:thumb).to_s, class: "img-circle" %>
-
-	          </a>
-	          <div>
-	            <div class="h3 m-t-xs m-b-xs">
-							</div>
-	            <small class="text-muted">Profile Picture
-				  	<%= f.file_field :avatar,  label: false, input_html: { class: 'form-control' }  %>
-	            </small>
-	          </div>
-	        </div>
-
-
-	        <div class="btn-group btn-group-justified m-b">
-	          <a class="btn btn-success btn-rounded">
-	            <span class="text">
-	              <%= f.email_field :email, class: 'form-control rounded input-lg text-center no-border' %>
-
-	            </span>
-	            <span class="text-active">
-	              <i class="fa fa-eye"></i> Following
-	            </span>
-	          </a>
-	          <a class="btn btn-dark btn-rounded">
-	            <%= f.text_field :name, class: 'form-control rounded input-lg text-center no-border' %>
-
-	          </a>
-	        </div>
-	        <div>
-	          <small class="text-uc text-xs text-muted">about me</small>
-	          <p>Artist</p>
-	          <small class="text-uc text-xs text-muted">info</small>
-	          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</p>
-	          <div class="line"></div>
-	          <small class="text-uc text-xs text-muted">connection</small>
-	          <p class="m-t-sm">
-	            <a class="btn btn-rounded btn-twitter btn-icon" href="#"><i class="fa fa-twitter"></i></a>
-	            <a class="btn btn-rounded btn-facebook btn-icon" href="#"><i class="fa fa-facebook"></i></a>
-	            <a class="btn btn-rounded btn-gplus btn-icon" href="#"><i class="fa fa-google-plus"></i></a>
-	          </p>
-	        </div>
-	      </div>
-
-
-				<% end %>
-
-
-
-	      </div>
-	    </section>
-	  </div>
-	</div>
-
+    <div class="row">
+      <div class="col-sm-6">
+        <section class="panel panel-default">
+          <header class="panel-heading font-bold">Profile Edit</header>
+          <div class="panel-body">
+            <%= render "layouts/messages" %>
+            <%= simple_form_for(@user) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-actions pull-right">
+                <button class="btn btn-sm btn-default" type="submit">Update</button>
+              </div>
+              <div class="wrapper">
+                <div class="text-center m-b m-t">
+                  <a class="thumb-lg" href="#">
+                    <%= image_tag current_user.avatar.url(:thumb).to_s, class: "img-circle" %>
+                  </a>
+                  <div>
+                    <div class="h3 m-t-xs m-b-xs">
+                    </div>
+                    <small class="text-muted">Profile Picture
+                      <%= f.file_field :avatar,  label: false, input_html: { class: 'form-control' }  %>
+                    </small>
+                  </div>
+                </div>
+                <div class="btn-group btn-group-justified m-b">
+                  <a class="btn btn-success btn-rounded">
+                    <span class="text">
+                      <%= f.email_field :email, class: 'form-control rounded input-lg text-center no-border' %>
+                    </span>
+                    <span class="text-active">
+                      <i class="fa fa-eye"></i>
+                      Following
+                    </span>
+                  </a>
+                  <a class="btn btn-dark btn-rounded">
+                    <%= f.text_field :name, class: 'form-control rounded input-lg text-center no-border' %>
+                  </a>
+                </div>
+                <div>
+                  <small class="text-uc text-xs text-muted">about me</small>
+                  <p>Artist</p>
+                  <small class="text-uc text-xs text-muted">info</small>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</p>
+                  <div class="line"></div>
+                  <small class="text-uc text-xs text-muted">connection</small>
+                  <p class="m-t-sm">
+                    <a class="btn btn-rounded btn-twitter btn-icon" href="#"><i class="fa fa-twitter"></i></a>
+                    <a class="btn btn-rounded btn-facebook btn-icon" href="#"><i class="fa fa-facebook"></i></a>
+                    <a class="btn btn-rounded btn-gplus btn-icon" href="#"><i class="fa fa-google-plus"></i></a>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </section>
+      </div>
+    </div>
     <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
   </section>
-
-
-
-
 </section>
