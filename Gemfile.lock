@@ -49,6 +49,7 @@ GEM
       sass (~> 3.2)
     buftok (0.2.0)
     builder (3.2.2)
+    cancan (1.6.10)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -164,6 +165,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    netrc (0.8.0)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     oauth (0.4.7)
@@ -231,7 +233,11 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rmagick (2.13.2)
+    rolify (3.4.1)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -255,6 +261,13 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    stripe (1.16.0)
+      json (~> 1.8.1)
+      mime-types (>= 1.25, < 3.0)
+      rest-client (~> 1.4)
+    stripe_event (1.4.0)
+      activesupport (>= 3.1)
+      stripe (~> 1.6)
     subexec (0.2.3)
     thin (1.6.2)
       daemons (>= 1.0.9)
@@ -295,6 +308,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.2.0)
+  cancan (>= 1.6.9)
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
@@ -324,10 +338,13 @@ DEPENDENCIES
   rails_12factor
   rails_layout
   rmagick
+  rolify (>= 3.2.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form
   spring
+  stripe (>= 1.7.11)
+  stripe_event (>= 0.4.0)
   thin
   turbolinks
   twitter

@@ -36,11 +36,15 @@ class UsersController < ApplicationController
 
   # PUT /users/1
   # PUT /users/1.json
-  def update
-    @user = User.find(params[:id])
 
+  def update
+    # authorize! :update, @user, :message => 'Not authorized as an administrator.'
+    @user = User.find(params[:id])
+    role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?
+    params[:user] = params[:user].except(:role_ids)
     respond_to do |format|
       if @user.update_attributes(user_params)
+        @user.update_plan(role) unless role.nil?
         format.html { redirect_to profile_edit_path(@user), notice: 'User was successfully updated.' }
         #format.json { head :no_content }
       else
@@ -50,6 +54,32 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_plan
+    @user = current_user
+
+    role_id = params[:user][:role_ids] unless params[:user].nil? || params[:user][:role_ids].nil?
+    role = Role.find_by_id role_id unless role_id.nil?
+
+    authorized = !role.nil? && (role.name != 'admin' || current_user.roles.first.name == 'admin')
+
+    if authorized && @user.update_plan(role)
+      redirect_to edit_user_registration_path, :notice => 'Updated plan.'
+    else
+      flash.alert = 'Unable to update plan.'
+      redirect_to edit_user_registration_path
+    end
+  end
+
+  def update_card
+    @user = current_user
+    @user.stripe_token = params[:user][:stripe_token]
+    if @user.save
+      redirect_to edit_user_registration_path, :notice => 'Updated card.'
+    else
+      flash.alert = 'Unable to update card.'
+      redirect_to edit_user_registration_path
+    end
+  end
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
@@ -61,7 +91,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation,:avatar,:remember_me,:about)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,:avatar,:remember_me,:about,:role,:stripe_token, :coupon)
   end
 
 

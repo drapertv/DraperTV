@@ -6,11 +6,14 @@ class ApplicationController < ActionController::Base
 
   helper ApplicationHelper
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, :alert => exception.message
+  end
 
 
   if Rails.env.production?
-      before_filter :cors_preflight_check
-      after_filter :cors_set_access_control_headers
+    before_filter :cors_preflight_check
+    after_filter :cors_set_access_control_headers
     def cors_set_access_control_headers
       headers['Access-Control-Allow-Origin'] = 'http://faymotherapp.herokuapp.com'
       headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
@@ -34,7 +37,7 @@ class ApplicationController < ActionController::Base
 
 
 
-	helper_method :resource, :resource_name, :devise_mapping
+  helper_method :resource, :resource_name, :devise_mapping
   def resource_name
     :user
   end
@@ -48,22 +51,22 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-   devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :remember_me, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :remember_me, :email, :password, :password_confirmation) }
   end
 
 
-    if Rails.env.production?
+  if Rails.env.production?
 
-      before_filter :authenticate
+    before_filter :authenticate
 
-      protected
+    protected
 
-      def authenticate
-        authenticate_or_request_with_http_basic do |username, password|
-          username == "Cassandra" && password == "Cassandra"
-        end
+    def authenticate
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "Cassandra" && password == "Cassandra"
       end
     end
+  end
 
 
 end
