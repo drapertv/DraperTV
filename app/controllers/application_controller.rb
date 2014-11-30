@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
-
   if Rails.env.production?
     before_filter :cors_preflight_check
     after_filter :cors_set_access_control_headers
@@ -34,9 +33,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-
-
   helper_method :resource, :resource_name, :devise_mapping
   def resource_name
     :user
@@ -54,6 +50,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :remember_me, :email, :password, :password_confirmation) }
   end
 
+  # if Rails.env.production?
+
 
   if Rails.env.production?
 
@@ -67,6 +65,5 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
 
 end

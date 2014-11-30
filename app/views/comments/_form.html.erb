@@ -1,37 +1,33 @@
-
-
 <div id="comment_form" class="">
   <%= simple_form_for [@commentable, @comment], :html => {:class => "form-horizontal form-control-borderless remove-margin"}, :remote => true do |f| %>
-      <label>Comment</label>
     <%= f.input :content, label: false, :placeholder => "Add Comment", :input_html => { :id => "comment-#{@commentable.id}", :class => "form-control" } %>
     <!--<%= f.submit "Add Comment" %>-->
   <% end %>
 </div>
 
-
 <script type ="text/javascript">
   $(function() {
     $("textarea#comment-<%= @commentable.id %>").keypress(function (e) {
-        if(e.which == 13) {
-          if (e.shiftKey === true) {
-            //new line
-          }
-          else {
-            if ($.trim($("textarea#comment-<%= @commentable.id %>").val()).length > 0){
-            e.preventDefault();
-            var frm = $(this).closest("form");
-            jQuery.ajax({
-                          url: frm.attr("action"),
-                          data: frm.serialize(),
-                          complete: function(){
-                            frm.submit();
-                            $("textarea#comment-<%= @commentable.id %>").val(null);
-                           },
-                          dataType: "json"
-                      });
-            }
+      if(e.which == 13) {
+        if (e.shiftKey === true) {
+          //new line
+        }
+        else {
+          if ($.trim($("textarea#comment-<%= @commentable.id %>").val()).length > 0){
+          e.preventDefault();
+          var frm = $(this).closest("form");
+          jQuery.ajax({
+            url: frm.attr("action"),
+            data: frm.serialize(),
+            complete: function(){
+                frm.submit();
+                $("textarea#comment-<%= @commentable.id %>").val(null);
+               },
+              dataType: "json"
+            });
           }
         }
+      }
     });
   });
 

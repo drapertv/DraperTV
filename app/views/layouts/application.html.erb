@@ -3,13 +3,14 @@
   <head>
     <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title><%= content_for?(:title) ? yield(:title) : "Ignitetv" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ignitetv" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Draper TV" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Draper TV" %>">
     <%= stylesheet_link_tag 'application', media: 'all'%>
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700,900,300' rel='stylesheet' type='text/css'>
   </head>
   <% if user_signed_in? %>
     <body data-no-turbolink>

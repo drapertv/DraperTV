@@ -1,45 +1,9 @@
-<!-- <h1>Listing videos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Speaker</th>
-      <th>Description</th>
-      <th>Url</th>
-      <th>Value</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.title %></td>
-        <td><%= video.author_id %></td>
-        <td><%= video.speaker %></td>
-        <td><%= video.description %></td>
-        <td><%= video.url %></td>
-        <td><%= video.value %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Video', new_video_path %>
- -->
 <%= render "layouts/cat" %>
 <section class="vbox">
   <section id="content">
     <section class="vbox" id="bjax-el">
       <section class="scrollable padder-lg">
-        <h2 class="font-thin m-b">Video</h2>
+        <h2 class="font-thin m-b">Videos</h2>
         <div class="row row-sm">
           <% @videos.each do |video| %>
             <div class="col-xs-12 col-sm-4">
@@ -49,22 +13,19 @@
                     <div class="center text-center m-t-n">
                       <a href="<%= video_path(video) %>"><i class="fa fa-play-circle i-2x"></i></a>
                     </div>
+                    <a href="video-detail.html"><img src="<%= asset_url('assets/m40.jpg') %>" alt="" class="r r-2x img-full"></a>
                   </div>
-                  <div class="top">
-                    <span class="badge bg-dark m-l-sm m-t-sm"><%= video.author_id %></span>
-                    <span class="badge bg-dark m-l-sm m-t-sm pull-right"></span>
+                  <div class="padder-v">
+                    <a href="video-detail.html" class="text-ellipsis"><%= video.title %></a>
+                    <a href="video-detail.html" class="text-ellipsis text-xs text-muted"><%= video.description %></a>
                   </div>
-                  <a href="video-detail.html"><img src="<%= asset_url('assets/m40.jpg') %>" alt="" class="r r-2x img-full"></a>
-                </div>
-                <div class="padder-v">
-                  <a href="video-detail.html" class="text-ellipsis"><%= video.title %></a>
-                  <a href="video-detail.html" class="text-ellipsis text-xs text-muted"><%= video.description %></a>
                 </div>
               </div>
             </div>
           <% end %>
         </div>
-        <!--         <ul class="pagination pagination">
+        <!-- row row-sm -->
+        <!--      <ul class="pagination pagination">
           <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
           <li class="active"><a href="#">1</a></li>
           <li><a href="#">2</a></li>
@@ -73,8 +34,8 @@
           <li><a href="#">5</a></li>
           <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
         </ul> -->
-      </section>
+      </section><!-- scrollable padder-lg -->
     </section>
     <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
   </section>
-</section>
+</section><!-- vbox -->
