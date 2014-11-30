@@ -1,6 +1,8 @@
 Draper TV
 ================
+
 This is Draper TV.
+
 If Entrepreneurship is about the willingness to take risks and develop, organize and manage a business venture in a competitive global marketplace that is constantly evolving, then we are telling the stories and pathways of those entrepreneurs that have become pioneers, innovators, leaders and inventors.
 
 ![ScreenShot](http://imgs.abduzeedo.com/files/articles/logo-design-tvs/2dc1af480040f81cb3f0b7078b2334f0.png
