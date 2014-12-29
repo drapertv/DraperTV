@@ -10,11 +10,16 @@ gem 'devise_invitable'
 gem 'pg'
 gem "cancan", ">= 1.6.9"
 gem "rolify", ">= 3.2.0"
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 
 #Servers
 gem 'thin'
 gem 'spring',        group: :development
+
+#CurlStuff
+gem 'curb'
+gem 'httparty'
 
 
 group :development do

@@ -1,50 +1,30 @@
- <section class="vbox">
-
+<section class="vbox">
   <section>
     <section class="hbox stretch">
-
       <section id="content">
         <section class="vbox">
           <section class="scrollable wrapper-lg" style="margin: 0; padding: 0;">
             <div class="row" style="background-color: white;">
               <div class="col-sm-12">
                 <div class="panel video-panel">
-                  
-                   <div class="video-content" style="margin: 0 auto; max-width: 886px;">  
-
-                      <!-- video player -->
-                      <script src="https://ignitetv.s3.amazonaws.com/jwplayer.js"></script>
-                        <div id='mediaplayer' style="max-height: 500px;"></div>
-                        <script type="text/javascript">
-                        jwplayer('mediaplayer').setup({
-                        file: <%= sanitize(@video.signed.inspect) %>,
-                        image: '//www.longtailvideo.com/content/images/jw-player/lWMJeVvV-876.jpg',
-                        width: '100%',
-                        aspectratio: '16:9'
-                        });
-                      </script>
-
-                    </div><!-- video-content -->
-
-                  </div><!-- panel video-panel -->
-
-                  <div class="video-panel-overlay">
-                    <div class="col-sm-3 col-sm-offset-2">
-                      <h1 class="m-t-none text-black" style="color: white; padding-top: 100px; font-size: 45px;"><%= @video.title %></h1>
+                  <div class="video-content" style="margin: 0 auto; max-width: 886px;">
+                    <!-- video player -->
+                    <div class="">
+                      <div class="video-responsive-container">
+                        <%= raw @video_vimeo_embed %>
+                      </div>
                     </div>
-                  </div>
-
+                  </div><!-- video-content -->
+                </div><!-- panel video-panel -->
               </div><!-- col 12, video player -->
-
               <!-- ============== -->
               <!-- === BOTTOM === -->
               <!-- ============== -->
-
-               <div class="col-sm-8 col-sm-offset-2">
+              <div class="col-sm-8 col-sm-offset-2">
                 <div class="col-sm-12">
-                <!-- / video player -->
+                  <!-- / video player -->
                   <div class="wrapper-lg" style="padding: 0;">
-                   <!--  <h2 class="m-t-none text-black"><%= @video.title %></h2> -->
+                    <!--  <h2 class="m-t-none text-black"><%= @video.title %></h2> -->
                     <div class="line b-b"></div>
                     <h3><%= @video.description %></h3>
                     <br/>
@@ -59,29 +39,22 @@
                         <%= @video.signed %>
                       </p> -->
                     </div><!-- post-sum -->
-
                     <div class="line b-b"></div>
-                    Sam Rosenblum
+                    <%= User.where(:id => @video.author_id).first.name %>
                     <div class="line b-b"></div>
                     <div class="text-muted">
                     </div>
-
                     <h4 class="m-t-lg m-b">Discussion</h4>
                     <div class="line b-b"></div>
                     <%= render "comments/form" %>
-
-                     <h4 class="m-t-lg m-b"><%= @video.comments.count %> comments</h4>
-                       <%= render "comments/comments" %>
-                      <br/><br/><br/><br/>
-                      </div><!-- panel -->
-
-                    </div><!-- col-8 -->
-              
-
-               <!--  <%= render "quotes/quotes", video: @video %> -->
-
-                </div><!-- col-12 -->
-
+                    <h4 class="m-t-lg m-b"><%= @video.comments.count %>
+                      comments</h4>
+                    <%= render "comments/comments" %>
+                    <br/><br/><br/><br/>
+                  </div><!-- panel -->
+                </div><!-- col-8 -->
+                <!--  <%= render "quotes/quotes", video: @video %> -->
+              </div><!-- col-12 -->
             </div><!-- row -->
           </section>
         </section>
