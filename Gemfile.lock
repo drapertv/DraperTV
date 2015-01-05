@@ -236,6 +236,7 @@ GEM
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rmagick (2.13.4)
     rolify (3.4.1)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -336,6 +337,7 @@ DEPENDENCIES
   rails (= 4.1.6)
   rails_12factor
   rails_layout
+  rmagick
   rolify (>= 3.2.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

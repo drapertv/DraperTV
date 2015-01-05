@@ -36,25 +36,6 @@ ActiveRecord::Schema.define(version: 20141120193109) do
     t.datetime "updated_at"
   end
 
-  create_table "coupons", force: true do |t|
-    t.string   "code"
-    t.string   "free_trial_length"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "plans", force: true do |t|
-    t.string   "name"
-    t.string   "stripe_id"
-    t.float    "price"
-    t.string   "interval"
-    t.text     "features"
-    t.boolean  "highlight"
-    t.integer  "display_order"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "quotes", force: true do |t|
     t.integer  "author_id"
     t.integer  "speaker_id"
@@ -76,18 +57,6 @@ ActiveRecord::Schema.define(version: 20141120193109) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
-
-  create_table "subscriptions", force: true do |t|
-    t.string   "stripe_id"
-    t.integer  "plan_id"
-    t.string   "last_four"
-    t.integer  "coupon_id"
-    t.string   "card_type"
-    t.float    "current_price"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

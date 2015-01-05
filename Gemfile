@@ -53,7 +53,7 @@ gem 'propono'
 
 #Images:
 gem 'carrierwave'
-# gem 'rmagick', :require => false
+gem 'rmagick', :require => false
 gem 'mini_magick'
 
 #Payments
