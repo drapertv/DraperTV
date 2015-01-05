@@ -31,6 +31,11 @@ class VideosController < ApplicationController
     @commentable = @video
     @comments = @commentable.comments.order('created_at ASC')
     @comment = Comment.new
+    if @video.video_id
+      oembed = "http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/" + @video.video_id + '&maxwidth=660' + '&autoplay=1'
+      puts (Curl::Easy.perform(oembed).body_str)["html"]
+      @video_vimeo_embed = JSON.parse(Curl::Easy.perform(oembed).body_str)["html"]
+    end
   end
 
   # GET /videos/new
@@ -85,13 +90,13 @@ class VideosController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_video
-      @video = Video.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_video
+    @video = Video.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def video_params
-      params.require(:video).permit(:title, :author_id, :speaker, :description, :url, :value,:thumbnail, :name,:category_list)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def video_params
+    params.require(:video).permit(:title, :author_id, :speaker, :description, :url, :value,:thumbnail, :name,:category_list)
+  end
 end

@@ -15,7 +15,7 @@
                     </div>
                   </div>
                   <div class="top">
-                    <span class="badge bg-dark m-l-sm m-t-sm"><%= video.author_id %></span>
+                    <span class="badge bg-dark m-l-sm m-t-sm"><%= User.where(:id => video.author_id).first.name %></span>
                     <span class="badge bg-dark m-l-sm m-t-sm pull-right"></span>
                   </div>
                   <a href="video-detail.html"><img src="<%= asset_url('assets/m40.jpg') %>" alt="" class="r r-2x img-full"></a>
