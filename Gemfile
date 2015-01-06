@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 gem 'rails', '4.1.6'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
@@ -29,6 +29,7 @@ group :development do
 	gem 'rails_layout'
 	gem 'ffaker'
 	gem 'populator'
+	gem 'pry'
 end
 
 

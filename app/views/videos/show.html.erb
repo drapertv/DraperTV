@@ -29,15 +29,7 @@
                     <h3><%= @video.description %></h3>
                     <br/>
                     <div class="post-sum">
-                      <!-- <p>
-                        <%= @video.description %>
-                        <br><br><br>
-                        <%= @video.signed_html5 %>
-                        <br><br><br>
-                        <%= @video.signed_flash %>
-                        <br><br><br>
-                        <%= @video.signed %>
-                      </p> -->
+          
                     </div><!-- post-sum -->
                     <div class="line b-b"></div>
                     <%= User.where(:id => @video.author_id).first.name %>

@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth, current_user)
     authorization = Authorization.where(:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret).first_or_initialize
+    binding.pry
     if authorization.user.blank?
       user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
       if user.blank?
@@ -31,6 +32,7 @@ class User < ActiveRecord::Base
         user.password = Devise.friendly_token[0,10]
         user.name = auth.info.name
         user.email = auth.info.email
+        user.profile_pic_url = auth.info.image
         user.skip_confirmation!
         auth.provider == "twitter" ?  user.save(:validate => false) :  user.save
       end
