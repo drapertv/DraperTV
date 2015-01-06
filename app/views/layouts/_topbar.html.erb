@@ -62,7 +62,7 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
           <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-            <%= image_tag current_user.avatar.url(:thumb).to_s %>
+            <%= image_tag current_user.avatar_url(:thumb).to_s %>
           </span>
           <%= User.find(current_user.id).name %>
           <b class="caret"></b>
@@ -82,13 +82,7 @@
             <%= link_to 'Profile', profile_edit_path(current_user) %>
           </li>
           <li>
-            <a href="#">
-              <span class="badge bg-danger pull-right">3</span>
-              Notifications
-            </a>
-          </li>
-          <li>
-            <a href="docs.html">Help</a>
+          <a href="docs.html">Help</a>
           </li>
           <li class="divider"></li>
           <li>

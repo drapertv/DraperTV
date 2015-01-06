@@ -7,7 +7,7 @@
     <article id="comment-id-<%=  @comment_user.id %>" class="comment-item">
 
       <a class="pull-left thumb-sm">
-        <img src="<%= @comment_user.avatar.url(:thumb).to_s %>" class="img-circle">
+        <img src="<%= @comment_user.avatar_url(:thumb).to_s %>" class="img-circle">
       </a>
 
       <section class="comment-body m-b">
