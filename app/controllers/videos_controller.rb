@@ -19,8 +19,6 @@ class VideosController < ApplicationController
         @videos = Video.all
       end
     end
-
-
   end
 
   # GET /videos/1

@@ -11,9 +11,8 @@ Videos =
 		$(@).find('.modal-overlay').show() if !$(e.target).hasClass 'modal-overlay'
 
 	thankUser: ->
-		$(@).parents('.video-modal').text("Thank you for your interest, we'll let you know when this video is available.")
-		.addClass("animated fadeIn")
-
+		$(@).parents('.video-modal').find('.modal-message').text("Thanks for your interest, we'll let you know it's available.")
+		$(@).hide()
 
 ready = ->
 	Videos.init()
