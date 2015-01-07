@@ -248,7 +248,10 @@ a.list-group-item:focus {
 .list-group-item > .fa-chevron-right + .badge {
   margin-right: 5px;
 }
-#nav { background-color: #232c32; }
+#nav { 
+  background-color: #232c32; 
+  z-index: 1;
+}
 .nav-pills.no-radius > li > a {
   border-radius: 0;
 }
