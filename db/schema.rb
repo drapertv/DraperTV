@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106195836) do
+ActiveRecord::Schema.define(version: 20150107195210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20150106195836) do
     t.string   "customer_id"
     t.string   "last_4_digits"
     t.string   "profile_pic_url"
+    t.integer  "access_level",           default: 0
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
@@ -160,6 +161,7 @@ ActiveRecord::Schema.define(version: 20150106195836) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "video_id"
+    t.integer  "demand_array", array: true
   end
 
 end

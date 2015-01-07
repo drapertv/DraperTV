@@ -42,6 +42,9 @@ a {
   color: #545a5f;
   text-decoration: none;
 }
+a[disabled] {
+  pointer-events: none;
+}
 a:hover,
 a:focus {
   color: #303437;

@@ -10,15 +10,16 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require bootstrap_override
- *= require animate
- *= require font-awesome.min
- *= require simple-line-icons
- *= require font
- *= require app
+ *= require shared/bootstrap_override
+ *= require shared/animate
+ *= require vendor/font-awesome.min
+ *= require vendor/simple-line-icons
+ *= require shared/font
+ *= require shared/app
  *= require pricing
  *= require_self
- *= require layouts
+ *= require shared/layouts
+ *= require videos
  */
 
 // @import "bootstrap-sprockets";
