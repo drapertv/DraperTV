@@ -1,11 +1,10 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :set_video, only: [:show, :edit, :update, :destroy, :increment_demand]
   before_filter :authenticate_user!
 
   # GET /videos
   # GET /videos.json
   def index
-
     if current_user.email.nil?
       redirect_to profile_edit_path(current_user), notice: "Enter Your Email Please"
     else
@@ -20,13 +19,14 @@ class VideosController < ApplicationController
         @videos = Video.all
       end
     end
-
-
   end
 
   # GET /videos/1
   # GET /videos/1.json
   def show
+    if !@video.can_be_accessed_by?(current_user)
+      redirect_to root_path and return
+    end
     @video = Video.find(params[:id])
     @commentable = @video
     @comments = @commentable.comments.order('created_at ASC')
@@ -87,6 +87,11 @@ class VideosController < ApplicationController
     end
   end
 
+  def increment_demand
+    @video.increment_demand(current_user) if !@video.demanded_by?(current_user)
+    render nothing: true
+  end
+
 
 
   private
@@ -97,6 +102,6 @@ class VideosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params
-    params.require(:video).permit(:title, :author_id, :speaker, :description, :url, :value,:thumbnail, :name,:category_list)
+    params.require(:video).permit(:title, :author_id, :speaker, :description, :url, :value,:thumbnail, :name,:category_list, :demand_array)
   end
 end

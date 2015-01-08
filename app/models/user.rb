@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
         user.password = Devise.friendly_token[0,10]
         user.name = auth.info.name
         user.email = auth.info.email
+        user.profile_pic_url = auth.info.image + "?type=large"
         user.skip_confirmation!
         auth.provider == "twitter" ?  user.save(:validate => false) :  user.save
       end
@@ -115,6 +116,10 @@ class User < ActiveRecord::Base
   def expire
     UserMailer.expire_email(self).deliver
     destroy
+  end
+
+  def avatar_url options=nil
+    (avatar.url == "default.png" && profile_pic_url) ? profile_pic_url : avatar.url(options)
   end
 
 

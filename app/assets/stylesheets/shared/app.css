@@ -42,6 +42,9 @@ a {
   color: #545a5f;
   text-decoration: none;
 }
+a[disabled] {
+  pointer-events: none;
+}
 a:hover,
 a:focus {
   color: #303437;
@@ -245,7 +248,10 @@ a.list-group-item:focus {
 .list-group-item > .fa-chevron-right + .badge {
   margin-right: 5px;
 }
-#nav { background-color: #232c32; }
+#nav { 
+  background-color: #232c32; 
+  z-index: 1;
+}
 .nav-pills.no-radius > li > a {
   border-radius: 0;
 }

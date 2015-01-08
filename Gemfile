@@ -29,6 +29,7 @@ group :development do
 	gem 'rails_layout'
 	gem 'ffaker'
 	gem 'populator'
+	gem 'pry'
 end
 
 

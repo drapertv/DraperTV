@@ -6,7 +6,18 @@ class Video < ActiveRecord::Base
 
 	has_many :comments, :as => :commentable
 
+	def increment_demand user
+		demand_array = [] if demand_array == nil
+		update_attributes demand_array: (demand_array + [user.id])
+	end
 
+	def demanded_by? user
+		demand_array != nil && demand_array.include?(user.id)
+	end
+
+	def can_be_accessed_by? user
+		user.access_level >= value
+	end
 
 # cf_url is http://dSomething.cloudfront.net/path
 # video_name is test.mp4

@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   mount StripeEvent::Engine => '/stripe'
 
-
+  unauthenticated :user do
+    root to: 'visitors#index'
+  end
+  
   authenticated :user do
     root :to => 'videos#index', as: :authenticated_root
-  end
-
-  unauthenticated do
-    root to: 'visitors#index'
   end
 
   devise_scope :user do
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   resources :videos do
     resources :comments
   end
+  get '/videos/:id/increment_demand', to: 'videos#increment_demand', as: 'video_increment_demand'
 
 
   get 'tags/:tag', to: 'videos#index', as: :tag

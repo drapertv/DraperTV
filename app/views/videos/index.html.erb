@@ -7,11 +7,25 @@
         <div class="row row-sm">
           <% @videos.each do |video| %>
             <div class="col-xs-12 col-sm-4">
-              <div class="item">
+              <div class="item video">
                 <div class="pos-rlt">
                   <div class="item-overlay opacity r r-2x bg-black">
                     <div class="center text-center m-t-n">
-                      <a href="<%= video_path(video) %>"><i class="fa fa-play-circle i-2x"></i></a>
+                      <% if video.can_be_accessed_by? current_user %>
+                        <a href="<%= video_path(video) %>"><i class="fa fa-play-circle i-2x"></i></a>
+                      <% else %>
+                        <i class="fa fa-play-circle i-2x"></i>
+                        <div class="modal modal-overlay">
+                          <div class="modal-content video-modal">
+                            <div class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</div>
+                          <%= link_to video_increment_demand_path(video), remote: true do %>
+                            <div class="btn-primary btn m-t-lg">
+                              Get Access
+                            </div>
+                          <% end %>
+                          </div>
+                        </div>
+                      <% end %>
                     </div>
                   </div>
                   <div class="top">

@@ -34,7 +34,8 @@ namespace :db do
       vid.author_id = '1'
       vid.speaker = '1'
       vid.description = Faker::Product.product_name
-      vid.value = 0
+      vid.value = 1
+      vid.video_id = 74263369
     end
 
     # Post.populate 50 do |post|

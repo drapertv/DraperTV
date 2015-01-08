@@ -1,7 +1,7 @@
 <section class="vbox">
   <section id="content">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 centered">
         <section class="panel panel-default">
           <header class="panel-heading font-bold">Profile Edit</header>
           <div class="panel-body">
@@ -14,7 +14,7 @@
               <div class="wrapper">
                 <div class="text-center m-b m-t">
                   <a class="thumb-lg" href="#">
-                    <%= image_tag current_user.avatar.url(:thumb).to_s, class: "img-circle" %>
+                    <%= image_tag current_user.avatar_url(:thumb).to_s, class: "img-circle" %>
                   </a>
                   <div>
                     <div class="h3 m-t-xs m-b-xs">
@@ -27,7 +27,7 @@
                 <div class="btn-group btn-group-justified m-b">
                   <a class="btn btn-success btn-rounded">
                     <span class="text">
-                      <%= f.email_field :email, class: 'form-control rounded input-lg text-center no-border' %>
+                      <%= f.email_field :email, class: 'form-control rounded input-lg text-center no-border', placeholder: "Email" %>
                     </span>
                     <span class="text-active">
                       <i class="fa fa-eye"></i>
@@ -35,7 +35,7 @@
                     </span>
                   </a>
                   <a class="btn btn-dark btn-rounded">
-                    <%= f.text_field :name, class: 'form-control rounded input-lg text-center no-border' %>
+                    <%= f.text_field :name, class: 'form-control rounded input-lg text-center no-border', placeholder: "Name" %>
                   </a>
                 </div>
                 <div>
