@@ -79,3 +79,8 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
+
+
+#Exceptions 
+
+gem 'exception_notification'
