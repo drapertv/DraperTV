@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   unauthenticated :user do
     root to: 'visitors#index'
   end
+
+  get '/home', to: 'visitors#home'
   
   authenticated :user do
     root :to => 'videos#index', as: :authenticated_root

@@ -19,7 +19,9 @@
  *= require pricing
  *= require_self
  *= require shared/layouts
+ *= require shared/master
  *= require videos
+ #= require visitors
  */
 
 // @import "bootstrap-sprockets";
