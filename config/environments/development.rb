@@ -27,6 +27,13 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[Draper-TV] ",
+    :sender_address => %{"notifier" <notifier@example.com>},
+    :exception_recipients => %w{drapertvexceptions@gmail.com}
+  }
+
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,

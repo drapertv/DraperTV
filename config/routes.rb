@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     root to: 'visitors#index'
   end
 
+
+  get '/home', to: 'visitors#home'
+
   authenticated :user do
     root :to => 'videos#index', as: :authenticated_root
   end
