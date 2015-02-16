@@ -81,6 +81,6 @@ gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
 
 
-#Exceptions 
+#Exceptions
 
 gem 'exception_notification'
