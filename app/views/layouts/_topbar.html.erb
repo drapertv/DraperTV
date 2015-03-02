@@ -1,30 +1,17 @@
-<header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
-  <div class="navbar-header aside bg-info nav-xs">
-    <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
-      <i class="icon-list"></i>
-    </a>
-    <a href="<%= root_path %>" class="navbar-brand text-lt">
-      <!--  <i class="icon-fire"></i> -->
-      <img src="<%= asset_url('assets/DU_Logo_Flat_White.png') %>" alt="." class="nav-logo">
-      <span class="hidden-nav-xs m-l-sm">Draper TV</span>
-    </a>
-    <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
-      <i class="icon-settings"></i>
-    </a>
+<header id="landing-header">
+  <div class="header-mid no-mobile">
+    <div class="header-item m-md">
+      <a href="<%= playlists_path %>" class="header-item">SERIES</a>
+    </div>
+    <div class="header-item m-md">
+      <a href="<%= videos_path %>" class="header-item">QUICK WATCHES</a>
+    </div>
   </div>
-  <ul class="nav navbar-nav hidden-xs">
-    <li>
-      <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted" style="padding: 10px;">
-        <!-- <i class="fa fa-indent text"></i>
-        <i class="fa fa-dedent text-active"></i> -->
-        <img src="<%= asset_url('assets/DU_Logo_Gradient_Small.png') %>" alt="." class="nav-logo">
-      </a>
-    </li>
-  </ul>
-  <div class="navbar-right ">
+
+  <div class="header-right no-mobile">
     <ul class="nav navbar-nav m-n hidden-xs nav-user user">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+        <a href="#" class="dropdown-toggle bg clear header-item" data-toggle="dropdown">
           <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
             <%= image_tag current_user.avatar_url(:thumb).to_s %>
           </span>
@@ -55,5 +42,14 @@
         </ul>
       </li>
     </ul>
+  </div>
+
+
+  <div class="header-left">
+    <a href="<%= root_path %>" class="navbar-brand text-lt">
+      <!--  <i class="icon-fire"></i> -->
+      <img src="<%= asset_url('assets/draper-logo.png') %>" alt="." class="header-item logo">
+    </a>
+
   </div>
 </header>

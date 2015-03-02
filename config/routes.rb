@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   mount StripeEvent::Engine => '/stripe'
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
   resources :users
   resources :videos
   resources :quotes
+  resources :playlists
 
   as :user do
     get "/users/sign_out" => "devise/sessions#destroy"

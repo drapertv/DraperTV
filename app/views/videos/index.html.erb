@@ -1,12 +1,69 @@
-<%= render "layouts/cat" %>
+
 <section class="vbox">
+  <header id="landing-header2">
+    <div class="header2-mid no-mobile">
+
+      <% @tags.each do |tag| %>
+        <div class="header2-item">
+          <div class="header-item m-xs cat-btn">
+            <%= link_to tag.name, tag_path(tag.name), class: tag.name %>
+          </div>
+        </div>
+      <% end %>
+
+       <div class="header2-item">
+        <%= link_to "All", videos_path, class: "cat-btn" %>
+      </div>
+    </div>
+</header>
+
   <section id="content">
     <section class="vbox" id="bjax-el">
       <section class="scrollable padder-lg">
-        <h2 class="font-thin m-b">Videos</h2>
+
+        <h2 class="font-thin m-b">FEATURED</h2>
         <div class="row row-sm">
           <% @videos.each do |video| %>
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-sm-3">
+              <div class="item video">
+                <div class="pos-rlt">
+                  <div class="item-overlay opacity r r-2x bg-black">
+                    <div class="center text-center m-t-n">
+                      <% if video.can_be_accessed_by? current_user %>
+                        <a href="<%= video_path(video) %>"><i class="fa fa-play-circle i-2x"></i></a>
+                      <% else %>
+                        <i class="fa fa-play-circle i-2x"></i>
+                        <div class="modal modal-overlay">
+                          <div class="modal-content video-modal">
+                            <div class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</div>
+                          <%= link_to video_increment_demand_path(video), remote: true do %>
+                            <div class="btn-primary btn m-t-lg">
+                              Get Access
+                            </div>
+                          <% end %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="top">
+                    <span class="badge bg-dark m-l-sm m-t-sm"><%= User.where(:id => video.author_id).first.name %></span>
+                    <span class="badge bg-dark m-l-sm m-t-sm pull-right"></span>
+                  </div>
+                  <a href="video-detail.html"><img src="<%= asset_url('assets/m40.jpg') %>" alt="" class="r r-2x img-full"></a>
+                </div>
+                <div class="padder-v">
+                  <a href="video-detail.html" class="text-ellipsis"><%= video.title %></a>
+                  <a href="video-detail.html" class="text-ellipsis text-xs text-muted"><%= video.description %><%= video.video_id %></a>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <h2 class="font-thin m-b">QUICK WATCHES</h2>
+        <div class="row row-sm">
+          <% @videos.each do |video| %>
+            <div class="col-xs-12 col-sm-3">
               <div class="item video">
                 <div class="pos-rlt">
                   <div class="item-overlay opacity r r-2x bg-black">

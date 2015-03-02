@@ -28,15 +28,22 @@ namespace :db do
 
    #  end
 
+    # Playlist.populate 5 do |pl|
+    #   pl.title = Faker::HipsterIpsum.sentence(word_count = 4)
+    #   pl.price = 4
+    #   pl.challange_id = 1
+    #   pl.video_ids = [1,2,3,4,5] DIDNT WORK
+    # end
 
-    Video.populate 30 do |vid|
-      vid.title = Faker::Skill.specialty
-      vid.author_id = '1'
-      vid.speaker = '1'
-      vid.description = Faker::Product.product_name
-      vid.value = 1
-      vid.video_id = 74263369
-    end
+
+    # Video.populate 5 do |vid|
+    #   vid.title = Faker::Skill.specialty
+    #   vid.author_id = '1'
+    #   vid.speaker = '1'
+    #   vid.description = Faker::Product.product_name
+    #   vid.value = 0
+    #   vid.video_id = 74263369
+    # end
 
     # Post.populate 50 do |post|
     #   post.content = Faker::BaconIpsum.sentence(paragraph_count = 3)

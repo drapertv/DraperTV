@@ -24,7 +24,7 @@ gem 'httparty'
 
 group :development do
 	gem 'better_errors'
-	gem 'binding_of_caller', :platforms=>[:mri_19]
+	gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
 	gem 'quiet_assets'
 	gem 'rails_layout'
 	gem 'ffaker'
@@ -80,6 +80,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
 
+gem 'acts_as_votable'
 
 #Exceptions
 

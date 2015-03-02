@@ -1,7 +1,7 @@
 @import 'shared/variables';
 
-::-webkit-scrollbar { 
-    display: none; 
+::-webkit-scrollbar {
+    display: none;
 }
 /******* LAYOUT *********/
 
@@ -18,7 +18,7 @@
 	color: black;
 }
 
-.landing-top { 
+.landing-top {
 	margin-top: 50px;
 	.landing-section {
 		height: 260px;
@@ -333,7 +333,7 @@ body {
 /************  HOW IT WORKS ****************/
 	#info-section {
 		background: #246db4;
-		background-image: none; 
+		background-image: none;
 	}
 	.info-item {
 		display: block;
@@ -343,4 +343,83 @@ body {
 }
 
 
+
+/******* LANDING Second HEADER ********/
+
+#landing-header2 {
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 50px;
+	width: 100%;
+	background: $bg-grey;
+	text-align: center;
+	z-index: 3;
+}
+#landing-header2 > * {
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+.header2-item {
+	height: 100%;
+	line-height: 50px;
+	cursor: pointer;
+	font-size: 16px;
+	display: inline;
+	color: rgba(255,255,255,.5);
+}
+
+.cat-btn {
+	padding: 5px;
+}
+
+
+.header2-mid {
+  left: calc(50% - 400px);
+  width: 800px;
+}
+.header2-right {
+	right: 10px;
+}
+.header2-left {
+	left: 10px;
+}
+
+.FREE {
+	color: white;
+	background-color: $landing-red;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid $landing-red;
+}
+
+
+.MARKETING {
+	color: white;
+	background-color: $landing-yellow;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid $landing-yellow;
+}
+
+.SURVIVAL {
+	color: white;
+	background-color: $landing-orange;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid $landing-orange;
+}
+
+.OPERATIONS {
+	color: white;
+	background-color: $landing-green;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid $landing-green;
+}
 

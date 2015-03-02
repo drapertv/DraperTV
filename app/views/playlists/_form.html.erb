@@ -1,0 +1,14 @@
+<%= simple_form_for(@playlist) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :video_ids %>
+    <%= f.input :price %>
+    <%= f.input :challange_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

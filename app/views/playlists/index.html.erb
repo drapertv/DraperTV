@@ -1,0 +1,56 @@
+<section class="vbox">
+  <section id="content">
+    <section class="vbox" id="bjax-el">
+      <section class="scrollable">
+      <div id="">
+        <div class="landing-container landing-top">
+          <section class="landing-section" id="tagline-section">
+            <div class="section-content">
+              <div id="tagline">
+              </div>
+            </div>
+          </section>
+          <% @playlists.each do |playlist| %>
+          <section class="landing-section video-section">
+            <div class="section-content gray-border-bottom">
+              <div class="series-header">
+                <div class="pull-left series-title">
+                  <%= playlist.title %>
+                </div>
+                <div class="pull-right green-btn series-price">
+                  Full Series <span class="bold">$<%= playlist.price %></span>
+                </div>
+              </div>
+              <div class="series-content">
+                <div class="white-gradient no-mobile">
+                </div>
+                <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow no-mobile" %>
+                <%= image_tag "elon-photo.png", :class => "series-speaker no-mobile" %>
+                <% playlist.video_ids.each do |v| %>
+                  <div class="series-video">
+                    <div class="video-length">3:59</div>
+                    <%= image_tag 'play-icon.png', :class => "video-play" %>
+                    <%= image_tag 'elon-vid.png', :class => "video-thumbnail" %>
+                    <div class="video-title blue">
+                      What is starting up like?
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+              <div class="series-footer no-mobile">
+                <div class="pull-right challenge-btn"></div>
+                <div class="pull-right m-r-md">
+                  Challenge: Do Something Test Challenge : <%= playlist.challange_id %>
+                </div>
+              </div>
+            </div>
+          </section>
+          <% end %>
+
+
+        </div>
+      </div>
+
+    </section>
+  </section>
+</section>
