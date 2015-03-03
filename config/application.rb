@@ -15,7 +15,13 @@ module Ignitetv
         # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
         # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
         # config.time_zone = 'Central Time (US & Canada)'
-
+        config.generators do |g|
+          g.orm             :active_record
+          g.template_engine :erb
+          g.test_framework  false
+          g.stylesheets     false
+          g.javascripts     false
+        end
 
         config.assets.enabled = true
         config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts','components')

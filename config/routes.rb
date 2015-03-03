@@ -34,6 +34,13 @@ Rails.application.routes.draw do
   resources :videos do
     resources :comments
   end
+
+  resources :videos do
+    member do
+      get "favit", to: "videos#favIt"
+    end
+  end
+
   get '/videos/:id/increment_demand', to: 'videos#increment_demand', as: 'video_increment_demand'
 
 

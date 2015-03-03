@@ -93,6 +93,12 @@ class VideosController < ApplicationController
   end
 
 
+  def favIt
+    @video = Video.find(params[:id])
+    @video.upvote_by current_user
+    redirect_to video_path
+  end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
