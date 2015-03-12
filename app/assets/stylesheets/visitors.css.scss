@@ -453,3 +453,41 @@ color: $landing-yellow
 
 }
 
+
+/******* Video Page ********/
+
+.header-height {
+background-color: $black;
+min-height: 500px;
+width: 662px;
+}
+
+.header-height-right-side {
+background-color: $black;
+min-height: 500px;
+
+}
+
+ li.blacke:hover {
+    background-color: $dark-gray;
+}
+
+ .reded {
+    background-color: $landing-red;
+		opacity: 0.5;
+}
+.reded:hover{
+	opacity: 1;
+
+}
+
+ li.blacked {
+    background-color: $light-gray;
+}
+
+.blacke {
+	background-color: $black;
+	color: white;
+	border: 0px;
+	padding-top: 10px;
+}

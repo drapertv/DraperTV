@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302223941) do
+ActiveRecord::Schema.define(version: 20150304014754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150302223941) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "video_ids",    array: true
+    t.integer  "author_id"
   end
 
   create_table "quotes", force: true do |t|
@@ -145,6 +146,7 @@ ActiveRecord::Schema.define(version: 20150302223941) do
     t.string   "last_4_digits"
     t.string   "profile_pic_url"
     t.integer  "access_level",           default: 0
+    t.string   "bio"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
@@ -159,12 +161,20 @@ ActiveRecord::Schema.define(version: 20150302223941) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  create_table "video_features", force: true do |t|
+    t.integer  "video_id"
+    t.boolean  "type_qwatch", default: false
+    t.boolean  "type_series", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "videos", force: true do |t|
     t.string   "title"
     t.integer  "author_id"
     t.integer  "speaker"
     t.text     "description"
-    t.text     "thumbnail"
+    t.text     "vthumbnail"
     t.string   "url"
     t.integer  "value"
     t.datetime "created_at"

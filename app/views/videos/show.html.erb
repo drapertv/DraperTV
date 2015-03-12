@@ -5,43 +5,48 @@
         <section class="vbox">
           <section class="scrollable wrapper-lg" style="margin: 0; padding: 0;">
             <div class="row" style="background-color: white;">
-              <div class="col-sm-12">
-                <div class="panel video-panel">
-                  <div class="video-content" style="margin: 0 auto; max-width: 886px;">
-                    <!-- video player -->
+
+            <div class="col-lg-2"></div>
+
+
+
+            <div class="col-lg-6 wrapper-lg">
+              <section class="vbox flex">
+                <header class="header-height">
+                  <%= raw @video_yt_embed %>
+
+                </header>
+
+
+                <section>
+                  <section>
+                    <h3><%= @video.title %></h3>
+
                     <div class="">
-                      <div class="video-responsive-container">
-                        <%= raw @video_vimeo_embed %>
-                      </div>
-                    </div>
-                  </div><!-- video-content -->
-                </div><!-- panel video-panel -->
-              </div><!-- col 12, video player -->
-              <!-- ============== -->
-              <!-- === BOTTOM === -->
-              <!-- ============== -->
-              <div class="col-sm-8 col-sm-offset-2">
-                <div class="col-sm-12">
-                  <!-- / video player -->
-                  <div class="wrapper-lg" style="padding: 0;">
-                    <!--  <h2 class="m-t-none text-black"><%= @video.title %></h2> -->
-                    <div class="line b-b"></div>
-                    <h3><%= @video.description %></h3>
-                    <br/>
-                    <div class="post-sum">
-
-                    </div><!-- post-sum -->
-                    <div class="line b-b"></div>
-                    <%= User.where(:id => @video.author_id).first.name %>
-                    <br>
+                      540 Views *
                     <%= link_to(favit_video_path(@video)) do %>
-                    <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
                     <% end %>
-
-                    <div class="line b-b"></div>
-                    <div class="text-muted">
+                    <SPAN class="pull-right"><%= @video.category.first.name %></SPAN>
                     </div>
-                    <h4 class="m-t-lg m-b">Discussion</h4>
+
+                    <div class="">
+                        <%= image_tag User.where(:id => @video.author_id).first.avatar_url(:thumb), :class => "video-thumbnail pull-left thumb-lg m-r" %>
+                        <div class="">
+                          <h3><%= User.where(:id => @video.author_id).first.name %></h3>
+                          <%= @video.description %>
+                        </div>
+                    </div>
+                      <br>
+
+                  </section>
+                </section>
+                    <div class="line b-b"></div>
+
+                <footer>
+                  <div class="wrapper-lg">
+                    <!--  <h2 class="m-t-none text-black"><%= @video.title %></h2> -->
+                    <h4 class="m-t-lg m-b">Comments</h4>
                     <div class="line b-b"></div>
                     <%= render "comments/form" %>
                     <h4 class="m-t-lg m-b"><%= @video.comments.count %>
@@ -49,9 +54,113 @@
                     <%= render "comments/comments" %>
                     <br/><br/><br/><br/>
                   </div><!-- panel -->
-                </div><!-- col-8 -->
-                <!--  <%= render "quotes/quotes", video: @video %> -->
-              </div><!-- col-12 -->
+
+                </footer>
+              </section>
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+          <section class="vbox flex wrapper-lg">
+          <header class="header-height-right-side">
+
+              <section class="panel panel-success portlet-item blacke">
+                <ul class="list-group alt blacke">
+
+
+                <li class="list-group-item blacke">
+                  <div class="media ">
+                    <div class="pull-right">
+                      <i class="fa fa-star fa-lg"></i>
+                    </div>
+                    <div class="media-body">
+                      <div>
+                        <a style="color: white;" href="">
+                          <%= Playlist.where(:author_id => @video.author_id).first.title %>
+                        </a>
+                         <div class="centered green-btn series-price">
+                          Full Series <span class="bold">$<%= Playlist.where(:author_id => @video.author_id).first.price %></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="list-group-item reded">
+                    <div class="media ">
+                      <span class="pull-left">
+                       <i class="fa fa-video-camera fa-2x text-danger"></i>
+                      </span>
+                      <div class="pull-right">
+                        <i class="fa fa-star fa-lg text-danger"></i>
+                      </div>
+                      <div class="media-body">
+                        <div class="centered ">
+                          <a style="color: white;" href="">Check out this week's Challanges</a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                <% playlist = Playlist.where(:author_id => @video.author_id).first %>
+                <% playlist.video_ids.each do |v| %>
+                <% video = Video.where(:id => v).first %>
+                <% if @video.id == video.id %>
+                  <li class="list-group-item blacked">
+                <% else %>
+                  <li class="list-group-item blacke ">
+                <% end %>
+
+                    <div class="media ">
+                      <span class="pull-left">
+                        <%= v %>
+                      </span>
+                      <span class="pull-left thumb-md">
+                        <%= image_tag video.vthumbnail, :class => "video-thumbnail" %>
+                      </span>
+                      <div class="pull-right">
+                        <i class="fa fa-star fa-lg stared"></i>
+                      </div>
+                      <div class="media-body">
+                        <div>
+                          <a style="color: white;" href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                <% end %>
+
+
+                </ul>
+              </section>
+            </header>
+
+
+                <section>
+                  <section>
+
+
+                  </section>
+                </section>
+
+
+                <footer>
+                  Suggested videos
+
+                </footer>
+              </section>
+
+
+
+
+
+
+            </div>
+
+
             </div><!-- row -->
           </section>
         </section>
@@ -60,3 +169,5 @@
     </section>
   </section>
 </section>
+
+

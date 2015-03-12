@@ -34,7 +34,7 @@ class PlaylistsController < InheritedResources::Base
 	  end
 
 	  def playlist_params
-	    params.require(:playlist).permit(:title, :price, :challange_id, :video_ids)
+	    params.require(:playlist).permit(:title, :price, :challange_id, :video_ids,:author_id)
 	  end
 end
 

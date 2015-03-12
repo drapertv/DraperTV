@@ -31,11 +31,16 @@ class VideosController < ApplicationController
     @commentable = @video
     @comments = @commentable.comments.order('created_at ASC')
     @comment = Comment.new
-    if @video.video_id
-      oembed = "http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/" + @video.video_id + '&maxwidth=660' + '&autoplay=1'
-      puts (Curl::Easy.perform(oembed).body_str)["html"]
-      @video_vimeo_embed = JSON.parse(Curl::Easy.perform(oembed).body_str)["html"]
+    # if @video.video_id
+    #   oembed = "http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/" + @video.video_id + '&maxwidth=660' + '&autoplay=1'
+    #   puts (Curl::Easy.perform(oembed).body_str)["html"]
+    #   @video_vimeo_embed = JSON.parse(Curl::Easy.perform(oembed).body_str)["html"]
+    # end
+
+    if @video.url
+      @video_yt_embed = ActiveSupport::SafeBuffer.new(%Q{<iframe id="ytplayer" type="text/html" width="662" height="494" src="https://www.youtube.com/embed/#{@video.url}?autoplay=1&rel=0&showinfo=0&color=white&theme=light" frameborder="0" allowfullscreen> </iframe>})
     end
+
   end
 
   # GET /videos/new
@@ -108,6 +113,6 @@ class VideosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def video_params
-    params.require(:video).permit(:title, :author_id, :speaker, :description, :url, :value,:thumbnail, :name,:category_list, :demand_array)
+    params.require(:video).permit(:title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name,:category_list, :demand_array,:video_ids_raw)
   end
 end

@@ -1,0 +1,29 @@
+<h1>Listing video_features</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Video</th>
+      <th>Type qwatch</th>
+      <th>Type series</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @video_features.each do |video_feature| %>
+      <tr>
+        <td><%= video_feature.video_id %></td>
+        <td><%= video_feature.type_qwatch %></td>
+        <td><%= video_feature.type_series %></td>
+        <td><%= link_to 'Show', video_feature %></td>
+        <td><%= link_to 'Edit', edit_video_feature_path(video_feature) %></td>
+        <td><%= link_to 'Destroy', video_feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Video feature', new_video_feature_path %>

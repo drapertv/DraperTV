@@ -4,6 +4,7 @@ class Video < ActiveRecord::Base
   acts_as_taggable_on :category, :vfavs, :sfavs
 	has_many :comments, :as => :commentable
 
+  mount_uploader :vthumbnail, VthumbnailUploader
 
 	def increment_demand user
 		demand_array = [] if demand_array == nil
@@ -48,6 +49,7 @@ class Video < ActiveRecord::Base
 	  # 1 hour expiration on the URL
  		url = SIGNER.sign("http://dc6in7ze09oom.cloudfront.net/#{title}.mp4", :ending => Time.now + 3600)
  end
+
 
 
 
