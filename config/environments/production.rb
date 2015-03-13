@@ -80,7 +80,7 @@ Rails.application.configure do
   :email => {
     :email_prefix => "[Draper-TV] ",
     :sender_address => %{"notifier" <notifier@example.com>},
-    :exception_recipients => %w{drapertvexceptions@gmail.com}
+    :exception_recipients => %w{yad@draperuniversity.com}
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
