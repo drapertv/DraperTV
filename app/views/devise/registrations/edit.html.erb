@@ -18,26 +18,7 @@
             <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
             <%= f.button :submit, 'Update', :class => 'btn-primary' %>
           <% end %>
-          <h3>Subscription Plan</h3>
-          <p>
-            <% unless @user.roles.nil? %>
-              <% @user.add_role('free') %>
-              <%= @user.roles.first.name.titleize %>
-            <% else %>
-              <%= @user.roles.first.name.titleize %>
-            <% end %>
-            <a data-toggle="modal" href="#plan-options" class="btn btn-mini" type="button">Choose plan</a>
-          </p>
-          <h3>Card</h3>
-          <p>
-            <% if @user.roles.first.name == "free" %>
-              <a data-toggle="modal" href="#card-data" class="btn btn-mini" type="button">Add card</a>
-            <% else %>
-              Using card ending with
-              <%= @user.last_4_digits %>
-              <a data-toggle="modal" href="#card-data" class="btn btn-mini" type="button">Change card</a>
-            <% end %>
-          </p>
+
           <h3>Cancel my account</h3>
           <p>Unhappy?
             <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini' %></p>
@@ -60,46 +41,6 @@
                 </div><!-- /.modal-content -->
               </div><!-- /.modal-dialog -->
             <% end %>
-          </div>
-          <div id="card-data" class="modal" style="display: none;">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <%= simple_form_for resource, :as => resource_name, :url => update_card_path, :html => {:method => :put, :class => 'form-horizontal card_form' } do |f| %>
-                    <div class="modal-header">
-                      <a class="close" data-dismiss="modal">&#215;</a>
-                      <% if @user.roles.first.name == "free" %>
-                        <h3>Add Credit Card</h3>
-                      <% else %>
-                        <h3>Change Credit Card</h3>
-                      <% end %>
-                    </div>
-                    <div class="modal-body">
-                      <div class="field">
-                        <%= label_tag :card_number, "Credit Card Number" %>
-                        <%= text_field_tag :card_number, nil, name: nil %>
-                      </div>
-                      <div class="field">
-                        <%= label_tag :card_code, "Card Security Code (CVV)" %>
-                        <%= text_field_tag :card_code, nil, name: nil %>
-                      </div>
-                      <div class="field">
-                        <%= label_tag :card_month, "Card Expiration" %>
-                        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}%>
-                        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year"}%>
-                      </div>
-                      <%= f.hidden_field :name %>
-                      <%= f.hidden_field :email %>
-                      <%= f.hidden_field :stripe_token %>
-                    </div>
-                    <div class="modal-footer">
-                      <%= f.submit "Change Credit Card", :class => "btn btn-primary" %>
-                      <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-                    </div>
-                  <% end %>
-                </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 ActiveAdmin.register Playlist do
 
 
-  permit_params :title, :price, :challange_id, :video_ids,:author_id
+  permit_params :title, :price, :challange_id, :video_ids,:author_id, :video_ids_raw
 
   index do
     column :id
@@ -15,11 +15,11 @@ ActiveAdmin.register Playlist do
 
   form :html => { :enctype => "multipart/form-data" } do |f|
    f.inputs "Playlist Details" do
-     f.inputs :title
-     f.inputs :price
+    f.inputs :title
+    f.inputs :price
     f.inputs :challange_id
     f.inputs :author_id
-     # f.inputs :video_ids_raw, :as => :text
+    f.inputs :video_ids_raw, :as => :text
    end
   f.actions
  end
