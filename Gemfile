@@ -8,9 +8,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'devise'
 gem 'devise_invitable'
 gem 'pg'
-gem "cancan", ">= 1.6.9"
-gem "rolify", ">= 3.2.0"
+# gem "cancan", ">= 1.6.9"
+# gem "rolify", ">= 3.2.0"
 gem 'activeadmin', github: 'gregbell/active_admin'
+
+gem 'cancancan', '~> 1.10'
 
 
 #Servers
@@ -55,7 +57,7 @@ gem 'simple_form'
 gem "aws-sdk"
 gem 'fog'
 gem 'aws_cf_signer'
-gem 'propono'
+# gem 'propono'
 
 #Images:
 gem 'carrierwave'
@@ -83,5 +85,7 @@ gem 'omniauth-twitter'
 gem 'acts_as_votable'
 
 #Exceptions
+
+gem 'rename'
 
 gem 'exception_notification'
