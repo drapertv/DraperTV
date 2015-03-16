@@ -8,7 +8,8 @@
             <div class="section-content">
                   <h2 class="font-thin m-b section-title">FEATURED</h2>
                   <div class="row row-sm">
-                    <% Video.all.limit(4).each do |video| %>
+                    <% VideoFeature.where(:type_series => true).limit(4).each do |id| %>
+                    <% video = Video.find(id.video_id) %>
                       <div class="col-xs-12 col-sm-3">
                         <div class="item video">
                           <div class="pos-rlt">
