@@ -44,11 +44,20 @@ Rails.application.routes.draw do
   end
 
   get '/videos/:id/increment_demand', to: 'videos#increment_demand', as: 'video_increment_demand'
-
-
   get 'tags/:tag', to: 'videos#index', as: :tag
   get 'profile_edit/:id', to: 'users#profile_edit', as: :profile_edit, via: :all
   get 'profile/:id', to: 'users#profile', as: :profile
+
+#Management
+get 'invitecorner', to: 'management#invitecorner', via: :invitecorner
+# get 'batch_invite', to: 'management#batch_invite', via: :batch_invite
+
+resources :management do
+  collection do
+    post 'batch_invite'
+  end
+end
+
 
 
 end

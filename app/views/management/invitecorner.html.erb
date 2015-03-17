@@ -1,0 +1,5 @@
+<%= form_tag batch_invite_management_index_path, :method => :post do %>
+  <%= label_tag "Email ids of people you'd like to invite." %>
+  <%= text_area_tag :user_emails %>
+  <%= submit_tag "Invite!" %>
+<% end %>

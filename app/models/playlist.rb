@@ -9,7 +9,7 @@ class Playlist < ActiveRecord::Base
 
   def video_ids_raw=(values)
 		int_array = values.split(',').collect{|n| n.to_i}
-    self.video_ids =  Array.new(int_array.split("\n,"))
+    self.video_ids =  Array.new(int_array)
   end
 
 end

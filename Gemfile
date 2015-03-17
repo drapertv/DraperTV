@@ -86,6 +86,5 @@ gem 'acts_as_votable'
 
 #Exceptions
 
-gem 'rename'
 
 gem 'exception_notification'

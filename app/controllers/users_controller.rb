@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_filter :set_user, only: [:show, :edit, :update]
-  before_filter :validate_authorization_for_user, only: [:edit, :update]
-  before_filter :authenticate_user!
+  load_and_authorize_resource
+  # before_filter :set_user, only: [:show, :edit, :update]
+  # before_filter :validate_authorization_for_user, only: [:edit, :update]
+  # before_filter :authenticate_user!
 
   def index
-    @users = User.all
+    # @users = User.all
   end
 
   def show
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
   def update
     # authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
-    role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?
+    # role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?
     params[:user] = params[:user].except(:role_ids)
     respond_to do |format|
       if @user.update_attributes(user_params)
@@ -57,28 +58,28 @@ class UsersController < ApplicationController
   def update_plan
     @user = current_user
 
-    role_id = params[:user][:role_ids] unless params[:user].nil? || params[:user][:role_ids].nil?
-    role = Role.find_by_id role_id unless role_id.nil?
+    # role_id = params[:user][:role_ids] unless params[:user].nil? || params[:user][:role_ids].nil?
+    # role = Role.find_by_id role_id unless role_id.nil?
 
-    authorized = !role.nil? && (role.name != 'admin' || current_user.roles.first.name == 'admin')
+    # authorized = !role.nil? && (role.name != 'admin' || current_user.role == 'admin')
 
-    if authorized && @user.update_plan(role)
-      redirect_to edit_user_registration_path, :notice => 'Updated plan.'
-    else
-      flash.alert = 'Unable to update plan.'
-      redirect_to edit_user_registration_path
-    end
+    # if authorized && @user.update_plan(role)
+    #   redirect_to edit_user_registration_path, :notice => 'Updated plan.'
+    # else
+    #   flash.alert = 'Unable to update plan.'
+    #   redirect_to edit_user_registration_path
+    # end
   end
 
   def update_card
     @user = current_user
-    @user.stripe_token = params[:user][:stripe_token]
-    if @user.save
-      redirect_to edit_user_registration_path, :notice => 'Updated card.'
-    else
-      flash.alert = 'Unable to update card.'
-      redirect_to edit_user_registration_path
-    end
+    # @user.stripe_token = params[:user][:stripe_token]
+    # if @user.save
+    #   redirect_to edit_user_registration_path, :notice => 'Updated card.'
+    # else
+    #   flash.alert = 'Unable to update card.'
+    #   redirect_to edit_user_registration_path
+    # end
   end
   private
   # Use callbacks to share common setup or constraints between actions.
