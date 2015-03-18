@@ -27,15 +27,12 @@
 
 .section-content {
 	height: 100%;
-	width: calc(100% - 20vw);
+	width: 1240px;
 	margin: 0 auto;
 }
 
 .landing-bottom {
 	height: calc(100%);
-	.landing-section {
-		height: calc(100% - 160px);
-	}
 	#landing-footer {
 		height: 160px;
 	}
@@ -69,11 +66,16 @@
 	font-size: 16px;
 	display: inline;
 	color: rgba(255,255,255,.5);
+	margin: 0 15px;
+}
+
+.header-item.active {
+	color: white;
 }
 
 .logo {
-	height: 40px;
-	margin-top: 5px;
+	height: 30px;
+	margin-top: 10px;
 }
 .sign-up-btn {
 	padding: 5px;
@@ -81,15 +83,34 @@
 .header-item.green-btn {
 	color: white;
 }
-.header-mid {
-	width: 320px;
-	left: calc(50% - 160px);
+.header-mid-right {
+	right: 265px;
 }
+
+.header-mid-left {
+	left: 310px;
+}
+
+.search-input {
+	height: 30px;
+	border: none;
+	-webkit-appearance: none;
+	font-size: 15px;
+	opacity: 0.5;
+	border-radius: 5px;
+	background: #13446d;
+	width: 330px;
+	margin: 10px 0px;
+	box-sizing: border-box;
+	padding: 0px 10px;
+	color: white;
+}
+
 .header-right {
-	right: 40px;
+	right: 20px;
 }
 .header-left {
-	left: 40px;
+	left: 20px;
 }
 
 /*************** TAGLINE ***************/
@@ -112,26 +133,39 @@
 $section-height: calc(33vh -  16.66px);
 
 .series-header {
-	height: 30px;
+	height: 25px;
+	font: 25px;
 	margin: 15px 0px;
 	div {
 		line-height: 30px;
 	}
 }
 .series-footer {
-	height: 30px;
+	height: 25px;
 	div {line-height: 30px;}
 }
 .series-title {
 	font-size: 24px;
 }
 
+.series-title, .series-challenge, .series-price {
+	height: 100%;
+}
+
 .series-price {
 	width: 130px;
+	line-height: 25px;
 }
 
 .series-content {
 	height: calc(260px - 80px);
+	overflow-y: hidden;
+	display: flex;
+}
+
+.series-videos {
+	height: 100%;
+	width: calc(100% - 140px);
 	white-space: nowrap;
 	overflow-x: scroll;
 }
@@ -140,26 +174,42 @@ $section-height: calc(33vh -  16.66px);
 	position: relative;
 	.white-gradient {
 		position: absolute;
-		right: -1px;
-		top: 45px;
+		top: 40px;
 		height: 170px;
 		width: 200px;
 		z-index: 2;
 		cursor: pointer;
 	}
+	.white-gradient.left {
+		left: 140px;
+	}
+	.white-gradient.right {
+		right: -1px;
+	}
 }
 
 .series-content .scroll-arrow {
 	position: absolute;
-	right: 40px;
 	top: 90px;
 	height: 40px;
 	width: 15px;
 	z-index: 2;
+	cursor: pointer;
+}
+
+.scroll-arrow.right {
+	right: 40px;
+}
+
+.scroll-arrow.left {
+	left: 194px;
+	-ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
 }
 
 
-.series-content > * {
+.series-videos > * {
 	height: 100%;
 	display: inline-block;
 	vertical-align: top;
@@ -167,8 +217,22 @@ $section-height: calc(33vh -  16.66px);
 
 .series-speaker {
 	width: 100px;
-	margin: 0px 10px 0px 20px;
-	height: 140px;
+	margin: 0px 20px;
+}
+
+.speaker-name {
+	font-weight: 600;
+	margin-top: 10px;
+	white-space: pre-wrap;
+}
+
+.speaker-title {
+	font-size: 12px;
+	white-space: pre-wrap;
+}
+
+.series-speaker-photo {
+	height: 135px;
 }
 
 .series-video {
@@ -177,7 +241,7 @@ $section-height: calc(33vh -  16.66px);
 	margin-right: 10px;
 	position: relative;
 	.video-thumbnail {
-		height: 140px;
+		height: 135px;
 		width: 100%;
 		cursor: pointer;
 	}
@@ -215,11 +279,12 @@ $section-height: calc(33vh -  16.66px);
 }
 
 .challenge-btn {
-	width: 30px;
-	height: 30px;
+	width: 25px;
+	height: 25px;
 	border: 3px solid red;
 	border-radius: 7px;
 	cursor: pointer;
+	margin-right: 30px;
 }
 
 /********** How it Works ************/
@@ -227,7 +292,7 @@ $section-height: calc(33vh -  16.66px);
 .info-section {
 	background: image_url('explainer-photo.jpg');
 	color: white;
-	padding-top: 50px;
+	height: 600px;
 	position: relative;
 	.blue-overlay {
 		background: $landing-blue;
@@ -241,25 +306,26 @@ $section-height: calc(33vh -  16.66px);
 }
 
 .info-items {
-	margin-top: 40px;
+	padding-top: 90px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .info-item {
-	width: 32%;
+	width: 350px;
 	height: 100%;
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
-	div {
-		margin: 10px auto;
-		width: calc(100% - 40px);
-	}
 }
 
 .info-title {
 	font-weight: 600;
 	font-size: 32px;
+	margin-top: 40px;
+	margin-bottom: 20px;
 }
+
 
 .info-desc {
 	font-size: 20px;
@@ -268,7 +334,7 @@ $section-height: calc(33vh -  16.66px);
 #sign-up {
 	height: 50px;
 	width: 140px;
-	margin: 30px auto;
+	margin: 80px auto 90px auto;
 	text-align: center;
 	line-height: 50px;
 	font-size: 32px;
@@ -282,12 +348,12 @@ $section-height: calc(33vh -  16.66px);
 /******* FOOTER *******/
 
 .footer-item {
-	width: 100px;
+	width: 175px;
 	display: inline-block;
-	margin-right: 60px;
+	margin-top: 30px;
 	vertical-align: top;
-	div {
-		margin: 10px 0px;
+	.footer-item-link {
+		margin: 15px 0px;
 	}
 }
 

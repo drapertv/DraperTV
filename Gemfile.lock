@@ -60,7 +60,12 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     aws_cf_signer (0.1.3)
-    bcrypt (3.1.7)
+    bcrypt (3.1.10)
+    bcrypt (3.1.10-x86-mingw32)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
+    bcrypt-ruby (3.1.5-x86-mingw32)
+      bcrypt (>= 3.1.3)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -74,11 +79,19 @@ GEM
     buftok (0.2.0)
     builder (3.2.2)
     cancancan (1.10.1)
+    capybara (2.4.1)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    childprocess (0.5.5)
+      ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -87,8 +100,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    curb (0.8.5)
     daemons (1.1.9)
+    database_cleaner (1.3.0)
     debug_inspector (0.0.2)
     devise (3.3.0)
       bcrypt (~> 3.0)
@@ -99,6 +112,7 @@ GEM
     devise_invitable (1.3.5)
       actionmailer (>= 3.2.6, < 5)
       devise (>= 3.2.0)
+    diff-lcs (1.2.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
@@ -106,15 +120,21 @@ GEM
       dotenv (= 0.11.1)
     equalizer (0.0.9)
     erubis (2.7.0)
-    eventmachine (1.0.3)
+    eventmachine (1.0.7)
     exception_notification (4.0.1)
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
     excon (0.40.0)
     execjs (2.2.1)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     ffaker (1.25.0)
+    ffi (1.9.8-x86-mingw32)
     fog (1.24.0)
       fog-brightbox
       fog-core (~> 1.23)
@@ -200,12 +220,13 @@ GEM
       mime-types (>= 1.16, < 3)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
+    metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (2.4.1)
-    mini_magick (3.7.0)
-      subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (5.4.2)
+    mocha (1.1.0)
+      metaclass (~> 0.0.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -215,6 +236,8 @@ GEM
     net-ssh (2.9.1)
     netrc (0.8.0)
     nokogiri (1.6.3.1)
+      mini_portile (= 0.6.0)
+    nokogiri (1.6.3.1-x86-mingw32)
       mini_portile (= 0.6.0)
     oauth (0.4.7)
     oauth2 (1.0.0)
@@ -248,7 +271,8 @@ GEM
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.5.0)
-    pg (0.17.1)
+    pg (0.18.1)
+    pg (0.18.1-x86-mingw32)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     populator (1.0.0)
@@ -256,6 +280,11 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry (0.10.1-x86-mingw32)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+      win32console (~> 1.3)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -296,7 +325,27 @@ GEM
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rmagick (2.13.4)
+    rest-client (1.7.2-x86-mingw32)
+      ffi (~> 1.9)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
+    rspec-core (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-rails (3.0.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.4)
+    rubyzip (1.1.6)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -306,6 +355,13 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selenium-webdriver (2.43.0)
+      childprocess (~> 0.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
+    shoulda-matchers (2.6.2)
+      activesupport (>= 3.0.0)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -328,7 +384,6 @@ GEM
     stripe_event (1.4.0)
       activesupport (>= 3.1)
       stripe (~> 1.6)
-    subexec (0.2.3)
     thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -351,14 +406,21 @@ GEM
       simple_oauth (~> 0.3.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2015.1)
+      tzinfo (>= 1.0.0)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    websocket (1.2.1)
+    win32console (1.3.2-x86-mingw32)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   activeadmin!
@@ -367,17 +429,21 @@ DEPENDENCIES
   autoprefixer-rails
   aws-sdk
   aws_cf_signer
+  bcrypt-ruby (= 3.1.5)
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.2.0)
   cancancan (~> 1.10)
+  capybara
   carrierwave
   coffee-rails (~> 4.0.0)
-  curb
+  database_cleaner
   devise
   devise_invitable
   dotenv-rails
+  eventmachine (~> 1.0.7)
   exception_notification
+  factory_girl_rails
   ffaker
   fog
   font-awesome-sass (~> 4.2.0)
@@ -387,7 +453,7 @@ DEPENDENCIES
   json
   koala
   linkedin
-  mini_magick
+  mocha
   omniauth
   omniauth-facebook
   omniauth-github
@@ -395,16 +461,18 @@ DEPENDENCIES
   omniauth-linkedin
   omniauth-oauth2
   omniauth-twitter
-  pg
+  pg (~> 0.18.0.pre20141117110243)
   populator
   pry
   quiet_assets
   rails (= 4.1.6)
   rails_12factor
   rails_layout
-  rmagick
+  rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  selenium-webdriver
+  shoulda-matchers
   simple_form
   spring
   stripe (>= 1.7.11)
@@ -412,4 +480,5 @@ DEPENDENCIES
   thin
   turbolinks
   twitter
+  tzinfo-data
   uglifier (>= 1.3.0)
