@@ -1,5 +1,6 @@
 
 
+
 <section class="vbox">
   <section id="content">
     <section class="vbox" id="bjax-el">
@@ -11,15 +12,8 @@
           </div>
           <section class="landing-section video-section">
             <div class="section-content">
-					<p>Enter email(s) of people you'd like to invite seperated by comma (,).</p>
 
-					<%= form_tag batch_invite_management_index_path, :method => :post do %>
-
-					  <%= text_area_tag :user_emails, nil, rows: 10, cols: 45,class: 'input' %>
-					  <br>
-					  <%= submit_tag "Invite", class: 'btn'  %>
-					<% end %>
-
+						<p>You've invited <%= @emails %></p>
 
             </div>
           </section>
