@@ -70,7 +70,7 @@
                 <div class="white-gradient no-mobile">
                 </div>
                 <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow no-mobile" %>
-                <%= image_tag User.where(:id => playlist.author_id).first.avatar, :class => "pull-left video-thumbnail" %>
+                <%= image_tag Speaker.where(:id => playlist.author_id).first.profilepic, :class => "pull-left video-thumbnail" %>
                 <% playlist.video_ids.each do |v| %>
                 <% @video = Video.where(:id => v).first %>
                   <div class="series-video">

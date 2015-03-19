@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :speakers
+
   resources :video_features
 
   devise_for :admin_users, ActiveAdmin::Devise.config
