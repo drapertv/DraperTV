@@ -29,13 +29,16 @@
 	height: 100%;
 	width: 1240px;
 	margin: 0 auto;
+	overflow-y: scroll;
 }
 
 .landing-bottom {
 	height: calc(100%);
-	#landing-footer {
-		height: 160px;
-	}
+}
+
+#landing-footer {
+	height: 240px;
+	background: white;
 }
 
 .gray-border-bottom {
@@ -128,164 +131,6 @@
 	top: calc(130px - 20px);
 }
 
-/****************  VIDEOS/SERIES *********************/
-
-$section-height: calc(33vh -  16.66px);
-
-.series-header {
-	height: 25px;
-	font: 25px;
-	margin: 15px 0px;
-	div {
-		line-height: 30px;
-	}
-}
-.series-footer {
-	height: 25px;
-	div {line-height: 30px;}
-}
-.series-title {
-	font-size: 24px;
-}
-
-.series-title, .series-challenge, .series-price {
-	height: 100%;
-}
-
-.series-price {
-	width: 130px;
-	line-height: 25px;
-}
-
-.series-content {
-	height: calc(260px - 80px);
-	overflow-y: hidden;
-	display: flex;
-}
-
-.series-videos {
-	height: 100%;
-	width: calc(100% - 140px);
-	white-space: nowrap;
-	overflow-x: scroll;
-}
-
-.section-content {
-	position: relative;
-	.white-gradient {
-		position: absolute;
-		top: 40px;
-		height: 170px;
-		width: 200px;
-		z-index: 2;
-		cursor: pointer;
-	}
-	.white-gradient.left {
-		left: 140px;
-	}
-	.white-gradient.right {
-		right: -1px;
-	}
-}
-
-.series-content .scroll-arrow {
-	position: absolute;
-	top: 90px;
-	height: 40px;
-	width: 15px;
-	z-index: 2;
-	cursor: pointer;
-}
-
-.scroll-arrow.right {
-	right: 40px;
-}
-
-.scroll-arrow.left {
-	left: 194px;
-	-ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
-}
-
-
-.series-videos > * {
-	height: 100%;
-	display: inline-block;
-	vertical-align: top;
-}
-
-.series-speaker {
-	width: 100px;
-	margin: 0px 20px;
-}
-
-.speaker-name {
-	font-weight: 600;
-	margin-top: 10px;
-	white-space: pre-wrap;
-}
-
-.speaker-title {
-	font-size: 12px;
-	white-space: pre-wrap;
-}
-
-.series-speaker-photo {
-	height: 135px;
-}
-
-.series-video {
-	width: 240px;
-	margin-left: 10px;
-	margin-right: 10px;
-	position: relative;
-	.video-thumbnail {
-		height: 135px;
-		width: 100%;
-		cursor: pointer;
-	}
-	.video-title {
-		height: 20px;
-		margin-top: 10px;
-		color: $landing-blue;
-		font-weight: 600;
-	}
-	.video-length {
-		width: 40px;
-		height: 20px;
-		color: white;
-		border-radius: 5px;
-		text-align: center;
-		position: absolute;
-		right: 10px;
-		top: 110px;
-		background: rgba(0,0,0,.8);
-		cursor: default
-	}
-	.video-play {
-		position: absolute;
-		height: 75px;
-		width: 75px;
-		left: calc(50% - 37.5px);
-		top: calc(70px - 37.5px);
-		cursor: pointer;
-		display: none;
-	}
-}
-
-.series-video:hover .video-play {
-	display: block;
-}
-
-.challenge-btn {
-	width: 25px;
-	height: 25px;
-	border: 3px solid red;
-	border-radius: 7px;
-	cursor: pointer;
-	margin-right: 30px;
-}
 
 /********** How it Works ************/
 
@@ -366,7 +211,6 @@ $section-height: calc(33vh -  16.66px);
 }
 
 .footer-notes {
-	margin-top: 20px;
 	font-size: 14px;
 	color: $light-gray;
 }
@@ -409,115 +253,6 @@ body {
 }
 
 
-
-/******* LANDING Second HEADER ********/
-
-#landing-header2 {
-	position: relative;
-	top: 0;
-	left: 0;
-	height: 50px;
-	width: 100%;
-	background: $bg-grey;
-	text-align: center;
-	z-index: 2;
-}
-#landing-header2 > * {
-	position: absolute;
-	top: 0;
-	height: 100%;
-}
-.header2-item {
-	height: 100%;
-	line-height: 50px;
-	cursor: pointer;
-	font-size: 16px;
-	display: inline;
-	color: rgba(255,255,255,.5);
-}
-
-.header2-mid {
-  left: calc(50% - 400px);
-  width: 800px;
-}
-.header2-right {
-	right: 10px;
-}
-.header2-left {
-	left: 10px;
-}
-
-.FREE {
-	font-size: 14px;
-	padding-right: 4px;
-	padding-left: 4px;
-	color: white;
-	background-color: $landing-red;
-  border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border: 2px solid $landing-red;
-}
-
-.MARKETING {
-	font-size: 14px;
-	padding-right: 4px;
-	padding-left: 4px;
-	color: white;
-	background-color: $landing-yellow;
-  border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border: 2px solid $landing-yellow;
-}
-
-.SURVIVAL {
-	font-size: 14px;
-	padding-right: 4px;
-	padding-left: 4px;
-	color: white;
-	background-color: $landing-orange;
-  border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border: 2px solid $landing-orange;
-}
-
-.OPERATIONS {
-	font-size: 14px;
-	padding-right: 4px;
-	padding-left: 4px;
-	color: white;
-	background-color: $landing-green;
-  border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border: 2px solid $landing-green;
-}
-
-.cat-btn {
-	padding: 5px;
-}
-
-/******* Video QWatch ********/
-
-.qwatch-title {
-	color: $light-blue;
-}
-
-.section-title {
-	color: $black;
-}
-
-.stared {
-color: $landing-yellow
-}
-
-.section-time {
-	color: white;
-	background-color:rgba(0, 0, 0, 0.5)
-
-}
 
 
 /******* Video Page ********/

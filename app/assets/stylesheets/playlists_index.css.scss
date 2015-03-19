@@ -1,0 +1,179 @@
+@import 'shared/variables';
+
+/****************  VIDEOS/SERIES *********************/
+
+$section-height: calc(33vh -  16.66px);
+
+.playlist-container {
+	background: white;
+	padding-top: 40px;
+}
+.series-header {
+	height: 25px;
+	font: 25px;
+	margin: 15px 0px;
+	div {
+		line-height: 30px;
+	}
+}
+.series-footer {
+	height: 25px;
+	div {line-height: 30px;}
+}
+.series-title {
+	font-size: 24px;
+}
+
+.series-title, .series-challenge, .series-price {
+	height: 100%;
+}
+
+.series-price {
+	width: 130px;
+	line-height: 25px;
+}
+
+.series-content {
+	height: auto;
+	overflow-y: hidden;
+	display: flex;
+}
+
+.series-videos {
+	height: 100%;
+	width: calc(100% - 140px);
+	white-space: nowrap;
+	overflow-x: scroll;
+}
+
+.section-content {
+	position: relative;
+	.white-gradient {
+		position: absolute;
+		top: 40px;
+		height: 170px;
+		width: 200px;
+		z-index: 2;
+		cursor: pointer;
+	}
+	.white-gradient.left {
+		left: 140px;
+	}
+	.white-gradient.right {
+		right: -1px;
+	}
+}
+
+.series-content .scroll-arrow {
+	position: absolute;
+	top: 90px;
+	height: 40px;
+	width: 15px;
+	z-index: 2;
+	cursor: pointer;
+}
+
+.scroll-arrow.right {
+	right: 40px;
+}
+
+.scroll-arrow.left {
+	left: 194px;
+	-ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+
+.series-videos > * {
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.series-speaker {
+	width: 100px;
+	margin: 0px 20px;
+}
+
+.speaker-name {
+	font-weight: 600;
+	margin-top: 10px;
+	white-space: pre-wrap;
+}
+
+.speaker-title {
+	font-size: 12px;
+	white-space: pre-wrap;
+}
+
+.series-speaker-photo {
+	height: 135px;
+}
+
+.series-video {
+	width: 240px;
+	margin-left: 10px;
+	margin-right: 10px;
+	position: relative;
+	.video-thumbnail {
+		height: 135px;
+		width: 100%;
+		cursor: pointer;
+	}
+	.video-title {
+		height: 20px;
+		margin-top: 10px;
+		color: $landing-blue;
+		font-weight: 600;
+	}
+	.video-length {
+		width: 40px;
+		height: 20px;
+		color: white;
+		border-radius: 5px;
+		text-align: center;
+		position: absolute;
+		right: 10px;
+		top: 110px;
+		background: rgba(0,0,0,.8);
+		cursor: default
+	}
+}
+
+.video-play {
+	position: absolute;
+	height: 75px;
+	width: 75px;
+	left: calc(50% - 37.5px);
+	top: calc(70px - 37.5px);
+	cursor: pointer;
+	display: none;
+}
+
+.series-video:hover .video-play, .video-item-container:hover .video-play { //refactor into one class later
+	display: block;
+}
+
+
+
+.challenge-btn {
+	width: 25px;
+	height: 25px;
+	border: 3px solid red;
+	border-radius: 7px;
+	cursor: pointer;
+	margin-right: 30px;
+	margin-left: 10px;
+}
+
+
+
+.video-thumbnail {
+	width: 100%;
+	height: 135px;
+}
+
+.video-section {
+	position: relative;
+}

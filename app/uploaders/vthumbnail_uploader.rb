@@ -15,7 +15,7 @@ class VthumbnailUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "m40.jpg"
+    "assets/m40.jpg"
   end
 
   version :thumb do

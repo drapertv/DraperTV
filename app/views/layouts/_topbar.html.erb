@@ -1,13 +1,23 @@
 <header id="landing-header">
-  <div class="header-mid no-mobile">
-    <div class="header-item m-md">
-      <a href="<%= playlists_path %>" class="header-item">SERIES</a>
+  <div class="header-mid-right no-mobile">
+    <div class="header-item">
+      SERIES
     </div>
-    <div class="header-item m-md">
-      <a href="<%= videos_path %>" class="header-item">QUICK WATCHES</a>
+    <div class="header-item">
+      QUICK WATCHES
+    </div>
+    <div class="header-item">
+      FAVORITES
     </div>
   </div>
 
+  <div class="header-mid-left no-mobile">
+    <%= form_tag '/search' do %>
+      <%= text_field_tag :search_term, nil, :class => "search-input", placeholder: "Search" %>
+    <% end %>
+  </div>
+
+  
   <div class="header-right no-mobile">
     <ul class="nav navbar-nav m-n hidden-xs nav-user user">
       <li class="dropdown">
@@ -15,7 +25,7 @@
           <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
             <%= image_tag current_user.avatar_url(:thumb).to_s %>
           </span>
-          <%= User.find(current_user.id).name %>
+          <%= current_user.name %>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
@@ -44,12 +54,7 @@
     </ul>
   </div>
 
-
   <div class="header-left">
-    <a href="<%= root_path %>" class="navbar-brand text-lt">
-      <!--  <i class="icon-fire"></i> -->
-      <img src="<%= asset_url('assets/draper-logo.png') %>" alt="." class="header-item logo">
-    </a>
-
+    <%= image_tag 'draper-logo.png', :class => "header-item logo" %>
   </div>
 </header>

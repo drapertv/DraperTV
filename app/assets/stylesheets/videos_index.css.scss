@@ -1,0 +1,145 @@
+@import 'shared/variables';
+
+/******* LANDING Second HEADER ********/
+
+#video-header {
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 50px;
+	width: 100%;
+	background: $bg-grey;
+	text-align: center;
+	z-index: 2;
+}
+#landing-video-header > * {
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+.video-header-item {
+	height: 100%;
+	line-height: 50px;
+	cursor: pointer;
+	font-size: 16px;
+	display: inline;
+	color: rgba(255,255,255,.5);
+	margin: 0px 32.5px;
+}
+
+
+.video-header-mid {
+  width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+}
+
+.FREE {
+	font-size: 14px;
+	padding-right: 4px;
+	padding-left: 4px;
+	color: white;
+	background-color: $landing-red;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid $landing-red;
+}
+
+.MARKETING {
+	font-size: 14px;
+	padding-right: 4px;
+	padding-left: 4px;
+	color: white;
+	background-color: $landing-yellow;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid $landing-yellow;
+}
+
+.SURVIVAL {
+	font-size: 14px;
+	padding-right: 4px;
+	padding-left: 4px;
+	color: white;
+	background-color: $landing-orange;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid $landing-orange;
+}
+
+.OPERATIONS {
+	font-size: 14px;
+	padding-right: 4px;
+	padding-left: 4px;
+	color: white;
+	background-color: $landing-green;
+  border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 2px solid $landing-green;
+}
+
+.cat-btn {
+	padding: 5px;
+}
+
+/********** VIDEOS *************/
+
+#qw-content {
+	margin-top: 40px;
+}
+
+.videos-container {
+	background: white;
+}
+
+.regular-videos {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-bottom: 60px;
+}
+
+.featured-videos {
+	display: flex;
+	.video-item-container {
+		margin-right: 10px;
+	}
+}
+
+.video-item-container {
+	width: 240px;
+}
+
+.video-img {
+	height: 135px;
+	position: relative;
+}
+
+/******* Video QWatch ********/
+
+.qwatch-title {
+	color: $light-blue;
+}
+
+.section-title {
+	color: $black;
+	margin-top: 0px;
+}
+
+.stared {
+color: $landing-yellow
+}
+
+.section-time {
+	color: white;
+	background-color:rgba(0, 0, 0, 0.8);
+	position: absolute;
+	bottom: 0px;
+	right: 10px;
+}

@@ -37,6 +37,10 @@ body {
 	color: $landing-blue;
 }
 
+.blue > * {
+	color: $landing-blue;
+}
+
 .orange {
 	color: $landing-orange;
 }
