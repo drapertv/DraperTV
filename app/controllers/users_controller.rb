@@ -42,10 +42,10 @@ class UsersController < ApplicationController
     # authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
     # role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?
-    params[:user] = params[:user].except(:role_ids)
+    # params[:user] = params[:user].except(:role_ids)
     respond_to do |format|
       if @user.update_attributes(user_params)
-        @user.update_plan(role) unless role.nil?
+        # @user.update_plan(role) unless role.nil?
         format.html { redirect_to profile_edit_path(@user), notice: 'User was successfully updated.' }
         #format.json { head :no_content }
       else
