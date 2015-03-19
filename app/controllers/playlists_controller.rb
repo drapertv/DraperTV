@@ -1,6 +1,5 @@
 class PlaylistsController < InheritedResources::Base
-  before_action :set_playlist, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  load_and_authorize_resource
 
   def index
     if current_user.email.nil?

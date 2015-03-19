@@ -1,4 +1,5 @@
 class VideoFeaturesController < InheritedResources::Base
+  load_and_authorize_resource
 
 def index
     @video_features = VideoFeature.all

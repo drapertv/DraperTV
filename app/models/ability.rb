@@ -11,9 +11,9 @@ class Ability
 			can :manage, VideoFeature
 			can :manage, Quote
 			can :manage, Speaker
-
 		else
-
+			can :view, Playlist
+			can :view, Video
 		end
 	end
 end
