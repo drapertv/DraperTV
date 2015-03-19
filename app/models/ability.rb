@@ -12,8 +12,9 @@ class Ability
 			can :manage, Quote
 			can :manage, Speaker
 		else
-			can :view, Playlist
-			can :view, Video
+			can :read, Playlist
+			can :read, Video
+			can :manage, User, :id => user.id
 		end
 	end
 end
