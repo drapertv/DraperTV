@@ -6,6 +6,12 @@ class Ability
 		if user.role == "admin"
 			can :manage, User
 			can :manage, Management
+			can :manage, Playlist
+			can :manage, Video
+			can :manage, VideoFeature
+			can :manage, Quote
+			can :manage, Speaker
+
 		else
 
 		end
