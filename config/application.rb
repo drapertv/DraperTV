@@ -19,8 +19,8 @@ module DraperTV
         config.assets.paths << "#{Rails.root}/app/assets/fonts"
         config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
-        config.serve_static_assets = true
-
+        # config.serve_static_assets = true
+        config.serve_static_files = true
         # We don't want the default of everything that isn't js or css, because it pulls too many things in
         config.assets.precompile.shift
         config.action_dispatch.default_headers = {
