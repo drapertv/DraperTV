@@ -19,6 +19,8 @@ class Video < ActiveRecord::Base
 		user.access_level >= value
 	end
 
+
+
 # cf_url is http://dSomething.cloudfront.net/path
 # video_name is test.mp4
 
@@ -48,7 +50,7 @@ class Video < ActiveRecord::Base
 	def signed
 	  # 1 hour expiration on the URL
  		url = SIGNER.sign("http://dc6in7ze09oom.cloudfront.net/#{title}.mp4", :ending => Time.now + 3600)
- end
+ 	end
 
 
 

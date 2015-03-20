@@ -21,7 +21,9 @@
  *= require shared/layouts
  *= require shared/master
  *= require videos
- #= require visitors
+ *= require visitors_home
+ *= require playlists_index
+ *= require videos_index
  */
 
 // @import "bootstrap-sprockets";

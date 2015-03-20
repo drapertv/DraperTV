@@ -1,33 +1,12 @@
-
+ 
 <div id="content-container">
 
   <div class="landing-container landing-top">
-    <header id="landing-header">
-      <div class="header-mid no-mobile">
-        <div class="header-item m-md">
-          SERIES
-        </div>
-        <div class="header-item m-md">
-          QUICK WATCHES
-        </div>
-      </div>
-
-      <div class="header-right no-mobile">
-        <div class="header-item m-xs green-btn sign-up-btn">
-          <a href="<%= new_user_registration_path %>">Sign Up</a>
-        </div>
-        <div class="header-item m-xs">
-          or <a href="<%= new_user_session_path %>">Log In</a>
-        </div>
-      </div>
-      <div class="header-left">
-        <%= image_tag 'draper-logo.png', :class => "header-item logo" %>
-      </div>
-    </header>
+    <%= render partial: "layouts/header" %>
     <section class="landing-section" id="tagline-section">
       <div class="section-content">
         <div id="tagline">
-          Insert Generic Tagline Here!
+          Bringing Silicon Valley to you.
         </div>
       </div>
     </section>
@@ -43,28 +22,37 @@
           <div class="pull-right green-btn series-price">
             Full Series <span class="bold">$3.99</span>
           </div>
-        </div>
-        <div class="series-content">
-          <div class="white-gradient no-mobile">
-          </div>
-          <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow no-mobile" %>
-          <%= image_tag "tony-photo.png", :class => "series-speaker no-mobile" %>
-          <% (1..10).each do |n| %>
-            <div class="series-video">
-              <div class="video-length">3:59</div>
-              <%= image_tag 'play-icon.png', :class => "video-play" %>
-              <%= image_tag 'elon-vid.png', :class => "video-thumbnail" %>
-              <div class="video-title blue">
-                What is starting up like?
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="series-footer no-mobile">
           <div class="pull-right challenge-btn"></div>
-          <div class="pull-right m-r-sm">
+          <div class="pull-right m-r-sm series-challenge">
             Challenge: Do Something Test Challenge
           </div>
+          
+        </div>
+        <div class="series-content">
+          <div class="series-speaker">
+            <%= image_tag "tony-photo.png", :class => "series-speaker-photo no-mobile" %>
+            <div class="speaker-name">Tony Hsieh</div>
+            <div class="speaker-title">CEO & Founder Zappos</div>
+          </div>
+            <div class="white-gradient left no-mobile hidden">
+            </div>
+            <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow left no-mobile hidden" %>
+            <div class="white-gradient right no-mobile"></div>
+            <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow right no-mobile" %>
+          <div class="series-videos">
+            <% (1..10).each do |n| %>
+              <div class="series-video">
+                <div class="video-length">3:59</div>
+                <%= image_tag 'play-icon.png', :class => "video-play" %>
+                <%= image_tag 'elon-vid.png', :class => "video-thumbnail" %>
+                <div class="video-title blue">
+                  What is starting up like?
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="series-footer no-mobile">
         </div>
       </div>
     </section>
@@ -96,31 +84,8 @@
         </div>
       </div>
     </section>
-    <footer id="landing-footer" class="landing-section no-mobile">
-      <div class="section-content">
-        <div class="footer-item">
-          <div class="footer-item-title blue">DRAPER<span class="italic bold">TV</span></div>
-          <div class="footer-item-link">About</div>
-          <div class="footer-item-link">Contact Us</div>
-        </div>
+    <%= render partial: 'layouts/footer' %>
 
-        <div class="footer-item">
-          <div class="footer-item-title green">UPGRADE</div>
-          <div class="footer-item-link">DRAPER<span class="italic bold">TV</span>+</div>
-        </div>
-
-        <div class="footer-item">
-          <div class="footer-item-title orange">HELP</div>
-          <div class="footer-item-link">Basics</div>
-          <div class="footer-item-link">FAQ</div>
-        </div>
-
-        <div class="footer-notes">
-          All rights reserved, Draper Collective, LLC.
-        </div>
-      </div>
-
-    </footer>
   </div>
 </div>
 

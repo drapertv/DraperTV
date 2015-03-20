@@ -29,7 +29,7 @@ group :development do
 	gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
 	gem 'quiet_assets'
 	gem 'rails_layout'
-	gem 'ffaker'
+	gem 'faker'
 	gem 'populator'
 	gem 'pry'
 end
@@ -88,3 +88,16 @@ gem 'acts_as_votable'
 
 
 gem 'exception_notification'
+
+
+
+
+group :development, :test do
+	gem 'capybara'
+	gem 'database_cleaner'
+	gem 'selenium-webdriver'
+	gem 'shoulda-matchers'
+	gem 'mocha'
+	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+end

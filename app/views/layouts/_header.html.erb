@@ -1,0 +1,33 @@
+<!-- For when not signed in -->
+
+<header id="landing-header">
+  <div class="header-mid-right no-mobile">
+    <div class="header-item">
+      SERIES
+    </div>
+    <div class="header-item">
+      QUICK WATCHES
+    </div>
+    <div class="header-item">
+      FAVORITES
+    </div>
+  </div>
+
+  <div class="header-mid-left no-mobile">
+    <%= form_tag '/search' do %>
+      <%= text_field_tag :search_term, nil, :class => "search-input", placeholder: "Search" %>
+    <% end %>
+  </div>
+
+  <div class="header-right no-mobile">
+    <div class="header-item m-xs green-btn sign-up-btn">
+      <a href="<%= new_user_registration_path %>">Sign Up</a>
+    </div>
+    <div class="header-item m-xs">
+      or <a href="<%= new_user_session_path %>">Log In</a>
+    </div>
+  </div>
+  <div class="header-left">
+    <%= image_tag 'draper-logo.png', :class => "header-item logo" %>
+  </div>
+</header>
