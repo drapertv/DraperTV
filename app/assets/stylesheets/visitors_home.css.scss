@@ -119,6 +119,10 @@
 /*************** TAGLINE ***************/
 #tagline-section {
 	background: $landing-gray;
+	background: image_url('tagline-photo.jpg');
+	background-size:100%;
+	background-repeat: no-repeat;
+
 }
 
 #tagline {
