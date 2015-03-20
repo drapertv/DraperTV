@@ -292,3 +292,15 @@ min-height: 500px;
 	border: 0px;
 	padding-top: 10px;
 }
+
+
+.header-item > a{
+	color: white;
+	opacity: 0.5;
+}
+
+.header-item > a:hover,
+.header-item > a:focus {
+	color: white;
+	opacity: 1;
+}
