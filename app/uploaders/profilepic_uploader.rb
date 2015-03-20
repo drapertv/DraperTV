@@ -18,6 +18,10 @@ class ProfilepicUploader < CarrierWave::Uploader::Base
     "m40.jpg"
   end
 
+  version :seriesthumb do
+    process :resize_to_fill => [100, 135]
+  end
+
   version :thumb do
     process :resize_to_fill => [280, 280]
   end

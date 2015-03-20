@@ -3,14 +3,13 @@ Visitors =
 		$('.white-gradient.right').on 'mouseenter', @scrollVideosRight
 		$('.white-gradient.left').on 'mouseenter', @scrollVideosLeft
 		$('.white-gradient').on 'mouseleave', @stopScrollVideos
-		@scrollSpeed = 2 
+		@scrollSpeed = 2
 		$('.vbox').removeClass('vbox')
-
 	scrollVideosRight: ->
 		videoList = $(@).parent().find('.series-videos')
 		# show the left scroll gradient/arrow
 		$(@).parent().find('.white-gradient.left, .scroll-arrow.left').removeClass('hidden')
-		
+
 		#stop scrolling if already scrolling
 		clearInterval Visitors.scrollIntervalId
 

@@ -119,6 +119,10 @@
 /*************** TAGLINE ***************/
 #tagline-section {
 	background: $landing-gray;
+	background: image_url('tagline-photo.jpg');
+	background-size:100%;
+	background-repeat: no-repeat;
+
 }
 
 #tagline {
@@ -294,4 +298,16 @@ min-height: 500px;
 	color: white;
 	border: 0px;
 	padding-top: 10px;
+}
+
+
+.header-item > a{
+	color: white;
+	opacity: 0.5;
+}
+
+.header-item > a:hover,
+.header-item > a:focus {
+	color: white;
+	opacity: 1;
 }

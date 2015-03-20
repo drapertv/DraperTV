@@ -44,8 +44,6 @@
     <div class="regular-series">
       <h2 class="font-thin m-b section-title">SERIES</h2>
       <% @playlists.each do |playlist| %>
-
-
       <section class="video-section">
         <div class="gray-border-bottom">
           <div class="series-header">
@@ -62,8 +60,10 @@
           </div>
           <div class="series-content">
             <div class="series-speaker">
-            <%= image_tag Speaker.where(:id => playlist.author_id).first.profilepic, :class => "pull-left video-thumbnail" %>
-              <div class="speaker-name">Tony Hsieh</div>
+            <%= image_tag Speaker.where(:id => playlist.author_id).first.profilepic_url(:seriesthumb), :class => "pull-left video-thumbnail" %>
+              <div class="speaker-name">
+               <%= Speaker.where(:id => playlist.author_id).first.name %>
+              </div>
               <div class="speaker-title">CEO & Founder Zappos</div>
             </div>
               <div class="white-gradient left no-mobile hidden">

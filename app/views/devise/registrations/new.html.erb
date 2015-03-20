@@ -5,7 +5,7 @@
     <a class="navbar-brand block" href="<%= root_path %>"><span class="h1 font-bold">Draper<i>TV</i></span></a>
     <section class="m-b-lg">
       <header class="wrapper text-center">
-        <strong>Sign in to get in touch</strong>
+        <strong>Sign up to get in touch</strong>
         <%# Rails flash messages styled for Bootstrap 3.0 %>
         <% flash.each do |name, msg| %>
           <% if msg.is_a?(String) %>
@@ -16,28 +16,9 @@
           <% end %>
         <% end %>
       </header>
-      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical' }) do |f| %>
-        <%= hidden_field_tag 'plan', 'free' %>
-        <%= f.error_notification %>
-        <%= display_base_errors resource %>
-        <div class="form-group">
-          <%= f.input :email, required: true, autofocus: true, input_html: { class: 'form-control rounded input-lg text-center no-border'} %>
-        </div>
-        <div class="form-group">
-          <%= f.input :name, required: true, autofocus: true, input_html: { class: 'form-control rounded input-lg text-center no-border'} %>
-        </div>
-        <fieldset>
-          <div class="form-group">
-            <%= f.input :password, required: true, input_html: { class: 'form-control rounded input-lg text-center no-border' } %>
-          </div>
-          <div class="form-group">
-            <%= f.input :password_confirmation, required: true, input_html: { class: 'form-control rounded input-lg text-center no-border'} %>
-          </div>
-        </fieldset>
-        <%= f.hidden_field :stripe_token %>
-        <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign Up</span></button>
-      <% end %>
-      <%= render "devise/shared/links" %>
+
+
+      <%# render "devise/shared/links" %>
     </div>
   </section>
 </section>

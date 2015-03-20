@@ -1,10 +1,10 @@
 <header id="landing-header">
   <div class="header-mid-right no-mobile">
     <div class="header-item">
-      SERIES
+      <a href="<%= playlists_path %>">SERIES</a>
     </div>
     <div class="header-item">
-      QUICK WATCHES
+      <a href="<%= videos_path %>">QUICK WATCHES</a>
     </div>
     <div class="header-item">
       FAVORITES
@@ -17,7 +17,7 @@
     <% end %>
   </div>
 
-  
+
   <div class="header-right no-mobile">
     <ul class="nav navbar-nav m-n hidden-xs nav-user user">
       <li class="dropdown">
@@ -55,6 +55,6 @@
   </div>
 
   <div class="header-left">
-    <%= image_tag 'draper-logo.png', :class => "header-item logo" %>
+     <a href="<%= root_path %>"><%= image_tag 'draper-logo.png', :class => "header-item logo" %> </a>
   </div>
 </header>
