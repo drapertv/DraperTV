@@ -39,7 +39,7 @@ class SpeakersController < InheritedResources::Base
   end
 
   def speaker_params
-    params.require(:speaker).permit(:name, :email, :profilepic, :bio)
+    params.require(:speaker).permit(:name, :email, :profilepic, :bio,:title)
   end
 
 

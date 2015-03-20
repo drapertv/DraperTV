@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="">
-                        <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:thumb), :class => "video-thumbnail pull-left thumb-lg m-r" %>
+                        <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:thumb), :class => " pull-left thumb-lg m-r" %>
                         <div class="">
                           <h3><%= Speaker.where(:id => @video.author_id).first.name %></h3>
                           <%= @video.description %>
