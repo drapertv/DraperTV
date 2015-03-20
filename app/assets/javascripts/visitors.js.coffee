@@ -6,7 +6,6 @@ Visitors =
 		@scrollSpeed = 2
 
 	scrollVideosRight: ->
-		console.log("working")
 		videoList = $(@).parent().find('.series-videos')
 		# show the left scroll gradient/arrow
 		$(@).parent().find('.white-gradient.left, .scroll-arrow.left').removeClass('hidden')
