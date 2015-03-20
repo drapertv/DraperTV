@@ -4,13 +4,12 @@
 
 #video-header {
 	position: relative;
-	top: 0;
-	left: 0;
 	height: 50px;
 	width: 100%;
 	background: $bg-grey;
 	text-align: center;
 	z-index: 2;
+	margin-bottom: 40px;
 }
 #landing-video-header > * {
 	position: absolute;
@@ -95,7 +94,10 @@
 }
 
 .videos-container {
-	background: white;
+  background: white;
+  height: 100vh;
+  overflow-y: scroll;
+  padding-top: 50px;
 }
 
 .regular-videos {

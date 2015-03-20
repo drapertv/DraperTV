@@ -1,5 +1,5 @@
 
-<section class="vbox videos-container">
+<div class="vbox videos-container">
   <header id="video-header">
     <div class="video-header-mid no-mobile">
 
@@ -13,11 +13,10 @@
         <%= link_to "All", videos_path, class: "cat-btn" %>
       </div>
     </div>
-</header>
+  </header>
 
   <div class="section-content">
     <section class="vbox" id="bjax-el">
-      <section class="scrollable">
         <h2 class="font-thin m-b section-title">FEATURED</h2>
         <div class="featured-videos">
           <% VideoFeature.where(:type_qwatch => true).limit(5).each do |id| %>
@@ -109,8 +108,7 @@
         </ul> -->
         <%= render partial: 'layouts/footer' %>
       </div>
-      </section><!-- scrollable padder-lg -->
     </section>
     <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
   </div>
-</section><!-- vbox -->
+</div>
