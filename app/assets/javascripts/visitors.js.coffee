@@ -4,6 +4,7 @@ Visitors =
 		$('.white-gradient.left').on 'mouseenter', @scrollVideosLeft
 		$('.white-gradient').on 'mouseleave', @stopScrollVideos
 		@scrollSpeed = 2 
+		$('.vbox').removeClass('vbox')
 
 	scrollVideosRight: ->
 		videoList = $(@).parent().find('.series-videos')

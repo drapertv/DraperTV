@@ -29,7 +29,6 @@
 	height: 100%;
 	width: 1240px;
 	margin: 0 auto;
-	overflow-y: scroll;
 }
 
 .landing-bottom {
@@ -80,8 +79,9 @@
 	height: 30px;
 	margin-top: 10px;
 }
-.sign-up-btn {
+.sign-up-btn.header-item {
 	padding: 5px;
+	margin-right: 0px;
 }
 .header-item.green-btn {
 	color: white;
@@ -129,6 +129,7 @@
 	width: 100%;
 	position: absolute;
 	top: calc(130px - 20px);
+	color: white;
 }
 
 
@@ -169,11 +170,13 @@
 	font-size: 32px;
 	margin-top: 40px;
 	margin-bottom: 20px;
+	color: white;
 }
 
 
 .info-desc {
 	font-size: 20px;
+	color: white;
 }
 
 #sign-up {

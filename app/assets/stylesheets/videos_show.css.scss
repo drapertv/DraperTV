@@ -1,0 +1,106 @@
+@import 'shared/variables';
+
+/***** General Layout ****/
+
+#video-container { //change all the containers to content container
+	display: flex;
+	width: 1240px;
+	padding: 0 calc(50vw - 620px);
+	height: calc(100vh - 90px);
+	overflow-y: scroll;
+	padding-top: 90px;
+	box-sizing: content-box;
+}
+
+.section-left {
+	width: 840px;
+}
+
+.section-right {
+	width: 400px;
+}
+
+
+/********* Video/Video list  ***********/
+
+#ytplayer {
+	height: 500px;
+	width: 100%;
+}
+
+.videos-panel.blacke {
+	height: 500px;
+	padding-top: 0px;
+}
+
+.video-list {
+	height: calc(500px - 165px);
+	overflow-y: scroll;
+}
+
+.playlist-title {
+	margin-bottom: 10px;
+	width: 340px;
+}
+.star {
+	width: 20px;
+}
+
+.playlist-info {
+	height: 95px;
+}
+.challenge-info {
+	height: 70px;
+}
+
+.video-info-row {
+	display: flex;
+}
+
+.video-list-title {
+	width: 240px;
+}
+
+.video-item {
+	padding: 20px;
+	* {
+		color: rgba(255,255,255,0.8);
+	}
+}
+
+.video-list-thumbnail {
+	height: 40px;
+	width: 72px;
+	margin-left: 20px;
+	margin-right: 10px;
+}
+
+.series-price {
+	height: 25px;
+}
+
+.video-speaker-info {
+	display: flex;
+	margin: 10px 0px;
+}
+
+.video-speaker {
+	height: 135px;
+	width: 100px;
+	margin-right: 10px;
+}
+
+.video-title {
+	margin: 10px 0px;
+	font-size: 25px;
+	color: black;
+}
+
+.video-speaker-name {
+	font-weight: 600;
+	font-size: 17px;
+}
+
+.comments-header {
+	font-size: 20px;
+}

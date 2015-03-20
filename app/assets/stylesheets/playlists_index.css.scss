@@ -6,8 +6,14 @@ $section-height: calc(33vh -  16.66px);
 
 .playlist-container {
 	background: white;
-	padding-top: 40px;
+	padding-top: 90px;
+	height: calc(100vh);
+	overflow-y: scroll;
+	footer {
+		display: block;
+	}
 }
+
 .series-header {
 	height: 25px;
 	font: 25px;
@@ -126,6 +132,7 @@ $section-height: calc(33vh -  16.66px);
 		margin-top: 10px;
 		color: $landing-blue;
 		font-weight: 600;
+		font-size: 16px;
 	}
 	.video-length {
 		width: 40px;

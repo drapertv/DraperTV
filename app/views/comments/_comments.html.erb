@@ -1,5 +1,5 @@
 <!-- Talk -->
-<section id="comment-list" class="comment-list block">
+<section id="comments" class="comment-list block">
 
   <% @comments.each do |comment| %>
   <% @comment_user = User.find_by_id(comment.user_id) %>

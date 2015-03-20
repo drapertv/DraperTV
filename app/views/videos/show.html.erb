@@ -1,181 +1,104 @@
-<section class="vbox">
-  <section>
-    <section class="hbox stretch">
-      <section id="content">
-        <section class="vbox">
-          <section class="scrollable wrapper-lg" style="margin: 0; padding: 0;">
-            <div class="row" style="background-color: white;">
 
-            <div class="col-lg-2"></div>
-
-
-
-            <div class="col-lg-6 wrapper-lg">
-              <section class="vbox flex">
-                <header class="header-height">
-                  <%= raw @video_yt_embed %>
-
-                </header>
-
-
-                <section>
-                  <section>
-                    <h3><%= @video.title %></h3>
-
-                    <div class="">
-                      540 Views *
-                    <%= link_to(favit_video_path(@video)) do %>
-                      <i class="fa fa-star"></i>
-                    <% end %>
-                    <SPAN class="pull-right"><%= @video.category.first.name %></SPAN>
-                    </div>
-
-                    <div class="">
-                        <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:thumb), :class => "video-thumbnail pull-left thumb-lg m-r" %>
-                        <div class="">
-                          <h3><%= Speaker.where(:id => @video.author_id).first.name %></h3>
-                          <%= @video.description %>
-                        </div>
-                    </div>
-                      <br>
-
-                  </section>
-                </section>
-                    <div class="line b-b"></div>
-
-                <footer>
-                  <div class="wrapper-lg">
-                    <!--  <h2 class="m-t-none text-black"><%= @video.title %></h2> -->
-                    <h4 class="m-t-lg m-b">Comments</h4>
-                    <div class="line b-b"></div>
-                    <%= render "comments/form" %>
-                    <h4 class="m-t-lg m-b"><%= @video.comments.count %>
-                      comments</h4>
-                    <%= render "comments/comments" %>
-                    <br/><br/><br/><br/>
-                  </div><!-- panel -->
-
-                </footer>
-              </section>
-
+<div id="video-container">
+  <div class="section-left">
+    <%= raw @video_yt_embed %>
+    <div class="video-info">
+      <div class="video-title"><%= @video.title %></div>
+      <div class="video-actions">
+        540 Views *
+        <%= link_to(favit_video_path(@video)) do %>
+          <i class="fa fa-star"></i>
+        <% end %>
+        <span class="pull-right"><%= @video.category.first.name %></span>
+      </div>
+      <div class="video-speaker-info">
+        <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:thumb), :class => "video-speaker" %>
+        <div class="">
+          <div class="video-speaker-name"><%= Speaker.where(:id => @video.author_id).first.name %></div>
+          <%= @video.description %>
+        </div>
+      </div>
+        <br>
+    </div>
+    <div id="comments">
+      <div class="comments-header">COMMENTS</div>
+      <div class="line b-b"></div>
+      <%= render "comments/form" %>
+      <%= render "comments/comments" %>
+    </div>
+  </div>
+  <div class="section-right">
+    <header class="additional-video-list">
+      <section class="videos-panel blacke">
+        <div class="list-group">
+          <div class="video-item playlist-info">
+            <div class="video-info-row">
+              <a href="">
+              <% if Playlist.where(:author_id => @video.author_id).present? %>
+                <div class="playlist-title">
+                  <%= Playlist.where(:author_id => @video.author_id).first.title %>
+                </div>
+              <% end %>
+              </a>
+              <div class="star">
+                <i class="fa fa-star fa-lg"></i>
+              </div>
             </div>
-
-
-            <div class="col-lg-4">
-
-          <section class="vbox flex wrapper-lg">
-          <header class="header-height-right-side">
-
-              <section class="panel panel-success portlet-item blacke">
-                <ul class="list-group alt blacke">
-
-
-                <li class="list-group-item blacke">
-                  <div class="media ">
-                    <div class="pull-right">
-                      <i class="fa fa-star fa-lg"></i>
-                    </div>
-                    <div class="media-body">
-                      <div>
-                        <a style="color: white;" href="">
-                        <% if Playlist.where(:author_id => @video.author_id).present? %>
-                          <%= Playlist.where(:author_id => @video.author_id).first.title %>
-                        <% end %>
-
-                        </a>
-                         <div class="centered green-btn series-price">
-                        <% if Playlist.where(:author_id => @video.author_id).present? %>
-                          Full Series <span class="bold">$<%= Playlist.where(:author_id => @video.author_id).first.price %></span>
-                        <% end %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="list-group-item reded">
-                    <div class="media ">
-                      <span class="pull-left">
-                       <i class="fa fa-video-camera fa-2x text-danger"></i>
-                      </span>
-                      <div class="pull-right">
-                        <i class="fa fa-star fa-lg text-danger"></i>
-                      </div>
-                      <div class="media-body">
-                        <div class="centered ">
-                          <a style="color: white;" href="">Check out this week's Challanges</a>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
-                <% if Playlist.where(:author_id => @video.author_id).present? %>
-                    <% playlist = Playlist.where(:author_id => @video.author_id).first %>
-                <% playlist.video_ids.each do |v| %>
+            <div class="centered green-btn series-price">
+              <% if Playlist.where(:author_id => @video.author_id).present? %>
+                Full Series <span class="bold">$<%= Playlist.where(:author_id => @video.author_id).first.price %></span>
+              <% end %>
+            </div>
+          </div>
+          <div class="video-item reded challenge-info">
+            <div class="media ">
+              <span class="pull-left">
+               <i class="fa fa-video-camera fa-2x text-danger"></i>
+              </span>
+              <div class="pull-right">
+                <i class="fa fa-star fa-lg text-danger"></i>
+              </div>
+              <div class="media-body">
+                <div class="centered ">
+                  <a style="color: white;" href="">Check out this week's Challanges</a>
+                </div>
+              </div>
+            </div>
+          </div>
+            <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
+          <% if Playlist.where(:author_id => @video.author_id).present? %>
+            <% playlist = Playlist.where(:author_id => @video.author_id).first %>
+            <div class="video-list">
+              <% playlist.video_ids.each do |v| %>
                 <% if Video.where(:id => v).present? %>
                   <% video = Video.where(:id => v).first %>
                   <% if @video.id == video.id %>
-                    <li class="list-group-item blacked">
+                    <div class="video-item blacked">
                   <% else %>
-                    <li class="list-group-item blacke ">
+                    <div class="video-item">
                   <% end %>
-
-                      <div class="media ">
-                        <span class="pull-left">
-                          <%= v %>
-                        </span>
-                        <span class="pull-left thumb-md">
-                          <%= image_tag video.vthumbnail, :class => "video-thumbnail" %>
-                        </span>
-                        <div class="pull-right">
-                          <i class="fa fa-star fa-lg stared"></i>
-                        </div>
-                        <div class="media-body">
-                          <div>
-                            <a style="color: white;" href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
-                          </div>
-                        </div>
+                    <div class="video-info-row">
+                      <span class="video-id">
+                        <%= v %>
+                      </span>
+                      <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
+                       <div class="video-list-title">
+                        <a href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
                       </div>
-                    </li>
-                  <% end %>
+                      <i class="fa fa-star fa-lg stared"></i>
+                    </div>
+                  </div>
                 <% end %>
-                <% end %>
-
-
-                </ul>
-              </section>
-            </header>
-
-
-                <section>
-                  <section>
-
-
-                  </section>
-                </section>
-
-
-                <footer>
-                  Suggested videos
-
-                </footer>
-              </section>
-
-
-
-
-
-
+              <% end %>
             </div>
-
-
-            </div><!-- row -->
-          </section>
-        </section>
-        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+          <% end %>
+        </div>
       </section>
-    </section>
-  </section>
-</section>
+    </header>
+  </div>
+</div>
+
+<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+
 
 
