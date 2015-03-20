@@ -12,7 +12,6 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'drapertvreport@gmail.com'
 
-
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 

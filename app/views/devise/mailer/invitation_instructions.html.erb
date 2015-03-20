@@ -1,7 +1,30 @@
-<p><%= I18n.t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+<p style="font-size:12px;">Yad is inviting you for early access to DraperTV!</p>
 
-<p><%= I18n.t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+<div style="font-size:10px;">
+	<br>
+	Click on your personal link below to activate your invite:
+	<br>
+	<%= link_to accept_invitation_url(@resource, :invitation_token => @token),accept_invitation_url(@resource, :invitation_token => @token) %>
+<br>
 
-<p><%= link_to I18n.t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token) %></p>
+<br>
+	<a href="http://drapertv.herokuapp.com/">DraperTV</a> is your hub for everything entrepreneurship.
+	​<ul>
+		<li>Watch videos from top Silicon Valley thinkers and doers like Elon Musk, Tony Hsieh, and Heidi Roizen.</li>
+		<li>Learn about startups, venture capital, and founding your own company.</li>
+		<li>Take challenges to test your entrepreneurial skill and practice building your startup from zero to hero.</li>
+	</ul>
 
-<p><%= I18n.t("devise.mailer.invitation_instructions.ignore").html_safe %></p>
+	If you have any questions, you can reach us at support@drapertv.com<br>
+
+
+	Change the world!<br>
+
+	Team DraperTV<br>
+
+</div>
+
+<div style="font-size:8px; color:gray;">
+	DraperTV is a product of <a href="http://draperuniversity.com/">Draper University</a><br><br>
+	P.S. If you don’t want this invitation, pass it on to a friend by forwarding this email.
+</div>
