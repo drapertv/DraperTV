@@ -86,7 +86,7 @@ gem 'acts_as_votable'
 
 #Exceptions
 
-
+gem 'google-analytics-rails'
 gem 'exception_notification'
 
 
