@@ -89,6 +89,10 @@ box-sizing: content-box;
 	overflow-x: scroll;
 }
 
+.landing-container .section-content .white-gradient {
+	height: 170px;
+}
+
 .section-content {
 	position: relative;
 	.white-gradient {
@@ -147,6 +151,7 @@ box-sizing: content-box;
 .speaker-title {
 	font-size: 12px;
 	white-space: pre-wrap;
+	margin-top: 10px;
 }
 
 .series-speaker-photo {
