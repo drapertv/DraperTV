@@ -1,14 +1,16 @@
 <div id="video-container">
   <div class="section-left">
     <%= raw @video_yt_embed %>
-    <div class="video-info">
+    <div class="video-main-info">
       <div class="video-title"><%= @video.title %></div>
       <div class="video-actions">
-        540 Views *
-        <%= link_to(favit_video_path(@video)) do %>
-          <i class="fa fa-star"></i>
-        <% end %>
-        <span class="pull-right"><%= @video.category.first.name %></span>
+        <span class="video-view-count">
+          540 Views *
+          <%= link_to(favit_video_path(@video)) do %>
+            <i class="fa fa-star"></i>
+          <% end %>
+        </span>
+        <span class="video-category"><%= @video.category.first.name %></span>
       </div>
       <div class="video-speaker-info">
         <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:thumb), :class => "video-speaker" %>
@@ -19,9 +21,8 @@
       </div>
         <br>
     </div>
-    <div id="comments">
+    <div id="comments-container">
       <div class="comments-header">COMMENTS</div>
-      <div class="line b-b"></div>
       <%= render "comments/form" %>
       <%= render "comments/comments" %>
     </div>
@@ -29,7 +30,6 @@
   <div class="section-right">
     <header class="additional-video-list">
       <section class="videos-panel blacke">
-        <div class="list-group">
           <div class="video-item playlist-info">
             <div class="video-info-row">
               <a href="">
@@ -50,19 +50,9 @@
             </div>
           </div>
           <div class="video-item reded challenge-info">
-            <div class="media ">
-              <span class="pull-left">
-               <i class="fa fa-video-camera fa-2x text-danger"></i>
-              </span>
-              <div class="pull-right">
-                <i class="fa fa-star fa-lg text-danger"></i>
-              </div>
-              <div class="media-body">
-                <div class="centered ">
-                  <a style="color: white;" href="">Check out this week's Challanges</a>
-                </div>
-              </div>
-            </div>
+            <i class="fa fa-video-camera fa-2x text-danger"></i>
+            <a class="playlist-challenge" href="">Check out this week's Challanges</a>
+            <i class="fa fa-star fa-lg text-danger"></i>
           </div>
             <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
           <% if Playlist.where(:author_id => @video.author_id).present? %>
@@ -76,22 +66,21 @@
                   <% else %>
                     <div class="video-item">
                   <% end %>
-                    <div class="video-info-row">
-                      <span class="video-id">
-                        <%= v %>
-                      </span>
-                      <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
-                       <div class="video-list-title">
-                        <a href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
+                      <div class="video-info-row">
+                        <span class="video-id">
+                          <%= v %>
+                        </span>
+                        <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
+                         <div class="video-list-title">
+                          <a href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
+                        </div>
+                        <i class="fa fa-star fa-lg stared"></i>
                       </div>
-                      <i class="fa fa-star fa-lg stared"></i>
                     </div>
-                  </div>
                 <% end %>
               <% end %>
             </div>
           <% end %>
-        </div>
       </section>
     </header>
   </div>

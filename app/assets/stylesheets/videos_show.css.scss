@@ -21,7 +21,7 @@
 }
 
 
-/********* Video/Video list  ***********/
+/********* Video  ***********/
 
 #ytplayer {
 	height: 500px;
@@ -33,6 +33,15 @@
 	padding-top: 0px;
 }
 
+.video-actions {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+
+/************ Video List Panel  **************/
+
 .video-list {
 	height: calc(500px - 165px);
 	overflow-y: scroll;
@@ -42,6 +51,11 @@
 	margin-bottom: 10px;
 	width: 340px;
 }
+.playlist-challenge {
+	width: 300px;
+	color: white;
+}
+
 .star {
 	width: 20px;
 }
@@ -51,6 +65,8 @@
 }
 .challenge-info {
 	height: 70px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .video-info-row {
@@ -79,6 +95,7 @@
 	height: 25px;
 }
 
+
 .video-speaker-info {
 	display: flex;
 	margin: 10px 0px;
@@ -91,7 +108,7 @@
 }
 
 .video-title {
-	margin: 10px 0px;
+	margin-top: 10px;
 	font-size: 25px;
 	color: black;
 }
@@ -101,6 +118,10 @@
 	font-size: 17px;
 }
 
+/*******  Comments ********/
+
 .comments-header {
 	font-size: 20px;
+	padding-top:	10px;
+	border-top: 1px solid $light-gray;
 }

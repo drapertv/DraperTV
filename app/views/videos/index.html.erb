@@ -1,4 +1,4 @@
-<div class="vbox videos-container">
+<div class="videos-container">
   <header id="video-header">
     <div class="video-header-mid no-mobile">
       <% @tags.each do |tag| %>
@@ -12,18 +12,14 @@
     </div>
   </header>
   <div class="section-content">
-    <section class="vbox" id="bjax-el">
-        <h2 class="font-thin m-b section-title">FEATURED</h2>
-        <%= render partial: "featured_videos" %>
-        <h2 class="font-thin m-b section-title">QUICK WATCHES</h2>
-        <div class="regular-videos">
-          <% @videos.each do |video| %>
-            <%= render partial: 'video_item_container', locals: {video: video} %>
-          <% end %>
-        </div>
-        <%= render partial: 'layouts/footer' %>
-      </div>
-    </section>
-    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+    <h2 class="section-title">FEATURED</h2>
+    <%= render partial: "featured_videos" %>
+    <h2 class="section-title">QUICK WATCHES</h2>
+    <div class="regular-videos">
+      <% @videos.each do |video| %>
+        <%= render partial: 'video_item_container', locals: {video: video} %>
+      <% end %>
+    </div>
+    <%= render partial: 'layouts/footer' %>
   </div>
 </div>

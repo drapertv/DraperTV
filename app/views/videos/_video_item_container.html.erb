@@ -5,7 +5,7 @@
           <%= image_tag 'play-icon.png', :class => "video-play" %>
         </a>
     <% else %>
-      <i class="fa fa-play-circle i-2x"></i>
+      <%= image_tag 'play-icon.png', :class => "video-play blocked" %>
       <div class="modal modal-overlay">
         <div class="modal-content video-modal">
           <div class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</div>
@@ -17,16 +17,11 @@
         </div>
       </div>
     <% end %>
-    <div class="bottom">
-      <span class="section-time"> 3:45 </span>
-    </div>
-    <div class="top">
-      <span class="bg-dark m-l-sm m-t-sm pull-right"></span>
-    </div>
+    <span class="section-time"> 3:45 </span>
     <a href="#"><img src="<%= video.vthumbnail %>"  alt="" class="video-thumbnail"></a>
   </div>
-  <div class="padder-v">
+  <div class="video-info">
     <a href="#" class="text-ellipsis qwatch-title"><%= video.title %></a>
-    <p class="text-ellipsis text-xs text-muted"> 3045 Views * <%= video.get_upvotes.size %> <i class="fa fa-star stared"></i></p>
+    <p class="text-ellipsis video-stats"> 3045 Views * <%= video.get_upvotes.size %> <i class="fa fa-star stared"></i></p>
   </div>
 </div>
