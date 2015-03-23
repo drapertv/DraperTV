@@ -19,6 +19,10 @@ class Video < ActiveRecord::Base
 		user.access_level >= value
 	end
 
+	def playlist
+		Playlist.where(author_id: author_id).first
+	end
+
 
 
 # cf_url is http://dSomething.cloudfront.net/path

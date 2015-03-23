@@ -14,6 +14,38 @@ $section-height: calc(33vh -  16.66px);
 	}
 }
 
+.featured-playlists {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 40px;
+}
+
+.featured-playlist-title {
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+
+.featured-playlist-main {
+	display: flex;
+	.series-speaker {
+		margin-left: 0px;
+		margin-right: 20px;
+	}
+}
+
+.featured-playlist:nth-child(2n) {
+box-sizing: content-box;
+  padding: 0px 40px;
+  border-left: 1px solid $light-gray;
+  border-right: 1px solid $light-gray;
+}
+
+.speaker-pic {
+	margin-bottom: 10px;
+	width: 100%;
+	height: 135px;
+}
+
 .series-header {
 	display: flex;
 	height: 25px;
@@ -62,7 +94,7 @@ $section-height: calc(33vh -  16.66px);
 	.white-gradient {
 		position: absolute;
 		top: 40px;
-		height: 170px;
+		height: 240px;
 		width: 200px;
 		z-index: 2;
 		cursor: pointer;
@@ -162,10 +194,6 @@ $section-height: calc(33vh -  16.66px);
 	display: none;
 }
 
-.video-info {
-	padding: 15px 0px;
-}
-
 .video-stats {
 	color: #939aa0;
 	font-size: 12px;
@@ -191,6 +219,10 @@ $section-height: calc(33vh -  16.66px);
 .video-thumbnail {
 	width: 100%;
 	height: 135px;
+}
+
+.video-info {
+	margin-top: 10px;
 }
 
 .video-section {
