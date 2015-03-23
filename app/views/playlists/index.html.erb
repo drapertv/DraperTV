@@ -1,16 +1,14 @@
 <div class="playlist-container">
   <div class="section-content">
     <div id="featured-series">
-      <h2 class="font-thin m-b section-title">FEATURED</h2>
+      <h2 class="section-title">FEATURED</h2>
       <%= render partial: "videos/featured_videos" %>
     </div>
     <div class="regular-series">
-      <h2 class="font-thin m-b section-title">SERIES</h2>
+      <h2 class="section-title">SERIES</h2>
       <% @playlists.each do |playlist| %>
       <section class="video-section">
-        <div class="gray-border-bottom">
-          <%= render partial: "show", locals: {playlist: playlist} %>
-        </div>
+        <%= render partial: "show", locals: {playlist: playlist} %>
       </section>
       <% end %>
     </div>

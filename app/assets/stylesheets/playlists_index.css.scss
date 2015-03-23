@@ -15,12 +15,17 @@ $section-height: calc(33vh -  16.66px);
 }
 
 .series-header {
+	display: flex;
 	height: 25px;
 	font: 25px;
 	margin: 15px 0px;
+	justify-content: space-between;
 	div {
 		line-height: 30px;
 	}
+}
+.series-actions {
+	display: flex;
 }
 .series-footer {
 	height: 25px;
@@ -105,7 +110,6 @@ $section-height: calc(33vh -  16.66px);
 .speaker-name {
 	font-weight: 600;
 	margin-top: 10px;
-	white-space: pre-wrap;
 }
 
 .speaker-title {
@@ -158,6 +162,14 @@ $section-height: calc(33vh -  16.66px);
 	display: none;
 }
 
+.video-info {
+	padding: 15px 0px;
+}
+
+.video-stats {
+	color: #939aa0;
+	font-size: 12px;
+}
 .series-video:hover .video-play, .video-item-container:hover .video-play { //refactor into one class later
 	display: block;
 }
@@ -183,4 +195,6 @@ $section-height: calc(33vh -  16.66px);
 
 .video-section {
 	position: relative;
+	border-bottom: 1px solid $light-gray;
+	padding-bottom: 25px;
 }
