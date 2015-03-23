@@ -1,6 +1,6 @@
 <div id="comment_form" class="">
   <%= simple_form_for [@commentable, @comment], :html => {:class => "form-horizontal form-control-borderless remove-margin"}, :remote => true do |f| %>
-    <%= f.input :content, label: false, :placeholder => "Add Comment", :input_html => { :id => "comment-#{@commentable.id}", :class => "form-control" } %>
+    <%= f.input :content, label: false, :placeholder => "Share your thoughts...", :input_html => { :id => "comment-#{@commentable.id}", :class => "form-control" } %>
     <!--<%= f.submit "Add Comment" %>-->
   <% end %>
 </div>

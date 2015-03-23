@@ -33,11 +33,11 @@
           <div class="video-item playlist-info">
             <div class="video-info-row">
               <a href="">
-              <% if Playlist.where(:author_id => @video.author_id).present? %>
-                <div class="playlist-title">
-                  <%= Playlist.where(:author_id => @video.author_id).first.title %>
-                </div>
-              <% end %>
+                <% if Playlist.where(:author_id => @video.author_id).present? %>
+                  <div class="playlist-title">
+                    <%= Playlist.where(:author_id => @video.author_id).first.title %>
+                  </div>
+                <% end %>
               </a>
               <div class="star">
                 <i class="fa fa-star fa-lg"></i>
@@ -96,8 +96,3 @@
     </header>
   </div>
 </div>
-
-<a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
-
-
-

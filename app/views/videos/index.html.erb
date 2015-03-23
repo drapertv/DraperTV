@@ -14,14 +14,7 @@
   <div class="section-content">
     <section class="vbox" id="bjax-el">
         <h2 class="font-thin m-b section-title">FEATURED</h2>
-        <div class="featured-videos">
-          <% VideoFeature.where(:type_qwatch => true).limit(5).each do |id| %>
-            <% if Video.find(id.video_id).present? %>
-              <% video = Video.find(id.video_id) %>
-              <%= render partial: 'video_item_container', locals: {video: video} %>
-            <% end %>
-          <% end %>
-        </div>
+        <%= render partial: "featured_videos" %>
         <h2 class="font-thin m-b section-title">QUICK WATCHES</h2>
         <div class="regular-videos">
           <% @videos.each do |video| %>

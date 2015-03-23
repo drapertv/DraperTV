@@ -1,0 +1,42 @@
+<div class="series-header">
+  <div class="pull-left series-title">
+    <%= playlist.title %>
+  </div>
+  <div class="pull-right green-btn series-price">
+    Full Series <span class="bold">$<%= playlist.price %></span>
+  </div>
+  <div class="pull-right challenge-btn"></div>
+  <div class="pull-right">
+    Challenge: Do Something Test Challenge : <%= playlist.challange_id %>
+  </div>
+</div>
+<div class="series-content">
+  <div class="series-speaker">
+  <%= image_tag Speaker.where(:id => playlist.author_id).first.profilepic_url(:seriesthumb), :class => "pull-left video-thumbnail" %>
+    <div class="speaker-name">
+     <%= Speaker.where(:id => playlist.author_id).first.name %>
+    </div>
+    <div class="speaker-title">CEO & Founder Zappos</div>
+  </div>
+    <div class="white-gradient left no-mobile hidden">
+    </div>
+    <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow left no-mobile hidden" %>
+    <div class="white-gradient right no-mobile"></div>
+    <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow right no-mobile" %>
+  <div class="series-videos">
+    <% playlist.video_ids.each do |v| %>
+      <% @video = Video.where(:id => v).first %>
+      <div class="series-video">
+        <div class="video-length">3:59</div>
+        <a href="<%= video_path(@video) %>">
+          <%= image_tag 'play-icon.png', :class => "video-play" %>
+        </a>
+        <%= image_tag @video.vthumbnail, :class => "video-thumbnail" %>
+        <div class="padder-v">
+          <a href="#" class="text-ellipsis qwatch-title"><%= @video.title %></a>
+          <p class="text-ellipsis text-xs text-muted"> 3045 Views * <%= @video.get_upvotes.size %> <i class="fa fa-star stared"></i></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

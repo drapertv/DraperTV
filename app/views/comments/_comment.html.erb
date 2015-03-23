@@ -9,7 +9,7 @@
     <section class="comment-body m-b">
 
       <header>
-        <a href="#"><strong><%=  @comment_user.name %></strong></a>
+        <a href="#"><strong><%= @comment_user.name %></strong></a>
         <span class="text-muted text-xs block m-t-xs">
           <%= comment.created_at.to_date.to_formatted_s( :long_ordinal ) %>
         </span>
