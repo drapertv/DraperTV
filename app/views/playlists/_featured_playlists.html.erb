@@ -7,9 +7,9 @@
 		  </div>
 		  <div class="featured-playlist-main">
 			  <div class="series-speaker">
-			    <%= image_tag Speaker.where(:id => video.author_id).first.profilepic_url(:seriesthumb), :class => "pull-left speaker-pic" %>
+			    <%= image_tag video_feature.profilepic_url(:seriesthumb), :class => "pull-left speaker-pic" %>
 			    <div class="speaker-name">
-			     <%= Speaker.where(:id => video.author_id).first.name %>
+			     <%= video_feature.name %>
 			    </div>
 			    <div class="speaker-title">CEO & Founder Zappos</div>
 			  </div>

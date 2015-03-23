@@ -6,6 +6,8 @@ class Video < ActiveRecord::Base
 
   mount_uploader :vthumbnail, VthumbnailUploader
 
+  delegate :speaker, :profilepic_url, :name, to: :playlist
+
 	def increment_demand user
 		demand_array = [] if demand_array == nil
 		update_attributes demand_array: (demand_array + [user.id])
