@@ -35,53 +35,40 @@
 
 }
 
-.FREE {
+.video-heaer-item.active a {
 	font-size: 14px;
 	padding-right: 4px;
 	padding-left: 4px;
-	color: white;
-	background-color: $landing-red;
-  border-radius: 5px;
+	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
-	border: 2px solid $landing-red;
+	color: white;
 }
 
-.MARKETING {
-	font-size: 14px;
-	padding-right: 4px;
-	padding-left: 4px;
-	color: white;
-	background-color: $landing-yellow;
-  border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border: 2px solid $landing-yellow;
+.active {
+	.FREE {
+		background-color: $landing-red;
+		border: 2px solid $landing-red;
+	}
+
+	.MARKETING {
+		background-color: $landing-yellow;
+		border: 2px solid $landing-yellow;
+	}
+
+	.SURVIVAL {
+		color: white;
+		background-color: $landing-orange;
+		border: 2px solid $landing-orange;
+	}
+
+	.OPERATIONS {
+		background-color: $landing-green;
+		border: 2px solid $landing-green;
+	}
+	
 }
 
-.SURVIVAL {
-	font-size: 14px;
-	padding-right: 4px;
-	padding-left: 4px;
-	color: white;
-	background-color: $landing-orange;
-  border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border: 2px solid $landing-orange;
-}
-
-.OPERATIONS {
-	font-size: 14px;
-	padding-right: 4px;
-	padding-left: 4px;
-	color: white;
-	background-color: $landing-green;
-  border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border: 2px solid $landing-green;
-}
 
 .cat-btn {
 	padding: 5px;
