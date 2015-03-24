@@ -1,114 +1,25 @@
-
-<div class="vbox videos-container">
+<div class="videos-container">
   <header id="video-header">
     <div class="video-header-mid no-mobile">
-
       <% @tags.each do |tag| %>
         <div class="video-header-item">
             <%= link_to tag.name, tag_path(tag.name), class: tag.name %>
         </div>
       <% end %>
-
        <div class="video-header-item">
         <%= link_to "All", videos_path, class: "cat-btn" %>
       </div>
     </div>
   </header>
-
   <div class="section-content">
-    <section class="vbox" id="bjax-el">
-        <h2 class="font-thin m-b section-title">FEATURED</h2>
-        <div class="featured-videos">
-          <% VideoFeature.where(:type_qwatch => true).limit(5).each do |id| %>
-          <% if Video.find(id.video_id).present? %>
-          <% video = Video.find(id.video_id) %>
-            <div class="video-item-container">
-                <div class="video-img">
-                  <% if video.can_be_accessed_by? current_user %>
-                     <a href="<%= video_path(video) %>">
-                        <%= image_tag 'play-icon.png', :class => "video-play" %>
-                      </a>
-                  <% else %>
-                    <i class="fa fa-play-circle i-2x"></i>
-                    <div class="modal modal-overlay">
-                      <div class="modal-content video-modal">
-                        <div class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</div>
-                      <%= link_to video_increment_demand_path(video), remote: true do %>
-                        <div class="btn-primary btn m-t-lg">
-                          Get Access
-                        </div>
-                      <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                  <div class="bottom">
-                    <span class="section-time"> 3:45 </span>
-                  </div>
-                  <div class="top">
-                    <span class="bg-dark m-l-sm m-t-sm pull-right"></span>
-                  </div>
-                  <a href="#"><img src="<%= video.vthumbnail %>"  alt="" class="video-thumbnail"></a>
-                </div>
-                <div class="padder-v">
-                  <a href="#" class="text-ellipsis qwatch-title"><%= video.title %></a>
-                  <p class="text-ellipsis text-xs text-muted"> 3045 Views * <%= video.get_upvotes.size %> <i class="fa fa-star stared"></i></p>
-                </div>
-            </div>
-            <% else %>
-            <% end %>
-          <% end %>
-        </div>
-        <h2 class="font-thin m-b section-title">QUICK WATCHES</h2>
-        <div class="regular-videos">
-          <% @videos.each do |video| %>
-            <div class="video-item-container">
-                <div class="video-img">
-
-                  <% if video.can_be_accessed_by? current_user %>
-                      <a href="<%= video_path(video) %>">
-                        <%= image_tag 'play-icon.png', :class => "video-play" %>
-                      </a>
-                  <% else %>
-                    <i class="fa fa-play-circle i-2x"></i>
-                    <div class="modal modal-overlay">
-                      <div class="modal-content video-modal">
-                        <div class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</div>
-                      <%= link_to video_increment_demand_path(video), remote: true do %>
-                        <div class="btn-primary btn m-t-lg">
-                          Get Access
-                        </div>
-                      <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                  <div class="bottom">
-                    <span class="section-time"> 3:45 </span>
-                  </div>
-                  <div class="top">
-                    <span class="bg-dark m-l-sm m-t-sm pull-right"></span>
-                  </div>
-                  <a href="#"><img src="<%= video.vthumbnail %>"  alt="" class="video-thumbnail"></a>
-                </div>
-                <div class="padder-v">
-                  <a href="#" class="text-ellipsis qwatch-title"><%= video.title %></a>
-                  <p class="text-ellipsis text-xs text-muted"> 3045 Views * <%= video.get_upvotes.size %> <i class="fa fa-star stared"></i></p>
-                </div>
-            </div>
-          <% end %>
-        </div>
-        <!--
-        <ul class="pagination pagination">
-          <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-          <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-        </ul> -->
-        <%= render partial: 'layouts/footer' %>
-      </div>
-    </section>
-    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+    <h2 class="section-title">FEATURED</h2>
+    <%= render partial: "featured_videos" %>
+    <h2 class="section-title">QUICK WATCHES</h2>
+    <div class="regular-videos">
+      <% @videos.each do |video| %>
+        <%= render partial: 'video_item_container', locals: {video: video} %>
+      <% end %>
+    </div>
+    <%= render partial: 'layouts/footer' %>
   </div>
 </div>

@@ -14,13 +14,50 @@ $section-height: calc(33vh -  16.66px);
 	}
 }
 
+.featured-playlists {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 40px;
+}
+
+.featured-playlist-title {
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+
+.featured-playlist-main {
+	display: flex;
+	.series-speaker {
+		margin-left: 0px;
+		margin-right: 20px;
+	}
+}
+
+.featured-playlist:nth-child(2n) {
+box-sizing: content-box;
+  padding: 0px 40px;
+  border-left: 1px solid $light-gray;
+  border-right: 1px solid $light-gray;
+}
+
+.speaker-pic {
+	margin-bottom: 10px;
+	width: 100%;
+	height: 135px;
+}
+
 .series-header {
+	display: flex;
 	height: 25px;
 	font: 25px;
 	margin: 15px 0px;
+	justify-content: space-between;
 	div {
 		line-height: 30px;
 	}
+}
+.series-actions {
+	display: flex;
 }
 .series-footer {
 	height: 25px;
@@ -52,12 +89,16 @@ $section-height: calc(33vh -  16.66px);
 	overflow-x: scroll;
 }
 
+.landing-container .section-content .white-gradient {
+	height: 170px;
+}
+
 .section-content {
 	position: relative;
 	.white-gradient {
 		position: absolute;
 		top: 40px;
-		height: 170px;
+		height: 240px;
 		width: 200px;
 		z-index: 2;
 		cursor: pointer;
@@ -105,12 +146,12 @@ $section-height: calc(33vh -  16.66px);
 .speaker-name {
 	font-weight: 600;
 	margin-top: 10px;
-	white-space: pre-wrap;
 }
 
 .speaker-title {
 	font-size: 12px;
 	white-space: pre-wrap;
+	margin-top: 10px;
 }
 
 .series-speaker-photo {
@@ -158,6 +199,10 @@ $section-height: calc(33vh -  16.66px);
 	display: none;
 }
 
+.video-stats {
+	color: #939aa0;
+	font-size: 12px;
+}
 .series-video:hover .video-play, .video-item-container:hover .video-play { //refactor into one class later
 	display: block;
 }
@@ -181,6 +226,12 @@ $section-height: calc(33vh -  16.66px);
 	height: 135px;
 }
 
+.video-info {
+	margin-top: 10px;
+}
+
 .video-section {
 	position: relative;
+	border-bottom: 1px solid $light-gray;
+	padding-bottom: 25px;
 }

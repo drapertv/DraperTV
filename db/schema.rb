@@ -165,13 +165,6 @@ ActiveRecord::Schema.define(version: 20150320164504) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "users_roles", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-  end
-
-  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
-
   create_table "video_features", force: true do |t|
     t.integer  "video_id"
     t.boolean  "type_qwatch", default: false

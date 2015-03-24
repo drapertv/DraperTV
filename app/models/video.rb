@@ -6,6 +6,8 @@ class Video < ActiveRecord::Base
 
   mount_uploader :vthumbnail, VthumbnailUploader
 
+  delegate :speaker, :profilepic_url, :name, to: :playlist
+
 	def increment_demand user
 		demand_array = [] if demand_array == nil
 		update_attributes demand_array: (demand_array + [user.id])
@@ -19,6 +21,14 @@ class Video < ActiveRecord::Base
 		user.access_level >= value
 	end
 
+	def playlist
+		Playlist.where(author_id: author_id).first
+	end
+
+	def suggested
+		Video.tagged_with(category_list).limit(10)
+	end
+
 
 
 # cf_url is http://dSomething.cloudfront.net/path
@@ -26,7 +36,7 @@ class Video < ActiveRecord::Base
 
 	#aws CF Sginer
 	def signed_html5
-		cf_url = "http://dc6in7ze09oom.cloudfront.net"
+	  cf_url = "http://dc6in7ze09oom.cloudfront.net"
 	  parsed_uri = URI.parse(cf_url)
 	  url = "#{parsed_uri.scheme}://#{parsed_uri.host}#{parsed_uri.path}/#{title}"
 	  signed_url = sign(url)

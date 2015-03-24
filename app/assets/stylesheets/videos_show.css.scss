@@ -10,6 +10,7 @@
 	overflow-y: scroll;
 	padding-top: 90px;
 	box-sizing: content-box;
+	background: white;
 }
 
 .section-left {
@@ -21,7 +22,7 @@
 }
 
 
-/********* Video/Video list  ***********/
+/********* Video  ***********/
 
 #ytplayer {
 	height: 500px;
@@ -33,6 +34,15 @@
 	padding-top: 0px;
 }
 
+.video-actions {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+
+/************ Video List Panel  **************/
+
 .video-list {
 	height: calc(500px - 165px);
 	overflow-y: scroll;
@@ -42,6 +52,11 @@
 	margin-bottom: 10px;
 	width: 340px;
 }
+.playlist-challenge {
+	width: 300px;
+	color: white;
+}
+
 .star {
 	width: 20px;
 }
@@ -51,6 +66,8 @@
 }
 .challenge-info {
 	height: 70px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .video-info-row {
@@ -79,6 +96,7 @@
 	height: 25px;
 }
 
+
 .video-speaker-info {
 	display: flex;
 	margin: 10px 0px;
@@ -91,7 +109,7 @@
 }
 
 .video-title {
-	margin: 10px 0px;
+	margin-top: 10px;
 	font-size: 25px;
 	color: black;
 }
@@ -101,6 +119,40 @@
 	font-size: 17px;
 }
 
+/************** Suggested Videos ****************/
+
+#suggested-videos {
+	padding-left: 20px;
+	margin-top: 20px; 
+}
+
+.suggested-video {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.suggested-video-thumbnail {
+	width: 120px;
+	height: 67.5px;
+	margin-right: 10px;
+}
+
+.suggested-video-info {
+	width: calc(100% - 130px);
+}
+
+.related-header {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+
+
+/*******  Comments ********/
+
 .comments-header {
 	font-size: 20px;
+	padding-top:	10px;
+	border-top: 1px solid $light-gray;
 }
+

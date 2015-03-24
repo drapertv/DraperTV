@@ -1,25 +1,22 @@
 <% @comment_user = User.find_by_id(comment.user_id) %>
 
-  <article id="comment-id-<%=  comment.id %>" class="comment-item">
+<article id="comment-id-<%=  @comment_user.id %>" class="comment">
 
-    <a class="pull-left thumb-sm">
-      <img src="<%= @comment_user.avatar_url(:thumb).to_s %>" class="img-circle">
-    </a>
+  <a>
+    <%= image_tag @comment_user.avatar_url(:thumb).to_s, :class => "comment-pic" %>
+  </a>
 
-    <section class="comment-body m-b">
+  <section class="comment-body m-b">
+    <header>
+      <a href="#"><span class="comment-name"><%=@comment_user.name %></span></a>
+      <span class="text-muted text-xs m-t-xs comment-date">
+        <%= comment.created_at.to_date.to_formatted_s( :long_ordinal ) %>
+      </span>
+    </header>
 
-      <header>
-        <a href="#"><strong><%=  @comment_user.name %></strong></a>
-        <span class="text-muted text-xs block m-t-xs">
-          <%= comment.created_at.to_date.to_formatted_s( :long_ordinal ) %>
-        </span>
-      </header>
+    <div class="comment-text">
+      <%=  comment.content %>
+    </div>
 
-
-      <div class="m-t-sm">
-      	<%=  comment.content %>
-      </div>
-
-    </section>
-    
-  </article>
+  </section>
+</article>

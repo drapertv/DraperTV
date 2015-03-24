@@ -7,6 +7,10 @@
 	display: none;
 }
 
+.hidden {
+	display: none;
+}
+
 @media(max-width: 768px) {
 body {
 	.mobile {
@@ -83,3 +87,10 @@ div, h1, h2, h3, h4, h5, h6 {
 }
 
 input:focus {outline: none; }
+
+.text-elipsis {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
