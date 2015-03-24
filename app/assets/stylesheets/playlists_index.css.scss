@@ -1,4 +1,5 @@
 @import 'shared/variables';
+@import 'shared/mixins';
 
 /****************  VIDEOS/SERIES *********************/
 
@@ -15,7 +16,7 @@ $section-height: calc(33vh -  16.66px);
 }
 
 .featured-playlists {
-	display: flex;
+	@include flexbox;
 	justify-content: space-between;
 	margin-bottom: 40px;
 }
@@ -26,7 +27,7 @@ $section-height: calc(33vh -  16.66px);
 }
 
 .featured-playlist-main {
-	display: flex;
+	@include flexbox;
 	.series-speaker {
 		margin-left: 0px;
 		margin-right: 20px;
@@ -47,7 +48,7 @@ box-sizing: content-box;
 }
 
 .series-header {
-	display: flex;
+	@include flexbox;
 	height: 25px;
 	font: 25px;
 	margin: 15px 0px;
@@ -57,7 +58,7 @@ box-sizing: content-box;
 	}
 }
 .series-actions {
-	display: flex;
+	@include flexbox;
 }
 .series-footer {
 	height: 25px;
@@ -79,7 +80,7 @@ box-sizing: content-box;
 .series-content {
 	height: auto;
 	overflow-y: hidden;
-	display: flex;
+	@include flexbox;
 }
 
 .series-videos {

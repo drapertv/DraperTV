@@ -1,4 +1,7 @@
 @import 'shared/variables';
+@import 'shared/mixins';
+
+
 
 #comments {
 	margin-top: 20px;
@@ -10,17 +13,45 @@
 	border-radius: 50%;
 	margin-right: 10px;
 }
+.comment-body {
+	width: calc(100% - 60px);
+}
+.comment-content {
+	@include flexbox;
+}
+
+.comment-video {
+	width: 120px;
+	height: 67.5px;
+	margin-right: 10px;
+	position: relative;
+	cursor: pointer;
+	.challenge-thumbnail {
+		height: 100%;
+		width: 100%;
+	}
+	.challenge-play {
+		position: absolute;
+		height: 50px;
+		width: 50px;
+		left: 35px;
+		top: 8px;
+	}
+}
+.comment-text {
+	width: calc(100% - 130px);
+}
 
 
 
 #comment-box {
-	display: flex;
+	@include flexbox;
 	.control-group {
 		width: calc(100% - 60px);
 	}
 }
 
 .comment {
-	display: flex;
+	@include flexbox;
 	margin-bottom: 20px;
 }

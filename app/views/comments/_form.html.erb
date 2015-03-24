@@ -1,5 +1,5 @@
 <div id="comment_form" class="">
-  <%= simple_form_for [@commentable, @comment], :html => {:class => "form-horizontal form-control-borderless remove-margin"}, :remote => true do |f| %>
+  <%= simple_form_for @commentable.comment_form_path, :html => {:class => "form-horizontal form-control-borderless remove-margin"}, :remote => true do |f| %>
     <div id="comment-box">
       <%= image_tag current_user.avatar_url(:thumb), :class => 'comment-pic' %>
       <%= f.input :content, label: false, :placeholder => "Share your thoughts...", :input_html => { :id => "comment-#{@commentable.id}", :class => "form-control comment-input" } %>

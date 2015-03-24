@@ -45,11 +45,7 @@ a {
 a[disabled] {
   pointer-events: none;
 }
-a:hover,
-a:focus {
-  color: #303437;
-  text-decoration: none;
-}
+
 label {
   font-weight: normal;
 }

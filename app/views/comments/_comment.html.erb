@@ -6,7 +6,7 @@
     <%= image_tag @comment_user.avatar_url(:thumb).to_s, :class => "comment-pic" %>
   </a>
 
-  <section class="comment-body m-b">
+  <section class="comment-body">
     <header>
       <a href="#"><span class="comment-name"><%=@comment_user.name %></span></a>
       <span class="text-muted text-xs m-t-xs comment-date">
@@ -14,8 +14,16 @@
       </span>
     </header>
 
-    <div class="comment-text">
-      <%=  comment.content %>
+    <div class="comment-content">
+      <% if comment.belongs_to_challenge %>
+        <div class="comment-video">
+          <%= image_tag Video.first.vthumbnail, :class => "challenge-thumbnail" %>
+          <%= image_tag 'play-icon.png', :class => "challenge-play" %>
+        </div>
+      <% end %>
+      <div class="comment-text">
+        <%=  comment.content %>
+      </div>
     </div>
 
   </section>

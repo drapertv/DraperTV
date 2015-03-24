@@ -29,7 +29,11 @@ Rails.application.routes.draw do
   resources :users
   resources :videos
   resources :quotes
-  resources :playlists
+  resources :playlists do 
+    resources :challenges do 
+      resources :comments
+    end
+  end
 
   as :user do
     get "/users/sign_out" => "devise/sessions#destroy"

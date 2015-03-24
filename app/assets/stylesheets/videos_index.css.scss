@@ -1,5 +1,5 @@
 @import 'shared/variables';
-
+@import 'shared/mixins';
 /******* LANDING Second HEADER ********/
 
 #video-header {
@@ -17,58 +17,101 @@
 	height: 100%;
 }
 .video-header-item {
-	height: 100%;
-	line-height: 50px;
-	cursor: pointer;
-	font-size: 16px;
-	display: inline;
-	color: rgba(255,255,255,.5);
-	margin: 0px 32.5px;
+  line-height: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 12.5px 32.5px;
+  height: 25px;
 }
 
 
 .video-header-mid {
   width: 1240px;
   margin: 0 auto;
-  display: flex;
+  @include flexbox;
   justify-content: center;
 
 }
 
-.video-heaer-item.active a {
+.video-header-item div {
+	color: $gray;
 	font-size: 14px;
 	padding-right: 4px;
 	padding-left: 4px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+}
+
+.video-header-item.active div {
 	color: white;
+}
+
+.video-header-item:hover:not(.active) {
+	.FREE {
+		color: $red;
+	}
+
+	.MARKETING {
+		color: $yellow;
+		
+	}
+
+	.SURVIVAL {
+		color: $orange;
+		
+	}
+
+	.OPERATIONS {
+		color: $turquoise;
+		
+	}
+	.ALL {
+		color: $black;
+		
+	}
+	.THINK {
+		color: $blue;
+		
+	}
+	.PEOPLE {
+		color: $light-blue;
+		
+	}
+	.FINANCE {
+		color: $green;	
+	}
 }
 
 .active {
 	.FREE {
-		background-color: $landing-red;
-		border: 2px solid $landing-red;
+		background-color: $red;
 	}
 
 	.MARKETING {
-		background-color: $landing-yellow;
-		border: 2px solid $landing-yellow;
+		background-color: $yellow;
 	}
 
 	.SURVIVAL {
-		color: white;
-		background-color: $landing-orange;
-		border: 2px solid $landing-orange;
+		background-color: $orange;
 	}
 
 	.OPERATIONS {
-		background-color: $landing-green;
-		border: 2px solid $landing-green;
+		background-color: $turquoise;
 	}
-	
+	.ALL {
+		background-color: $black;
+	}
+	.THINK {
+		background: $blue;
+	}
+	.PEOPLE {
+		background: $light-blue;
+	}
+	.FINANCE {
+		background: $green;
+	}
 }
-
 
 .cat-btn {
 	padding: 5px;
@@ -88,21 +131,19 @@
 }
 
 .regular-videos {
-	display: flex;
+	@include flexbox;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	padding-bottom: 60px;
+	justify-content: flex-start
 }
 
 .featured-videos {
-	display: flex;
-	.video-item-container {
-		margin-right: 10px;
-	}
+	@include flexbox;
 }
 
 .video-item-container {
 	width: 240px;
+	margin-right: 10px;
 }
 
 .video-img {

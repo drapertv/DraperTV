@@ -6,7 +6,7 @@ class Video < ActiveRecord::Base
 
   mount_uploader :vthumbnail, VthumbnailUploader
 
-  delegate :speaker, :profilepic_url, :name, to: :playlist
+  delegate :speaker, :profilepic_url, :name, :challenge, to: :playlist
 
 	def increment_demand user
 		demand_array = [] if demand_array == nil
@@ -29,7 +29,13 @@ class Video < ActiveRecord::Base
 		Video.tagged_with(category_list).limit(10)
 	end
 
+	def categories
+		category_list.join " "
+	end
 
+	def comment_form_path
+		[self, Comment.new]
+	end
 
 # cf_url is http://dSomething.cloudfront.net/path
 # video_name is test.mp4

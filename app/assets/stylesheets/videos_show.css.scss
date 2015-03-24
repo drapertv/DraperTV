@@ -1,9 +1,9 @@
 @import 'shared/variables';
-
+@import 'shared/mixins';
 /***** General Layout ****/
 
 #video-container { //change all the containers to content container
-	display: flex;
+	@include flexbox;
 	width: 1240px;
 	padding: 0 calc(50vw - 620px);
 	height: calc(100vh - 90px);
@@ -11,6 +11,10 @@
 	padding-top: 90px;
 	box-sizing: content-box;
 	background: white;
+}
+#challenge-placeholder-pic {
+	width: 100%;
+	height: 500px;
 }
 
 .section-left {
@@ -35,7 +39,7 @@
 }
 
 .video-actions {
-	display: flex;
+	@include flexbox;
 	justify-content: space-between;
 }
 
@@ -66,12 +70,12 @@
 }
 .challenge-info {
 	height: 70px;
-	display: flex;
+	@include flexbox;
 	justify-content: space-between;
 }
 
 .video-info-row {
-	display: flex;
+	@include flexbox;
 }
 
 .video-list-title {
@@ -98,7 +102,7 @@
 
 
 .video-speaker-info {
-	display: flex;
+	@include flexbox;
 	margin: 10px 0px;
 }
 
@@ -127,7 +131,7 @@
 }
 
 .suggested-video {
-	display: flex;
+	@include flexbox;
 	margin-bottom: 20px;
 }
 
