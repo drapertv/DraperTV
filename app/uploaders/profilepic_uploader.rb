@@ -15,7 +15,7 @@ class ProfilepicUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "m40.jpg"
+    "assets/tony-photo.png"
   end
 
   version :seriesthumb do
