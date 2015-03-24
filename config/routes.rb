@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   resources :users
   resources :videos
   resources :quotes
-  resources :playlists do 
-    resources :challenges do 
+  resources :playlists do
+    resources :challenges do
       resources :comments
     end
   end
