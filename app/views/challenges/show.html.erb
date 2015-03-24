@@ -1,8 +1,8 @@
 <div id="video-container">
   <div class="section-left">
-    <%= raw @video_yt_embed %>
+    <%= image_tag 'challenge-mock.jpg', id: "challenge-placeholder-pic" %>
     <div class="video-main-info">
-      <div class="video-title"><%= @video.title %></div>
+      <div class="video-title"><%= @challenge.title %></div>
       <div class="video-actions">
         <span class="video-view-count">
           540 Views *
@@ -13,21 +13,19 @@
         <span class="video-category"><%= @video.category.first.name %></span>
       </div>
       <div class="video-speaker-info">
-        <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:thumb), :class => "video-speaker" %>
         <div class="">
-          <div class="video-speaker-name"><%= Speaker.where(:id => @video.author_id).first.name %></div>
-          <%= @video.description %>
+          <div class="video-speaker-name">About</div>
+          <%= @challenge.description %>
         </div>
       </div>
         <br>
     </div>
     <div id="comments-container">
-      <div class="comments-header">COMMENTS</div>
-      <div id="main-comment-form">
-        <%= render partial: "comments/form", locals: {parent_id: nil} %>
-      </div>
-      <%= render partial: "comments/comments" %>
+      <div class="comments-header">Submissions</div>
+      <%= render "comments/form", locals: {parent_id: nil} %>
+      <%= render "comments/comments" %>
     </div>
+    <%= render partial: "layouts/footer" %>
   </div>
   <div class="section-right">
     <header class="additional-video-list">
@@ -88,7 +86,7 @@
       </section>
     </header>
     <div id="suggested-videos">
-      <div class="related-header">RELATED VIDEOS</div>
+      <div class="related-header">TOP SUBMISSIONS</div>
       <% @video.suggested.each do |video| %>
         <div class="suggested-video">
           <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
@@ -108,4 +106,3 @@
     </div>
   </div>
 </div>
-<%= render partial: "layouts/footer" %>

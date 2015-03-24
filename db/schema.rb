@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320164504) do
+ActiveRecord::Schema.define(version: 20150324221708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,17 @@ ActiveRecord::Schema.define(version: 20150320164504) do
     t.datetime "updated_at"
   end
 
+  create_table "challenges", force: true do |t|
+    t.integer  "playlist_id"
+    t.text     "description"
+    t.string   "title"
+    t.integer  "view_count"
+    t.string   "url"
+    t.string   "vthumbnail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", force: true do |t|
     t.text     "content"
     t.integer  "commentable_id"
@@ -67,7 +78,10 @@ ActiveRecord::Schema.define(version: 20150320164504) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ancestry"
   end
+
+  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
 
   create_table "playlists", force: true do |t|
     t.string   "title"

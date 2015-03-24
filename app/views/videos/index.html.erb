@@ -3,11 +3,15 @@
     <div class="video-header-mid no-mobile">
       <% @tags.each do |tag| %>
         <div class="video-header-item">
-            <%= link_to tag.name, tag_path(tag.name), class: tag.name %>
+          <div class="<%= tag.name %>">
+            <%= tag.name %>
+          </div>
         </div>
       <% end %>
-       <div class="video-header-item">
-        <%= link_to "All", videos_path, class: "cat-btn" %>
+       <div class="video-header-item active">
+        <div class="ALL">
+          ALL
+        </div>
       </div>
     </div>
   </header>

@@ -1,4 +1,4 @@
-<div class="video-item-container">
+<div class="video-item-container <%= video.categories %> ALL">
   <div class="video-img">
     <% if video.can_be_accessed_by? current_user %>
        <a href="<%= video_path(video) %>">

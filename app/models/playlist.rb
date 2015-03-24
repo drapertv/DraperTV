@@ -1,4 +1,5 @@
 class Playlist < ActiveRecord::Base
+  has_many :challenges
 	delegate :profilepic_url, :name, to: :speaker
 
 #Method to update the Array field of the playlist
@@ -18,5 +19,11 @@ class Playlist < ActiveRecord::Base
   def speaker
   	Speaker.find(author_id)
   end
+
+  def challenge
+    challenges.first
+  end
+
+
 
 end

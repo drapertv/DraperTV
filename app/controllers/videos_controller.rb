@@ -29,7 +29,7 @@ class VideosController < ApplicationController
     end
     @video = Video.find(params[:id])
     @commentable = @video
-    @comments = @commentable.comments.order('created_at ASC')
+    @comments = @commentable.comments.where(ancestry: nil).order('created_at ASC')
     @comment = Comment.new
     # if @video.video_id
     #   oembed = "http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/" + @video.video_id + '&maxwidth=660' + '&autoplay=1'
