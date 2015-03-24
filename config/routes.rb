@@ -45,6 +45,12 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/404", :to => "errors#not_found"
+  get "/422", :to => "errors#unacceptable"
+  get "/500", :to => "errors#internal_error"
+  get "/401", :to => "errors#internal_error"
+
+
   get '/videos/:id/increment_demand', to: 'videos#increment_demand', as: 'video_increment_demand'
   get 'tags/:tag', to: 'videos#index', as: :tag
   get 'profile_edit/:id', to: 'users#profile_edit', as: :profile_edit, via: :all
