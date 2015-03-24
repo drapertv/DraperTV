@@ -24,7 +24,11 @@ class CommentsController < ApplicationController
     @user = User.find(@comment.user_id)
 
     if @comment.save
-        render partial: 'comment', locals: {comment: @comment}
+        if !@comment.parent_id
+          render partial: 'comment', locals: {comment: @comment}
+        else
+          render partial: 'nested_comment', locals: {comment: @comment}
+        end
 	  else
 	    render :new
 	  end
@@ -38,7 +42,7 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:content, :user_id)
+      params.require(:comment).permit(:content, :user_id, :parent_id, :parent)
     end
 
 

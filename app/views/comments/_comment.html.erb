@@ -1,30 +1,44 @@
-<% @comment_user = User.find_by_id(comment.user_id) %>
+<% @comment_user = comment.user %>
 
-<article id="comment-id-<%=  @comment_user.id %>" class="comment">
+<div class="comment-block">
+  <article id="comment-id-<%=  @comment_user.id %>" class="comment">
 
-  <a>
-    <%= image_tag @comment_user.avatar_url(:thumb).to_s, :class => "comment-pic" %>
-  </a>
+    <a>
+      <%= image_tag @comment_user.avatar_url(:thumb).to_s, :class => "comment-pic" %>
+    </a>
 
-  <section class="comment-body">
-    <header>
-      <a href="#"><span class="comment-name"><%=@comment_user.name %></span></a>
-      <span class="text-muted text-xs m-t-xs comment-date">
-        <%= comment.created_at.to_date.to_formatted_s( :long_ordinal ) %>
-      </span>
-    </header>
+    <section class="comment-body">
+      <header>
+        <a href="#"><span class="comment-name"><%=@comment_user.name %></span></a>
+        <span class="text-muted text-xs m-t-xs comment-date">
+          <%= comment.created_at.to_date.to_formatted_s( :long_ordinal ) %>
+        </span>
+      </header>
 
-    <div class="comment-content">
-      <% if comment.belongs_to_challenge %>
-        <div class="comment-video">
-          <%= image_tag Video.first.vthumbnail, :class => "challenge-thumbnail" %>
-          <%= image_tag 'play-icon.png', :class => "challenge-play" %>
+      <div class="comment-content">
+        <% if comment.belongs_to_challenge %>
+          <div class="comment-video">
+            <%= image_tag Video.first.vthumbnail, :class => "challenge-thumbnail" %>
+            <%= image_tag 'play-icon.png', :class => "challenge-play" %>
+          </div>
+        <% end %>
+        <div class="comment-text">
+          <%=  comment.content %>
+        </div>
+      </div>
+      <% if comment.user == current_user %>
+        <div class="comment-actions">
+          <span class="comment-reply">Reply</span><span class="comment-edit">Edit</span> 
         </div>
       <% end %>
-      <div class="comment-text">
-        <%=  comment.content %>
-      </div>
-    </div>
-
-  </section>
-</article>
+    </section>
+  </article>
+  <div class="nested-comment-form">
+    <%= render partial: 'comments/form', locals: {parent_id: comment.id} %>
+  </div>
+  <div class="nested-comments">
+    <% comment.children.each do |comment| %>
+      <%= render partial: 'comments/nested_comment', locals: {comment: comment} %>
+    <% end %>
+  </div>
+</div>

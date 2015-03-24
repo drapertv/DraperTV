@@ -23,8 +23,10 @@
     </div>
     <div id="comments-container">
       <div class="comments-header">COMMENTS</div>
-      <%= render "comments/form" %>
-      <%= render "comments/comments" %>
+      <div id="main-comment-form">
+        <%= render partial: "comments/form", locals: {parent_id: nil} %>
+      </div>
+      <%= render partial: "comments/comments" %>
     </div>
   </div>
   <div class="section-right">
