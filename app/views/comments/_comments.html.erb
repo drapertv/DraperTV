@@ -1,13 +1,13 @@
 <!-- Talk -->
-<section id="comments" class="comment-list block">
+<section id="comments">
 
   <% @comments.each do |comment| %>
   <% @comment_user = User.find_by_id(comment.user_id) %>
 
-    <article id="comment-id-<%=  @comment_user.id %>" class="comment-item">
+    <article id="comment-id-<%=  @comment_user.id %>" class="comment">
 
-      <a class="pull-left thumb-sm">
-        <img src="<%= @comment_user.avatar_url(:thumb).to_s %>" class="img-circle">
+      <a>
+        <%= image_tag @comment_user.avatar_url(:thumb).to_s, :class => "comment-pic" %>
       </a>
 
       <section class="comment-body m-b">
@@ -18,7 +18,7 @@
           </span>
         </header>
 
-        <div class="m-t-sm">
+        <div class="comment-text">
         	<%=  comment.content %>
         </div>
 

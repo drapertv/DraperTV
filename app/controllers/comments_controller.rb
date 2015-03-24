@@ -24,11 +24,7 @@ class CommentsController < ApplicationController
     @user = User.find(@comment.user_id)
 
     if @comment.save
-
-        respond_to do |format|
-          format.html {  }
-          format.js { @comment}
-        end
+        render partial: 'comment', locals: {comment: @comment}
 	  else
 	    render :new
 	  end

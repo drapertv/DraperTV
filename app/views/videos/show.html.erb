@@ -83,5 +83,25 @@
           <% end %>
       </section>
     </header>
+    <div id="suggested-videos">
+      <div class="related-header">RELATED VIDEOS</div>
+      <% @video.suggested.each do |video| %>
+        <div class="suggested-video">
+          <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
+          <div class="suggested-video-info">
+            <div class="suggested-video-title">
+              <%= video.title %>
+            </div>
+             <span class="video-view-count">
+              540 Views *
+              <%= link_to(favit_video_path(@video)) do %>
+                <i class="fa fa-star"></i>
+              <% end %>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+<%= render partial: "layouts/footer" %>

@@ -25,6 +25,10 @@ class Video < ActiveRecord::Base
 		Playlist.where(author_id: author_id).first
 	end
 
+	def suggested
+		Video.tagged_with(category_list).limit(10)
+	end
+
 
 
 # cf_url is http://dSomething.cloudfront.net/path
@@ -32,7 +36,7 @@ class Video < ActiveRecord::Base
 
 	#aws CF Sginer
 	def signed_html5
-		cf_url = "http://dc6in7ze09oom.cloudfront.net"
+	  cf_url = "http://dc6in7ze09oom.cloudfront.net"
 	  parsed_uri = URI.parse(cf_url)
 	  url = "#{parsed_uri.scheme}://#{parsed_uri.host}#{parsed_uri.path}/#{title}"
 	  signed_url = sign(url)

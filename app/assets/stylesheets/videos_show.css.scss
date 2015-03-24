@@ -10,6 +10,7 @@
 	overflow-y: scroll;
 	padding-top: 90px;
 	box-sizing: content-box;
+	background: white;
 }
 
 .section-left {
@@ -118,6 +119,35 @@
 	font-size: 17px;
 }
 
+/************** Suggested Videos ****************/
+
+#suggested-videos {
+	padding-left: 20px;
+	margin-top: 20px; 
+}
+
+.suggested-video {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.suggested-video-thumbnail {
+	width: 120px;
+	height: 67.5px;
+	margin-right: 10px;
+}
+
+.suggested-video-info {
+	width: calc(100% - 130px);
+}
+
+.related-header {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+
+
 /*******  Comments ********/
 
 .comments-header {
@@ -125,3 +155,4 @@
 	padding-top:	10px;
 	border-top: 1px solid $light-gray;
 }
+
