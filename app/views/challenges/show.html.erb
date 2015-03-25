@@ -22,7 +22,9 @@
     </div>
     <div id="comments-container">
       <div class="comments-header">Submissions</div>
+      <div id="main-comment-form">
       <%= render partial: "comments/form", locals: {parent_id: nil} %>
+      </div>
       <%= render "comments/comments" %>
     </div>
     <%= render partial: "layouts/footer" %>
