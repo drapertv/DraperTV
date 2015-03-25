@@ -53,8 +53,10 @@
           </div>
           <div class="video-item reded challenge-info">
             <i class="fa fa-video-camera fa-2x text-danger"></i>
-            <%= link_to playlist_challenge_path(@video.playlist, @video.challenge) do %>
-              Challenge: Placeholder Name for Video Challenge
+            <% if @video.challenge %>
+              <%= link_to playlist_challenge_path(@video.playlist, @video.challenge) do %>
+                Challenge: Placeholder Name for Video Challenge
+              <% end %>
             <% end %>
             <i class="fa fa-star fa-lg text-danger"></i>
           </div>

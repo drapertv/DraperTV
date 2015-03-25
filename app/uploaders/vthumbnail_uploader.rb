@@ -15,7 +15,7 @@ class VthumbnailUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "assets/elon-vid.png"
+    "elon-vid.png"
   end
 
   version :thumb do
