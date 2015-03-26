@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.5'
 gem 'rails', '4.1.6'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
@@ -7,7 +7,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 #Authorization & Authentication
 gem 'devise'
 gem 'devise_invitable'
-gem 'pg'
+# gem 'pg'
+gem 'pg', '~> 0.18.0.pre20141117110243'
+gem "eventmachine", '~> 1.0.7'
+gem 'tzinfo-data'
+gem 'bcrypt-ruby', '3.1.5', :require => 'bcrypt'
+
 # gem "cancan", ">= 1.6.9"
 # gem "rolify", ">= 3.2.0"
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -20,7 +25,7 @@ gem 'thin'
 gem 'spring',        group: :development
 
 #CurlStuff
-gem 'curb'
+# gem 'curb'
 gem 'httparty'
 
 
@@ -37,7 +42,6 @@ end
 
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'acts-as-taggable-on', '~> 3.4'
-gem 'ancestry'
 
 
 #Assets
@@ -62,12 +66,13 @@ gem 'aws_cf_signer'
 
 #Images:
 gem 'carrierwave'
-gem 'rmagick', :require => false
-gem 'mini_magick'
+# gem 'rmagick', :require => false
+# gem 'mini_magick'
 
 #Payments
 gem "stripe", ">= 1.7.11"
 gem "stripe_event", ">= 0.4.0"
+gem 'ancestry'
 
 
 #Getting Social:
@@ -102,3 +107,6 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
 end
+
+#notes, change ruby to 2.0.0, uncomment pg and comment new pg, comment eventmachine tzinfo and bcrypt, uncomment rmagick minimagick
+# include minimagick

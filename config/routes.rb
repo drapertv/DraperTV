@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   resources :users
   resources :videos
   resources :quotes
+  resources :favorites, only: [:index]
+  get '/favorites/create', to: 'favorites#create', as: 'create_favorite'
   resources :playlists do 
     resources :challenges do 
       resources :comments

@@ -139,6 +139,7 @@
 
 .featured-videos {
 	@include flexbox;
+	margin-bottom: 40px;
 }
 
 .video-item-container {
@@ -161,11 +162,13 @@
 	color: $black;
 	margin-top: 0px;
 	font-weight: 300;
-	margin-bottom: 15px;
+	margin-bottom: 25px;
 }
 
-.stared {
-color: $landing-yellow
+.fav-star {
+	height: 12px;
+	width: 12px;
+	vertical-align: initial;
 }
 
 .section-time {

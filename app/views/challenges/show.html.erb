@@ -5,7 +5,7 @@
       <div class="video-title"><%= @challenge.title %></div>
       <div class="video-actions">
         <span class="video-view-count">
-          540 Views *
+          <%= @challenge.view_count %> Views •
           <%= link_to(favit_video_path(@video)) do %>
             <i class="fa fa-star"></i>
           <% end %>
@@ -22,7 +22,9 @@
     </div>
     <div id="comments-container">
       <div class="comments-header">Submissions</div>
-      <%= render "comments/form", locals: {parent_id: nil} %>
+      <div id="main-comment-form">
+        <%= render partial: "comments/form", locals: {parent_id: nil} %>
+      </div>
       <%= render "comments/comments" %>
     </div>
     <%= render partial: "layouts/footer" %>
@@ -95,8 +97,8 @@
               <%= video.title %>
             </div>
              <span class="video-view-count">
-              540 Views *
-              <%= link_to(favit_video_path(@video)) do %>
+              <%= video.view_count %> Views
+              <%= link_to(favit_video_path(video)) do %>
                 <i class="fa fa-star"></i>
               <% end %>
             </span>

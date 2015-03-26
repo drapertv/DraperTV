@@ -27,7 +27,7 @@
 }
 
 .section-content {
-	height: 100%;
+	height: auto;
 	width: 1240px;
 	margin: 0 auto;
 }
@@ -43,6 +43,10 @@
 
 .gray-border-bottom {
 	border-bottom: 2px solid $light-gray;
+}
+
+.landing-section.video-section {
+	height: auto;
 }
 
 /******* LANDING HEADER ********/
@@ -121,7 +125,7 @@
 #tagline-section {
 	background: $landing-gray;
 	background: image_url('tagline-photo.jpg');
-	background-size:100%;
+	background-size: cover;
 	position: relative;
 	background-repeat: no-repeat;
 

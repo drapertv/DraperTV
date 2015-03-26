@@ -10,6 +10,13 @@ class ChallengesController < InheritedResources::Base
     if @video.url
       @video_yt_embed = ActiveSupport::SafeBuffer.new(%Q{<iframe id="ytplayer" type="text/html" width="662" height="494" src="https://www.youtube.com/embed/#{@video.url}?autoplay=1&rel=0&showinfo=0&color=white&theme=light" frameborder="0" allowfullscreen> </iframe>})
     end
+    @challenge.increment_view_count
+  end
+
+  private
+
+  def challenge_params
+    params.require(:challenge).permit(:view_count)
   end
 end
 

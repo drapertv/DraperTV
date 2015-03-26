@@ -37,6 +37,11 @@ class Video < ActiveRecord::Base
 		[self, Comment.new]
 	end
 
+	def increment_view_count
+		current_view_count = view_count
+		update_attributes view_count: view_count + 1
+	end
+
 # cf_url is http://dSomething.cloudfront.net/path
 # video_name is test.mp4
 
@@ -67,9 +72,5 @@ class Video < ActiveRecord::Base
 	  # 1 hour expiration on the URL
  		url = SIGNER.sign("http://dc6in7ze09oom.cloudfront.net/#{title}.mp4", :ending => Time.now + 3600)
  	end
-
-
-
-
 
 end

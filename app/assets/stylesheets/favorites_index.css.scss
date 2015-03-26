@@ -1,0 +1,42 @@
+@import 'shared/variables';
+@import 'shared/mixins';
+
+.favorites-container {
+	margin-top: 50px;
+	background: white;
+	min-height: calc(100vh - 50px);
+}
+
+.challenges {
+	margin-top: 40px;
+}
+
+
+.video-header-item:hover:not(.active) {
+	.show-series {
+		color: $green;
+	}
+
+	.show-videos {
+		color: $yellow;
+	}
+
+	.show-challenges {
+		color: $blue;
+	}
+}
+
+
+.active {
+	.show-series {
+		background: $green;
+	}
+
+	.show-videos {
+		background: $yellow;
+	}
+
+	.show-challenges {
+		background: $blue;
+	}
+}

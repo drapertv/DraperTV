@@ -3,8 +3,23 @@ Videos =
 		$('body').on 'click', '.modal-overlay', @hideModal
 		$('body').on 'click', '.video-play.blocked', @showVideoModal
 		$('body').on 'click', '.video-modal .btn', @thankUser
-		$('body').on 'click', '.video-header-item', @highlightTag
+		$('body').on 'click', '.videos-container .video-header-item', @highlightTag
+		$('body').on 'click', '.favorites-header .video-header-item', @highlightVideoType
+		$('body').on 'ajax:success', '.fav-link', @updateLikeCount
 		@align()
+
+	updateLikeCount: (event, data) ->
+		console.log "something"
+		console.log data
+		$(@).parent().find('.video-like-count').text(data.like_count)
+		$(@).toggleClass('selected')
+
+	highlightVideoType: ->
+		$('.favorited-content').hide()
+		$('.video-header-item').removeClass 'active'
+		$(@).addClass 'active'
+		$('.' + $(@).attr('data-show')).show()
+		console.log '.' + $(@).attr('data-show')
 
 	align: ->
 		$('.video-item-container').css('margin-right', '10px')

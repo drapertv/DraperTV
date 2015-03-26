@@ -203,6 +203,7 @@ box-sizing: content-box;
 .video-stats {
 	color: #939aa0;
 	font-size: 12px;
+	margin-top: 10px;
 }
 .series-video:hover .video-play, .video-item-container:hover .video-play { //refactor into one class later
 	display: block;

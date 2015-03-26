@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   mount_uploader :avatar, AvatarUploader
   has_many :authorizations
+  acts_as_voter
   attr_accessor :stripe_token, :coupon
 
 

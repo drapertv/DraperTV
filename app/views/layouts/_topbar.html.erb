@@ -1,13 +1,19 @@
 <header id="landing-header">
   <div class="header-mid-right no-mobile">
     <div class="header-item">
-      <a href="<%= playlists_path %>">SERIES</a>
+      <%= link_to playlists_path do %>
+        SERIES
+      <% end %>
     </div>
     <div class="header-item">
-      <a href="<%= videos_path %>">QUICK WATCHES</a>
+      <%= link_to videos_path do %>
+        VIDEOS
+      <% end %>
     </div>
     <div class="header-item">
-      FAVORITES
+      <%= link_to favorites_path do %>
+        FAVORITES
+      <% end %>
     </div>
   </div>
 

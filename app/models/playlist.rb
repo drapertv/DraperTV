@@ -1,4 +1,5 @@
 class Playlist < ActiveRecord::Base
+  acts_as_votable
   has_many :challenges
 	delegate :profilepic_url, :name, to: :speaker
 

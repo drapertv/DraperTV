@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class VthumbnailUploader < CarrierWave::Uploader::Base
-  include CarrierWave::RMagick
+  # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -15,7 +15,7 @@ class VthumbnailUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "assets/elon-vid.png"
+    "elon-vid.png"
   end
 
   version :thumb do

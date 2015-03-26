@@ -7,12 +7,22 @@
 	display: none;
 }
 
+img.svg {
+	display: none;
+}
+
 .hidden {
 	display: none;
 }
 
+.app body, body {
+	overflow-y: scroll;
+
+}
+
 @media(max-width: 768px) {
 body {
+
 	.mobile {
 		display: block;
 	}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324221708) do
+ActiveRecord::Schema.define(version: 20150326221340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150324221708) do
     t.integer  "playlist_id"
     t.text     "description"
     t.string   "title"
-    t.integer  "view_count"
+    t.integer  "view_count",  default: 0
     t.string   "url"
     t.string   "vthumbnail"
     t.datetime "created_at"
@@ -198,7 +198,8 @@ ActiveRecord::Schema.define(version: 20150324221708) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "video_id"
-    t.integer  "demand_array", array: true
+    t.integer  "demand_array",             array: true
+    t.integer  "view_count",   default: 0
   end
 
   create_table "votes", force: true do |t|

@@ -4,7 +4,11 @@
   </div>
   <div class="series-actions">
     <div class="challenge-text">
-      Challenge: Do Something Test Challenge : <%= playlist.challange_id %>
+      <% if playlist.challenge %>
+        Challenge: <%= playlist.challenge.title %>
+      <% else %>
+        Challenge: Placeholder Challenge
+      <% end %>
     </div>
     <div class="challenge-btn"></div>
     <div class="green-btn series-price">
@@ -18,7 +22,7 @@
     <div class="speaker-name">
      <%= playlist.name %>
     </div>
-    <div class="speaker-title">CEO & Founder Zappos</div>
+    <div class="speaker-title"><%= playlist.speaker.title || "CEO & Founder" %></div>
   </div>
   <div class="white-gradient left no-mobile hidden">
   </div>
@@ -35,7 +39,8 @@
         <%= image_tag video.vthumbnail, :class => "video-thumbnail" %>
         <div class="video-info">
           <a href="#" class="text-ellipsis qwatch-title"><%= video.title %></a>
-          <p class="video-stats text-ellipsis"> 3045 Views • <%= video.get_upvotes.size %> <i class="fa fa-star stared"></i></p>
+          <p class="video-stats text-ellipsis"> <%= video.view_count %> Views • <%= video.get_upvotes.size %> 
+          <%= image_tag 'fav-button.svg', :class => "fav-star" %></p>
         </div>
       </div>
     <% end %>
