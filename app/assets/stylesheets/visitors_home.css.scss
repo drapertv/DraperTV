@@ -151,6 +151,11 @@
 	color: white;
 }
 
+.series {
+	position: relative;
+}
+
+
 
 /********** How it Works ************/
 
@@ -237,7 +242,7 @@
 	color: $light-gray;
 }
 
-@media(max-width: 768px) {
+@media(max-width: 1240px) {
 
 body {
 /********* LAYOUT ********/
@@ -257,11 +262,13 @@ body {
 	.series-title {
 		font-size: 16px;
 		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
-	.series-price {
-		position: absolute;
-		bottom: 10px;
+	.white-gradient, .scroll-arrow {
+		display: none;
 	}
+	
 /************  HOW IT WORKS ****************/
 	#info-section {
 		background: #246db4;

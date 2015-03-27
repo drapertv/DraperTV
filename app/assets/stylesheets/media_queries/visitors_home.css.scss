@@ -1,0 +1,36 @@
+@import '../shared/variables';
+@import '../shared/mixins';
+
+@media (max-width: 1240px ) {
+	.section-content {
+		width: calc(100vw - 40px);
+		margin-left: auto;
+		margin-top: auto; 
+	}
+
+}
+
+@media (max-width: 768px) {
+	body {
+		.landing-section.info-section {
+			height: auto;
+			padding-bottom: 55px;
+		}
+		.info-items {
+			flex-wrap: wrap;
+		}
+		#sign-up {
+			margin-bottom: 0px;
+			padding-bottom: 55px;
+		}
+		#landing-footer {
+			display: none;
+		}
+		.section-content {
+			width: calc(100vw - 20px);
+			margin-left: auto;
+			margin-top: auto; 
+		}
+
+	}
+}

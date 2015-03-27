@@ -19,8 +19,15 @@ $section-height: calc(33vh -  16.66px);
 	@include flexbox;
 	justify-content: space-between;
 	margin-bottom: 40px;
+	.video-item-container {
+		margin-right: 0px !important;
+	}
 }
 
+
+.featured-playlist {
+	width: 360px;
+}
 .featured-playlist-title {
 	margin-bottom: 20px;
 	font-size: 20px;

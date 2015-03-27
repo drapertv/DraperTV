@@ -1,0 +1,26 @@
+@import '../shared/variables';
+@import '../shared/mixins';
+
+@media (max-width: 768px ) {
+	body {
+		.featured-playlists {
+			flex-wrap: wrap;
+		}
+		.featured-playlist:nth-child(2n) {
+			padding: 0px;
+		}
+		.speaker-pic {
+			display: none;
+		}
+		.challenge-btn, .challenge-text {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.featured-playlist:nth-child(2n) {
+		border-left: none;
+		border-right: none;
+	}
+}

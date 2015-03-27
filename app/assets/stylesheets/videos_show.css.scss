@@ -3,14 +3,15 @@
 /***** General Layout ****/
 
 #video-container { //change all the containers to content container
-	@include flexbox;
-	width: 1240px;
-	padding: 0 calc(50vw - 620px);
 	height: auto;
 	overflow-y: scroll;
 	padding-top: 90px;
 	box-sizing: content-box;
 	background: white;
+}
+
+#video-section {
+	@include flexbox;
 }
 #challenge-placeholder-pic {
 	width: 100%;
@@ -42,8 +43,6 @@
 	@include flexbox;
 	justify-content: space-between;
 }
-
-
 
 /************ Video List Panel  **************/
 .additional-video-list {
@@ -192,7 +191,6 @@
 	font-size: 20px;
 	margin-bottom: 20px;
 }
-
 
 
 /*******  Comments ********/

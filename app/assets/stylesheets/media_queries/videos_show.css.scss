@@ -1,0 +1,27 @@
+@import '../shared/variables';
+@import '../shared/mixins';
+
+
+@media (max-width: 1240px ) {
+
+}
+
+@media (max-width: 768px) {
+	body {
+		#video-section {
+			flex-wrap: wrap;
+		}
+		.section-left, .section-right {
+			width: 100%;
+		}
+		.videos-panel {
+			display: none;
+		}
+		#suggested-videos {
+			padding-left: 0px;
+		}
+		.video-speaker {
+			display: none;
+		}
+	}
+}

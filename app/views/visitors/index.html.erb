@@ -17,10 +17,6 @@
               Delivering Happiness with Tony Hsieh
             </div>
             <div class="series-actions">
-              <div class="challenge-text">
-                Challenge: Do Something Test Challenge
-              </div>
-              <div class="challenge-btn"></div>
               <div class="green-btn series-price">
                 Full Series <span class="bold">$3.99</span>
               </div>
@@ -51,42 +47,40 @@
             </div>
           </div>
         </div>
-        <div class="series-header">
-          <div class="series-title">
-            Entrepreneurship & Tesla with Elon Musk
-          </div>
-          <div class="series-actions">
-            <div class="challenge-text">
-              Challenge: Do Something Test Challenge
+        <div class="series">
+          <div class="series-header">
+            <div class="series-title">
+              Entrepreneurship & Tesla with Elon Musk
             </div>
-            <div class="challenge-btn"></div>
-            <div class="green-btn series-price">
-              Full Series <span class="bold">$3.99</span>
-            </div>
-          </div>      
-        </div>
-        <div class="series-content">
-          <div class="series-speaker">
-            <%= image_tag "elon-photo.png", :class => "series-speaker-photo no-mobile" %>
-            <div class="speaker-name">Elon Musk</div>
-            <div class="speaker-title">CEO & Founder Tesla</div>
-          </div>
-            <div class="white-gradient left no-mobile hidden">
-            </div>
-            <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow left no-mobile hidden" %>
-            <div class="white-gradient right no-mobile"></div>
-            <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow right no-mobile" %>
-          <div class="series-videos">
-            <% (1..10).each do |n| %>
-              <div class="series-video">
-                <div class="video-length">3:59</div>
-                <%= image_tag 'play-icon.png', :class => "video-play" %>
-                <%= image_tag 'elon-vid.png', :class => "video-thumbnail" %>
-                <div class="video-title blue">
-                  What is starting up like?
-                </div>
+            <div class="series-actions">
+              <div class="green-btn series-price">
+                Full Series <span class="bold">$3.99</span>
               </div>
-            <% end %>
+            </div>      
+          </div>
+          <div class="series-content">
+            <div class="series-speaker">
+              <%= image_tag "elon-photo.png", :class => "series-speaker-photo no-mobile" %>
+              <div class="speaker-name">Elon Musk</div>
+              <div class="speaker-title">CEO & Founder Tesla</div>
+            </div>
+              <div class="white-gradient left no-mobile hidden">
+              </div>
+              <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow left no-mobile hidden" %>
+              <div class="white-gradient right no-mobile"></div>
+              <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow right no-mobile" %>
+            <div class="series-videos">
+              <% (1..10).each do |n| %>
+                <div class="series-video">
+                  <div class="video-length">3:59</div>
+                  <%= image_tag 'play-icon.png', :class => "video-play" %>
+                  <%= image_tag 'elon-vid.png', :class => "video-thumbnail" %>
+                  <div class="video-title blue">
+                    What is starting up like?
+                  </div>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
