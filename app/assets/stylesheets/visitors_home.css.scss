@@ -6,119 +6,15 @@
 }
 /******* LAYOUT *********/
 
-#content-container {
-	overflow-y: scroll;
-	background: white;
-	height: 100vh;
-	overflow-x: hidden;
-	 -webkit-overflow-scrolling: touch;
-}
-
 .landing-container {
 	background: white;
 	color: black;
-}
-
-.landing-top {
-	margin-top: 50px;
-	.landing-section {
-		height: 260px;
-	}
 }
 
 .section-content {
 	height: auto;
 	width: 1240px;
 	margin: 0 auto;
-}
-
-.landing-bottom {
-	height: calc(100%);
-}
-
-#landing-footer {
-	height: 240px;
-	background: white;
-}
-
-.gray-border-bottom {
-	border-bottom: 2px solid $light-gray;
-}
-
-.landing-section.video-section {
-	height: auto;
-}
-
-/******* LANDING HEADER ********/
-
-#landing-header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 50px;
-	width: 100%;
-	background: $landing-blue;
-	text-align: center;
-	z-index: 3;
-}
-#landing-header > * {
-	position: absolute;
-	top: 0;
-	height: 100%;
-}
-.header-item {
-	height: 100%;
-	line-height: 50px;
-	cursor: pointer;
-	font-size: 16px;
-	display: inline;
-	color: rgba(255,255,255,.5);
-	margin: 0 15px;
-}
-
-.header-item.active {
-	color: white;
-}
-
-.logo {
-	height: 30px;
-	margin-top: 10px;
-}
-.sign-up-btn.header-item {
-	padding: 5px;
-	margin-right: 0px;
-}
-.header-item.green-btn {
-	color: white;
-}
-.header-mid-right {
-	right: 265px;
-}
-
-.header-mid-left {
-	left: 310px;
-}
-
-.search-input {
-	height: 30px;
-	border: none;
-	-webkit-appearance: none;
-	font-size: 15px;
-	opacity: 0.5;
-	border-radius: 5px;
-	background: #13446d;
-	width: 330px;
-	margin: 10px 0px;
-	box-sizing: border-box;
-	padding: 0px 10px;
-	color: white;
-}
-
-.header-right {
-	right: 20px;
-}
-.header-left {
-	left: 20px;
 }
 
 /*************** TAGLINE ***************/
@@ -128,6 +24,7 @@
 	background-size: cover;
 	position: relative;
 	background-repeat: no-repeat;
+	height: 260px;
 
 }
 #tagline-overlay {
@@ -138,7 +35,6 @@
   left: 0;
   background: rgba(0,0,0,.5);
 }
-
 
 #tagline {
 	text-align: center;
@@ -154,8 +50,6 @@
 .series {
 	position: relative;
 }
-
-
 
 /********** How it Works ************/
 
@@ -197,7 +91,6 @@
 	color: white;
 }
 
-
 .info-desc {
 	font-size: 20px;
 	color: white;
@@ -215,31 +108,6 @@
 .info-img {
 	width: auto;
 	height: 150px;
-}
-
-/******* FOOTER *******/
-
-.footer-item {
-	width: 175px;
-	display: inline-block;
-	margin-top: 30px;
-	vertical-align: top;
-	.footer-item-link {
-		margin: 15px 0px;
-	}
-}
-
-.footer-item-title {
-	font-size: 20px;
-}
-
-.footer-item-link {
-	cursor: pointer;
-}
-
-.footer-notes {
-	font-size: 14px;
-	color: $light-gray;
 }
 
 @media(max-width: 1240px) {
@@ -283,53 +151,3 @@ body {
 
 
 
-
-/******* Video Page ********/
-
-.header-height {
-background-color: $black;
-min-height: 500px;
-width: 662px;
-}
-
-.header-height-right-side {
-background-color: $black;
-min-height: 500px;
-
-}
-
- li.blacke:hover {
-    background-color: $dark-gray;
-}
-
- .reded {
-    background-color: $landing-red;
-		opacity: 0.5;
-}
-.reded:hover{
-	opacity: 1;
-
-}
-
- li.blacked {
-    background-color: $light-gray;
-}
-
-.blacke {
-	background-color: $black;
-	color: white;
-	border: 0px;
-	padding-top: 10px;
-}
-
-
-.header-item > a{
-	color: white;
-	opacity: 0.5;
-}
-
-.header-item > a:hover,
-.header-item > a:focus {
-	color: white;
-	opacity: 1;
-}

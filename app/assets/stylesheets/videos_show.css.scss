@@ -69,11 +69,16 @@
 
 .videos-panel {
 	.challenge-info {
+		background: $red;
+		opacity: 0.5;
 		.fav-star {
 			path {
 				fill: $star-red;
 			}
 		}
+	}
+	.challenge-info:hover {
+		opacity: 1;
 	}
 	.fav-star {
 		cursor: pointer;

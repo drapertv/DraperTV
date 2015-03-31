@@ -9,11 +9,8 @@ Rails.application.routes.draw do
   mount StripeEvent::Engine => '/stripe'
 
   unauthenticated :user do
-    root to: 'visitors#index'
+    root to: 'visitors#home'
   end
-
-
-  get '/home', to: 'visitors#home'
 
   authenticated :user do
     root :to => 'videos#index', as: :authenticated_root

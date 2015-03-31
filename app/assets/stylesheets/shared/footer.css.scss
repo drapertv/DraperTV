@@ -1,0 +1,32 @@
+@import 'variables';
+@import 'mixins';
+
+/******* FOOTER *******/
+
+.footer-item {
+	width: 175px;
+	display: inline-block;
+	vertical-align: top;
+	.footer-item-link {
+		margin: 15px 0px;
+	}
+}
+
+.footer-item-title {
+	font-size: 20px;
+}
+
+.footer-item-link {
+	cursor: pointer;
+}
+
+.footer-notes {
+	font-size: 14px;
+	color: $light-gray;
+}
+
+#landing-footer {
+	height: auto;
+	padding: 20px 0px;
+}
+
