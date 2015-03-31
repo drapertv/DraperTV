@@ -9,8 +9,6 @@ Videos =
 		@align()
 
 	updateLikeCount: (event, data) ->
-		console.log "something"
-		console.log data
 		$(@).parent().find('.video-like-count').text(data.like_count)
 		$(@).toggleClass('selected')
 
@@ -19,7 +17,6 @@ Videos =
 		$('.video-header-item').removeClass 'active'
 		$(@).addClass 'active'
 		$('.' + $(@).attr('data-show')).show()
-		console.log '.' + $(@).attr('data-show')
 
 	align: ->
 		$('.video-item-container').css('margin-right', '10px')
@@ -38,7 +35,6 @@ Videos =
 		$('.video-item-container').hide()
 		$('.section-content').find(filters).show().addClass('animated fadeIn')
 		Videos.align()
-
 
 	hideModal: (e) ->
 		$(@).hide() if $(e.target).hasClass 'modal-overlay'

@@ -1,0 +1,12 @@
+@import 'shared/variables';
+@import 'shared/mixins';
+
+.invite-email-input {
+	height: 30px;
+	border-radius: 5px;
+	display: block;
+	margin-bottom: 20px;
+	border: 1px solid $light-gray;
+	width: 300px;
+	padding: 0px 10px;
+}

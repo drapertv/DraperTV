@@ -10,4 +10,8 @@ module ApplicationHelper
 		HTML
 		html.html_safe
 	end
+
+	def current_admin
+		current_user.role == "admin"
+	end
 end

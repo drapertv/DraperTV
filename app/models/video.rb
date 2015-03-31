@@ -40,6 +40,7 @@ class Video < ActiveRecord::Base
 	def increment_view_count
 		current_view_count = view_count
 		update_attributes view_count: view_count + 1
+		
 	end
 
 # cf_url is http://dSomething.cloudfront.net/path

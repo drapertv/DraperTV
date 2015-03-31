@@ -1,24 +1,21 @@
-<div id="stripe_error" class="alert alert-error" style="display:none" >
-</div>
 <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
   <div class="container aside-xl">
-    <a class="navbar-brand block" href="<%= root_path %>"><span class="h1 font-bold">Draper<i>TV</i></span></a>
-    <section class="m-b-lg">
-      <header class="wrapper text-center">
-        <strong>Sign up to get in touch</strong>
-        <%# Rails flash messages styled for Bootstrap 3.0 %>
-        <% flash.each do |name, msg| %>
-          <% if msg.is_a?(String) %>
-            <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <%= content_tag :div, msg, :id => "flash_#{name}" %>
-            </div>
-          <% end %>
-        <% end %>
-      </header>
+    <a class="navbar-brand block" href="<%= root_path %>"><span class="h1 font-bold">DraperTV</span></a>
+    <header class="wrapper text-center">
+      <strong>Waitlist Sign Up</strong>
+    </header>
 
-
-      <%# render "devise/shared/links" %>
-    </div>
-  </section>
+    <%= form_tag waitlists_path, remote: true, id: "waitlist-form" do %>
+      <div class="form-group">
+        <%= text_field_tag :name, nil, class: 'form-control rounded input-lg text-center no-border', placeholder: "Enter your name" %>
+      </div>
+      <div class="form-group">
+        <%= email_field_tag :email, nil, :autofocus => true, class: 'form-control rounded input-lg text-center no-border', placeholder: "Enter your email" %>
+      </div>
+      <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded m-b" id="waitlist-submit">Add me to the waitlist!</button>
+    <% end -%>
+      <%= link_to root_path do %>
+        <button class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded hidden" id="waitlist-back">Back to Home</button>
+      <% end %>
+  </div>
 </section>

@@ -5,6 +5,23 @@ Visitors =
 		$('.white-gradient').on 'mouseleave', @stopScrollVideos
 		@scrollSpeed = 2
 		$('.vbox').removeClass('vbox')
+		$('body').on 'ajax:success', '#waitlist-form', @thankUser
+		$('body').on 'submit', '#waitlist-form', @checkForm
+
+	checkForm: ->
+		noName = $('#name').val() == ""
+		noEmail = $('#email').val() == ""
+
+		if noName or noEmail
+			$('#name').css('border' , '1px solid red') if noName
+			$('#email').css('border', '1px solid red') if noEmail
+			return false
+
+	thankUser: ->
+		$('#waitlist-submit').text("Thank You! We'll be in touch!")
+		$('#waitlist-form')[0].reset()
+		$('#waitlist-back').show().addClass('animated fadeIn')
+
 	scrollVideosRight: ->
 		videoList = $(@).parent().find('.series-videos')
 		# show the left scroll gradient/arrow

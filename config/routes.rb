@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :quotes
   resources :favorites, only: [:index]
   get '/favorites/create', to: 'favorites#create', as: 'create_favorite'
+  resources :waitlists, only: [:create]
   resources :playlists do 
     resources :challenges do 
       resources :comments

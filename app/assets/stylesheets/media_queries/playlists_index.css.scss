@@ -12,8 +12,19 @@
 		.speaker-pic {
 			display: none;
 		}
+		.series-speaker {
+		  width: 60px;
+		  margin-left: 0px;
+		  margin-right: 10px;
+		}
+		.series-videos {
+			width: calc(100% - 70px);
+		}
 		.challenge-btn, .challenge-text {
 			display: none;
+		}
+		.section-title {
+			margin-top: 20px;
 		}
 	}
 }

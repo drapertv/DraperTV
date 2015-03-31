@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :authorizations
   acts_as_voter
   attr_accessor :stripe_token, :coupon
+  after_invitation_accepted :set_role_for_invitee
 
 
   def self.new_with_session(params,session)
@@ -18,6 +19,14 @@ class User < ActiveRecord::Base
       end
     else
       super
+    end
+  end
+
+  def save_video_in_view_history video
+    if video_view_list.nil? 
+      update_attributes video_view_list: [video.id]
+    else
+      update_attributes video_view_list: (video_view_list + [video.id])
     end
   end
 
@@ -40,6 +49,19 @@ class User < ActiveRecord::Base
       authorization.save
     end
     authorization.user
+  end
+
+  def invited_email_list
+    email_list = (User.where(invited_by_id: id).pluck(:email) + User.where(bio: "#{id}").pluck(:email))[0..4]
+    if email_list.length == 5
+      email_list
+    else
+      (email_list + [nil,nil,nil,nil,nil])[0..4]
+    end
+  end
+
+  def invites_remaining
+    5 - invited_email_list.compact.count
   end
 
 
@@ -122,5 +144,15 @@ class User < ActiveRecord::Base
     (avatar.url == "default.png" && profile_pic_url) ? profile_pic_url : avatar.url(options)
   end
 
+  private
 
+  def set_role_for_invitee
+    inviter = User.find bio
+    inviter.update_attributes invitations_count: (invitations_count + 1)
+    if inviter.role == "admin"
+      update_attributes role: "beta", bio: nil, invited_by_id: bio
+    else
+      update_attributes role: "invited_by_beta", bio: nil, invited_by_id: bio
+    end
+  end
 end

@@ -10,12 +10,13 @@ class ManagementController < ApplicationController
 	end
 
 	def batch_invite
-		  #Validate the user_emails field isn't blank and emails are valid
-		  @emails = params[:user_emails]
-		  params[:user_emails].split(",").each do |email|
-		    User.invite!(:email => email)
-		  end
-		  #redirect_to appropriate path
+	  #Validate the user_emails field isn't blank and emails are valid
+	  @emails = params[:user_emails].split(",")
+	  @emails.delete("")
+	  @emails.each do |email|
+	    User.invite!(:email => email, :bio => current_user.id)
+	  end
+	  #redirect_to appropriate path
 	end
 
 private

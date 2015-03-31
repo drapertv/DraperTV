@@ -1,33 +1,29 @@
-
-
-<section class="vbox">
-  <section id="content">
-    <section class="vbox" id="bjax-el">
-      <section class="scrollable">
-      <div id="">
-        <div class="landing-container landing-top">
-          <div class="section-content">
-            <h2 class="font-thin m-b section-title">Invite Corner</h2>
-          </div>
-          <section class="landing-section video-section">
-            <div class="section-content">
-					<p>Enter email(s) of people you'd like to invite seperated by comma (,).</p>
-
-					<%= form_tag batch_invite_management_index_path, :method => :post do %>
-
-					  <%= text_area_tag :user_emails, nil, rows: 10, cols: 45,class: 'input' %>
-					  <br>
-					  <%= submit_tag "Invite", class: 'btn'  %>
-					<% end %>
-
-
-            </div>
-          </section>
-
-
-        </div>
-      </div>
-
-    </section>
-  </section>
+<section id="content-container">
+  <% if current_admin %>
+    <div class="section-content">
+      <h2 class="font-thin m-b section-title">Invite Corner</h2>
+  		  <p>Enter email(s) of people you'd like to invite in a comma separated list.</p>
+  		  <%= form_tag batch_invite_management_index_path, :method => :post do %>
+  			  <%= text_area_tag :user_emails, nil, rows: 10, cols: 45,class: 'input' %>
+  			  <br>
+  		  <%= submit_tag "Invite", class: 'btn'  %>
+  		<% end %>
+    </div>
+  <% else %>
+    <div class="section-content">
+      <h2 class="font-thin m-b section-title">Invite Friends</h2>
+        <p>Enter email(s) of people you'd like to invite.<br>You have <span id="invites-remaining"><%= current_user.invites_remaining %></span> invites remaining.</p>
+        <%= form_tag batch_invite_management_index_path, :method => :post, id: "beta-invite-form" do %>
+          <% current_user.invited_email_list.each_with_index do |email, index| %>
+            <% if email %>
+              <%= text_field_tag "user_email_#{index}".to_sym, email, :class => "invite-email-input", placeholder: "Enter an email...", disabled: "disabled" %>
+            <% else %>
+              <%= text_field_tag "user_email_#{index}".to_sym, nil, :class => "invite-email-input enabled", placeholder: "Enter an email..." %>
+            <% end %>
+          <% end %>
+          <%= hidden_field_tag :user_emails, nil, id: "user_emails" %>
+        <%= submit_tag "Invite", class: 'btn'  %>
+      <% end %>
+    </div>
+  <% end %>
 </section>
