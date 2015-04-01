@@ -2,15 +2,15 @@
 	<% VideoFeature.currently_featured_playlists.each do |video_feature| %>
 	  <% video = video_feature.video %>
 	  <div class="featured-playlist">
-		  <div class="featured-playlist-title">
+		  <p class="featured-playlist-title">
 		  	<%= video.playlist.title %>
-		  </div>
+		  </p>
 		  <div class="featured-playlist-main">
 			  <div class="series-speaker">
 			    <%= image_tag video_feature.profilepic_url(:seriesthumb), :class => "pull-left speaker-pic" %>
-			    <div class="speaker-name">
+			    <p class="speaker-name">
 			     <%= video_feature.name %>
-			    </div>
+			    </p>
 			    <div class="speaker-title"><%= video.speaker.title || "CEO & Founder" %></div>
 			  </div>
 			  <div class="video-item-container">
@@ -23,11 +23,11 @@
 				      <%= image_tag 'play-icon.png', :class => "video-play blocked" %>
 				      <div class="modal modal-overlay">
 				        <div class="modal-content video-modal">
-				          <div class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</div>
+				          <p class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</p>
 				        <%= link_to video_increment_demand_path(video), remote: true do %>
-				          <div class="btn-primary btn m-t-lg">
+				          <p class="btn-primary btn m-t-lg">
 				            Get Access
-				          </div>
+				          </p>
 				        <% end %>
 				        </div>
 				      </div>

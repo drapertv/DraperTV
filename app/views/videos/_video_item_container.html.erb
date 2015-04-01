@@ -1,4 +1,4 @@
-<div class="video-item-container <%= video.categories %> ALL">
+<li class="video-item-container <%= video.categories %> ALL">
   <div class="video-img">
     <% if video.can_be_accessed_by? current_user %>
        <a href="<%= video_path(video) %>">
@@ -8,10 +8,10 @@
       <%= image_tag 'play-icon.png', :class => "video-play blocked" %>
       <div class="modal modal-overlay">
         <div class="modal-content video-modal">
-          <div class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</div>
-          <div class="btn-primary btn m-t-lg">
+          <p class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</p>
+          <p class="btn-primary btn m-t-lg">
             Get Access
-          </div>
+          </p>
         </div>
       </div>
     <% end %>
@@ -19,9 +19,9 @@
     <a href="#"><img src="<%= video.vthumbnail %>"  alt="" class="video-thumbnail"></a>
   </div>
   <div class="video-info">
-    <a href="#" class="text-ellipsis qwatch-title"><%= video.title %></a>
+    <a href="#" class="text-ellipsis qwatch-title"><p><%= video.title %></p></a>
     <p class="text-ellipsis video-stats"> <%= video.view_count %> Views • <%= video.get_upvotes.size %>
       <%= image_tag 'fav-button.svg', :class => "fav-star" %>
     </p>
   </div>
-</div>
+</li>

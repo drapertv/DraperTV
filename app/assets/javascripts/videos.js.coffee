@@ -29,7 +29,7 @@ Videos =
 		Videos.filterVideos()
 
 	filterVideos: ->
-		filters = $('.video-header-item.active div').map (i, v) ->
+		filters = $('.video-header-item.active p').map (i, v) ->
 			return "." + v.className
 		filters = $.makeArray(filters).join(", ")
 		$('.video-item-container').hide()

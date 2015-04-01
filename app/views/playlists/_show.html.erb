@@ -1,15 +1,15 @@
 <div class="series-header">
-  <div class="series-title">
+  <h2 class="series-title">
     <%= playlist.title %>
-  </div>
+  </h2>
   <div class="series-actions">
-    <div class="challenge-text">
+    <p class="challenge-text">
       <% if playlist.challenge %>
         Challenge: <%= playlist.challenge.title %>
       <% else %>
         Challenge: Placeholder Challenge
       <% end %>
-    </div>
+    </p>
     <div class="challenge-btn"></div>
     <div class="green-btn series-price">
       Full Series <span class="bold">$<%= playlist.price %></span>
@@ -19,10 +19,10 @@
 <div class="series-content">
   <div class="series-speaker">
     <%= image_tag playlist.profilepic_url(:seriesthumb), :class => "pull-left speaker-pic" %>
-    <div class="speaker-name">
+    <p class="speaker-name">
      <%= playlist.name %>
-    </div>
-    <div class="speaker-title"><%= playlist.speaker.title || "CEO & Founder" %></div>
+    </p>
+    <p class="speaker-title"><%= playlist.speaker.title || "CEO & Founder" %></p>
   </div>
   <div class="white-gradient left no-mobile hidden">
   </div>

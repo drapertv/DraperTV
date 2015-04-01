@@ -1,61 +1,20 @@
-<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
-  <div class="container aside-xl">
-    <a class="navbar-brand block" href="<%= root_path %>"><span class="h1 font-bold">DraperTV</span></a>
-    <section class="m-b-lg">
-      <header class="wrapper text-center">
-        <strong>Sign in to get in touch</strong>
-      </header>
-
-        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
-          <%= devise_error_messages! %>
-          <div class="form-group">
-            <%= f.label :email %>
-            <%= f.email_field :email, :autofocus => true, class: 'form-control rounded input-lg text-center no-border' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :password %>
-            <%= f.password_field :password, class: 'form-control rounded input-lg text-center no-border' %>
-          </div>
-
-
-          <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign in</span></button>
-
-            <%# Create Account Commented Out bellow%>
-
-     <!--         <%- if devise_mapping.registerable? %>
-              <div class="line line-dashed"></div>
-                <div class="line line-dashed"></div>
-                <p class="text-muted text-center"><small>Do not have an account?</small></p>
-                <a href="<%= new_registration_path(resource_name) %>" class="btn btn-lg btn-info btn-block rounded">Create an account</a>
-            <% end -%> -->
-
-
-
-
-            <% if devise_mapping.rememberable? -%>
-              <div class="checkbox">
-                <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-              </div>
-
-            <%- if devise_mapping.recoverable? %>
-            <div class="text-center m-t m-b">
-              <%= link_to(new_password_path(resource_name)) do %>
-                  <small>Forgot password?</small>
-              <% end %>
-            </div>
-
-            <% end -%>
-
-
-            <% end -%>
+<div id="content-container">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { id: "login-form"}) do |f| %>
+    <h2 id="form-header">Login</h2>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <%= f.email_field :email, :autofocus => true, class: 'login-field', placeholder: "Email" %>
+    </div>
+    <div class="form-group">
+      <%= f.password_field :password, class: 'login-field', placeholder: "password" %>
+    </div>
+    <button type="submit" class="login-btn">Sign In</button>
+    <%- if devise_mapping.recoverable? %>
+      <div class="text-center m-t m-b">
+        <%= link_to(new_password_path(resource_name)) do %>
+            <small>Forgot password?</small>
         <% end %>
       </div>
-        </form>
-        <%# Facebook sign up commetnedout bellow %>
-        <%# render "devise/form" %>
-      </section>
-
-
-
-    </div>
-  </section>
+    <% end -%>
+  <% end %>
+</div>

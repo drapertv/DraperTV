@@ -89,6 +89,8 @@ div, h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
+
+
 b {
 	font-weight: 700;
 }
@@ -114,3 +116,14 @@ input:focus {outline: none; }
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/****** lists ******/
+
+ ul {
+ 	padding: 0;
+ 	margin: 0;
+ }
+
+ li {
+ 	display: initial;
+ }

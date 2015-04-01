@@ -1,0 +1,33 @@
+@import 'shared/variables';
+@import 'shared/mixins';
+
+#login-form {
+	width: 800px;
+	margin: 40px auto;
+	text-align: center;
+	input {
+		border: 1px solid $gray;
+	}
+	.login-btn {
+		width: 100%;
+		height: 45px;
+		border-radius: 30px;
+		border: none;
+		color: white;
+		background: $blue;
+		font-size: 24px;
+	}
+	.login-field {
+		width: 100%;
+		height: 45px;
+		border-radius: 30px;
+		border: none;
+		padding: 10px;
+		font-size: 24px;
+		text-align: center;
+	} 
+}
+
+#form-header {
+	margin-bottom: 20px;
+}

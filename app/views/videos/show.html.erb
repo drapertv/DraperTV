@@ -3,24 +3,23 @@
     <div class="section-left">
       <%= raw @video_yt_embed %>
       <div class="video-main-info">
-        <div class="video-title"><%= @video.title %></div>
+        <p class="video-title"><%= @video.title %></p>
         <div class="video-actions">
-          <span class="video-view-count">
+          <p class="video-view-count">
             <%= @video.view_count %> Views • <span class="video-like-count"><%= @video.get_likes.size %></span>
             <%= link_to(create_favorite_path(model_id: @video.id, model_name: "Video"), remote: true, :class => "fav-link") do %>
               <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
             <% end %>
-          </span>
-          <span class="video-category"><%= @video.category.first.name %></span>
+          </p>
+          <p class="video-category"><%= @video.category.first.name %></p>
         </div>
         <div class="video-speaker-info">
           <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:thumb), :class => "video-speaker" %>
-          <div class="">
-            <div class="video-speaker-name"><%= Speaker.where(:id => @video.author_id).first.name %></div>
-            <%= @video.description %>
+          <div>
+            <p class="video-speaker-name"><%= Speaker.where(:id => @video.author_id).first.name %></p>
+            <p class="video-desc"><%= @video.description %></p>
           </div>
         </div>
-          <br>
       </div>
       <div id="comments-container">
         <div class="comments-header">COMMENTS</div>
@@ -35,13 +34,11 @@
         <section class="videos-panel">
             <div class="video-item playlist-info">
               <div class="video-info-row">
-                <a href="">
-                  <% if Playlist.where(:author_id => @video.author_id).present? %>
-                    <div class="playlist-title">
-                      <%= Playlist.where(:author_id => @video.author_id).first.title %>
-                    </div>
-                  <% end %>
-                </a>
+                <% if Playlist.where(:author_id => @video.author_id).present? %>
+                  <p class="playlist-title">
+                    <%= Playlist.where(:author_id => @video.author_id).first.title %>
+                  </p>
+                <% end %>
                 <%= link_to(create_favorite_path(model_id: @video.playlist.id, model_name: "Playlist"), remote: true, :class => "fav-link #{ "selected" if current_user.voted_for? @video.playlist}") do %>
                   <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
                 <% end %>
@@ -72,24 +69,20 @@
                 <% playlist.video_ids.each do |v| %>
                   <% if Video.where(:id => v).present? %>
                     <% video = Video.where(:id => v).first %>
-                    <% if @video.id == video.id %>
-                      <div class="video-item current">
-                    <% else %>
-                      <div class="video-item">
-                    <% end %>
-                        <div class="video-info-row">
-                          <span class="video-id">
-                            <%= v %>
-                          </span>
-                          <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
-                           <div class="video-list-title">
-                            <a href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
-                          </div>
-                          <%= link_to(create_favorite_path(model_id: v, model_name: "Video"), remote: true, :class => "fav-link #{ "selected" if current_user.voted_for? video}") do %>
-                            <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
-                          <% end %>
-                        </div>
+                    <div class="video-item <%= 'current' if @video.id == video.id %>">
+                      <div class="video-info-row">
+                        <span class="video-id">
+                          <%= v %>
+                        </span>
+                        <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
+                         <p class="video-list-title">
+                          <a href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
+                        </p>
+                        <%= link_to(create_favorite_path(model_id: v, model_name: "Video"), remote: true, :class => "fav-link #{ "selected" if current_user.voted_for? video}") do %>
+                          <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
+                        <% end %>
                       </div>
+                    </div>
                   <% end %>
                 <% end %>
               </div>
@@ -102,9 +95,9 @@
           <div class="suggested-video">
             <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
             <div class="suggested-video-info">
-              <div class="suggested-video-title">
+              <p class="suggested-video-title">
                 <%= video.title %>
-              </div>
+              </p>
                <span class="video-view-count">
                 <%= video.view_count %> Views • <span class="video-like-count"><%= @video.get_likes.size %></span>
                 <%= link_to(create_favorite_path(model_id: video, model_name: "Video"), remote: true, :class => "fav-link") do %>
@@ -120,6 +113,7 @@
 </div>
 <%= render partial: "layouts/footer" %>
 
+
 <script>
   $('img.svg').each(function(){
     var $img = $(this);
@@ -129,7 +123,6 @@
     $.get(imgURL, function(data) {
         // Get the SVG tag, ignore the rest
         var $svg = $(data).find('svg');
-
         // Add replaced image's ID to the new SVG
         if(typeof imgID !== 'undefined') {
             $svg = $svg.attr('id', imgID);
@@ -144,6 +137,5 @@
         $img.replaceWith($svg);
         $img.show()
     }, 'xml');
-
   });
 </script>

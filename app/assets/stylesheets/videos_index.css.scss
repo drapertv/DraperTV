@@ -33,7 +33,7 @@
 
 }
 
-.video-header-item div {
+.video-header-item p {
 	color: $gray;
 	font-size: 14px;
 	padding-right: 4px;
@@ -43,7 +43,7 @@
 	-webkit-border-radius: 5px;
 }
 
-.video-header-item.active div {
+.video-header-item.active p {
 	color: white;
 }
 

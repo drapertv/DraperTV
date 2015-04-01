@@ -1,29 +1,29 @@
 <div class="videos-container">
   <header id="video-header">
-    <div class="video-header-mid no-mobile">
+    <ul class="video-header-mid no-mobile">
       <% @tags.each do |tag| %>
-        <div class="video-header-item">
-          <div class="<%= tag.name %>">
+        <li class="video-header-item">
+          <p class="<%= tag.name %>">
             <%= tag.name %>
-          </div>
-        </div>
+          </p>
+        </li>
       <% end %>
-       <div class="video-header-item active">
-        <div class="ALL">
+       <li class="video-header-item active">
+        <p class="ALL">
           ALL
-        </div>
-      </div>
-    </div>
+        </p>
+      </li>
+    </ul>
   </header>
   <div class="section-content">
     <h2 class="section-title">FEATURED</h2>
     <%= render partial: "featured_videos" %>
     <h2 class="section-title">QUICK WATCHES</h2>
-    <div class="regular-videos">
+    <ul class="regular-videos">
       <% @videos.each do |video| %>
         <%= render partial: 'video_item_container', locals: {video: video} %>
       <% end %>
-    </div>
+    </ul>
     <%= render partial: 'layouts/footer' %>
   </div>
 </div>
