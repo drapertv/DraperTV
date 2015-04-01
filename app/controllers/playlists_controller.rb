@@ -5,7 +5,13 @@ class PlaylistsController < InheritedResources::Base
     if current_user.email.nil?
       redirect_to profile_edit_path(current_user), notice: "Enter Your Email Please"
     else
-		@playlists = Playlist.all
+      @page = params[:page] || 1
+      @page = @page.to_i
+      @page_next = @page + 1
+      @page_back = @page > 1 ? @page - 1 : 1
+		  @playlists = Playlist.all.paginate(page: params[:page], per_page: 5)
+      @last_page = @playlists.length < 5
+      @first_page = @page < 2
     end
   end
 

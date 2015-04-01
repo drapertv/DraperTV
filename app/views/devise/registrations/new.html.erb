@@ -1,21 +1,16 @@
-<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
-  <div class="container aside-xl">
-    <a class="navbar-brand block" href="<%= root_path %>"><span class="h1 font-bold">DraperTV</span></a>
-    <header class="wrapper text-center">
-      <strong>Waitlist Sign Up</strong>
-    </header>
+<div id="content-container">
+  <%= form_tag waitlists_path, remote: true, id: "login-form", :class => "waitlist-form" do %>
+  <h2 id="form-header">Waitlist Signup</h2>
+    <div class="form-group">
+      <%= text_field_tag :name, nil, class: 'login-field', placeholder: "Enter your name" %>
+    </div>
+    <div class="form-group">
+      <%= email_field_tag :email, nil, :autofocus => true, class: 'login-field', placeholder: "Enter your email" %>
+    </div>
+    <button type="submit" class="login-btn" id="waitlist-submit">Add me to the waitlist!</button>
+  <% end -%>
 
-    <%= form_tag waitlists_path, remote: true, id: "waitlist-form" do %>
-      <div class="form-group">
-        <%= text_field_tag :name, nil, class: 'form-control rounded input-lg text-center no-border', placeholder: "Enter your name" %>
-      </div>
-      <div class="form-group">
-        <%= email_field_tag :email, nil, :autofocus => true, class: 'form-control rounded input-lg text-center no-border', placeholder: "Enter your email" %>
-      </div>
-      <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded m-b" id="waitlist-submit">Add me to the waitlist!</button>
-    <% end -%>
-      <%= link_to root_path do %>
-        <button class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded hidden" id="waitlist-back">Back to Home</button>
-      <% end %>
-  </div>
-</section>
+  <%= link_to root_path do %>
+    <button class="login-btn" id="waitlist-back">Back to Home</button>
+  <% end %>
+</div>

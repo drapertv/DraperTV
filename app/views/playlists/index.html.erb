@@ -5,7 +5,26 @@
       <%= render partial: "featured_playlists" %>
     </div>
     <div class="regular-series">
-      <h2 class="section-title">SERIES</h2>
+      <div class="video-collection-header">
+        <div class="collections-left">
+          <h2 class="section-title">SERIES</h2>
+        </div>
+        <div class="collections-right">
+          <div class="pages">
+          <% if !@first_page %>
+            <%= link_to url_for(page: @page_back) do %>
+              <%= image_tag "scroll-arrow.png", :class => "page-back" %>
+            <% end %>
+          <% end %>
+            <div class="page-display"><%= @page.to_s.rjust(3, '0') || "000" %> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
+          <% if !@last_page %>
+            <%= link_to url_for(page: @page_next) do %>
+              <%= image_tag "scroll-arrow.png", :class => "page-next" %>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
+      </div>
       <% @playlists.each do |playlist| %>
       <section class="video-section">
         <%= render partial: "show", locals: {playlist: playlist} %>

@@ -5,16 +5,14 @@ class VideosController < ApplicationController
     if current_user.email.nil?
       redirect_to profile_edit_path(current_user), notice: "Enter Your Email Please"
     else
-      @arr = []
       @tags = Video.tag_counts_on(:category)
-      @tags.each do |tag|
-        @arr << tag
-      end
-      if params[:tag]
-        @videos = Video.tagged_with(params[:tag])
-      else
-        @videos = Video.all
-      end
+      @page = params[:page] || 1
+      @page = @page.to_i
+      @page_next = @page + 1
+      @page_back = @page > 1 ? @page - 1 : 1
+      @videos = Video.all.paginate(page: params[:page], per_page: 20)
+      @last_page = @videos.length < 20
+      @first_page = @page < 2
     end
   end
 

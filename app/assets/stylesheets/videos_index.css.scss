@@ -117,6 +117,55 @@
 	padding: 5px;
 }
 
+
+/**  Collection Header ***/
+
+.video-collection-header {
+	@include flexbox;
+	justify-content: space-between;
+	height: 25px;
+	margin-bottom: 20px;
+}
+
+.collections-left, .pages {
+	@include flexbox;
+	align-content: center;
+}
+
+.pages {
+	cursor: pointer;
+}
+
+.page-back {
+	height: 25px;
+	-ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+
+.page-next {
+	height: 25px;
+}
+
+.page-down {
+	height: 25px;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    margin-left: 10px;
+
+}
+
+.page-display {
+	border-radius: 50px;
+	line-height: 25px;
+	height: 25px;
+	margin: 0 15px;
+	border: 1px solid $blue;
+	padding: 0px 10px;
+	color: $blue;
+}
+
+
+
 /********** VIDEOS *************/
 
 #qw-content {

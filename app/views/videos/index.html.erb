@@ -18,7 +18,27 @@
   <div class="section-content">
     <h2 class="section-title">FEATURED</h2>
     <%= render partial: "featured_videos" %>
-    <h2 class="section-title">QUICK WATCHES</h2>
+    <div class="video-collection-header">
+      <div class="collections-left">
+        <h2 class="section-title">QUICK WATCHES</h2>
+      </div>
+      <div class="collections-right">
+        <div class="pages">
+        <% if !@first_page %>
+          <%= link_to url_for(page: @page_back) do %>
+            <%= image_tag "scroll-arrow.png", :class => "page-back" %>
+          <% end %>
+        <% end %>
+          <div class="page-display"><%= @page.to_s.rjust(3, '0') || "000" %> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
+        <% if !@last_page %>
+          <%= link_to url_for(page: @page_next) do %>
+            <%= image_tag "scroll-arrow.png", :class => "page-next" %>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+    
     <ul class="regular-videos">
       <% @videos.each do |video| %>
         <%= render partial: 'video_item_container', locals: {video: video} %>

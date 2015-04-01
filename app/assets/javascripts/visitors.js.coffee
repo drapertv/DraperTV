@@ -5,8 +5,8 @@ Visitors =
 		$('.white-gradient').on 'mouseleave', @stopScrollVideos
 		@scrollSpeed = 2
 		$('.vbox').removeClass('vbox')
-		$('body').on 'ajax:success', '#waitlist-form', @thankUser
-		$('body').on 'submit', '#waitlist-form', @checkForm
+		$('body').on 'ajax:success', '.waitlist-form', @thankUser
+		$('body').on 'submit', '.waitlist-form', @checkForm
 
 	checkForm: ->
 		noName = $('#name').val() == ""
@@ -19,8 +19,8 @@ Visitors =
 
 	thankUser: ->
 		$('#waitlist-submit').text("Thank You! We'll be in touch!")
-		$('#waitlist-form')[0].reset()
-		$('#waitlist-back').show().addClass('animated fadeIn')
+		$('.waitlist-form')[0].reset()
+		$('#waitlist-back').css('display', 'block').addClass('animated fadeIn')
 
 	scrollVideosRight: ->
 		videoList = $(@).parent().find('.series-videos')
