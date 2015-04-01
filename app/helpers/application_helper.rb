@@ -14,4 +14,14 @@ module ApplicationHelper
 	def current_admin
 		current_user.role == "admin"
 	end
+
+	def result_path result
+		if result.class == Playlist
+			video_path(result.first_video)
+		elsif result.class == Video
+			video_path(result)
+		else
+			playlist_challenge_path(result.playlist, result)
+		end
+	end
 end

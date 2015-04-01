@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   mount_uploader :avatar, AvatarUploader
   has_many :authorizations
+  has_many :searches
   acts_as_voter
   attr_accessor :stripe_token, :coupon
   after_invitation_accepted :set_role_for_invitee

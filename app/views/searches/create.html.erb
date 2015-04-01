@@ -1,0 +1,58 @@
+<div id="content-container">
+	<div class="section-content">
+		<div class="results-header">
+			<div class="results-header-left">
+				<span id="search-preference"><span>relevant</span><%= image_tag "scroll-arrow.png", :class => "search-sort-arrow" %></span>
+				<span id="results-count"><%= @results.length %> results </span>
+			</div>
+			<div class="results-header-right"></div>
+		</div>
+		<% @results.each do |result| %>
+			<div class="search-result">
+				<% if result.class == Playlist %>
+						<div class="result-pic-container">
+							<%= link_to video_path(result.first_video) do %>
+								<%= image_tag result.vthumbnail, :class => "result-pic" %>
+							<% end %>
+							<div class="result-pic-overlay">
+								<p><%= result.video_count %> Videos</p>
+							</div>
+						</div>
+					<div class="result-info-container">
+						<h3 class="result-title"><%= result.title %></h3>
+						<div class="result-video-list">
+							<% result.videos.each do |video| %>
+								<div class="playlist-video">
+									<p class="playlist-video-title"><%= video.title %></p>
+									<p class="playlist-video-length"><%= "3:59" %></p>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				<% else %>
+						<div class="result-pic-container">
+							<%= link_to result_path(result) do %>
+								<%= image_tag result.vthumbnail, :class => "result-pic" %>
+								<%= image_tag 'play-icon.png', :class => "video-play" %>
+							<% end %>
+						</div>
+					<div class="result-info-container">
+						<h3 class="result-title"><%= result.title %></h3>
+						<div class="result-subinfo">
+							<p class="result-date">Published on <%= result.publish_date %></p>
+							<p class="result-stats"><%= result.view_count %> Views • <%= result.get_upvotes.size %> <%= image_tag 'fav-button.svg', :class => "fav-star" %> </p>
+							<p class="result-description"><%= result.description %></p>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<script>
+	$('#search_terms').val("<%= @terms %>")
+	 $("#content-container").children().each(function() {
+	      $(this).html($(this).html().replace(/<%= @terms %>/gi,"<b><%= @terms %></b>"));
+	  });
+</script>

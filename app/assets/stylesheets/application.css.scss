@@ -22,7 +22,6 @@
  *= require shared/master
  *= require shared/footer
  *= require shared/header
- *= require videos
  *= require visitors_home
  *= require media_queries/visitors_home
  *= require playlists_index
@@ -35,6 +34,7 @@
  *= require comments_index
  *= require favorites_index
  *= require management_invite_corner
+ *= require searches_create
  */
 
 // @import "bootstrap-sprockets";

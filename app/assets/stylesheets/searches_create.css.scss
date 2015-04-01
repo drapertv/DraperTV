@@ -1,0 +1,103 @@
+@import 'shared/variables';
+@import 'shared/mixins';
+
+/******** Results Header ********/
+
+.results-header {
+	@include flexbox;
+	justify-content: space-between;
+	height: 30px;
+	margin-top: 40px;
+	cursor: pointer;
+}
+
+.results-header-left {
+	@include flexbox;
+	align-items: center;
+}
+
+#search-preference {
+	border-radius: 30px;
+	color: $blue;
+	border: 1px solid $blue;
+	height: 30px;
+	padding: 0px 10px;
+	@include flexbox;
+	justify-content: space-between;
+	align-items: center;
+	margin-right: 20px;
+}
+
+#results-count {
+	color: $gray;
+}
+
+.search-sort-arrow {
+	height: 20px;
+	-ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    margin-left: 20px;
+}
+
+
+.search-result {
+	height: 135px;
+	margin: 40px 0px;
+	@include flexbox;
+}
+
+.result-pic-container, .result-pic {
+	height: 100%;
+	width: 240px;
+	position: relative;
+}
+
+.result-pic-container:hover {
+	.video-play {
+		display: block;
+	}
+}
+
+.result-pic-overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	color: white;
+	background: rgba(0,0,0,0.7);
+	height: 40px;
+	p {
+		line-height: 40px;
+		text-align: center;
+	}
+}
+
+.result-info-container {
+	width: calc(100% - 240px);
+	height: 100%;
+	overflow-y: hidden;
+	text-overflow: ellipsis;
+	padding-left: 20px;
+}
+
+.result-title {
+	margin-bottom: 10px;
+}
+
+.result-video-list {
+	max-width: 480px;
+}
+
+.playlist-video {
+	@include flexbox;
+	justify-content: space-between;
+	color: $gray;
+	margin-bottom: 5px;
+}
+
+.result-subinfo {
+	color: $gray;
+	p {
+		margin-bottom: 5px;
+	}
+}

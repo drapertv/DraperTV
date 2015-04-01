@@ -863,53 +863,6 @@ body.container {
   margin-top: -4px;
   vertical-align: middle;
 }
-.nav-primary li > a > i {
-  margin: -10px -10px;
-  line-height: 38px;
-  width: 38px;
-  float: left;
-  margin-right: 5px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.nav-primary li > a > i:before {
-  position: relative;
-  z-index: 2;
-}
-.nav-primary ul.nav > li > a {
-  padding: 9px 20px;
-  position: relative;
-  -webkit-transition: background-color .2s ease-in-out 0s;
-  transition: background-color .2s ease-in-out 0s;
-}
-.no-borders .nav-primary ul.nav > li > a {
-  border-width: 0 !important;
-}
-.nav-primary ul.nav > li > a > .badge {
-  font-size: 11px;
-  padding: 2px 5px 2px 4px;
-  margin-top: 2px;
-}
-.nav-primary ul.nav > li > a > .text-muted {
-  margin: 0 3px;
-}
-.nav-primary ul.nav > li > a.active .text {
-  display: none;
-}
-.nav-primary ul.nav > li > a.active .text-active {
-  display: inline-block !important;
-}
-.nav-primary ul.nav > li li a {
-  font-weight: normal;
-  text-transform: none;
-}
-.nav-primary ul.nav > li.active > ul {
-  display: block;
-}
-.nav-primary ul.nav ul {
-  display: none;
-}
 @media (min-width: 768px) {
   .visible-nav-xs {
     display: none;
@@ -973,25 +926,6 @@ body.container {
   .nav-xs .nav-primary > ul > li:active > a i,
   .nav-xs .nav-primary > ul > li.active > a i {
     margin-top: -50px;
-  }
-  .nav-xs .nav-primary > ul ul {
-    display: none !important;
-    position: absolute;
-    left: 100%;
-    top: 0;
-    z-index: 1050;
-    width: 220px;
-    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-  .nav-xs .nav-primary li:hover > ul,
-  .nav-xs .nav-primary li:focus > ul,
-  .nav-xs .nav-primary li:active > ul {
-    display: block !important;
-  }
-  .nav-xs.nav-xs-right .nav-primary > ul ul {
-    left: auto;
-    right: 100%;
   }
   .nav-xs > .vbox > .header,
   .nav-xs > .vbox > .footer {

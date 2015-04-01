@@ -6,7 +6,7 @@ class Video < ActiveRecord::Base
 
   mount_uploader :vthumbnail, VthumbnailUploader
 
-  delegate :speaker, :profilepic_url, :name, :challenge, to: :playlist
+  delegate :speaker, :profilepic_url, :name, :challenge, :speaker_title, to: :playlist
 
 	def increment_demand user
 		demand_array = [] if demand_array == nil
@@ -40,7 +40,10 @@ class Video < ActiveRecord::Base
 	def increment_view_count
 		current_view_count = view_count
 		update_attributes view_count: view_count + 1
-		
+	end
+
+	def publish_date
+		created_at.strftime("%B %d, %Y")
 	end
 
 # cf_url is http://dSomething.cloudfront.net/path

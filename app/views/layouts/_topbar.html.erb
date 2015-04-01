@@ -1,4 +1,16 @@
 <header id="landing-header">
+  
+  <div class="header-left">
+     <a href="<%= root_path %>"><%= image_tag 'draper-logo.png', :class => "header-item logo" %> </a>
+  </div>
+
+  <div class="header-mid-left no-mobile">
+    <%= form_for Search.new do |f| %>
+      <%= f.text_field :terms, :class => "search-input", placeholder: "Search" %>
+    <% end %>
+  </div>
+
+
   <div class="header-mid-right no-mobile">
     <div class="header-item">
       <%= link_to playlists_path do %>
@@ -17,50 +29,50 @@
     </div>
   </div>
 
-  <div class="header-mid-left no-mobile">
-    <%= form_tag '/search' do %>
-      <%= text_field_tag :search_term, nil, :class => "search-input", placeholder: "Search" %>
-    <% end %>
-  </div>
-
-
-  <div class="header-right no-mobile">
-    <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle bg clear header-item" data-toggle="dropdown">
-          <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-            <%= image_tag current_user.avatar_url(:thumb).to_s %>
-          </span>
-          <%= current_user.name %>
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu animated fadeInRight">
-          <li>
-            <a href="#">
-              Account Type:
-              <%# User.find(current_user.id).roles.first.name.titleize unless User.find(current_user.id).roles.first.nil? %>
-            </a>
-          </li>
-          <li>
-            <span class="arrow top"></span>
-            <%= link_to 'Edit account', edit_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to 'Profile', profile_edit_path(current_user) %>
-          </li>
-          <li>
-          <a href="docs.html">Help</a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-
-  <div class="header-left">
-     <a href="<%= root_path %>"><%= image_tag 'draper-logo.png', :class => "header-item logo" %> </a>
-  </div>
+  <% if current_user %>
+    <div class="header-right no-mobile">
+      <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle bg clear header-item" data-toggle="dropdown">
+            <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+              <%= image_tag current_user.avatar_url(:thumb).to_s %>
+            </span>
+            <%= current_user.name %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu animated fadeInRight">
+            <li>
+              <a href="#">
+                Account Type:
+                <%# User.find(current_user.id).roles.first.name.titleize unless User.find(current_user.id).roles.first.nil? %>
+              </a>
+            </li>
+            <li>
+              <span class="arrow top"></span>
+              <%= link_to 'Edit account', edit_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to 'Profile', profile_edit_path(current_user) %>
+            </li>
+            <li>
+            <a href="docs.html">Help</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="header-right no-mobile">
+      <div class="header-item m-xs green-btn sign-up-btn">
+        <a href="<%= new_user_registration_path %>">Sign Up</a>
+      </div>
+      <div class="header-item m-xs">
+        or <a href="<%= new_user_session_path %>">Log In</a>
+      </div>
+    </div>
+  <% end %>
 </header>

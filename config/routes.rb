@@ -24,7 +24,14 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { :registrations => 'registrations', omniauth_callbacks: "omniauth_callbacks" }
   resources :users
-  resources :videos
+  resources :videos do 
+    resources :comments
+    member do
+      get "favit", to: "videos#favIt"
+    end
+  end
+  
+  resources :searches
   resources :quotes
   resources :favorites, only: [:index]
   get '/favorites/create', to: 'favorites#create', as: 'create_favorite'
@@ -39,16 +46,6 @@ Rails.application.routes.draw do
     get "/users/sign_out" => "devise/sessions#destroy"
   end
 
-  resources :videos do
-    resources :comments
-  end
-
-  resources :videos do
-    member do
-      get "favit", to: "videos#favIt"
-    end
-  end
-
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
   get "/500", :to => "errors#internal_error"
@@ -61,15 +58,13 @@ Rails.application.routes.draw do
   get 'profile/:id', to: 'users#profile', as: :profile
 
 #Management
-get 'invitecorner', to: 'management#invitecorner', via: :invitecorner
+  get 'invitecorner', to: 'management#invitecorner', via: :invitecorner
 # get 'batch_invite', to: 'management#batch_invite', via: :batch_invite
 
-resources :management do
-  collection do
-    post 'batch_invite'
+  resources :management do
+    collection do
+      post 'batch_invite'
+    end
   end
-end
-
-
 
 end

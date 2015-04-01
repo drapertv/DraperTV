@@ -14,34 +14,8 @@
     <%= analytics_init if Rails.env.production? %>
 
   </head>
-  <% if user_signed_in? %>
     <body data-no-turbolink>
-      <section class="vbox">
-        <%= render "layouts/topbar" %>
-        <section>
-          <section class="hbox stretch">
-            <!-- .aside -->
-            <%# render "layouts/aside" %>
-            <!-- /.aside -->
-            <%= yield %>
-          </section>
-        </section>
-      </section>
-
-      <!-- Bootstrap -->
-      <!-- App -->
+      <%= render "layouts/topbar" %>
+      <%= yield %>
     </body>
-  <% else %>
-    <body class="bg-info dker">
-      <section class="vbox">
-        <section>
-          <section class="hbox stretch">
-            <!-- .aside -->
-            <!-- /.aside -->
-            <%= yield %>
-          </section>
-        </section>
-      </section>
-    </body>
-  <% end %>
 </html>

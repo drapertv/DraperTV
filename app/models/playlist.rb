@@ -2,10 +2,15 @@ class Playlist < ActiveRecord::Base
   acts_as_votable
   has_many :challenges
 	delegate :profilepic_url, :name, to: :speaker
+  delegate :vthumbnail, to: :first_video
 
 #Method to update the Array field of the playlist
   def video_ids_raw
     self.video_ids.join("\n,") unless self.video_ids.nil?
+  end
+
+  def first_video
+    videos.first
   end
 
   def video_ids_raw=(values)
@@ -17,6 +22,10 @@ class Playlist < ActiveRecord::Base
   	Video.where('id in (?)', video_ids)
   end
 
+  def video_count
+    videos.count
+  end
+
   def speaker
   	Speaker.find(author_id)
   end
@@ -24,6 +33,15 @@ class Playlist < ActiveRecord::Base
   def challenge
     challenges.first
   end
+
+  def description
+    ""
+  end
+
+  def speaker_title
+    speaker.title
+  end
+
 
 
 
