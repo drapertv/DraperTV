@@ -1,25 +1,15 @@
 <li class="video-item-container <%= video.categories %> ALL">
   <div class="video-img">
-    <% if video.can_be_accessed_by? current_user %>
-       <a href="<%= video_path(video) %>">
+       <%= link_to video_path(video) do %>
           <%= image_tag 'play-icon.png', :class => "video-play" %>
-        </a>
-    <% else %>
-      <%= image_tag 'play-icon.png', :class => "video-play blocked" %>
-      <div class="modal modal-overlay">
-        <div class="modal-content video-modal">
-          <p class="modal-message">This video is video is only available for premium users. Click here to get premium access for $9.99.</p>
-          <p class="btn-primary btn m-t-lg">
-            Get Access
-          </p>
-        </div>
-      </div>
-    <% end %>
-    <span class="section-time"> 3:45 </span>
-    <a href="#"><img src="<%= video.vthumbnail %>"  alt="" class="video-thumbnail"></a>
+          <span class="section-time"> 3:45 </span>
+          <img src="<%= video.vthumbnail %>"  alt="" class="video-thumbnail">
+      <% end %>
   </div>
   <div class="video-info">
-    <a href="#" class="text-ellipsis qwatch-title"><p><%= video.title %></p></a>
+    <%= link_to video_path(video) do %>
+      <p class="text-ellipsis qwatch-title"><%= video.title %></p>
+    <% end %>
     <p class="text-ellipsis video-stats"> <%= video.view_count %> Views • <%= video.get_upvotes.size %>
       <%= image_tag 'fav-button.svg', :class => "fav-star" %>
     </p>

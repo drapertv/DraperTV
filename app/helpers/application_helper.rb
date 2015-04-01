@@ -24,4 +24,17 @@ module ApplicationHelper
 			playlist_challenge_path(result.playlist, result)
 		end
 	end
+
+	def current_page
+		binding.pry
+		if request.request_uri.include?("videos")
+			"videos"
+		elsif request.request_uri.include?("playlists")
+			"playlists"
+		elsif request.request_uri.include?("favorites")
+			"favorites"
+		else
+			""
+		end
+	end
 end

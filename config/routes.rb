@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root :to => 'videos#index', as: :authenticated_root
+    root :to => 'playlists#index', as: :authenticated_root
   end
 
   devise_scope :user do

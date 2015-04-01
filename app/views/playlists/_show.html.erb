@@ -38,7 +38,9 @@
         </a>
         <%= image_tag video.vthumbnail, :class => "video-thumbnail" %>
         <div class="video-info">
-          <a href="#" class="text-ellipsis qwatch-title"><%= video.title %></a>
+          <%= link_to video_path(video) do %>
+            <p class="text-ellipsis qwatch-title"><%= video.title %></p>
+          <% end %>
           <p class="video-stats text-ellipsis"> <%= video.view_count %> Views • <%= video.get_upvotes.size %> 
           <%= image_tag 'fav-button.svg', :class => "fav-star" %></p>
         </div>
