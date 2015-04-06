@@ -16,7 +16,7 @@ class ManagementController < ApplicationController
 	  @emails.each do |email|
 	    User.invite!(:email => email, :bio => current_user.id)
 	  end
-	  #redirect_to appropriate path
+	  redirect_to invitecorner_path
 	end
 
 private

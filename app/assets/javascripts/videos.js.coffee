@@ -26,6 +26,8 @@ Videos =
 
 	highlightTag: ->
 		$(@).toggleClass('active')
+		if !$(@).children('p').hasClass('ALL')
+			$('.ALL').parent().removeClass('active')
 		Videos.filterVideos()
 
 	filterVideos: ->

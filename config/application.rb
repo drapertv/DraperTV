@@ -40,6 +40,7 @@ module DraperTV
         CONFIG.each do |k,v|
             ENV[k.upcase] ||= v
         end
+        config.autoload_paths += %W(#{config.root}/lib)
 
         # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
         # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]

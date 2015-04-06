@@ -11,7 +11,7 @@
 	width: 100%;
 	background: $landing-blue;
 	text-align: center;
-	z-index: 3;
+	z-index: 6;
 }
 #landing-header > * {
 	position: absolute;
@@ -75,4 +75,57 @@
 }
 .header-left {
 	left: 20px;
+}
+
+/*****  Login  ******/
+
+#login {
+	position: relative;
+	display: block;
+}
+
+#login-modal {
+	position: absolute;
+	width: 240px;
+	background: white;
+	border-radius: 5px;
+	padding: 20px;
+	right: 0;
+	display: none;
+	cursor: default;
+}
+
+#login-modal:after {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: -19px;
+  right: 30px;
+  left: auto;
+  content: "";
+  border: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+  display: block;
+}
+
+.login-field {
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid $gray;
+	width: 100%;
+	line-height: 32px;
+	padding: 0px 10px;
+}
+
+.login-btn {
+  border: none;
+  color: white;
+  background: $blue;
+  border-radius: 5px;
+  height: 30px;
+  line-height: 30px;
+}
+
+#forgot-password p {
+	color: $blue;
 }

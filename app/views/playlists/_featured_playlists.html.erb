@@ -17,9 +17,9 @@
 				  <div class="video-img">
 			       <a href="<%= video_path(video) %>">
 			          <%= image_tag 'play-icon.png', :class => "video-play" %>
-			       </a>
-				    <span class="section-time"> 3:45 </span>
-				    <a href="#"><img src="<%= video.vthumbnail %>"  alt="" class="video-thumbnail"></a>
+				      <span class="section-time"> 3:45 </span>
+				      <img src="<%= video.vthumbnail %>"  alt="" class="video-thumbnail">
+				    </a>
 				  </div>
 				  <div class="video-info">
 				    <%= link_to video_path(video) do %>

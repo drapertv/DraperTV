@@ -1,7 +1,9 @@
 <header id="landing-header">
   
   <div class="header-left">
-     <a href="<%= root_path %>"><%= image_tag 'draper-logo.png', :class => "header-item logo" %> </a>
+    <%= link_to root_path do %>
+      <%= image_tag 'draper-logo.png', :class => "header-item logo" %>
+    <% end %>
   </div>
 
   <% if current_user %>
@@ -41,22 +43,12 @@
           </a>
           <ul class="dropdown-menu animated fadeInRight">
             <li>
-              <a href="#">
-                Account Type:
-                <%# User.find(current_user.id).roles.first.name.titleize unless User.find(current_user.id).roles.first.nil? %>
-              </a>
-            </li>
-            <li>
               <span class="arrow top"></span>
               <%= link_to 'Edit account', edit_user_registration_path %>
             </li>
             <li>
               <%= link_to 'Profile', profile_edit_path(current_user) %>
             </li>
-            <li>
-            <a href="docs.html">Help</a>
-            </li>
-            <li class="divider"></li>
             <li>
               <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
             </li>
@@ -66,11 +58,9 @@
     </div>
   <% else %>
     <div class="header-right no-mobile">
-      <div class="header-item m-xs green-btn sign-up-btn">
-        <a href="<%= new_user_registration_path %>">Sign Up</a>
-      </div>
-      <div class="header-item m-xs">
-        or <a href="<%= new_user_session_path %>">Log In</a>
+      <div class="header-item m-xs" id="login">
+        <p id="login-modal-trigger">Log In</p>
+        <%= render partial: "layouts/login_modal" %>
       </div>
     </div>
   <% end %>

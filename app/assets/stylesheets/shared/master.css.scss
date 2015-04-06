@@ -125,5 +125,11 @@ input:focus {outline: none; }
  }
 
  li {
- 	display: initial;
+ 	display: block;
+ }
+
+ /*** Input fields ***/
+
+ .error-field {
+ 	border: 1px solid $red;
  }

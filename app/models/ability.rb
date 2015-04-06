@@ -20,6 +20,7 @@ class Ability
 			can :read, Playlist
 			can :read, Video
 			can :manage, User, :id => user.id
+			can :accept_invite, User
 		end
 	end
 end

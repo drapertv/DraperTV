@@ -44,6 +44,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def accept_invite
+    User.accept_invitation!(user_params)
+    sign_in User.find(params[:id])
+    redirect_to root_path(welcome: true)
+  end
+
   def update_plan
     @user = current_user
 
@@ -81,7 +87,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:invited_by_id, :name, :email, :password, :password_confirmation,:avatar,:remember_me,:bio,:role,:stripe_token, :coupon,:role)
+    params.require(:user).permit(:invitation_token, :invited_by_id, :name, :email, :password, :password_confirmation,:avatar,:remember_me,:bio,:role,:stripe_token, :coupon,:role)
   end
 
 

@@ -255,10 +255,6 @@ a.list-group-item:focus {
   color: #fff !important;
   background-color: #4cb6cb;
 }
-.nav > li > a:hover,
-.nav > li > a:focus {
-  background-color: #edf2f3;
-}
 .nav.nav-sm > li > a {
   padding: 6px 8px;
 }

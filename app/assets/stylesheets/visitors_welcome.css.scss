@@ -1,0 +1,44 @@
+@import 'shared/variables';
+@import 'shared/mixins';
+
+#welcome-container {
+	position: fixed;
+	height: calc(100vh - 50px);
+	width: 100%;
+	background-image: image-url('setup-background.jpg');
+	background-size: cover;
+	top: 50px;
+	z-index: 5;
+	text-align: center;
+	overflow-y: scroll;
+}
+
+.section-content.welcome-content {
+	width: 960px;
+	.info-img {
+		height: 120px;
+	}
+	.info-items {
+		padding-top: 20px;
+	}
+	#sign-up {
+		margin: 40px auto 40px auto;
+	}
+}
+
+.welcome-text {
+	color: rgba(255,255,255,0.4);
+	margin-top: 20px;
+	font-size: 24px;
+}
+
+.welcome-header {
+	margin: 20px 0 40px 0px;
+	color: white;
+	font-size: 32px;
+	font-weight: 600;
+}
+
+.welcome-name {
+	color: white;
+}

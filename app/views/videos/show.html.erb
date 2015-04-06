@@ -43,11 +43,11 @@
                   <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
                 <% end %>
               </div>
-              <div class="centered green-btn series-price">
+<!--               <div class="centered green-btn series-price">
                 <% if Playlist.where(:author_id => @video.author_id).present? %>
                   Full Series <span class="bold">$<%= Playlist.where(:author_id => @video.author_id).first.price %></span>
                 <% end %>
-              </div>
+              </div> -->
             </div>
             <div class="video-item reded challenge-info">
               <i class="fa fa-video-camera fa-2x text-danger"></i>
@@ -58,8 +58,10 @@
               <% else %>
                 Challenge: No challenge yet.
               <% end %>
-              <%= link_to(create_favorite_path(model_id: @video.challenge, model_name: "Challenge"), remote: true, :class => "fav-link #{ "selected" if current_user.voted_for? @video.challenge}") do %>
-                <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
+              <% if @video.challenge %>
+                <%= link_to(create_favorite_path(model_id: @video.challenge, model_name: "Challenge"), remote: true, :class => "fav-link #{ "selected" if current_user.voted_for? @video.challenge}") do %>
+                  <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
+                <% end %>
               <% end %>
             </div>
               <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
@@ -74,10 +76,15 @@
                         <span class="video-id">
                           <%= v %>
                         </span>
-                        <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
-                         <p class="video-list-title">
-                          <a href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
-                        </p>
+                        <%= link_to video_path(video) do %>
+                          <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
+                        <% end %>
+                        <%= link_to video_path(video) do %>
+                          <p class="video-list-title">
+                            <%= truncate(video.title, length: 70, separator: ' ') %>
+                          </p>
+                        <% end %>
+                        
                         <%= link_to(create_favorite_path(model_id: v, model_name: "Video"), remote: true, :class => "fav-link #{ "selected" if current_user.voted_for? video}") do %>
                           <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
                         <% end %>

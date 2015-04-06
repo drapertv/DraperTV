@@ -1,25 +1,70 @@
-<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
-  <div class="container aside-xl">
-    <a class="navbar-brand block" href="<%= root_path %>"><span class="h1 font-bold">DraperTV</span></a>
-    <section class="m-b-lg">
-				<h2><%= t 'devise.invitations.edit.header' %></h2>
-				<%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put, :class => 'form-vertical',:role => 'form'  } do |f| %>
+<div id="content-container">
+	<div id="invite-accept-container">
+    <div id="blue-gradient"></div>
+    <%= form_for resource, html: {id: 'invite-accept-form'}, :url => "/users/#{resource.id}/accept_invite" do |f| %>
+  	  <div class="profile-pic-container">
+        <%= image_tag "profile-pic.svg", :class => "invite-accept-pic svg" %>
+        <%= image_tag "plus.svg", :class => "invite-accept-plus" %>
+        <img src="" class="invite-accept-pic hidden" id="avatar-preview"></img>
+        <%= f.file_field :avatar,  :class => "avatar-field"  %>
+      </div>
+      <%= f.text_field :name, class: 'invite-accept-field shortened invite-name', placeholder: "Name" %>
+      <h1 class="invite-title">Welcome to DraperTV</h1>
+      <h2 class="invite-subtitle">Let's get you started!</h2>
 
-				  <%= devise_error_messages! %>
-				  <%= f.hidden_field :invitation_token %>
-				   <div class="form-group">
-            <%= f.input :password, class: 'form-control rounded input-lg text-center no-border' %>
-          </div>
-				   <div class="form-group">
-            <%= f.input :password_confirmation, class: 'form-control rounded input-lg text-center no-border' %>
-          </div>
-
-				  <%= f.submit t("devise.invitations.edit.submit_button"), :class => "btn btn-primary" %>
-
-				  <% end %>
-      </section>
+      <%= f.hidden_field :invitation_token %>
+      <%= f.email_field :email, class: 'invite-accept-field invite-email', placeholder: "Email" %>
+      <%= f.password_field :password, class: 'invite-accept-field invite-password', placeholder: "Password" %>
+      <%= f.password_field :password_confirmation, class: 'invite-accept-field invite-password-conf', placeholder: "Confirm Password" %>
+  	  <%= f.submit "Done!", :class => "submit-invite-accept" %>
+      <%= image_tag "check.svg", :class => "email-check hidden" %>
+      <p class="password-error hidden">Must at least 8 characters</p>
+      <p class="missing-field-error hidden">* Whoops, you're missing some info.</p>
+  	<% end %>
+  </div>
+</div>
 
 
 
-    </div>
-  </section>
+<script>
+  $('img.svg').each(function(){
+    var $img = $(this);
+    var imgID = $img.attr('id');
+    var imgClass = $img.attr('class');
+    var imgURL = $img.attr('src');
+    $.get(imgURL, function(data) {
+        // Get the SVG tag, ignore the rest
+        var $svg = $(data).find('svg');
+        // Add replaced image's ID to the new SVG
+        if(typeof imgID !== 'undefined') {
+            $svg = $svg.attr('id', imgID);
+        }
+        // Add replaced image's classes to the new SVG
+        if(typeof imgClass !== 'undefined') {
+            $svg = $svg.attr('class', imgClass+' replaced-svg');
+        }
+        // Remove any invalid XML tags as per http://validator.w3.org
+        $svg = $svg.removeAttr('xmlns:a');
+        // Replace image with new SVG
+        $img.replaceWith($svg);
+        $img.show()
+    }, 'xml');
+  });
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#avatar-preview').attr('src', e.target.result).show();
+          $('.invite-accept-plus, .invite-accept-pic.svg').hide()
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#user_avatar").change(function(){
+    readURL(this);
+  });
+
+</script>

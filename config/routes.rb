@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: { :registrations => 'registrations', omniauth_callbacks: "omniauth_callbacks" }
+  patch '/users/:id/accept_invite', to: "users#accept_invite", as: "accept_invite"
   resources :users
   resources :videos do 
     resources :comments
@@ -58,7 +59,7 @@ Rails.application.routes.draw do
   get 'profile/:id', to: 'users#profile', as: :profile
 
 #Management
-  get 'invitecorner', to: 'management#invitecorner', via: :invitecorner
+  get 'invitecorner', to: 'management#invitecorner', via: :invitecorner, as: 'invitecorner'
 # get 'batch_invite', to: 'management#batch_invite', via: :batch_invite
 
   resources :management do

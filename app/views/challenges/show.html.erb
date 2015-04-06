@@ -1,110 +1,115 @@
-<div id="video-container">
-  <div class="section-left">
-    <%= image_tag 'challenge-mock.jpg', id: "challenge-placeholder-pic" %>
-    <div class="video-main-info">
-      <div class="video-title"><%= @challenge.title %></div>
-      <div class="video-actions">
-        <span class="video-view-count">
-          <%= @challenge.view_count %> Views •
-          <%= link_to(favit_video_path(@video)) do %>
-            <i class="fa fa-star"></i>
-          <% end %>
-        </span>
-        <span class="video-category"><%= @video.category.first.name %></span>
-      </div>
-      <div class="video-speaker-info">
-        <div class="">
-          <div class="video-speaker-name">About</div>
-          <%= @challenge.description %>
+<% if current_admin %>
+
+  <div id="video-container">
+    <div class="section-left">
+      <%= image_tag 'challenge-mock.jpg', id: "challenge-placeholder-pic" %>
+      <div class="video-main-info">
+        <div class="video-title"><%= @challenge.title %></div>
+        <div class="video-actions">
+          <span class="video-view-count">
+            <%= @challenge.view_count %> Views •
+            <%= link_to(favit_video_path(@video)) do %>
+              <i class="fa fa-star"></i>
+            <% end %>
+          </span>
+          <span class="video-category"><%= @video.category.first.name %></span>
         </div>
+        <div class="video-speaker-info">
+          <div class="">
+            <div class="video-speaker-name">About</div>
+            <%= @challenge.description %>
+          </div>
+        </div>
+          <br>
       </div>
-        <br>
-    </div>
-    <div id="comments-container">
-      <div class="comments-header">Submissions</div>
-      <div id="main-comment-form">
-        <%= render partial: "comments/form", locals: {parent_id: nil} %>
+      <div id="comments-container">
+        <div class="comments-header">Submissions</div>
+        <div id="main-comment-form">
+          <%= render partial: "comments/form", locals: {parent_id: nil} %>
+        </div>
+        <%= render "comments/comments" %>
       </div>
-      <%= render "comments/comments" %>
+      <%= render partial: "layouts/footer" %>
     </div>
-    <%= render partial: "layouts/footer" %>
-  </div>
-  <div class="section-right">
-    <header class="additional-video-list">
-      <section class="videos-panel blacke">
-          <div class="video-item playlist-info">
-            <div class="video-info-row">
-              <a href="">
+    <div class="section-right">
+      <header class="additional-video-list">
+        <section class="videos-panel blacke">
+            <div class="video-item playlist-info">
+              <div class="video-info-row">
+                <a href="">
+                  <% if Playlist.where(:author_id => @video.author_id).present? %>
+                    <div class="playlist-title">
+                      <%= Playlist.where(:author_id => @video.author_id).first.title %>
+                    </div>
+                  <% end %>
+                </a>
+                <div class="star">
+                  <i class="fa fa-star fa-lg"></i>
+                </div>
+              </div>
+              <div class="centered green-btn series-price">
                 <% if Playlist.where(:author_id => @video.author_id).present? %>
-                  <div class="playlist-title">
-                    <%= Playlist.where(:author_id => @video.author_id).first.title %>
-                  </div>
+                  Full Series <span class="bold">$<%= Playlist.where(:author_id => @video.author_id).first.price %></span>
                 <% end %>
-              </a>
-              <div class="star">
-                <i class="fa fa-star fa-lg"></i>
               </div>
             </div>
-            <div class="centered green-btn series-price">
-              <% if Playlist.where(:author_id => @video.author_id).present? %>
-                Full Series <span class="bold">$<%= Playlist.where(:author_id => @video.author_id).first.price %></span>
+            <div class="video-item reded challenge-info">
+              <i class="fa fa-video-camera fa-2x text-danger"></i>
+              <%= link_to playlist_challenge_path(@video.playlist, @video.challenge) do %>
+                Challenge: Placeholder Name for Video Challenge
               <% end %>
+              <i class="fa fa-star fa-lg text-danger"></i>
             </div>
-          </div>
-          <div class="video-item reded challenge-info">
-            <i class="fa fa-video-camera fa-2x text-danger"></i>
-            <%= link_to playlist_challenge_path(@video.playlist, @video.challenge) do %>
-              Challenge: Placeholder Name for Video Challenge
-            <% end %>
-            <i class="fa fa-star fa-lg text-danger"></i>
-          </div>
-            <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
-          <% if Playlist.where(:author_id => @video.author_id).present? %>
-            <% playlist = Playlist.where(:author_id => @video.author_id).first %>
-            <div class="video-list">
-              <% playlist.video_ids.each do |v| %>
-                <% if Video.where(:id => v).present? %>
-                  <% video = Video.where(:id => v).first %>
-                  <% if @video.id == video.id %>
-                    <div class="video-item blacked">
-                  <% else %>
-                    <div class="video-item">
-                  <% end %>
-                      <div class="video-info-row">
-                        <span class="video-id">
-                          <%= v %>
-                        </span>
-                        <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
-                         <div class="video-list-title">
-                          <a href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
+              <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
+            <% if Playlist.where(:author_id => @video.author_id).present? %>
+              <% playlist = Playlist.where(:author_id => @video.author_id).first %>
+              <div class="video-list">
+                <% playlist.video_ids.each do |v| %>
+                  <% if Video.where(:id => v).present? %>
+                    <% video = Video.where(:id => v).first %>
+                    <% if @video.id == video.id %>
+                      <div class="video-item blacked">
+                    <% else %>
+                      <div class="video-item">
+                    <% end %>
+                        <div class="video-info-row">
+                          <span class="video-id">
+                            <%= v %>
+                          </span>
+                          <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
+                           <div class="video-list-title">
+                            <a href="<%= video_path(video) %>"><%= truncate(video.title, length: 70, separator: ' ') %></a>
+                          </div>
+                          <i class="fa fa-star fa-lg stared"></i>
                         </div>
-                        <i class="fa fa-star fa-lg stared"></i>
                       </div>
-                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
+            <% end %>
+        </section>
+      </header>
+      <div id="suggested-videos">
+        <div class="related-header">TOP SUBMISSIONS</div>
+        <% @video.suggested.each do |video| %>
+          <div class="suggested-video">
+            <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
+            <div class="suggested-video-info">
+              <div class="suggested-video-title">
+                <%= video.title %>
+              </div>
+               <span class="video-view-count">
+                <%= video.view_count %> Views
+                <%= link_to(favit_video_path(video)) do %>
+                  <i class="fa fa-star"></i>
+                <% end %>
+              </span>
             </div>
-          <% end %>
-      </section>
-    </header>
-    <div id="suggested-videos">
-      <div class="related-header">TOP SUBMISSIONS</div>
-      <% @video.suggested.each do |video| %>
-        <div class="suggested-video">
-          <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
-          <div class="suggested-video-info">
-            <div class="suggested-video-title">
-              <%= video.title %>
-            </div>
-             <span class="video-view-count">
-              <%= video.view_count %> Views
-              <%= link_to(favit_video_path(video)) do %>
-                <i class="fa fa-star"></i>
-              <% end %>
-            </span>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <h1>Coming Soon!</h1>
+<% end %>

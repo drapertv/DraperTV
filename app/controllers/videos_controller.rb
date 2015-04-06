@@ -17,9 +17,6 @@ class VideosController < ApplicationController
   end
 
   def show
-    if !@video.can_be_accessed_by?(current_user)
-      redirect_to root_path and return
-    end
     @video = Video.find(params[:id])
     @commentable = @video
     @comments = @commentable.comments.where(ancestry: nil).order('created_at ASC')
