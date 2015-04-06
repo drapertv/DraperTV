@@ -58,6 +58,9 @@
     </div>
   <% else %>
     <div class="header-right no-mobile">
+      <div class="header-item m-xs green-btn sign-up-btn">
+        <a href="<%= new_user_registration_path %>">Sign Up</a>
+      </div>
       <div class="header-item m-xs" id="login">
         <p id="login-modal-trigger">Log In</p>
         <%= render partial: "layouts/login_modal" %>

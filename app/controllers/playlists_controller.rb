@@ -2,9 +2,11 @@ class PlaylistsController < InheritedResources::Base
   load_and_authorize_resource
 
   def index
-    # binding.pry
+    if !current_user
+      redirect_to root_path and return
+    end
     if current_user.email.nil?
-      redirect_to profile_edit_path(current_user), notice: "Enter Your Email Please"
+      redirect_to profile_edit_path(current_user), notice: "Enter Your Email Please" 
     else
       @welcome = params[:welcome] == "true"
       @page = params[:page] || 1

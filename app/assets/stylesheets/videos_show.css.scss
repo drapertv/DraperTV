@@ -71,6 +71,7 @@
 	.challenge-info {
 		background: $red;
 		opacity: 0.5;
+		align-items: center;
 		.fav-star {
 			path {
 				fill: $star-red;
@@ -98,6 +99,11 @@
 		path {
 			fill: $yellow;
 		}
+	}
+	.vid-chal-icon {
+		  transform: translateX(-11px);
+		  height: 40px;
+		  width: 30px;
 	}
 }
 

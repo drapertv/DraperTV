@@ -17,7 +17,7 @@ speaker = Speaker.create name: "Mr. Speaker Name", email: "speaker@example.com"
 30.times {
 	v = Video.create title: Faker::Lorem.sentence, author_id: Speaker.first.id, description: Faker::Lorem.paragraph, value: 0, url: "r700iP4V_VM"
 	v.category_list.add "fun"
-	v.saves
+	v.save
 }
 
 Playlist.create title: Faker::Lorem.sentence, author_id: User.first.id, video_ids: Video.all.pluck(:id)[0..9]

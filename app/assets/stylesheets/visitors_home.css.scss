@@ -17,6 +17,20 @@
 	margin: 0 auto;
 }
 
+/**** Landing Container ****/
+
+.landing-container {
+	.series-content {
+		position: relative;
+	}
+	.section-content .white-gradient {
+		top: 0;
+	}
+	.series-content .scroll-arrow {
+		top: 50px;
+	}
+}
+
 /*************** TAGLINE ***************/
 #tagline-section {
 	background: $landing-gray;
@@ -147,6 +161,17 @@ body {
 		width: 100%;
 	}
 }
+}
+
+/****  Waitlist ****/
+
+.waitlist-form {
+	text-align: center;
+	width: 600px;
+	margin: 40px auto;
+	#form-header {
+		margin-bottom: 20px;
+	}
 }
 
 

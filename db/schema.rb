@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331174142) do
+ActiveRecord::Schema.define(version: 20150406214856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,8 +89,9 @@ ActiveRecord::Schema.define(version: 20150331174142) do
     t.integer  "challange_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "video_ids",    array: true
+    t.integer  "video_ids",          array: true
     t.integer  "author_id"
+    t.boolean  "show_on_front_page"
   end
 
   create_table "quotes", force: true do |t|

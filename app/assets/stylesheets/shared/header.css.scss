@@ -81,7 +81,10 @@
 
 #login {
 	position: relative;
-	display: block;
+}
+
+#login-modal-trigger {
+	display: inline;
 }
 
 #login-modal {

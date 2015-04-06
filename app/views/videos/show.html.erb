@@ -21,13 +21,15 @@
           </div>
         </div>
       </div>
-      <div id="comments-container">
-        <div class="comments-header">COMMENTS</div>
-        <div id="main-comment-form">
-          <%= render partial: "comments/form", locals: {parent_id: nil} %>
+        <div id="comments-container">
+          <div class="comments-header">COMMENTS</div>
+          <% if current_user %>
+            <div id="main-comment-form">
+              <%= render partial: "comments/form", locals: {parent_id: nil} %>
+            </div>
+          <% end %>
+          <%= render partial: "comments/comments" %>
         </div>
-        <%= render partial: "comments/comments" %>
-      </div>
     </div>
     <div class="section-right">
       <header class="additional-video-list">
@@ -39,27 +41,27 @@
                     <%= Playlist.where(:author_id => @video.author_id).first.title %>
                   </p>
                 <% end %>
-                <%= link_to(create_favorite_path(model_id: @video.playlist.id, model_name: "Playlist"), remote: true, :class => "fav-link #{ "selected" if current_user.voted_for? @video.playlist}") do %>
+                <%= link_to(create_favorite_path(model_id: @video.playlist.id, model_name: "Playlist"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(@video.playlist)}") do %>
                   <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
                 <% end %>
               </div>
-<!--               <div class="centered green-btn series-price">
+<!--             <div class="centered green-btn series-price">
                 <% if Playlist.where(:author_id => @video.author_id).present? %>
                   Full Series <span class="bold">$<%= Playlist.where(:author_id => @video.author_id).first.price %></span>
                 <% end %>
               </div> -->
             </div>
             <div class="video-item reded challenge-info">
-              <i class="fa fa-video-camera fa-2x text-danger"></i>
+              <%= image_tag 'vid-chal-icon.svg', :class => 'vid-chal-icon' %>
               <% if @video.challenge %>
                 <%= link_to playlist_challenge_path(@video.playlist, @video.challenge), :class => "challenge-name" do %>
                   Challenge: Placeholder Name for Video Challenge
                 <% end %>
               <% else %>
-                Challenge: No challenge yet.
+                <p>Challenge: No challenge yet.</p>
               <% end %>
               <% if @video.challenge %>
-                <%= link_to(create_favorite_path(model_id: @video.challenge, model_name: "Challenge"), remote: true, :class => "fav-link #{ "selected" if current_user.voted_for? @video.challenge}") do %>
+                <%= link_to(create_favorite_path(model_id: @video.challenge, model_name: "Challenge"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(@video.challenge)}") do %>
                   <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
                 <% end %>
               <% end %>
@@ -85,7 +87,7 @@
                           </p>
                         <% end %>
                         
-                        <%= link_to(create_favorite_path(model_id: v, model_name: "Video"), remote: true, :class => "fav-link #{ "selected" if current_user.voted_for? video}") do %>
+                        <%= link_to(create_favorite_path(model_id: v, model_name: "Video"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(video)}") do %>
                           <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
                         <% end %>
                       </div>

@@ -42,6 +42,10 @@ class Playlist < ActiveRecord::Base
     speaker.title
   end
 
+  def self.front_page
+    where(show_on_front_page: true)
+  end
+
 
 
 
