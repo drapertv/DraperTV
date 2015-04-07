@@ -94,6 +94,7 @@ box-sizing: content-box;
 	width: calc(100% - 140px);
 	white-space: nowrap;
 	overflow-x: scroll;
+	z-index: 0;
 }
 
 .landing-container .section-content .white-gradient {
