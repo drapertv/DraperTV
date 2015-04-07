@@ -18,7 +18,7 @@
       <%= f.password_field :password_confirmation, class: 'invite-accept-field invite-password-conf', placeholder: "Confirm Password" %>
   	  <%= f.submit "Done!", :class => "submit-invite-accept" %>
       <%= image_tag "check.svg", :class => "email-check hidden" %>
-      <p class="password-error hidden">Must at least 8 characters</p>
+      <p class="password-error hidden">Must be at least 8 characters</p>
       <p class="missing-field-error hidden">* Whoops, you're missing some info.</p>
   	<% end %>
   </div>

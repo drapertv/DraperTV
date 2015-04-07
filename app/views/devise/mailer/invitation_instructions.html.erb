@@ -29,7 +29,7 @@
                             <td align="center" valign="top" bgcolor="#246db4" style="font-family:proxima nova, helvetica neue, helvetica; font-size:16px;">
                                 <div style="font-family:proxima nova, helvetica neue, helvetica; font-size:16px; color:white; line-height:1; margin:0 0 0 0;">Click on your personal link below to activate your invite:</div>
                                 <div style="line-height:1; margin:0 0 0 0;">&nbsp;</div>
-                               <%= link_to accept_invitation_url(@resource, :invitation_token => @token),accept_invitation_url(@resource, :invitation_token => @token) %>
+                               <%= link_to accept_invitation_url(@resource, :invitation_token => @token),accept_invitation_url(@resource, :invitation_token => @token), {style: "color:#96D9F0; line-height:1.1; word-wrap:break-word;"} %>
                             </td>
                         </tr>
                         <tr>
