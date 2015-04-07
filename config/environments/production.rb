@@ -68,7 +68,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.mandrillapp.com",
     port: 587,
     domain: Rails.application.secrets.domain_name,
     authentication: "plain",
@@ -87,6 +87,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_options = {from: 'support@drapertv.com'}
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false

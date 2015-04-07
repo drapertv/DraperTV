@@ -22,7 +22,7 @@ class Video < ActiveRecord::Base
 	end
 
 	def playlist
-		Playlist.where(author_id: author_id).first
+		Playlist.where(author_id: author_id).first || Playlist.first
 	end
 
 	def suggested
