@@ -70,7 +70,7 @@
             <% if Playlist.where(:author_id => @video.author_id).present? %>
               <% playlist = Playlist.where(:author_id => @video.author_id).first %>
               <div class="video-list">
-                <% playlist.video_ids.each do |v| %>
+                <% playlist.video_ids[0..5].each do |v| %>
                   <% if Video.where(:id => v).present? %>
                     <% video = Video.where(:id => v).first %>
                     <div class="video-item <%= 'current' if @video.id == video.id %>">

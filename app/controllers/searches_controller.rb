@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
     @page = @page.to_i
   	@page_next = @page + 1
   	@page_back = @page > 1 ? @page - 1 : 1
-  	@results = Search.search_for(@terms)
+  	@results = Search.search_for(@terms).uniq
     @count = @results.count
     @results = @results.paginate(page: @page, per_page: 7)
   	@last_page = @results.length < 7
@@ -20,7 +20,7 @@ class SearchesController < ApplicationController
     @page = @page.to_i
   	@page_next = @page + 1
   	@page_back = @page > 1 ? @page - 1 : 1
-  	@results = Search.search_for(@terms)
+  	@results = Search.search_for(@terms).uniq
     @count = @results.count
     @results = @results.paginate(page: @page, per_page: 7)
 	  @last_page = @results.length < 7
