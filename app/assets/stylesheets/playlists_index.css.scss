@@ -86,7 +86,6 @@ box-sizing: content-box;
 
 .series-content {
 	height: auto;
-	overflow-y: hidden;
 	@include flexbox;
 }
 

@@ -1,49 +1,63 @@
-<section class="vbox">
-  <section id="content">
-    <div class="row">
-      <div class="col-sm-6 centered">
-        <section class="panel panel-default">
-          <header class="panel-heading font-bold">Profile Edit</header>
-          <div class="panel-body">
-            <%= simple_form_for(@user) do |f| %>
-              <%= f.error_notification %>
-              <div class="form-actions pull-right">
-                <button class="btn btn-sm btn-default" type="submit">Update</button>
-              </div>
-              <div class="wrapper">
-                <div class="text-center m-b m-t">
-                  <a class="thumb-lg" href="#">
-                    <%= image_tag current_user.avatar_url(:thumb).to_s, class: "img-circle" %>
-                  </a>
-                  <div>
-                    <div class="h3 m-t-xs m-b-xs">
-                    </div>
-                    <small class="text-muted">Profile Picture
-                      <%= f.file_field :avatar,  label: false, input_html: { class: 'form-control' }  %>
-                    </small>
-                  </div>
-                </div>
-                <div class="btn-group btn-group-justified m-b">
-                  <a class="btn btn-success btn-rounded">
-                    <span class="text">
-                      <%= f.email_field :email, class: 'form-control rounded input-lg text-center no-border', placeholder: "Email" %>
-                    </span>
-                    <span class="text-active">
-                      <i class="fa fa-eye"></i>
-                      Following
-                    </span>
-                  </a>
-                  <a class="btn btn-dark btn-rounded">
-                    <%= f.text_field :name, class: 'form-control rounded input-lg text-center no-border', placeholder: "Name" %>
-                  </a>
-                </div>
-
-              </div>
-            <% end %>
-          </div>
-        </section>
+<div id="content-container">
+  <div id="invite-accept-container">
+    <div id="blue-gradient"></div>
+    <%= form_for @user, html: {id: 'invite-accept-form', :class => "user-edit"}  do |f| %>
+      <h1 class="invite-title">Edit your profile</h1>
+      <div class="profile-pic-container">
+        <%= image_tag "profile-pic.svg", :class => "invite-accept-pic svg" %>
+        <%= image_tag "plus.svg", :class => "invite-accept-plus" %>
+        <img src="" class="invite-accept-pic hidden" id="avatar-preview"></img>
+        <%= f.file_field :avatar,  :class => "avatar-field"  %>
       </div>
-    </div>
-    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
-  </section>
-</section>
+      <%= f.text_field :name, value: @user.name, class: 'invite-accept-field shortened invite-name', placeholder: "Name" %>
+      <%= f.hidden_field :invitation_token %>
+      <%= f.email_field :email, class: 'invite-accept-field invite-email', placeholder: "Email" %>
+      <%= f.submit "Save", :class => "submit-invite-accept" %>
+      <p class="password-error hidden">Must at least 8 characters</p>
+      <p class="missing-field-error hidden">* Whoops, you're missing some info.</p>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $('img.svg').each(function(){
+    var $img = $(this);
+    var imgID = $img.attr('id');
+    var imgClass = $img.attr('class');
+    var imgURL = $img.attr('src');
+    $.get(imgURL, function(data) {
+        // Get the SVG tag, ignore the rest
+        var $svg = $(data).find('svg');
+        // Add replaced image's ID to the new SVG
+        if(typeof imgID !== 'undefined') {
+            $svg = $svg.attr('id', imgID);
+        }
+        // Add replaced image's classes to the new SVG
+        if(typeof imgClass !== 'undefined') {
+            $svg = $svg.attr('class', imgClass+' replaced-svg');
+        }
+        // Remove any invalid XML tags as per http://validator.w3.org
+        $svg = $svg.removeAttr('xmlns:a');
+        // Replace image with new SVG
+        $img.replaceWith($svg);
+        $img.show()
+    }, 'xml');
+  });
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#avatar-preview').attr('src', e.target.result).show();
+          $('.invite-accept-plus, .invite-accept-pic.svg').hide()
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#user_avatar").change(function(){
+    readURL(this);
+  });
+
+</script>

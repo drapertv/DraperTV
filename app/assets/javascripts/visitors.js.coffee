@@ -9,7 +9,7 @@ Visitors =
 		$('body').on 'submit', '.waitlist-form', @checkForm
 		$('body').on 'click', '#login', @showLoginModal
 		$('body').on 'click', @hideLoginModal
-		$('body').on 'submit', '#invite-accept-form', @checkInviteAcceptForm
+		$('body').on 'submit', '#invite-accept-form:not(.user-edit)', @checkInviteAcceptForm
 		$('body').on 'submit', '#login-form', @checkLoginForm
 		$('body').on 'keydown', '.invite-email', @verifyEmail
 		$('.email-check').show() if $('.invite-email').length > 0 && $('.invite-email').val().match(/.+\@.+\..+/)
