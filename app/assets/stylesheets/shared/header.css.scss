@@ -175,3 +175,37 @@
 #forgot-password p {
 	color: $blue;
 }
+//
+
+
+.mobile-menu-icon {
+	  height: 30px;
+	  width: 30px;
+	  position: absolute;
+	  right: 10px;
+	  top: 10px;
+	  * {
+	  	fill: white;
+	  }
+}
+
+#landing-header .mobile-menu {
+	  position: fixed;
+	  width: 30vh;
+	  height: 100vh;
+	  background: white;
+	  right: 0;
+	  top: 50px;
+	  display: none;
+	  box-shadow: 2px 0px 5px black;
+	  .mobile-menu-item {
+	  	height: 30px;
+	  	padding: 20px 10px;
+	  	text-align: left;
+	  	a {
+	  		font-size: 25px;
+	  		color: $blue;
+	  	}
+	  }
+}
+

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   has_many :authorizations
   has_many :searches
+  has_many :comment, dependent: :destroy
   acts_as_voter
   attr_accessor :stripe_token, :coupon
   after_invitation_accepted :set_role_for_invitee

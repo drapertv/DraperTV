@@ -1,8 +1,9 @@
 Visitors =
 	init: ->
-		$('.white-gradient.right').on 'mouseenter', @scrollVideosRight
-		$('.white-gradient.left').on 'mouseenter', @scrollVideosLeft
-		$('.series-videos').scroll @showScrollBack
+		@mobile = $(window).width() < 1024
+		$('.white-gradient.right').on 'mouseenter', @scrollVideosRight if !@mobile
+		$('.white-gradient.left').on 'mouseenter', @scrollVideosLeft 
+		$('.series-videos').scroll @showScrollBack if !@mobile
 		$('.white-gradient').on 'mouseleave', @stopScrollVideos
 		@scrollSpeed = 2
 		$('.vbox').removeClass('vbox')
@@ -15,9 +16,21 @@ Visitors =
 		$('body').on 'keydown', '.invite-email', @verifyEmail
 		$('.email-check').show() if $('.invite-email').length > 0 && $('.invite-email').val().match(/.+\@.+\..+/)
 		$('body').on 'click', '.welcome-close', @closeWelcome
+		$('body').on 'click', '.mobile-menu-icon', @openMobileMenu
+		$('.content-container, .playlist-container').on 'click', @closeMobileMenu
+
+	closeMobileMenu: (e) ->
+		console.log e.target
+		# console.log !$(e.target).hasClass('mobile-menu-icon')
+		# console.log !$(e.target).hasClass('mobile-menu-icon') && !$(e.target).parents('.mobile-menu').length > 0 && 
+		# if !$(e.target).hasClass('mobile-menu-icon') && !$(e.target).parents('.mobile-menu').length > 0
+		$('.mobile-menu').hide()
+
+	openMobileMenu: ->
+		$('.mobile-menu').show()
+
 
 	showScrollBack: ->
-		console.log $(@).scrollLeft()
 		if $(@).scrollLeft() > 5
 			$(@).parents('.series-content').find('.white-gradient.left').show()
 			$(@).parents('.series-content').find('.scroll-arrow.left').show()

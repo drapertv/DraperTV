@@ -148,7 +148,8 @@ body {
 		height: 200px;
 	}
 	#tagline {
-		top: 60px;
+		font-size: 25px;
+  		line-height: 200px;
 	}
 /********** VIDEOS *************/
 	.series-title {
@@ -169,6 +170,9 @@ body {
 	.info-item {
 		display: block;
 		width: 100%;
+	}
+	.info-item:nth-child(2n) {
+		margin: 20px 0px;
 	}
 }
 }

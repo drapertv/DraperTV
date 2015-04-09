@@ -6,7 +6,7 @@ Videos =
 		$('body').on 'click', '.videos-container .video-header-item', @highlightTag
 		$('body').on 'click', '.favorites-header .video-header-item', @highlightVideoType
 		$('body').on 'ajax:success', '.fav-link', @updateLikeCount
-		@align()
+		@align() if $(window).width() > 400
 
 	updateLikeCount: (event, data) ->
 		$(@).parent().find('.video-like-count').text(data.like_count)

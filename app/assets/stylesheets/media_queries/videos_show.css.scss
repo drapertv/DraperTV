@@ -2,9 +2,7 @@
 @import '../shared/mixins';
 
 
-@media (max-width: 1240px ) {
 
-}
 
 @media (max-width: 768px) {
 	body {
@@ -23,8 +21,18 @@
 		.video-speaker {
 			display: none;
 		}
-		#video-header {
+		#video-header:not(.favorites-header) {
 			display: none;
+		}
+	}
+}
+
+@media (max-width: 400px ) {
+	body {
+		.videos-container {
+			.section-content {
+				width: 240px;
+			}
 		}
 	}
 }
