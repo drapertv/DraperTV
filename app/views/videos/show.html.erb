@@ -24,15 +24,17 @@
           </div>
         </div>
       </div>
-        <div id="comments-container">
-          <div class="comments-header">COMMENTS</div>
-          <% if current_user %>
-            <div id="main-comment-form">
-              <%= render partial: "comments/form", locals: {parent_id: nil} %>
-            </div>
-          <% end %>
-          <%= render partial: "comments/comments" %>
-        </div>
+        <% if current_user %>
+          <div id="comments-container">
+            <div class="comments-header">COMMENTS</div>
+            <% if current_user %>
+              <div id="main-comment-form">
+                <%= render partial: "comments/form", locals: {parent_id: nil} %>
+              </div>
+            <% end %>
+            <%= render partial: "comments/comments" %>
+          </div>
+        <% end %>
     </div>
     <div class="section-right">
       <header class="additional-video-list">
@@ -104,25 +106,27 @@
             <% end %>
         </section>
       </header>
-      <div id="suggested-videos">
-        <div class="related-header">RELATED VIDEOS</div>
-        <% @video.suggested[0..5].each do |video| %>
-          <div class="suggested-video">
-            <div class="video-length"><%= video.length %></div>
-            <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
-            <div class="suggested-video-info">
-              <p class="suggested-video-title">
-                <%= video.title %>
-              </p>
-               <div class="video-view-count">
-                <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
-                  <%= image_tag 'fav-button.svg', :class => "fav-star" %>
+      <% if current_user %>
+        <div id="suggested-videos">
+          <div class="related-header">RELATED VIDEOS</div>
+          <% @video.suggested[0..5].each do |video| %>
+            <div class="suggested-video">
+              <div class="video-length"><%= video.length %></div>
+              <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
+              <div class="suggested-video-info">
+                <p class="suggested-video-title">
+                  <%= video.title %>
                 </p>
+                 <div class="video-view-count">
+                  <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
+                    <%= image_tag 'fav-button.svg', :class => "fav-star" %>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
