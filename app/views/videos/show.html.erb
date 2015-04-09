@@ -14,7 +14,7 @@
           <p class="video-category"><%= @video.category.first.name %></p>
         </div>
         <div class="video-speaker-info">
-          <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:thumb), :class => "video-speaker" %>
+          <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:seriesthumb), :class => "video-speaker" %>
           <div class="video-info">
             <div class="video-info-header">
               <p class="video-speaker-name"><%= Speaker.where(:id => @video.author_id).first.name %></p>

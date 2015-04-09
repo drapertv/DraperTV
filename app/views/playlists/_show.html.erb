@@ -35,7 +35,7 @@
         <div class="video-length"><%= video.length %></div>
         <a href="<%= video_path(video) %>">
           <%= image_tag 'play_button.svg', :class => "video-play" %>
-          <%= image_tag video.vthumbnail, :class => "video-thumbnail" %>
+          <%= image_tag video.vthumbnail_url(:list), :class => "video-thumbnail" %>
         </a>
         <div class="video-info">
           <%= link_to video_path(video) do %>
