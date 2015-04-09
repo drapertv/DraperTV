@@ -1,7 +1,7 @@
 <li class="video-item-container <%= video.categories %> ALL">
   <div class="video-img">
        <%= link_to video_path(video) do %>
-          <%= image_tag 'play_button.svg', :class => "video-play" %>
+          <%= image_tag 'play-icon.png', :class => "video-play" %>
           <span class="section-time"> <%= video.length %> </span>
           <img src="<%= video.vthumbnail %>"  alt="" class="video-thumbnail">
       <% end %>

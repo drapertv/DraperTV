@@ -56,7 +56,7 @@
                 <% end %>
               </div> -->
             </div>
-            <div class="video-item reded challenge-info">
+           <!--  <div class="video-item reded challenge-info hidden">
               <%= image_tag 'vid-chal-icon.svg', :class => 'vid-chal-icon' %>
               <% if @video.challenge %>
                 <%= link_to playlist_challenge_path(@video.playlist, @video.challenge), :class => "challenge-name" do %>
@@ -70,7 +70,7 @@
                   <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
                 <% end %>
               <% end %>
-            </div>
+            </div> -->
               <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
             <% if Playlist.where(:author_id => @video.author_id).present? %>
               <% playlist = Playlist.where(:author_id => @video.author_id).first %>
@@ -94,9 +94,10 @@
                             <%= truncate(video.title, length: 70, separator: ' ') %>
                           </p>
                         <% end %>
-                        
-                        <%= link_to(create_favorite_path(model_id: v, model_name: "Video"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(video)}") do %>
-                          <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
+                        <% if current_user %>
+                          <%= link_to(create_favorite_path(model_id: v, model_name: "Video"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(video)}") do %>
+                            <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
+                          <% end %>
                         <% end %>
                       </div>
                     </div>
@@ -158,3 +159,9 @@
     }, 'xml');
   });
 </script>
+
+<% if !current_user %>
+    <script>
+    $('.video-speaker-info').css('margin-bottom', '50px')
+    </script>
+<% end %>
