@@ -5,19 +5,22 @@
       <div class="video-main-info">
         <p class="video-title"><%= @video.title %></p>
         <div class="video-actions">
-          <p class="video-view-count">
-            <%= @video.view_count %> Views • <span class="video-like-count"><%= @video.get_likes.size %></span>
+          <div class="main-video-view-count">
+           <div> <%= @video.view_count %> Views &nbsp;•&nbsp; <span class="video-like-count"><%= @video.get_likes.size %></span></div>
             <%= link_to(create_favorite_path(model_id: @video.id, model_name: "Video"), remote: true, :class => "fav-link") do %>
               <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
             <% end %>
-          </p>
+          </div>
           <p class="video-category"><%= @video.category.first.name %></p>
         </div>
         <div class="video-speaker-info">
           <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:thumb), :class => "video-speaker" %>
-          <div>
-            <p class="video-speaker-name"><%= Speaker.where(:id => @video.author_id).first.name %></p>
-            <p class="video-desc"><%= @video.description %></p>
+          <div class="video-info">
+            <div class="video-info-header">
+              <p class="video-speaker-name"><%= Speaker.where(:id => @video.author_id).first.name %></p>
+              <p class="video-publish-date">Published on <%= @video.publish_date %></p>
+            </div>
+              <p class="video-desc"><%= @video.description %></p>
           </div>
         </div>
       </div>
@@ -70,13 +73,16 @@
             <% if Playlist.where(:author_id => @video.author_id).present? %>
               <% playlist = Playlist.where(:author_id => @video.author_id).first %>
               <div class="video-list">
-                <% playlist.video_ids[0..5].each do |v| %>
+                <% n = 1 %>
+                <% playlist.video_ids.each do |v| %>
                   <% if Video.where(:id => v).present? %>
                     <% video = Video.where(:id => v).first %>
                     <div class="video-item <%= 'current' if @video.id == video.id %>">
                       <div class="video-info-row">
                         <span class="video-id">
-                          <%= v %>
+                          
+                          <%= n %>
+                          <% n += 1 %>
                         </span>
                         <%= link_to video_path(video) do %>
                           <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
@@ -100,19 +106,18 @@
       </header>
       <div id="suggested-videos">
         <div class="related-header">RELATED VIDEOS</div>
-        <% @video.suggested.each do |video| %>
+        <% @video.suggested[0..5].each do |video| %>
           <div class="suggested-video">
             <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
             <div class="suggested-video-info">
               <p class="suggested-video-title">
                 <%= video.title %>
               </p>
-               <span class="video-view-count">
-                <%= video.view_count %> Views • <span class="video-like-count"><%= @video.get_likes.size %></span>
-                <%= link_to(create_favorite_path(model_id: video, model_name: "Video"), remote: true, :class => "fav-link") do %>
-                  <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
-                <% end %>
-              </span>
+               <div class="video-view-count">
+                <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
+                  <%= image_tag 'fav-button.svg', :class => "fav-star" %>
+                </p>
+              </div>
             </div>
           </div>
         <% end %>

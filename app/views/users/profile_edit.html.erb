@@ -1,5 +1,5 @@
 <div id="content-container">
-  <div id="invite-accept-container">
+  <div id="invite-accept-container" class="profile-edit">
     <div id="blue-gradient"></div>
     <%= form_for @user, html: {id: 'invite-accept-form', :class => "user-edit"}  do |f| %>
       <h1 class="invite-title">Edit your profile</h1>
@@ -12,6 +12,15 @@
       <%= f.text_field :name, value: @user.name, class: 'invite-accept-field invite-name', placeholder: "Name" %>
       <%= f.hidden_field :invitation_token %>
       <%= f.email_field :email, class: 'invite-accept-field invite-email', placeholder: "Email" %>
+
+      <div id="change-password" class="<%= 'hidden' if @bad_match || @wrong_password %>">Change Password</div>
+      <div id="change-password-container" class="<%= 'hidden' if !@bad_match && !@wrong_password %>">
+        <%= f.password_field :password, placeholder: "New Password", class: "invite-accept-field #{'invalid-field' if @bad_match}"  %>
+        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "invite-accept-field #{'invalid-field' if @bad_match}" %>
+        <%= password_field_tag :current_password, nil, placeholder: "Current Password", class: "invite-accept-field #{'invalid-field' if @wrong_password}" %>
+      </div>
+
+
       <%= f.submit "Save", :class => "submit-invite-accept" %>
       <p class="password-error hidden">Must at least 8 characters</p>
       <p class="missing-field-error hidden">* Whoops, you're missing some info.</p>

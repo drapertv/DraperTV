@@ -2,6 +2,7 @@ Visitors =
 	init: ->
 		$('.white-gradient.right').on 'mouseenter', @scrollVideosRight
 		$('.white-gradient.left').on 'mouseenter', @scrollVideosLeft
+		$('.series-videos').scroll @showScrollBack
 		$('.white-gradient').on 'mouseleave', @stopScrollVideos
 		@scrollSpeed = 2
 		$('.vbox').removeClass('vbox')
@@ -14,6 +15,15 @@ Visitors =
 		$('body').on 'keydown', '.invite-email', @verifyEmail
 		$('.email-check').show() if $('.invite-email').length > 0 && $('.invite-email').val().match(/.+\@.+\..+/)
 		$('body').on 'click', '.welcome-close', @closeWelcome
+
+	showScrollBack: ->
+		console.log $(@).scrollLeft()
+		if $(@).scrollLeft() > 5
+			$(@).parents('.series-content').find('.white-gradient.left').show()
+			$(@).parents('.series-content').find('.scroll-arrow.left').show()
+		else
+			$(@).parents('.series-content').find('.white-gradient.left').hide()
+			$(@).parents('.series-content').find('.scroll-arrow.left').hide()
 
 	closeWelcome: ->
 		$('#welcome-container').hide()

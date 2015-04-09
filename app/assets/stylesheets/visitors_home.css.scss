@@ -22,12 +22,17 @@
 .landing-container {
 	.series-content {
 		position: relative;
+		border-bottom: 1px solid $light-gray;
+  		padding-bottom: 25px;
 	}
 	.section-content .white-gradient {
 		top: 0;
 	}
 	.series-content .scroll-arrow {
 		top: 50px;
+	}
+	.series-content:nth-child(4n) {
+		border-bottom: none;
 	}
 }
 
@@ -52,13 +57,14 @@
 
 #tagline {
 	text-align: center;
-	font-size: 32px;
+	font-size: 50px;
 	font-weight: 700;
 	color: black;
 	width: 100%;
-	position: absolute;
-	top: calc(130px - 20px);
+	height: 100%;
+  	line-height: 255px;
 	color: white;
+	text-shadow: 0 0 8px black;
 }
 
 .series {
@@ -70,8 +76,8 @@
 .info-section {
 	background: image_url('explainer-photo.jpg');
 	color: white;
-	height: 600px;
 	position: relative;
+	background-size: cover;
 	.blue-overlay {
 		background: $landing-blue;
 		opacity: 0.85;
@@ -84,7 +90,6 @@
 }
 
 .info-items {
-	padding-top: 90px;
 	@include flexbox;
 	justify-content: space-between;
 }
@@ -99,7 +104,7 @@
 
 .info-title {
 	font-weight: 600;
-	font-size: 32px;
+	font-size: 30px;
 	margin-top: 40px;
 	margin-bottom: 20px;
 	color: white;
@@ -113,10 +118,15 @@
 #sign-up {
 	height: 50px;
 	width: 140px;
-	margin: 55px auto 90px auto;
+	margin: 0 auto;
+	margin-top: 80px;
 	text-align: center;
 	line-height: 50px;
-	font-size: 32px;
+	font-size: 30px;
+}
+
+#explainer-section {
+	padding: 90px 0px;
 }
 
 .info-img {

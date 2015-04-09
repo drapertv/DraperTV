@@ -7,7 +7,7 @@ $section-height: calc(33vh -  16.66px);
 
 .playlist-container {
 	background: white;
-	padding-top: 90px;
+	padding-top: 50px;
 	height: calc(100vh);
 	overflow-y: scroll;
 	footer {
@@ -29,8 +29,11 @@ $section-height: calc(33vh -  16.66px);
 	width: 360px;
 }
 .featured-playlist-title {
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	font-size: 20px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .featured-playlist-main {
@@ -58,7 +61,7 @@ box-sizing: content-box;
 	@include flexbox;
 	height: 25px;
 	font: 25px;
-	margin: 15px 0px;
+	margin: 25px 0px 15px 0px;
 	justify-content: space-between;
 	div {
 		line-height: 30px;
@@ -72,7 +75,7 @@ box-sizing: content-box;
 	div {line-height: 30px;}
 }
 .series-title {
-	font-size: 24px;
+	font-size: 20px;
 }
 
 .series-title, .series-challenge, .series-price {
@@ -95,10 +98,7 @@ box-sizing: content-box;
 	white-space: nowrap;
 	overflow-x: scroll;
 	z-index: 0;
-}
-
-.landing-container .section-content .white-gradient {
-	height: 170px;
+	padding-bottom: 25px;
 }
 
 .section-content {
@@ -107,33 +107,50 @@ box-sizing: content-box;
 		position: absolute;
 		top: 40px;
 		height: 240px;
-		width: 200px;
+		width: 135px;
 		z-index: 2;
 		cursor: pointer;
 	}
 	.white-gradient.left {
-		left: 140px;
+		left: 149px;
 	}
 	.white-gradient.right {
 		right: -1px;
 	}
 }
 
+.video-section .white-gradient {
+	height: 208px;
+}
+
+.landing-section .series-videos {
+	padding-bottom: 0px;
+}
+
+.video-section:last-child {
+	border-bottom: 0px;
+}
+
 .series-content .scroll-arrow {
 	position: absolute;
 	top: 90px;
-	height: 40px;
+	height: 30px;
 	width: 15px;
 	z-index: 2;
+	opacity: 0.5;
 	cursor: pointer;
 }
 
+.scroll-arrow:hover {
+	opacity: 1;
+}
+
 .scroll-arrow.right {
-	right: 40px;
+	right: 0px;
 }
 
 .scroll-arrow.left {
-	left: 194px;
+	left: 150px;
 	-ms-transform: rotate(180deg); /* IE 9 */
   -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
   transform: rotate(180deg);
@@ -145,20 +162,26 @@ box-sizing: content-box;
 	vertical-align: top;
 }
 
+.series-video:first-child {
+	margin-left: 0px;
+}
+
 .series-speaker {
 	width: 100px;
-	margin: 0px 20px;
+	margin: 0px 20px 0px 30px;
 }
 
 .speaker-name {
 	font-weight: 600;
 	margin-top: 10px;
+	font-size: 12px;
+	line-height: 1;
 }
 
 .speaker-title {
 	font-size: 12px;
 	white-space: pre-wrap;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 .series-speaker-photo {
@@ -185,6 +208,7 @@ box-sizing: content-box;
 	.video-length {
 		width: 40px;
 		height: 20px;
+		line-height: 20px;
 		color: white;
 		border-radius: 5px;
 		text-align: center;
@@ -204,12 +228,15 @@ box-sizing: content-box;
 	top: calc(70px - 37.5px);
 	cursor: pointer;
 	display: none;
+	opacity: 0.7;
 }
 
 .video-stats {
 	color: #939aa0;
 	font-size: 12px;
 	margin-top: 10px;
+	@include flexbox;
+	align-items: center;
 }
 .series-video:hover .video-play, .video-item-container:hover .video-play { //refactor into one class later
 	display: block;
@@ -237,5 +264,4 @@ box-sizing: content-box;
 .video-section {
 	position: relative;
 	border-bottom: 1px solid $light-gray;
-	padding-bottom: 25px;
 }

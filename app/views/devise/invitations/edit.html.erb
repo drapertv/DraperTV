@@ -8,8 +8,9 @@
         <img src="" class="invite-accept-pic hidden" id="avatar-preview"></img>
         <%= f.file_field :avatar,  :class => "avatar-field"  %>
       </div>
+      <p id="hey-there">Hey there!</p>
       <%= f.text_field :name, class: 'invite-accept-field shortened invite-name', placeholder: "Name" %>
-      <h1 class="invite-title">Welcome to DraperTV</h1>
+      <h1 class="invite-title">Welcome to Draper<span class="bold-italic">TV</span></h1>
       <h2 class="invite-subtitle">Let's get you started!</h2>
 
       <%= f.hidden_field :invitation_token %>
@@ -18,7 +19,7 @@
       <%= f.password_field :password_confirmation, class: 'invite-accept-field invite-password-conf', placeholder: "Confirm Password" %>
   	  <%= f.submit "Done!", :class => "submit-invite-accept" %>
       <%= image_tag "check.svg", :class => "email-check hidden" %>
-      <p class="password-error hidden">Must be at least 8 characters</p>
+      <p class="password-error">Must be at least 8 characters</p>
       <p class="missing-field-error hidden">* Whoops, you're missing some info.</p>
   	<% end %>
   </div>

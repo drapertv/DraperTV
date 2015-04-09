@@ -34,8 +34,18 @@
 
 .search-result {
 	height: 135px;
-	margin: 40px 0px;
+	margin: 0px 0px 30px 0px;
 	@include flexbox;
+}
+
+.search-result.video:hover {
+	.result-title {
+		color: $light-blue;
+		text-decoration: underline;
+	}
+	.video-play {
+		display: block;
+	}
 }
 
 .result-pic-container, .result-pic {
@@ -57,10 +67,11 @@
 	width: 100%;
 	color: white;
 	background: rgba(0,0,0,0.7);
-	height: 40px;
+	height: 30px;
 	p {
-		line-height: 40px;
+		line-height: 30px;
 		text-align: center;
+		font-size: 15px;
 	}
 }
 
@@ -70,10 +81,22 @@
 	overflow-y: hidden;
 	text-overflow: ellipsis;
 	padding-left: 20px;
+	.video-stats {
+		font-size: 15px;
+		margin-bottom: 12px;
+		margin-top: 0px;
+	}
 }
 
 .result-title {
-	margin-bottom: 10px;
+	margin-bottom: 12px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.result-position {
+	font-size: 15px;
+	color: $gray;
 }
 
 .result-video-list {
@@ -83,13 +106,31 @@
 .playlist-video {
 	@include flexbox;
 	justify-content: space-between;
-	color: $gray;
-	margin-bottom: 5px;
+	margin-bottom: 7px;
+	font-size: 15px;
+	.playlist-video-title, .playlist-video-length {
+		color: $gray;
+	}
+}
+
+
+
+.playlist-video:hover * {
+	color: $light-blue;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .result-subinfo {
 	color: $gray;
 	p {
-		margin-bottom: 5px;
+		margin-bottom: 7px;
+		font-size: 15px;
+	}
+	.result-stats {
+		margin-bottom: 12px;
+	}
+	.result-description {
+		line-height: initial;
 	}
 }

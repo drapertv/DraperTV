@@ -34,19 +34,16 @@
     <div class="header-right no-mobile">
       <ul class="nav navbar-nav m-n hidden-xs nav-user user">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle bg clear header-item" data-toggle="dropdown">
-            <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+          <a href="#" class="dropdown-toggle bg clear header-item" data-toggle="dropdown" id="header-dropdown">
+            <span><%= current_user.name %></span>
+            <b class="caret"></b>
+            <span class="header-avatar">
               <%= image_tag current_user.avatar_url(:thumb).to_s %>
             </span>
-            <%= current_user.name %>
-            <b class="caret"></b>
           </a>
           <ul class="dropdown-menu animated fadeInRight">
             <li>
               <span class="arrow top"></span>
-              <%= link_to 'Edit account', edit_user_registration_path %>
-            </li>
-            <li>
               <%= link_to 'Profile', profile_edit_path(current_user) %>
             </li>
             <li>
@@ -59,7 +56,9 @@
   <% else %>
     <div class="header-right no-mobile">
       <div class="header-item m-xs green-btn sign-up-btn">
-        <a href="<%= new_user_registration_path %>">Sign Up</a>
+      <a href="<%= new_user_registration_path %>">Sign Up</a></div>
+      <div class="header-item or">
+        or
       </div>
       <div class="header-item m-xs" id="login">
         <p id="login-modal-trigger">Log In</p>

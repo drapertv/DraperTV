@@ -1,6 +1,11 @@
 Management =
 	init: ->
 		$('body').on 'submit', '#beta-invite-form', @popuplateUserEmailsInput
+		$('body').on 'click', '#change-password', @showPasswordChangeContainer
+
+	showPasswordChangeContainer: ->
+		$('#change-password-container').show()
+		$(@).hide()
 
 	popuplateUserEmailsInput: ->
 		$('.enabled').each ->

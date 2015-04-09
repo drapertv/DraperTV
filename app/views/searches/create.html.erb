@@ -2,68 +2,105 @@
 	<div class="section-content">
 	 <div class="video-collection-header search-header">
       <div class="collections-left">
-      	<span id="search-preference"><span>relevant</span><%= image_tag "scroll-arrow.png", :class => "search-sort-arrow" %></span>
+<!--       	<span id="search-preference"><span>relevant</span><%= image_tag "scroll-arrow.png", :class => "search-sort-arrow" %></span> -->
 				<span id="results-count"><%= @count %> results </span>
       </div>
       <div class="collections-right">
         <div class="pages">
-        <% if !@first_page %>
-          <%= link_to url_for(page: @page_back, terms: @terms) do %>
-            <%= image_tag "scroll-arrow.png", :class => "page-back" %>
-          <% end %>
-        <% end %>
-          <div class="page-display"><%= @page.to_s.rjust(3, '0') || "000" %> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
-        <% if !@last_page %>
-          <%= link_to url_for(page: @page_next, terms: @terms) do %>
-            <%= image_tag "scroll-arrow.png", :class => "page-next" %>
-          <% end %>
-        <% end %>
+	       <% if !@first_page %>
+	            <%= link_to url_for(page: @page_back) do %>
+	              <%= image_tag "scroll-arrow.png", :class => "page-back" %>
+	            <% end %>
+	          <% else %>
+	              <%= image_tag "scroll-arrow.png", :class => "page-back faded" %>
+	          <% end %>
+	            <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
+	          <% if !@last_page %>
+	            <%= link_to url_for(page: @page_next) do %>
+	              <%= image_tag "scroll-arrow.png", :class => "page-next" %>
+	            <% end %>
+	          <% else %>
+	              <%= image_tag "scroll-arrow.png", :class => "page-next faded" %>
+	          <% end %>
         </div>
       </div>
     </div>
     <div class="results">
 			<% @results.each do |result| %>
-				<div class="search-result">
+				<div class="search-result <%= result.class.to_s.downcase %>">
 					<% if result.class == Playlist %>
-							<div class="result-pic-container">
+							<div class="result-pic-container playlist">
 								<%= link_to video_path(result.first_video) do %>
 									<%= image_tag result.vthumbnail, :class => "result-pic" %>
+								
+									<div class="result-pic-overlay">
+										<p><%= result.video_count %> VIDEOS</p>
+									</div>
 								<% end %>
-								<div class="result-pic-overlay">
-									<p><%= result.video_count %> Videos</p>
-								</div>
 							</div>
 						<div class="result-info-container">
-							<h3 class="result-title"><%= result.title %></h3>
+							<h3 class="result-title playlist"><%= result.title %> &nbsp;<span class="result-position"> <%= result.speaker.title %> </span></h3>
 							<div class="result-video-list">
 								<% result.videos.each do |video| %>
 									<div class="playlist-video">
-										<p class="playlist-video-title"><%= video.title %></p>
-										<p class="playlist-video-length"><%= "3:59" %></p>
+										<%= link_to video_path(video) do %>
+											<p class="playlist-video-title"><%= video.title %></p>
+										<% end %>
+										<%= link_to video_path(video) do %>
+											<p class="playlist-video-length"><%= "3:59" %></p>
+										<% end %>
 									</div>
 								<% end %>
 							</div>
 						</div>
 					<% else %>
-							<div class="result-pic-container">
-								<%= link_to result_path(result) do %>
-									<%= image_tag result.vthumbnail, :class => "result-pic" %>
-									<%= image_tag 'play-icon.png', :class => "video-play" %>
-								<% end %>
-							</div>
+						<div class="result-pic-container video">
+							<%= link_to result_path(result) do %>
+								<%= image_tag result.vthumbnail, :class => "result-pic" %>
+								<%= image_tag 'play-icon.png', :class => "video-play" %>
+							<% end %>
+						</div>
 						<div class="result-info-container">
-							<h3 class="result-title"><%= result.title %></h3>
-							<div class="result-subinfo">
-								<p class="result-date">Published on <%= result.publish_date %></p>
-								<p class="result-stats"><%= result.view_count %> Views • <%= result.get_upvotes.size %> <%= image_tag 'fav-button.svg', :class => "fav-star" %> </p>
-								<p class="result-description"><%= result.description %></p>
-							</div>
+							<%= link_to result_path(result) do %>
+								<h3 class="result-title"><%= result.title %></h3>
+								<div class="result-subinfo">
+									<p class="result-date">Published on <%= result.publish_date %></p>
+									 <p class="text-ellipsis video-stats"> <span><%= result.view_count %> Views &nbsp;•  &nbsp; <%= result.get_upvotes.size %></span>
+								      <%= image_tag 'fav-button.svg', :class => "fav-star" %>
+								      <% if result.class == Video %>
+										<% result.category_list.each do |cat| %>
+											<span>&nbsp;&nbsp;•&nbsp;&nbsp;<%= cat %></span>
+										<% end %>
+								      <% end %>
+								    </p>
+
+									<p class="result-description"><%= result.description %></p>
+								</div>
+							<% end %>
 						</div>
 					<% end %>
 				</div>
 			<% end %>
 		</div>
 	</div>
+	<div class="pages bottom">
+      <% if !@first_page %>
+        <%= link_to url_for(page: @page_back) do %>
+          <%= image_tag "scroll-arrow.png", :class => "page-back" %>
+        <% end %>
+      <% else %>
+          <%= image_tag "scroll-arrow.png", :class => "page-back faded" %>
+      <% end %>
+        <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
+      <% if !@last_page %>
+        <%= link_to url_for(page: @page_next) do %>
+          <%= image_tag "scroll-arrow.png", :class => "page-next" %>
+        <% end %>
+      <% else %>
+          <%= image_tag "scroll-arrow.png", :class => "page-next faded" %>
+      <% end %>
+    </div>
+    <%= render partial: 'layouts/footer' %>
 </div>
 
 <script>

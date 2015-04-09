@@ -2,21 +2,15 @@ class VideosController < ApplicationController
   load_and_authorize_resource
 
   def index
-    if !current_user
-      redirect_to root_path and return
-    end
-    if current_user.email.nil?
-      redirect_to profile_edit_path(current_user), notice: "Enter Your Email Please"
-    else
-      @tags = Video.tag_counts_on(:category)
-      @page = params[:page] || 1
-      @page = @page.to_i
-      @page_next = @page + 1
-      @page_back = @page > 1 ? @page - 1 : 1
-      @videos = Video.all.paginate(page: params[:page], per_page: 20)
-      @last_page = @videos.length < 20
-      @first_page = @page < 2
-    end
+    redirect_to root_path and return if !current_user
+    @tags = Video.tag_counts_on(:category)
+    @page = params[:page].to_i || 1
+    @page_next = @page + 1
+    @page_back = @page > 1 ? @page - 1 : 1
+    @videos = Video.all.paginate(page: params[:page], per_page: 20)
+    
+    @last_page = @videos.length < 20
+    @first_page = @page < 2
   end
 
   def show

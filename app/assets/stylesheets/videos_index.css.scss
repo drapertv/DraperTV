@@ -36,11 +36,12 @@
 .video-header-item p {
 	color: $gray;
 	font-size: 14px;
-	padding-right: 4px;
-	padding-left: 4px;
+	padding: 0px 10px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+	height: 25px;
+	line-height: 25px;
 }
 
 .video-header-item.active p {
@@ -124,30 +125,38 @@
 	@include flexbox;
 	justify-content: space-between;
 	height: 25px;
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 }
 
 .collections-left, .pages {
 	@include flexbox;
-	align-content: center;
+	align-items: center;
 }
 
 .pages {
 	cursor: pointer;
 }
 
+.pages.bottom {
+	margin: 50px auto;
+	width: 115px;
+}
+
 .page-back {
-	height: 25px;
+	width: 10px;
+	height: 20px;
 	-ms-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
 }
 
 .page-next {
-	height: 25px;
+	height: 20px;
+	width: 10px;
 }
 
 .page-down {
-	height: 25px;
+	height: 13px;
+	width: 6.5px;
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     margin-left: 10px;
@@ -162,6 +171,15 @@
 	border: 1px solid $blue;
 	padding: 0px 10px;
 	color: $blue;
+	width: 65px;
+	@include flexbox;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.current-page {
+	width: 30px;
+  text-align: center;
 }
 
 
@@ -182,7 +200,6 @@
 .regular-videos {
 	@include flexbox;
 	flex-wrap: wrap;
-	padding-bottom: 60px;
 	justify-content: flex-start
 }
 
@@ -194,6 +211,11 @@
 .video-item-container {
 	width: 240px;
 	margin-right: 10px;
+	margin-bottom: 25px;
+}
+
+.featured-playlist-main .video-item-container {
+	margin-bottom: 0px;
 }
 
 .video-img {
@@ -205,27 +227,42 @@
 
 .qwatch-title {
 	color: $light-blue;
+	font-weight: 600;
+	line-height: 1;
+	font-size: 15px;
+	white-space: normal;
 }
 
 .section-title {
 	color: $black;
-	margin-top: 0px;
-	font-weight: 300;
+	margin-top: 40px;
+	font-size: 25px;
+	font-weight: 500;
 	margin-bottom: 25px;
 }
 
+.video-collection-header .section-title {
+	margin-top: 0px;
+}
+
+.collections-left .section-title {
+	margin-bottom: 0px;
+}
+
 .fav-star {
-	height: 12px;
-	width: 12px;
-	vertical-align: initial;
+  height: 14px;
+  width: 12px;
+  vertical-align: initial;
+  margin-left: 5px;
+  padding-bottom: 2px;
 }
 
 .section-time {
 	color: white;
-	background-color:rgba(0, 0, 0, 0.8);
+	background-color:rgba(0, 0, 0, 0.7);
 	position: absolute;
-	bottom: 5px;
+	bottom: 10px;
   	right: 10px;
-  	padding: 0px 5px;
+  	padding: 5px;
   	border-radius: 5px;
 }

@@ -11,11 +11,6 @@
          VIDEOS
         </p>
       </li>
-      <li class="video-header-item" data-show="favorited-challenges">
-       <p class="show-challenges">
-         CHALLENGES
-        </p>
-      </li>
     </ul>
   </header>
     <div class="section-content">
@@ -29,7 +24,7 @@
       </div>
       <div class="favorited-content favorited-series hidden">
         <div class="regular-series">
-          <h2 class="section-title">PLAYLISTS</h2>
+          <h2 class="section-title">SERIES</h2>
           <% @playlists.each do |playlist| %>
             <section class="video-section">
               <%= render partial: "playlists/show", locals: {playlist: playlist} %>

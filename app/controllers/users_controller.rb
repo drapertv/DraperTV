@@ -1,12 +1,5 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  # before_filter :set_user, only: [:show, :edit, :update]
-  # before_filter :validate_authorization_for_user, only: [:edit, :update]
-  # before_filter :authenticate_user!
-
-  def index
-    # @users = User.all
-  end
 
   def show
     @user = current_user
@@ -17,29 +10,29 @@ class UsersController < ApplicationController
 
   def profile_edit
     @user = User.find(params[:id])
+    @wrong_password = params[:message] == "wrong_password"
+    @bad_match = params[:message] == "bad_match"
   end
-  # POST /users
-  # POST /users.json
-  def create
-
-  end
-
-  # PUT /users/1
-  # PUT /users/1.json
 
   def update
     # authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
-    # role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?
-    # params[:user] = params[:user].except(:role_ids)
+    params[:user].delete_if {|k,v| v == ""}
+    if params[:user][:password]
+      if !current_user.valid_password? params[:password]
+        redirect_to profile_edit_path(id: current_user.id, message: "wrong_password") and return
+      end
+      if params[:user][:password] != params[:user][:password_confirmation]
+        redirect_to profile_edit_path(id: current_user.id, message: "bad_match") and return
+      end
+    end
     respond_to do |format|
       if @user.update_attributes(user_params)
         # @user.update_plan(role) unless role.nil?
         format.html { redirect_to profile_edit_path(@user), notice: 'User was successfully updated.' }
         #format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        #format.json { render json: @user.errors, status: :unprocessable_entity }
+        redirect_to profile_edit_path(@user)
       end
     end
   end
@@ -87,7 +80,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:invitation_token, :invited_by_id, :name, :email, :password, :password_confirmation,:avatar,:remember_me,:bio,:role,:stripe_token, :coupon,:role)
+    params.require(:user).permit(:current_password, :invitation_token, :invited_by_id, :name, :email, :password, :password_confirmation,:avatar,:remember_me,:bio,:stripe_token, :coupon,:role)
   end
 
 

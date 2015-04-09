@@ -42,25 +42,57 @@
 .video-actions {
 	@include flexbox;
 	justify-content: space-between;
+	margin-top: 10px;
+	color: $gray;
+	font-size: 17px;
+}
+
+
+.video-speaker-info .video-info {
+	width: calc(100% - 110px);
+	margin-top: 0px;
+}
+.video-info-header {
+	@include flexbox;
+	justify-content: space-between;
+
+}
+
+.video-publish-date {
+	color: $gray;
+	font-size: 15px;
+}
+
+.video-desc {
+	margin-top: 10px;
+	font-size: 15px;
+	line-height: initial;
 }
 
 /************ Video List Panel  **************/
 .additional-video-list {
 	background: #343434;
+	color: $light-gray;
 }
 
 .video-list {
-	height: calc(500px - 165px);
+	height: calc(500px - 145px);
 	overflow-y: scroll;
 }
 
+.video-id {
+	width: 25px;
+	font-size: 12px;
+	color: $light-gray;
+}
+
 .playlist-title {
-	margin-bottom: 10px;
 	width: 340px;
+	font-size: 17px;
+	color: $light-gray;
 }
 .playlist-challenge {
 	width: 300px;
-	color: white;
 }
 
 .challenge-name {
@@ -72,10 +104,15 @@
 		background: $red;
 		opacity: 0.5;
 		align-items: center;
+		margin-bottom: 10px;
 		.fav-star {
 			path {
 				fill: $star-red;
 			}
+		}
+		p {
+			font-size: 17px;
+			color: $light-gray;
 		}
 	}
 	.challenge-info:hover {
@@ -88,6 +125,9 @@
 		path {
 			fill: $star-black;
 		}
+	}
+	.fav-link.selected .fav-star:hover {
+		opacity: 1;
 	}
 	.fav-star:hover {
 		opacity: 0.5;
@@ -107,46 +147,50 @@
 	}
 }
 
-.playlist-info {
-	height: 95px;
+.playlist-info.video-item {
+	height: 65px;
+	padding: 20px;
 }
 .challenge-info {
 	height: 70px;
 	@include flexbox;
-	justify-content: space-between;
+	justify-content: flex-start;
+	color: $light-gray;
 }
 
 .video-info-row {
 	@include flexbox;
+	align-items: center;
 }
 
 .video-list-title {
 	width: 240px;
 	padding-right: 20px;
+	padding-left: 10px;
+	font-size: 15px;
+	color: $light-gray;
 }
 
 .video-item {
-	padding: 20px;
+	padding: 10px 20px;
 	cursor: pointer;
-	* {
-		color: rgba(255,255,255,0.8);
-	}
 }
 
+
+
 .video-list { 
-	.video-item:hover {
+	.video-item:hover, .video-item.current:hover {
 		background: #545454;
 	}
 	.video-item.current {
 		background: $black;
 	}
+
 }
 
 .video-list-thumbnail {
 	height: 40px;
 	width: 72px;
-	margin-left: 20px;
-	margin-right: 10px;
 }
 
 .series-price {
@@ -156,7 +200,7 @@
 
 .video-speaker-info {
 	@include flexbox;
-	margin: 10px 0px;
+	margin: 20px 0px;
 }
 
 .video-speaker {
@@ -166,14 +210,14 @@
 }
 
 .video-title {
-	margin-top: 10px;
+	margin-top: 20px;
 	font-size: 25px;
 	color: black;
 }
 
 .video-speaker-name {
 	font-weight: 600;
-	font-size: 17px;
+	font-size: 20px;
 }
 
 /************** Suggested Videos ****************/
@@ -181,6 +225,7 @@
 #suggested-videos {
 	padding-left: 20px;
 	margin-top: 20px; 
+	margin-bottom: 50px;
 }
 
 .suggested-video {
@@ -194,6 +239,11 @@
 	margin-right: 10px;
 }
 
+.suggested-video-title {
+	font-size: 15px;
+	font-weight: 600;
+}
+
 .suggested-video-info {
 	width: calc(100% - 130px);
 }
@@ -203,12 +253,32 @@
 	margin-bottom: 20px;
 }
 
+.video-view-count {
+	font-size: 12px;
+	color: $gray;
+	margin-top: 10px;
+}
+
+.main-video-view-count {
+	font-size: 17px;
+	@include flexbox;
+	align-items: center;
+	div {
+		color: $gray;
+	}
+	.fav-star {
+	  height: 19px;
+	  width: 16px;
+	  padding-top: 2px;
+	}
+}
+
 
 /*******  Comments ********/
 
 .comments-header {
 	font-size: 20px;
-	padding-top:	10px;
+	padding: 20px 0px 10px 0px;;
 	border-top: 1px solid $light-gray;
 }
 

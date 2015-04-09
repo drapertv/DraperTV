@@ -2,8 +2,13 @@ Comments =
 	init: ->
 		$('body').on 'ajax:success', '#main-comment-form #new_comment' , @addComment
 		$('body').on 'ajax:success', '.nested-comment-form #new_comment', @addNestedComment
-		$('body').on 'keydown', '#new_comment textarea', @submitComment
 		$('body').on 'click', '.comment-reply', @showReplyForm
+		$('body').on 'click', @closeNestedCommentForm
+
+	closeNestedCommentForm: (e) ->
+		console.log !$(e.target).hasClass('comment-input') && !$(e.target).hasClass('comment-reply')
+		if !$(e.target).hasClass('comment-input') && !$(e.target).hasClass('comment-reply')
+			$('.nested-comment-form').hide()
 
 	showReplyForm: ->
 		$(@).parents('.comment-block').find('.nested-comment-form').toggle()

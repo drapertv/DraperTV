@@ -2,7 +2,22 @@
 @import 'shared/mixins';
 
 #comments {
-	margin-top: 20px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+#post-comment {
+  margin-top: 5px;
+  width: 50px;
+  height: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background: $blue;
+  margin-left: calc(100% - 50px);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .comment-pic {
@@ -13,6 +28,10 @@
 }
 .comment-body {
 	width: calc(100% - 60px);
+}
+
+.comment-block {
+	margin-bottom: 30px;
 }
 .comment-content {
 	@include flexbox;
@@ -39,10 +58,24 @@
 
 .comment-text {
 	width: calc(100% - 130px);
+	margin-top: 5px;
+	font-size: 15px;
+}
+
+.comment-name {
+	color: black;
+	font-weight: 600;
+	font-size: 15px;
+}
+
+.comment-date {
+	margin-left: 10px;
 }
 
 .comment-actions {
+	margin-top: 10px;
 	font-size: 12px;
+	font-weight: 600;
 	color: $gray;
 	span {
 		margin-right: 10px;
@@ -81,10 +114,16 @@
 .comment-input {
 	width: 100%;
 	box-sizing: border-box;
-	height: 100%;;
+	height: 100%;
+	border: 1px solid $light-gray;
+	height: 50px;
+	padding: 10px;
+	border-radius: 5px;
+	resize: none;
 }
 #comment-box {
 	@include flexbox;
+	align-items: center;
 	.control-group {
 		width: calc(100% - 60px);
 	}
@@ -92,5 +131,5 @@
 
 .comment {
 	@include flexbox;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }

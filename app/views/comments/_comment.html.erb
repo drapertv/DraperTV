@@ -7,7 +7,7 @@
     </a>
     <section class="comment-body">
       <header>
-        <a href="#"><span class="comment-name"><%=@comment_user.name %></span></a>
+        <span class="comment-name"><%=@comment_user.name %></span>
         <span class="text-muted text-xs m-t-xs comment-date">
           <%= comment.created_at.to_date.to_formatted_s( :long_ordinal ) %>
         </span>
@@ -26,7 +26,7 @@
       </div>
       <% if comment.user == current_user %>
         <div class="comment-actions">
-          <span class="comment-reply">Reply</span><span class="comment-edit">Edit</span> 
+          <span class="comment-reply">Reply</span><!-- <span class="comment-edit">Edit</span>  -->
         </div>
       <% end %>
     </section>

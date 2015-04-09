@@ -10,7 +10,7 @@
     <%= link_to video_path(video) do %>
       <p class="text-ellipsis qwatch-title"><%= video.title %></p>
     <% end %>
-    <p class="text-ellipsis video-stats"> <%= video.view_count %> Views • <%= video.get_upvotes.size %>
+    <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
       <%= image_tag 'fav-button.svg', :class => "fav-star" %>
     </p>
   </div>

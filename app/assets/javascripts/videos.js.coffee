@@ -11,6 +11,10 @@ Videos =
 	updateLikeCount: (event, data) ->
 		$(@).parent().find('.video-like-count').text(data.like_count)
 		$(@).toggleClass('selected')
+		if $(@).parents('.video-main-info').length > 0
+			$('.video-item.current .fav-link').toggleClass('selected')
+		if $(@).parents('.video-item.current').length > 0
+			$('.video-main-info .video-like-count').text(data.like_count)
 
 	highlightVideoType: ->
 		$('.favorited-content').hide()
