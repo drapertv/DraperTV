@@ -1156,7 +1156,7 @@ img.nav-logo {
   content: "";
 }
 .arrow.top {
-  left: 50%;
+  right: 15px;
   margin-left: -8px;
   border-top-width: 0;
   border-bottom-color: #eee;
