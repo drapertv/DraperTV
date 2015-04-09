@@ -46,8 +46,10 @@
                     <%= Playlist.where(:author_id => @video.author_id).first.title %>
                   </p>
                 <% end %>
-                <%= link_to(create_favorite_path(model_id: @video.playlist.id, model_name: "Playlist"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(@video.playlist)}") do %>
-                  <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
+                <% if current_user %>
+                  <%= link_to(create_favorite_path(model_id: @video.playlist.id, model_name: "Playlist"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(@video.playlist)}") do %>
+                    <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
+                  <% end %>
                 <% end %>
               </div>
 <!--             <div class="centered green-btn series-price">
