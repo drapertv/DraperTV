@@ -25,7 +25,7 @@ class VideosController < ApplicationController
     # end
 
     if @video.url
-      @video_yt_embed = ActiveSupport::SafeBuffer.new(%Q{<iframe id="ytplayer" type="text/html" width="662" height="494" src="https://www.youtube.com/embed/#{@video.url}?autoplay=1&rel=0&showinfo=0&color=white&theme=light" frameborder="0" allowfullscreen> </iframe>})
+      @video_yt_embed = ActiveSupport::SafeBuffer.new(%Q{<iframe id="ytplayer" type="text/html" width="662" height="494" src="https://www.youtube.com/embed/#{@video.url}?autoplay=1&rel=0&showinfo=0&color=red&theme=dark&modestbranding=1" frameborder="0" allowfullscreen> </iframe>})
     end
     @video.increment_view_count
     current_user.save_video_in_view_history @video if current_user

@@ -4,7 +4,7 @@
     <%= form_for @user, html: {id: 'invite-accept-form', :class => "user-edit"}  do |f| %>
       <h1 class="invite-title">Edit your profile</h1>
       <div class="profile-pic-container">
-        <%= image_tag "profile-pic.svg", :class => "invite-accept-pic svg" %>
+        <%= image_tag "profile_picture.svg", :class => "invite-accept-pic svg" %>
         <%= image_tag "plus.svg", :class => "invite-accept-plus" %>
         <img src="" class="invite-accept-pic hidden" id="avatar-preview"></img>
         <%= f.file_field :avatar,  :class => "avatar-field"  %>

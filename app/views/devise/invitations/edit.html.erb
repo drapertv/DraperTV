@@ -3,7 +3,7 @@
     <div id="blue-gradient"></div>
     <%= form_for resource, html: {id: 'invite-accept-form'}, :url => "/users/#{resource.id}/accept_invite" do |f| %>
   	  <div class="profile-pic-container">
-        <%= image_tag "profile-pic.svg", :class => "invite-accept-pic svg" %>
+        <%= image_tag "profile_picture.svg", :class => "invite-accept-pic svg" %>
         <%= image_tag "plus.svg", :class => "invite-accept-plus" %>
         <img src="" class="invite-accept-pic hidden" id="avatar-preview"></img>
         <%= f.file_field :avatar,  :class => "avatar-field"  %>

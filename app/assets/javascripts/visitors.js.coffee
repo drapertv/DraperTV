@@ -84,9 +84,8 @@ Visitors =
 			return false
 
 	thankUser: ->
-		$('#waitlist-submit').text("Thank You! We'll be in touch!")
+		$('#waitlist-submit').val("Thank You! We'll be in touch!")
 		$('.waitlist-form')[0].reset()
-		$('#waitlist-back').css('display', 'block').addClass('animated fadeIn')
 
 	scrollVideosRight: ->
 		videoList = $(@).parent().find('.series-videos')

@@ -231,6 +231,12 @@
 .suggested-video {
 	@include flexbox;
 	margin-bottom: 20px;
+	position: relative;
+	.video-length {
+		right: initial;
+		left: 75px;
+		top: 45px;
+	}
 }
 
 .suggested-video-thumbnail {

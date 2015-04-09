@@ -39,12 +39,12 @@
 								<% end %>
 							</div>
 						<div class="result-info-container">
-							<h3 class="result-title playlist"><%= result.title %> &nbsp;<span class="result-position"> <%= result.speaker.title %> </span></h3>
+							<h3 class="result-title playlist"><%= matched @terms,result.title %> &nbsp;<span class="result-position"> <%= result.speaker.title %> </span></h3>
 							<div class="result-video-list">
 								<% result.videos.each do |video| %>
 									<div class="playlist-video">
 										<%= link_to video_path(video) do %>
-											<p class="playlist-video-title"><%= video.title %></p>
+											<p class="playlist-video-title"><%= matched @terms, video.title %></p>
 										<% end %>
 										<%= link_to video_path(video) do %>
 											<p class="playlist-video-length"><%= "3:59" %></p>
@@ -55,14 +55,16 @@
 						</div>
 					<% else %>
 						<div class="result-pic-container video">
+
 							<%= link_to result_path(result) do %>
 								<%= image_tag result.vthumbnail, :class => "result-pic" %>
-								<%= image_tag 'play-icon.png', :class => "video-play" %>
+								<%= image_tag 'play_button.svg', :class => "video-play" %>
+								<div class="video-length"><%= result.length %></div>
 							<% end %>
 						</div>
 						<div class="result-info-container">
 							<%= link_to result_path(result) do %>
-								<h3 class="result-title"><%= result.title %></h3>
+								<h3 class="result-title"><%= matched @terms, result.title %></h3>
 								<div class="result-subinfo">
 									<p class="result-date">Published on <%= result.publish_date %></p>
 									 <p class="text-ellipsis video-stats"> <span><%= result.view_count %> Views &nbsp;•  &nbsp; <%= result.get_upvotes.size %></span>
@@ -74,7 +76,7 @@
 								      <% end %>
 								    </p>
 
-									<p class="result-description"><%= result.description %></p>
+									<p class="result-description"><%= matched @terms, result.description %></p>
 								</div>
 							<% end %>
 						</div>
@@ -102,11 +104,3 @@
     </div>
     <%= render partial: 'layouts/footer' %>
 </div>
-
-<script>
-	$('#search_terms').val("<%= @terms %>")
-	 $(".results").children().each(function() {
-	      $(this).html($(this).html().replace(/(<%= @terms %>)/gi,"<b>$1</b>"));
-	      history.pushState({state:1}, "State 1", "?terms=<%= @terms %>")
-	  });
-</script>

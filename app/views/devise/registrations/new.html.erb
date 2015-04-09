@@ -1,19 +1,11 @@
 <div id="content-container">
-  
-  <div class="section-content">
-    <%= form_tag waitlists_path, remote: true, :class => "waitlist-form" do %>
-    <h2 id="form-header">Waitlist Signup</h2>
-      <div class="form-group">
-        <%= text_field_tag :name, nil, class: 'login-field', placeholder: "Enter your name" %>
-      </div>
-      <div class="form-group">
-        <%= email_field_tag :email, nil, :autofocus => true, class: 'login-field', placeholder: "Enter your email" %>
-      </div>
-      <button type="submit" class="login-btn" id="waitlist-submit">Add me to the waitlist!</button>
-    <% end -%>
-
-    <%= link_to root_path do %>
-      <button class="login-btn" id="waitlist-back">Back to Home</button>
+  <div id="invite-accept-container" class="profile-edit">
+    <div id="blue-gradient"></div>
+    <%= form_tag waitlists_path, remote: true, id: 'invite-accept-form', :class => "waitlist-form" do %>
+      <h1 class="invite-title">Waitlist Signup</h1>
+      <%= text_field_tag :name, nil, class: 'invite-accept-field invite-name', placeholder: "Name" %>
+      <%= email_field_tag :email, nil, class: 'invite-accept-field invite-email', placeholder: "Email" %>
+      <%= submit_tag "Add me to the waitlist!", :class => "submit-invite-accept", id: "waitlist-submit" %>
     <% end %>
   </div>
 </div>
