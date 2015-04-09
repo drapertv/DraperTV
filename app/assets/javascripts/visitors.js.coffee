@@ -74,6 +74,12 @@ Visitors =
 			$('.password-error').show()
 			return false
 
+		if $('.invite-password-conf').val() != $('.invite-password').val()
+			$('.invite-password').css('border', '1px solid #e1474c') 
+			$('.invite-password-conf').css('border', '1px solid #e1474c') 
+			return false
+
+
 
 	checkLoginForm: ->
 		noEmail = $('.login-email').val() == ""

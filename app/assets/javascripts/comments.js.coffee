@@ -6,7 +6,6 @@ Comments =
 		$('body').on 'click', @closeNestedCommentForm
 
 	closeNestedCommentForm: (e) ->
-		console.log !$(e.target).hasClass('comment-input') && !$(e.target).hasClass('comment-reply')
 		if !$(e.target).hasClass('comment-input') && !$(e.target).hasClass('comment-reply')
 			$('.nested-comment-form').hide()
 
