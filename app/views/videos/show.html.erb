@@ -11,7 +11,7 @@
               <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
             <% end %>
           </div>
-          <p class="video-category"><%= @video.category.first.name %></p>
+          <p class="video-category"><%= @video.category.first.name.downcase.titleize %></p>
         </div>
         <div class="video-speaker-info">
           <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:seriesthumb), :class => "video-speaker" %>
