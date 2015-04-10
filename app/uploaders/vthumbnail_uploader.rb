@@ -26,6 +26,10 @@ class VthumbnailUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [240, 135]
   end
 
+  version :seriesthumb do 
+    process :resize_to_fill => [240, 135]
+  end
+
   def extension_white_list
     %w(jpg jpeg gif png)
   end

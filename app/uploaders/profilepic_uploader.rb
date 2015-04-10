@@ -26,6 +26,8 @@ class ProfilepicUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [280, 280]
   end
 
+  
+
   def extension_white_list
     %w(jpg jpeg gif png)
   end
