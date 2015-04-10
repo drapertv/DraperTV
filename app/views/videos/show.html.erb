@@ -113,20 +113,22 @@
         <div id="suggested-videos">
           <div class="related-header">RELATED VIDEOS</div>
           <% @video.suggested[0..5].each do |video| %>
-            <div class="suggested-video">
-              <div class="video-length"><%= video.length %></div>
-              <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
-              <div class="suggested-video-info">
-                <p class="suggested-video-title">
-                  <%= video.title %>
-                </p>
-                 <div class="video-view-count">
-                  <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
-                    <%= image_tag 'fav-button.svg', :class => "fav-star" %>
+            <%= link_to video_path(video) do %>
+              <div class="suggested-video">
+                <div class="video-length"><%= video.length %></div>
+                <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
+                <div class="suggested-video-info">
+                  <p class="suggested-video-title">
+                    <%= video.title %>
                   </p>
+                   <div class="video-view-count">
+                    <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
+                      <%= image_tag 'fav-button.svg', :class => "fav-star" %>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>

@@ -6,7 +6,14 @@ Videos =
 		$('body').on 'click', '.videos-container .video-header-item', @highlightTag
 		$('body').on 'click', '.favorites-header .video-header-item', @highlightVideoType
 		$('body').on 'ajax:success', '.fav-link', @updateLikeCount
+		@clearGradients()
 		@align() if $(window).width() > 400
+
+	clearGradients: ->
+		$('.series-content').each ->
+			videoCount = $(@).find('.series-video').length
+			if videoCount < 5
+				$(@).find('.white-gradient, .scroll-arrow').hide()
 
 	updateLikeCount: (event, data) ->
 		$(@).parent().find('.video-like-count').text(data.like_count)

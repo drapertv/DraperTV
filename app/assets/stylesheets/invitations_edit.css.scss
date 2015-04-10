@@ -11,6 +11,7 @@
 
 #blue-gradient {
 	background: -webkit-linear-gradient(left, rgba(34,102,169,0.8) 0%, rgba(34,102,169,0.95) 45%, rgba(34,102,169,0.95) 55%, rgba(34,102,169,0.7) 100%);
+	background: -moz-linear-gradient(left, rgba(34,102,169,0.8) 0%, rgba(34,102,169,0.95) 45%, rgba(34,102,169,0.95) 55%, rgba(34,102,169,0.7) 100%);
 	position: fixed;
 	top: 50px;
 	left: 0;
