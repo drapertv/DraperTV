@@ -17,7 +17,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "default.png"
+    "profile-pic.svg"
   end
 
   version :thumb do
