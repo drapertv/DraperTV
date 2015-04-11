@@ -8,7 +8,7 @@
       <div class="collections-right">
         <div class="pages">
 	       <% if !@first_page %>
-	            <%= link_to url_for(page: @page_back) do %>
+	            <%= link_to url_for(page: @page_back, terms: @terms) do %>
 	              <%= image_tag "scroll-arrow.png", :class => "page-back" %>
 	            <% end %>
 	          <% else %>
@@ -16,7 +16,7 @@
 	          <% end %>
 	            <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
 	          <% if !@last_page %>
-	            <%= link_to url_for(page: @page_next) do %>
+	            <%= link_to url_for(page: @page_next, terms: @terms) do %>
 	              <%= image_tag "scroll-arrow.png", :class => "page-next" %>
 	            <% end %>
 	          <% else %>
@@ -87,7 +87,7 @@
 	</div>
 	<div class="pages bottom">
       <% if !@first_page %>
-        <%= link_to url_for(page: @page_back) do %>
+        <%= link_to url_for(page: @page_back, terms: @terms) do %>
           <%= image_tag "scroll-arrow.png", :class => "page-back" %>
         <% end %>
       <% else %>
@@ -95,7 +95,7 @@
       <% end %>
         <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
       <% if !@last_page %>
-        <%= link_to url_for(page: @page_next) do %>
+        <%= link_to url_for(page: @page_next, terms: @terms) do %>
           <%= image_tag "scroll-arrow.png", :class => "page-next" %>
         <% end %>
       <% else %>
@@ -107,4 +107,5 @@
 
 <script>
 	$('#search_terms').val("<%= @terms %>")
+	history.pushState({state:1}, "State 1", "?terms=<%= @terms %>")
 </script>
