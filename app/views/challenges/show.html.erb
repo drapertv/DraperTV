@@ -56,8 +56,10 @@
                 <% end %>
               </div> -->
             </div>
-           <div class="video-item reded challenge-info hidden">
-                <%= image_tag 'vid-chal-icon.svg', :class => 'vid-chal-icon' %>
+           <div class="video-item reded challenge-info selected">
+                <%= link_to playlist_challenge_path(@video.playlist, @challenge) do %>
+                  <%= image_tag 'vid-chal-icon.svg', :class => 'vid-chal-icon' %>
+                <% end %>
                 <%= link_to playlist_challenge_path(@video.playlist, @challenge), :class => "challenge-name" do %>
                   Challenge: <%=  @challenge.title %>
                 <% end %>
@@ -72,7 +74,7 @@
                 <% playlist.video_ids.each do |v| %>
                   <% if Video.where(:id => v).present? %>
                     <% video = Video.where(:id => v).first %>
-                    <div class="video-item <%= 'current' if @video.id == video.id %>">
+                    <div class="video-item">
                       <div class="video-info-row">
                         <span class="video-id">
 

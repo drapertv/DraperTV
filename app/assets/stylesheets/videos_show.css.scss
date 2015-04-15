@@ -125,7 +125,7 @@
 			color: $light-gray;
 		}
 	}
-	.challenge-info:hover {
+	.challenge-info:hover, .challenge-info.selected {
 		background: #c03b3e;
 		.challenge-name {
 			color: #ffffff;

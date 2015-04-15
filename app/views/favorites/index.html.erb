@@ -20,6 +20,9 @@
           <% @videos.each do |video| %>
             <%= render partial: 'videos/video_item_container', locals: {video: video} %>
           <% end %>
+          <% if @videos.empty? %>
+            <p>No favorites yet.</p>
+          <% end %>
         </div>
       </div>
       <div class="favorited-content favorited-series hidden">
@@ -30,6 +33,9 @@
               <%= render partial: "playlists/show", locals: {playlist: playlist} %>
             </section>
           <% end %>
+          <% if @playlists.empty? %>
+            <p>No favorites yet.</p>
+          <% end %>
         </div>
       </div>
      <div class="favorited-content favorited-challenges hidden"> 
@@ -37,6 +43,9 @@
         <h2 class="section-title">CHALLENGES</h2>
           <% @challenges.each do |video| %>
             <%= render partial: 'videos/video_item_container', locals: {video: video} %>
+          <% end %>
+          <% if @challenges.empty? %>
+            <p>No favorites yet.</p>
           <% end %>
         </div>
       </div>
