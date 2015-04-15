@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409192301) do
+ActiveRecord::Schema.define(version: 20150414223656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,9 @@ ActiveRecord::Schema.define(version: 20150409192301) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
+    t.string   "video_url"
+    t.string   "url_type"
+    t.string   "url_thumbnail"
   end
 
   add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
@@ -211,6 +214,7 @@ ActiveRecord::Schema.define(version: 20150409192301) do
     t.integer  "demand_array",             array: true
     t.integer  "view_count",   default: 0
     t.string   "length"
+    t.string   "wistia_id"
   end
 
   create_table "votes", force: true do |t|

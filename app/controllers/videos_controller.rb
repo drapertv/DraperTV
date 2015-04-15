@@ -8,9 +8,11 @@ class VideosController < ApplicationController
     @page_next = @page + 1
     @page_back = @page > 1 ? @page - 1 : 1
     @videos = Video.all.paginate(page: params[:page], per_page: 20)
-    
     @last_page = @videos.length < 20
     @first_page = @page < 2
+    if request.xhr? 
+      render partial: 'filtered_index' and return
+    end
   end
 
   def show

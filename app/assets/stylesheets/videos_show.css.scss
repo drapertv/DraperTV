@@ -81,6 +81,11 @@
 	border-top: 1px solid #919191;
 }
 
+.video-list.with-challenge {
+	border-top: 0px;
+	height: calc(500px - 135px);
+}
+
 .video-id {
 	width: 25px;
 	font-size: 12px;
@@ -98,6 +103,7 @@
 
 .challenge-name {
 	padding: 0px 20px;
+	color: $light-gray;
 }
 
 .videos-panel {
@@ -105,7 +111,6 @@
 		background: $red;
 		opacity: 0.5;
 		align-items: center;
-		margin-bottom: 10px;
 		.fav-star {
 			path {
 				fill: $star-red;

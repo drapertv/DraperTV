@@ -24,6 +24,7 @@ ActiveAdmin.register Video do
      f.inputs :vthumbnail
      f.inputs :description
      f.inputs :length
+     f.inputs :wistia_id
 
    end
   f.actions

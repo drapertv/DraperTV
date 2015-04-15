@@ -16,8 +16,12 @@
       <div class="comment-content">
         <% if comment.belongs_to_challenge %>
           <div class="comment-video">
-            <%= image_tag Video.first.vthumbnail, :class => "challenge-thumbnail" %>
-            <%= image_tag 'play-icon.png', :class => "challenge-play" %>
+            <%= link_to comment.video_url do %>
+              <%= image_tag comment.url_thumbnail || comment.video_url, :class => "challenge-thumbnail" %>
+              <% if comment.url_type == "video" %>
+                <%= image_tag 'play-icon.png', :class => "challenge-play" %>
+              <% end %>
+            <% end %>
           </div>
         <% end %>
         <p class="comment-text">

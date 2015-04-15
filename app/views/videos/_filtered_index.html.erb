@@ -1,0 +1,50 @@
+<h2 class="section-title">FEATURED</h2>
+  <%= render partial: "featured_videos" %>
+  <div class="video-collection-header">
+    <div class="collections-left">
+      <h2 class="section-title">VIDEOS</h2>
+    </div>
+    <div class="collections-right">
+      <div class="pages">
+        <% if !@first_page %>
+          <%= link_to url_for(page: @page_back) do %>
+            <%= image_tag "scroll-arrow.png", :class => "page-back" %>
+          <% end %>
+        <% else %>
+            <%= image_tag "scroll-arrow.png", :class => "page-back faded" %>
+        <% end %>
+          <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
+        <% if !@last_page %>
+          <%= link_to url_for(page: @page_next) do %>
+            <%= image_tag "scroll-arrow.png", :class => "page-next" %>
+          <% end %>
+        <% else %>
+            <%= image_tag "scroll-arrow.png", :class => "page-next faded" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <ul class="regular-videos">
+    <% @videos.each do |video| %>
+      <%= render partial: 'video_item_container', locals: {video: video} %>
+    <% end %>
+  </ul>
+   <div class="pages bottom">
+    <% if !@first_page %>
+      <%= link_to url_for(page: @page_back) do %>
+        <%= image_tag "scroll-arrow.png", :class => "page-back" %>
+      <% end %>
+    <% else %>
+        <%= image_tag "scroll-arrow.png", :class => "page-back faded" %>
+    <% end %>
+      <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
+    <% if !@last_page %>
+      <%= link_to url_for(page: @page_next) do %>
+        <%= image_tag "scroll-arrow.png", :class => "page-next" %>
+      <% end %>
+    <% else %>
+        <%= image_tag "scroll-arrow.png", :class => "page-next faded" %>
+    <% end %>
+  </div>
+  <%= render partial: 'layouts/footer' %>

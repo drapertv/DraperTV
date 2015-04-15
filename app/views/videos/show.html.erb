@@ -58,25 +58,21 @@
                 <% end %>
               </div> -->
             </div>
-           <!--  <div class="video-item reded challenge-info hidden">
-              <%= image_tag 'vid-chal-icon.svg', :class => 'vid-chal-icon' %>
-              <% if @video.challenge %>
+            <% if @video.challenge %>
+              <div class="video-item reded challenge-info hidden">
+                <%= image_tag 'vid-chal-icon.svg', :class => 'vid-chal-icon' %>
                 <%= link_to playlist_challenge_path(@video.playlist, @video.challenge), :class => "challenge-name" do %>
                   Challenge: Placeholder Name for Video Challenge
                 <% end %>
-              <% else %>
-                <p>Challenge: No challenge yet.</p>
-              <% end %>
-              <% if @video.challenge %>
                 <%= link_to(create_favorite_path(model_id: @video.challenge, model_name: "Challenge"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(@video.challenge)}") do %>
                   <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
                 <% end %>
-              <% end %>
-            </div> -->
+              </div>
+            <% end %>
               <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
             <% if Playlist.where(:author_id => @video.author_id).present? %>
               <% playlist = Playlist.where(:author_id => @video.author_id).first %>
-              <div class="video-list">
+              <div class="video-list <%= 'with-challenge' if @video.challenge %>">
                 <% n = 1 %>
                 <% playlist.video_ids.each do |v| %>
                   <% if Video.where(:id => v).present? %>

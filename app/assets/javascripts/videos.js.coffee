@@ -43,11 +43,11 @@ Videos =
 
 	filterVideos: ->
 		filters = $('.video-header-item.active p').map (i, v) ->
-			return "." + v.className
-		filters = $.makeArray(filters).join(", ")
-		$('.video-item-container').hide()
-		$('.section-content').find(filters).show().addClass('animated fadeIn')
-		Videos.align()
+			return v.className
+		filters = $.makeArray(filters).join("+")
+		$.get "/videos?tags=#{filters}", (data )->
+			$('.section-content').html(data).addClass('animated fadeIn')
+			Videos.align()
 
 	hideModal: (e) ->
 		$(@).hide() if $(e.target).hasClass 'modal-overlay'
