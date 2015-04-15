@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="video-speaker-info">
-          <div class="video-info">
+          <div class="video-info challenge-video-info">
             <div class="video-info-header">
               <p class="video-speaker-name">About</p>
               <p class="video-publish-date">Published on <%= @challenge.publish_date %></p>
@@ -75,7 +75,7 @@
                     <div class="video-item <%= 'current' if @video.id == video.id %>">
                       <div class="video-info-row">
                         <span class="video-id">
-                          
+
                           <%= n %>
                           <% n += 1 %>
                         </span>
@@ -113,7 +113,7 @@
                     <%= video.title %>
                   </p>
                    <div class="video-view-count">
-                    <p class="text-ellipsis video-stats"> 
+                    <p class="text-ellipsis video-stats">
                     <%= video.publish_date %>
                     </p>
                   </div>

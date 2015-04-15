@@ -52,6 +52,9 @@
 	width: calc(100% - 110px);
 	margin-top: 0px;
 }
+.video-speaker-info .challenge-video-info {
+	width: 100%;
+}
 .video-info-header {
 	@include flexbox;
 	justify-content: space-between;
@@ -102,7 +105,7 @@
 }
 
 .challenge-name {
-	padding: 0px 20px;
+	padding: 0px 10px;
 	color: $light-gray;
 	width: 328px;
 	font-size: 17px;
@@ -110,7 +113,7 @@
 
 .videos-panel {
 	.challenge-info {
-		background: $red;
+		background: #a02d33;
 		align-items: center;
 		.fav-star {
 			path {
@@ -123,7 +126,10 @@
 		}
 	}
 	.challenge-info:hover {
-		opacity: 1;
+		background: #c03b3e;
+		.challenge-name {
+			color: #ffffff;
+		}
 	}
 	.fav-star {
 		cursor: pointer;
@@ -148,7 +154,6 @@
 		}
 	}
 	.vid-chal-icon {
-		  transform: translateX(-11px);
 		  height: 40px;
 		  width: 30px;
 	}
@@ -185,7 +190,7 @@
 
 
 
-.video-list { 
+.video-list {
 	.video-item:hover, .video-item.current:hover {
 		background: #545454;
 	}
@@ -231,7 +236,7 @@
 
 #suggested-videos {
 	padding-left: 20px;
-	margin-top: 20px; 
+	margin-top: 20px;
 	margin-bottom: 50px;
 }
 
@@ -301,4 +306,3 @@
 	padding: 20px 0px 10px 0px;;
 	border-top: 1px solid $light-gray;
 }
-
