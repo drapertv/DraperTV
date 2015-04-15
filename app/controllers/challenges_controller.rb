@@ -13,6 +13,8 @@ class ChallengesController < InheritedResources::Base
     @challenge.increment_view_count
   end
 
+  
+
   private
 
   def challenge_params

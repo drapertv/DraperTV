@@ -12,6 +12,11 @@ class Comment < ActiveRecord::Base
   	commentable.class == Challenge
   end
 
+  def youtube_embed
+    yt_id = video_url.split("v=").last
+    video_embed = ActiveSupport::SafeBuffer.new(%Q{<iframe id="ytplayer" type="text/html" width="662" height="494" src="https://www.youtube.com/embed/#{yt_id}?autoplay=0&rel=0&showinfo=0&color=red&theme=dark&modestbranding=1" frameborder="0" allowfullscreen> </iframe>})
+  end
+
   private
 
   def process_url

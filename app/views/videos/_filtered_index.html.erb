@@ -31,24 +31,20 @@
     <% end %>
   </ul>
    <div class="pages bottom">
-    <% if !@first_page %>
-      <%= link_to url_for(page: @page_back) do %>
-        <p class="page-next-info">Prev page</p>
-        <%= image_tag "scroll-arrow.png", :class => "page-back" %>
+      <% if !@first_page %>
+        <%= link_to url_for(page: @page_back) do %>
+          <p class="page-next-info">Prev page</p><%= image_tag "scroll-arrow.png", :class => "page-back" %>
+        <% end %>
+      <% else %>
+          <p class="page-next-info text-faded">Prev page</p><%= image_tag "scroll-arrow.png", :class => "page-back faded" %>
       <% end %>
-    <% else %>
-        <p class="page-next-info text-faded">Prev page</p>
-        <%= image_tag "scroll-arrow.png", :class => "page-back faded" %>
-    <% end %>
-      <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
-    <% if !@last_page %>
-      <%= link_to url_for(page: @page_next) do %>
-        <%= image_tag "scroll-arrow.png", :class => "page-next" %>
-        <p class="page-next-info">Next page</p>
+        <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
+      <% if !@last_page %>
+        <%= link_to url_for(page: @page_next) do %>
+          <%= image_tag "scroll-arrow.png", :class => "page-next" %><p class="page-next-info">Next page</p>
+        <% end %>
+      <% else %>
+          <%= image_tag "scroll-arrow.png", :class => "page-next faded" %><p class="page-next-info text-faded">Next page</p>
       <% end %>
-    <% else %>
-        <%= image_tag "scroll-arrow.png", :class => "page-next faded" %>
-        <p class="page-next-info text-faded">Next page</p>
-    <% end %>
-  </div>
+    </div>
   <%= render partial: 'layouts/footer' %>

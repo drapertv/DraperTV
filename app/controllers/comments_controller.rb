@@ -26,6 +26,7 @@ class CommentsController < ApplicationController
     if @comment.save
         if !@comment.parent_id
           render partial: 'comment', locals: {comment: @comment}
+
         else
           render partial: 'nested_comment', locals: {comment: @comment}
         end

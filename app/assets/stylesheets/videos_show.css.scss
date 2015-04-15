@@ -306,3 +306,29 @@
 	padding: 20px 0px 10px 0px;;
 	border-top: 1px solid $light-gray;
 }
+
+.comment-video-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	top: 0;
+	background: rgba(0,0,0,0.85);
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	display: none;
+	text-align: center;
+	@include flexbox;
+	align-items: center;
+	#ytplayer {
+		width: 660px;
+		margin-left: calc(50% - 330px);
+	}
+	img {
+		margin: 0 auto;
+	}
+}
+
+.comment-video-modal.hidden {
+	display: none;
+}

@@ -1,5 +1,5 @@
 <div id="login-modal">
-	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { id: "login-form"}) do |f| %>
+	<%= form_for(User.new, :as => resource_name, :url => session_path(resource_name), :html => { id: "login-form"}) do |f| %>
     <%= f.email_field :email, :autofocus => true, class: 'login-field login-email', placeholder: "Email" %>
     <%= f.password_field :password, class: 'login-field login-password', placeholder: "Password" %>
     <button type="submit" class="login-btn">Log In</button>

@@ -4,6 +4,15 @@ Comments =
 		$('body').on 'ajax:success', '.nested-comment-form #new_comment', @addNestedComment
 		$('body').on 'click', '.comment-reply', @showReplyForm
 		$('body').on 'click', @closeNestedCommentForm
+		$('body').on 'click', '.comment-video', @openCommetVideo
+		$('body').on 'click', '.comment-video-modal', @closeCommentVideo
+
+	closeCommentVideo: (e) ->
+		if $(e.target).attr('id') != "ytplayer"
+			$('.comment-video-modal').addClass('hidden')
+
+	openCommetVideo: ->
+		$(@).parents('.comment-block').find('.comment-video-modal').removeClass('hidden')
 
 	closeNestedCommentForm: (e) ->
 		if !$(e.target).hasClass('comment-input') && !$(e.target).hasClass('comment-reply')

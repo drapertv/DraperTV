@@ -7,24 +7,26 @@
     </a>
     <section class="comment-body">
       <header>
-        <span class="comment-name"><%=@comment_user.name %></span>
+        <span class="comment-name"><%= @comment_user.name %></span>
         <span class="text-muted text-xs m-t-xs comment-date">
           <%= comment.created_at.to_date.to_formatted_s( :long_ordinal ) %>
         </span>
       </header>
 
       <div class="comment-content">
-        <% if comment.belongs_to_challenge %>
+        <% if comment.belongs_to_challenge && comment.url_type %>
           <div class="comment-video">
-            <%= link_to comment.video_url do %>
               <%= image_tag comment.url_thumbnail || comment.video_url, :class => "challenge-thumbnail" %>
               <% if comment.url_type == "video" %>
                 <%= image_tag 'play-icon.png', :class => "challenge-play" %>
               <% end %>
-            <% end %>
           </div>
         <% end %>
         <p class="comment-text">
+        <% if comment.video_url && !comment.url_type %>
+          <%= link_to comment.video_url, make_url(comment.video_url) %>
+          <br><br>
+        <% end %>
           <%=  comment.content %>
         </p>
       </div>
@@ -43,4 +45,13 @@
       <%= render partial: 'comments/nested_comment', locals: {comment: comment} %>
     <% end %>
   </div>
+  <% if comment.url_type == "video" %>
+    <div class="comment-video-modal hidden">
+      <%= comment.youtube_embed %>
+    </div>
+  <% elsif comment.url_type == "image" %>
+    <div class="comment-video-modal hidden">
+      <%= image_tag make_url(comment.video_url), :class => "comment-img" %>
+    </div>
+  <% end %>
 </div>

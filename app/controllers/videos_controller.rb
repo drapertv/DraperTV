@@ -10,7 +10,13 @@ class VideosController < ApplicationController
     @videos = Video.all.paginate(page: params[:page], per_page: 20)
     @last_page = @videos.length < 20
     @first_page = @page < 2
+    if params[:tags]
+      @filters = params[:tags].gsub(" ", ",")
+    else
+      @filters = nil
+    end
     if request.xhr? 
+      @videos = Video.tagged_with @filters, any: true
       render partial: 'filtered_index' and return
     end
   end
