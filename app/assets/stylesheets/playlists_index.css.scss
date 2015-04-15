@@ -61,7 +61,7 @@ box-sizing: content-box;
 	@include flexbox;
 	height: 25px;
 	font: 25px;
-	margin: 25px 0px 15px 0px;
+	margin: 0px 0px 10px 0px;
 	justify-content: space-between;
 	div {
 		line-height: 30px;
@@ -105,7 +105,7 @@ box-sizing: content-box;
 	position: relative;
 	.white-gradient {
 		position: absolute;
-		top: 40px;
+		top: 30px;
 		height: 240px;
 		width: 135px;
 		z-index: 2;
@@ -133,7 +133,7 @@ box-sizing: content-box;
 
 .series-content .scroll-arrow {
 	position: absolute;
-	top: 90px;
+	top: 85px;
 	height: 30px;
 	width: 15px;
 	z-index: 2;
@@ -269,4 +269,5 @@ box-sizing: content-box;
 .video-section {
 	position: relative;
 	border-bottom: 1px solid $light-gray;
+	margin-bottom: 25px;
 }

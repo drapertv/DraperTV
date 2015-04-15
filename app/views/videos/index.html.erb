@@ -1,5 +1,5 @@
 <div class="videos-container">
-  <header id="video-header">
+  <header id="video-header" class="original-header">
     <ul class="video-header-mid no-mobile">
       <% @tags.each do |tag| %>
         <li class="video-header-item">
@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    
+
     <ul class="regular-videos">
       <% @videos.each do |video| %>
         <%= render partial: 'video_item_container', locals: {video: video} %>
@@ -51,18 +51,18 @@
      <div class="pages bottom">
       <% if !@first_page %>
         <%= link_to url_for(page: @page_back) do %>
-          <%= image_tag "scroll-arrow.png", :class => "page-back" %>
+          <p class="page-next-info">Prev page</p><%= image_tag "scroll-arrow.png", :class => "page-back" %>
         <% end %>
       <% else %>
-          <%= image_tag "scroll-arrow.png", :class => "page-back faded" %>
+          <p class="page-next-info text-faded">Prev page</p><%= image_tag "scroll-arrow.png", :class => "page-back faded" %>
       <% end %>
         <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
       <% if !@last_page %>
         <%= link_to url_for(page: @page_next) do %>
-          <%= image_tag "scroll-arrow.png", :class => "page-next" %>
+          <%= image_tag "scroll-arrow.png", :class => "page-next" %><p class="page-next-info">Next page</p>
         <% end %>
       <% else %>
-          <%= image_tag "scroll-arrow.png", :class => "page-next faded" %>
+          <%= image_tag "scroll-arrow.png", :class => "page-next faded" %><p class="page-next-info text-faded">Next page</p>
       <% end %>
     </div>
     <%= render partial: 'layouts/footer' %>

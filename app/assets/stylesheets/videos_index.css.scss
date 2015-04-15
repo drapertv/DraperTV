@@ -11,6 +11,11 @@
 	z-index: 2;
 	margin-bottom: 40px;
 }
+
+.original-header {
+	display:none;
+}
+
 #landing-video-header > * {
 	position: absolute;
 	top: 0;
@@ -36,7 +41,7 @@
 .video-header-item p {
 	color: $gray;
 	font-size: 14px;
-	padding: 0px 10px;
+	padding: 1px 10px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -55,32 +60,32 @@
 
 	.MARKETING {
 		color: $yellow;
-		
+
 	}
 
 	.SURVIVAL {
 		color: $orange;
-		
+
 	}
 
 	.OPERATIONS {
 		color: $turquoise;
-		
+
 	}
 	.ALL {
 		color: $black;
-		
+
 	}
 	.THINK {
 		color: $blue;
-		
+
 	}
 	.PEOPLE {
 		color: $light-blue;
-		
+
 	}
 	.FINANCE {
-		color: $green;	
+		color: $green;
 	}
 }
 
@@ -124,7 +129,7 @@
 	@include flexbox;
 	justify-content: space-between;
 	height: 25px;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 }
 
 .collections-left, .pages {
@@ -137,8 +142,8 @@
 }
 
 .pages.bottom {
-	margin: 50px auto;
-	width: 115px;
+	margin: 25px auto;
+	width: 262px;
 }
 
 .page-back {
@@ -147,11 +152,23 @@
 	-ms-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
+	margin-left: 10px;
 }
 
 .page-next {
 	height: 20px;
 	width: 10px;
+	margin-right: 10px;
+}
+
+.page-next-info {
+	display: inline-block;
+	vertical-align: middle;
+	color: #246db4;
+}
+
+.text-faded {
+	opacity: 0.3;
 }
 
 .page-down {
@@ -159,6 +176,7 @@
 	width: 6.5px;
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
     margin-left: 10px;
 
 }
