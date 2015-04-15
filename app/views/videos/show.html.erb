@@ -62,7 +62,7 @@
               <div class="video-item reded challenge-info hidden">
                 <%= image_tag 'vid-chal-icon.svg', :class => 'vid-chal-icon' %>
                 <%= link_to playlist_challenge_path(@video.playlist, @video.challenge), :class => "challenge-name" do %>
-                  Challenge: Placeholder Name for Video Challenge
+                  Challenge: <%=  @video.challenge.title %>
                 <% end %>
                 <%= link_to(create_favorite_path(model_id: @video.challenge, model_name: "Challenge"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(@video.challenge)}") do %>
                   <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>

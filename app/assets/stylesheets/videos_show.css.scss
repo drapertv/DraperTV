@@ -104,12 +104,13 @@
 .challenge-name {
 	padding: 0px 20px;
 	color: $light-gray;
+	width: 328px;
+	font-size: 17px;
 }
 
 .videos-panel {
 	.challenge-info {
 		background: $red;
-		opacity: 0.5;
 		align-items: center;
 		.fav-star {
 			path {
