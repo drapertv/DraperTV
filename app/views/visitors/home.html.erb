@@ -25,18 +25,24 @@
         <div class="info-items">
             <div class="info-item">
               <%= image_tag 'play_button.svg', :class =>"info-img" %>
-              <p class="info-title">VIDEOS</p>
-              <p class="info-desc">Learn from free, exclusive clips of successful entreperneurs, and Silicon Valley executives.  </p>
+              <div class="info-item-misc">
+                <p class="info-title">VIDEOS</p>
+                <p class="info-desc">Learn from free, exclusive clips of successful entreperneurs, and Silicon Valley executives.  </p>
+              </div>
             </div>
             <div class="info-item">
-              <%= image_tag 'series-icon.png', :class =>"info-img" %>
-              <p class="info-title">SERIES</p>
-              <p class="info-desc">In-depth lectures covering everything you need to know about starting up your company and far beyond.</p>
+              <%= image_tag 'series-icon-mobile.png', :class =>"info-img" %>
+              <div class="info-item-misc">
+                <p class="info-title">SERIES</p>
+                <p class="info-desc">In-depth lectures covering everything you need to know about starting up your company and far beyond.</p>
+              </div>
             </div>
             <div class="info-item">
               <%= image_tag 'challenges-icon.svg', :class =>"info-img" %>
-              <p class="info-title">CHALLENGES</p>
-              <p class="info-desc">Go for it.<br> Complete challenges to see if you really know your stuff.</p>
+              <div class="info-item-misc">
+                <p class="info-title">CHALLENGES</p>
+                <p class="info-desc">Go for it.<br> Complete challenges to see if you really know your stuff.</p>
+              </div>
             </div>
           </div>
           <%= link_to new_user_registration_path do %>
@@ -59,3 +65,5 @@
 
   
 <% end %>
+
+

@@ -3,6 +3,7 @@
     <div class="section-left">
       <%= raw @video_yt_embed %>
       <div class="video-main-info">
+        <%= image_tag "scroll-arrow.png", :class => "expand-arrow mobile" %>
         <p class="video-title"><%= @video.title %></p>
         <div class="video-actions">
           <div class="main-video-view-count">
@@ -13,7 +14,7 @@
           </div>
           <p class="video-category"><%= @video.category.first.name.downcase.titleize %></p>
         </div>
-        <div class="video-speaker-info">
+        <div class="video-speaker-info expandable">
           <%= image_tag Speaker.where(:id => @video.author_id).first.profilepic_url(:seriesthumb), :class => "video-speaker" %>
           <div class="video-info">
             <div class="video-info-header">
@@ -26,22 +27,29 @@
       </div>
         <% if current_user %>
           <div id="comments-container">
-            <div class="comments-header">COMMENTS</div>
-            <% if current_user %>
-              <div id="main-comment-form">
-                <%= render partial: "comments/form", locals: {parent_id: nil} %>
-              </div>
-            <% end %>
-            <%= render partial: "comments/comments" %>
+            <%= image_tag "scroll-arrow.png", :class => "expand-arrow mobile" %>
+            <div class="comments-header">COMMENTS <span class="comment-count mobile">&nbsp;•&nbsp; <%= @comments.count %> </span></div>
+              <div class="expandable">
+              <% if current_user %>
+                <div id="main-comment-form">
+                  <%= render partial: "comments/form", locals: {parent_id: nil} %>
+                </div>
+              <% end %>
+              <%= render partial: "comments/comments" %>
+            </div>
           </div>
         <% end %>
     </div>
     <div class="section-right">
       <header class="additional-video-list">
         <section class="videos-panel">
+            <%= image_tag "scroll-arrow.png", :class => "expand-arrow mobile" %>
             <div class="video-item playlist-info">
               <div class="video-info-row">
                 <% if Playlist.where(:author_id => @video.author_id).present? %>
+                  <p class="video-order mobile">
+                    <%= @video.order_in_playlist %>
+                  </p>
                   <p class="playlist-title">
                     <%= Playlist.where(:author_id => @video.author_id).first.title %>
                   </p>
@@ -52,80 +60,77 @@
                   <% end %>
                 <% end %>
               </div>
-<!--             <div class="centered green-btn series-price">
-                <% if Playlist.where(:author_id => @video.author_id).present? %>
-                  Full Series <span class="bold">$<%= Playlist.where(:author_id => @video.author_id).first.price %></span>
-                <% end %>
-              </div> -->
             </div>
-            <% if @video.challenge %>
-              <div class="video-item reded challenge-info hidden">
-                <%= image_tag 'vid-chal-icon.svg', :class => 'vid-chal-icon' %>
-                <%= link_to playlist_challenge_path(@video.playlist, @video.challenge), :class => "challenge-name" do %>
-                  Challenge: <%=  @video.challenge.title %>
-                <% end %>
-                <%= link_to(create_favorite_path(model_id: @video.challenge, model_name: "Challenge"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(@video.challenge)}") do %>
-                  <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
-                <% end %>
-              </div>
-            <% end %>
-              <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
-            <% if Playlist.where(:author_id => @video.author_id).present? %>
-              <% playlist = Playlist.where(:author_id => @video.author_id).first %>
-              <div class="video-list <%= 'with-challenge' if @video.challenge %>">
-                <% n = 1 %>
-                <% playlist.video_ids.each do |v| %>
-                  <% if Video.where(:id => v).present? %>
-                    <% video = Video.where(:id => v).first %>
-                    <div class="video-item <%= 'current' if @video.id == video.id %>">
-                      <div class="video-info-row">
-                        <span class="video-id">
-
-                          <%= n %>
-                          <% n += 1 %>
-                        </span>
-                        <%= link_to video_path(video) do %>
-                          <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
-                        <% end %>
-                        <%= link_to video_path(video) do %>
-                          <p class="video-list-title">
-                            <%= truncate(video.title, length: 70, separator: ' ') %>
-                          </p>
-                        <% end %>
-                        <% if current_user %>
-                          <%= link_to(create_favorite_path(model_id: v, model_name: "Video"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(video)}") do %>
-                            <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
-                          <% end %>
-                        <% end %>
-                      </div>
-                    </div>
+            <div class="expandable">
+              <% if @video.challenge %>
+                <div class="video-item reded challenge-info hidden">
+                  <%= image_tag 'vid-chal-icon.svg', :class => 'vid-chal-icon' %>
+                  <%= link_to playlist_challenge_path(@video.playlist, @video.challenge), :class => "challenge-name" do %>
+                    Challenge: <%=  @video.challenge.title %>
                   <% end %>
-                <% end %>
-              </div>
-            <% end %>
+                  <%= link_to(create_favorite_path(model_id: @video.challenge, model_name: "Challenge"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(@video.challenge)}") do %>
+                    <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
+                  <% end %>
+                </div>
+              <% end %>
+                <%# This is is a check up, in case the Author ID and Playlist ID didnt Match! It will help to fail gracefully %>
+              <% if Playlist.where(:author_id => @video.author_id).present? %>
+                <% playlist = Playlist.where(:author_id => @video.author_id).first %>
+                <div class="video-list <%= 'with-challenge' if @video.challenge %>">
+                  <% n = 1 %>
+                  <% playlist.video_ids.each do |v| %>
+                    <% if Video.where(:id => v).present? %>
+                      <% video = Video.where(:id => v).first %>
+                      <div class="video-item <%= 'current' if @video.id == video.id %>">
+                        <div class="video-info-row">
+                          <span class="video-id">
+
+                            <%= n %>
+                            <% n += 1 %>
+                          </span>
+                          <%= link_to video_path(video) do %>
+                            <%= image_tag video.vthumbnail, :class => "video-list-thumbnail" %>
+                          <% end %>
+                          <%= link_to video_path(video) do %>
+                            <p class="video-list-title">
+                              <%= truncate(video.title, length: 70, separator: ' ') %>
+                            </p>
+                          <% end %>
+                          <% if current_user %>
+                            <%= link_to(create_favorite_path(model_id: v, model_name: "Video"), remote: true, :class => "fav-link #{ "selected" if current_user && current_user.voted_for?(video)}") do %>
+                              <%= image_tag 'fav-button.svg', :class => "fav-star svg" %>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
         </section>
       </header>
       <% if current_user %>
         <div id="suggested-videos">
           <div class="related-header">RELATED VIDEOS</div>
-          <% @video.suggested[0..5].each do |video| %>
-            <%= link_to video_path(video) do %>
-              <div class="suggested-video">
-                <div class="video-length"><%= video.length %></div>
-                <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
-                <div class="suggested-video-info">
-                  <p class="suggested-video-title">
-                    <%= video.title %>
-                  </p>
-                   <div class="video-view-count">
-                    <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
-                      <%= image_tag 'fav-button.svg', :class => "fav-star" %>
+            <% @video.suggested[0..5].each do |video| %>
+              <%= link_to video_path(video) do %>
+                <div class="suggested-video">
+                  <div class="video-length"><%= video.length %></div>
+                  <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
+                  <div class="suggested-video-info">
+                    <p class="suggested-video-title">
+                      <%= video.title %>
                     </p>
+                     <div class="video-view-count">
+                      <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
+                        <%= image_tag 'fav-button.svg', :class => "fav-star" %>
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
-          <% end %>
         </div>
       <% end %>
     </div>
@@ -163,4 +168,10 @@
     <script>
     $('.video-speaker-info').css('margin-bottom', '50px')
     </script>
+<% end %>
+
+<% if @browser.mobile? %>
+  <script>
+    $('.video-main-info').before($('.videos-panel'))
+  </script>
 <% end %>

@@ -6,8 +6,17 @@ Videos =
 		$('body').on 'click', '.videos-container .video-header-item', @highlightTag
 		$('body').on 'click', '.favorites-header .video-header-item', @highlightVideoType
 		$('body').on 'ajax:success', '.fav-link', @updateLikeCount
+		$('body').on 'click', '.expand-arrow', @showExpandable
+		$('body').on 'click', '#new_comment, .login-modal-trigger', @forceLogin 
 		@clearGradients()
 		@align() if $(window).width() > 400
+
+	forceLogin: ->
+		console.log "here"
+		$("#login-modal").show().addClass('animated fadeInDown')
+
+	showExpandable: ->
+		$(@).parent().find('.expandable').toggle().addClass('animated fadeIn')
 
 	clearGradients: ->
 		$('.series-content').each ->

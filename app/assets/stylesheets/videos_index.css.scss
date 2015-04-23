@@ -139,10 +139,15 @@
 
 .pages {
 	cursor: pointer;
+	a {
+		@include flexbox;
+		align-items: center;
+	}
 }
 
 .pages.bottom {
-	margin: 25px auto;
+	margin: 0px auto;
+	padding: 25px;
 	width: 262px;
 }
 
@@ -196,7 +201,7 @@
 }
 
 .current-page {
-	width: 30px;
+  width: 30px;
   text-align: center;
 }
 
@@ -213,6 +218,7 @@
   height: 100vh;
   overflow-y: scroll;
   padding-top: 50px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .regular-videos {
@@ -238,6 +244,7 @@
 
 .video-img {
 	height: 135px;
+	width: 240px;
 	position: relative;
 }
 

@@ -3,13 +3,14 @@
 
 /****************  VIDEOS/SERIES *********************/
 
-$section-height: calc(33vh -  16.66px);
+$section-height: calc(33vh - 16.66px);
 
 .playlist-container {
 	background: white;
 	padding-top: 50px;
 	height: calc(100vh);
 	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	footer {
 		display: block;
 	}

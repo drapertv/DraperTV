@@ -4,16 +4,42 @@
 
 
 
+
 @media (max-width: 768px) {
 	body {
+		#video-container {
+			padding-top: 50px;
+			.section-content#video-section {
+				width: 100%;
+			} 
+		}
+		.video-main-info {
+			padding-bottom: 10px;
+		}
+		.video-main-info, #comments-container, #suggested-videos {
+			width: calc(100% - 20px);
+			margin: 0 auto;
+			position: relative;
+		} 
+		.videos-panel {
+			background: #414141;
+			margin-top: -2px;
+			position: relative;
+
+		}
+
+		#ytplayer {
+			height: 56vw;
+		}
 		#video-section {
 			flex-wrap: wrap;
 		}
-		.section-left, .section-right {
-			width: 100%;
+		.video-title {
+			width: calc(100% - 30px);
+			margin-top: 10px;
 		}
-		.videos-panel {
-			display: none;
+		.video-speaker-info .video-info {
+			width: 100%;
 		}
 		#suggested-videos {
 			padding-left: 0px;
@@ -24,15 +50,57 @@
 		#video-header:not(.favorites-header) {
 			display: none;
 		}
-	}
-}
+		#comments-container {
+			border-bottom: 1px solid $light-gray;
+		}
+		.comments-header {
+			padding-top: 10px;
+		}
+		.comment-pic {
+			height: 30px;
+			width: 30px;
+		}
+		.video-publish-date {
+			text-align: right;
+		}
+		.playlist-info.video-item {
+			padding: 10px;
+			padding-right: 40px; 
+			height: auto;
+		}
+		.video-list {
+			height: auto;
+		}
+		.video-list-title {
+			padding-left: 25px;
+		}
+		#suggested-videos {
+			padding: 10px 0px;
 
-@media (max-width: 400px ) {
-	body {
-		.videos-container {
-			.section-content {
-				width: 240px;
+		}
+		.expand-arrow {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			height: 20px;
+			width: 20px;
+		}
+
+		.expandable {
+			display: none;
+		}
+		.videos-panel {
+			.expand-arrow {
+				right: 20px;
 			}
+		}
+		.comment-count {
+			display: inline 
+		}
+		.video-order {
+			width: 50px;
+			color: $light-gray;
 		}
 	}
 }
+

@@ -34,6 +34,10 @@
 	width: 100%;
 }
 
+.embed {
+	
+}
+
 .videos-panel.blacke {
 	height: 500px;
 	padding-top: 0px;
@@ -331,4 +335,38 @@
 
 .comment-video-modal.hidden {
 	display: none;
+}
+
+
+/********* Livestream  *******/
+
+.livestream {
+	.section-right {
+		padding-top: 700px;
+		margin-left: 20px;
+	}
+	.livestream-text-wrapper {
+		background: #f4f4f4;
+		padding: 20px 10px;
+		margin-top: 20px;
+	}
+	.livestream-text {
+		background: white;
+		border-radius: 5px;
+		font-size: 17px;
+		text-align: center;
+		padding: 10px;
+		.livestream-text-header {
+			font-size: 25px;
+		}
+		p {
+			margin-bottom: 20px;
+		}
+		.link-text {
+			color: $light-blue;
+			cursor: pointer;
+			font-weight: 600;
+			text-decoration: underline;
+		}
+	}
 }

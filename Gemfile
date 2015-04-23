@@ -52,6 +52,7 @@ gem 'autoprefixer-rails'
 gem 'rails_12factor', group: :production
 gem 'simple_form'
 
+gem 'browser'
 
 
 #Cloud baby Cloud!

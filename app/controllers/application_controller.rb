@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_device_type
 
   helper ApplicationHelper
 
@@ -36,6 +37,15 @@ class ApplicationController < ActionController::Base
   helper_method :resource, :resource_name, :devise_mapping
   def resource_name
     :user
+  end
+
+  def set_device_type #allows use of @browser.mobile? in views
+    request.variant = :phone if browser.mobile?
+  end
+
+  def check_mobile
+    browser = Browser.new
+    @mobile = browser.mobile?
   end
 
   def resource

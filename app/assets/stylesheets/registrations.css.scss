@@ -1,0 +1,13 @@
+@import 'shared/variables';
+@import 'shared/mixins';
+
+.invite-text {
+	font-size: 25px;
+	margin: 20px auto;
+	color: white;
+	max-width: calc(100vw - 20px);
+}
+
+.invite-text.sub {
+	font-size: 17px;
+}

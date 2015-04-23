@@ -13,6 +13,11 @@ class Video < ActiveRecord::Base
 		update_attributes demand_array: (demand_array + [user.id])
 	end
 
+	def order_in_playlist
+		ids = playlist.video_ids
+		"#{(ids.find_index(id) || 0) + 1}/#{ids.length}" 
+	end
+
 	def demanded_by? user
 		demand_array != nil && demand_array.include?(user.id)
 	end

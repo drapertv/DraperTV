@@ -43,10 +43,10 @@
 							<div class="result-video-list">
 								<% result.videos.each do |video| %>
 									<div class="playlist-video">
-										<%= link_to video_path(video) do %>
+										<%= link_to video_path(video), :class => "video-title-link" do %>
 											<p class="playlist-video-title"><%= matched @terms, video.title %></p>
 										<% end %>
-										<%= link_to video_path(video) do %>
+										<%= link_to video_path(video), :class => "video-lengt-link" do %>
 											<p class="playlist-video-length"><%= "3:59" %></p>
 										<% end %>
 									</div>
@@ -55,7 +55,6 @@
 						</div>
 					<% else %>
 						<div class="result-pic-container video">
-
 							<%= link_to result_path(result) do %>
 								<%= image_tag result.vthumbnail, :class => "result-pic" %>
 								<%= image_tag 'play_button.svg', :class => "video-play" %>
@@ -66,12 +65,12 @@
 							<%= link_to result_path(result) do %>
 								<h3 class="result-title"><%= matched @terms, result.title %></h3>
 								<div class="result-subinfo">
-									<p class="result-date">Published on <%= result.publish_date %></p>
-									 <p class="text-ellipsis video-stats"> <span><%= result.view_count %> Views &nbsp;•  &nbsp; <%= result.get_upvotes.size %></span>
+									<p class="result-date"><span class="no-mobile">Published on</span> <%= result.publish_date %></p>
+									 <p class="text-ellipsis video-stats"> <span><%= result.view_count %> Views <span class="no-mobile">&nbsp;•  &nbsp; <%= result.get_upvotes.size %></span></span>
 								      <%= image_tag 'fav-button.svg', :class => "fav-star" %>
 								      <% if result.class == Video %>
 										<% result.category_list.each do |cat| %>
-											<span>&nbsp;&nbsp;•&nbsp;&nbsp;<%= cat %></span>
+											<span class="result-cat">&nbsp;&nbsp;•&nbsp;&nbsp;<%= cat %></span>
 										<% end %>
 								      <% end %>
 								    </p>
@@ -98,7 +97,7 @@
         <div class="page-display"><span class="current-page"><%= @page.to_s || "0" %></span> <%= image_tag "scroll-arrow.png", :class => "page-down" %></div>
       <% if !@last_page %>
         <%= link_to url_for(page: @page_next, terms: @terms) do %>
-          <%= image_tag "scroll-arrow.png", :class => "page-next" %>\
+          <%= image_tag "scroll-arrow.png", :class => "page-next" %>
 					<p class="page-next-info">Next page</p>
         <% end %>
       <% else %>

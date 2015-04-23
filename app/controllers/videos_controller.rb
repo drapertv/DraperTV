@@ -39,6 +39,13 @@ class VideosController < ApplicationController
     current_user.save_video_in_view_history @video if current_user
   end
 
+  def livestream
+    @livestream = Livestream.last
+    @commentable = @livestream
+    @comments = @commentable.comments.where(ancestry: nil).order('created_at ASC')
+    @comment = Comment.new
+  end
+
   def increment_demand
     @video.increment_demand(current_user) if !@video.demanded_by?(current_user)
     render nothing: true

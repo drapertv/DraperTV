@@ -35,8 +35,13 @@
  *= require favorites_index
  *= require management_invite_corner
  *= require searches_create
+ *= require media_queries/search
  *= require invitations_edit
  *= require visitors_welcome
+ *= require media_queries/header
+ *= require media_queries/profile_edit
+ *= require media_queries/visitors_welcome
+ *= require registrations
  */
 
 // @import "bootstrap-sprockets";

@@ -1,8 +1,15 @@
+@import 'variables';
+@import 'mixins';
+
 /*** General ***/
 
 #content-container {
   min-height: 100vh;
   padding-top: 50px;
+  background: white;
+}
+body {
+  background: $light-gray;
 }
 
 

@@ -2,7 +2,10 @@
   <div id="invite-accept-container" class="profile-edit">
     <div id="blue-gradient"></div>
     <%= form_tag waitlists_path, remote: true, id: 'invite-accept-form', :class => "waitlist-form" do %>
-      <h1 class="invite-title">Waitlist Signup</h1>
+      <p class="invite-text">DraperTV is in closed beta.</p>
+      <p class="invite-text">Thanks for your interest.</p>
+      <p class="invite-text sub">Sign up for DraperTV below and you'll be the first to know when we launch!</p>
+	  
       <%= text_field_tag :name, nil, class: 'invite-accept-field invite-name', placeholder: "Name" %>
       <%= email_field_tag :email, nil, class: 'invite-accept-field invite-email', placeholder: "Email" %>
       <%= submit_tag "Add me to the waitlist!", :class => "submit-invite-accept", id: "waitlist-submit" %>

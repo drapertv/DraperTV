@@ -25,13 +25,18 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { :registrations => 'registrations', omniauth_callbacks: "omniauth_callbacks" }
   patch '/users/:id/accept_invite', to: "users#accept_invite", as: "accept_invite"
   resources :users
+  
   resources :videos do 
     resources :comments
     member do
       get "favit", to: "videos#favIt"
     end
   end
-  
+  get '/livestream', to: "videos#livestream", as: "livestream"
+
+  resources :livestream do
+    resources :comments
+  end  
   resources :searches
   resources :quotes
   resources :favorites, only: [:index]
@@ -46,11 +51,6 @@ Rails.application.routes.draw do
   as :user do
     get "/users/sign_out" => "devise/sessions#destroy"
   end
-
-  get "/404", :to => "errors#not_found"
-  get "/422", :to => "errors#unacceptable"
-  get "/500", :to => "errors#internal_error"
-  get "/401", :to => "errors#internal_error"
 
 
   get '/videos/:id/increment_demand', to: 'videos#increment_demand', as: 'video_increment_demand'
@@ -67,5 +67,11 @@ Rails.application.routes.draw do
       post 'batch_invite'
     end
   end
+
+
+  get "/404", :to => "errors#not_found"
+  get "/422", :to => "errors#unacceptable"
+  get "/500", :to => "errors#internal_error"
+  get "/401", :to => "errors#internal_error"
 
 end

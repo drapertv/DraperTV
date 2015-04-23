@@ -1,6 +1,20 @@
 Challenges =
 	init: ->
 		$('body').on 'submit', '.challenge-comment-form .new_comment' , @validateChallengeComment
+		$('body').on 'click', '.search-icon', @showSearch
+
+	showSearch: ->
+		if $('.search-input:visible').length < 1
+			$('.header-mid-left').removeClass('no-mobile')
+			$('.search-input').animate 
+				width: '280px'
+			, 300, ->
+				$(@).css 'width', 'calc(100vw - 60px)'
+			
+			$('.header-left, .mobile-header-left').animate
+				width: "0px"
+			, 300, ->
+				$(@).hide()
 
 	validateChallengeComment: ->
 		noSubmit = false

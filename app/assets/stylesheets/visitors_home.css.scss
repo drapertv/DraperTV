@@ -156,7 +156,6 @@ body {
 	}
 /********** VIDEOS *************/
 	.series-title {
-		font-size: 16px;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
@@ -169,13 +168,6 @@ body {
 	#info-section {
 		background: #246db4;
 		background-image: none;
-	}
-	.info-item {
-		display: block;
-		width: 100%;
-	}
-	.info-item:nth-child(2n) {
-		margin: 20px 0px;
 	}
 }
 }

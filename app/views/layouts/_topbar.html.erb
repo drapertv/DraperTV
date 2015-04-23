@@ -1,10 +1,79 @@
+<!-- Refactor this into two views, one for signed in and one for not signed in -->
+
 <header id="landing-header">
   
+  <div class="mobile-header-left mobile">
+    <%= image_tag "menu-icon.svg", :class => "header-icon menu-icon" %>
+  </div>
+
   <div class="header-left">
     <%= link_to root_path do %>
       <%= image_tag 'draper-logo.png', :class => "header-item logo" %>
     <% end %>
   </div>
+  
+
+  <% if !current_user %>
+      <div class="header-dropdown mobile no-mobile visitor">
+        <div class="visitor-dropdown-item visitor-login">
+          Log In
+        </div>
+        
+        <%= link_to new_user_registration_path, :class => "dropdown-signup" do %>
+          <div class="visitor-dropdown-item">
+            Sign Up
+          </div>
+        <% end %>
+        <div class="visitor-login">
+          <%= form_for(User.new, :as => resource_name, :url => session_path(resource_name), :html => { id: "login-form"}) do |f| %>
+            <%= f.email_field :email, :autofocus => true, class: 'login-field login-email', placeholder: "Email" %>
+            <%= f.password_field :password, class: 'login-field login-password', placeholder: "Password" %>
+            <button type="submit" class="login-btn">Log In</button>
+            <%- if devise_mapping.recoverable? %>
+              <div id="forgot-password">
+                <%= link_to(new_password_path(resource_name)) do %>
+                    <p>Forgot password?</p>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+       <div class="header-dropdown mobile no-mobile logged-in">
+        <ul class="dropdown-side">
+          <%= link_to playlists_path do %>
+            <li class="dropdown-item">
+              SERIES
+            </li>
+          <% end %>
+          <%= link_to videos_path do %>
+            <li class="dropdown-item">
+              VIDEOS
+            </li>
+          <% end %>
+          <%= link_to favorites_path do %>
+            <li class="dropdown-item">
+              FAVORITES
+            </li>
+          <% end %>
+        </ul>
+        <ul class="dropdown-side">
+          <%= link_to profile_edit_path(current_user) do %>
+            <li class="dropdown-item">
+              PROFILE
+            </li>
+          <% end %>
+          <%= link_to destroy_user_session_path, :method =>'delete' do %>
+            <li class="dropdown-item">
+              LOGOUT
+            </li>
+          <% end %>
+        </ul>
+        
+      </div>
+    <% end %>
+  
 
 
   <% if current_user %>
@@ -32,7 +101,7 @@
         <% end %>
       </li>
     </ul>
-    <div class="header-right">
+    <div class="header-right no-mobile">
       <ul class="nav navbar-nav m-n hidden-xs nav-user user">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle bg clear header-item" data-toggle="dropdown" id="header-dropdown">
@@ -54,41 +123,22 @@
         </li>
       </ul>
     </div>
-    <%= image_tag "menu.svg", :class => "mobile-menu-icon svg mobile" %>
-    <div class="mobile-menu">
-      <ul class="mobile-menu-items">
-        <li class="mobile-menu-item">
-          <%= link_to 'Series', playlists_path %>
-        </li>
-        <li class="mobile-menu-item">
-          <%= link_to 'Videos', videos_path %>
-        </li>
-        <li class="mobile-menu-item">
-          <%= link_to 'Favorites', favorites_path %>
-        </li>
-        <li class="mobile-menu-item">
-          <%= link_to 'Profile', profile_edit_path(current_user) %>
-        </li>
-        <li class="mobile-menu-item">
-          <%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
-        </li>
-
-      </ul>
-
-    </div>
   <% else %>
-    <div class="header-right">
+    <div class="header-right no-mobile">
       <div class="header-item m-xs green-btn sign-up-btn no-mobile">
       <a href="<%= new_user_registration_path %>">Sign Up</a></div>
       <div class="header-item or no-mobile">
         or
       </div>
       <div class="header-item m-xs" id="login">
-        <p id="login-modal-trigger">Log In</p>
+        <p class="login-modal-trigger">Log In</p>
         <%= render partial: "layouts/login_modal" %>
       </div>
     </div>
   <% end %>
+  <div class="mobile mobile-header-right">
+    <%= image_tag "challenges-icon.svg", :class => "header-icon search-icon" %>
+  </div>
 </header>
 
 

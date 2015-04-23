@@ -4,27 +4,53 @@
 @media (max-width: 768px ) {
 	body {
 		.featured-playlists {
-			flex-wrap: wrap;
+			display: block;
+			white-space: nowrap;
+			overflow-x: scroll;
+			overflow-y: hidden;
+		}
+		.featured-playlist {
+			width: auto;
+			display: inline-block;
+			padding: 0px 20px;
+		}
+		.featured-playlist:first-child {
+			padding-left: 0px;
 		}
 		.featured-playlist:nth-child(2n) {
-			padding: 0px;
+			border-left: 1px solid $light-gray;
+			border-right: 1px solid $light-gray;
+		}
+		.featured-playlist-title {
+			max-width: 240px;
 		}
 		.speaker-pic {
 			display: none;
 		}
 		.series-speaker {
-		  width: 60px;
-		  margin-left: 0px;
-		  margin-right: 10px;
+		  display: none;
 		}
 		.series-videos {
-			width: calc(100% - 70px);
+			width: 100%;
+		}
+		.series-video {
+			width: 140px;
+			.video-thumbnail {
+				height: 80px;
+			}
+			.video-lenght {
+				top: 50px;
+			}
 		}
 		.challenge-btn, .challenge-text {
 			display: none;
 		}
 		.section-title {
 			margin-top: 20px;
+		}
+		.series-header {
+			display: block;
+			height: auto;
 		}
 	}
 }
