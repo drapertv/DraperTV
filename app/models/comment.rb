@@ -6,8 +6,6 @@ class Comment < ActiveRecord::Base
 
   after_create :process_url
 
-
-
   def belongs_to_challenge
   	commentable.class == Challenge
   end
@@ -28,7 +26,6 @@ class Comment < ActiveRecord::Base
     	elsif /([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i.match video_url
     		update_attributes url_thumbnail: img, url_type: "image"
     	else
-
     	end
     end
   end

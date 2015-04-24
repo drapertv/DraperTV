@@ -10,12 +10,14 @@ class VideosController < ApplicationController
     @videos = Video.all.paginate(page: params[:page], per_page: 20)
     @last_page = @videos.length < 20
     @first_page = @page < 2
+    
     if params[:tags]
       @filters = params[:tags].gsub(" ", ",")
     else
       @filters = nil
     end
-    if request.xhr? 
+    
+    if request.xhr? #if request is from the filter header
       @videos = Video.tagged_with @filters, any: true
       render partial: 'filtered_index' and return
     end
@@ -26,29 +28,12 @@ class VideosController < ApplicationController
     @commentable = @video
     @comments = @commentable.comments.where(ancestry: nil).order('created_at ASC')
     @comment = Comment.new
-    # if @video.video_id
-    #   oembed = "http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/" + @video.video_id + '&maxwidth=660' + '&autoplay=1'
-    #   puts (Curl::Easy.perform(oembed).body_str)["html"]
-    #   @video_vimeo_embed = JSON.parse(Curl::Easy.perform(oembed).body_str)["html"]
-    # end
 
     if @video.url
       @video_yt_embed = ActiveSupport::SafeBuffer.new(%Q{<iframe id="ytplayer" type="text/html" width="662" height="494" src="https://www.youtube.com/embed/#{@video.url}?autoplay=1&rel=0&showinfo=0&color=red&theme=dark&modestbranding=1" frameborder="0" allowfullscreen> </iframe>})
     end
     @video.increment_view_count
     current_user.save_video_in_view_history @video if current_user
-  end
-
-  def livestream
-    @livestream = Livestream.last
-    @commentable = @livestream
-    @comments = @commentable.comments.where(ancestry: nil).order('created_at ASC')
-    @comment = Comment.new
-  end
-
-  def increment_demand
-    @video.increment_demand(current_user) if !@video.demanded_by?(current_user)
-    render nothing: true
   end
 
   private
