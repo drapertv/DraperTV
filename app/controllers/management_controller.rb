@@ -6,9 +6,6 @@ class ManagementController < ApplicationController
 
 	end
 
-	def show
-	end
-
 	def batch_invite
 	  #Validate the user_emails field isn't blank and emails are valid
 	  @emails = params[:user_emails].split(",")

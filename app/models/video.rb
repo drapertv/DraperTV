@@ -8,11 +8,6 @@ class Video < ActiveRecord::Base
 
   delegate :speaker, :profilepic_url, :name, :challenge, :speaker_title, to: :playlist
 
-	def increment_demand user
-		demand_array = [] if demand_array == nil
-		update_attributes demand_array: (demand_array + [user.id])
-	end
-
 	def order_in_playlist
 		ids = playlist.video_ids
 		"#{(ids.find_index(id) || 0) + 1}/#{ids.length}" 
@@ -50,36 +45,4 @@ class Video < ActiveRecord::Base
 	def publish_date
 		created_at.strftime("%B %d, %Y")
 	end
-
-# cf_url is http://dSomething.cloudfront.net/path
-# video_name is test.mp4
-
-	#aws CF Sginer
-	def signed_html5
-	  cf_url = "http://dc6in7ze09oom.cloudfront.net"
-	  parsed_uri = URI.parse(cf_url)
-	  url = "#{parsed_uri.scheme}://#{parsed_uri.host}#{parsed_uri.path}/#{title}"
-	  signed_url = sign(url)
-	end
-
-	  # cf_url is http://dSomething.cloudfront.net/path
-	  # video_name is test.mp4
-	def signed_flash
-		cf_url = self.url
-	  path = URI.parse(cf_url).path[/\/+(.*)/, 1]
-	  rtmp_url = "rtmp://dc6in7ze09oom.cloudfront.net:1935/cfx/st/mp4:"
-	  rtmp_path = sign("#{path}/#{title}")
-	  full_url = "#{rtmp_url}#{rtmp_path}"
-	end
-
-	def sign(url="")
-	  # 1 hour expiration on the URL
- 		url = SIGNER.sign(url.to_s, :ending => Time.now + 3600)
- end
-
-	def signed
-	  # 1 hour expiration on the URL
- 		url = SIGNER.sign("http://dc6in7ze09oom.cloudfront.net/#{title}.mp4", :ending => Time.now + 3600)
- 	end
-
 end
