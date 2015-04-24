@@ -1,18 +1,35 @@
 ActiveAdmin.register Video do
 
+  permit_params :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name,:category_list, :video_id, :length
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+  index do
+    column :id
+    column :title
+    column :description
+    column :author_id
+    column :url
+    column :category_list
+
+    actions
+  end
+
+  form :html => { :enctype => "multipart/form-data" } do |f|
+   f.inputs "Video Details" do
+     f.inputs :title
+     f.inputs :url
+     f.inputs :author_id
+     f.inputs :category_list
+     f.inputs :value
+     f.inputs :video_id
+     f.inputs :vthumbnail
+     f.inputs :description
+     f.inputs :length
+     f.inputs :wistia_id
+
+   end
+  f.actions
+ end
+
 
 
 end

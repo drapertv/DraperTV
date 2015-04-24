@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   end
   get '/livestream', to: "videos#livestream", as: "livestream"
 
-  resources :livestream do
+  resources :livestreams do
     resources :comments
   end  
   resources :searches

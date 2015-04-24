@@ -21,7 +21,7 @@ class Ability
 			can :read, Video
 			can :manage, User, :id => user.id
 			can :accept_invite, User
-			can :livestream, Video
+			can :read, Livestream
 		end
 	end
 end
