@@ -76,6 +76,10 @@
 	line-height: initial;
 }
 
+.livestream-video-desc {
+	margin-top: -5px;
+}
+
 /************ Video List Panel  **************/
 .additional-video-list {
 	background: #343434;
@@ -343,12 +347,11 @@
 .livestream {
 	.section-right {
 		padding-top: 700px;
-		margin-left: 20px;
 	}
 	.livestream-text-wrapper {
 		background: #f4f4f4;
 		padding: 20px;
-		margin-top: 20px;
+		margin: 20px 0 0 20px;
 	}
 	.livestream-text {
 		border-radius: 5px;

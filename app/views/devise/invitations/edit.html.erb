@@ -6,7 +6,7 @@
         <%= image_tag "profile_picture.svg", :class => "invite-accept-pic svg" %>
         <%= image_tag "plus.svg", :class => "invite-accept-plus" %>
         <img src="" class="invite-accept-pic hidden" id="avatar-preview"></img>
-        <%= f.file_field :avatar,  :class => "avatar-field"  %>
+        <%= f.file_field :avatar,  :class => "avatar-field", :title => "Add Photo"  %>
       </div>
       <p id="hey-there">Hey there!</p>
       <%= f.text_field :name, class: 'invite-accept-field shortened invite-name', placeholder: "Name" %>

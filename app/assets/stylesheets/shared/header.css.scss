@@ -116,6 +116,10 @@
 	left: 20px;
 }
 
+.custom-caret {
+	margin-left: 5px;
+}
+
 /*****  Login  ******/
 
 #login {
@@ -168,9 +172,9 @@
   color: white;
   background: $blue;
   border-radius: 5px;
-  height: 30px;
+  height: 25px;
   margin-bottom: 20px;
-  line-height: 30px;
+  padding: 6px 10px 5px;
 }
 
 #forgot-password p {
@@ -209,4 +213,3 @@
 	  	}
 	  }
 }
-

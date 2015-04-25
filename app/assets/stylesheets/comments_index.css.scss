@@ -18,6 +18,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+	padding-top: 5px;
 }
 
 .comment-pic {
@@ -25,17 +26,18 @@
 	width: 50px;
 	border-radius: 50%;
 	margin-right: 10px;
+	border: 1px solid #246db4;
 }
 .comment-body {
 	width: calc(100% - 60px);
 }
 
 .comment-block {
-	margin-bottom: 30px;
+	margin-bottom: 35px;
 }
 .comment-content {
 	@include flexbox;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 .comment-video {
@@ -60,8 +62,7 @@
 
 .comment-text {
 	width: calc(100% - 130px);
-	margin-top: 5px;
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .comment-name {
@@ -70,9 +71,13 @@
 	font-size: 15px;
 }
 
+.comment-date {
+	margin-left: 10px;
+}
+
 .comment-actions {
 	margin-top: 10px;
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: 600;
 	color: $gray;
 	span {
@@ -80,7 +85,8 @@
 		cursor: pointer;
 	}
 	span:hover {
-		color: $black;
+		color: $light-blue;
+		text-decoration: underline;
 	}
 }
 
@@ -110,7 +116,7 @@
 
 
 .comment-input {
-	width: 100%;
+	width: calc(100% - 60px);
 	box-sizing: border-box;
 	height: 100%;
 	border: 1px solid $light-gray;
@@ -129,7 +135,7 @@
 
 .comment {
 	@include flexbox;
-	margin-bottom: 15px;
+	margin-bottom: 25px;
 }
 
 .challenge-comment-form {
@@ -137,7 +143,7 @@
 		border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
 	}
-	
+
 }
 
 #comment-box-bottom {
@@ -160,4 +166,3 @@
 		line-height: 25px;
 	}
 }
-

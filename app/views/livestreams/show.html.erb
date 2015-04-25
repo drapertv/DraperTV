@@ -10,7 +10,7 @@
             <div class="video-info-header">
               <p class="video-speaker-name"></p>
             </div>
-              <p class="video-desc"><%= @livestream.description %></p>
+              <p class="video-desc livestream-video-desc"><%= @livestream.description %></p>
           </div>
         </div>
       </div>
@@ -61,12 +61,6 @@
   </div>
   <%= render partial: 'layouts/footer' %>
 </div>
-
-<% if !current_user %>
-    <script>
-    $('.video-speaker-info').css('margin-bottom', '50px')
-    </script>
-<% end %>
 
 <script>
   $('iframe').css('max-height', '56vw').css('max-width', '100vw')
