@@ -63,11 +63,11 @@ Visitors =
 		noEmail = $(@).find('.login-email').val() == ""
 		noPassword = $(@).find('.login-password').val() == ""
 
-		# if noEmail or noPassword
-		# 	$('.login-password').css('border' , '1px solid #e1474c') if noPassword
-		# 	$('.login-email').css('border', '1px solid #e1474c') if noEmail
-		# 	$('.login-btn').addClass('invalid').hide().hide().show()
-		# 	return false
+		if noEmail or noPassword
+			$('.login-password').css('border' , '1px solid #e1474c') if noPassword
+			$('.login-email').css('border', '1px solid #e1474c') if noEmail
+			$('.login-btn').addClass('invalid').hide().hide().show()
+			return false
 
 
 
