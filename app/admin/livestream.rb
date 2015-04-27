@@ -4,7 +4,7 @@ ActiveAdmin.register Livestream do
 
   index do
     column :title
-    column :desc
+    column :description
     column :src_url
     actions
   end
