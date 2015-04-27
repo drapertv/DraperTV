@@ -59,6 +59,11 @@
           <% end %>
         </ul>
         <ul class="dropdown-side">
+          <%= link_to livestreams_path do %>
+            <li class="dropdown-item">
+              LIVESTREAMS
+            </li>
+          <% end %>
           <%= link_to profile_edit_path(current_user) do %>
             <li class="dropdown-item">
               PROFILE
@@ -93,6 +98,11 @@
       <li class="header-item <%= 'active' if request.original_url.include?("videos") %>">
         <%= link_to videos_path do %>
           VIDEOS
+        <% end %>
+      </li>
+      <li class="header-item <%= 'active' if request.original_url.include?("livesteams") %>">
+        <%= link_to livestreams_path do %>
+          LIVESTREAMS
         <% end %>
       </li>
       <li class="header-item <%= 'active' if request.original_url.include?("favorites") %>">
@@ -137,7 +147,7 @@
     </div>
   <% end %>
   <div class="mobile mobile-header-right">
-    <%= image_tag "challenges-icon.svg", :class => "header-icon search-icon" %>
+    <%= image_tag "search-icon.svg", :class => "header-icon search-icon" %>
   </div>
 </header>
 

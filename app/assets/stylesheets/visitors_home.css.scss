@@ -19,6 +19,21 @@
 
 /**** Landing Container ****/
 
+#banner {
+	height: 50px;
+	background: #9bcc5c;
+	color: white;
+	font-size: 25px;
+	text-align: center;
+	cursor: pointer;
+	line-height: 50px;	
+}
+
+#banner:hover {
+	color: #618039;
+	transition: all 0.3s ease;
+}
+
 .landing-container {
 	.series-content {
 		position: relative;

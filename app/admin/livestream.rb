@@ -14,6 +14,8 @@ ActiveAdmin.register Livestream do
      f.inputs :title
      f.inputs :description
      f.inputs :src_url
+     f.inputs :image_url
+     f.inputs :stream_date
    end
   f.actions
  end

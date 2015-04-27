@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       get "favit", to: "videos#favIt"
     end
   end
-  get '/livestream', to: "videos#livestream", as: "livestream"
+
 
   resources :livestreams do
     resources :comments

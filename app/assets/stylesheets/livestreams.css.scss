@@ -1,0 +1,19 @@
+@import 'shared/variables';
+@import 'shared/mixins';
+
+#livestreams {
+	.result-pic {
+		height: 135px;
+		width: 90px;
+	}
+	.livestream-description {
+		height: 80px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+}
+
+.show-more, .show-less {
+	color: $light-blue;
+	cursor: pointer;
+}

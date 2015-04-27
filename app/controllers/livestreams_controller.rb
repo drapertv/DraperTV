@@ -7,6 +7,10 @@ class LivestreamsController < InheritedResources::Base
     @comment = Comment.new
   end
 
+  def index
+  	@livestreams = Livestream.all
+  end
+
   
 
   private

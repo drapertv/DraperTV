@@ -10,7 +10,7 @@
             <div class="video-info-header">
               <p class="video-speaker-name"></p>
             </div>
-              <p class="video-desc livestream-video-desc"><%= @livestream.description %></p>
+              <p class="video-desc livestream-video-desc"><%= expandable_text allow_line_break(@livestream.description) %></p>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
 
       <div id="suggested-videos">
           <div class="related-header">RELATED VIDEOS</div>
-            <% Video.first.suggested[0..5].each do |video| %>
+            <% @livestream.suggested[0..5].each do |video| %>
               <%= link_to video_path(video) do %>
                 <div class="suggested-video">
                   <div class="video-length"><%= video.length %></div>

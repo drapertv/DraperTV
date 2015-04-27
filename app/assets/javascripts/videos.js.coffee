@@ -8,8 +8,18 @@ Videos =
 		$('body').on 'ajax:success', '.fav-link', @updateLikeCount
 		$('body').on 'click', '.expand-arrow', @showExpandable
 		$('body').on 'click', '#new_comment, .login-modal-trigger', @forceLogin 
+		$('body').on 'click', '.show-more', @showMore
+		$('body').on 'click', '.show-less', @showLess
 		@clearGradients()
 		@align() if $(window).width() > 400
+
+	showMore: ->
+		$(@).hide()
+		$(@).next().removeClass('hidden')
+
+	showLess: ->
+		$('.show-more').show()
+		$(@).parent().addClass('hidden')
 
 	forceLogin: ->
 		console.log "here"

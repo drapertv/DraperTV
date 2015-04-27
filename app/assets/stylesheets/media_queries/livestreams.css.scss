@@ -1,0 +1,32 @@
+@import '../shared/variables';
+@import '../shared/mixins';
+
+
+@media (max-width: 768px) {
+	body {
+		#livestreams {
+			.result-pic {
+				height: 80px;
+				width: 50px;
+			}
+			.result-info-container {
+				width: calc(100% - 50px);
+			}
+			.result-subinfo {
+				height: 55px;
+				display: block;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+		.livestream {
+			.section-right {
+				padding-top: 0px;
+			}
+			.livestream-text-wrapper {
+				margin: 0px;
+				background: white;
+			}
+		}
+	}
+}
