@@ -59,11 +59,9 @@ Visitors =
 			$('.invite-password-conf').css('border', '1px solid #e1474c') 
 			return false
 
-
-
 	checkLoginForm: ->
-		noEmail = $('.login-email').val() == ""
-		noPassword = $('.login-password').val() == ""
+		noEmail = $(@).find('.login-email').val() == ""
+		noPassword = $(@).find('.login-password').val() == ""
 
 		if noEmail or noPassword
 			$('.login-password').css('border' , '1px solid #e1474c') if noPassword
