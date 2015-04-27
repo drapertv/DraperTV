@@ -68,6 +68,9 @@ box-sizing: content-box;
 		line-height: 30px;
 	}
 }
+.playlist-container .series-header {
+	margin-top: 25px;
+}
 .series-actions {
 	@include flexbox;
 }
