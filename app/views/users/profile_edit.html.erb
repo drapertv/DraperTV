@@ -3,28 +3,28 @@
     <div id="blue-gradient"></div>
     <%= form_for @user, html: {id: 'invite-accept-form', :class => "user-edit"}  do |f| %>
       <h1 class="invite-title">Your Profile</h1>
-      
+
       <div class="profile-main">
         <div class="profile-pic-container">
           <%= image_tag "profile_picture.svg", :class => "invite-accept-pic svg" %>
           <%= image_tag "plus.svg", :class => "invite-accept-plus" %>
           <img src="" class="invite-accept-pic hidden" id="avatar-preview"></img>
-          <%= f.file_field :avatar,  :class => "avatar-field"  %>
+          <%= f.file_field :avatar,  :class => "avatar-field", :title => "Change Photo"  %>
         </div>
 
         <div class="profile-main-fields">
           <%= f.text_field :name, value: @user.name, class: 'invite-accept-field invite-name', placeholder: "Name" %>
           <%= f.email_field :email, class: 'invite-accept-field invite-email', placeholder: "Email" %>
-        </div>  
+        </div>
       </div>
-        
-      
+
+
 
       <div id="change-password" class="<%= 'hidden' if @bad_match || @wrong_password %>">Change Password</div>
       <div id="change-password-container" class="<%= 'hidden' if !@bad_match && !@wrong_password %>">
+        <%= password_field_tag :current_password, nil, placeholder: "Current Password", class: "invite-accept-field your-profile-currentpw #{'invalid-field' if @wrong_password}" %>
         <%= f.password_field :password, placeholder: "New Password", class: "invite-accept-field #{'invalid-field' if @bad_match}"  %>
-        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "invite-accept-field #{'invalid-field' if @bad_match}" %>
-        <%= password_field_tag :current_password, nil, placeholder: "Current Password", class: "invite-accept-field #{'invalid-field' if @wrong_password}" %>
+        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "invite-accept-field your-profile-lastpw #{'invalid-field' if @bad_match}" %>
       </div>
 
 

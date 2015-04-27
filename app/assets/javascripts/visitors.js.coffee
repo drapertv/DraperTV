@@ -4,7 +4,7 @@ Visitors =
 	init: ->
 		@mobile = $(window).width() < 1024
 		$('.white-gradient.right').on 'mouseenter', @scrollVideosRight if !@mobile
-		$('.white-gradient.left').on 'mouseenter', @scrollVideosLeft 
+		$('.white-gradient.left').on 'mouseenter', @scrollVideosLeft
 		$('.series-videos').scroll @showScrollBack if !@mobile
 		$('.white-gradient').on 'mouseleave', @stopScrollVideos
 		@scrollSpeed = 2
@@ -55,19 +55,19 @@ Visitors =
 			return false
 
 		if $('.invite-password-conf').val() != $('.invite-password').val()
-			$('.invite-password').css('border', '1px solid #e1474c') 
-			$('.invite-password-conf').css('border', '1px solid #e1474c') 
+			$('.invite-password').css('border', '1px solid #e1474c')
+			$('.invite-password-conf').css('border', '1px solid #e1474c')
 			return false
 
 	checkLoginForm: ->
 		noEmail = $(@).find('.login-email').val() == ""
 		noPassword = $(@).find('.login-password').val() == ""
 
-		if noEmail or noPassword
-			$('.login-password').css('border' , '1px solid #e1474c') if noPassword
-			$('.login-email').css('border', '1px solid #e1474c') if noEmail
-			$('.login-btn').addClass('invalid').hide().hide().show()
-			return false
+		# if noEmail or noPassword
+		# 	$('.login-password').css('border' , '1px solid #e1474c') if noPassword
+		# 	$('.login-email').css('border', '1px solid #e1474c') if noEmail
+		# 	$('.login-btn').addClass('invalid').hide().hide().show()
+		# 	return false
 
 
 
@@ -115,5 +115,3 @@ ready = ->
 	Visitors.init()
 $(document).ready ready
 $(document).on 'page:load', ready
-
-

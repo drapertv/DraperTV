@@ -35,7 +35,7 @@
 }
 
 .embed {
-	
+
 }
 
 .videos-panel.blacke {
@@ -74,6 +74,10 @@
 	margin-top: 10px;
 	font-size: 15px;
 	line-height: initial;
+}
+
+.livestream-video-desc {
+	margin-top: -5px;
 }
 
 /************ Video List Panel  **************/
@@ -343,30 +347,38 @@
 .livestream {
 	.section-right {
 		padding-top: 700px;
-		margin-left: 20px;
 	}
 	.livestream-text-wrapper {
 		background: #f4f4f4;
-		padding: 20px 10px;
-		margin-top: 20px;
+		padding: 20px;
+		margin: 20px 0 0 20px;
 	}
 	.livestream-text {
-		background: white;
 		border-radius: 5px;
-		font-size: 17px;
-		text-align: center;
-		padding: 10px;
+		font-size: 16px;
+		text-align: left;
 		.livestream-text-header {
-			font-size: 25px;
+			font-size: 22px;
+			margin-top: 0;
+			color: black;
 		}
 		p {
-			margin-bottom: 20px;
+			margin-top: 20px;
+			color: #919191;
+			line-height: 1.2;
 		}
 		.link-text {
-			color: $light-blue;
 			cursor: pointer;
 			font-weight: 600;
+		}
+		.link-text:hover {
 			text-decoration: underline;
+		}
+		.livestream-signup {
+			color: #88b250;
+		}
+		.livestream-login {
+			color: #35b3de;
 		}
 	}
 }
