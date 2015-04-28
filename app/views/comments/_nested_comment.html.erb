@@ -13,7 +13,7 @@
 	  </header>
 
 	  <div class="comment-content">
-	    <% if comment.belongs_to_challenge %>
+	    <% if comment.belongs_to_challenge? %>
 	      <div class="comment-video">
 	        <%= image_tag Video.first.vthumbnail, :class => "challenge-thumbnail" %>
 	        <%= image_tag 'play-icon.png', :class => "challenge-play" %>

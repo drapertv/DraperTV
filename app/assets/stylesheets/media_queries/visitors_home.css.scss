@@ -24,6 +24,9 @@
 
 @media (max-width: 768px) {
 	body {
+		#banner {
+			height: auto;
+		}
 		.no-mobile {
 			display: none !important;
 		}

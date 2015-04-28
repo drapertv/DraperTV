@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   after_invitation_accepted :set_role_for_invitee
 
 
+  #############################################
+  ## Login/Authentication                    ##
+
   def self.new_with_session(params,session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"],without_protection: true) do |user|
@@ -24,6 +27,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  #############################################
+  ## Getter/Setters/Misc                     ##
+
   def save_video_in_view_history video
     if video_view_list.nil? 
       update_attributes video_view_list: [video.id]
@@ -32,47 +38,8 @@ class User < ActiveRecord::Base
     end
   end
 
-
-  def self.from_omniauth(auth, current_user)
-    authorization = Authorization.where(:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret).first_or_initialize
-    if authorization.user.blank?
-      user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
-      if user.blank?
-        user = User.new
-        user.password = Devise.friendly_token[0,10]
-        user.name = auth.info.name
-        user.email = auth.info.email
-        user.profile_pic_url = auth.info.image + "?type=large"
-        user.skip_confirmation!
-        auth.provider == "twitter" ?  user.save(:validate => false) :  user.save
-      end
-      authorization.username = auth.info.nickname
-      authorization.user_id = user.id
-      authorization.save
-    end
-    authorization.user
-  end
-
-  def invited_email_list
-    email_list = (User.where(invited_by_id: id).pluck(:email) + User.where(bio: "#{id}").pluck(:email))[0..4]
-    if email_list.length == 5
-      email_list
-    else
-      (email_list + [nil,nil,nil,nil,nil])[0..4]
-    end
-  end
-
-  def invites_remaining
-    5 - invited_email_list.compact.count
-  end
-
-  def expire
-    UserMailer.expire_email(self).deliver
-    destroy
-  end
-
   def avatar_url options=nil
-    (avatar.url == "default.png" && profile_pic_url) ? profile_pic_url : avatar.url(options)
+    avatar.url(options)
   end
 
   private

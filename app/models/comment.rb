@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
 
   after_create :process_url
 
-  def belongs_to_challenge
+  def belongs_to_challenge?
   	commentable.class == Challenge
   end
 
