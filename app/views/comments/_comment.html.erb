@@ -30,11 +30,9 @@
           <%=  comment.content %>
         </p>
       </div>
-      <% if comment.user == current_user %>
-        <div class="comment-actions">
-          <span class="comment-reply">Reply</span><!-- <span class="comment-edit">Edit</span>  -->
-        </div>
-      <% end %>
+      <div class="comment-actions">
+        <span class="comment-reply">Reply</span><!-- <span class="comment-edit">Edit</span>  -->
+      </div>
     </section>
   </article>
   <div class="nested-comment-form">
