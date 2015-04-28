@@ -28,7 +28,7 @@ class Livestream < ActiveRecord::Base
     if livestream.stream_date < Time.now
       "#{livestream.title} NOW"
     else
-      "#{livestream.title} #{livestream.stream_date.strftime("%B %d, at %l:%M %P PST")}"
+      "#{livestream.title} #{(livestream.stream_date - 7.hours).strftime("%B %d, at %l:%M %P PST")}"
     end
   end
 

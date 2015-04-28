@@ -8,7 +8,7 @@ class LivestreamsController < InheritedResources::Base
   end
 
   def index
-  	@livestreams = Livestream.all
+  	@livestreams = Livestream.all.order('stream_date asc')
   end
 
   
