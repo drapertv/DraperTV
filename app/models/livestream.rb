@@ -19,7 +19,7 @@ class Livestream < ActiveRecord::Base
   end
 
   def suggested
-    Video.tagged_with(category_list).limit(10)
+    Video.tagged_with(category_list, any: true).limit(10)
   end
 
   def self.next_livestream_info
