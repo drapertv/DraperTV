@@ -13,7 +13,7 @@
 						<%= link_to livestream_path(livestream) do %>
 							<h3 class="result-title"><%= livestream.title %></h3>
 							<div class="result-subinfo">
-								<p class="result-date"><%= livestream.formatted_stream_date %></p>
+								<p class="result-date livestream-date"><%= livestream.formatted_stream_date %></p>
 								<p class="livestream-description"><%= allow_line_break livestream.description %></p>
 							</div>
 						<% end %>
