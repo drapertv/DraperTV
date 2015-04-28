@@ -95,12 +95,12 @@
           SERIES
         <% end %>
       </li>
-      <li class="header-item <%= 'active' if request.original_url.include?("videos") %>">
+      <li class="header-item <%= 'active' if request.original_url.include?("video") %>">
         <%= link_to videos_path do %>
           VIDEOS
         <% end %>
       </li>
-      <li class="header-item <%= 'active' if request.original_url.include?("livesteams") %>">
+      <li class="header-item <%= 'active' if request.original_url.include?("livestreams") %>">
         <%= link_to livestreams_path do %>
           LIVESTREAMS
         <% end %>
