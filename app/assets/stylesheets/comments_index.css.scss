@@ -26,7 +26,7 @@
 	width: 50px;
 	border-radius: 50%;
 	margin-right: 10px;
-	border: 1px solid #246db4;
+	border: 1px solid rgba(36, 109, 180, 0.5);
 }
 .comment-body {
 	width: calc(100% - 60px);
@@ -71,6 +71,9 @@
 	font-size: 15px;
 }
 
+.comment-date {
+	margin-left: 10px;
+}
 
 .comment-actions {
 	margin-top: 10px;

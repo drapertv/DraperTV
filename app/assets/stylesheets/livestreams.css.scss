@@ -11,9 +11,17 @@
 		text-overflow: ellipsis;
 		overflow: hidden;
 	}
+	.result-date {
+		font-size: 17px;
+		margin-bottom: 10px;
+	}
 }
 
 .show-more, .show-less {
 	color: $light-blue;
 	cursor: pointer;
+}
+
+.show-more:hover, .show-less:hover {
+	text-decoration: underline;
 }
