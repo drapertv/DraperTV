@@ -37,7 +37,7 @@
       </div>
 
       <div id="suggested-videos">
-          <div class="related-header">RELATED VIDEOS</div>
+          <div class="related-header">SUGGESTED VIDEOS</div>
             <% @livestream.suggested[0..5].each do |video| %>
               <%= link_to video_path(video) do %>
                 <div class="suggested-video">
