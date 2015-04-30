@@ -1,6 +1,12 @@
 class Search < ActiveRecord::Base
 	belongs_to :user
 
+	
+
+
+	# Results are ordered by title, speaker_name, and description
+	# results from each field are ordered by playlist, video, and challenges
+	
 	def self.search_for terms
 		playlists = Playlist.all
 		videos = Video.all
@@ -12,6 +18,8 @@ class Search < ActiveRecord::Base
 			end
 		end.uniq.flatten
 	end
+
+	private
 
 	def self.search_model_for models, terms, field
 		models.select {|n| n.send(field).downcase =~ /#{Regexp.escape(terms)}/ }

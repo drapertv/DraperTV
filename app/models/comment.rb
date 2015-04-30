@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   after_create :process_url
 
   def belongs_to_challenge?
-  	commentable.class == Challenge
+  	commentable_type == "Challenge"
   end
 
   def youtube_embed
@@ -24,7 +24,7 @@ class Comment < ActiveRecord::Base
     		img = "http://img.youtube.com/vi/#{video_id}/default.jpg"
     		update_attributes url_thumbnail: img, url_type: "video"
     	elsif /([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i.match video_url
-    		update_attributes url_thumbnail: img, url_type: "image"
+        update_attributes url_thumbnail: video_url, url_type: "image"
     	else
     	end
     end

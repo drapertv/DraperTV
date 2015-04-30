@@ -34,19 +34,17 @@ class Playlist < ActiveRecord::Base
     challenges.first
   end
 
-  def description
-    ""
-  end
-
   def speaker_title
     speaker.title
   end
 
+  def description
+    ""
+  end 
+
   def self.front_page
     where(show_on_front_page: true)
   end
-
-
 
 
 end

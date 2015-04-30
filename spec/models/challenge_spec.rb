@@ -8,5 +8,4 @@ describe Challenge do
 	it "can access it's first video" do 
 		expect(@challenge.first_video).to eq(@video)
 	end
-
 end

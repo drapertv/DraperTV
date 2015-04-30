@@ -1,8 +1,9 @@
 FactoryGirl.define do
+
   factory :challenge do
     playlist_id 1
-    description "Challenge Description"
-    title "Challenge Title"
+    sequence(:title) {|n| "Challenge Title t-#{n}" }
+    sequence(:description) {|n| "Challenge Description d-#{n}" }
   end
 
   factory :user do 
@@ -12,21 +13,36 @@ FactoryGirl.define do
   end
 
   factory :video do 
-  	title "Video Title"
-  	description "Video Description"
+  	sequence(:title) {|n| "Video Title t-#{n}" }
+  	sequence(:description) {|n| "Video Description d-#{n}" }
   	url "someurlthing"
   end
 
   factory :playlist do 
-    title "Playlist Title"
+    sequence(:title) {|n| "Playlist Title t-#{n}" }
     author_id 1
-    video_ids [1,2,3]
+    video_ids (1..10).to_a
   end
 
   factory :speaker do 
-    name "Speaker Name"
+    sequence(:name) {|n| "Speaker Name s-#{n}" }
     email "speakeremail@example.com"
     title  "Speaker Title"
   end
+
+  factory :comment do 
+  end
+
+  factory :future_livestream, :class => "Livestream" do 
+    sequence(:stream_date) {|n| Time.now + (n * 90).minutes } 
+  end
+
+  factory :past_livestream, :class => "Livestream" do 
+    sequence(:stream_date) {|n| Time.now - (n * 90).minutes } 
+  end
+
+  factory :search do 
+  end
+
 end
 

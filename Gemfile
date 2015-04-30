@@ -31,8 +31,8 @@ group :development do
 	gem 'rails_layout'
 	gem 'faker'
 	gem 'populator'
-	gem 'pry'
 end
+gem 'pry'
 
 
 gem 'dotenv-rails', :groups => [:development, :test]
