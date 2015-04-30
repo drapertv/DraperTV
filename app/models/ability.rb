@@ -10,6 +10,7 @@ class Ability
 			can :manage, VideoFeature
 			can :manage, Quote
 			can :manage, Speaker
+			can :manage, Management
 		elsif user.role == "beta"
 			can :read, Playlist
 			can :read, Video
