@@ -20,6 +20,9 @@ RSpec.configure do |config|
   end
 
   config.infer_base_class_for_anonymous_controllers = false
+  RSpec.configure do |config|
+    config.infer_spec_type_from_file_location!
+  end
   config.order = "random"
   config.mock_with :mocha
   ActiveRecord::Base.logger.level = 1

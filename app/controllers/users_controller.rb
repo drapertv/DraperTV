@@ -18,8 +18,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     params[:user].delete_if {|k,v| v == ""}
     if params[:user][:password]
-      
-      if !current_user.valid_password? params[:password]
+      if !current_user.valid_password? params[:current_password]
         redirect_to profile_edit_path(id: current_user.id, message: "wrong_password") and return
       end
       
@@ -30,7 +29,8 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       if @user.update_attributes(user_params)
-        format.html { redirect_to profile_edit_path(@user), notice: 'User was successfully updated.' }
+        sign_in(@user, :bypass => true)
+        format.html { redirect_to profile_edit_path(@user, message: "password_change_successful"), notice: 'User was successfully updated.' }
       else
         redirect_to profile_edit_path(@user)
       end
