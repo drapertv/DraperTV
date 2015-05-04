@@ -25,10 +25,12 @@ class Livestream < ActiveRecord::Base
   def self.next_livestream_info
     livestream = next_livestream
 
-    if livestream.stream_date < Time.now
-      "#{livestream.title} NOW"
-    else
-      "#{livestream.title} - #{(livestream.stream_date - 7.hours).strftime("%B %d, at %l:%M%P PST")}"
+    if next_livestream
+      if livestream.stream_date < Time.now
+        "#{livestream.title} NOW"
+      else
+        "#{livestream.title} - #{(livestream.stream_date - 7.hours).strftime("%B %d, at %l:%M%P PST")}"
+      end
     end
   end
 
