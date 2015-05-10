@@ -380,5 +380,14 @@
 		.livestream-login {
 			color: #35b3de;
 		}
+
+		.du-link {
+			font-weight: 600;
+			cursor: pointer;
+		}
+
+		.du-link:hover {
+			text-decoration: underline;
+		}
 	}
 }
