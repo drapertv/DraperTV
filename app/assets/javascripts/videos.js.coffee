@@ -16,9 +16,11 @@ Videos =
 	showMore: ->
 		$(@).hide()
 		$(@).next().removeClass('hidden')
+		$('.extra-spaces').hide()
 
 	showLess: ->
 		$('.show-more').show()
+		$('.extra-spaces').show()
 		$(@).parent().addClass('hidden')
 
 	forceLogin: ->
