@@ -1,28 +1,48 @@
 <div id="content-container">
 	<div class="section-content">
-	<h2 class="section-title">LIVESTREAMS</h2>
-
-			<div id="livestreams">
-				<% @livestreams.each do |livestream| %>
-					<div class="search-result">
-						<div class="livestream-pic-container video">
-					
-							<%= link_to livestream.image_url do %>
-								<%= image_tag livestream.image_url, :class => "result-pic" %>
-							<% end %>
-						</div>
-						<div class="result-info-container">
-							<%= link_to livestream_path(livestream) do %>
-								<h3 class="result-title"><%= livestream.title %></h3>
-								<div class="result-subinfo">
-									<p class="result-date livestream-date"><%= livestream.formatted_stream_date %></p>
-									<p class="livestream-description no-mobile"><%= allow_line_break livestream.description %></p>
-								</div>
-							<% end %>
-						</div>
+		<h2 class="section-title">UPCOMING LIVESTREAMS</h2>
+		<div id="livestreams">
+			<% @upcoming_livestreams.each do |livestream| %>
+				<div class="search-result">
+					<div class="livestream-pic-container video">
+						<%= link_to livestream_path(livestream) do %>
+							<%= image_tag livestream.image_url, :class => "result-pic" %>
+						<% end %>
 					</div>
-				<% end %>
-			</div>
+					<div class="result-info-container">
+						<%= link_to livestream_path(livestream) do %>
+							<h3 class="result-title"><%= livestream.title %></h3>
+							<div class="result-subinfo">
+								<p class="result-date livestream-date"><%= livestream.formatted_stream_date %></p>
+								<p class="livestream-description no-mobile"><%= allow_line_break livestream.description %></p>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+		<h2 class="section-title">PAST LIVESTREAMS</h2>
+		<div id="livestreams">
+			<% @past_livestreams.each do |livestream| %>
+				<div class="search-result">
+					<div class="livestream-pic-container video">
+						<%= link_to livestream_path(livestream) do %>
+							<%= image_tag livestream.image_url, :class => "result-pic" %>
+						<% end %>
+					</div>
+					<div class="result-info-container">
+						<%= link_to livestream_path(livestream) do %>
+							<h3 class="result-title"><%= livestream.title %></h3>
+							<div class="result-subinfo">
+								<p class="result-date livestream-date"><%= livestream.formatted_stream_date %></p>
+								<p class="livestream-description no-mobile"><%= allow_line_break livestream.description %></p>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+		</div>
 
 	</div>
 </div>

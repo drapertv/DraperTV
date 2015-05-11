@@ -8,7 +8,8 @@ class LivestreamsController < InheritedResources::Base
   end
 
   def index
-  	@livestreams = Livestream.all.order('stream_date asc')
+  	@upcoming_livestreams = Livestream.where('stream_date > (?)', Time.now).order('stream_date desc')
+    @past_livestreams = Livestream.where('stream_date < (?)', Time.now).order('stream_date desc')
   end
 
   
