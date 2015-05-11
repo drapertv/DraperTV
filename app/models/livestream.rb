@@ -2,6 +2,10 @@ class Livestream < ActiveRecord::Base
   has_many :comments, :as => :commentable
   acts_as_taggable_on :category
 
+  after_create :expire_cache
+  after_update :expire_cache
+  before_destroy :expire_cache
+
   include Extensions::Suggestable
 
   def comment_form_path
@@ -33,6 +37,12 @@ class Livestream < ActiveRecord::Base
 
   def self.next_livestream
     Livestream.where('stream_date > (?)', Time.now - 90.minutes).order(:stream_date).first
+  end
+
+  private
+
+  def expire_cache
+    ActionController::Base.new.expire_fragment('all_livestreams')
   end
 
 end

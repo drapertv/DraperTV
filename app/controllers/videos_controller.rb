@@ -16,6 +16,7 @@ class VideosController < ApplicationController
     else
       @filters = nil
     end
+    expire_fragment('featured_videos')
     
     if request.xhr? #if request is from the filter header
       @videos = Video.tagged_with @filters, any: true

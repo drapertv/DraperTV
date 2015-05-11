@@ -58,16 +58,17 @@ describe Search do
 
 				@model_with_matched_description = [Video, Challenge].sample.where('title != (?)', "Matched Term").first
 				@model_with_matched_description.update_attributes description: "Matched Term"
-				binding.pry
 			end
 
-			# it "ranks title, over speaker name, and speaker name over description" do 
-			# 	results = Search.search_for "Matched Term"
-
-			# 	expect(results.first).to eq(@model_with_matched_title)
-			# 	expect(results[1]).to eq(@model_with_matched_name)
-			# 	expect(results[2]).to eq(@model_with_matched_description)
-			# end
+			it "ranks title, over speaker name, and speaker name over description" do 
+				results = Search.search_for "Matched Term"
+				p results.length
+				p results
+				p results.last.name
+				expect(results.first).to eq(@model_with_matched_title)
+				expect(results[1]).to eq(@model_with_matched_name)
+				expect(results[2]).to eq(@model_with_matched_description)
+			end
 
 		end
 

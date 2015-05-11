@@ -6,7 +6,9 @@
   <div class="section-content">
     <div id="featured-series">
       <h2 class="section-title">FEATURED</h2>
-      <%= render partial: "featured_playlists" %>
+      <% cache 'featured_playlists' do %>
+        <%= render partial: "featured_playlists" %>
+      <% end %>
     </div>
     <div class="regular-series">
       <div class="video-collection-header">
@@ -33,10 +35,12 @@
           </div>
         </div>
       </div>
-      <% @playlists.each do |playlist| %>
-      <section class="video-section">
-        <%= render partial: "show", locals: {playlist: playlist} %>
-      </section>
+      <% cache 'all_playlists', skip_digest: true do %>
+        <% @playlists.each do |playlist| %>
+          <section class="video-section">
+            <%= render partial: "show", locals: {playlist: playlist} %>
+          </section>
+        <% end %>
       <% end %>
     </div>
     <div class="pages bottom">

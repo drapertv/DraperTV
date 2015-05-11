@@ -7,6 +7,11 @@ class Video < ActiveRecord::Base
   mount_uploader :vthumbnail, VthumbnailUploader
 
   delegate :speaker, :profilepic_url, :name, :challenge, :speaker_title, to: :playlist
+
+  after_update :expire_cache
+  after_create :expire_cache
+  after_destroy :expire_cache
+
   include Extensions::Viewable
   include Extensions::Publishable
   include Extensions::Suggestable
@@ -26,5 +31,17 @@ class Video < ActiveRecord::Base
 
 	def comment_form_path
 		[self, Comment.new]
+	end
+
+	def time_diff
+		Time.now - created_at
+	end
+
+	private
+
+	def expire_cache
+		ActionController::Base.new.expire_fragment('all_videos')
+		ActionController::Base.new.expire_fragment('featured_videos')
+		ActionController::Base.new.expire_fragment('all_playlists')
 	end
 end

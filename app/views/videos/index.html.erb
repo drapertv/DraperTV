@@ -17,7 +17,9 @@
   </header>
   <div class="section-content">
     <h2 class="section-title">FEATURED</h2>
-    <%= render partial: "featured_videos" %>
+    <% cache "featured_videos", skip_digest: true do %>
+      <%= render partial: "featured_videos" %>
+    <% end %>
     <div class="video-collection-header">
       <div class="collections-left">
         <h2 class="section-title">VIDEOS</h2>
@@ -44,8 +46,10 @@
     </div>
 
     <ul class="regular-videos">
-      <% @videos.each do |video| %>
-        <%= render partial: 'video_item_container', locals: {video: video} %>
+      <% cache 'all_videos', skip_digest: true do %>
+        <% @videos.each do |video| %>
+          <%= render partial: 'video_item_container', locals: {video: video} %>
+        <% end %>
       <% end %>
     </ul>
      <div class="pages bottom">
