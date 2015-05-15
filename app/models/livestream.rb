@@ -1,5 +1,7 @@
 class Livestream < ActiveRecord::Base
   has_many :comments, :as => :commentable
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   acts_as_taggable_on :category
 
   after_create :expire_cache

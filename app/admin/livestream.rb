@@ -1,6 +1,6 @@
 ActiveAdmin.register Livestream do
 
-  permit_params :title, :description, :src_url, :image_url, :stream_date
+  permit_params :title, :description, :src_url, :image_url, :stream_date, :slug
 
   index do
     column :title
@@ -16,9 +16,16 @@ ActiveAdmin.register Livestream do
      f.inputs :src_url
      f.inputs :image_url
      f.inputs :stream_date
+     f.inputs :slug
    end
   f.actions
  end
+
+ controller do
+    def find_resource
+      scoped_collection.where(slug: params[:id]).first!
+    end
+  end
 
 
 
