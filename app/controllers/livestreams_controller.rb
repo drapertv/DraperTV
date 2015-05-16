@@ -8,8 +8,8 @@ class LivestreamsController < InheritedResources::Base
   end
 
   def index
-    upcoming_livestreams = Livestream.upcoming
-    past_livestreams = Livestream.past
+    upcoming_livestreams = Livestream.upcoming.order('stream_date asc')
+    past_livestreams = Livestream.past.order('stream_date desc')
     current_livestreams = Livestream.current
     @livestreams = [{title: "LIVESTREAMING NOW", collection: current_livestreams},
                     {title: "UPCOMING LIVESTREAMS", collection: upcoming_livestreams},
