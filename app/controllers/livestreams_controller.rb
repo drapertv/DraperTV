@@ -8,9 +8,12 @@ class LivestreamsController < InheritedResources::Base
   end
 
   def index
-    upcoming_livestreams = Livestream.where('stream_date > (?)', Time.now).order('stream_date asc')
-    past_livestreams = Livestream.where('stream_date < (?)', Time.now).order('stream_date desc')
-    @livestreams = [{title: "UPCOMING LIVESTREAMS", collection: upcoming_livestreams}, {title: "PAST LIVESTREAMS", collection: past_livestreams}]	
+    upcoming_livestreams = Livestream.upcoming
+    past_livestreams = Livestream.past
+    current_livestreams = Livestream.current
+    @livestreams = [{title: "LIVESTREAMING NOW", collection: current_livestreams},
+                    {title: "UPCOMING LIVESTREAMS", collection: upcoming_livestreams},
+                    {title: "PAST LIVESTREAMS", collection: past_livestreams}]	
   end
 
   

@@ -2,11 +2,17 @@ class Livestream < ActiveRecord::Base
   has_many :comments, :as => :commentable
   extend FriendlyId
   friendly_id :title, use: :slugged
+  
   acts_as_taggable_on :category
-
+  
   after_create :expire_cache
+  after_create :limit_slug_to_two_words
   after_update :expire_cache
   before_destroy :expire_cache
+
+  scope :upcoming, -> { where("stream_date > ?", Time.now) }
+  scope :past, -> { where("stream_date < ?", Time.now - 90.minutes) }
+  scope :current, -> {where("stream_date > ? and stream_date < ?", Time.now - 90.minutes, Time.now )}
 
   include Extensions::Suggestable
 
@@ -41,10 +47,16 @@ class Livestream < ActiveRecord::Base
     Livestream.where('stream_date > (?)', Time.now - 90.minutes).order(:stream_date).first
   end
 
+
+
   private
 
   def expire_cache
     ActionController::Base.new.expire_fragment('all_livestreams')
+  end
+
+  def limit_slug_to_two_words
+    update_attributes slug: slug.split("-")[0..1].join("-")
   end
 
 end
