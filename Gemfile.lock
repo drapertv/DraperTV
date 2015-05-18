@@ -105,6 +105,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
+    connection_pool (2.2.0)
     curb (0.8.7)
     daemons (1.2.2)
     database_cleaner (1.4.1)
@@ -392,6 +393,13 @@ GEM
       polyamorous (~> 1.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    react-rails (1.0.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      rails (>= 3.1)
+      react-source (~> 0.13)
+    react-source (0.13.3)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rest-client (1.8.0)
@@ -551,6 +559,7 @@ DEPENDENCIES
   rails (= 4.1.6)
   rails_12factor
   rails_layout
+  react-rails (~> 1.0)
   rmagick
   rspec-rails
   sass-rails (~> 4.0.3)
