@@ -2,6 +2,7 @@ class VideosController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @og_title = "DraperTV - Videos"
     redirect_to root_path and return if !current_user
     @tags = Video.tag_counts_on(:category)
     @page = params[:page].to_i || 1
@@ -26,6 +27,8 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @og_title = "DraperTV - #{@video.title}"
+    @og_description = @video.description
     @commentable = @video
     @comments = @commentable.comments.where(ancestry: nil).order('created_at ASC')
     @comment = Comment.new

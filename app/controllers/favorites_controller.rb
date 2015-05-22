@@ -2,6 +2,7 @@ class FavoritesController < ApplicationController
 
 
   def index
+    @og_title = "DraperTV - Favorites"
   	@videos = current_user.get_voted Video
   	@playlists = current_user.get_voted Playlist
   	@challenges = current_user.get_voted Challenge

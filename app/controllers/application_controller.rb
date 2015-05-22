@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_device_type
+  before_filter :set_og_tags
 
   helper ApplicationHelper
 
@@ -58,6 +59,12 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :remember_me, :email, :password, :password_confirmation) }
+  end
+
+  def set_og_tags
+    @og_title = "DraperTV"
+    @og_description = "Bringing Silicon Valley to You"
+    @og_image = "DU_Logo_Gradient_Small.png"
   end
 
   # if Rails.env.production?

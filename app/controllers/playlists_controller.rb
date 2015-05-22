@@ -2,6 +2,7 @@ class PlaylistsController < InheritedResources::Base
   load_and_authorize_resource
 
   def index
+    @og_title = "DraperTV - Series"
     if !current_user
       redirect_to root_path and return
     end

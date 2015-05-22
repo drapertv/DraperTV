@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title><%= content_for?(:title) ? yield(:title) : "DraperTV" %></title>
+    <title><%= @og_title %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Draper TV" %>">
     <%= stylesheet_link_tag 'application', media: 'all'%>
     <%# tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
@@ -17,9 +17,9 @@
       window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
       heap.load("1653364008");
     </script>
-    <meta property="og:title" content="DraperTV" />
-    <meta property="og:description" content="Bringing Silicon Valley to You" />
-    <meta property="og:image" content="<%= image_url 'DU_Logo_Gradient_Small.png' %>" />
+    <meta property="og:title" content="<%= @og_title %>" />
+    <meta property="og:description" content="<%= @og_description %>" />
+    <meta property="og:image" content="<%= image_url @og_image %>" />
   </head>
     <body>
       <%= render "layouts/topbar" %>
