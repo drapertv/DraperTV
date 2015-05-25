@@ -65,5 +65,10 @@
 </div>
 
 <script>
-  $('iframe').css('max-height', '56vw').css('max-width', 'calc(100vw - 20px)')
+  if ($(window).width() > 1024) {
+    $('iframe').css('max-height', '56vw').css('max-width', 'calc(100vw - 20px)')
+  } else {
+    $('iframe').css('max-height', '56vw').css('max-width', '100vw')
+  }
+
 </script>
