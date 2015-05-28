@@ -1,0 +1,52 @@
+var VideosBox = React.createClass({
+  getInitialState: function() {
+    return {data: []};
+  },
+  componentDidMount: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this)
+    });
+  },
+  render: function() {
+    return (
+      <VideoList data={this.state.data} />
+    );
+  }
+});
+var VideoList = React.createClass({
+  render: function() {
+    var VideoNodes = this.props.data.map(function (video) {
+      return (
+        <Video title={video.title} id={video.id} length={video.length} />
+      );
+    });
+    return (
+      <div className="regular-videos">{VideoNodes}</div>
+    );
+  }
+});
+
+var Video = React.createClass({
+  render: function() {
+    return (
+      <li className="video-item-container">
+        <div className="video-img">
+             <a href={"videos/" + this.props.id}>
+                <%= image_tag 'play-icon.png', className: 'video-play' %>
+                <span className="section-time"> {this.props.length} </span>
+                <%= image_tag 'elon-vid.png', className: 'video-thumbnail' %>
+            </a>
+        </div>
+        <div className="video-info">
+          <a href={"videos/" + this.props.id}>
+            <p className="text-ellipsis qwatch-title"> {this.props.title}</p>
+          </a>
+        </div>
+      </li>
+    );
+  }
+});

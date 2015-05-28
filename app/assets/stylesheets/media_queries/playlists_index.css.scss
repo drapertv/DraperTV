@@ -3,6 +3,9 @@
 
 @media (max-width: 768px ) {
 	body {
+		#featured-series {
+			display: none;
+		}
 		.featured-playlists {
 			display: block;
 			white-space: nowrap;
@@ -64,4 +67,5 @@
 		border-left: none;
 		border-right: none;
 	}
+
 }
