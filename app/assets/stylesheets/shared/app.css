@@ -1149,7 +1149,6 @@ img.nav-logo {
   width: 0;
   height: 0;
   border-color: transparent;
-  border-style: solid;
 }
 .arrow:after {
   border-width: 7px;

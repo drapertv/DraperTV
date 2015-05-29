@@ -14,6 +14,8 @@
  *= require shared/animate
  *= require vendor/font-awesome.min
  *= require vendor/simple-line-icons
+ *= require vendor/slick
+ *= require vendor/slick-theme
  *= require shared/font
  *= require shared/app
  *= require pricing
@@ -44,6 +46,12 @@
  *= require registrations
  *= require livestreams
  *= require media_queries/livestreams
+ *= require mobile/master
+ *= require mobile/playlists_index
+ *= require mobile/videos_show
+ *= require mobile/visitors_home
+ *= require mobile/livestreams_index
+ *= require mobile/search_index
  */
 
 // @import "bootstrap-sprockets";

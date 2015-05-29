@@ -1,0 +1,35 @@
+#mobile-wrapper {
+	.video-player {
+
+	}
+
+	h4 {
+	  display: inline-block;
+	}
+
+	.video-length {
+	  margin-top: 7px;
+	}
+	.featured-tabs {
+		button {
+		  width: 49.3%;
+		  padding: 10px 7px;
+		  border: none;
+		  background: none;
+		  text-transform: uppercase;
+		  display: inline-block;
+		  vertical-align: top;
+		  cursor: pointer;
+		  outline: none;
+		}
+	}
+	iframe {
+		width: 100%;
+	}
+	
+
+	.video-current > p {
+	  color: #c0c0c0;
+	}
+
+}

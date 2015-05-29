@@ -1,0 +1,105 @@
+
+<div class="main">
+  <div class="section-title">
+    <h1><%= @terms %></h1>
+    <h4><%= @count %> results</h4>
+  </div>
+
+  <% @results.each do |result| %>
+    <% if result.class == Video || result.class == Challenge %>
+       <div class="content">
+        <%= link_to result_path(result) do %>
+          <img class="livestream-thumbnail "></img>
+          <div class="content-text livestream-text">
+            <div class="content-title">
+              <h3><%= result.title %></h3>
+            </div>
+            <div class="content-subtitle">
+              <h4><%= result.publish_date %></h4>
+            </div>
+          </div>
+        <% end %>
+        <div class="content-expand">
+          <div class="content-expand-header">
+            <div class="arrow"></div>
+            <p>About</p>
+          </div>
+          <div class="content-expand-content hide-section">
+            <p>
+              <%= result.description %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="content">
+        <%= link_to playlist_path(result) do %>
+          <img class="series-thumbnail "></img>
+          <div class="content-text">
+            <div class="content-title">
+              <h3><%= result.title %></h3>
+            </div>
+            <div class="content-subtitle">
+              <h4><%= result.name %></h4>
+            </div>
+          </div>
+        <% end %>
+        <div class="content-expand">
+          <div class="content-expand-header">
+            <div class="arrow"></div>
+            <p><%= result.videos.count %> videos</p>
+          </div>
+          <div class="content-expand-content hide-section">
+            <% result.videos.each do |video| %>
+              <%= link_to video_path(video) do %>
+                <div class="video">
+                  <p class="video-title"><%= video.title %></p>
+                  <p class="video-subtitle"><%= video.length %></p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="pagenation">
+    <%= link_to url_for(page: @page_back, terms: @terms) do %>
+      <div class="pagenation-back pagenation-item"></div>
+    <% end %>
+    
+    <div class="pagenation-number pagenation-item">
+      <p><%= @page %><span> /<%= @results.length / 7 + 1 %></span></p>
+      <div class="arrow"></div>
+    </div>
+    <%= link_to url_for(page: @page_next, terms: @terms) do %>
+      <div class="pagenation-forward pagenation-item"></div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  // alert("Javascript works!");
+  $('.menu').on('click', function() {
+    $('.menu-menu').toggleClass('hide-section');
+  });
+  $('.main').on('click', function() {
+    $('.menu-menu').addClass('hide-section');
+  });
+  $('.search').on('click', function() {
+    $('.menu, .logo, .search-box').toggleClass('hide-section');
+  });
+
+  $('.section-title-menu').on('click', function() {
+    $('.categories').toggleClass('hide-section');
+  });
+  $('.content-expand-header').on('click', function() {
+    $(this).next().toggleClass('hide-section');
+    $(this).children('.arrow').toggleClass('rotate180');
+  });
+</script>
+
+<script>
+  $('#search_terms').val("<%= @terms %>")
+  history.pushState({state:1}, "State 1", "?terms=<%= @terms %>")
+</script>

@@ -1,0 +1,129 @@
+    <section class="main">
+      <div class="video-player">
+        <%= raw @video_yt_embed %>
+      </div>
+      <div class="content">
+        <div class="video-text">
+          <h2 class="content-title"><%= @video.title %></h2>
+          <h4 class="content-subtitle"><%= @video.name %></h4>
+          <p class="video-subtitle video-length"><%= @video.length %></p>
+        </div>
+        <div class="content-expand">
+          <div class="content-expand-header">
+            <div class="arrow"></div>
+            <p>Description</p>
+          </div>
+          <div class="content-expand-content hide-section">
+            <p>
+              <%= @video.description %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="featured-tabs">
+        <button class="featured-series cyan tabs-selected">
+          <h3>Series</h3>
+        </button>
+        <button class="featured-related blue">
+          <h3>Related Series</h3>
+        </button>
+      </div>
+      <div class="featured-series-content content-list">
+        <div class="content">
+          <a href="playlist-jaredbrubaker.html">
+            <%= image_tag @playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+            <div class="content-text">
+              <div class="content-title">
+                <h3><%= @playlist.title %></h3>
+              </div>
+              <div class="content-subtitle">
+                <h4><%= @playlist.name %></h4>
+              </div>
+            </div>
+          </a>
+          <div class="content-expand">
+            <div class="content-expand-content">
+              <% @playlist.videos.each do |video| %>
+                <%= link_to video_path(video) do %>
+                  <div class="video #{'video-current' if video == @video}">
+                    <p class="video-title"><%= @video.title %></p>
+                    <p class="video-subtitle"><%= @video.length %></p>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featured-related-content content-list hide-section">
+        <% @video.suggested[0..5].map(&:playlist).each do |playlist| %>
+          <div class="content">
+            <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+            <div class="content-text">
+              <div class="content-title">
+                <h3><%= playlist.title %></h3>
+              </div>
+              <div class="content-subtitle">
+                <h4><%= playlist.name %></h4>
+              </div>
+            </div>
+            <div class="content-expand">
+              <div class="content-expand-header">
+                <div class="arrow"></div>
+                <p><%= playlist.videos.count %> videos</p>
+              </div>
+            </div>
+          </div>
+          <div class="content-expand-content hide-section">
+            <%= playlist.videos.each do |video| %>
+              <%= link_to video_path(video) do %>
+                <div class="video">
+                  <p class="video-title"><%= video.title %></p>
+                  <p class="video-subtitle"><%= video.length %></p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <footer>
+        <small>All rights reserved, Draper Collective, LLC.</small>
+      </footer>
+    </section>
+
+    <script>
+      // alert("Javascript works!");
+      $('.menu').on('click', function() {
+        $('.menu-menu').toggleClass('hide-section');
+      });
+      $('.main').on('click', function() {
+        $('.menu-menu').addClass('hide-section');
+      });
+      $('.search').on('click', function() {
+        $('.menu, .logo, .search-box').toggleClass('hide-section');
+      });
+
+      $('.section-title-menu').on('click', function() {
+        $('.categories').toggleClass('hide-section');
+      });
+      $('.content-expand-header').on('click', function() {
+        $(this).next().toggleClass('hide-section');
+        $(this).children('.arrow').toggleClass('rotate180');
+      });
+      $('.autoplay-toggle').on('click', function() {
+        $('.autoplay-toggle').removeClass('autoplay-select');
+        $(this).addClass('autoplay-select');
+      });
+
+      $('.featured-tabs > button').on('click', function() {
+        $('.featured-tabs > button').removeClass('tabs-selected');
+        $(this).addClass('tabs-selected');
+      });
+      $('.featured-series').on('click', function() {
+        $('.content-list').addClass('hide-section');
+        $('.featured-series-content').removeClass('hide-section');
+      });
+      $('.featured-related').on('click', function() {
+        $('.content-list').addClass('hide-section');
+        $('.featured-related-content').removeClass('hide-section');
+      });
+    </script>

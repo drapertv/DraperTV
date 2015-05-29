@@ -1,0 +1,128 @@
+#mobile-wrapper {
+	.featured-carousel {
+  height: 180px;
+  width: 100vw;
+}
+
+.featured-carousel.slick-slider {
+  margin-bottom: 0;
+}
+
+.featured-item {
+  background: lightgrey;
+  width: 100vw;
+  height: 180px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.featured-overlay {
+  height: 100px;
+  width: 100%;
+  background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6));
+  position: absolute;
+  bottom: 0px;
+}
+
+.featured-text {
+  color: white;
+  padding: 7px;
+  position: absolute;
+  bottom: 0px;
+}
+
+.featured-text > h1 {
+  text-transform: uppercase;
+  color: white;
+  margin-top: 4px;
+}
+
+.featured-one {
+  background-image: image-url("elon.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.featured-two {
+  background-image: image-url("steve.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.featured-three {
+  background-image: image-url("heidi.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.featured-tabs {
+  background: white;
+  margin: 4px 0;
+}
+
+.home .featured-tabs {
+
+button {
+  width: 32.5%;
+  padding: 10px 7px;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  outline: none;
+}
+
+.tabs-selected * {
+  color: white;
+}
+
+.tabs-selected.blue {
+  background: #246db4;
+}
+
+.tabs-selected.cyan {
+  background: #35b3de;
+}
+
+.tabs-selected.green {
+  background: #88b250;
+}
+
+.tabs-selected.orange {
+  background: #f38f31;
+}
+}
+
+.featured-categories {
+  margin-top: 4px;
+  padding: 7px 28px;
+  background: white;
+}
+
+.featured-categories > .categories-item {
+  text-align: center;
+  padding: 10px 9px;
+  margin: 7px 0;
+}
+
+.categories-icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  margin: 0 auto 7px;
+}
+
+.attitude-icon {background: #246bd4; opacity: 0.7;}
+.startingup-icon {background: #35b3de; opacity: 0.7;}
+.fundraising-icon {background: #24b494; opacity: 0.7;}
+.product-icon {background: #88b250; opacity: 0.7;}
+.marketing-icon {background: #f2b81d; opacity: 0.7;}
+.sales-icon {background: #f38f31; opacity: 0.7;}
+.hiring-icon {background: #e1474c; opacity: 0.7;}
+.finance-icon {background: #a53a6a; opacity: 0.7;}
+.legal-icon {background: #000000; opacity: 0.7;}
+.extras-icon {background: #919191; opacity: 0.7;}
+
+}

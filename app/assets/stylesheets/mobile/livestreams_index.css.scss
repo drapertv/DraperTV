@@ -1,0 +1,62 @@
+#mobile-wrapper {
+	.tweet-button {
+	  background: #55ACEE;
+	  text-align: center;
+	  padding: 10px;
+	}
+
+	.tweet-button > a > h2 {
+	  color: white;
+	  font-weight: 500;
+	}
+	.no-content {
+  padding: 7px 14px;
+}
+
+.no-content > p {
+  width: calc(100% - 32px);
+  line-height: 1.2;
+  margin-left: 8px;
+}
+
+.no-content > i {
+  font-size: 20px;
+}
+
+.no-content > * {
+  display: inline-block;
+  vertical-align: middle;
+  color: #919191;
+}
+
+.livestream-thumbnail {
+  height: 72px;
+  /*width: 48px;*/
+  width: 128px;
+  background: lightgrey;
+  cursor: pointer;
+}
+
+.livestream-text {
+  /*width: calc(100% - 48px - 7px);*/
+}
+@-webkit-keyframes blink {
+  0%{opacity:0.1;}
+  30%{opacity:1;}
+  70%{opacity:1;}
+  100%{opacity:0.1;}
+}
+
+.livestream-live > * {
+  color: #9bcc5c;
+  -webkit-animation-name: blink;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: blink;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+
+
+}

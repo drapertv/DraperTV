@@ -47,6 +47,10 @@ class Livestream < ActiveRecord::Base
     Livestream.where('stream_date > (?)', Time.now - 90.minutes).order(:stream_date).first
   end
 
+  def live?
+    Time.now - stream_date < 90.minutes && Time.now - stream_date > 0
+  end
+
 
 
   private

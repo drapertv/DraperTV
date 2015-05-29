@@ -32,6 +32,7 @@ class VideosController < ApplicationController
     @commentable = @video
     @comments = @commentable.comments.where(ancestry: nil).order('created_at ASC')
     @comment = Comment.new
+    @playlist = @video.playlist
 
     if @video.url
       @video_yt_embed = ActiveSupport::SafeBuffer.new(%Q{<iframe id="ytplayer" type="text/html" width="662" height="494" src="https://www.youtube.com/embed/#{@video.url}?autoplay=1&rel=0&showinfo=0&color=red&theme=dark&modestbranding=1" frameborder="0" allowfullscreen> </iframe>})
