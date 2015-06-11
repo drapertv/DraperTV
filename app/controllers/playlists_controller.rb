@@ -13,9 +13,11 @@ class PlaylistsController < InheritedResources::Base
       @playlists = Playlist.all
       @last_page = @playlists.length < 5
       @first_page = @page < 2
-    if request.original_url.split("/").last != "playlists"
+    if !request.original_url.split("/").last.include? "playlists"
       @popular = Playlist.all.limit(6)
       @new = Playlist.order('created_at desc').limit(6)
+      @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Extras"]
+      @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]
       render "home_page"
     end
   end
