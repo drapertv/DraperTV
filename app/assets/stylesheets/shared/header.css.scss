@@ -43,6 +43,10 @@
 	font-weight: 600;
 }
 
+.header-item.active {
+	opacity: 1;
+}
+
 .header-item:first-child {
 	margin-left: 0px;
 }
@@ -86,8 +90,9 @@
 
 .logo.header-item {
 	height: 30px;
-	margin: 10px 0px;
+	margin: 0px 0px;
 	opacity: 1;
+	margin-right: 30px;
 }
 .sign-up-btn.header-item {
 	padding: 5px 10px;
@@ -120,6 +125,10 @@
 	box-sizing: border-box;
 	padding: 0px 10px;
 	color: #246db4;
+}
+
+.search-input::-webkit-input-placeholder {
+	color: $blue;
 }
 
 .header-right {
@@ -224,5 +233,11 @@
 	  		font-size: 25px;
 	  		color: $blue;
 	  	}
+	  }
+}
+
+@media (min-width: 1024px) {
+	.logo.header-item {
+	  	margin: 10px 0px;
 	  }
 }

@@ -1,18 +1,18 @@
 @import '../shared/variables';
 @import '../shared/mixins';
 
-#mobile-wrapper {
-	.tweet-button {
-	  background: #55ACEE;
-	  text-align: center;
-	  padding: 10px;
-	}
 
-	.tweet-button > a > h2 {
-	  color: white;
-	  font-weight: 500;
-	}
-	.no-content {
+.tweet-button {
+  background: #55ACEE;
+  text-align: center;
+  padding: 10px;
+}
+
+.tweet-button > a > h2 {
+  color: white;
+  font-weight: 500;
+}
+.no-content {
   padding: 7px 14px;
 }
 
@@ -40,9 +40,6 @@
   cursor: pointer;
 }
 
-.livestream-text {
-  /*width: calc(100% - 48px - 7px);*/
-}
 @-webkit-keyframes blink {
   0%{opacity:0.1;}
   30%{opacity:1;}
@@ -60,6 +57,74 @@
   animation-iteration-count: infinite;
 }
 
+@media (min-width: 1024px) {
+  body {
+    .livestream-text {
+      order: 1;
+      .content-title {
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+      .content-date h3 {
+        margin-bottom: 20px;
+        color: $gray;
+      }
+    }
+    .livestream-thumbnail {
+      width: 256px;
+      height: 144px;
+      order: 2;
+    }
+    .livestream {
+      .content-expand-content {
+        margin-top: 20px;
+        p {
+          padding: 0px;
+        }
+      }
+    }
+    .no-content {
+      padding: 0px;
+      margin-bottom: 50px;
+    }
+    .livestream-page {
+      @include flexbox;
+      flex-direction: row;
+      justify-content: space-between;
+      min-height: calc(100vh - 50px);
+      iframe {
+        width: 656px;
+        height: 369px;
+      }
+      .livestream-main-content {
+        width: 656px;
+      }
+      .livestream-side-content {
+        width: 284px;
+        .content {
+          border: none;
+          width: 284px;
+          box-sizing: border-box;
+          padding: 0px;
+          margin-bottom: 0px;
+        }
+        .tweet-button {
+          margin-top: -4px;
+          height: 42px;
+          h2 {
+            line-height: 42px;
+          }
+        }
+      }
 
-
+    }
+    .livestream-main-content .content:nth-child(3n - 1) {
+      width: 656px;
+      padding: 0px;
+      border: none;
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+  }
 }
+

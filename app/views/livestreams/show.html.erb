@@ -1,74 +1,40 @@
-<div id="video-container" class="livestream">
-  <div class="section-content" id="video-section">
-    <div class="section-left">
-    	<iframe src="<%= @livestream.src_url %>" width="1240" height="700" frameborder="0" scrolling="no"></iframe>
-      <div class="video-main-info">
-        <%= image_tag "scroll-arrow.png", :class => "expand-arrow mobile" %>
-        <p class="video-title"><%= @livestream.title %></p>
-        <div class="video-speaker-info expandable">
-          <div class="video-info">
-            <div class="video-info-header">
-              <p class="video-speaker-name"></p>
-            </div>
-              <p class="video-desc livestream-video-desc"><%= expandable_text allow_line_break(@livestream.description) %></p>
-          </div>
-        </div>
-      </div>
-      <div id="comments-container">
-        <%= image_tag "scroll-arrow.png", :class => "expand-arrow mobile" %>
-        <div class="comments-header">COMMENTS <span class="comment-count mobile">&nbsp;•&nbsp; <%= @comments.count %> </span></div>
-        <div class="expandable">
-          <div id="main-comment-form">
-            <%= render partial: "comments/form", locals: {parent_id: nil} %>
-          </div>
-          <%= render partial: "comments/comments" %>
-        </div>
-      </div>
+
+<section class="main livestream-page">
+  <div class="livestream-main-content">
+    <div class="livestream-player">
+      <iframe src="<%= @livestream.src_url %>" height="240" frameborder="0" scrolling="no"></iframe>
     </div>
-    <div class="section-right">
-      <div class="livestream-text-wrapper">
-        <div class="livestream-text">
-          <p class="livestream-text-header">Welcome to DraperTV Livestream</p>
-
-          <p><%= link_to 'Sign up', new_user_registration_path, :class => "link-text livestream-signup" %> to get notified for more great entrepreneurship talks and classes in the future!</p>
-
-          <p><span class="link-text livestream-login login-modal-trigger">Log in</span> to comment and browse more content.</p>
-
-          <p>Learn more at <a href="http://www.draperuniversity.com" class="du-link">draperuniversity.com</a></p>
+    <div class="content">
+      <h2 class="content-title"><%= @livestream.title %></h2>
+      <div class="content-expand">
+        <div class="content-expand-header">
+          <div class="arrow"></div>
+          <p>About</p>
+        </div>
+        <div class="content-expand-content hide-section">
+          <p>
+            <%= @livestream.description %>
+          </p>
         </div>
       </div>
-
-      <div id="suggested-videos">
-          <div class="related-header">SUGGESTED VIDEOS</div>
-            <% @livestream.suggested[0..5].each do |video| %>
-              <%= link_to video_path(video) do %>
-                <div class="suggested-video">
-                  <div class="video-length"><%= video.length %></div>
-                  <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>
-                  <div class="suggested-video-info">
-                    <p class="suggested-video-title">
-                      <%= video.title %>
-                    </p>
-                     <div class="video-view-count">
-                      <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
-                        <%= image_tag 'fav-button.svg', :class => "fav-star" %>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-        </div>
     </div>
   </div>
-  <%= render partial: 'layouts/footer' %>
-</div>
+  <div class="livestream-side-content">
+    <div class="section-title">
+      <h1>TWITTER</h1>
+      <h4>@Draper_U</h4>
+    </div>
+    <div class="content">
+      <a class="twitter-timeline" href="https://twitter.com/Draper_U" data-widget-id="603280664935276544" data-chrome="noheader transparent nofooter"></a>
+    </div>
+    <div class="content tweet-button">
+      <a href="https://twitter.com/intent/tweet?screen_name=Draper_U">
+        <h2><i class="fa fa-twitter"></i> &nbsp;Tweet to @Draper_U</h2>
+      </a>
+    </div>
+  </div>
+</section>
 
 <script>
-  if ($(window).width() > 1024) {
-    $('iframe').css('max-height', '56vw').css('max-width', 'calc(100vw - 20px)')
-  } else {
-    $('iframe').css('max-height', '56vw').css('max-width', '100vw')
-  }
-
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 </script>

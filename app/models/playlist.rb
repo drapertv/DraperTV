@@ -3,6 +3,7 @@ class Playlist < ActiveRecord::Base
   has_many :challenges
 	delegate :profilepic_url, :name, to: :speaker
   delegate :vthumbnail, to: :first_video
+  include Extensions::Publishable
 
 #Method to update the Array field of the playlist
   def video_ids_raw

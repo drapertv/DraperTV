@@ -1,5 +1,0 @@
-<ul class="featured-videos">
-	<% VideoFeature.currently_featured_videos(@filters).each do |video_feature| %>
-	  <%= render partial: 'videos/video_item_container', locals: {video: video_feature.video} %>
-	<% end %>
-</ul>
