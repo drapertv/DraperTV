@@ -14,8 +14,8 @@ class PlaylistsController < InheritedResources::Base
       @last_page = @playlists.length < 5
       @first_page = @page < 2
     if request.original_url.split("/").last != "playlists"
-      @popular = Playlist.all.limit(5)
-      @new = Playlist.order('created_at desc').limit(5)
+      @popular = Playlist.all.limit(6)
+      @new = Playlist.order('created_at desc').limit(6)
       render "home_page"
     end
   end

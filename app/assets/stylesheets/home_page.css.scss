@@ -127,6 +127,11 @@
 	    	padding: 0px 48px;
 	    	box-sizing: content-box;
 	    }
+	    .content:last-child {
+	    	border: none;
+	    	padding: 0px;;
+	    	box-sizing: border-box;
+	    }
 	    .content-link {
 	    	@include flexbox;
 	    	flex-direction: column;
