@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   def index
     @og_title = "DraperTV - Videos"

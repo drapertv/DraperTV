@@ -1,14 +1,9 @@
 class PlaylistsController < InheritedResources::Base
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   def index
     @og_title = "DraperTV - Series"
-    if !current_user
-      redirect_to root_path and return
-    end
-    if current_user.email.nil?
-      redirect_to profile_edit_path(current_user), notice: "Enter Your Email Please" 
-    else
+
       @welcome = params[:welcome] == "true"
       @page = params[:page] || 1
       @page = @page.to_i
@@ -18,8 +13,7 @@ class PlaylistsController < InheritedResources::Base
       @playlists = Playlist.all
       @last_page = @playlists.length < 5
       @first_page = @page < 2
-    end
-    if url_for.split("/").last != "playlists" && @browser.mobile?
+    if request.original_url.split("/").last != "playlists"
       @popular = Playlist.all.limit(5)
       @new = Playlist.order('created_at desc').limit(5)
       render "home_page"

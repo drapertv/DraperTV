@@ -5,6 +5,18 @@ Header =
 		$('body').on 'click, touchend', '.visitor-login', @showVisitorLogin
 		$('body').on 'click', '#login', @showLoginModal
 		$('body').on 'click', @hideLoginModal
+		$('body').on 'click', '.menu', @toggleMenu
+		$('body').on 'click', '.main', @hideMenu
+		$('body').on 'click', '.search', @toggleSearch
+
+	toggleSearch: ->
+  		$('.menu, .logo, .search-box').toggle()
+
+ 	hideMenu: ->
+  		$('.menu-menu').hide()
+
+ 	toggleMenu: ->
+  		$('.menu-menu').toggle()
 
 	restoreHeader: (e) ->
 		if $(e.target).attr('id') != 'landing-header' && $(e.target).parents('#landing-header').length < 1

@@ -1,0 +1,4 @@
+Home Page
+	-image carousel/backend
+	-rehaul javascript
+

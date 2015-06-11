@@ -1,3 +1,6 @@
+@import '../shared/variables';
+@import '../shared/mixins';
+
 
 	* {
   /*outline: 1px solid red;*/
@@ -34,7 +37,7 @@
 }
 
 
-#mobile-wrapper {
+
 
 h1, h2, h3, h4, p, small, input {
   font-family: "proxima nova";
@@ -44,7 +47,6 @@ h1, h2, h3, h4, p, small, input {
 h1 {
   font-size: 20px;
   font-weight: 600;
-  color: #246db4;
 }
 
 h2 {
@@ -107,7 +109,7 @@ header {
   display: inline-block;
   opacity: 0.5;
   cursor: pointer;
-  margin: 0px;
+  margin-right: 20px;
 }
 
 .menu {
@@ -325,4 +327,25 @@ footer > small {
   border-top: 6px solid white;
 }
 
+
+
+@media (min-width: 1024px) {
+  body {
+      #landing-header {
+        padding: 0px;
+      }
+      footer {
+      padding: 0px calc(50vw - 480px);
+      background: $light-gray;
+      height: 50px;
+      line-height: 50px;
+      small {
+        margin-right: 40px;
+        display: inline;
+      }
+      .logo.header-item {
+        opacity: 1;
+      }
+    }
+  }
 }

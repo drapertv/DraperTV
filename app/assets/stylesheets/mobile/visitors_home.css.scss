@@ -1,5 +1,7 @@
-#mobile-wrapper {
-	.featured-carousel {
+@import '../shared/variables';
+@import '../shared/mixins';
+
+.featured-carousel {
   height: 180px;
   width: 100vw;
 }
@@ -29,6 +31,9 @@
   padding: 7px;
   position: absolute;
   bottom: 0px;
+  h3, h1 {
+    color: white;
+  }
 }
 
 .featured-text > h1 {
@@ -125,4 +130,33 @@ button {
 .legal-icon {background: #000000; opacity: 0.7;}
 .extras-icon {background: #919191; opacity: 0.7;}
 
+@media (min-width: 1024px) {
+  body {
+    .home .featured-tabs {
+      button {
+        width: auto;
+      }
+      button.tabs-selected.blue {
+        background: none;
+        color: $blue;
+        * {
+          color: $blue;
+        }
+      }
+      button.tabs-selected {
+        background: none;
+        color: $green;
+        .green {
+          color: $green;
+        }
+      }
+    }
+    .featured-topics-content.hide-section {
+      @include flexbox;
+    }
+    .video-title {
+      font-size: 14px;
+    }
+
+  }
 }

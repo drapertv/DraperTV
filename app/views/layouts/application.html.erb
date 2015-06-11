@@ -24,18 +24,10 @@
     <body>
       <%= render "layouts/topbar" %>
       <%= yield %>
+      <footer>
+        <small>All rights reserved, Draper Collective, LLC.</small>
+        <small>Made with <span class="red">blood</span>, <span class="orange">sweat</span>, and <span class="blue">tears</span> in San Mateo, CA (please send help)</small>
+      </footer>
     </body>
-    
-    <script>
-      UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/xLCoh3I7eW6tlP82F6qRoA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
-      UserVoice.push(['set', {
-        accent_color: '#448dd6',
-        trigger_color: 'white',
-        trigger_background_color: '#88b250'
-      }]);
-      UserVoice.push(['identify', {
-      }]);
-      UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
-      UserVoice.push(['autoprompt', {}]);
-    </script>
+  
 </html>

@@ -14,11 +14,19 @@
 	z-index: 6;
 	border-bottom: 1px solid #287ac9;
 }
-#landing-header > * {
-	position: absolute;
-	top: 0;
-	height: 100%;
+
+#header-content {
+	@include flexbox;
+	justify-content: space-between;
+	width: 960px;
+	margin: 0 auto;
 }
+
+.header-logo {
+	position: absolute;
+	left: calc(50% - 93.5px);
+}
+
 .dropdown-toggle.header-item {
 	padding-right: 0px;
 	margin-right: 0px;
@@ -28,11 +36,15 @@
 	height: 100%;
 	line-height: 50px;
 	cursor: pointer;
-	font-size: 15px;
+	font-size: 14px;
 	display: inline;
-	color: rgba(255,255,255,.5);
-	margin: 0 15px;
+	color: rgba(255,255,255,1);
+	margin: 0 10px;
 	font-weight: 600;
+}
+
+.header-item:first-child {
+	margin-left: 0px;
 }
 
 .header-item.or {
@@ -48,7 +60,7 @@
 }
 
 .header-item a {
-	color: rgba(255,255,255,.5);
+	color: rgba(255,255,255,1);
 }
 
 .header-item.active a {
@@ -75,6 +87,7 @@
 .logo.header-item {
 	height: 30px;
 	margin: 10px 0px;
+	opacity: 1;
 }
 .sign-up-btn.header-item {
 	padding: 5px 10px;
@@ -102,7 +115,7 @@
 	opacity: 1;
 	border-radius: 5px;
 	background: white;
-	width: 330px;
+	width: 250px;
 	margin: 10px 0px;
 	box-sizing: border-box;
 	padding: 0px 10px;

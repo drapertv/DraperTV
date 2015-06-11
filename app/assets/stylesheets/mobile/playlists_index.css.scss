@@ -1,120 +1,145 @@
-#mobile-wrapper {
-	.content {
-	  padding: 7px;
-	  background: white;
-	  margin-top: 4px;
-	}
+@import '../shared/variables';
+@import '../shared/mixins';
 
-	.section-title.playlist-title {
-		width: 100%;
-	}
 
-	.series-thumbnail {
-	  height: 72px;
-	  width: 128px;
-	  background: lightgrey;
-	  cursor: pointer;
-	}
+.content {
+  padding: 7px;
+  background: white;
+  margin-top: 4px;
+}
 
-	.series-thumbnail:hover {
-	  background: #dadada;
-	}
+.section-title.playlist-title {
+	width: 100%;
+}
 
-	.content-text{
-	  width: calc(100% - 128px - 7px);
-	  float: right;
-	  cursor: pointer;
-	}
+.series-thumbnail {
+  height: 72px;
+  width: 128px;
+  background: lightgrey;
+  cursor: pointer;
+}
 
-	.content-title {
-	  text-transform: uppercase;
-	}
+.series-thumbnail:hover {
+  background: #dadada;
+}
 
-	.content-subtitle {
-	  margin-top: 7px;
-	}
+.content-text{
+  width: calc(100% - 128px - 7px);
+  float: right;
+  cursor: pointer;
+}
 
-	.content-expand-header {
-	  text-align: center;
-	  margin-top: 7px;
-	  cursor: pointer;
-	  /***********************experimental***********************/
-	  /*background: #f8f8f8;
-	  width: calc(100% + 14px);
-	  padding: 4px;
-	  box-sizing: border-box;
-	  margin-left: -7px;
-	  margin-bottom: -7px;*/
-	  /*********************************************************/
-	}
-
-	.content-expand-header > * {
-	  display: inline-block;
-	  vertical-align: middle;
-	  position: static;
-	}
-
-	.content-expand-content {
-	  margin-top: 7px;
-	  /***********************experimental***********************/
-	  /*background: #f8f8f8;
-	  width: calc(100% + 14px);
-	  padding: 7px;
-	  box-sizing: border-box;
-	  margin-left: -7px;
-	  margin-bottom: -7px;*/
-	  /*********************************************************/
-	}
-
-	.content-expand-content > p {
-	  color: #919191;
-	  padding: 0 7px 7px;
-	  line-height: 1.2;
-	}
-
-	.video {
-	  padding: 7px 0;
-	  cursor: pointer;
-	}
-
-	.video > * {
-	  display: inline-block;
-	}
-
-	.video-title {
-	  width: calc(100% - 35px);
-	  color: #36bae7;
-	  font-weight: 500;
-	}
-
-	.video-title:hover {
-	  text-decoration: underline;
-	}
-
-	.video-subtitle {
-	  color: #919191;
-	  float: right;
-	}
-
-	//show
-
-	.playlist-title > h2 {
-  width: 100%;
+.content-title {
   text-transform: uppercase;
 }
 
-.playlist-title-column > *, .playlist-title-column > a > * {
+.content-subtitle {
   margin-top: 7px;
 }
 
-.playlist-title-right {
-  text-align: right;
+.content-expand-header {
+  text-align: center;
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.content-expand-header > * {
+  display: inline-block;
+  vertical-align: middle;
+  position: static;
+}
+
+.content-expand-content {
+  margin-top: 7px;
+}
+
+.content-expand-content > p {
+  color: #919191;
+  padding: 0 7px 7px;
+  line-height: 1.2;
+}
+
+.video {
+  padding: 7px 0;
+  cursor: pointer;
+}
+
+.video > * {
+  display: inline-block;
+}
+
+.video-title {
+  width: calc(100% - 35px);
+  color: #36bae7;
+  font-weight: 500;
+  margin-top: 0px;
+}
+
+.video-title:hover {
+  text-decoration: underline;
+}
+
+.video-subtitle {
+  color: #919191;
   float: right;
 }
 
+//show
+
+.playlist-title > h2 {
+	width: 100%;
+	text-transform: uppercase;
+}
+
+.playlist-title-column > *, .playlist-title-column > a > * {
+	margin-top: 7px;
+}
+
+.playlist-title-right {
+	text-align: right;
+	float: right;
+}
+
 .playlist-title-right > a > p {
-  text-transform: uppercase;
+	text-transform: uppercase;
 }
+
+@media (min-width: 1024px) {
+	body {
+		.section-title {
+			margin: 0px 0px 20px 0px;
+			h1 {
+				font-size: 24px;
+				color: $blue;
+			}
+		}
+		.content-expand-header {
+			display: none;
+		}
+		.section-content-list {
+			@include flexbox;
+	    	flex-wrap: wrap;
+	    	justify-content: space-between;
+		}
+		.categories.hide-section {
+			@include flexbox;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			background: $light-gray;
+			padding: 20px 0px 0px 0px;
+			margin-bottom: 20px;
+			.categories-item {
+				padding: 0px;
+			}
+			a {
+				display: block;
+				width: 20%;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		}
+	}
 
 
 }
+
