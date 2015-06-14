@@ -17,7 +17,7 @@
   <div class="section-content-list">
     <% @playlist.videos.each do |video| %>
       <div class="content">
-        <%= link_to video_path, :class => "content-link" do %>
+        <%= link_to video_path(video), :class => "content-link" do %>
           <%= image_tag video.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
           <div class="content-text">
             <div class="content-title">

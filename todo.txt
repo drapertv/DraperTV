@@ -1,4 +1,12 @@
 Home Page
 	-image carousel/backend
-	-rehaul javascript
+	-link underlining on hover
+	-show livestreams
+
+Series
+	-get filters working
+	-scroll percentage
+
+Livestreams
+	-get related series working
 

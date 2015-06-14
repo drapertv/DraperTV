@@ -4,6 +4,8 @@ Home =
 		$('body').on 'click', '.featured-tabs button', @showTab
 		@mobile = $(window).width() < 1024
 		@initCarousel() if @mobile
+		@initSlideShow() if !@mobile
+		@translated = 0
 
 
 	showTab: ->
@@ -23,6 +25,25 @@ Home =
 			autoplaySpeed: 3000
 			speed: 1000
 			pauseOnHover: false
+
+	initSlideShow: ->
+		setInterval -> 
+			if !$('.featured-one').hasClass('opaque')
+				$('.featured-one').animate
+					opacity: 0
+				, 1000, ->
+					$(@).addClass('opaque')
+			else
+				$('.featured-one').animate
+					opacity: 1
+				, 1000, ->
+					$(@).removeClass('opaque')
+
+			$('.featured-two, .featured-three').animate 
+				transform: "translateY(#{Home.translated + 180}px)"
+			, 1000
+			Home.translated += 180
+		, 3000
 						
 
 		
