@@ -46,7 +46,6 @@ Home =
 			toHide = toSlideDown.last()
 			toShow = $('.featured-carousel-side .featured-item').last()
 
-
 			toSlideDown.animate
 				transform: "translateY(180px)"
 			, 1000, ->
@@ -63,24 +62,7 @@ Home =
 				$(@).css('position', 'relative')
 
 		, 5000
-
-
-		# # setInterval -> 
-		# toFadeOut = $('.animating')
-		# toSlideDown = $('.animating').parent().next().find('.featured-item').add($('.animating').parent().next().next().find('.featured-item'))
-		# toEnlarge = $('.animating').parent().next().next().find('.featured-item')
-		# toBringIn = toEnlarge.parent().next().next().find('.featured-item')
-
-		# toFadeOut.animate
-		# 	opacity: 0
-		# , 1000
-		# toSlideDown.animate 
-		# 	transform: "translateY(#{Home.translated + 180}px)"
-		# , 1000
-		# toEnlarge.removeClass('hidden')
-		# Home.translated += 180
-		# # , 2000
-						
+	
 
 		
 ready = ->

@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
 
   def create
     @terms = params[:search][:terms]
-    Search.create terms: @terms, user_id: current_user.id
+    Search.create terms: @terms
     
     @page = params[:page] || 1
     @page = @page.to_i

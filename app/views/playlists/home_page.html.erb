@@ -165,7 +165,7 @@
             <div class="front">
               <%= link_to playlists_path(category: cat), :class => "categories-item" do %>
                 <div class="categories-icon <%= cat.downcase.gsub(" ", "") %>-icon"></div>
-               
+                <%= image_tag "#{cat.gsub(" ", "-").downcase}-icon.png", :class => "category-icon" %>
               <% end %>
             </div>
             <div class="back no-mobile">

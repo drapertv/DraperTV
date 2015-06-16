@@ -32,6 +32,7 @@ Playlist =
 			else
 				barHeight = Math.ceil(((currentHeight) / Playlist.pageHeight) * 100)
 			$('.scroll-green').css('height', "#{barHeight}px")
+			barHeight = 100 if barHeight > 100
 			$('.scroll-percent').text barHeight + "%"
 			$('.scroll-percent').css "bottom", "#{100 - barHeight}px"
 

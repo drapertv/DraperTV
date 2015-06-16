@@ -4,12 +4,15 @@ class PlaylistsController < InheritedResources::Base
   def index
     @og_title = "DraperTV - Series"
     @playlists = Playlist.all
+    if params[:category]
+      @playlists = Playlist.tagged_with(params[:category])
+    end
+    @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Auxiliary"]
+    @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]
     if !request.original_url.split("/").last.include? "playlists"
       @featured = Playlist.where(show_on_front_page: true)
       @popular = Playlist.popular
       @new = Playlist.order('created_at desc').limit(6)
-      @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Extras"]
-      @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]
       render "home_page"
     end
   end

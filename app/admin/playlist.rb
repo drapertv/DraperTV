@@ -1,7 +1,7 @@
 ActiveAdmin.register Playlist do
 
 
-  permit_params :title, :price, :challange_id, :video_ids,:author_id, :video_ids_raw, :popular
+  permit_params :title, :price, :challange_id, :video_ids,:author_id, :video_ids_raw, :popular, :category_list
 
   index do
     column :id
@@ -19,6 +19,7 @@ ActiveAdmin.register Playlist do
     f.inputs :price
     f.inputs :challange_id
     f.inputs :author_id
+    f.inputs :category_list
     f.inputs :video_ids_raw, :as => :text
     f.inputs :popular
    end

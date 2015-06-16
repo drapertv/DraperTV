@@ -1,5 +1,6 @@
 class Playlist < ActiveRecord::Base
   acts_as_votable
+  acts_as_taggable_on :category
   has_many :challenges
 	delegate :profilepic_url, :name, to: :speaker
   delegate :vthumbnail, to: :first_video
