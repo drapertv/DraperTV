@@ -1,2 +1,0 @@
-Series
-	-get filters working LATER

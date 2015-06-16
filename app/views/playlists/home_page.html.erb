@@ -171,7 +171,7 @@
             <div class="back no-mobile">
               <%= link_to playlists_path(category: cat), :class => "categories-item" do %>
                 <div class="categories-icon <%= cat.downcase.gsub(" ", "") %>-icon"></div>
-                <p class="series-count">24 Series</p>
+                <p class="series-count"><%= Playlist.tagged_with(cat).count %> Series</p>
               <% end %>
             </div>
           </div>

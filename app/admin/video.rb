@@ -31,5 +31,12 @@ ActiveAdmin.register Video do
  end
 
 
+  controller do
+    def find_resource
+      scoped_collection.where(slug: params[:id]).first!
+    end
+  end
+
+
 
 end
