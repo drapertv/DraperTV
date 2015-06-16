@@ -12,6 +12,9 @@ class PlaylistsController < InheritedResources::Base
     if !request.original_url.split("/").last.include? "playlists"
       @featured = Playlist.where(show_on_front_page: true)
       @popular = Playlist.popular
+
+      @featured = Playlist.all.limit(6) if @featured.length < 1
+      @popular = Playlist.all.limit(6) if @popular.length < 1
       @new = Playlist.order('created_at desc').limit(6)
       render "home_page"
     end
