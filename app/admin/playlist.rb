@@ -1,7 +1,7 @@
 ActiveAdmin.register Playlist do
 
 
-  permit_params :title, :price, :challange_id, :video_ids,:author_id, :video_ids_raw, :popular, :category_list
+  permit_params :title, :price, :challange_id, :video_ids,:author_id, :video_ids_raw, :popular, :category_list, :show_on_front_page
 
   index do
     column :id
@@ -22,6 +22,7 @@ ActiveAdmin.register Playlist do
     f.inputs :category_list
     f.inputs :video_ids_raw, :as => :text
     f.inputs :popular
+    f.inputs :show_on_front_page
    end
   f.actions
  end
