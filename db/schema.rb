@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514235141) do
+ActiveRecord::Schema.define(version: 20150615222220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20150514235141) do
     t.string   "image_url"
     t.datetime "stream_date"
     t.string   "slug"
+    t.boolean  "popular"
   end
 
   add_index "livestreams", ["slug"], name: "index_livestreams_on_slug", unique: true, using: :btree
@@ -122,6 +123,7 @@ ActiveRecord::Schema.define(version: 20150514235141) do
     t.integer  "video_ids",          array: true
     t.integer  "author_id"
     t.boolean  "show_on_front_page"
+    t.boolean  "popular"
   end
 
   create_table "quotes", force: true do |t|
@@ -241,7 +243,10 @@ ActiveRecord::Schema.define(version: 20150514235141) do
     t.integer  "view_count",   default: 0
     t.string   "length"
     t.string   "wistia_id"
+    t.string   "slug"
   end
+
+  add_index "videos", ["slug"], name: "index_videos_on_slug", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"

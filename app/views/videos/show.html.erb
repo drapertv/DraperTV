@@ -18,7 +18,7 @@
           <div class="video-series-list">
             <% @playlist.videos.each do |video| %>
               <%= link_to video_path(video) do %>
-                <div class="video">
+                <div class="video <%= 'video-current' if video == @video %>">
                   <p class="video-title"><%= video.title %></p>
                   <p class="video-subtitle"><%= video.length %></p>
                 </div>
@@ -47,11 +47,11 @@
         </div>
       </div>
       <div class="featured-tabs">
-        <button class="featured-series cyan tabs-selected">
-          <h3>Series</h3>
+        <button class="featured-series tabs-selected" data-show="featured-series-content">
+          <h3 class="cyan">Series</h3>
         </button>
-        <button class="featured-related blue">
-          <h3>Related Series</h3>
+        <button class="featured-related" data-show="featured-related-content">
+          <h3 class="blue">Related Series</h3>
         </button>
       </div>
       <div class="featured-series-content content-list">
@@ -71,7 +71,7 @@
             <div class="content-expand-content">
               <% @playlist.videos.each do |video| %>
                 <%= link_to video_path(video) do %>
-                  <div class="video #{'video-current' if video == @video}">
+                  <div class="video">
                     <p class="video-title"><%= @video.title %></p>
                     <p class="video-subtitle"><%= @video.length %></p>
                   </div>

@@ -5,6 +5,9 @@ class Video < ActiveRecord::Base
 	has_many :comments, :as => :commentable
 
   mount_uploader :vthumbnail, VthumbnailUploader
+  extend FriendlyId
+  
+  friendly_id :title, use: :slugged
 
   delegate :speaker, :profilepic_url, :name, :challenge, :speaker_title, to: :playlist
 

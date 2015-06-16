@@ -52,6 +52,10 @@ class Livestream < ActiveRecord::Base
     Time.now - stream_date < 90.minutes && Time.now - stream_date > 0
   end
 
+  def related_playlists
+    Playlist.all.limit(5)
+  end
+
 
 
   private

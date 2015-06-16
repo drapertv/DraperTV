@@ -26,24 +26,60 @@ Home =
 			speed: 1000
 			pauseOnHover: false
 
-	initSlideShow: ->
-		setInterval -> 
-			if !$('.featured-one').hasClass('opaque')
-				$('.featured-one').animate
-					opacity: 0
-				, 1000, ->
-					$(@).addClass('opaque')
-			else
-				$('.featured-one').animate
-					opacity: 1
-				, 1000, ->
-					$(@).removeClass('opaque')
 
-			$('.featured-two, .featured-three').animate 
-				transform: "translateY(#{Home.translated + 180}px)"
-			, 1000
-			Home.translated += 180
-		, 3000
+	initSlideShow: ->
+		$($('.featured-carousel-main .featured-item')[2]).show()
+
+		setInterval ->
+			toFadeOut = $('.featured-carousel-main .featured-item:visible').first()
+			toFadeOut.fadeOut(1000)
+
+			toFadeIn = toFadeOut.parent().next().find('.featured-item')
+			if toFadeIn.length == 0
+				toFadeIn = $('.featured-carousel-main .featured-item').first()
+			toFadeIn.fadeIn(1000)
+		, 5000
+
+		$('.featured-carousel-side .featured-item:lt(2)').show()
+		setInterval ->
+			toSlideDown = $('.featured-carousel-side .featured-item:lt(2)')
+			toHide = toSlideDown.last()
+			toShow = $('.featured-carousel-side .featured-item').last()
+
+
+			toSlideDown.animate
+				transform: "translateY(180px)"
+			, 1000, ->
+				$(@).css('transform' , '')
+				toHide.hide()
+
+
+			toShow.show().css('position', 'absolute').css('top', '-180px')
+
+			toShow.parent().prependTo('.featured-carousel-side').children()
+			toShow.animate
+				top: "0px"
+			, 1000, ->
+				$(@).css('position', 'relative')
+
+		, 5000
+
+
+		# # setInterval -> 
+		# toFadeOut = $('.animating')
+		# toSlideDown = $('.animating').parent().next().find('.featured-item').add($('.animating').parent().next().next().find('.featured-item'))
+		# toEnlarge = $('.animating').parent().next().next().find('.featured-item')
+		# toBringIn = toEnlarge.parent().next().next().find('.featured-item')
+
+		# toFadeOut.animate
+		# 	opacity: 0
+		# , 1000
+		# toSlideDown.animate 
+		# 	transform: "translateY(#{Home.translated + 180}px)"
+		# , 1000
+		# toEnlarge.removeClass('hidden')
+		# Home.translated += 180
+		# # , 2000
 						
 
 		

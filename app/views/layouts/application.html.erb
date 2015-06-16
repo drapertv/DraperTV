@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="app">
+<html lang="en">
   <head>
     <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -22,12 +22,11 @@
     <meta property="og:image" content="<%= image_url @og_image %>" />
   </head>
     <body>
-      <%= render "layouts/topbar" %>
+      <%= render partial: "layouts/topbar" %>
       <%= yield %>
       <footer>
         <small>All rights reserved, Draper Collective, LLC.</small>
         <small>Made with <span class="red">blood</span>, <span class="orange">sweat</span>, and <span class="blue">tears</span> in San Mateo, CA</small>
       </footer>
     </body>
-  
 </html>

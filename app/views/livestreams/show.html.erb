@@ -19,20 +19,58 @@
       </div>
     </div>
   </div>
-  <div class="livestream-side-content">
-    <div class="section-title">
-      <h1>TWITTER</h1>
-      <h4>@Draper_U</h4>
+
+  <% if @livestream.live? || @browser.mobile? %>
+    <div class="livestream-side-content">
+      <div class="section-title">
+        <h1>TWITTER</h1>
+        <h4>@Draper_U</h4>
+      </div>
+      <div class="content">
+        <a class="twitter-timeline" href="https://twitter.com/Draper_U" data-widget-id="603280664935276544" data-chrome="noheader transparent nofooter"></a>
+      </div>
+      <div class="content tweet-button">
+        <a href="https://twitter.com/intent/tweet?screen_name=Draper_U">
+          <h2><i class="fa fa-twitter"></i> &nbsp;Tweet to @Draper_U</h2>
+        </a>
+      </div>
     </div>
-    <div class="content">
-      <a class="twitter-timeline" href="https://twitter.com/Draper_U" data-widget-id="603280664935276544" data-chrome="noheader transparent nofooter"></a>
+  <% else %>
+    <div class="livestream-side-content">
+      <div class="section-title">
+        <h1>POPULAR</h1>
+      </div>
+      <% Playlist.popular.each do |content| %>
+        <% if content.class == Playlist %>
+          <div class="related-content">
+            <%= link_to video_path(content.first_video) do %>
+              <div class="content-image-container">
+                <%= image_tag content.first_video.vthumbnail_url(:seriesthumb), :class => "content-thumbnail" %>
+                <p class="content-video-count"><%= content.videos.count %> videos</p>
+              </div>
+              <div class="related-content-info">
+                <p class="related-content-title"><%= content.title %></p>
+                <p class="related-content-subtitle"><%= content.name %></p>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+           <div class="related-content">
+             <%= link_to livestream_path(content) do %>
+              <div class="content-image-container">
+                <%= image_tag content.image_url, :class => "content-thumbnail" %>
+                <p class="content-video-count">Livestream</p>
+              </div>
+              <div class="related-content-info">
+                <p class="related-content-title"><%= content.title %></p>
+                <p class="related-content-subtitle"><%= content.formatted_stream_date %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-    <div class="content tweet-button">
-      <a href="https://twitter.com/intent/tweet?screen_name=Draper_U">
-        <h2><i class="fa fa-twitter"></i> &nbsp;Tweet to @Draper_U</h2>
-      </a>
-    </div>
-  </div>
+  <% end %>
 </section>
 
 <script>

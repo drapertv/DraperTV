@@ -104,6 +104,12 @@
 	text-transform: uppercase;
 }
 
+.playlist-page {
+	.categories-item {
+		margin: 10px 0px;
+	}
+}
+
 @media (min-width: 1024px) {
 	body {
 		.section-title {
@@ -111,6 +117,21 @@
 			h1 {
 				font-size: 24px;
 				color: $blue;
+				float: left;
+			}
+			h4, div {
+				float: left;
+				margin-left: 20px;
+			}
+		}
+		.section-content-list {
+			.content {
+				max-height: 410px;
+				overflow: hidden;
+				.content-expand {
+					max-height: 160px;
+					overflow-y: scroll;
+				}
 			}
 		}
 		.content-expand-header {
@@ -135,8 +156,10 @@
 				display: block;
 				width: 20%;
 				text-align: center;
-				margin-bottom: 20px;
 			}
+		}
+		.playlist-page .categories-item {
+			margin-bottom: 20px;
 		}
 	}
 

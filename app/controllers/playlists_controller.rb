@@ -3,18 +3,10 @@ class PlaylistsController < InheritedResources::Base
 
   def index
     @og_title = "DraperTV - Series"
-
-      @welcome = params[:welcome] == "true"
-      @page = params[:page] || 1
-      @page = @page.to_i
-      @page_next = @page + 1
-      @page_back = @page > 1 ? @page - 1 : 1
-		  
-      @playlists = Playlist.all
-      @last_page = @playlists.length < 5
-      @first_page = @page < 2
+    @playlists = Playlist.all
     if !request.original_url.split("/").last.include? "playlists"
-      @popular = Playlist.all.limit(6)
+      @featured = Playlist.where(show_on_front_page: true)
+      @popular = Playlist.popular
       @new = Playlist.order('created_at desc').limit(6)
       @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Extras"]
       @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]

@@ -94,7 +94,7 @@ gem 'exception_notification'
 gem 'friendly_id', '~> 5.1.0'
 
 gem 'react-rails', '~> 1.0'
-
+gem 'numbers_and_words'
 
 
 

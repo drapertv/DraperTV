@@ -2,30 +2,79 @@
 @import 'shared/mixins';
 
 
+.featured-categories {
+	@include flexbox;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.flip-container {
+	width: 50%;
+	text-align: center;
+	position: relative;
+	h3 {
+		position: absolute;
+		bottom: 20px;
+		text-align: center;
+		width: 100%;
+		left: 0;
+	}
+}
+
+.categories-item {
+	padding: 0px;
+	margin-bottom: 40px;
+}
+
+.featured-new.tabs-selected {
+	background: $green;
+}
+
+
 @media (min-width: 1024px) {
   body {
-
 		.featured-carousel {
 			height: 360px;
 			width: 960px;
 			order: -4;
 			overflow: hidden;
+			@include flexbox;
+			justify-content: space-between;
 		}
 		.featured-item {
-	    	width: 320px;
-	    	height: 180px;
-	    	float: left;
-	    }
-	    .featured-one {
-	    	height: 360px;
+			background-size: cover;
+			display: none;
+		}
+		.featured-carousel-main {
+			height: 360px;
 	    	width: 640px;
-	    	h3 {
-	    		font-size: 20px;
-	    	}
-	    	h1 {
-	    		font-size: 36px;
-	    	}
-	    }
+	    	position: relative;
+	    	.featured-item {
+		    	height: 360px;
+		    	width: 640px;
+		    	position: absolute;
+		    	top: 0;
+		    	left: 0;
+		    	h3 {
+		    		font-size: 20px;
+		    	}
+		    	h1 {
+		    		font-size: 36px;
+		    	}
+		    }
+		}
+		.featured-carousel-side {
+			height: 360px;
+			width: 320px;
+			position: relative;
+			.featured-item {
+		    	width: 320px;
+		    	height: 180px;
+		    	left: 0;
+		    }
+		}
+		
+	    
 	    .featured-text {
 	    	padding: 20px;
 	    }
@@ -55,12 +104,11 @@
 	    	justify-content: space-between;
 	    	flex-wrap: wrap;
 	    }
-	    .featured-categories > .categories-item {
+	    .featured-categories  .categories-item {
 	    	width: 168px;
 	    	height: 195px;
 	    	margin: 0;
 	    	padding: 0;
-	    	background: $light-gray;
 	    	margin-bottom: 30px;
 	    	position: relative;
 	    	@include flexbox;
@@ -68,19 +116,15 @@
 	    	h3 {
 	    		margin-top: 24px;
 	    		margin-bottom: 10px;
+	    		order: -1;
 	    	}
 	    }
-	    .categories-item:hover {
-	    	.series-count {
-	    		display: block;
-	    	}
-	    }
+
 	    .series-count {
 	    	color: white;
 	    	position: absolute;
 	    	font-size: 24px;
-	    	top: 80px;
-	    	display: none;
+	    	top: 30px;
 	    	width: 80px;
 	    	text-align: center;
 	    	left: calc(50% - 40px);
@@ -143,6 +187,9 @@
 	    }
 	    .content-title {
 	    	font-size: 14px;
+	    	*:hover {
+				text-decoration: underline;
+	    	}
 	    }
 	    .content-subtitle {
 	    	margin-top: 10px;
@@ -155,6 +202,59 @@
 	    .content-expand-content.hide-section {
 	    	display: block;
 	    }
+	    /* entire container, keeps perspective */
+		.flip-container {
+			perspective: 1000;
+		}
+			/* flip the pane when hovered */
+			.flip-container:hover .flipper, .flip-container.hover .flipper {
+				transform: rotateY(180deg);
+			}
+
+		.flip-container, .front, .back {
+			width: 168px;
+	    	height: 195px;
+		}
+		.flip-container {
+			background: $light-gray;
+			margin-bottom: 30px;
+			h3 {
+				bottom: initial;
+				top: 24px;
+				text-transform: uppercase;
+			}
+		}
+
+		/* flip speed goes here */
+		.flipper {
+			transition: 0.4s;
+			transform-style: preserve-3d;
+			margin-left: 5px;
+			position: relative;
+			margin-top: 50px;
+			position: relative;
+		}
+
+		/* hide back of pane during swap */
+		.front, .back {
+			backface-visibility: hidden;
+			
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		/* front pane, placed above back */
+		.front {
+			z-index: 2;
+			/* for firefox 31 */
+			transform: rotateY(0deg);
+		}
+
+		/* back, initially hidden pane */
+		.back {
+			transform: rotateY(180deg);
+		}
   	}
 
 }

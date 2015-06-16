@@ -1,6 +1,6 @@
 ActiveAdmin.register Video do
 
-  permit_params :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name,:category_list, :video_id, :length
+  permit_params :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name,:category_list, :video_id, :length, :slug
 
   index do
     column :id
@@ -25,6 +25,7 @@ ActiveAdmin.register Video do
      f.inputs :description
      f.inputs :length
      f.inputs :wistia_id
+     f.inputs :slug
 
    end
   f.actions

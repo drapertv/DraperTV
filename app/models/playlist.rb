@@ -47,5 +47,9 @@ class Playlist < ActiveRecord::Base
     where(show_on_front_page: true)
   end
 
+  def self.popular
+    (Playlist.where(popular: true) + Livestream.where(popular: true)).shuffle
+  end
+
 
 end

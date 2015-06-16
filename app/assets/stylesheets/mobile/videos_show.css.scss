@@ -1,8 +1,8 @@
 @import '../shared/variables';
 @import '../shared/mixins';
 
-.video-player {
-
+.video-player, .video-player iframe {
+	height: 56vw;
 }
 
 h4 {
@@ -11,6 +11,7 @@ h4 {
 
 .video-length {
   margin-top: 7px;
+  display: none;
 }
 .featured-tabs {
 	button {
@@ -29,9 +30,27 @@ iframe {
 	width: 100%;
 }
 
+.video-title {
+	font-size: 14px;
+	margin-top: 0px;
+}
 
 .video-current > p {
   color: #c0c0c0;
+}
+
+.featured-series.tabs-selected {
+	background: $cyan;
+	h3 {
+		color: white;
+	}
+}
+
+.featured-related.tabs-selected {
+	background: $green;
+	h3 {
+		color: white;
+	}
 }
 
 
@@ -125,6 +144,9 @@ iframe {
 			}
 			.series-category {
 				color: $cyan;
+			}
+			.video-current {
+				.video-title, .video-length {color: #c0c0c0;}
 			}
 		}
 		.video-page > .content:nth-child(3n - 1), .content {

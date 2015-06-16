@@ -1,6 +1,4 @@
-<!-- Refactor this into two views, one for signed in and one for not signed in -->
-
-<header id="landing-header">
+<header id="landing-header" class="no-mobile">
   <div id="header-content">
     <div class="header-logo">
       <%= link_to root_path do %>
@@ -8,7 +6,6 @@
       <% end %>
     </div>
 
-    <% if current_user %>
 
       <ul class="header-mid-right no-mobile">
         <li class="header-item <%= 'active' if request.original_url.include?("playlists") %>">
@@ -33,22 +30,33 @@
           <%= f.text_field :terms, :class => "search-input", placeholder: "Search" %>
         <% end %>
       </div>
-    <% else %>
-      <div class="header-right no-mobile">
-        <div class="header-item m-xs green-btn sign-up-btn no-mobile">
-        <a href="<%= new_user_registration_path %>">Sign Up</a></div>
-        <div class="header-item or no-mobile">
-          or
-        </div>
-        <div class="header-item m-xs" id="login">
-          <p class="login-modal-trigger">Log In</p>
-          <%= render partial: "layouts/login_modal" %>
-        </div>
-      </div>
-    <% end %>
   </div>
 </header>
 
+<header class="no-desk">
+  <%= image_tag "menu-icon.svg", :class => "menu header-item" %>
+  <%= link_to root_path do %>
+    <%= image_tag "draper-logo.png", :class => "logo header-item" %>
+  <% end %>
+  <%= form_for Search.new do |f| %>
+    <%= f.text_field :terms, :class => "search-box header-item hide-section", placeholder: "Search" %>
+  <% end %>
+  <%= image_tag "search-icon.svg", :class => "search header-item" %>
+</header>
+<div class="menu-menu hide-section">
+  <%= link_to root_path do %>
+    <h3 class="menu-item">Home</h3>
+  <% end %>
+  <%= link_to playlists_path do %>
+    <h3 class="menu-item">Series</h3>
+  <% end %>
+  <%= link_to livestreams_path do %>
+    <h3 class="menu-item">Livestreams</h3>
+  <% end %>
+  <%= link_to "https://draperuniversity.com" do %>
+    <h3 class="menu-item">Draper University</h3>
+  <% end %>
+</div>
 
 
 <script>

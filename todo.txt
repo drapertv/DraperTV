@@ -1,12 +1,2 @@
-Home Page
-	-image carousel/backend
-	-link underlining on hover
-	-show livestreams
-
 Series
-	-get filters working
-	-scroll percentage
-
-Livestreams
-	-get related series working
-
+	-get filters working LATER
