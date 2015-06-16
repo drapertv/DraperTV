@@ -5,7 +5,7 @@ class PlaylistsController < InheritedResources::Base
     @og_title = "DraperTV - Series"
     @playlists = Playlist.all
     if params[:category]
-      @playlists = Playlist.tagged_with(params[:category])
+      @playlists = Playlist.tagged_with(params[:category].upcase)
     end
     @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Auxiliary"]
     @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]
