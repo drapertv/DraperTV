@@ -39,7 +39,7 @@
 .featured-text > h1 {
   text-transform: uppercase;
   color: white;
-  margin-top: 4px;
+  margin-top: 5px;
 }
 
 .featured-one {
@@ -131,9 +131,22 @@ button {
 
 @media (min-width: 1024px) {
   body {
+    .featured-overlay {
+      height: 100px;
+      width: 100%;
+      background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8));
+      position: absolute;
+      bottom: 0px;
+    }
+    .featured-overlay-main {
+      height: 200px;
+    }
     .home .featured-tabs {
       button {
         width: auto;
+        h3 {
+          font-weight: 500;
+        }
       }
       button.tabs-selected.blue {
         background: none;
@@ -141,12 +154,18 @@ button {
         * {
           color: $blue;
         }
+        h3 {
+          font-weight: 700;
+        }
       }
       button.tabs-selected {
         background: none;
         color: $green;
         .green {
           color: $green;
+        }
+        h3 {
+          font-weight: 700;
         }
       }
     }

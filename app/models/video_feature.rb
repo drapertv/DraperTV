@@ -8,11 +8,11 @@ class VideoFeature < ActiveRecord::Base
 
 	def self.currently_featured_videos tags=nil
 		features = where(:type_qwatch => true).limit(5)
-		if tags 
+		if tags
 			tags = tags.split(",")
 			features = features.select do |f|
 				list = f.video.category_list
-				(list - tags).length < list.length 
+				(list - tags).length < list.length
 			end
 		end
 		features
@@ -24,6 +24,6 @@ class VideoFeature < ActiveRecord::Base
 
 	def expire_cache
 		ActionController::Base.new.expire_fragment('featured_videos')
-		ActionController::Base.new.expire_fragmnet('featured_playlist')
+		ActionController::Base.new.expire_fragment('featured_playlist')
 	end
 end

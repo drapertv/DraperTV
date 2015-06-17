@@ -18,12 +18,17 @@
 		text-align: center;
 		width: 100%;
 		left: 0;
+		text-transform: uppercase;
 	}
 }
 
 .categories-item {
 	padding: 0px;
 	margin-bottom: 40px;
+}
+
+.categories-item:hover {
+	text-decoration: underline;
 }
 
 .featured-new.tabs-selected {
@@ -87,9 +92,12 @@
 			top: 35px;
 		  	right: 60px;
 		}
-	    
+
 	    .featured-text {
 	    	padding: 20px;
+				&:hover {
+					text-decoration: underline;
+				}
 	    }
 	    .tagline-container {
 	    	text-align: center;
@@ -101,6 +109,7 @@
 			color: $blue;
 			font-size: 30px;
 			margin-bottom: 5px;
+			font-weight: 700;
 	    }
 	    .tagline-sub {
 	    	color: $gray;
@@ -136,12 +145,18 @@
 	    .series-count {
 	    	color: white;
 	    	position: absolute;
-	    	font-size: 24px;
-	    	top: 30px;
+	    	font-size: 18px;
+	    	top: 37px;
 	    	width: 80px;
 	    	text-align: center;
 	    	left: calc(50% - 40px);
+				text-transform: lowercase;
 	    }
+
+			.series-count > span {
+				font-weight: 700;
+				font-size: 24px;
+			}
 
 	    .categories-icon {
 	    	height: 120px;
@@ -197,16 +212,28 @@
 	    .content-text {
 	    	width: 100%;
 	    	order: -1;
+				.content-title {
+					height: 2em;
+					overflow: hidden;
+				}
 	    }
 	    .content-title {
 	    	font-size: 14px;
+				font-weight: 700;
 	    	*:hover {
 				text-decoration: underline;
 	    	}
+				& > * {
+					font-weight: 700;
+				}
 	    }
 	    .content-subtitle {
+				font-weight: 700;
 	    	margin-top: 10px;
 	    	margin-bottom: 20px;
+				& > * {
+					font-weight: 700;
+				}
 	    }
 	    .series-thumbnail {
 	    	width: 256px;
@@ -235,6 +262,7 @@
 				bottom: initial;
 				top: 24px;
 				text-transform: uppercase;
+				font-weight: 700;
 			}
 		}
 
@@ -251,7 +279,7 @@
 		/* hide back of pane during swap */
 		.front, .back {
 			backface-visibility: hidden;
-			
+
 			position: absolute;
 			top: 0;
 			left: 0;

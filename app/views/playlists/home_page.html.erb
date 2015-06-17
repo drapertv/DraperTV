@@ -10,7 +10,7 @@
                 <h1><%= playlist.title %></h1>
               </div>
             </div>
-          </div>   
+          </div>
         <% end %>
       <% end %>
     </div>
@@ -20,13 +20,13 @@
         <% @featured.reverse.each_with_index do |playlist, i| %>
           <%= link_to video_path(playlist.first_video) do %>
             <div class="featured-item" style='background-image: url(<%= url_for(playlist.first_video.vthumbnail_url) %>);'>
-              <div class="featured-overlay">
+              <div class="featured-overlay featured-overlay-main">
                 <div class="featured-text">
                   <h3><%= playlist.name %></h3>
                   <h1><%= playlist.title %></h1>
                 </div>
               </div>
-            </div>   
+            </div>
           <% end %>
         <% end %>
       </div>
@@ -40,7 +40,7 @@
                   <h1><%= playlist.title %></h1>
                 </div>
               </div>
-            </div>   
+            </div>
           <% end %>
         <% end %>
       </div>
@@ -171,7 +171,7 @@
             <div class="back no-mobile">
               <%= link_to playlists_path(category: cat), :class => "categories-item" do %>
                 <div class="categories-icon <%= cat.downcase.gsub(" ", "") %>-icon"></div>
-                <p class="series-count"><%= Playlist.tagged_with(cat).count %> Series</p>
+                <p class="series-count"><span><%= Playlist.tagged_with(cat).count %></span></br> Series</p>
               <% end %>
             </div>
           </div>
@@ -180,7 +180,3 @@
     </div>
   </div>
 </section>
-
-
-
-
