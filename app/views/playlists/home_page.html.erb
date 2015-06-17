@@ -2,7 +2,7 @@
   <% if @browser.mobile? %>
     <div class="featured-carousel">
       <% @featured.each_with_index do |playlist, i| %>
-        <%= link_to playlist_link(playlist) do %>
+        <%= link_to playlist_link(browser, playlist) do %>
           <div class="featured-item" style='background-image: url(<%= url_for(playlist.first_video.vthumbnail_url) %>);'>
             <div class="featured-overlay">
               <div class="featured-text">
