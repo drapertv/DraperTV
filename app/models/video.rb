@@ -40,6 +40,10 @@ class Video < ActiveRecord::Base
 		Time.now - created_at
 	end
 
+	def thumbnail options=nil
+		options ? playlist.videos.first.vthumbnail_url(options) : playlist.videos.first.vthumbnail_url
+	end
+
 	private
 
 	def expire_cache

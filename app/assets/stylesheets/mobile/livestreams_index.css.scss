@@ -79,8 +79,12 @@
     .livestream {
       .content-expand-content {
         margin-top: 20px;
+        max-height: 140px;
+        text-overflow: ellipsis;
         p {
           padding: 0px;
+          max-height: 140px;
+          text-overflow: ellipsis;
         }
       }
     }

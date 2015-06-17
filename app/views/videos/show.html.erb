@@ -12,7 +12,13 @@
             </div>
             <div class="series-info-row">
               <p><%= @playlist.publish_date %></p>
-              <p class="series-category">STARTING UP</p>
+              <p class="series-category">
+                <% @playlist.category_list.each do |category| %>
+                  <% if category != "EXTRAS" %>
+                    <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><%= category.upcase %></span>,
+                  <% end %>
+                <% end %>
+              </p>
             </div>
           </div>
           <div class="video-series-list">
@@ -71,9 +77,9 @@
             <div class="content-expand-content">
               <% @playlist.videos.each do |video| %>
                 <%= link_to video_path(video) do %>
-                  <div class="video">
-                    <p class="video-title"><%= @video.title %></p>
-                    <p class="video-subtitle"><%= @video.length %></p>
+                  <div class="video <%= 'video-current' if video == @video %>">
+                    <p class="video-title"><%= video.title %></p>
+                    <p class="video-subtitle"><%= video.length %></p>
                   </div>
                 <% end %>
               <% end %>
@@ -115,6 +121,7 @@
               </div>
         <% end %>
     </section>
+<<<<<<< HEAD
 
     <script>
 
@@ -143,3 +150,5 @@
         $('.featured-related-content').removeClass('hide-section');
       });
     </script>
+=======
+>>>>>>> e87b269ecafe8eb95e1fb8a7b183aa30ac605d15

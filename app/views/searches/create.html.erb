@@ -37,7 +37,7 @@
         </div>
       <% else %>
         <div class="content">
-          <%= link_to playlist_path(result), :class => "content-link" do %>
+          <%= link_to playlist_link(@browser, result), :class => "content-link" do %>
             <%= image_tag result.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
             <div class="content-text">
               <div class="content-title">
@@ -82,27 +82,6 @@
     <% end %>
   </div>
 </div>
-
-<script>
-  // alert("Javascript works!");
-  $('.menu').on('click', function() {
-    $('.menu-menu').toggleClass('hide-section');
-  });
-  $('.main').on('click', function() {
-    $('.menu-menu').addClass('hide-section');
-  });
-  $('.search').on('click', function() {
-    $('.menu, .logo, .search-box').toggleClass('hide-section');
-  });
-
-  $('.section-title-menu').on('click', function() {
-    $('.categories').toggleClass('hide-section');
-  });
-  $('.content-expand-header').on('click', function() {
-    $(this).next().toggleClass('hide-section');
-    $(this).children('.arrow').toggleClass('rotate180');
-  });
-</script>
 
 <script>
   $('#search_terms').val("<%= @terms %>")
