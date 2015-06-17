@@ -2,7 +2,7 @@
   <div id="header-content">
     <div class="header-logo">
       <%= link_to root_path do %>
-        <%= image_tag 'draper-logo.png', :class => "header-item logo" %>
+        <%= image_tag 'drapertv-logo.png', :class => "header-item logo" %>
       <% end %>
     </div>
 
@@ -34,14 +34,14 @@
 </header>
 
 <header class="no-desk">
-  <%= image_tag "menu-icon.svg", :class => "menu header-item" %>
+  <%= image_tag "nav-icon.png", :class => "menu header-item" %>
   <%= link_to root_path do %>
-    <%= image_tag "draper-logo.png", :class => "logo header-item" %>
+    <%= image_tag "drapertv-logo.png", :class => "logo header-item" %>
   <% end %>
   <%= form_for Search.new do |f| %>
     <%= f.text_field :terms, :class => "search-box header-item hide-section", placeholder: "Search" %>
   <% end %>
-  <%= image_tag "search-icon.svg", :class => "search header-item" %>
+  <%= image_tag "search-icon.png", :class => "search header-item" %>
 </header>
 <div class="menu-menu hide-section">
   <%= link_to root_path do %>

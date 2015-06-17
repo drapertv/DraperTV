@@ -65,6 +65,7 @@
 
 .header-item a {
 	color: rgba(255,255,255,1);
+	margin: 0 auto;
 }
 
 .header-item.active a {
@@ -90,9 +91,9 @@
 
 .logo.header-item {
 	height: 30px;
-	margin: 0px 0px;
+	margin: 0px auto;
 	opacity: 1;
-	margin-right: 30px;
+	// margin-right: 30px;
 }
 .sign-up-btn.header-item {
 	padding: 5px 10px;

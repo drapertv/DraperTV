@@ -6,7 +6,9 @@
   </div>
   <div class="section-title">
     <h1 class="<%= @color || "blue" %>"><%= @category ? @category.upcase : "SERIES" %></h1>
-    <div class="section-title-menu"></div>
+    <div class="section-title-menu">
+      <%= image_tag 'menu-icon.png' %>
+    </div>
   </div>
   <div class="categories hide-section" style="display: none;">
     <% @categories.each_with_index do |cat , i| %>
@@ -50,4 +52,3 @@
 
   </div>
 </section>
-

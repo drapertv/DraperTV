@@ -7,7 +7,7 @@ Header =
 		$('body').on 'click', '.search', @toggleSearch
 
 	toggleSearch: ->
-  		$('.menu, .logo, .search-box').toggle()
+  		$('.menu, .logo, .search-box, header > a').toggle()
 
  	hideMenu: ->
   		$('.menu-menu').hide()
@@ -19,7 +19,7 @@ Header =
   	restoreHeader: ->
 
 
-  		
+
 
 
 ready = ->
