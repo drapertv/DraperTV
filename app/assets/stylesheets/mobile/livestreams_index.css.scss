@@ -59,6 +59,10 @@
   animation-iteration-count: infinite;
 }
 
+.content-date {
+  margin-top: 7px;
+}
+
 @media (min-width: 1024px) {
   body {
     .livestream-text {
@@ -67,9 +71,8 @@
         margin-bottom: 10px;
         font-size: 14px;
       }
-      .content-date h3 {
+      .content-date h4 {
         margin-bottom: 20px;
-        color: $gray;
       }
     }
     .livestream-thumbnail {
@@ -146,6 +149,10 @@
         width: 112px;
         height: 63px;
       }
+      .content-video-count {
+        font-size: 12px;
+        font-weight: 500;
+      }
       .section-title {
         height: 20px;
       }
@@ -153,11 +160,15 @@
         width: 162px;
       }
       .related-content-title {
-        font-weight: 400;
+        font-weight: 700;
         font-size: 12px;
+        margin-bottom: 7px;
+        text-transform: uppercase;
       }
       .related-content-subtitle {
+        font-weight: 700;
         font-size: 12px;
+        color: $gray;
       }
       .related-content-title:hover {
         text-decoration: underline;
