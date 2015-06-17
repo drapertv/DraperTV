@@ -58,7 +58,7 @@
       <h3 class="green">New</h3>
     </button>
     <button class="featured-topics orange no-desk" data-show="featured-topics-content">
-      <h3>Topics</h3>
+      <h3 class="orange">Topics</h3>
     </button>
   </div>
   <div class="featured-popular-content content-list">
@@ -94,7 +94,7 @@
           </div>
         </div>
       <% else %>
-        <div class="content livestream no-mobile">
+        <div class="content livestream">
             <% livestream = playlist %>
             <%= link_to livestream_path(livestream), :class => "content-link" do %>
               <%= image_tag livestream.image_url, :class => "livestream-thumbnail" %>
@@ -114,7 +114,7 @@
               </div>
               <div class="content-expand-content hide-section">
                 <p>
-                  <%= livestream.description %>
+                  <%= livestream.description[0..275] %><%= "..." if livestream.description.length > 300 %>
                 </p>
               </div>
             </div>
@@ -160,7 +160,7 @@
     <div class="featured-categories">
       <% @categories.each_with_index do |cat, i| %>
         <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-          <h3 class="<%= @colors[i] %>"><%= cat %></h3>
+          <h3 class="<%= @colors[i] %>"><%= cat.upcase %></h3>
           <div class="flipper">
             <div class="front">
               <%= link_to playlists_path(category: cat), :class => "categories-item" do %>

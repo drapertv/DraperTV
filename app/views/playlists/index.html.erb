@@ -5,10 +5,10 @@
     <div class="scroll-percent"></div>
   </div>
   <div class="section-title">
-    <h1>SERIES</h1>
+    <h1 class="<%= @color || "blue" %>"><%= @category ? @category.upcase : "SERIES" %></h1>
     <div class="section-title-menu"></div>
   </div>
-  <div class="categories hide-section">
+  <div class="categories hide-section" style="display: none;">
     <% @categories.each_with_index do |cat , i| %>
       <%= link_to playlists_path(category: cat) do %>
         <h3 class="categories-item <%= @colors[i] %>"><%= cat %></h3>
@@ -50,5 +50,4 @@
 
   </div>
 </section>
-
 

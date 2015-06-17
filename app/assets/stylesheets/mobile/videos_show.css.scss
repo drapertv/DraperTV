@@ -47,7 +47,7 @@ iframe {
 }
 
 .featured-related.tabs-selected {
-	background: $green;
+	background: $blue;
 	h3 {
 		color: white;
 	}
@@ -143,7 +143,7 @@ iframe {
 				margin-bottom: 5px;
 			}
 			.series-category {
-				color: $cyan;
+				text-align: right;
 			}
 			.video-current {
 				.video-title, .video-length {color: #c0c0c0;}

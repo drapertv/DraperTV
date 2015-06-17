@@ -12,7 +12,13 @@
             </div>
             <div class="series-info-row">
               <p><%= @playlist.publish_date %></p>
-              <p class="series-category">STARTING UP</p>
+              <p class="series-category">
+                <% @playlist.category_list.each do |category| %>
+                  <% if category != "EXTRAS" %>
+                    <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><%= category.upcase %></span>,
+                  <% end %>
+                <% end %>
+              </p>
             </div>
           </div>
           <div class="video-series-list">
@@ -71,9 +77,9 @@
             <div class="content-expand-content">
               <% @playlist.videos.each do |video| %>
                 <%= link_to video_path(video) do %>
-                  <div class="video">
-                    <p class="video-title"><%= @video.title %></p>
-                    <p class="video-subtitle"><%= @video.length %></p>
+                  <div class="video <%= 'video-current' if video == @video %>">
+                    <p class="video-title"><%= video.title %></p>
+                    <p class="video-subtitle"><%= video.length %></p>
                   </div>
                 <% end %>
               <% end %>
@@ -115,31 +121,3 @@
               </div>
         <% end %>
     </section>
-
-    <script>
-
-      $('.section-title-menu').on('click', function() {
-        $('.categories').toggleClass('hide-section');
-      });
-      $('.content-expand-header').on('click', function() {
-        $(this).next().toggleClass('hide-section');
-        $(this).children('.arrow').toggleClass('rotate180');
-      });
-      $('.autoplay-toggle').on('click', function() {
-        $('.autoplay-toggle').removeClass('autoplay-select');
-        $(this).addClass('autoplay-select');
-      });
-
-      $('.featured-tabs > button').on('click', function() {
-        $('.featured-tabs > button').removeClass('tabs-selected');
-        $(this).addClass('tabs-selected');
-      });
-      $('.featured-series').on('click', function() {
-        $('.content-list').addClass('hide-section');
-        $('.featured-series-content').removeClass('hide-section');
-      });
-      $('.featured-related').on('click', function() {
-        $('.content-list').addClass('hide-section');
-        $('.featured-related-content').removeClass('hide-section');
-      });
-    </script>

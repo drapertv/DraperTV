@@ -105,8 +105,12 @@
 }
 
 .playlist-page {
+	.categories {
+		padding: 7px 25px 
+	}
 	.categories-item {
 		margin: 10px 0px;
+		text-align: left;
 	}
 }
 
@@ -114,9 +118,9 @@
 	body {
 		.section-title {
 			margin: 0px 0px 20px 0px;
+			color: $blue;
 			h1 {
 				font-size: 24px;
-				color: $blue;
 				float: left;
 			}
 			h4, div {
@@ -128,14 +132,16 @@
 			.content {
 				max-height: 410px;
 				overflow: hidden;
-				.content-expand {
-					max-height: 160px;
-					overflow-y: scroll;
-				}
 			}
+		}
+		.content-expand {
+			max-height: 160px;
+			overflow-y: hidden;
 		}
 		.content-expand-header {
 			display: none;
+			max-height: 100%;
+
 		}
 		.section-content-list {
 			@include flexbox;
