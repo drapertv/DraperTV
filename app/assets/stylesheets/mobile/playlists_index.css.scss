@@ -106,11 +106,12 @@
 
 .playlist-page {
 	.categories {
-		padding: 7px 25px 
+		padding: 7px;
 	}
 	.categories-item {
-		margin: 10px 0px;
+		margin: 10px 0px 10px 18px;
 		text-align: left;
+    width: calc(100%/2 - 20px);
 	}
 }
 
@@ -153,7 +154,7 @@
 			flex-wrap: wrap;
 			justify-content: space-around;
 			background: $light-gray;
-			padding: 20px 0px 0px 0px;
+			padding: 10px 0px;
 			margin-bottom: 20px;
 			.categories-item {
 				padding: 0px;
@@ -167,6 +168,8 @@
 		.playlist-page .categories-item {
 			margin-bottom: 20px;
       font-weight: 700;
+      width: auto;
+      margin: 10px 0;
 		}
 	}
 
