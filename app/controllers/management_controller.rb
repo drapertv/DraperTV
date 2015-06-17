@@ -1,5 +1,5 @@
 class ManagementController < ApplicationController
-	load_and_authorize_resource
+
 
 
 	def invitecorner
@@ -11,7 +11,7 @@ class ManagementController < ApplicationController
 	  @emails = params[:user_emails].split(",")
 	  @emails.delete("")
 	  @emails.each do |email|
-	    User.invite!(:email => email, :bio => current_user.id)
+	    UserMailer.invite_email(email).deliver
 	  end
 	  redirect_to invitecorner_path
 	end

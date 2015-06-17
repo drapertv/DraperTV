@@ -47,7 +47,7 @@
     </div>
   <% end %>
   <div class="tagline-container no-mobile">
-    <p class="tagline">Entrepreneurships & Startups broken down</p>
+    <p class="tagline">Entrepreneurship & Startups broken down</p>
     <p class="tagline-sub">Startup knowledge for every stage. Pick a topic below to get started.</p>
   </div>
   <div class="featured-tabs">
@@ -164,8 +164,10 @@
           <div class="flipper">
             <div class="front">
               <%= link_to playlists_path(category: cat), :class => "categories-item" do %>
-                <div class="categories-icon <%= cat.downcase.gsub(" ", "") %>-icon"></div>
-                <%= image_tag "#{cat.gsub(" ", "-").downcase}-icon.png", :class => "category-icon" %>
+                <div class="categories-icon <%= cat.downcase.gsub(" ", "") %>-icon">
+                  <%= image_tag "#{cat.gsub(" ", "-").downcase}-icon.png", :class => "category-icon" %>
+                </div>
+                
               <% end %>
             </div>
             <div class="back no-mobile">

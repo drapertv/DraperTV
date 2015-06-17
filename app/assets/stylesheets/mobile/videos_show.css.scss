@@ -113,10 +113,10 @@ iframe {
 			.video-side-bar {
 				width: 304px;
 				height: 369px;
-				background: $gray;
+				background: #343434;
+				overflow: hidden;
 			}
 			.video-series-info {
-				height: 125px;
 				background: black;
 				padding: 20px 25px;
 
@@ -166,7 +166,13 @@ iframe {
 			margin-bottom: 50px;
 		}
 		.video-page .content-title {
+			
 			margin-top: 20px;
+		}
+		.video-page {
+			.featured-tabs {
+				height: auto;
+			}
 		}
 	}
 }

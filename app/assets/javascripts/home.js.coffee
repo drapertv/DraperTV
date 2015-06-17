@@ -9,7 +9,7 @@ Home =
 
 
 	showTab: ->
-		if $('.video-player').length < 1
+		if $('.video-player').length < 1 || Home.mobile
 			$('.featured-tabs > button').removeClass('tabs-selected')
 			$(@).addClass('tabs-selected')
 			$('.content-list').addClass('hide-section')

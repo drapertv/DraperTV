@@ -90,7 +90,7 @@
         </div>
       </div>
       <div class="featured-related-content content-list hide-section">
-        <% @video.suggested[0..5].each do |playlist| %>
+        <% @video.suggested(@playlist.category_list)[0..5].each do |playlist| %>
 
               <div class="content">
                 <%= link_to playlist_link(browser, playlist), :class => "content-link" do %>
