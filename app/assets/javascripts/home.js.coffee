@@ -9,10 +9,11 @@ Home =
 
 
 	showTab: ->
-		$('.featured-tabs > button').removeClass('tabs-selected')
-		$(@).addClass('tabs-selected')
-		$('.content-list').addClass('hide-section')
-		$(".#{$(@).attr('data-show')}").toggleClass('hide-section')
+		if $('.video-player').length < 1
+			$('.featured-tabs > button').removeClass('tabs-selected')
+			$(@).addClass('tabs-selected')
+			$('.content-list').addClass('hide-section')
+			$(".#{$(@).attr('data-show')}").toggleClass('hide-section')
 
 	expandContent: ->
 		$(@).next().toggle()

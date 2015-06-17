@@ -98,6 +98,7 @@
 .playlist-title-right {
 	text-align: right;
 	float: right;
+	width: 240px;
 }
 
 .playlist-title-right > a > p {
@@ -137,6 +138,10 @@
 		.content-expand {
 			max-height: 160px;
 			overflow-y: hidden;
+		}
+		.content-expand-content {
+			max-height: 160px;
+			overflow-y: hidden; 
 		}
 		.content-expand-header {
 			display: none;

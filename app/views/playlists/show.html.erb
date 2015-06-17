@@ -9,9 +9,14 @@
     </div>
     <div class="playlist-title-column playlist-title-right">
       <h3><%= @playlist.videos.count %> videos</h3>
-      <a href="#">
-        <p class="cyan">Starting Up</p>
-      </a>
+        <p class="cyan">
+          <% @playlist.category_list.each_with_index do |category, i| %>
+            <% if category != "EXTRAS" && @categories.find_index(category.downcase.capitalize) %>
+              
+              <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><% unless i == 0 %>, <% end %><%= category.upcase %></span>
+            <% end %>
+          <% end %>
+        </p>
     </div>
   </div>
   <div class="section-content-list">

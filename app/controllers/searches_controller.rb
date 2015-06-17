@@ -11,7 +11,10 @@ class SearchesController < ApplicationController
   	
     @results = Search.search_for(@terms).uniq
     @count = @results.count
-    @results = @results.paginate(page: @page, per_page: 7)
+
+    if !@browser.mobile?
+      @results = @results.paginate(page: @page, per_page: 7)
+    end
   	@last_page = @results.length < 7
     @first_page = @page < 2 
   end
@@ -25,7 +28,7 @@ class SearchesController < ApplicationController
   	
     @results = Search.search_for(@terms).uniq
     @count = @results.count
-    @results = @results.paginate(page: @page, per_page: 7)
+    @results = @results.paginate(page: @page, per_page: 9)
 	  @last_page = @results.length < 7
     @first_page = @page < 2 
   	render 'create'

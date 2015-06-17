@@ -33,6 +33,8 @@ class PlaylistsController < InheritedResources::Base
 
   def show
     @playlist = Playlist.find(params[:id])
+    @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Auxiliary"]
+    @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]
   end
 
   def index_router

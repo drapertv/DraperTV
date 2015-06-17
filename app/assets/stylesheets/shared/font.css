@@ -23,11 +23,27 @@
   font-weight: 400;
   src: local('Proxima Nova Regular'), local('ProximaNova-Regular'), url('/assets/sourcesanspro/proximanova-regular-webfont.woff') format('woff');
 }
+
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Proxima Nova Semibold'), local('ProximaNova-Semibold'), url('/assets/sourcesanspro/proximanova-semibold-webfont.woff') format('woff');
+}
+
+
 @font-face {
   font-family: 'Proxima Nova';
   font-style: normal;
   font-weight: 600;
   src: local('Proxima Nova Bold'), local('ProximaNova-Bold'), url('/assets/sourcesanspro/proximanova-bold-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Proxima Nova Extrabld'), local('ProximaNova-Extrabld'), url('/assets/sourcesanspro/proximanova-extrabld-webfont.woff') format('woff');
 }
 
 

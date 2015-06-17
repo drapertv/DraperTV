@@ -19,58 +19,128 @@
       </div>
     </div>
   </div>
-
-  <% if @livestream.live? || @browser.mobile? %>
-    <div class="livestream-side-content">
-      <div class="section-title">
-        <h1>TWITTER</h1>
-        <h4>@Draper_U</h4>
-      </div>
-      <div class="content">
-        <a class="twitter-timeline" href="https://twitter.com/Draper_U" data-widget-id="603280664935276544" data-chrome="noheader transparent nofooter"></a>
-      </div>
-      <div class="content tweet-button">
-        <a href="https://twitter.com/intent/tweet?screen_name=Draper_U">
-          <h2><i class="fa fa-twitter"></i> &nbsp;Tweet to @Draper_U</h2>
-        </a>
-      </div>
-    </div>
-  <% else %>
-    <div class="livestream-side-content">
-      <div class="section-title">
+  
+  <% if @browser.mobile? %>
+    <div class="section-title">
         <h1>POPULAR</h1>
       </div>
-      <% Playlist.popular.each do |content| %>
-        <% if content.class == Playlist %>
-          <div class="related-content">
-            <%= link_to video_path(content.first_video) do %>
-              <div class="content-image-container">
-                <%= image_tag content.first_video.vthumbnail_url(:seriesthumb), :class => "content-thumbnail" %>
-                <p class="content-video-count"><%= content.videos.count %> videos</p>
+    <div class="featured-popular-content content-list">
+    <% Playlist.popular.each do |playlist| %>
+      <% if playlist.class == Playlist %>
+        <div class="content">
+          <%= link_to playlist_link(@browser, playlist), :class => "content-link" do %>
+            <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+            <div class="content-text">
+              <div class="content-title">
+                <h3><%= playlist.title %></h3>
               </div>
-              <div class="related-content-info">
-                <p class="related-content-title"><%= content.title %></p>
-                <p class="related-content-subtitle"><%= content.name %></p>
+              <div class="content-subtitle">
+                <h4><%= playlist.name %></h4>
+              </div>
+            </div>
+          <% end %>
+          <div class="content-expand">
+            <div class="content-expand-header no-desk">
+              <div class="arrow"></div>
+              <p><%= playlist.videos.count %> videos</p>
+            </div>
+            <div class="content-expand-content hide-section">
+              <% playlist.videos.each do |video| %>
+                <%= link_to video_path(video) do %>
+                  <div class="video">
+                    <p class="video-title"><%= video.title %></p>
+                    <p class="video-subtitle"><%= video.length %></p>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="content livestream">
+            <% livestream = playlist %>
+            <%= link_to livestream_path(livestream), :class => "content-link" do %>
+              <%= image_tag livestream.image_url, :class => "livestream-thumbnail" %>
+              <div class="content-text livestream-text">
+                <div class="content-title">
+                  <h3><%= livestream.title %></h3>
+                </div>
+                <div class="content-date">
+                  <h3><%= livestream.formatted_stream_date %></h3>
+                </div>
               </div>
             <% end %>
-          </div>
-        <% else %>
-           <div class="related-content">
-             <%= link_to livestream_path(content) do %>
-              <div class="content-image-container">
-                <%= image_tag content.image_url, :class => "content-thumbnail" %>
-                <p class="content-video-count">Livestream</p>
+            <div class="content-expand">
+              <div class="content-expand-header">
+                <div class="arrow"></div>
+                <p>About</p>
               </div>
-              <div class="related-content-info">
-                <p class="related-content-title"><%= content.title %></p>
-                <p class="related-content-subtitle"><%= content.formatted_stream_date %></p>
+              <div class="content-expand-content hide-section">
+                <p>
+                  <%= livestream.description[0..275] %><%= "..." if livestream.description.length > 300 %>
+                </p>
               </div>
-            <% end %>
+            </div>
           </div>
-        <% end %>
       <% end %>
-    </div>
+    <% end %>
+  <% else %>
+     <% if @livestream.live? %>
+      <div class="livestream-side-content">
+        <div class="section-title">
+          <h1>TWITTER</h1>
+          <h4>@Draper_U</h4>
+        </div>
+        <div class="content">
+          <a class="twitter-timeline" href="https://twitter.com/Draper_U" data-widget-id="603280664935276544" data-chrome="noheader transparent nofooter"></a>
+        </div>
+        <div class="content tweet-button">
+          <a href="https://twitter.com/intent/tweet?screen_name=Draper_U">
+            <h2><i class="fa fa-twitter"></i> &nbsp;Tweet to @Draper_U</h2>
+          </a>
+        </div>
+      </div>
+    <% else %>
+      <div class="livestream-side-content">
+        <div class="section-title">
+          <h1>POPULAR</h1>
+        </div>
+        <% Playlist.popular.each do |content| %>
+          <% if content.class == Playlist %>
+            <div class="related-content">
+              <%= link_to video_path(content.first_video) do %>
+                <div class="content-image-container">
+                  <%= image_tag content.first_video.vthumbnail_url(:seriesthumb), :class => "content-thumbnail" %>
+                  <p class="content-video-count"><%= content.videos.count %> videos</p>
+                </div>
+                <div class="related-content-info">
+                  <p class="related-content-title"><%= content.title %></p>
+                  <p class="related-content-subtitle"><%= content.name %></p>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+             <div class="related-content">
+               <%= link_to livestream_path(content) do %>
+                <div class="content-image-container">
+                  <%= image_tag content.image_url, :class => "content-thumbnail" %>
+                  <p class="content-video-count">Livestream</p>
+                </div>
+                <div class="related-content-info">
+                  <p class="related-content-title"><%= content.title %></p>
+                  <p class="related-content-subtitle"><%= content.formatted_stream_date %></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
+
+
+
+ 
 </section>
 
 <script>

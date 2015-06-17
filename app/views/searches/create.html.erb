@@ -13,7 +13,7 @@
       <% if result.class == Video || result.class == Challenge %>
          <div class="content">
           <%= link_to result_path(result), :class => "content-link" do %>
-            <%= image_tag result.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+            <%= image_tag result.thumbnail(:seriesthumb), :class => "series-thumbnail" %>
             <div class="content-text livestream-text">
               <div class="content-title">
                 <h3><%= result.title %></h3>
@@ -68,7 +68,7 @@
       <% end %>
     <% end %>
   </div>
-  <div class="pagenation">
+  <div class="pagenation no-mobile">
     <%= link_to url_for(page: @page_back, terms: @terms) do %>
       <div class="pagenation-back pagenation-item"></div>
     <% end %>
