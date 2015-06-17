@@ -14,7 +14,7 @@
               <p><%= @playlist.publish_date %></p>
               <p class="series-category">
                 <% @playlist.category_list.each do |category| %>
-                  <% if category != "EXTRAS" %>
+                  <% if category != "EXTRAS" && @categories.find_index(category.downcase.capitalize) %>
                     <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><%= category.upcase %></span>,
                   <% end %>
                 <% end %>
