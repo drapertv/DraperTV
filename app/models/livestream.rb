@@ -10,6 +10,8 @@ class Livestream < ActiveRecord::Base
   after_update :expire_cache
   before_destroy :expire_cache
 
+  mount_uploader :vthumbnail, VthumbnailUploader
+
   scope :upcoming, -> { where("stream_date > ?", Time.now) }
   scope :past, -> { where("stream_date < ?", Time.now - 90.minutes) }
   scope :current, -> {where("stream_date > ? and stream_date < ?", Time.now - 90.minutes, Time.now )}

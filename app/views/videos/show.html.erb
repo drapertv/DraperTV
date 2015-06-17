@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="video-series-list">
-            <% @playlist.videos.each do |video| %>
+            <% @playlist.videos.sort_by(&:id).each do |video| %>
               <%= link_to video_path(video) do %>
                 <div class="video <%= 'video-current' if video == @video %>">
                   <p class="video-title"><%= video.title %></p>
@@ -91,7 +91,7 @@
         <% @video.suggested[0..5].map(&:playlist).each do |playlist| %>
             
               <div class="content">
-                <%= link_to playlist_path(playlist), :class => "content-link" do %>
+                <%= link_to playlist_link(browser, playlist), :class => "content-link" do %>
                 <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
                 <div class="content-text">
                   <div class="content-title">

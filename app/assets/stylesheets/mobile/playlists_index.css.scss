@@ -167,6 +167,12 @@
 		.playlist-page .categories-item {
 			margin-bottom: 20px;
 		}
+		.content.last-odd:last-child {
+			  margin-right: 350px;
+			  padding-left: 48px;
+			  box-sizing: content-box;
+			  border-left: 1px solid #e5e5e5;
+		}
 	}
 
 

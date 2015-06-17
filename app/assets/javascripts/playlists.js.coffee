@@ -6,7 +6,13 @@ Playlist =
 		$('body').on 'click', '.scroll-grey, .scroll-green', @scrollPage
 		$('body').on 'mousemove', '.scroll-grey, .scroll-green', @moveScrollPercent
 		$('body').on 'mouseleave', '.scroll-grey, .scroll-green', @continueChange
+		@alignContent()
 		Playlist.stopChanging = false
+
+	alignContent: ->
+		$('.content:last-child').each ->
+			if $(@).parent().find('.content').length % 3 == 2
+				$(@).addClass('last-odd')
 
 	continueChange: ->
 		Playlist.stopChanging = false
