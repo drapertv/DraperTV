@@ -17,7 +17,7 @@
         <% (@current_livestreams + @upcoming_livestreams).each do |livestream| %>
           <div class="content livestream">
             <%= link_to livestream_path(livestream), :class => "content-link" do %>
-              <%= image_tag livestream.image_url, :class => "livestream-thumbnail" %>
+              <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
               <div class="content-text livestream-text">
                 <div class="content-title">
                   <h3><%= livestream.title %></h3>
@@ -54,7 +54,7 @@
         <% @past_livestreams.each do |livestream| %>
           <div class="content livestream">
             <%= link_to livestream_path(livestream), :class => "content-link" do %>
-              <%= image_tag livestream.image_url, :class => "livestream-thumbnail" %>
+              <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
               <div class="content-text livestream-text">
                 <div class="content-title">
                   <h3><%= livestream.title %></h3>

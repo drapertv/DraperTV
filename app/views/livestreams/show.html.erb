@@ -60,7 +60,7 @@
         <div class="content livestream">
             <% livestream = playlist %>
             <%= link_to livestream_path(livestream), :class => "content-link" do %>
-              <%= image_tag livestream.image_url, :class => "livestream-thumbnail" %>
+              <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
               <div class="content-text livestream-text">
                 <div class="content-title">
                   <h3><%= livestream.title %></h3>
@@ -123,7 +123,7 @@
              <div class="related-content">
                <%= link_to livestream_path(content) do %>
                 <div class="content-image-container">
-                  <%= image_tag content.image_url, :class => "content-thumbnail" %>
+                  <%= image_tag content.vthumbnail_url, :class => "content-thumbnail" %>
                   <p class="content-video-count">Livestream</p>
                 </div>
                 <div class="related-content-info">
