@@ -16,7 +16,7 @@
                 <% @playlist.category_list.each_with_index do |category, i| %>
                   <% if category != "EXTRAS" && @categories.find_index(category.downcase.capitalize) %>
                     
-                    <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><% unless i == 1 %>, <% end %><%= category.upcase %></span>
+                    <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><% unless i == 0 %>, <% end %><%= category.upcase %></span>
                   <% end %>
                 <% end %>
               </p>
