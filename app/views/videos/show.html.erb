@@ -13,10 +13,11 @@
             <div class="series-info-row">
               <p><%= @playlist.publish_date %></p>
               <p class="series-category">
+                <% n = 0 %>
                 <% @playlist.category_list.each_with_index do |category, i| %>
                   <% if category != "EXTRAS" && @categories.find_index(category.downcase.capitalize) %>
-                    
-                    <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><% unless i == 0 %>, <% end %><%= category.upcase %></span>
+                    <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><% unless n == 0 %>, <% end %><%= category.upcase %></span>
+                    <% n += 1 %>
                   <% end %>
                 <% end %>
               </p>
