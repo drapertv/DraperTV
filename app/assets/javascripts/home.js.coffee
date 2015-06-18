@@ -6,6 +6,9 @@ Home =
 		setInterval ->
 			Home.initCarousel() if $(window).width() < 1024
 		, 500
+		setInterval ->
+			Home.initSlideShow() if $(window).width() > 1023
+		, 500
 		@initCarousel() if @mobile
 		@initSlideShow() if !@mobile
 		@translated = 0
@@ -23,7 +26,7 @@ Home =
 		$(@).children('.arrow').toggleClass('rotate180')
 
 	initCarousel: ->
-		$('.featured-carousel').slick
+		$('.featured-carousel.no-desk').slick
 			arrow: false
 			autoplay: true
 			autoplaySpeed: 3000
