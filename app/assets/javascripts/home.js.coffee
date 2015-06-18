@@ -4,7 +4,7 @@ Home =
 		$('body').on 'click', '.featured-tabs button', @showTab
 		@mobile = $(window).width() < 1024
 		setInterval ->
-			@initCarousel() if $(window).width() < 1024
+			Home.initCarousel() if $(window).width() < 1024
 		, 500
 		@initCarousel() if @mobile
 		@initSlideShow() if !@mobile
