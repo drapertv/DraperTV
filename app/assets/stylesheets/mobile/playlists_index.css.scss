@@ -91,6 +91,12 @@
 	text-transform: uppercase;
 }
 
+.playlist-info-container {
+	width: 100%;
+  	@include flexbox;
+  	justify-content: space-between;
+}
+
 .playlist-title-column > *, .playlist-title-column > a > * {
 	margin-top: 7px;
 }

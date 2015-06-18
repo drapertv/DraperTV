@@ -2,7 +2,7 @@
 @import '../shared/mixins';
 
 .featured-carousel {
-  height: 180px;
+  height: 56vw;;
   width: 100vw;
 }
 
@@ -13,7 +13,7 @@
 .featured-item {
   background: lightgrey;
   width: 100vw;
-  height: 180px;
+  height: 56vw;
   box-sizing: border-box;
   position: relative;
   background-size: cover;

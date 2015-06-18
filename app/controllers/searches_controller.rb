@@ -3,6 +3,8 @@ class SearchesController < ApplicationController
   def create
     @terms = params[:search][:terms]
     Search.create terms: @terms
+
+    @og_title = "Search for \"#{@terms}\" - DraperTV"
     
     @page = params[:page] || 1
     @page = @page.to_i
@@ -21,6 +23,7 @@ class SearchesController < ApplicationController
 
   def index
   	@terms = params[:terms]
+    @og_title = "Search for \"#{@terms}\" - DraperTV"
   	@page = params[:page] || 1
     @page = @page.to_i
   	@page_next = @page + 1

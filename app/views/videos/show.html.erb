@@ -16,7 +16,9 @@
                 <% n = 0 %>
                 <% @playlist.category_list.each_with_index do |category, i| %>
                   <% if category != "EXTRAS" && @categories.find_index(category.downcase.capitalize) %>
-                    <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><% unless n == 0 %>, <% end %><%= category.upcase %></span>
+                    <%= link_to playlists_path(category: category.downcase.capitalize) do %>
+                      <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><% unless i == 0 %>, <% end %><%= category.upcase %></span>
+                    <% end %>
                     <% n += 1 %>
                   <% end %>
                 <% end %>
@@ -94,32 +96,32 @@
 
               <div class="content">
                 <%= link_to playlist_link(browser, playlist), :class => "content-link" do %>
-                <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
-                <div class="content-text">
-                  <div class="content-title">
-                    <h3><%= playlist.title %></h3>
+                  <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+                  <div class="content-text">
+                    <div class="content-title">
+                      <h3><%= playlist.title %></h3>
+                    </div>
+                    <div class="content-subtitle">
+                      <h4><%= playlist.name %></h4>
+                    </div>
                   </div>
-                  <div class="content-subtitle">
-                    <h4><%= playlist.name %></h4>
-                  </div>
-                </div>
-                <div class="content-expand">
-                  <div class="content-expand-header">
-                    <div class="arrow"></div>
-                    <p><%= playlist.videos.count %> videos</p>
-                  </div>
-                </div>
-                <div class="content-expand-content hide-section">
-                  <% playlist.videos.each do |video| %>
-                    <%= link_to video_path(video) do %>
-                      <div class="video">
-                        <p class="video-title"><%= video.title %></p>
-                        <p class="video-subtitle"><%= video.length %></p>
-                      </div>
-                    <% end %>
-                  <% end %>
-                </div>
                 <% end %>
+                  <div class="content-expand">
+                    <div class="content-expand-header">
+                      <div class="arrow"></div>
+                      <p><%= playlist.videos.count %> videos</p>
+                    </div>
+                  </div>
+                  <div class="content-expand-content hide-section">
+                    <% playlist.videos.each do |video| %>
+                      <%= link_to video_path(video) do %>
+                        <div class="video">
+                          <p class="video-title"><%= video.title %></p>
+                          <p class="video-subtitle"><%= video.length %></p>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
               </div>
         <% end %>
     </section>

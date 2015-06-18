@@ -85,7 +85,7 @@
       <% end %>
     <% end %>
   <% else %>
-     <% if @livestream.live? %>
+     <% if @livestream.live? || @livestream.upcoming? %>
       <div class="livestream-side-content">
         <div class="section-title">
           <h1>TWITTER</h1>

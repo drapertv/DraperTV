@@ -1,7 +1,7 @@
 Playlist =
 	init: ->
 		$('body').on 'click', '.section-title-menu', @toggleCategories
-		setInterval @changeScrollPercent, 10
+		setInterval @changeScrollPercent, 25
 		@pageHeight = $('body').height()
 		$('body').on 'click', '.scroll-grey, .scroll-green', @scrollPage
 		$('body').on 'mousemove', '.scroll-grey, .scroll-green', @moveScrollPercent
@@ -27,20 +27,20 @@ Playlist =
 		percent = (e.clientY - 110)
 		Playlist.stopChanging = true
 		$('.scroll-percent').text percent + "%"
-		$('.scroll-percent').css "bottom", "#{100 - percent}px"
+		$('.scroll-percent').css "bottom", "#{100 - percent - 5}px"
 
 	changeScrollPercent: ->
 		if !Playlist.stopChanging 
 
-			currentHeight = $('body').scrollTop() + $(window).height()
-			if currentHeight < 190
-				barHeight = 0
-			else
-				barHeight = Math.ceil(((currentHeight) / Playlist.pageHeight) * 100)
+			currentHeight = $('body').scrollTop()
+			currentHeight += (currentHeight / (Playlist.pageHeight - $(window).height())) * $(window).height()
+
+
+			barHeight = Math.ceil(((currentHeight) / Playlist.pageHeight) * 100)
 			$('.scroll-green').css('height', "#{barHeight}px")
 			barHeight = 100 if barHeight > 100 || barHeight == 99
 			$('.scroll-percent').text barHeight + "%"
-			$('.scroll-percent').css "bottom", "#{100 - barHeight}px"
+			$('.scroll-percent').css "bottom", "#{100 - barHeight - 5}px"
 
 	toggleCategories: ->
 		$('.categories').toggle()

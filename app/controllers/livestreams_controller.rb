@@ -2,7 +2,7 @@ class LivestreamsController < InheritedResources::Base
 
   def show
     @livestream = Livestream.friendly.find(params[:id])
-    @og_title = "DraperTV - #{@livestream.title}"
+    @og_title = "#{@livestream.title} - DraperTV"
     @og_description = @livestream.description
     @og_image = @livestream.image_url
     @commentable = @livestream
@@ -11,7 +11,7 @@ class LivestreamsController < InheritedResources::Base
   end
 
   def index
-    @og_title = "DraperTV - Livestreams"
+    @og_title = "Livestreams - DraperTV "
     @og_description = "Livestreaming the best of Silicon Valley"
     @upcoming_livestreams = Livestream.upcoming.order('stream_date asc')
     @past_livestreams = Livestream.past.order('stream_date desc')

@@ -2,7 +2,7 @@ class PlaylistsController < InheritedResources::Base
   # load_and_authorize_resource
 
   def index
-    @og_title = "DraperTV - Series"
+    @og_title = "Series - DraperTV"
     @playlists = Playlist.all.order("created_at desc")
     @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Auxiliary"]
     @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]
@@ -38,7 +38,7 @@ class PlaylistsController < InheritedResources::Base
   end
 
   def index_router
-    @og_title = "DraperTV - Series"
+    @og_title = "Series - DraperTV"
     if !current_user
       redirect_to root_path and return
     end

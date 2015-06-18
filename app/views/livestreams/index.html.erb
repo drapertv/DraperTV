@@ -40,7 +40,7 @@
               </div>
               <div class="content-expand-content hide-section">
                 <p>
-                  <%= livestream.description[0..275] %>
+                  <%= livestream.description[0..275] %><%= "..." if livestream.description.length > 300 %>
                 </p>
               </div>
             </div>

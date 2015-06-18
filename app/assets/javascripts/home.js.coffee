@@ -3,6 +3,9 @@ Home =
 		$('body').on 'click', '.content-expand-header', @expandContent
 		$('body').on 'click', '.featured-tabs button', @showTab
 		@mobile = $(window).width() < 1024
+		setInterval ->
+			@initCarousel() if $(window).width() < 1024
+		, 500
 		@initCarousel() if @mobile
 		@initSlideShow() if !@mobile
 		@translated = 0
@@ -16,7 +19,7 @@ Home =
 			$(".#{$(@).attr('data-show')}").toggleClass('hide-section')
 
 	expandContent: ->
-		$(@).next().toggle()
+		$(@).parents('.content').find('.content-expand-content').toggle()
 		$(@).children('.arrow').toggleClass('rotate180')
 
 	initCarousel: ->

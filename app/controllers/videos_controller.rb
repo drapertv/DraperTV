@@ -5,7 +5,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.friendly.find(params[:id])
-    @og_title = "DraperTV - #{@video.title}"
+    @og_title = "#{@video.title} - DraperTV"
     @og_description = @video.description
     @og_image = @video.vthumbnail_url
     @playlist = @video.playlist

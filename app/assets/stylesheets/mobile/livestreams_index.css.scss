@@ -63,6 +63,16 @@
   margin-top: 7px;
 }
 
+.livestream-page {
+  iframe {
+    height: 56vw;
+  }
+}
+
+.livestream-player {
+  height: 56vw;
+}
+
 @media (min-width: 1024px) {
   body {
     .livestream-text {
@@ -74,6 +84,9 @@
       .content-date h4 {
         margin-bottom: 20px;
       }
+    }
+    .livestream-player {
+      height: auto;
     }
     .livestream-thumbnail {
       height: 144px;
@@ -144,7 +157,9 @@
           line-height: 20px;
           width: 100%;
         }
-
+      }
+      .content-expand, .content-expand-content {
+        max-height: initial;
       }
       .content-thumbnail {
         width: 112px;
