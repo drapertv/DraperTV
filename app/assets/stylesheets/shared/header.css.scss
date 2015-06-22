@@ -25,11 +25,6 @@
 	left: calc(50% - 93.5px);
 }
 
-.dropdown-toggle.header-item {
-	padding-right: 0px;
-	margin-right: 0px;
-}
-
 .header-item {
 	height: 100%;
 	line-height: 50px;
@@ -45,20 +40,12 @@
 	opacity: 1;
 }
 
+.header-item.active a {
+	color: white;
+}
+
 .header-item:first-child {
 	margin-left: 0px;
-}
-
-.header-item.or {
-	margin-right: 0px;
-	margin-left: 5px;
-	font-weight: 500;
-}
-
-#header-dropdown {
-	@include flexbox;
-	align-items: center;
-	padding-top: 10px;
 }
 
 .header-item a {
@@ -66,49 +53,17 @@
 	margin: 0 auto;
 }
 
-.header-item.active a {
-	color: white;
-}
-
-.header-item:not(.or):hover {
+.header-item:hover {
 	color: white;
 	a {
 		color: white;
 	}
 }
 
-.header-avatar {
-	margin-left: 10px;
-}
-
-.header-avatar img {
-  height: 30px;
-  width: 30px;
-  border-radius: 30px;
-}
-
 .logo.header-item {
 	height: 30px;
 	margin: 0px auto;
 	opacity: 1;
-	// margin-right: 30px;
-}
-.sign-up-btn.header-item {
-	padding: 5px 10px;
-	margin-right: 0px;
-}
-.header-item.green-btn {
-	color: white;
-}
-.header-mid-right {
-	right: 217px;
-	.header-item {
-		font-weight: 500;
-	}
-}
-
-.header-mid-left {
-	left: 278px;
 }
 
 .search-input {
@@ -130,195 +85,10 @@
 	color: $blue;
 }
 
-.header-right {
-	right: 20px;
-}
-.header-left {
-	left: 20px;
-}
-
-.custom-caret {
-	margin-left: 5px;
-}
-
-/*****  Login  ******/
-
-#login {
-	position: relative;
-	margin-left: 5px;
-	margin-right: 0px;
-}
-
-.login-modal-trigger {
-	display: inline;
-}
-
-#login-modal {
-	position: absolute;
-	width: 240px;
-	background: white;
-	border-radius: 5px;
-	padding: 20px;
-	right: 0;
-	display: none;
-	cursor: default;
-	box-shadow: 0 0 8px black;
-}
-
-#login-modal:after {
-  height: 0;
-  width: 0;
-  position: absolute;
-  top: -19px;
-  right: 10px;
-  left: auto;
-  content: "";
-  border: 10px solid transparent;
-  border-bottom: 10px solid #fff;
-  display: block;
-}
-
-.login-field {
-	height: 30px;
-	border-radius: 5px;
-	border: 1px solid $gray;
-	width: 100%;
-	line-height: 32px;
-	padding: 0px 10px;
-	margin-bottom: 10px;
-}
-
-.login-btn {
-  border: none;
-  color: white;
-  background: $blue;
-  border-radius: 5px;
-  height: 25px;
-  margin-bottom: 20px;
-  padding: 6px 10px 5px;
-}
-
-#forgot-password p {
-	color: $blue;
-}
-//
-
-
-.mobile-menu-icon {
-	  height: 30px;
-	  width: 30px;
-	  position: absolute;
-	  right: 10px;
-	  top: 10px;
-	  * {
-	  	fill: white;
-	  }
-}
-
-#landing-header .mobile-menu {
-	  position: fixed;
-	  width: 30vh;
-	  height: 100vh;
-	  background: white;
-	  right: 0;
-	  top: 50px;
-	  display: none;
-	  box-shadow: 2px 0px 5px black;
-	  .mobile-menu-item {
-	  	height: 30px;
-	  	padding: 20px 10px;
-	  	text-align: left;
-	  	a {
-	  		font-size: 25px;
-	  		color: $blue;
-	  	}
-	  }
-}
-
 @media (min-width: 1024px) {
 	.logo.header-item {
 	  	margin: 10px 0px;
 	  }
 }
-@media (max-width: 768px) {
-	#landing-header {
-		@include flexbox;
-		justify-content: space-between;
-		align-items: center;
-		div {
-			position: static;
-			height: auto;
-		}
-		.header-dropdown {
-			position: fixed;
-			height: 0px;
-			top: 50px;
-			width: 100%;
-			left: 0px;
-			text-align: center;
-			@include flexbox;
-			flex-direction: column;
-			align-items: center;
-			justify-content: space-around;
-			background: $blue;
-			color: white;
-		}
-		.header-dropdown.logged-in {
-			flex-direction: row;
-		}
-		.visitor-dropdown-item {
-			width: 100px;
-			margin: 10px 0;
-			font-size: 25px;
-			height: 30px;
-			line-height: 30px;
-			color: white;
-			display: none;
-		}
-		#login-form {
-			display: none;
 
-		}
-		.login-field {
-			width: 200px;
-		}
-		.login-btn {
-			margin: 10px auto;
-			display: block;
-		}
-		#forgot-password p {
-			color: white;
-		}
-		.dropdown-side {
-			@include flexbox;
-			flex-direction: column;
-			justify-content: space-around;
-			height: 100px;
-			width: 50%;
-			a {
-				color: white;
-			}
-		}
-		.dropdown-side:first-child {
-			border-right: 1px solid $light-blue;
-		}
-		.search-input {
-			margin-left: 10px;
-			width: 0px;
-		}
-	}
-	.mobile-header-left {
-		width: 30px;
-		margin-left: 10px;
-	}
-	.mobile-header-right {
-		width: 30px;
-		margin-right: 10px;
-	}
-	.header-icon {
-		width: 30px;
-		height: 30px;
-	}
-	
-}
 

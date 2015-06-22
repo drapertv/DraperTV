@@ -1,48 +1,51 @@
 Playlist =
 	init: ->
-		$('body').on 'click', '.section-title-menu', @toggleCategories
-		setInterval @changeScrollPercent, 25
+		$('body').on 'click', '.section-title-menu', @toggleCategoriesOnClick
+		setInterval @changeScrollPercentOnScroll, 25
 		@pageHeight = $('body').height()
-		$('body').on 'click', '.scroll-grey, .scroll-green', @scrollPage
-		$('body').on 'mousemove', '.scroll-grey, .scroll-green', @moveScrollPercent
-		$('body').on 'mouseleave', '.scroll-grey, .scroll-green', @continueChange
-		@alignContent()
-		Playlist.stopChanging = false
+		$('body').on 'click', '.scroll-grey, .scroll-green', @scrollPageOnClick
+		$('body').on 'mousemove', '.scroll-grey, .scroll-green', @moveScrollPercentOnMouseMove
+		$('body').on 'mouseleave', '.scroll-grey, .scroll-green', @continueChangeOnMouseLeave
+		@alignContentOnPageLoad()
+		Playlist.scrollBarIsPaused = false
 
-	alignContent: ->
+	alignContentOnPageLoad: ->
+		# fixes the spacing for justify-content: space-between
 		$('.content:last-child').each ->
 			if $(@).parent().find('.content').length % 3 == 2
 				$(@).addClass('last-odd')
 
-	continueChange: ->
-		Playlist.stopChanging = false
+	continueChangeOnMouseLeave: ->
+		Playlist.scrollBarIsPaused = false
 
-	scrollPage: (e) ->
-		percent = ((e.clientY - 110) / 100)
-		scrollTop = ($('body').height() - $(window).height()) * percent
-		$('body').scrollTop scrollTop 
-		Playlist.stopChanging = false
+	scrollPageOnClick: (e) ->
+		percentOfPageToScroll = ((e.clientY - 110) / 100)
+		pixelsToScroll = ($('body').height() - $(window).height()) * percentOfPageToScroll
+		$('body').scrollTop pixelsToScroll
+		Playlist.scrollBarIsPaused = false
 
-	moveScrollPercent: (e) ->
+	moveScrollPercentOnMouseMove: (e) ->
 		percent = (e.clientY - 110)
-		Playlist.stopChanging = true
+		Playlist.scrollBarIsPaused = true
 		$('.scroll-percent').text percent + "%"
 		$('.scroll-percent').css "bottom", "#{100 - percent - 5}px"
 
-	changeScrollPercent: ->
-		if !Playlist.stopChanging 
-
+	changeScrollPercentOnScroll: ->
+		#don't change if cursor is on the green scroll bar
+		if !Playlist.scrollBarIsPaused 
+			#amount currently scrolled
 			currentHeight = $('body').scrollTop()
+			#amount currently scrolled + (the percentage of the page that has been scrolled * window height)
 			currentHeight += (currentHeight / (Playlist.pageHeight - $(window).height())) * $(window).height()
-
-
 			barHeight = Math.ceil(((currentHeight) / Playlist.pageHeight) * 100)
+			#change bar UI
 			$('.scroll-green').css('height', "#{barHeight}px")
+			#account for rounding errors
 			barHeight = 100 if barHeight > 100 || barHeight == 99
 			$('.scroll-percent').text barHeight + "%"
 			$('.scroll-percent').css "bottom", "#{100 - barHeight - 5}px"
 
-	toggleCategories: ->
+	toggleCategoriesOnClick: ->
 		$('.categories').toggle()
 
 ready = ->

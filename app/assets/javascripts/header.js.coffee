@@ -1,18 +1,17 @@
 Header =
 	init: ->
-		$('body').on 'click, touchend', '.menu-icon', @showMobileDropdown
-		$('body').on 'click', '.menu', @toggleMenu
-		$('body').on 'click', '.main', @hideMenu
-		$('body').on 'click', '.search', @toggleSearch
+		$('body').on 'click', '.menu', @toggleMenuOnClick
+		$('body').on 'click', '.main', @hideMenuOnClick
+		$('body').on 'click', '.search', @toggleSearchOnClick
 
-	toggleSearch: ->
+	toggleSearchOnClick: ->
   		$('.menu, .logo, .search-box, header > a').toggle()
 
- 	hideMenu: ->
+ 	hideMenuOnClick: ->
   		$('.menu-menu').hide()
   		$('header *').attr('style', '')
 
- 	toggleMenu: ->
+ 	toggleMenuOnClick: ->
   		$('.menu-menu').toggle()
 
 ready = ->
