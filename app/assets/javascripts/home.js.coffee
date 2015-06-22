@@ -3,12 +3,22 @@ Home =
 		$('body').on 'click', '.content-expand-header', @expandContent
 		$('body').on 'click', '.featured-tabs button', @showTab
 		@mobile = $(window).width() < 1024
+		if @mobile
+			Home.onMobile = true
+		else
+			Home.onDesk = true
+
 		setInterval ->
-			Home.initCarousel() if $(window).width() < 1024
+			if $(window).width() < 1024 && Home.onDesk
+				Home.initCarousel() 
+				Home.onMobile = true
 		, 500
 		setInterval ->
-			Home.initSlideShow() if $(window).width() > 1023
+			if $(window).width() > 1023 && Home.onMobile && !Home.slideShowStarted
+				Home.initSlideShow() 
+				Home.onDesk = true
 		, 500
+		console.log @mobile
 		@initCarousel() if @mobile
 		@initSlideShow() if !@mobile
 		@translated = 0
@@ -25,6 +35,7 @@ Home =
 		$(@).children('.arrow').toggleClass('rotate180')
 
 	initCarousel: ->
+		console.log "here"
 		$('.featured-carousel.no-desk').slick
 			arrow: false
 			autoplay: true
@@ -33,8 +44,8 @@ Home =
 			pauseOnHover: false
 
 	initSlideShow: ->
+		Home.slideShowStarted = true
 		$($('.featured-carousel-main .featured-item')[2]).show()
-
 		setInterval ->
 			toFadeOut = $('.featured-carousel-main .featured-item:visible').first()
 			toFadeOut.fadeOut(1000)
@@ -43,7 +54,7 @@ Home =
 			if toFadeIn.length == 0
 				toFadeIn = $('.featured-carousel-main .featured-item').first()
 			toFadeIn.fadeIn(1000)
-		, 5000
+		, 2000
 
 		$('.featured-carousel-side .featured-item:lt(2)').show()
 		setInterval ->
@@ -66,7 +77,8 @@ Home =
 			, 1000, ->
 				$(@).css('position', 'relative')
 
-		, 5000
+		, 2000
+
 			
 ready = ->
 	Home.init()
