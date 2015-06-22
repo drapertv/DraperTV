@@ -35,7 +35,7 @@ Home =
 		$(@).children('.arrow').toggleClass('rotate180')
 
 	initCarousel: ->
-		console.log "here"
+
 		$('.featured-carousel.no-desk').slick
 			arrow: false
 			autoplay: true
@@ -54,7 +54,7 @@ Home =
 			if toFadeIn.length == 0
 				toFadeIn = $('.featured-carousel-main .featured-item').first()
 			toFadeIn.fadeIn(1000)
-		, 2000
+		, 5000
 
 		$('.featured-carousel-side .featured-item:lt(2)').show()
 		setInterval ->
@@ -77,7 +77,7 @@ Home =
 			, 1000, ->
 				$(@).css('position', 'relative')
 
-		, 2000
+		, 5000
 
 			
 ready = ->
