@@ -17,7 +17,7 @@
                 <% @playlist.category_list.each_with_index do |category, i| %>
                   <% if @categories.find_index(category.downcase.split(" ").map(&:capitalize).join(" ")) %>
                     <%= link_to playlists_path(category: category.downcase.split(" ").map(&:capitalize).join(" ")) do %>
-                      <span class="<%= @colors[@categories.find_index(category.downcase.split(" ").map(&:capitalize).join(" "))] %>"><% unless i == 0 %>, <% end %><%= category.upcase %></span>
+                      <span class="<%= @colors[@categories.find_index(category.downcase.split(" ").map(&:capitalize).join(" "))] %>"><% unless n == 0 %>, <% end %><%= category.upcase %></span>
                     <% end %>
                     <% n += 1 %>
                   <% end %>
