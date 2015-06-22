@@ -45,9 +45,6 @@ Playlist =
 	toggleCategories: ->
 		$('.categories').toggle()
 
-
-
-
 ready = ->
 	Playlist.init()
 $(document).ready ready

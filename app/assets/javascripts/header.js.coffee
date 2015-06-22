@@ -1,6 +1,5 @@
 Header =
 	init: ->
-		$('body').on 'click, touchend', @restoreHeader
 		$('body').on 'click, touchend', '.menu-icon', @showMobileDropdown
 		$('body').on 'click', '.menu', @toggleMenu
 		$('body').on 'click', '.main', @hideMenu
@@ -15,12 +14,6 @@ Header =
 
  	toggleMenu: ->
   		$('.menu-menu').toggle()
-
-  	restoreHeader: ->
-
-
-
-
 
 ready = ->
 	Header.init()

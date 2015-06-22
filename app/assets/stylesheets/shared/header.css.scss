@@ -1,7 +1,5 @@
-@import 'variables';
-@import 'mixins';
-
-/******* LANDING HEADER ********/
+@import '../shared/variables';
+@import '../shared/mixins';
 
 #landing-header {
 	position: fixed;
@@ -242,3 +240,85 @@
 	  	margin: 10px 0px;
 	  }
 }
+@media (max-width: 768px) {
+	#landing-header {
+		@include flexbox;
+		justify-content: space-between;
+		align-items: center;
+		div {
+			position: static;
+			height: auto;
+		}
+		.header-dropdown {
+			position: fixed;
+			height: 0px;
+			top: 50px;
+			width: 100%;
+			left: 0px;
+			text-align: center;
+			@include flexbox;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+			background: $blue;
+			color: white;
+		}
+		.header-dropdown.logged-in {
+			flex-direction: row;
+		}
+		.visitor-dropdown-item {
+			width: 100px;
+			margin: 10px 0;
+			font-size: 25px;
+			height: 30px;
+			line-height: 30px;
+			color: white;
+			display: none;
+		}
+		#login-form {
+			display: none;
+
+		}
+		.login-field {
+			width: 200px;
+		}
+		.login-btn {
+			margin: 10px auto;
+			display: block;
+		}
+		#forgot-password p {
+			color: white;
+		}
+		.dropdown-side {
+			@include flexbox;
+			flex-direction: column;
+			justify-content: space-around;
+			height: 100px;
+			width: 50%;
+			a {
+				color: white;
+			}
+		}
+		.dropdown-side:first-child {
+			border-right: 1px solid $light-blue;
+		}
+		.search-input {
+			margin-left: 10px;
+			width: 0px;
+		}
+	}
+	.mobile-header-left {
+		width: 30px;
+		margin-left: 10px;
+	}
+	.mobile-header-right {
+		width: 30px;
+		margin-right: 10px;
+	}
+	.header-icon {
+		width: 30px;
+		height: 30px;
+	}
+	
+}
+

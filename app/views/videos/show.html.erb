@@ -15,9 +15,9 @@
               <p class="series-category">
                 <% n = 0 %>
                 <% @playlist.category_list.each_with_index do |category, i| %>
-                  <% if category != "EXTRAS" && @categories.find_index(category.downcase.capitalize) %>
-                    <%= link_to playlists_path(category: category.downcase.capitalize) do %>
-                      <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><% unless i == 0 %>, <% end %><%= category.upcase %></span>
+                  <% if @categories.find_index(category.downcase.split(" ").map(&:capitalize).join(" ")) %>
+                    <%= link_to playlists_path(category: category.downcase.split(" ").map(&:capitalize).join(" ")) do %>
+                      <span class="<%= @colors[@categories.find_index(category.downcase.split(" ").map(&:capitalize).join(" "))] %>"><% unless i == 0 %>, <% end %><%= category.upcase %></span>
                     <% end %>
                     <% n += 1 %>
                   <% end %>

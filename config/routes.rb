@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :speakers
-
-  resources :video_features
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   mount StripeEvent::Engine => '/stripe'
@@ -26,48 +22,28 @@ Rails.application.routes.draw do
   patch '/users/:id/accept_invite', to: "users#accept_invite", as: "accept_invite"
   resources :users
   
-  resources :videos do 
-    resources :comments
-    member do
-      get "favit", to: "videos#favIt"
-    end
-  end
-
+  resources :videos
 
   resources :livestreams do
     resources :comments
   end  
   resources :searches
-  resources :quotes
-  resources :favorites, only: [:index]
-  get '/favorites/create', to: 'favorites#create', as: 'create_favorite'
-  resources :waitlists, only: [:create]
+
   resources :playlists do 
-    resources :challenges do 
-      resources :comments
-    end
+    resources :challenges 
   end
 
   as :user do
     get "/users/sign_out" => "devise/sessions#destroy"
   end
 
-
-  get '/videos/:id/increment_demand', to: 'videos#increment_demand', as: 'video_increment_demand'
-  get 'tags/:tag', to: 'videos#index', as: :tag
-  get 'profile_edit/:id', to: 'users#profile_edit', as: :profile_edit, via: :all
-  get 'profile/:id', to: 'users#profile', as: :profile
-
-#Management
   get 'invitecorner', to: 'management#invitecorner', via: :invitecorner, as: 'invitecorner'
-# get 'batch_invite', to: 'management#batch_invite', via: :batch_invite
 
   resources :management do
     collection do
       post 'batch_invite'
     end
   end
-
 
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"

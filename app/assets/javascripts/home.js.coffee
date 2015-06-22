@@ -13,7 +13,6 @@ Home =
 		@initSlideShow() if !@mobile
 		@translated = 0
 
-
 	showTab: ->
 		if $('.video-player').length < 1 || Home.mobile
 			$('.featured-tabs > button').removeClass('tabs-selected')
@@ -32,7 +31,6 @@ Home =
 			autoplaySpeed: 3000
 			speed: 1000
 			pauseOnHover: false
-
 
 	initSlideShow: ->
 		$($('.featured-carousel-main .featured-item')[2]).show()
@@ -69,9 +67,7 @@ Home =
 				$(@).css('position', 'relative')
 
 		, 5000
-	
-
-		
+			
 ready = ->
 	Home.init()
 $(document).ready ready
