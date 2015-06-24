@@ -20,73 +20,74 @@
     </div>
   </div>
   
-  <% if @browser.mobile? %>
-    <div class="section-title">
+
+    <div class="section-title no-desk">
         <h1>POPULAR</h1>
-      </div>
-    <div class="featured-popular-content content-list">
-    <% Playlist.popular.each do |playlist| %>
-      <% if playlist.class == Playlist %>
-        <div class="content">
-          <%= link_to playlist_link(@browser, playlist), :class => "content-link" do %>
-            <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
-            <div class="content-text">
-              <div class="content-title">
-                <h3><%= playlist.title %></h3>
-              </div>
-              <div class="content-subtitle">
-                <h4><%= playlist.name %></h4>
-              </div>
-            </div>
-          <% end %>
-          <div class="content-expand">
-            <div class="content-expand-header no-desk">
-              <div class="arrow"></div>
-              <p><%= playlist.videos.count %> videos</p>
-            </div>
-            <div class="content-expand-content hide-section">
-              <% playlist.videos.each do |video| %>
-                <%= link_to video_path(video) do %>
-                  <div class="video">
-                    <p class="video-title"><%= video.title %></p>
-                    <p class="video-subtitle"><%= video.length %></p>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% else %>
-        <div class="content livestream">
-            <% livestream = playlist %>
-            <%= link_to livestream_path(livestream), :class => "content-link" do %>
-              <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
-              <div class="content-text livestream-text">
+    </div>
+    <div class="featured-popular-content content-list no-desk">
+      <% Playlist.popular.each do |playlist| %>
+        <% if playlist.class == Playlist %>
+          <div class="content">
+            <%= link_to playlist_link(@browser, playlist), :class => "content-link" do %>
+              <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+              <div class="content-text">
                 <div class="content-title">
-                  <h3><%= livestream.title %></h3>
+                  <h3><%= playlist.title %></h3>
                 </div>
-                <div class="content-date">
-                  <h3><%= livestream.formatted_stream_date %></h3>
+                <div class="content-subtitle">
+                  <h4><%= playlist.name %></h4>
                 </div>
               </div>
             <% end %>
             <div class="content-expand">
-              <div class="content-expand-header">
+              <div class="content-expand-header no-desk">
                 <div class="arrow"></div>
-                <p>About</p>
+                <p><%= playlist.videos.count %> videos</p>
               </div>
               <div class="content-expand-content hide-section">
-                <p>
-                  <%= livestream.description[0..275] %><%= "..." if livestream.description.length > 300 %>
-                </p>
+                <% playlist.videos.each do |video| %>
+                  <%= link_to video_path(video) do %>
+                    <div class="video">
+                      <p class="video-title"><%= video.title %></p>
+                      <p class="video-subtitle"><%= video.length %></p>
+                    </div>
+                  <% end %>
+                <% end %>
               </div>
             </div>
           </div>
+        <% else %>
+          <div class="content livestream">
+              <% livestream = playlist %>
+              <%= link_to livestream_path(livestream), :class => "content-link" do %>
+                <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
+                <div class="content-text livestream-text">
+                  <div class="content-title">
+                    <h3><%= livestream.title %></h3>
+                  </div>
+                  <div class="content-date">
+                    <h3><%= livestream.formatted_stream_date %></h3>
+                  </div>
+                </div>
+              <% end %>
+              <div class="content-expand">
+                <div class="content-expand-header">
+                  <div class="arrow"></div>
+                  <p>About</p>
+                </div>
+                <div class="content-expand-content hide-section">
+                  <p>
+                    <%= livestream.description[0..275] %><%= "..." if livestream.description.length > 300 %>
+                  </p>
+                </div>
+              </div>
+            </div>
+        <% end %>
       <% end %>
-    <% end %>
-  <% else %>
+    </div>
+
      <% if @livestream.live? || @livestream.upcoming? %>
-      <div class="livestream-side-content">
+      <div class="livestream-side-content no-mobile">
         <div class="section-title">
           <h1>TWITTER</h1>
           <h4>@Draper_U</h4>
@@ -101,7 +102,7 @@
         </div>
       </div>
     <% else %>
-      <div class="livestream-side-content">
+      <div class="livestream-side-content no-mobile">
         <div class="section-title">
           <h1>POPULAR</h1>
         </div>
@@ -136,7 +137,7 @@
         <% end %>
       </div>
     <% end %>
-  <% end %>
+
 
 
 

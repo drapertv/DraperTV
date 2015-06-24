@@ -10,10 +10,9 @@ class Search < ActiveRecord::Base
 	def self.search_for terms
 		playlists = Playlist.all
 		videos = Video.all
-		challenges = Challenge.all
 		terms = terms.downcase
 		results = [:title, :name, :speaker_title, :description].map do |field|
-			[playlists, videos, challenges].map do |models|
+			[playlists, videos].map do |models|
 				search_model_for(models, terms, field)
 			end
 		end.uniq.flatten
@@ -22,7 +21,7 @@ class Search < ActiveRecord::Base
 	private
 
 	def self.search_model_for models, terms, field
-		models.select {|n| n.send(field).downcase =~ /#{Regexp.escape(terms)}/ }
+		models.select {|n| n.send(field).downcase =~ /#{Regexp.escape(terms)}/ && n.public  }
 	end
 
 end

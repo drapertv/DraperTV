@@ -41,7 +41,7 @@ Playlist =
 			#change bar UI
 			$('.scroll-green').css('height', "#{barHeight}px")
 			#account for rounding errors
-			barHeight = 100 if barHeight > 100 || barHeight == 99
+			barHeight = 100 if barHeight > 100 || (barHeight > 97 && barHeight < 100)
 			$('.scroll-percent').text barHeight + "%"
 			$('.scroll-percent').css "bottom", "#{100 - barHeight - 5}px"
 

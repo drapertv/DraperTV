@@ -50,5 +50,9 @@ body {
     .no-desk {
       display: none !important; 
     }
+    header.no-mobile, header .no-mobile  {
+      display: block;
+    }
   }
 }
+
