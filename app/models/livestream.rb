@@ -29,7 +29,9 @@ class Livestream < ActiveRecord::Base
   		pst_stream_date.strftime("Today at %l:%M %P PST")
   	elsif stream_date - Time.now < 48.hours && pst_stream_date.day == pst_current_time.day + 1
   		pst_stream_date.strftime("Tomorrow at %l:%M %P PST")
-  	elsif stream_date - Time.now > 24.hours && pst_stream_date.day > pst_current_time.day + 1
+  	elsif stream_date - Time.now < 48.hours
+      (stream_date - 7.hours).strftime("%B %-d, at %l:%M%P PST")
+    elsif stream_date - Time.now > 48.hours 
       (stream_date - 7.hours).strftime("%B %-d, at %l:%M%P PST")
     else
   		days_ago = (Time.now - pst_stream_date) / 86400
