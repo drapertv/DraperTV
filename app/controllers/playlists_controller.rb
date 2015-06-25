@@ -5,7 +5,7 @@ class PlaylistsController < InheritedResources::Base
     @og_title = "Series - DraperTV"
     @playlists = Playlist.all.order("created_at desc")
     @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Auxiliary"]
-    @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]
+    @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "grey"]
     if params[:category]
       @category = params[:category]
       @color = @colors[@categories.find_index(@category)]
@@ -34,7 +34,7 @@ class PlaylistsController < InheritedResources::Base
   def show
     @playlist = Playlist.find(params[:id])
     @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Auxiliary"]
-    @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]
+    @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "grey"]
   end
 
   def index_router

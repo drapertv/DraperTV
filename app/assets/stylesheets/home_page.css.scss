@@ -257,6 +257,9 @@
 			width: 168px;
 	    	height: 195px;
 		}
+		.flip-container.no-hover:hover {
+			transform: rotateY(0deg) !important;
+		}
 		.flip-container {
 			background: $light-gray;
 			margin-bottom: 30px;

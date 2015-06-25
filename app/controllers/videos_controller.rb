@@ -6,11 +6,11 @@ class VideosController < ApplicationController
   def show
     @video = Video.friendly.find(params[:id])
     @og_title = "#{@video.title} - DraperTV"
-    @og_description = @video.description
+    @og_description = @playlist.first_video.description
     @playlist = @video.playlist
     @og_image = @playlist.first_video.vthumbnail_url
     @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Auxiliary"]
-    @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "gray"]
+    @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "grey"]
 
     if @video.url
       @video_yt_embed = ActiveSupport::SafeBuffer.new(%Q{<iframe id="ytplayer" type="text/html" width="662" height="494" src="https://www.youtube.com/embed/#{@video.url}?autoplay=1&rel=0&showinfo=0&color=red&theme=dark&modestbranding=1" frameborder="0" allowfullscreen> </iframe>})
