@@ -257,7 +257,7 @@
 			width: 168px;
 	    	height: 195px;
 		}
-		.flip-container.no-hover:hover {
+		.flip-container.no-hover:hover .flipper {
 			transform: rotateY(0deg) !important;
 		}
 		.flip-container {
