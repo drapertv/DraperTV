@@ -6,8 +6,9 @@ class VideosController < ApplicationController
   def show
     @video = Video.friendly.find(params[:id])
     @og_title = "#{@video.title} - DraperTV"
-    @og_description = @playlist.first_video.description
     @playlist = @video.playlist
+    @og_description = @playlist.first_video.description
+    
     @og_image = @playlist.first_video.vthumbnail_url
     @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Auxiliary"]
     @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "grey"]
