@@ -1,10 +1,6 @@
 <header id="landing-header" class="no-mobile">
   <div id="header-content">
-    <div class="header-logo">
-      <%= link_to root_path do %>
-        <%= image_tag 'drapertv-logo.png', :class => "header-item logo" %>
-      <% end %>
-    </div>
+
 
 
       <ul class="header-mid-right no-mobile">
@@ -24,6 +20,12 @@
           <% end %>
         </li>
       </ul>
+
+    <div class="header-logo">
+      <%= link_to root_path do %>
+        <%= image_tag 'drapertv-logo.png', :class => "header-item logo" %>
+      <% end %>
+    </div>
 
       <div class="header-mid-left no-mobile">
         <%= form_for Search.new do |f| %>
