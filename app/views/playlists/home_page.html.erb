@@ -190,7 +190,7 @@
   <div class="featured-topics-content content-list hide-section">
     <div class="featured-categories">
       <% @categories.each_with_index do |cat, i| %>
-        <div class="flip-container <%= 'no-hover' if @browser.mobile? || @browser.tablet? %>" ontouchstart="this.classList.toggle('hover');">
+        <div class="flip-container <%= 'no-hover' if @browser.mobile? || @browser.tablet? %>">
           <h3 class="<%= @colors[i] %>"><%= cat.upcase %></h3>
           <div class="flipper">
             <div class="front">
