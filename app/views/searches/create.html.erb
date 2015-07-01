@@ -68,19 +68,6 @@
       <% end %>
     <% end %>
   </div>
-  <div class="pagenation no-mobile">
-    <%= link_to url_for(page: @page_back, terms: @terms) do %>
-      <div class="pagenation-back pagenation-item"></div>
-    <% end %>
-    
-    <div class="pagenation-number pagenation-item">
-      <p><%= @page %><span> /<%= @results.length / 7 + 1 %></span></p>
-      <div class="arrow"></div>
-    </div>
-    <%= link_to url_for(page: @page_next, terms: @terms) do %>
-      <div class="pagenation-forward pagenation-item"></div>
-    <% end %>
-  </div>
 </div>
 
 <script>
