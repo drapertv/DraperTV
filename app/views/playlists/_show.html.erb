@@ -1,43 +1,29 @@
-<div class="series-header">
-  <h2 class="series-title">
-    <%= playlist.title %>
-  </h2>
-  <div class="series-actions">
-  </div>
-  <div class="mobile series-speaker-mobile">
-    <%= playlist.speaker.name %> | <%= playlist.speaker.title  %>
-  </div>
-</div>
-<div class="series-content">
-  <div class="series-speaker">
-    <%= image_tag playlist.profilepic_url(:seriesthumb), :class => "pull-left speaker-pic" %>
-    <p class="speaker-name">
-     <%= playlist.name.upcase %>
-    </p>
-    <p class="speaker-title"><%= playlist.speaker.title || "CEO & Founder" %></p>
-  </div>
-  <div class="white-gradient left no-mobile hidden">
-  </div>
-  <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow left no-mobile hidden" %>
-  <div class="white-gradient right no-mobile"></div>
-  <%= image_tag 'scroll-arrow.png', :class => "scroll-arrow right no-mobile" %>
-  <div class="series-videos">
-    <% playlist.videos.each do |video| %>
-      <div class="series-video">
-        <div class="video-length"><%= video.length %></div>
-        <a href="<%= video_path(video) %>">
-          <%= image_tag 'play-icon.png', :class => "video-play" %>
-          <%= image_tag video.vthumbnail_url(:seriesthumb), :class => "video-thumbnail" %>
-        </a>
-        <div class="video-info">
-          <%= link_to video_path(video) do %>
-            <p class="text-ellipsis qwatch-title"><%= video.title %></p>
-          <% end %>
-           <p class="text-ellipsis video-stats"> <span><%= video.view_count %> Views &nbsp;•  &nbsp; <%= video.get_upvotes.size %></span>
-            <%= image_tag 'fav-button.svg', :class => "fav-star" %>
-          </p>
-        </div>
+<div class="content">
+  <%= link_to playlist_link(@browser, playlist), :class => "content-link" do %>
+    <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+    <div class="content-text">
+      <div class="content-title">
+        <h3><%= playlist.title %></h3>
       </div>
-    <% end %>
+      <div class="content-subtitle">
+        <h4><%= playlist.name %></h4>
+      </div>
+    </div>
+  <% end %>
+  <div class="content-expand">
+    <div class="content-expand-header no-desk">
+      <div class="arrow"></div>
+      <p><%= playlist.videos.count %> videos</p>
+    </div>
+    <div class="content-expand-content hide-section">
+      <% playlist.videos.each do |video| %>
+        <%= link_to video_path(video) do %>
+          <div class="video">
+            <p class="video-title"><%= video.title %></p>
+            <p class="video-subtitle"><%= video.length %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

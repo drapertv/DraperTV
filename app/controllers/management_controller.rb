@@ -3,7 +3,6 @@ class ManagementController < ApplicationController
 
 
 	def invitecorner
-
 	end
 
 	def batch_invite
@@ -18,7 +17,7 @@ class ManagementController < ApplicationController
 
 private
 	def management_params
-    params.require(:management).permit(:user_emails)
-  end
+		params.require(:management).permit(:user_emails)
+	end
 
 end

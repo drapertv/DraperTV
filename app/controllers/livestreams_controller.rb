@@ -2,12 +2,10 @@ class LivestreamsController < InheritedResources::Base
 
   def show
     @livestream = Livestream.friendly.find(params[:id])
+    
     @og_title = "#{@livestream.title} - DraperTV"
     @og_description = @livestream.description
     @og_image = @livestream.image_url
-    @commentable = @livestream
-    @comments = @commentable.comments.where(ancestry: nil).order('created_at ASC')
-    @comment = Comment.new
   end
 
   def index
@@ -24,15 +22,8 @@ class LivestreamsController < InheritedResources::Base
     else
       @og_image = @past_livestreams.first.image_url
     end
-    
-    @livestreams = [{title: "LIVESTREAMING NOW", collection: @current_livestreams},
-                    {title: "UPCOMING LIVESTREAMS", collection: @upcoming_livestreams},
-                    {title: "PAST LIVESTREAMS", collection: @past_livestreams}]	
   end
 
-  
-
-  private
 
 
 end

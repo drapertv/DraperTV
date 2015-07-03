@@ -8,9 +8,12 @@
 }
 
 
-::-webkit-scrollbar {
+body:not(.show-scroll-bar)::-webkit-scrollbar, body:not(.show-scroll-bar) *::-webkit-scrollbar {
     display: none;
 }
+
+
+
 
 @media (max-width: 768px) {
   html {

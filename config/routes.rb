@@ -12,16 +12,6 @@ Rails.application.routes.draw do
     root :to => 'playlists#index', as: :authenticated_root
   end
 
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-    put 'update_plan', :to => 'users#update_plan'
-    put 'update_card', :to => 'users#update_card'
-  end
-
-  devise_for :users, controllers: { :registrations => 'registrations', omniauth_callbacks: "omniauth_callbacks" }
-  patch '/users/:id/accept_invite', to: "users#accept_invite", as: "accept_invite"
-  resources :users
-  
   resources :videos
 
   resources :livestreams do
@@ -30,12 +20,9 @@ Rails.application.routes.draw do
   resources :searches
 
   resources :playlists do 
-    resources :challenges 
   end
 
-  as :user do
-    get "/users/sign_out" => "devise/sessions#destroy"
-  end
+
 
   get 'invitecorner', to: 'management#invitecorner', via: :invitecorner, as: 'invitecorner'
 

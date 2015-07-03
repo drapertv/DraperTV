@@ -3,10 +3,7 @@ class SearchesController < ApplicationController
   def create
     @terms = params[:search][:terms]
     Search.create terms: @terms
-
     @og_title = "DraperTV - Search for \"#{@terms}\""
-    
-  	
     @results = Search.search_for(@terms).uniq
     @count = @results.count
   end
@@ -18,4 +15,5 @@ class SearchesController < ApplicationController
     @count = @results.count
   	render 'create'
   end
+
 end

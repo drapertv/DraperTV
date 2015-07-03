@@ -153,6 +153,9 @@ iframe {
 			}
 			.series-category {
 				text-align: right;
+				span:hover {
+					font-weight: 600;
+				}
 			}
 			.video-current {
 				.video-title, .video-length {color: #c0c0c0;}

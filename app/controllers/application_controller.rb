@@ -66,21 +66,4 @@ class ApplicationController < ActionController::Base
     @og_description = "Bringing Silicon Valley to You"
     @og_image = "DU_Logo_Gradient_Small.png"
   end
-
-  # if Rails.env.production?
-
-
-  # if Rails.env.production?
-
-  #   before_filter :authenticate
-
-  #   protected
-
-  #   def authenticate
-  #     authenticate_or_request_with_http_basic do |username, password|
-  #       username == "Cassandra" && password == "Cassandra"
-  #     end
-  #   end
-  # end
-
 end

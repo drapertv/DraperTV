@@ -14,73 +14,16 @@
         <% end %>
       <% end %>
     </div>
-
-    <div class="featured-carousel no-mobile">
-      <div class="featured-carousel-main">
-        <% @featured.reverse.each_with_index do |playlist, i| %>
-          <%= link_to video_path(playlist.first_video) do %>
-            <div class="featured-item" style='background-image: url(<%= url_for(playlist.first_video.vthumbnail_url) %>);'>
-              <div class="featured-overlay featured-overlay-main">
-                <div class="featured-text">
-                  <h3><%= playlist.name %></h3>
-                  <h1><%= playlist.title %></h1>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="featured-carousel-side">
-         <% @featured.each_with_index do |playlist, i| %>
-          <%= link_to video_path(playlist.first_video) do %>
-            <div class="featured-item" style='background-image: url(<%= url_for(playlist.first_video.vthumbnail_url) %>);'>
-              <div class="featured-overlay">
-                <div class="featured-text">
-                  <h3><%= playlist.name %></h3>
-                  <h1><%= playlist.title %></h1>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <%= render partial: "carousel", locals: {html_class: "no-mobile" } %>
   <% else %>
-    <div class="featured-carousel">
-      <div class="featured-carousel-main">
-        <% @featured.reverse.each_with_index do |playlist, i| %>
-          <%= link_to video_path(playlist.first_video) do %>
-            <div class="featured-item" style='background-image: url(<%= url_for(playlist.first_video.vthumbnail_url) %>);'>
-              <div class="featured-overlay featured-overlay-main">
-                <div class="featured-text">
-                  <h3><%= playlist.name %></h3>
-                  <h1><%= playlist.title %></h1>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="featured-carousel-side">
-         <% @featured.each_with_index do |playlist, i| %>
-          <%= link_to video_path(playlist.first_video) do %>
-            <div class="featured-item" style='background-image: url(<%= url_for(playlist.first_video.vthumbnail_url) %>);'>
-              <div class="featured-overlay">
-                <div class="featured-text">
-                  <h3><%= playlist.name %></h3>
-                  <h1><%= playlist.title %></h1>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <%= render partial: "carousel", locals: {html_class: nil }  %>
   <% end %>
   <div class="tagline-container no-mobile">
     <p class="tagline">Entrepreneurship & Startups broken down</p>
     <p class="tagline-sub">Startup knowledge for every stage. Pick a topic below to get started.</p>
   </div>
+
+
   <div class="featured-tabs">
     <button class="featured-popular blue tabs-selected" data-show="featured-popular-content">
       <h3 class="blue">Popular</h3>
@@ -92,101 +35,23 @@
       <h3 class="orange">Topics</h3>
     </button>
   </div>
+
   <div class="featured-popular-content content-list">
-    <% @popular.each do |playlist| %>
-      <% if playlist.class == Playlist %>
-        <div class="content">
-          <%= link_to playlist_link(@browser, playlist), :class => "content-link" do %>
-            <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
-            <div class="content-text">
-              <div class="content-title">
-                <h3><%= playlist.title %></h3>
-              </div>
-              <div class="content-subtitle">
-                <h4><%= playlist.name %></h4>
-              </div>
-            </div>
-          <% end %>
-          <div class="content-expand">
-            <div class="content-expand-header no-desk">
-              <div class="arrow"></div>
-              <p><%= playlist.videos.count %> videos</p>
-            </div>
-            <div class="content-expand-content hide-section">
-              <% playlist.videos.each do |video| %>
-                <%= link_to video_path(video) do %>
-                  <div class="video">
-                    <p class="video-title"><%= video.title %></p>
-                    <p class="video-subtitle"><%= video.length %></p>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
+    <% @popular.each do |media| %>
+      <% if media.class == Playlist %>
+        <%= render partial: "playlists/show", locals: {playlist: media} %>
       <% else %>
-        <div class="content livestream">
-            <% livestream = playlist %>
-            <%= link_to livestream_path(livestream), :class => "content-link" do %>
-              <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
-              <div class="content-text livestream-text">
-                <div class="content-title">
-                  <h3><%= livestream.title %></h3>
-                </div>
-                <div class="content-date">
-                  <h4><%= livestream.formatted_stream_date %></h4>
-                </div>
-              </div>
-            <% end %>
-            <div class="content-expand">
-              <div class="content-expand-header">
-                <div class="arrow"></div>
-                <p>About</p>
-              </div>
-              <div class="content-expand-content hide-section">
-                <p>
-                  <%= livestream.description[0..275] %><%= "..." if livestream.description.length > 300 %>
-                </p>
-              </div>
-            </div>
-          </div>
+        <%= render partial: "livestreams/show", locals: {livestream: media} %>
       <% end %>
     <% end %>
   </div>
 
   <div class="featured-new-content content-list hide-section">
     <% @new.each do |playlist| %>
-      <div class="content">
-        <%= link_to playlist_link(@browser, playlist), :class => "content-link" do %>
-          <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
-          <div class="content-text">
-            <div class="content-title">
-              <h3><%= playlist.title %></h3>
-            </div>
-            <div class="content-subtitle">
-              <h4><%= playlist.name %></h4>
-            </div>
-          </div>
-        <% end %>
-        <div class="content-expand">
-          <div class="content-expand-header no-desk">
-            <div class="arrow"></div>
-            <p><%= playlist.videos.count %> videos</p>
-          </div>
-          <div class="content-expand-content hide-section">
-            <% playlist.videos.each do |video| %>
-              <%= link_to video_path(video) do %>
-                <div class="video">
-                  <p class="video-title"><%= video.title %></p>
-                  <p class="video-subtitle"><%= video.length %></p>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render partial: "playlists/show", locals: {playlist: playlist} %>
     <% end %>
   </div>
+
   <div class="featured-topics-content content-list hide-section">
     <div class="featured-categories">
       <% @categories.each_with_index do |cat, i| %>
@@ -198,7 +63,6 @@
                 <div class="categories-icon <%= cat.downcase.gsub(" ", "") %>-icon">
                   <%= image_tag "#{cat.gsub(" ", "-").downcase}-icon.png", :class => "category-icon" %>
                 </div>
-                
               <% end %>
             </div>
             <div class="back no-mobile">
@@ -211,5 +75,5 @@
         </div>
       <% end %>
     </div>
-  </div>
+  </div>  
 </section>

@@ -3,6 +3,10 @@ Home =
 		$('body').on 'click', '.content-expand-header', @expandContentOnClick
 		$('body').on 'click', '.featured-tabs button', @showTabOnClick
 		@mobile = $(window).width() < 1024
+		$('.home').parents('body').addClass('show-scroll-bar')
+		
+		# switch between slideshow and carousel appropriately if page width changes
+		# polls page for width every half second
 		if @mobile
 			Home.onMobile = true
 		else
@@ -17,8 +21,10 @@ Home =
 				Home.initSlideShowOnPageLoad() 
 				Home.onDesk = true
 		, 500
+
 		@initCarouselOnPageLoad() if @mobile
 		@initSlideShowOnPageLoad() if !@mobile
+
 
 	showTabOnClick: ->
 		if $('.video-player').length < 1 || Home.mobile

@@ -19,36 +19,7 @@
   </div>
   <div class="section-content-list">
     <% @playlists.each do |playlist| %>
-      <div class="content">
-        <%= link_to playlist_link(@browser, playlist), :class => "content-link" do %>
-          <%= image_tag playlist.first_video.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
-          <div class="content-text">
-            <div class="content-title">
-              <h3><%= playlist.title %></h3>
-            </div>
-            <div class="content-subtitle">
-              <h4><%= playlist.name %></h4>
-            </div>
-          </div>
-        <% end %>
-        <div class="content-expand">
-          <div class="content-expand-header">
-            <div class="arrow"></div>
-            <p><%= playlist.videos.count %> videos</p>
-          </div>
-          <div class="content-expand-content hide-section">
-            <% playlist.videos.each do |video| %>
-              <%= link_to video_path(video) do %>
-                <div class="video">
-                  <p class="video-title"><%= video.title %></p>
-                  <p class="video-subtitle"><%= video.length %></p>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render partial: "show", locals: {playlist: playlist} %>
     <% end %>
-
   </div>
 </section>

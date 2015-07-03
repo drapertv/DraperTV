@@ -1,8 +1,6 @@
 class VideosController < ApplicationController
   # load_and_authorize_resource
 
-
-
   def show
     @video = Video.friendly.find(params[:id])
     @og_title = "#{@video.title} - DraperTV"
