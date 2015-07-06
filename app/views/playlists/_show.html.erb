@@ -16,7 +16,7 @@
       <p><%= playlist.videos.count %> videos</p>
     </div>
     <div class="content-expand-content hide-section">
-      <% playlist.videos.each do |video| %>
+      <% playlist.videos.order(:id).each do |video| %>
         <%= link_to video_path(video) do %>
           <div class="video">
             <p class="video-title"><%= video.title %></p>

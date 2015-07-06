@@ -24,7 +24,7 @@
   </div>
 
   <div class="section-content-list">
-    <% @playlist.videos.each do |video| %>
+    <% @playlist.videos.order(:id).each do |video| %>
       <div class="content">
         <%= link_to video_path(video), :class => "content-link" do %>
           <%= image_tag video.thumbnail(:seriesthumb), :class => "series-thumbnail" %>

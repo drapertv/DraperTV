@@ -35,7 +35,11 @@ class Livestream < ActiveRecord::Base
       (stream_date - 7.hours).strftime("%B %-d, at %l:%M%P PST")
     else
   		days_ago = (Time.now - pst_stream_date) / 86400
-      pst_stream_date.strftime("#{days_ago.floor} days ago")
+      if days_ago.floor > 1
+        pst_stream_date.strftime("#{days_ago.floor} days ago")
+      else
+        pst_stream_date.strftime("#{days_ago.floor} day ago")
+      end
   	end
   end
 
