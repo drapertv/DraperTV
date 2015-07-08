@@ -111,14 +111,17 @@
     player = new YT.Player('player', {
       videoId: "<%= @video.url %>",
       events: {
+        'onReady': onPlayerReady,
         'onStateChange': onPlayerStateChange
       }
     });
   }
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
 
-  function onPlayerStateChange(newState) {
-    console.log(newState)
-    
+
+  function onPlayerStateChange(newState) {    
     if (newState.data == 0) {
       console.log($('.video-current').parent().next()) 
       location.href = $('.video-current').parent().next().attr('href')
