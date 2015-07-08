@@ -57,7 +57,7 @@ iframe {
 @media (min-width: 1024px) {
 	body {
 		.video-page, .livestream-page {
-			.video-player {
+			.video-player, .video-player iframe {
 				width: 656px;
 				height: 369px;
 			}
