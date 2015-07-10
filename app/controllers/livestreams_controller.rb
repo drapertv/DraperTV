@@ -24,6 +24,11 @@ class LivestreamsController < InheritedResources::Base
     end
   end
 
+  def hidebanner
+    session[:hidden_livestream_id] = Livestream.next_livestream.id
+    render json: {hidden_id: Livestream.next_livestream.id}
+  end
+
 
 
 end

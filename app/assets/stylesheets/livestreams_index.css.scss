@@ -199,4 +199,37 @@
       margin-bottom: 50px;
     }
   }
+  #banner {
+    color: white;
+    background: $red;
+    height: 40px;
+    @include flexbox;
+    border-radius: 5px;
+    padding: 0px 20px;
+    transform-style: preserve-3d;
+    margin-bottom: 20px;
+    p {
+      line-height: 40px;
+    }
+    .banner-livestream-time {
+      margin-right: 20px;
+    }
+    .banner-livestream-title {
+      font-weight: 700;
+    }
+  }
+  .livestream-banner {
+    display: block;
+    order: -5;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  .close-banner {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    height: 10px;
+    width: 10px;
+  }
+
 }

@@ -22,11 +22,29 @@ class Livestream < ActiveRecord::Base
 	  [self, Comment.new]
   end
 
+  def elapsed_time
+    elapsed_time_in_minutes = (Time.now - stream_date) / 60
+    stamp = nil
+    if elapsed_time_in_minutes.floor < 60
+      stamp = "#{elapsed_time_in_minutes.floor} minutes ago"
+    elsif elapsed_time_in_minutes < 1440
+      elapsed_time_in_hours = (elapsed_time_in_minutes / 60).floor
+      stamp = "#{elapsed_time_in_hours} hours ago"
+    else
+      stamp = "#{stream_date.strftime("%b %-d")}"
+    end
+  end
+
+
   def formatted_stream_date
   	pst_stream_date = stream_date - 7.hours
   	pst_current_time = Time.now.utc - 7.hours
   	if stream_date - Time.now < 24.hours && pst_stream_date.day == pst_current_time.day
-  		pst_stream_date.strftime("Today at %l:%M %P PST")
+      if stream_date < Time.now
+        elapsed_time
+      else
+        pst_stream_date.strftime("Today at %l:%M %P PST")
+      end
   	elsif stream_date - Time.now < 48.hours && pst_stream_date.day == pst_current_time.day + 1
   		pst_stream_date.strftime("Tomorrow at %l:%M %P PST")
   	elsif stream_date - Time.now < 48.hours && stream_date > Time.now
@@ -52,6 +70,17 @@ class Livestream < ActiveRecord::Base
     else
       "#{livestream.title} - #{(livestream.stream_date - 7.hours).strftime("%B %-d, at %l:%M%P PST")}"
     end
+  end
+
+  def self.banner_livestream_info
+    livestream = next_livestream
+    time = nil
+    if livestream.stream_date < Time.now
+      time = "Livestream - NOW"
+    else
+      time = "Livestream - #{(livestream.stream_date - 7.hours).strftime('%B %-d')}"
+    end
+    {livestream: livestream, time: time}
   end
 
   def self.next_livestream

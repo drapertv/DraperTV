@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :playlists do 
   end
 
+  get '/hidebanner', to: 'livestreams#hidebanner'
+
 
 
   get 'invitecorner', to: 'management#invitecorner', via: :invitecorner, as: 'invitecorner'

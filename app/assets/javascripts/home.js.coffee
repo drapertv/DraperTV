@@ -4,7 +4,7 @@ Home =
 		$('body').on 'click', '.featured-tabs button', @showTabOnClick
 		@mobile = $(window).width() < 1024
 		$('.home').parents('body').addClass('show-scroll-bar')
-		
+		$('body').on 'click', '.close-banner', @closeBanner		
 		# switch between slideshow and carousel appropriately if page width changes
 		# polls page for width every half second
 		if @mobile
@@ -25,6 +25,11 @@ Home =
 		@initCarouselOnPageLoad() if @mobile
 		@initSlideShowOnPageLoad() if !@mobile
 
+	closeBanner: (e) ->
+		e.preventDefault()
+		$(@).parent('.livestream-banner').addClass('animated flipOutX').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
+			$(@).hide()
+		$.get('/hidebanner')
 
 	showTabOnClick: ->
 		if $('.video-player').length < 1 || Home.mobile
