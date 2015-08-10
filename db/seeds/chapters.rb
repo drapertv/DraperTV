@@ -1,9 +1,10 @@
-url = "http://courses.drapertv.com"
+url = "http://courses.drapertv.com/tracks"
 
 response = HTTParty.get(url)
 
 
 Chapter.destroy_all
+
 
 response["chapters"].each do |chapter|
 	chapter = Chapter.create summary: chapter["track"]["summary"], name: chapter["track"]["name"], chapter_uid: chapter["track"]["id"], topic_uid: chapter["topic_id"], topic_name: chapter["topic_name"], lessons_info: chapter["lesson_info"], description: chapter["track"]["description"]
