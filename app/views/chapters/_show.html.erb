@@ -12,14 +12,14 @@
   <% end %>
   <div class="content-expand">
     <div class="content-expand-content hide-section">
-      <p>
+      <p class="content-summary">
         <%= chapter.summary %>
       </p>
     </div>
     <div class="content-expand-header no-desk">
       <div class="arrow"></div>  
     </div>
-    <div class="content-expand-content hide-section">
+    <div class="content-expand-content lessons hide-section">
       <p>Lessons:</p>
       <% chapter.lessons.each_with_index do |lesson, i| %>
         <p class="lesson"><%= i + 1 %>. <%= lesson %></p>
