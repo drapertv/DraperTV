@@ -20,7 +20,9 @@
   </div>
   <div class="section-content-list">
     <% @playlists.each do |playlist| %>
-      <%= render partial: "#{playlist.class.to_s.downcase.pluralize}/show", locals: {playlist.class.to_s.downcase.to_sym => playlist} %>
+      <% if playlist %>
+        <%= render partial: "#{playlist.class.to_s.downcase.pluralize}/show", locals: {playlist.class.to_s.downcase.to_sym => playlist} %>
+      <% end %>
     <% end %>
   </div>
 </section>
