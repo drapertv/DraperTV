@@ -11,6 +11,7 @@
 	text-align: center;
 	z-index: 6;
 	border-bottom: 1px solid #287ac9;
+	display: none;
 }
 
 #header-content {
@@ -31,7 +32,6 @@
 	cursor: pointer;
 	font-size: 14px;
 	display: inline;
-	color: rgba(255,255,255,1);
 	margin: 0 10px;
 	font-weight: 600;
 }
@@ -49,9 +49,19 @@
 }
 
 .header-item a {
-	color: rgba(255,255,255,1);
+	color: rgba(255,255,255,0.5);
 	margin: 0 auto;
 }
+
+.nav.header-item {
+	opacity: 1;
+}
+
+.dropdown {
+	position: absolute;
+	display: none;
+}
+
 
 .header-item:hover {
 	color: white;
@@ -88,7 +98,67 @@
 @media (min-width: 1024px) {
 	.logo.header-item {
 	  	margin: 10px 0px;
-	  }
+	 }
+	 .header-item {
+	 	position: relative;
+	 	.bubble {
+	 		color: white;
+	 		background: $red;
+	 		border: 1px solid white;
+	 		text-align: center;
+	 		font-size: 10px;
+			padding: 0px 5px;
+	 		height: 16px;
+	 		line-height: 14px;
+	 		position: absolute;
+	 		right: -10px;
+	 		top: 10px;
+	 		opacity: 1;
+	 		border-radius: 50px;;
+	 	}
+	 }
+	 #landing-header {
+	 	@include flexbox;
+	 	@include justify-content(space-between);
+	 	padding: 0px 20px;
+	 }
+	 .header-logo {
+	 	position: static;
+	 	margin-right: 30px;
+	 }
+	 .header-left, .header-right {
+	 	@include flexbox;
+	 }
+	 .nav.header-item {
+	 	margin-left: 20px;
+	 }
+	 .nav.header-item:hover {
+	 	.nav-menu {
+	 		display: block;
+	 		position: absolute;
+	 		width: 160px;
+	 		top: 15px;
+	 		right: 0px;
+	 		background: white;
+	 		color: $black;
+			padding: 5px 0;
+			margin: 2px 0 0;
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			-webkit-background-clip: padding-box;
+			-moz-background-clip: padding;
+		  	background-clip: padding-box; 
+		 	li {
+
+		 	}
+	 	}
+	 }
+
 }
 
 

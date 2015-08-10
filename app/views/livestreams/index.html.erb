@@ -14,37 +14,12 @@
             <p>Looks like there aren't any live or upcoming Livestreams. Check out our past livestreams below!</p>
           </div>
         <% end %>
-        <% (@current_livestreams + @upcoming_livestreams).each do |livestream| %>
-          <div class="content livestream">
-            <%= link_to livestream_path(livestream), :class => "content-link" do %>
-              <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
-              <div class="content-text livestream-text">
-                <div class="content-title">
-                  <h3><%= livestream.title %></h3>
-                </div>
-                <% if livestream.live? %>
-                  <div class="content-subtitle livestream-live">
-                    <h4>Live Now</h4>
-                  </div>
-                <% else %>
-                  <div class="content-date">
-                    <h4><%= livestream.formatted_stream_date %></h4>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-            <div class="content-expand">
-              <div class="content-expand-header">
-                <div class="arrow"></div>
-                <p>About</p>
-              </div>
-              <div class="content-expand-content hide-section">
-                <p>
-                  <%= livestream.description[0..275] %><%= "..." if livestream.description.length > 300 %>
-                </p>
-              </div>
-            </div>
-          </div>
+        <% (@future_livestreams).each do |livestream| %>
+          <% if livestream.class == Livestream %>
+            <%= render partial: "show", locals: {livestream: livestream} %>
+          <% else %>
+            <%= render partial: "chapters/show", locals: {chapter: livestream} %>
+          <% end %>
         <% end %>
       </div>
       <div class="section-title">
@@ -52,30 +27,11 @@
       </div>
       <div class="section-content-list">
         <% @past_livestreams.each do |livestream| %>
-          <div class="content livestream">
-            <%= link_to livestream_path(livestream), :class => "content-link" do %>
-              <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
-              <div class="content-text livestream-text">
-                <div class="content-title">
-                  <h3><%= livestream.title %></h3>
-                </div>
-                <div class="content-date">
-                  <h4><%= livestream.formatted_stream_date %></h4>
-                </div>
-              </div>
-            <% end %>
-            <div class="content-expand">
-              <div class="content-expand-header">
-                <div class="arrow"></div>
-                <p>About</p>
-              </div>
-              <div class="content-expand-content hide-section">
-                <p>
-                  <%= livestream.description[0..275] %><%= "..." if livestream.description.length > 300 %>
-                </p>
-              </div>
-            </div>
-          </div>
+          <% if livestream.class == Livestream %>
+            <%= render partial: "show", locals: {livestream: livestream} %>
+          <% else %>
+            <%= render partial: "chapters/show", locals: {chapter: livestream} %>
+          <% end %>
         <% end %>
       </div>
     </section>

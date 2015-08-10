@@ -143,22 +143,33 @@
 	    		order: -1;
 	    	}
 	    }
-
-	    .series-count {
+		.series-count, .courses-count {
+			letter-spacing: 3px;
+			position: absolute;
 	    	color: white;
-	    	position: absolute;
-	    	font-size: 18px;
-	    	top: 37px;
-	    	width: 80px;
 	    	text-align: center;
 	    	left: calc(50% - 40px);
-				text-transform: lowercase;
+	    	width: 80px;
+		}
+	    .series-count {	
+	    	top: 15px;
+	    }
+	    .courses-count {
+	    	bottom: 95px;
+	    }
+	    .series-count:hover, .courses-count:hover {
+	    	text-decoration: underline;
 	    }
 
-			.series-count > span {
-				font-weight: 700;
-				font-size: 24px;
-			}
+		.series-count > span {
+			font-weight: 700;
+			font-size: 24px;
+		}
+
+		.courses-count > span {
+			font-weight: 700;
+			font-size: 24px;
+		}
 
 	    .categories-icon {
 	    	height: 120px;
@@ -185,27 +196,20 @@
 	    .featured-popular-content, .featured-new-content{
 	    	@include flexbox;
 	    	flex-wrap: wrap;
-	    	justify-content: space-between;
 	    	order: -2;
 	    }
 	    .hide-section {
 	    	display: none;
 	    }
 	    .content {
-	    	width: 256px;
-	    	padding: 0px;
-	    	margin-bottom: 50px;
+	    	width: 296px;
+	    	height: 436px;
+	    	padding: 20px;
+	    	margin-bottom: 36px;
+	    	border: 1px solid $border-gray;
 	    }
 	    .content:nth-child(3n - 1) {
-	    	border-left: 1px solid $border-gray;
-	    	border-right: 1px solid $border-gray;
-	    	padding: 0px 48px;
-	    	box-sizing: content-box;
-	    }
-	    .content:last-child {
-	    	border: none;
-	    	padding: 0px;;
-	    	box-sizing: border-box;
+	    	margin: 0px 36px;
 	    }
 	    .content-link {
 	    	@include flexbox;
@@ -263,6 +267,7 @@
 		.flip-container {
 			background: $light-gray;
 			margin-bottom: 30px;
+			border: 1px solid $border-gray;
 			h3 {
 				bottom: initial;
 				top: 24px;

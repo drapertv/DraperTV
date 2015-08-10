@@ -1,38 +1,48 @@
-<header id="landing-header" class="no-mobile">
-  <div id="header-content">
+<header id="landing-header">
 
-
-
-      <ul class="header-mid-right no-mobile">
-        <li class="header-item <%= 'active' if request.original_url.include?("playlists") %>">
-          <%= link_to playlists_path do %>
-            SERIES
-          <% end %>
-        </li>
-        <li class="header-item <%= 'active' if request.original_url.include?("livestreams") %>">
-          <%= link_to livestreams_path do %>
-            LIVESTREAMS
-          <% end %>
-        </li>
-        <li class="header-item">
-          <%= link_to "http://www.draperuniversity.com", target: "_blank" do %>
-            DRAPER UNIVERSITY
-          <% end %>
-        </li>
-      </ul>
-
+  <div class="header-left">
     <div class="header-logo">
       <%= link_to root_path do %>
         <%= image_tag 'drapertv-logo.png', :class => "header-item logo" %>
       <% end %>
     </div>
 
-      <div class="header-mid-left no-mobile">
-        <%= form_for Search.new do |f| %>
-          <%= f.text_field :terms, :class => "search-input", placeholder: "Search" %>
-        <% end %>
-      </div>
+    <div class="header-search no-mobile">
+      <%= form_for Search.new do |f| %>
+        <%= f.text_field :terms, :class => "search-input", placeholder: "Search" %>
+      <% end %>
+    </div>    
   </div>
+  
+  <ul class="header-right">
+    <li class="header-item <%= 'active' if request.original_url.include?("playlists") %>">
+      <%= link_to playlists_path do %>
+        SERIES
+      <% end %>
+    </li>
+    <li class="header-item <%= 'active' if request.original_url.include?("livestreams") %>">
+      <%= link_to livestreams_path do %>
+        LIVESTREAMS
+      <% end %>
+      <% if !Livestream.today.empty? %>
+        <p class="bubble"><%= Livestream.today.length %></p>
+      <% end %>   
+    </li>
+    <li class="header-item">
+      <%= link_to "http://courses.drapertv.com", target: "_blank" do %>
+        COURSES
+      <% end %>
+      <p class="bubble">
+        new
+      </p>
+    </li>
+
+    <ul class="nav header-item">
+      <%= link_to "http://courses.drapertv.com" do %>
+        <%= image_tag "settings.svg", :class => "settings-icon" %>
+      <% end %>
+    </ul>
+  </ul>
 </header>
 
 <header class="no-desk">

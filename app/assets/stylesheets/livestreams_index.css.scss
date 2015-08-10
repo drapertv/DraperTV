@@ -16,16 +16,23 @@
 .no-content {
   padding: 7px 14px;
   width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: $light-gray;
+  border: 1px solid $border-gray;
+  text-align: center;
 }
 
 .no-content > p {
   width: calc(100% - 32px);
   line-height: 1.2;
   margin-left: 8px;
+  display: inline;
 }
 
 .no-content > i {
   font-size: 20px;
+  display: inline;
 }
 
 .no-content > * {
@@ -71,6 +78,10 @@
 
 .livestream-player {
   height: 56vw;
+}
+
+.courses-container {
+  display: none;
 }
 
 @media (min-width: 1024px) {
@@ -195,8 +206,15 @@
       width: 656px;
       padding: 0px;
       border: none;
-      margin-top: 20px;
-      margin-bottom: 50px;
+      margin: 20px 0px 0px 0px;
+    }
+    .tagline.yellow {
+      color: $yellow;
+    }
+    .courses-container {
+      width: 960px;
+      margin: 0 auto;
+      display: block;
     }
   }
   #banner {
@@ -204,7 +222,6 @@
     background: $red;
     height: 40px;
     @include flexbox;
-    border-radius: 5px;
     padding: 0px 20px;
     transform-style: preserve-3d;
     margin-bottom: 20px;

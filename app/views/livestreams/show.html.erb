@@ -106,42 +106,60 @@
         <div class="section-title">
           <h1>POPULAR</h1>
         </div>
-        <% Playlist.popular.each do |content| %>
+        <% @popular.each do |content| %>
           <% if content.class == Playlist %>
             <div class="related-content">
               <%= link_to video_path(content.first_video) do %>
                 <div class="content-image-container">
                   <%= image_tag content.first_video.vthumbnail_url(:seriesthumb), :class => "content-thumbnail" %>
-                  <p class="content-video-count"><%= content.videos.count %> videos</p>
                 </div>
                 <div class="related-content-info">
                   <p class="related-content-title"><%= content.title %></p>
-                  <p class="related-content-subtitle"><%= content.name %></p>
+                  <p class="related-content-subtitle"><span class="blue">Series - </span><%= content.name %></p>
                 </div>
               <% end %>
             </div>
-          <% else %>
+          <% elsif content.class == Livestream %>
              <div class="related-content">
                <%= link_to livestream_path(content) do %>
                 <div class="content-image-container">
                   <%= image_tag content.vthumbnail_url, :class => "content-thumbnail" %>
-                  <p class="content-video-count">Livestream</p>
                 </div>
                 <div class="related-content-info">
                   <p class="related-content-title"><%= content.title %></p>
-                  <p class="related-content-subtitle"><%= content.formatted_stream_date %></p>
+                  <p class="related-content-subtitle"><span class="red">Livestream - </span><%= content.formatted_stream_date %></p>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="related-content">
+               <%= link_to content.url do %>
+                <div class="content-image-container">
+                  <%= image_tag content.image_url, :class => "content-thumbnail" %>
+                </div>
+                <div class="related-content-info">
+                  <p class="related-content-title"><%= content.title %></p>
+                  <p class="related-content-subtitle"><span class="yellow">Course - </span><%= content.topic_name.downcase.split(" ").map(&:capitalize).join(" ") %></p>
                 </div>
               <% end %>
             </div>
           <% end %>
         <% end %>
       </div>
+    <% end %> 
+</section>
+
+<section class="courses-container">
+  <div class="tagline-container no-mobile">
+    <p class="tagline yellow">Learn more with DraperTV Courses</p>
+    <p class="tagline-sub">Startup knowledge for every stage. Pick a course below to get started.</p>
+  </div>
+
+  <div class="section-content-list">
+    <% @chapters.each do |chapter| %>
+      <%= render partial: "#{chapter.class.to_s.downcase.pluralize}/show", locals: {chapter.class.to_s.downcase.to_sym => chapter} %>
     <% end %>
-
-
-
-
- 
+  </div>
 </section>
 
 <script>

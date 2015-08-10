@@ -11,6 +11,17 @@ class PlaylistsController < InheritedResources::Base
       @playlists = Playlist.tagged_with(params[:category].upcase)
     end
 
+    indexes = (1..@playlists.count).to_a.reject! {|n| n % 6 != 5}
+    indexes.each do |i|
+      if !params[:category]
+        chapter = Chapter.all.sample
+        @playlists = @playlists.to_a.insert(i - 1, chapter)
+        p chapter
+      else
+        @playlists = @playlists.to_a.insert(i - 1, Chapter.where(topic_name: params[:category].upcase).all.sample)
+      end
+    end
+
     # if requesting the homepage
     if !request.original_url.split("/").last.include? "playlists"
       @featured = Playlist.where(show_on_front_page: true)
@@ -21,6 +32,7 @@ class PlaylistsController < InheritedResources::Base
       
       @featured = Playlist.all.limit(6) if @featured.length < 1
       @popular = Playlist.all.limit(6) if @popular.length < 1
+      @popular[2] = Chapter.all.sample
       @new = Playlist.order('created_at desc').limit(6)
       render "home_page"
     end
@@ -33,7 +45,7 @@ class PlaylistsController < InheritedResources::Base
   private
 
     def set_categories_and_colors
-      @categories = ["Attitude", "Starting Up", "Fundraising", "Product", "Marketing", "Sales", "Hiring", "Finance", "Legal", "Auxiliary"]
+      @categories = ["Attitude", "Starting Up", "Product", "Sales", "Marketing", "Fundraising", "Hiring", "Biz & Finance", "Legal", "Auxiliary"]
       @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "grey"]
     end
 end

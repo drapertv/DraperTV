@@ -39,11 +39,7 @@
 
   <div class="featured-popular-content content-list">
     <% @popular.each do |media| %>
-      <% if media.class == Playlist %>
-        <%= render partial: "playlists/show", locals: {playlist: media} %>
-      <% else %>
-        <%= render partial: "livestreams/show", locals: {livestream: media} %>
-      <% end %>
+      <%= render partial: "#{media.class.to_s.downcase.pluralize}/show", locals: {media.class.to_s.downcase.to_sym => media} %>
     <% end %>
   </div>
 
@@ -61,16 +57,21 @@
           <div class="flipper">
             <div class="front">
               <%= link_to playlists_path(category: cat), :class => "categories-item" do %>
-                <div class="categories-icon <%= cat.downcase.gsub(" ", "") %>-icon">
+                <div class="categories-icon <%= cat.downcase.gsub("& "," ").gsub(" ", "") %>-icon">
                   <%= image_tag "#{cat.gsub(" ", "-").downcase}-icon.png", :class => "category-icon" %>
                 </div>
               <% end %>
             </div>
             <div class="back no-mobile">
-              <%= link_to playlists_path(category: cat), :class => "categories-item" do %>
+              <div class="cateogories-item">
                 <div class="categories-icon <%= cat.downcase.gsub(" ", "") %>-icon"></div>
-                <p class="series-count"><span><%= Playlist.tagged_with(cat).count %></span></br> Series</p>
-              <% end %>
+                <%= link_to playlists_path(category: cat), :class => "series-count" do %>
+                  <span><%= Playlist.tagged_with(cat).count %></span></br> Series
+                <% end %>
+                <%= link_to playlists_path(category: cat), :class => "courses-count" do %>
+                  <span><%= Playlist.tagged_with(cat).count %></span></br> Courses
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

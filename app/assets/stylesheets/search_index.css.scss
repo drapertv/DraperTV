@@ -6,7 +6,7 @@
   color: #c0c0c0;
 }
 
-.search-highlight {
+.highlighted {
   background: #D3E2F0;
 }
 
@@ -15,7 +15,6 @@
 		.results {
 			@include flexbox;
 			flex-wrap: wrap;
-			justify-content: space-between;
 		}
 		.content-expand-content {
 			p {

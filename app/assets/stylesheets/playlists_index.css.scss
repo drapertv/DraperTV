@@ -143,12 +143,8 @@
 			}
 		}
 		.content-expand {
-			max-height: 160px;
-			overflow-y: hidden;
-		}
-		.content-expand-content {
-			max-height: 160px;
-			overflow-y: hidden; 
+			max-height: 170px;
+			overflow-y: scroll;
 		}
 		.content-expand-header {
 			display: none;
@@ -158,15 +154,15 @@
 		.section-content-list {
 			@include flexbox;
 	    	flex-wrap: wrap;
-	    	justify-content: space-between;
 		}
 		.categories.hide-section {
 			@include flexbox;
 			flex-wrap: wrap;
 			justify-content: space-around;
 			background: $light-gray;
+			border: 1px solid $border-gray;
 			padding: 10px 0px;
-			margin-bottom: 20px;
+			margin-bottom: 30px;
 			.categories-item {
 				padding: 0px;
 			}
@@ -176,17 +172,61 @@
 				text-align: center;
 			}
 		}
+		.course .content-expand-content {
+			p {
+				margin-bottom: 5px;
+			}
+
+		}
+		.playlist-page .section-content-list .course .content-expand-content {
+			display: none;
+		}
 		.playlist-page .categories-item {
 			margin-bottom: 20px;
-      font-weight: 700;
-      width: auto;
-      margin: 10px 0;
+	      font-weight: 700;
+	      width: auto;
+	      margin: 10px 0;
 		}
 		.content.last-odd:last-child {
 			  margin-right: 350px;
 			  padding-left: 48px;
 			  box-sizing: content-box;
 			  border-left: 1px solid #e5e5e5;
+		}
+	}
+
+	.content-subtitle h4 {
+		color: $gray;
+	}
+
+	.content-subtitle.livestream-live h4 {
+		color: $red;
+	}
+
+	.playlist-page .content-subtitle span {
+		display: none;
+	}
+
+	.playlist-page .course .content-subtitle span {
+		display: inline;
+	}
+
+	.courses-container {
+		.content-subtitle h4.blue {color: #246db4;}
+		.content-subtitle h4.cyan {color: #35b3de;}
+		.content-subtitle h4.teal {color: #24b494;}
+		.content-subtitle h4.green {color: #88b250;}
+		.content-subtitle h4.yellow {color: #f2b81d;}
+		.content-subtitle h4.orange {color: #f38f31;}
+		.content-subtitle h4.red {color: #e1474c;}
+		.content-subtitle h4.grey {color: #919191;}
+		.content-subtitle h4.darkgrey {color: #666666;}
+		.content-subtitle h4.black {color: #000000;}
+		.content-subtitle h4.white {color: #ffffff;}
+		.content-subtitle h4.purple {color: #a53a6a;}
+		.content-subtitle h4
+		.yellow {
+			color: $gray;
 		}
 	}
 

@@ -5,9 +5,15 @@
       <div class="content-title">
         <h3><%= livestream.title %></h3>
       </div>
-      <div class="content-date">
-        <h4><span class="green">Livestream </span>- <%= livestream.formatted_stream_date %></h4>
-      </div>
+      <% if livestream.live? %>
+        <div class="content-subtitle livestream-live">
+          <h4 class="red">Live Now</h4>
+        </div>
+      <% else %>
+        <div class="content-date">
+          <h4><span class="red">Livestream - </span><%= livestream.formatted_stream_date %></h4>
+        </div>
+      <% end %>
     </div>
   <% end %>
   <div class="content-expand">

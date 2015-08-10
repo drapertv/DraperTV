@@ -83,7 +83,7 @@ small {
 .purple {color: #a53a6a;}
 
 .section-title {
-  .blue {color: #246db4;}
+.blue {color: #246db4;}
 .cyan {color: #35b3de;}
 .teal {color: #24b494;}
 .green {color: #88b250;}
@@ -119,7 +119,7 @@ header > a {
 .header-item {
   height: 30px;
   display: inline-block;
-  opacity: 0.5;
+  color: rgba(255,255,255,0.5);
   cursor: pointer;
   // margin-right: 20px;
 }

@@ -5,7 +5,7 @@
 				<%= Livestream.banner_livestream_info[:time] %>
 			</p>
 			<p class="banner-livestream-title">
-				<%= Livestream.banner_livestream_info[:livestream].title %>
+				<%= Livestream.banner_livestream_info[:livestream].title.upcase %>
 			</p>	
 		</div>
 		<%= image_tag "close.svg", :class => "close-banner" %>

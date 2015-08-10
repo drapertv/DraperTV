@@ -35,7 +35,6 @@ class Livestream < ActiveRecord::Base
     end
   end
 
-
   def formatted_stream_date
   	pst_stream_date = stream_date - 7.hours
   	pst_current_time = Time.now.utc - 7.hours
@@ -61,7 +60,6 @@ class Livestream < ActiveRecord::Base
   	end
   end
 
-
   def self.next_livestream_info
     livestream = next_livestream
     return if !next_livestream
@@ -78,7 +76,7 @@ class Livestream < ActiveRecord::Base
     if livestream.stream_date < Time.now
       time = "Livestream - NOW"
     else
-      time = "Livestream - #{(livestream.stream_date - 7.hours).strftime('%B %-d')}"
+      time = "Livestream - #{(livestream.stream_date - 7.hours).strftime('%B %-d, %l:%M%P PST')}"
     end
     {livestream: livestream, time: time}
   end
@@ -99,7 +97,17 @@ class Livestream < ActiveRecord::Base
     Playlist.all.limit(5)
   end
 
+  def name
+    title
+  end
 
+  def speaker_title
+    title
+  end
+
+  def self.today
+    where('stream_date < (?)', Time.now + 24.hours).where('stream_date > (?)', Time.now - 24.hours).select {|n| n.stream_date.day == Time.now.utc.day}
+  end
 
   private
 

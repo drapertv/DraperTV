@@ -10,9 +10,11 @@ class Search < ActiveRecord::Base
 	def self.search_for terms
 		playlists = Playlist.all
 		videos = Video.all
+		livestreams = Livestream.all
+		chapters = Chapter.all 
 		terms = terms.downcase
 		results = [:title, :name, :speaker_title, :description].map do |field|
-			[playlists, videos].map do |models|
+			[playlists, videos, livestreams, chapters].map do |models|
 				search_model_for(models, terms, field)
 			end
 		end.uniq.flatten

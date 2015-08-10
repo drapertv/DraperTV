@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623183422) do
+ActiveRecord::Schema.define(version: 20150810003327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,19 @@ ActiveRecord::Schema.define(version: 20150623183422) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "length"
+  end
+
+  create_table "chapters", force: true do |t|
+    t.integer "chapter_uid"
+    t.integer "number"
+    t.string  "topic_name"
+    t.text    "description"
+    t.text    "lessons_info"
+    t.integer "topic_uid"
+    t.boolean "popular"
+    t.string  "name"
+    t.boolean "public",       default: true
+    t.text    "summary"
   end
 
   create_table "comments", force: true do |t|

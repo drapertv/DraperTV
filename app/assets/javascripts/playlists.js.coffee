@@ -6,14 +6,7 @@ Playlist =
 		$('body').on 'click', '.scroll-grey, .scroll-green', @scrollPageOnClick
 		$('body').on 'mousemove', '.scroll-grey, .scroll-green', @moveScrollPercentOnMouseMove
 		$('body').on 'mouseleave', '.scroll-grey, .scroll-green', @continueChangeOnMouseLeave
-		@alignContentOnPageLoad()
 		Playlist.scrollBarIsPaused = false
-
-	alignContentOnPageLoad: ->
-		# fixes the spacing for justify-content: space-between
-		$('.content:last-child').each ->
-			if $(@).parent().find('.content').length % 3 == 2
-				$(@).addClass('last-odd')
 
 	continueChangeOnMouseLeave: ->
 		Playlist.scrollBarIsPaused = false
