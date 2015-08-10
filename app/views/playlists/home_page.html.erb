@@ -69,7 +69,7 @@
                   <span><%= Playlist.tagged_with(cat).count %></span></br> Series
                 <% end %>
                 <%= link_to playlists_path(category: cat), :class => "courses-count" do %>
-                  <span><%= Playlist.tagged_with(cat).count %></span></br> Courses
+                  <span><%= Chapter.where(topic_name: cat).count %></span></br> Courses
                 <% end %>
               </div>
             </div>
