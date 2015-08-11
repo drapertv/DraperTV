@@ -9,12 +9,14 @@ class LivestreamsController < InheritedResources::Base
     @popular[2] = Chapter.all.sample
     @og_title = "#{@livestream.title} - DraperTV"
     @og_description = @livestream.description
+    @meta_description = @livestream.description
     @og_image = @livestream.image_url
   end
 
   def index
     @og_title = "Livestreams - DraperTV "
     @og_description = "Livestreaming the best of Silicon Valley"
+    @meta_descrtipion = "Watch live as top Silicon Valley speakers teach startup skills and entrepreneurship at Draper University. Be part of the action on DraperTV with live Q&A through @Draper_U on Twitter."
     @upcoming_livestreams = Livestream.upcoming.order('stream_date asc')
     @past_livestreams = Livestream.past.order('stream_date desc')
     @current_livestreams = Livestream.current

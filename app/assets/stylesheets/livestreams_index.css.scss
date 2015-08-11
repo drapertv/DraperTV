@@ -16,11 +16,8 @@
 .no-content {
   padding: 7px 14px;
   width: 100%;
-  height: 40px;
-  line-height: 40px;
-  background: $light-gray;
-  border: 1px solid $border-gray;
-  text-align: center;
+  @include flexbox;
+
 }
 
 .no-content > p {
@@ -119,6 +116,13 @@
     .no-content {
       padding: 0px;
       margin-bottom: 50px;
+      height: 40px;
+      line-height: 40px;
+      background: $light-gray;
+      border: 1px solid $border-gray;
+      text-align: center;
+      display: block;
+
     }
     .livestream-page {
       @include flexbox;
