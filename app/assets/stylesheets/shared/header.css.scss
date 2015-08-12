@@ -80,7 +80,8 @@
 	height: 30px;
 	border: none;
 	-webkit-appearance: none;
-	font-size: 15px;
+	font-size: 14px;
+	line-height: 30px;
 	opacity: 1;
 	border-radius: 5px;
 	background: white;
@@ -99,8 +100,9 @@
 	.logo.header-item {
 	  	margin: 10px 0px;
 	 }
-	 .header-item {
+	 body .header-item {
 	 	position: relative;
+	 	height: auto;
 	 	.bubble {
 	 		color: white;
 	 		background: $red;
@@ -117,6 +119,13 @@
 	 		border-radius: 50px;;
 	 	}
 	 }
+	 .nav.header-item {
+	 	height: 16px;
+	 	line-height: initial;
+	 	img {
+	 		vertical-align: initial;
+	 	}
+	 }
 	 #landing-header {
 	 	@include flexbox;
 	 	@include justify-content(space-between);
@@ -128,6 +137,7 @@
 	 }
 	 .header-left, .header-right {
 	 	@include flexbox;
+	 	@include align-items(center);
 	 }
 	 .nav.header-item {
 	 	margin-left: 20px;
