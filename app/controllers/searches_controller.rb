@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
   before_filter :set_categories_and_colors
+  protect_from_forgery :except => :create 
 
   def create
     @terms = params[:search][:terms]

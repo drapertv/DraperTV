@@ -17,7 +17,6 @@ class PlaylistsController < InheritedResources::Base
       if !params[:category]
         chapter = Chapter.all.sample
         @playlists = @playlists.to_a.insert(i - 1, chapter)
-        p chapter
       else
         @playlists = @playlists.to_a.insert(i - 1, Chapter.where(topic_name: params[:category].upcase).all.sample)
       end
@@ -28,12 +27,13 @@ class PlaylistsController < InheritedResources::Base
       @featured = Playlist.where(show_on_front_page: true)
       @popular = Playlist.popular
 
+
       @og_title = "DraperTV"
       @og_image = @featured.first.first_video.vthumbnail_url
       
       @featured = Playlist.all.limit(6) if @featured.length < 1
       @popular = Playlist.all.limit(6) if @popular.length < 1
-      @popular[2] = Chapter.all.sample
+      @popular = @popular.to_a.insert(2, Chapter.all.sample)
       @new = Playlist.order('created_at desc').limit(6)
       render "home_page"
     end

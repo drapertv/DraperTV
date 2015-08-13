@@ -49,7 +49,7 @@ class Playlist < ActiveRecord::Base
   end
 
   def self.popular
-    (Playlist.where(popular: true) + Livestream.where(popular: true)).shuffle
+    (Playlist.where(popular: true) + Livestream.where(popular: true))[0..4].shuffle
   end
 
 
