@@ -4,7 +4,7 @@ Home =
 		$('body').on 'click', '.featured-tabs button', @showTabOnClick
 		@mobile = $(window).width() < 1024
 		$('.home').parents('body').addClass('show-scroll-bar')
-		$('body').on 'click', '.close-banner', @closeBanner		
+		$('body').on 'click', '.close-banner', @closeBanner		  
 		# switch between slideshow and carousel appropriately if page width changes
 		# polls page for width every half second
 		if @mobile

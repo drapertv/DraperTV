@@ -43,6 +43,9 @@ module DraperTV
             end
         end
         config.autoload_paths += %W(#{config.root}/lib)
+        config.assets.css_compressor = :sass
+        config.assets.js_compressor = :uglifier
+
         # config.autoload_paths << Rails.root.join('lib')
 
         # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
