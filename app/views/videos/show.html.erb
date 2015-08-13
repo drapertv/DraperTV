@@ -7,22 +7,22 @@
     </div>
     <div class="video-side-bar no-mobile">
       <div class="video-series-info">
-        <p class="series-title">SERIES: <%= @playlist.title.upcase %></p>
+        <p class="series-title">SERIES: <%= @series.title.upcase %></p>
         <div class="series-info-row series-info-row-top">
-          <p><%= @playlist.name %></p>
-          <p><%= @playlist.videos.count %> videos</p>
+          <p><%= @series.name %></p>
+          <p><%= @series.videos.count %> videos</p>
         </div>
         <div class="series-info-row">
-          <p><%= @playlist.publish_date %></p>
+          <p><%= @series.publish_date %></p>
           <div class="series-category">
-            <% @playlist.category_list.each_with_index do |category, i| %>
+            <% @series.category_list.each_with_index do |category, i| %>
               <% if @categories.find_index(category.downcase.split(" ").map(&:capitalize).join(" ")) %>   
                 <div class="vid-cat-container">
-                  <%= link_to playlists_path(category: category.downcase.split(" ").map(&:capitalize).join(" ")) do %>
+                  <%= link_to series_index_path(category: category.downcase.split(" ").map(&:capitalize).join(" ")) do %>
                     <%= image_tag "#{category.downcase.gsub(" ", "-")}done.svg", :class => "vid-cat-icon" %>
                   <% end %>
                   <div class="vid-cat <%= @colors[@categories.index(category.downcase.split(" ").map(&:capitalize).join(" "))] %>">
-                    <%= category.downcase.split(" ").map(&:capitalize).join(" ") %>
+                    <%= category %>
                     <div class="tail"></div>
                   </div>
                 </div>
@@ -32,9 +32,10 @@
         </div>
       </div>
       <div class="video-series-list">
-        <% @playlist.videos.sort_by(&:id).each do |video| %>
+        <% @series.videos.sort_by(&:id).each_with_index do |video, i| %>
           <%= link_to video_path(video) do %>
             <div class="video <%= 'video-current' if video == @video %>">
+              <p class="video-number"><%= i + 1 %>.</p>
               <p class="video-title"><%= video.title %></p>
               <p class="video-subtitle"><%= video.length %></p>
             </div>
@@ -74,20 +75,20 @@
   </div>
   <div class="featured-series-content content-list">
     <div class="content">
-      <a href="playlist-jaredbrubaker.html">
-        <%= image_tag @playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+      <a href="series-jaredbrubaker.html">
+        <%= image_tag @series.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
         <div class="content-text">
           <div class="content-title">
-            <h3><%= @playlist.title %></h3>
+            <h3><%= @series.title %></h3>
           </div>
           <div class="content-subtitle">
-            <h4><%= @playlist.name %></h4>
+            <h4><%= @series.name %></h4>
           </div>
         </div>
       </a>
       <div class="content-expand">
         <div class="content-expand-content">
-          <% @playlist.videos.each do |video| %>
+          <% @series.videos.each do |video| %>
             <%= link_to video_path(video) do %>
               <div class="video <%= 'video-current' if video == @video %>">
                 <p class="video-title"><%= video.title %></p>
@@ -100,9 +101,9 @@
     </div>
   </div>
   <div class="featured-related-content content-list hide-section">
-    <% @featured.each do |playlist| %>
-      <% if playlist %>
-        <%= render partial: "#{playlist.class.to_s.downcase.pluralize}/show", locals: {playlist.class.to_s.downcase.to_sym => playlist} %>
+    <% @featured.each do |series| %>
+      <% if series %>
+        <%= render partial: "#{series.class.to_s.downcase.pluralize}/show", locals: {series.class.to_s.downcase.to_sym => series} %>
       <% end %>
     <% end %>
 </section>

@@ -1,4 +1,4 @@
-<section class="main playlist-page">
+<section class="main series-page">
   <%= render partial: "livestreams/banner" %>
   <div class="scroll-percent-container no-mobile">
     <div class="scroll-grey"></div>
@@ -13,15 +13,15 @@
   </div>
   <div class="categories hide-section">
     <% @categories.each_with_index do |cat , i| %>
-      <%= link_to playlists_path(category: cat) do %>
+      <%= link_to series_index_path(category: cat) do %>
         <h3 class="categories-item <%= @colors[i] %>"><%= cat %></h3>
       <% end %>
     <% end %>
   </div>
   <div class="section-content-list">
-    <% @playlists.each do |playlist| %>
-      <% if playlist %>
-        <%= render partial: "#{playlist.class.to_s.downcase.pluralize}/show", locals: {playlist.class.to_s.downcase.to_sym => playlist} %>
+    <% @series.each do |media| %>
+      <% if media %>
+        <%= render partial: "#{media.class.to_s.downcase.pluralize}/show", locals: {media.class.to_s.downcase.to_sym => media} %>
       <% end %>
     <% end %>
   </div>

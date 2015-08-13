@@ -111,7 +111,7 @@
 	text-transform: uppercase;
 }
 
-.playlist-page {
+.series-page {
 	.categories {
 		padding: 7px;
 	}
@@ -151,6 +151,17 @@
 			max-height: 100%;
 
 		}
+		.content-expand-content {
+			margin-top: 20px;
+			a:first-child {
+				.video {
+					padding-top: 0px;
+				}
+			}
+			.video {
+				padding: 5px 0px;
+			}
+		}
 		.section-content-list {
 			@include flexbox;
 	    	flex-wrap: wrap;
@@ -172,16 +183,18 @@
 				text-align: center;
 			}
 		}
+		.course.content {
+			border: 1px solid $yellow;
+		}
 		.course .content-expand-content {
 			p {
 				margin-bottom: 5px;
 			}
-
 		}
-		.playlist-page .section-content-list .course .content-expand-content.lessons {
+		.series-page .section-content-list .course .content-expand-content.lessons {
 			display: none;
 		}
-		.playlist-page .categories-item {
+		.series-page .categories-item {
 			margin-bottom: 20px;
 	      font-weight: 700;
 	      width: auto;
@@ -203,11 +216,11 @@
 		color: $red;
 	}
 
-	.playlist-page .content-subtitle span {
+	.series-page .content-subtitle span {
 		display: none;
 	}
 
-	.playlist-page .course .content-subtitle span {
+	.series-page .course .content-subtitle span {
 		display: inline;
 	}
 

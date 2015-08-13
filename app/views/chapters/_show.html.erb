@@ -22,7 +22,7 @@
     <div class="content-expand-content lessons hide-section">
       <p>Lessons:</p>
       <% chapter.lessons.each_with_index do |lesson, i| %>
-        <p class="lesson"><%= i + 1 %>. <%= lesson %></p>
+        <p class="lesson"><%= i + 1 %>. <%= lesson.split("- ")[0] %></p>
       <% end %>
     </div>
   </div>

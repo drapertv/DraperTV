@@ -144,12 +144,15 @@
 	    	}
 	    }
 		.series-count, .courses-count {
-			letter-spacing: 3px;
+			letter-spacing: 2px;
 			position: absolute;
 	    	color: white;
 	    	text-align: center;
 	    	left: calc(50% - 40px);
 	    	width: 80px;
+		}
+		.series-count[href="/playlists?category=Auxiliary"] {
+			top: 41px;
 		}
 	    .series-count {	
 	    	top: 15px;
@@ -197,6 +200,9 @@
 	    	@include flexbox;
 	    	flex-wrap: wrap;
 	    	order: -2;
+	    }
+	    .featured-popular-content.content-list, .section-content-list, .featured-related-content, .results {
+	    	margin-bottom: 14px;
 	    }
 	    .hide-section {
 	    	display: none;

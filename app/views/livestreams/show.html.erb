@@ -25,27 +25,27 @@
         <h1>POPULAR</h1>
     </div>
     <div class="featured-popular-content content-list no-desk">
-      <% Playlist.popular.each do |playlist| %>
-        <% if playlist.class == Playlist %>
+      <% Series.popular.each do |series| %>
+        <% if series.class == Series %>
           <div class="content">
-            <%= link_to playlist_link(@browser, playlist), :class => "content-link" do %>
-              <%= image_tag playlist.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+            <%= link_to series_link(@browser, series), :class => "content-link" do %>
+              <%= image_tag series.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
               <div class="content-text">
                 <div class="content-title">
-                  <h3><%= playlist.title %></h3>
+                  <h3><%= series.title %></h3>
                 </div>
                 <div class="content-subtitle">
-                  <h4><%= playlist.name %></h4>
+                  <h4><%= series.name %></h4>
                 </div>
               </div>
             <% end %>
             <div class="content-expand">
               <div class="content-expand-header no-desk">
                 <div class="arrow"></div>
-                <p><%= playlist.videos.count %> videos</p>
+                <p><%= series.videos.count %> videos</p>
               </div>
               <div class="content-expand-content hide-section">
-                <% playlist.videos.each do |video| %>
+                <% series.videos.each do |video| %>
                   <%= link_to video_path(video) do %>
                     <div class="video">
                       <p class="video-title"><%= video.title %></p>
@@ -58,7 +58,7 @@
           </div>
         <% else %>
           <div class="content livestream">
-              <% livestream = playlist %>
+              <% livestream = series %>
               <%= link_to livestream_path(livestream), :class => "content-link" do %>
                 <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
                 <div class="content-text livestream-text">
@@ -107,7 +107,7 @@
           <h1>POPULAR</h1>
         </div>
         <% @popular.each do |content| %>
-          <% if content.class == Playlist %>
+          <% if content.class == Series %>
             <div class="related-content">
               <%= link_to video_path(content.first_video) do %>
                 <div class="content-image-container">

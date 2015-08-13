@@ -1,10 +1,10 @@
 module PlaylistsHelper
 
-	def playlist_link browser, playlist
+	def series_link browser, series
 		if browser.mobile?
-			playlist_path(playlist)
+			series_path(series)
 		else
-			video_path(playlist.first_video)
+			video_path(series.first_video)
 		end
 	end
 end

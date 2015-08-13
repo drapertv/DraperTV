@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   mount StripeEvent::Engine => '/stripe'
 
   unauthenticated :user do
-    root to: 'playlists#index'
+    root to: 'series#index'
   end
 
   authenticated :user do
-    root :to => 'playlists#index', as: :authenticated_root
+    root :to => 'series#index', as: :authenticated_root
   end
 
   resources :videos
@@ -19,8 +19,7 @@ Rails.application.routes.draw do
   end  
   resources :searches
 
-  resources :playlists do 
-  end
+  resources :series
 
   get '/hidebanner', to: 'livestreams#hidebanner'
 

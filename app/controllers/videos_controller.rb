@@ -6,11 +6,11 @@ class VideosController < ApplicationController
   def show
     @video = Video.friendly.find(params[:id])
     @og_title = "#{@video.title} - DraperTV"
-    @playlist = @video.playlist
-    @og_description = @playlist.first_video.description
+    @series = @video.series
+    @og_description = @series.first_video.description
     
-    @og_image = @playlist.first_video.vthumbnail_url
-    @featured = @video.suggested(@playlist.category_list)[0..5]
+    @og_image = @series.first_video.vthumbnail_url
+    @featured = @video.suggested(@series.category_list)[0..5]
 
     @featured[2] = Chapter.all.sample
     @featured[5] = Chapter.all.sample

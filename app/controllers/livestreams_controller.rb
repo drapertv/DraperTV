@@ -5,7 +5,7 @@ class LivestreamsController < InheritedResources::Base
   def show
     @livestream = Livestream.friendly.find(params[:id])
     @chapters = Chapter.all.limit(3)
-    @popular = Playlist.popular
+    @popular = Series.popular
     @popular[2] = Chapter.all.sample
     @og_title = "#{@livestream.title} - DraperTV"
     @og_description = @livestream.description
@@ -16,13 +16,13 @@ class LivestreamsController < InheritedResources::Base
   def index
     @og_title = "Livestreams - DraperTV "
     @og_description = "Livestreaming the best of Silicon Valley"
-    @meta_descrtipion = "Watch live as top Silicon Valley speakers teach startup skills and entrepreneurship at Draper University. Be part of the action on DraperTV with live Q&A through @Draper_U on Twitter."
+    @meta_description = "Watch live as top Silicon Valley speakers teach startup skills and entrepreneurship at Draper University. Be part of the action on DraperTV with live Q&A through @Draper_U on Twitter."
     @upcoming_livestreams = Livestream.upcoming.order('stream_date asc')
     @past_livestreams = Livestream.past.order('stream_date desc')
     @current_livestreams = Livestream.current
     @future_livestreams = @current_livestreams + @upcoming_livestreams
 
-    indexes = (1..@future_livestreams.count).to_a.reject! {|n| n % 6 != 5}
+    indexes = (1..@future_livestreams.count).to_a.reject! {|n| n % 9 != 8}
 
     if indexes
       indexes.each do |i|
@@ -31,7 +31,7 @@ class LivestreamsController < InheritedResources::Base
       end
     end
 
-    indexes = (1..@past_livestreams.count).to_a.reject! {|n| n % 6 != 5}
+    indexes = (1..@past_livestreams.count).to_a.reject! {|n| n % 9 != 8}
     if indexes
       indexes.each do |i|
         @past_livestreams = @past_livestreams.to_a.insert(i - 1, Chapter.all.sample)

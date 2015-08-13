@@ -1,4 +1,4 @@
-ActiveAdmin.register Playlist do
+ActiveAdmin.register Series do
 
 
   permit_params :title, :price, :challange_id, :video_ids,:author_id, :video_ids_raw, :popular, :category_list, :show_on_front_page
@@ -14,7 +14,7 @@ ActiveAdmin.register Playlist do
   end
 
   form :html => { :enctype => "multipart/form-data" } do |f|
-   f.inputs "Playlist Details" do
+   f.inputs "Series Details" do
     f.inputs :title
     f.inputs :price
     f.inputs :challange_id

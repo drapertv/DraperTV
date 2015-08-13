@@ -106,7 +106,7 @@ class Livestream < ActiveRecord::Base
   end
 
   def self.today
-    where('stream_date < (?)', Time.now + 24.hours).where('stream_date > (?)', Time.now - 24.hours).select {|n| n.stream_date.day == Time.now.utc.day}
+    where('stream_date < (?)', Time.now + 24.hours).where('stream_date > (?)', Time.now).select {|n| n.stream_date.day == Time.now.utc.day}
   end
 
   private

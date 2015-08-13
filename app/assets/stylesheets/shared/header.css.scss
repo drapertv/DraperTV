@@ -72,6 +72,7 @@
 
 .logo.header-item {
 	height: 30px;
+	width: 150px;
 	margin: 0px auto;
 	opacity: 1;
 }
@@ -120,16 +121,19 @@
 	 	}
 	 }
 	 .nav.header-item {
-	 	height: 16px;
+	 	height: 50px;
+	 	width: 50px;
 	 	line-height: initial;
 	 	img {
 	 		vertical-align: initial;
+	 		margin: 17px;
 	 	}
 	 }
 	 #landing-header {
 	 	@include flexbox;
 	 	@include justify-content(space-between);
 	 	padding: 0px 20px;
+	 	padding-right: 3px;
 	 }
 	 .header-logo {
 	 	position: static;
@@ -140,7 +144,7 @@
 	 	@include align-items(center);
 	 }
 	 .nav.header-item {
-	 	margin-left: 20px;
+	 	margin-left: 3px;
 	 	margin-right: 0px;
 	 }
 	 .nav.header-item:hover {
@@ -168,7 +172,28 @@
 
 		 	}
 	 	}
-	 }
+	}
+	.header-right {
+	.dropdown-menu {
+		top: 20px;
+		left: initial;
+		right: 20px;
+		border-radius: 5px;
+		li a {
+			color: #414141;
+		}
+		li a:hover {
+			background: none;
+		}
+	}
+	.nav.header-item:hover {
+	.dropdown-menu {
+		display: block;
+		left: initial;
+	}
+}
+
+}
 
 }
 

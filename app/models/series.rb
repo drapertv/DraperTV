@@ -1,4 +1,4 @@
-class Playlist < ActiveRecord::Base
+class Series < ActiveRecord::Base
   acts_as_votable
   acts_as_taggable_on :category
   has_many :challenges
@@ -49,7 +49,11 @@ class Playlist < ActiveRecord::Base
   end
 
   def self.popular
-    (Playlist.where(popular: true) + Livestream.where(popular: true))[0..4].shuffle
+    (where(popular: true) + Livestream.where(popular: true))[0..4].shuffle
+  end
+
+  def self.switch_tags
+    ActsAsTaggableOn::Tagging.all.where(taggable_type:"Playlist").update_all taggable_type: "Series"
   end
 
 

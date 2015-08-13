@@ -5,7 +5,7 @@ class Chapter < ActiveRecord::Base
 	end
 
 	def image_url
-		Playlist.tagged_with(topic_name).first.vthumbnail
+		Series.tagged_with(topic_name).first.vthumbnail
 	end
 
 	def lessons
@@ -17,11 +17,11 @@ class Chapter < ActiveRecord::Base
 	end
 
 	def description
-		topic_name
+		summary
 	end
 
 	def speaker_title
-		name
+		lessons.join("<br>")
 	end
 
 end

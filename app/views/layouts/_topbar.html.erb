@@ -15,7 +15,7 @@
   
   <ul class="header-right">
     <li class="header-item <%= 'active' if request.original_url.include?("playlists") %>">
-      <%= link_to playlists_path do %>
+      <%= link_to series_index_path do %>
         SERIES
       <% end %>
     </li>
@@ -37,7 +37,11 @@
     </li>
 
     <ul class="nav header-item">
-        <%= image_tag "settings.svg", :class => "settings-icon" %>
+      <%= image_tag "settings.svg", :class => "settings-icon" %>
+
+        <ul class="dropdown-menu">
+          <li role="menu"><%= link_to "Sign In", "http://courses.drapertv.com/users/sign_in"  %></li>
+        </ul>
     </ul>
   </ul>
 </header>
@@ -56,7 +60,7 @@
   <%= link_to root_path do %>
     <h3 class="menu-item">Home</h3>
   <% end %>
-  <%= link_to playlists_path do %>
+  <%= link_to series_index_path do %>
     <h3 class="menu-item">Series</h3>
   <% end %>
   <%= link_to livestreams_path do %>

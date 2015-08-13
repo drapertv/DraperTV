@@ -136,7 +136,23 @@ iframe {
 				.video-title {
 					color: $gray;
 				}
+				.video {
+					@include flexbox;
+					.video-number {
+						width: 20px;
+						margin-left: 5px;
+						color: $gray;
+					}
+					.video-subtitle {
+						width: 40px;
+					}
+					.video-title {
+						width: calc(100% - 65px);
+						padding-right: 10px;
+					}
+				}
 			}
+
 			.series-title {
 				font-size: 14px;
 				font-weight: 700;
@@ -147,8 +163,9 @@ iframe {
 			.series-info-row {
 				color: $gray;
 				@include flexbox;
-				justify-content: space-between;
+				@include justify-content(space-between);
 				margin-top: 5px;
+				@include align-items(center);
 			}
 			.series-info-row-top > p {
 				font-weight: 700;
@@ -193,6 +210,9 @@ iframe {
 				display: block;
 				width: 296px;
 				text-align: left;
+				h3 {
+					font-weight: 700;
+				}
 			}
 			.vid-cat-container {
 				position: relative;
@@ -203,8 +223,8 @@ iframe {
 				}
 			}
 			.vid-cat-icon {
-				width: 15px;
-				height: 15px;
+				width: 18px;
+				height: 18px;
 			}
 			.vid-cat {
 				position: absolute;
@@ -218,20 +238,7 @@ iframe {
 				display: none;
 				right: -42.5px;
 				width: 100px;
-			}
-			.vid-cat:before{
-			    content:'';
-			    display:block;
-			    width:0;
-			    height:0;
-			    position:absolute;
-
-			    border-top: 8px solid transparent;
-			    border-bottom: 8px solid transparent;
-			    border-right:8px solid black;
-			    left:-8px;
-
-			    top:7px;
+				font-weight: 700;
 			}
 			.tail {
 		        width: 0px;

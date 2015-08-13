@@ -9,7 +9,7 @@ class Video < ActiveRecord::Base
   
   friendly_id :title, use: :slugged
 
-  delegate :speaker, :profilepic_url, :name, :challenge, :speaker_title, to: :playlist
+  delegate :speaker, :profilepic_url, :name, :challenge, :speaker_title, to: :series
 
   after_update :expire_cache
   after_create :expire_cache
@@ -19,13 +19,13 @@ class Video < ActiveRecord::Base
   include Extensions::Publishable
   include Extensions::Suggestable
 
-	def order_in_playlist
-		ids = playlist.video_ids
+	def order_in_series
+		ids = series.video_ids
 		"#{(ids.find_index(id) || 0) + 1}/#{ids.length}" 
 	end
 
-	def playlist
-		Playlist.where(author_id: author_id).first || Playlist.first
+	def series
+		Series.where(author_id: author_id).first || Series.first
 	end
 
 	def categories
@@ -41,7 +41,7 @@ class Video < ActiveRecord::Base
 	end
 
 	def thumbnail options=nil
-		options ? playlist.videos.first.vthumbnail_url(options) : playlist.videos.first.vthumbnail_url
+		options ? series.videos.first.vthumbnail_url(options) : series.videos.first.vthumbnail_url
 	end
 
 	private
@@ -49,6 +49,6 @@ class Video < ActiveRecord::Base
 	def expire_cache
 		ActionController::Base.new.expire_fragment('all_videos')
 		ActionController::Base.new.expire_fragment('featured_videos')
-		ActionController::Base.new.expire_fragment('all_playlists')
+		ActionController::Base.new.expire_fragment('all_series')
 	end
 end
