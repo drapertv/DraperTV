@@ -176,11 +176,20 @@
 	.header-right {
 	.dropdown-menu {
 		top: 20px;
-		left: initial;
-		right: 20px;
-		border-radius: 5px;
+		  left: initial;
+		  right: 20px;
+		  border-radius: 5px;
+		  width: 120px;
+		  position: absolute;
+		  background-color: white;
+		  height: 40px;
+		  display: none;
+		  line-height: 40px;
 		li a {
 			color: #414141;
+			width: 100%;
+			padding: 0px;
+			display: block;
 		}
 		li a:hover {
 			background: none;
