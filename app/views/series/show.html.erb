@@ -1,19 +1,19 @@
 <section class="main">
   <div class="section-title playlist-title">
-    <h2 class="blue">Series: <%= @playlist.title %></h2>
+    <h2 class="blue">Series: <%= @series.title %></h2>
     <div class="playlist-info-container">
       <div class="playlist-title-column playlist-title-left">
         <a href="#">
-          <h3><%= @playlist.name %></h3>
+          <h3><%= @series.name %></h3>
         </a>
         <h4>June 23, 2012</h4>
       </div>
       <div class="playlist-title-column playlist-title-right">
-        <h3><%= @playlist.videos.count %> videos</h3>
+        <h3><%= @series.videos.count %> videos</h3>
           <p class="cyan">
-            <% @playlist.category_list.each_with_index do |category, i| %>
+            <% @series.category_list.each_with_index do |category, i| %>
               <% if category != "EXTRAS" && @categories.find_index(category.downcase.capitalize) %>
-                <%= link_to playlists_path(category: category.downcase.capitalize) do %>
+                <%= link_to series_index_path(category: category.downcase.capitalize) do %>
                   <span class="<%= @colors[@categories.find_index(category.downcase.capitalize)] %>"><% unless i == 0 %>, <% end %><%= category.upcase %></span>
                 <% end %>
               <% end %>
@@ -24,7 +24,7 @@
   </div>
 
   <div class="section-content-list">
-    <% @playlist.videos.order(:id).each do |video| %>
+    <% @series.videos.order(:id).each do |video| %>
       <div class="content">
         <%= link_to video_path(video), :class => "content-link" do %>
           <%= image_tag video.thumbnail(:seriesthumb), :class => "series-thumbnail" %>
