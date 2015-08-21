@@ -70,7 +70,7 @@
                 <% end %>
                 <% chapters = Chapter.where(topic_name: cat.upcase) %>
                 <% if !chapters.empty? %>
-                  <%= link_to "http://courses.drapertv.com/topics/#{chapters.first.topic_uid}", :class => "courses-count" do %>
+                  <%= link_to "http://courses.drapertv.com/topics/#{cat.downcase.gsub(" & "," ").gsub(" ", "-")}", :class => "courses-count" do %>
                     <span><%= chapters.count %></span></br> courses
                   <% end %>
                 <% end %>
