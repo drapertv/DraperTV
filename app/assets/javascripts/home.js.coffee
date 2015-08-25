@@ -54,18 +54,18 @@ Home =
 		Home.slideShowStarted = true
 		#slideshow for main carousel
 		#show the third item
-		$($('.featured-carousel-main .featured-item')[2]).show()
-		setInterval ->
-			#fade out current item
-			toFadeOut = $('.featured-carousel-main .featured-item:visible').first()
-			toFadeOut.fadeOut(1000)
+		# $($('.featured-carousel-main .featured-item')[2]).show()
+		# setInterval ->
+		# 	#fade out current item
+		# 	toFadeOut = $('.featured-carousel-main .featured-item:visible').first()
+		# 	toFadeOut.fadeOut(1000)
 
-			#fade in next item
-			toFadeIn = toFadeOut.parent().next().find('.featured-item')
-			if toFadeIn.length == 0
-				toFadeIn = $('.featured-carousel-main .featured-item').first()
-			toFadeIn.fadeIn(1000)
-		, 5000
+		# 	#fade in next item
+		# 	toFadeIn = toFadeOut.parent().next().find('.featured-item')
+		# 	if toFadeIn.length == 0
+		# 		toFadeIn = $('.featured-carousel-main .featured-item').first()
+		# 	toFadeIn.fadeIn(1000)
+		# , 5000
 
 		#slideshow for side carousel
 		#show the first two items

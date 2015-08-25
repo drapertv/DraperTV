@@ -11,6 +11,9 @@
       <%= image_tag 'menu-icon.png' %>
     </div>
   </div>
+  <p class="page-description">
+    Watch talks given by top Silicon Valley startup founders and executives at Draper University. Each lecture is curated into a series of short videos highlighting important topics our speakers present. 
+  </p>
   <div class="categories hide-section">
     <% @categories.each_with_index do |cat , i| %>
       <%= link_to series_index_path(category: cat) do %>

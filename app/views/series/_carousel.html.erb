@@ -1,17 +1,36 @@
 <div class="featured-carousel <%= html_class %>">
-  <div class="featured-carousel-main">
-    <% @featured.reverse.each_with_index do |playlist, i| %>
-      <%= link_to video_path(playlist.first_video) do %>
-        <div class="featured-item" style='background-image: url(<%= url_for(playlist.first_video.vthumbnail_url) %>);'>
-          <div class="featured-overlay featured-overlay-main">
-            <div class="featured-text">
-              <h3><%= playlist.name %></h3>
-              <h1><%= playlist.title %></h1>
+  <% if false %>
+    <div class="featured-carousel-main">
+      <% @featured.reverse.each_with_index do |playlist, i| %>
+        <%= link_to video_path(playlist.first_video) do %>
+          <div class="featured-item" style='background-image: url(<%= url_for(playlist.first_video.vthumbnail_url) %>);'>
+            <div class="featured-overlay featured-overlay-main">
+              <div class="featured-text">
+                <h3><%= playlist.name %></h3>
+                <h1><%= playlist.title %></h1>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+  <% end %>
+  <div class="featured-carousel-main">
+    <p class="poster-tagline">Learn to build a startup<br>from the ground up.</p>
+    <div class="poster-title-container">
+      <p class="introducing">Introducing</p>
+      <p class="poster-title">DRAPERTV COURSES</p>
+    </div>
+    <div class="poster-footer">
+      <p class="poster-footer-text">
+         Watch exclusive videos, complete activities, discuss with your fellow entrepreneurs, and get the right tools for the job.
+      </p>
+      <%= link_to "http://courses.drapertv.com", :class => "poster-footer-link" do %>
+          Click to go to courses
+      <% end %>
+    </div>
+    
+
   </div>
   <div class="featured-carousel-side">
      <% @featured.each_with_index do |playlist, i| %>

@@ -64,6 +64,46 @@
 			height: 360px;
 	    	width: 640px;
 	    	position: relative;
+	    	background: image_url("du_overlay.jpg");
+	    	background-size: cover;
+	    	padding: 40px 0px;
+	    	.poster-tagline {
+	    		text-align: center;
+	    		font-size: 22px;
+	    		color: #8DC7FF;
+	    		line-height: 26px;
+	    		margin-bottom: 30px;
+	    	}
+	    	.poster-title-container {
+	    		padding: 0px 82px;
+	    		margin-bottom: 40px;
+	    	}
+	    	.poster-footer {
+	    		background: #113C66;
+	    		padding: 10px 0px;
+	    		height: 86px;
+	    		.poster-footer-text {
+	    			color: white;
+	    			text-align: center;
+	    			margin-bottom: 8px;
+	    			line-height: 17px;
+	    		}
+	    		.poster-footer-link {
+	    			text-align: center;
+	    			color: #8DC7FF;
+	    			text-decoration: underline;
+	    			display: block;
+	    		}
+	    	}
+	    	.introducing {
+	    		font-weight: 300;
+	    		color: #8DC7FF;
+	    	}
+	    	.poster-title {
+	    		font-size: 48px;
+	    		font-weight: 600;
+	    		color: white;
+	    	}
 	    	.featured-item {
 		    	height: 360px;
 		    	width: 640px;
