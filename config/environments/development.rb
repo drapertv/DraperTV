@@ -34,15 +34,24 @@ Rails.application.configure do
     :exception_recipients => %w{drapertvexceptions@gmail.com}
   }
 
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   domain: Rails.application.secrets.domain_name,
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: Rails.application.secrets.email_provider_username,
+  #   password: Rails.application.secrets.email_provider_password
+  # }
+  # config.action_mailer.deconfig.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: Rails.application.secrets.domain_name,
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: Rails.application.secrets.email_provider_username,
-    password: Rails.application.secrets.email_provider_password
-  }
+  :address              => "smtp.live.com",
+  :port                 => 587,
+  :domain               => 'draperuniversity.com',
+  :user_name            => 'alee',
+  :password             => 'Andylee1',
+  :authentication       => :login,
+  :enable_starttls_auto => true  }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
