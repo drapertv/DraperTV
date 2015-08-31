@@ -30,12 +30,14 @@ CSV.foreach(target) do |row|
   	code = rez_codes[counter]
   end
   if !email2
-  	UserMailer.invite_email(email1, name, code).deliver
-    p "email1"
+  	# UserMailer.invite_email(email1, name, code).deliver
+    p email1
+    p name
+    p code
   else
-  	UserMailer.invite_email(email1, name, code).deliver
+  	# UserMailer.invite_email(email1, name, code).deliver
     p "email1"
-  	UserMailer.invite_email(email2, name, code).deliver
+  	# UserMailer.invite_email(email2, name, code).deliver
     p "email2"
   end
 end
