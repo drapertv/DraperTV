@@ -110,9 +110,15 @@
 		padding: 0px calc(50vw - 480px);
 		@include justify-content(space-between);
 		.header-item a {
-			font-weight: 400;
+			font-weight: 600;
 			margin-right: 0px;
-			margin-left: 40px;
+			margin-left: 20px;
+			letter-spacing: 1px;
+			font-size: 13px;
+		}
+		.header-item.logo {
+			height: 36px; 
+			width: auto;
 		}
 		.header-item {
 			margin: 0px;
