@@ -1,6 +1,10 @@
 @import '../shared/variables';
 @import '../shared/mixins';
 
+#global-header {
+	display: none;
+}
+
 #landing-header {
 	position: fixed;
 	top: 0;
@@ -98,6 +102,24 @@
 }
 
 @media (min-width: 1024px) {
+	#global-header {
+		height: 60px;
+		background: image_url('globalbackground.png');
+		@include flexbox;
+		@include align-items(center);
+		padding: 0px calc(50vw - 480px);
+		@include justify-content(space-between);
+		.header-item a {
+			font-weight: 400;
+			margin-right: 0px;
+			margin-left: 40px;
+		}
+		.header-item {
+			margin: 0px;
+		}
+	}
+
+
 	.logo.header-item {
 	  	margin: 10px 0px;
 	 }
@@ -127,13 +149,15 @@
 	 	img {
 	 		vertical-align: initial;
 	 		margin: 17px;
+	 		margin-right: 0px;
 	 	}
 	 }
 	 #landing-header {
 	 	@include flexbox;
+	 	top: 60px;
 	 	@include justify-content(space-between);
-	 	padding: 0px 20px;
-	 	padding-right: 3px;
+	 	padding: 0px calc(50vw - 480px);
+	 	// padding-right: calc(50vw - 477px);
 	 }
 	 .header-logo {
 	 	position: static;
@@ -145,7 +169,7 @@
 	 }
 	 .nav.header-item {
 	 	margin-left: 3px;
-	 	margin-right: 0px;
+	 	margin-right: -8px;
 	 }
 	 .nav.header-item:hover {
 	 	.nav-menu {

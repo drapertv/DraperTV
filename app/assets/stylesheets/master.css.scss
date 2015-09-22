@@ -370,7 +370,7 @@ footer > small {
 @media (min-width: 1024px) {
   body {
       .main {
-        min-height: calc(100vh - 50px);
+        min-height: calc(100vh - 110px);
       }
       .header-item {
           margin: 0px 15px 0px 0px;
@@ -400,7 +400,7 @@ footer > small {
     .scroll-percent-container {
       position: fixed;
       left: calc(50vw + 480px + 40px);
-      top: 110px;
+      top: 170px;
       height: 100px;
       width: 50px;
       .scroll-grey, .scroll-green {
