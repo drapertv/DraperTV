@@ -104,7 +104,7 @@
 @media (min-width: 1024px) {
 	#global-header {
 		height: 60px;
-		background: image_url('globalbackground.png');
+		background: image_url('globalbackground.jpg');
 		@include flexbox;
 		@include align-items(center);
 		padding: 0px calc(50vw - 480px);
