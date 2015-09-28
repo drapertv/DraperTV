@@ -10,7 +10,19 @@
 }
 body {
   background: $light-gray;
+  @include flexbox;
+  @include flex-direction(column);
+  overflow-y: scroll;
 }
+
+.main-page {
+  height: 100vh;
+}
+
+// .main.home {
+//   height: calc(100vh - 60px);
+//   overflow-y: scroll;
+// }
 
 
 /*** Positioning ***/
@@ -44,9 +56,12 @@ body {
     .main {
       width: 960px;
       margin: 0 auto;
-      padding-top: 130px;
+      padding-top: 20px;
       @include flexbox;
       flex-direction: column;
+    }
+    .main.freeze {
+      padding-top: 130px;
     }
     .no-mobile {
       display: initial;

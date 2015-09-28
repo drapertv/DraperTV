@@ -32,11 +32,13 @@
     </script>
   </head>
     <body>
-      <%= render partial: "layouts/topbar" %>
-      <%= yield %>
-      <footer>
-        <small>All rights reserved, Draper Collective, LLC.</small>
-        <small>Made with <span class="red">blood</span>, <span class="orange">sweat</span>, and <span class="blue">tears</span> in San Mateo, CA</small>
-      </footer>
+      <%= render partial: "layouts/global_header" %>
+        <%= render partial: "layouts/topbar" %>
+        <%= yield %>
+
+        <footer>
+          <small>All rights reserved, Draper Collective, LLC.</small>
+          <small>Made with <span class="red">blood</span>, <span class="orange">sweat</span>, and <span class="blue">tears</span> in San Mateo, CA</small>
+        </footer>
     </body>
 </html>

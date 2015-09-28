@@ -149,6 +149,10 @@
           box-sizing: border-box;
           padding: 0px;
           margin-bottom: 0px;
+          margin-left: 0px;
+        }
+        iframe {
+          height: 435px !important;
         }
         .tweet-button {
           margin-top: -4px;
@@ -258,5 +262,16 @@
     height: 10px;
     width: 10px;
   }
+  .livestream-side-content {
+  .content {
+    margin-left: 0px;
+  }
+  iframe {
+    height: 100%;
+  }
+}
 
 }
+
+
+

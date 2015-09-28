@@ -105,6 +105,8 @@
 	#global-header {
 		height: 60px;
 		background: image_url('globalbackground.jpg');
+		background-size: cover;
+		position: static;
 		@include flexbox;
 		@include align-items(center);
 		padding: 0px calc(50vw - 480px);
@@ -124,7 +126,9 @@
 			margin: 0px;
 		}
 	}
-
+	.header-item a {
+		letter-spacing: 1px;
+	}
 
 	.logo.header-item {
 	  	margin: 10px 0px;
@@ -160,10 +164,13 @@
 	 }
 	 #landing-header {
 	 	@include flexbox;
-	 	top: 60px;
 	 	@include justify-content(space-between);
+	 	position: static;
 	 	padding: 0px calc(50vw - 480px);
-	 	// padding-right: calc(50vw - 477px);
+	 }
+	 #landing-header.freeze {
+	 	position: fixed;
+	 	top: 0;
 	 }
 	 .header-logo {
 	 	position: static;
