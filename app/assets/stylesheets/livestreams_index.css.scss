@@ -133,7 +133,7 @@
       @include flexbox;
       flex-direction: row;
       justify-content: space-between;
-      min-height: calc(100vh - 50px);
+      min-height: initial;
       iframe {
         width: 656px;
         height: 369px;
@@ -152,7 +152,7 @@
           margin-left: 0px;
         }
         iframe {
-          height: 435px !important;
+          height: 425px !important;
         }
         .tweet-button {
           margin-top: -4px;
@@ -222,6 +222,12 @@
       margin: 20px 0px 0px 0px;
       height: auto;
     }
+    .livestream-main-content {
+      height: 100%;
+      .content {
+        height: 116px;
+      }
+    }
     .tagline.yellow {
       color: $yellow;
     }
@@ -263,6 +269,7 @@
     width: 10px;
   }
   .livestream-side-content {
+    height: 100%;
   .content {
     margin-left: 0px;
   }

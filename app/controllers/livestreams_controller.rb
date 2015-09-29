@@ -4,7 +4,7 @@ class LivestreamsController < InheritedResources::Base
 
   def show
     @livestream = Livestream.friendly.find(params[:id])
-    @chapters = Chapter.all.limit(3)
+    @chapters = Chapter.all.shuffle[0..2]
     @popular = Series.popular
     @popular[2] = Chapter.all.sample
     @og_title = "#{@livestream.title} - DraperTV"
