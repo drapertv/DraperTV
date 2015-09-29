@@ -10,7 +10,7 @@ class LivestreamsController < InheritedResources::Base
     @og_title = "#{@livestream.title} - DraperTV"
     @og_description = @livestream.description
     @meta_description = @livestream.description
-    @og_image = @livestream.image_url
+    @og_image = @livestream.vthumbnail_url
   end
 
   def index
