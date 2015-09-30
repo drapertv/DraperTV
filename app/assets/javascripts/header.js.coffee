@@ -4,6 +4,10 @@ Header =
 		$('body').on 'click', '.main', @hideMenuOnClick
 		$('body').on 'click', '.search', @toggleSearchOnClick
 		$(document).scroll @freezeHeader
+		$(document).scroll @adjustShieldOpacity
+
+	adjustShieldOpacity: ->
+		$('.shield').css('opacity', $('body').scrollTop() / 60 )
 
 	freezeHeader: ->
 		if $('body').scrollTop() <= 60 && $('#global-header:visible').length < 1

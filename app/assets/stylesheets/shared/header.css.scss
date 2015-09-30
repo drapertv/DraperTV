@@ -6,7 +6,6 @@
 }
 
 #landing-header {
-	position: fixed;
 	top: 0;
 	left: 0;
 	height: 50px;
@@ -17,6 +16,8 @@
 	border-bottom: 1px solid #287ac9;
 	display: none;
 }
+
+
 
 #header-content {
 	@include flexbox;
@@ -126,6 +127,14 @@
 			margin: 0px;
 		}
 	}
+	.shield {
+		position: absolute;
+		height: 30px;
+		width: 30px;
+		top: 10px;
+		left: calc(50vw - 15px);
+		opacity: 0;
+	}
 	.header-item a {
 		letter-spacing: 1px;
 	}
@@ -168,7 +177,7 @@
 	 #landing-header {
 	 	@include flexbox;
 	 	@include justify-content(space-between);
-	 	position: static;
+	 	position: relative;
 	 	padding: 0px calc(50vw - 480px);
 	 }
 	 #landing-header.freeze {
