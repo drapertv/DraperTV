@@ -1,7 +1,7 @@
 ActiveAdmin.register Series do
 
 
-  permit_params :title, :price, :challange_id, :video_ids,:author_id, :video_ids_raw, :popular, :category_list, :show_on_front_page
+  permit_params :title, :price, :challange_id, :video_ids,:author_id, :video_ids_raw, :popular, :category_list, :show_on_front_page, :public
 
   index do
     column :id
