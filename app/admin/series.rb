@@ -23,6 +23,7 @@ ActiveAdmin.register Series do
     f.inputs :video_ids_raw, :as => :text
     f.inputs :popular
     f.inputs :show_on_front_page
+    f.inputs :public
    end
   f.actions
  end
