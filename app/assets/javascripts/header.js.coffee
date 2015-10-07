@@ -3,7 +3,8 @@ Header =
 		$('body').on 'click', '.menu', @toggleMenuOnClick
 		$('body').on 'click', '.main', @hideMenuOnClick
 		$('body').on 'click', '.search', @toggleSearchOnClick
-		$(document).scroll @freezeHeader
+		@mobile = $(window).width() < 1024
+		$(document).scroll @freezeHeader if !@mobile
 		$(document).scroll @adjustShieldOpacity
 
 	adjustShieldOpacity: ->
