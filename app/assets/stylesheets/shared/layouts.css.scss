@@ -13,6 +13,7 @@ body {
   @include flexbox;
   @include flex-direction(column);
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .main-page {
