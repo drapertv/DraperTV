@@ -45,6 +45,14 @@
   	right: calc(50% - 15px);
 }
 
+.featured-carousel-side {
+	height: 56vw;
+	overflow: hidden;
+}
+
+.featured-carousel-main {
+	display: none;
+}
 
 @media (min-width: 1024px) {
   body {
@@ -67,6 +75,7 @@
 	    	background: image_url("du_overlay.jpg");
 	    	background-size: cover;
 	    	padding: 40px 0px;
+	    	display: block;
 	    	.poster-tagline {
 	    		text-align: center;
 	    		font-size: 22px;
@@ -127,6 +136,7 @@
 			height: 360px;
 			width: 320px;
 			position: relative;
+
 			.featured-item {
 		    	width: 320px;
 		    	height: 180px;

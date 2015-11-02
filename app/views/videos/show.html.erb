@@ -44,24 +44,36 @@
       </div>
     </div>
   </div>
-  <div class="content">
-    <div class="video-text">
-      <h2 class="content-title"><%= @video.title %></h2>
-      <h4 class="content-subtitle"><%= @video.name %></h4>
-      <p class="video-subtitle video-length"><%= @video.length %></p>
+  <div class="video-info-container">
+    <div class="content video-content">
+      <div class="video-text">
+        <h2 class="content-title"><%= @video.title %></h2>
+        <h4 class="content-subtitle"><%= @video.name %></h4>
+        <p class="video-subtitle video-length"><%= @video.length %></p>
+      </div>
+      <div class="content-expand">
+        <div class="content-expand-header">
+          <div class="arrow"></div>
+          <p>Description</p>
+        </div>
+        <div class="content-expand-content hide-section">
+          <p>
+            <%= @video.description %>
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="content-expand">
-      <div class="content-expand-header">
-        <div class="arrow"></div>
-        <p>Description</p>
-      </div>
-      <div class="content-expand-content hide-section">
-        <p>
-          <%= @video.description %>
-        </p>
-      </div>
+    <div class="email-optin">
+      <p class="optin-text">
+      Enter your email for the latest videos, livestreams and news. 
+      </p> 
+      <%= form_for Email.new, remote: true do |f| %>
+        <%= f.email_field :body, :class => "email-form-input", placeholder: "Email" %>
+        <%= f.submit "Submit", :class => "submit-email" %>
+      <% end %> 
     </div>
   </div>
+  
   <div class="featured-tabs">
     <button class="featured-series tabs-selected" data-show="featured-series-content">
       <h3 class="cyan">Series</h3>

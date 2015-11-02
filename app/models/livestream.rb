@@ -115,8 +115,8 @@ class Livestream < ActiveRecord::Base
     ActionController::Base.new.expire_fragment('all_livestreams')
   end
 
-  def limit_slug_to_two_words
-    update_attributes slug: slug.split("-")[0..1].join("-")
+  def limit_slug_to_four_words
+    update_attributes slug: slug.split("-")[0..3].join("-")
   end
 
 end

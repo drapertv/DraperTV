@@ -1,4 +1,8 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :email do
+    body "MyString"
+created_at "2015-10-30 15:06:26"
+  end
+
 
   factory :challenge do
     playlist_id 1
