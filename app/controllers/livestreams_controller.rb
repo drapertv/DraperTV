@@ -48,8 +48,13 @@ class LivestreamsController < InheritedResources::Base
   end
 
   def hidebanner
-    session[:hidden_livestream_id] = Livestream.next_livestream.id
-    render json: {hidden_id: Livestream.next_livestream.id}
+    if params["hide_type"] == "livestream"
+      session[:hidden_livestream_id] = Livestream.next_livestream.id
+      render json: {hidden_id: Livestream.next_livestream.id}
+    else
+      session[:hide_application_link] = true
+      render nothing: true;
+    end
   end
 
   private

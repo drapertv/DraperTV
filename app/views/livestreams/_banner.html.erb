@@ -1,6 +1,6 @@
 <% if Livestream.next_livestream && Livestream.next_livestream.id != session[:hidden_livestream_id] %>
 	<%= link_to livestream_path(Livestream.next_livestream), :class => "livestream-banner" do %>
-		<div id="banner" class="no-mobile">
+		<div class="notification">
 			<p class="banner-livestream-time">
 				<%= Livestream.banner_livestream_info[:time] %>
 			</p>
@@ -8,6 +8,6 @@
 				<%= Livestream.banner_livestream_info[:livestream].title.upcase %>
 			</p>	
 		</div>
-		<%= image_tag "close.svg", :class => "close-banner" %>
+		<%= image_tag "close.svg", :class => "close-banner close-livestream" %>
 	<% end %>
 <% end %>

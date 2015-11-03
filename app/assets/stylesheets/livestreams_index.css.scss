@@ -237,22 +237,44 @@
       display: block;
     }
   }
-  #banner {
+  .notification {
     color: white;
     background: $red;
-    height: 40px;
-    @include flexbox;
-    padding: 0px 20px;
+    display: block;
+    padding: 10px 20px;
+    margin-top: 20px;
     transform-style: preserve-3d;
-    margin-bottom: 20px;
+    width: 300px;
+    border-radius: 5px;
+    z-index: 10;
     p {
-      line-height: 40px;
+      margin: 10px;
     }
-    .banner-livestream-time {
-      margin-right: 20px;
-    }
+
     .banner-livestream-title {
       font-weight: 700;
+    }
+  }
+  .apply-notification {
+    background: $blue;
+    p.apply-now {
+      margin: 10px auto;
+      display: block;
+      width: 100px;
+      text-align: center;
+      background: white;
+      color: $blue;
+      border: 1px solid $blue;
+      cursor: pointer;
+      height: 30px;
+      border-radius: 5px;
+      line-height: 30px;
+      transition-duration: 0.3s;
+    }
+    p.apply-now:hover {
+      border: 1px solid white;
+      color: white;
+      background: $blue;
     }
   }
   .livestream-banner {

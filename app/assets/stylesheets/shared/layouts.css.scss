@@ -83,8 +83,11 @@ body {
       margin-top: 0px;
       text-align: left;
     }
-    .livestream-banner {
-      display: block;
+    .notifications {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1;
     }
   }
 }

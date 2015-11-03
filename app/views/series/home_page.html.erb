@@ -1,7 +1,10 @@
 <section class="main home" id="mobile-wrapper">
-  <%= render partial: "livestreams/banner" %>
+  <div class="notifications no-mobile">
+    <%= render partial: "livestreams/banner" %>
+    <%= render partial: "layouts/application_link" %>
+  </div>
   <% if @browser.mobile? || @browser.tablet? %>
-    <div class="featured-carousel no-desk">
+    <div class="featured-carousel no-desk ">
       <% @featured.each_with_index do |series, i| %>
         <%= link_to series_link(browser, series) do %>
           <div class="featured-item" style='background-image: url(<%= url_for(series.first_video.vthumbnail_url) %>);'>

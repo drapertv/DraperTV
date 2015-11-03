@@ -4,8 +4,9 @@ Home =
 		$('body').on 'click', '.featured-tabs button', @showTabOnClick
 		@mobile = $(window).width() < 1024
 		$('.home').parents('body').addClass('show-scroll-bar')
-		$('body').on 'click', '.livestream-banner .close-banner', @closeBanner
-		$('body').on 'click', '.close-email-banner', @closeEmailBanner		  
+		$('body').on 'click', '.close-livestream', @closeBanner
+		$('body').on 'click', '.close-email-banner', @closeEmailBanner	
+		$('body').on 'click', '.close-application-link', @closeApplicationNotification	  
 		$('body').on 'ajax:success', '#new_email', @thankUserForEmail
 		# switch between slideshow and carousel appropriately if page width changes
 		# polls page for width every half second
@@ -40,11 +41,17 @@ Home =
 		$('#banner').addClass('animated flipOutX').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
 			$(@).hide()
 
+	closeApplicationNotification: (e) ->
+		e.preventDefault()
+		$(@).parent('.livestream-banner').addClass('animated flipOutX').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
+			$(@).hide()
+		$.get('/hidebanner?hide_type=application-link')
+
 	closeBanner: (e) ->
 		e.preventDefault()
 		$(@).parent('.livestream-banner').addClass('animated flipOutX').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
 			$(@).hide()
-		$.get('/hidebanner')
+		$.get('/hidebanner?hide_type=livestream')
 
 	showTabOnClick: ->
 		if $('.video-player').length < 1 || Home.mobile
