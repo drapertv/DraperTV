@@ -31,15 +31,10 @@ Home =
 
 
 	thankUserForEmail: (event, data) ->
-		$('.optin-text').text('Thank You!')
-		$('#new_email')[0].reset()
-		setTimeout ->
-			Home.closeEmailBanner()
-		, 500
-
-	closeEmailBanner: (e) ->
-		$('#banner').addClass('animated flipOutX').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
-			$(@).hide()
+		$('.optin-text.bold').text('THANKS FOR SIGNING UP!')
+		$(".optin-text:not(.bold)").text "You'll be hearing from us soon"
+		$('#new_email').hide()
+		$('.email-optin').css "height", "80px"
 
 	closeApplicationNotification: (e) ->
 		e.preventDefault()

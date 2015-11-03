@@ -241,40 +241,22 @@
     color: white;
     background: $red;
     display: block;
-    padding: 10px 20px;
-    margin-top: 20px;
+    padding: 25px;
+    margin-top: 15px;
     transform-style: preserve-3d;
-    width: 300px;
+    width: 320px;
     border-radius: 5px;
     z-index: 10;
-    p {
-      margin: 10px;
-    }
-
     .banner-livestream-title {
       font-weight: 700;
+      margin-top: 10px;
     }
   }
   .apply-notification {
     background: $blue;
     p.apply-now {
-      margin: 10px auto;
-      display: block;
-      width: 100px;
-      text-align: center;
-      background: white;
-      color: $blue;
-      border: 1px solid $blue;
-      cursor: pointer;
-      height: 30px;
-      border-radius: 5px;
-      line-height: 30px;
-      transition-duration: 0.3s;
-    }
-    p.apply-now:hover {
-      border: 1px solid white;
-      color: white;
-      background: $blue;
+      margin-top: 10px;
+      font-weight: 700;
     }
   }
   .livestream-banner {

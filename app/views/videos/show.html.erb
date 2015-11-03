@@ -64,8 +64,11 @@
       </div>
     </div>
     <div class="email-optin">
+      <p class="optin-text bold">
+        SIGN UP FOR NEWS FROM DRAPERTV!
+      </p> 
       <p class="optin-text">
-      Enter your email for the latest videos, livestreams and news. 
+        Enter your email for the latest videos, livestreams, news, and startup tips. 
       </p> 
       <%= form_for Email.new, remote: true do |f| %>
         <%= f.email_field :body, :class => "email-form-input", placeholder: "Email" %>
