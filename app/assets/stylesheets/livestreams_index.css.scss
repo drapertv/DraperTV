@@ -247,6 +247,7 @@
     width: 320px;
     border-radius: 5px;
     z-index: 10;
+
     .banner-livestream-title {
       font-weight: 700;
       margin-top: 10px;
@@ -258,6 +259,9 @@
       margin-top: 10px;
       font-weight: 700;
     }
+  }
+  .apply-now:hover, .banner-livestream-title:hover {
+    text-decoration: underline;
   }
   .livestream-banner {
     display: block;
@@ -271,6 +275,10 @@
     top: 15px;
     height: 10px;
     width: 10px;
+  }
+  .close-banner:hover * {
+    fill: rgba(255,255,255,1);
+    fill-opacity: 1;
   }
   .livestream-side-content {
     height: 100%;

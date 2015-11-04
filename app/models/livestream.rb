@@ -74,9 +74,9 @@ class Livestream < ActiveRecord::Base
     livestream = next_livestream
     time = nil
     if livestream.stream_date < Time.now
-      time = "Livestream - NOW"
+      time = "LIVESTREAM - NOW"
     else
-      time = "Livestream - #{(livestream.stream_date - 7.hours).strftime('%B %-d, %l:%M%P PST')}"
+      time = "LIVESTREAM - #{(livestream.stream_date - 7.hours).strftime('%B %-d, %l:%M%P PST')}"
     end
     {livestream: livestream, time: time}
   end

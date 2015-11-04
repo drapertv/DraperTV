@@ -22,7 +22,7 @@
                     <%= image_tag "#{category.downcase.gsub(" ", "-")}done.svg", :class => "vid-cat-icon" %>
                   <% end %>
                   <div class="vid-cat <%= @colors[@categories.index(category.downcase.split(" ").map(&:capitalize).join(" "))] %>">
-                    <%= category %>
+                    <%= category[0..8] %>
                     <div class="tail"></div>
                   </div>
                 </div>
@@ -71,6 +71,7 @@
         Enter your email for the latest videos, livestreams, news, and startup tips. 
       </p> 
       <%= form_for Email.new, remote: true do |f| %>
+      <%= f.text_field :full_name, :class => "email-form-input", placeholder: "First Name", required: true %>
         <%= f.email_field :body, :class => "email-form-input", placeholder: "Email" %>
         <%= f.submit "Submit", :class => "submit-email" %>
       <% end %> 

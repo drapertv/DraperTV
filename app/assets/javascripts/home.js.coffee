@@ -32,7 +32,7 @@ Home =
 
 	thankUserForEmail: (event, data) ->
 		$('.optin-text.bold').text('THANKS FOR SIGNING UP!')
-		$(".optin-text:not(.bold)").text "You'll be hearing from us soon"
+		$(".optin-text:not(.bold)").html "You'll be hearing from us soon :)"
 		$('#new_email').hide()
 		$('.email-optin').css "height", "80px"
 

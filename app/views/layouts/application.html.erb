@@ -32,6 +32,8 @@
     else window.addEventListener('load', __ldinsp, false);
     })();
     </script>
+    <script type="text/javascript">(function(){var c=encodeURIComponent,s="SCRIPT",d=document,e=d.createElement(s),t=d.getElementsByTagName(s)[0],p="t="+c(d.title||"")+"&u="+c(d.location.href||"")+"&r="+c(d.referrer||"");e.src="https://api.autopilothq.com/anywhere/14a49731915a4c40892ec90a82578f0e951dba438c0a4064b042b007bdc63f5a?"+p;e.type="text/javascript";e.async=true;t.parentNode.insertBefore(e, t);})();(function(){var c=encodeURIComponent,s="SCRIPT",d=document,e=d.createElement(s),t=d.getElementsByTagName(s)[0];e.src="https://api.autopilothq.com/anywhere/aa/14a49731915a4c40892ec90a82578f0e951dba438c0a4064b042b007bdc63f5a";e.type="text/javascript";e.async=false;t.parentNode.insertBefore(e, t);window.AutopilotAnywhere={_runQueue:[],run:function(){this._runQueue.push(arguments);}};if(!window.Autopilot) window.Autopilot=window.AutopilotAnywhere;})();
+    </script>
   </head>
     <body>
       <%= render partial: "layouts/global_header" %>
@@ -42,5 +44,30 @@
           <small>All rights reserved, Draper Collective, LLC.</small>
           <small>Made with <span class="red">blood</span>, <span class="orange">sweat</span>, and <span class="blue">tears</span> in San Mateo, CA</small>
         </footer>
+        <script>
+            $('img.svg').each(function(){
+                var $img = $(this);
+                var imgID = $img.attr('id');
+                var imgClass = $img.attr('class');
+                var imgURL = $img.attr('src');
+
+                $.get(imgURL, function(data) {
+                    // Get the SVG tag, ignore the rest
+                    var $svg = $(data).find('svg');
+                    // Add replaced image's ID to the new SVG
+                    if (typeof imgID !== 'undefined') {
+                        $svg = $svg.attr('id', imgID);
+                    }
+                    // Add replaced image's classes to the new SVG
+                    if (typeof imgClass !== 'undefined') {
+                        $svg = $svg.attr('class', imgClass+' replaced-svg');
+                    }
+                    // Remove any invalid XML tags as per http://validator.w3.org
+                    $svg = $svg.removeAttr('xmlns:a');
+                    // Replace image with new SVG
+                    $img.replaceWith($svg);
+                });
+            });
+        </script>
     </body>
 </html>

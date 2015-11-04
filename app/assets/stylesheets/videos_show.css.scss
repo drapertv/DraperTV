@@ -71,7 +71,6 @@ iframe {
 				padding: 20px 25px;
 				font-size: 16px;
 				color: $teal;
-				text-align: center;
 				background: $teal;
 				margin-top: 20px;
 				margin-bottom: 50px;
@@ -88,20 +87,27 @@ iframe {
 					color: $teal;
 					border: 1px solid $teal;
 					font-size: 14px;
-					margin: 10px 0px;
+					margin-top: 10px;
 					width: 100%;
 					padding: 0px 10px;
+				}
+				input::-webkit-input-placeholder {
+					color: $teal;
 				}
 				input.submit-email {
 					background: $teal;
 					color: white;
 					width: 120px;
-					border: 1px solid white;
+					border: 2px solid white;
 					cursor: pointer;
 					width: 66px;
 					transition-duration: 0.3s;
-					margin-bottom: 0px;
+					font-weight: 600;
+					margin: 0 auto;
+					margin-top: 20px;
+					display: block;
 				}
+
 				input.submit-email:hover {
 					background: white;
 					color: $teal;
