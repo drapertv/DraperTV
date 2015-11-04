@@ -5,11 +5,11 @@ Home =
 		@mobile = $(window).width() < 1024
 		$('.home').parents('body').addClass('show-scroll-bar')
 		$('body').on 'click', '.close-livestream', @closeBanner
-		$('body').on 'click', '.close-email-banner', @closeEmailBanner	
 		$('body').on 'click', '.close-application-link', @closeApplicationNotification	  
 		$('body').on 'ajax:success', '#new_email', @thankUserForEmail
 		# switch between slideshow and carousel appropriately if page width changes
 		# polls page for width every half second
+		@bounceNotifications()
 		
 		if @mobile
 			Home.onMobile = true
@@ -29,6 +29,17 @@ Home =
 		@initCarouselOnPageLoad() if @mobile
 		@initSlideShowOnPageLoad() if !@mobile
 
+	bounceNotifications: ->
+		bounce = new Bounce();
+		bounce.scale 
+			from: 
+				x: 0.3
+				y: 0.3
+			to: 
+				x: 1
+				y: 1
+		bounce.define("bounce-in");
+		bounce.applyTo($('.notification')) if $('.notification').length > 0
 
 	thankUserForEmail: (event, data) ->
 		$('.optin-text.bold').text('THANKS FOR SIGNING UP!')
@@ -38,14 +49,12 @@ Home =
 
 	closeApplicationNotification: (e) ->
 		e.preventDefault()
-		$(@).parent('.livestream-banner').addClass('animated flipOutX').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
-			$(@).hide()
+		$(@).parent('.livestream-banner').fadeOut()
 		$.get('/hidebanner?hide_type=application-link')
 
 	closeBanner: (e) ->
 		e.preventDefault()
-		$(@).parent('.livestream-banner').addClass('animated flipOutX').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
-			$(@).hide()
+		$(@).parent('.livestream-banner').fadeOut()
 		$.get('/hidebanner?hide_type=livestream')
 
 	showTabOnClick: ->
