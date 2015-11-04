@@ -39,6 +39,7 @@ Home =
 				x: 1
 				y: 1
 		bounce.define("bounce-in");
+		$('.notification').show()
 		bounce.applyTo($('.notification')) if $('.notification').length > 0
 
 	thankUserForEmail: (event, data) ->
