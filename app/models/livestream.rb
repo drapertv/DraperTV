@@ -6,7 +6,7 @@ class Livestream < ActiveRecord::Base
   acts_as_taggable_on :category
   
   after_create :expire_cache
-  after_create :limit_slug_to_two_words
+  after_create :limit_slug_to_four_words
   after_update :expire_cache
   before_destroy :expire_cache
 
