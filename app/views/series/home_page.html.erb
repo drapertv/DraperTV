@@ -1,8 +1,4 @@
 <section class="main home" id="mobile-wrapper">
-  <div class="notifications no-mobile">
-    <%= render partial: "livestreams/banner" %>
-    <%= render partial: "layouts/application_link" %>
-  </div>
   <% if @browser.mobile? || @browser.tablet? %>
     <div class="featured-carousel no-desk ">
       <% @featured.each_with_index do |series, i| %>
