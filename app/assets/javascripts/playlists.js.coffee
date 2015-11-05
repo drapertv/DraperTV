@@ -12,13 +12,13 @@ Playlist =
 		Playlist.scrollBarIsPaused = false
 
 	scrollPageOnClick: (e) ->
-		percentOfPageToScroll = ((e.clientY - 110) / 100)
+		percentOfPageToScroll = ((e.clientY - 170) / 100)
 		pixelsToScroll = ($('body').height() - $(window).height()) * percentOfPageToScroll
 		$('body').scrollTop pixelsToScroll
 		Playlist.scrollBarIsPaused = false
 
 	moveScrollPercentOnMouseMove: (e) ->
-		percent = (e.clientY - 110)
+		percent = (e.clientY - 170)
 		Playlist.scrollBarIsPaused = true
 		$('.scroll-percent').text percent + "%"
 		$('.scroll-percent').css "bottom", "#{100 - percent - 5}px"

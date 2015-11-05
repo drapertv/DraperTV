@@ -45,6 +45,9 @@ Home =
 			$('.notification').show()
 			bounce.applyTo($('.notification')) if $('.notification').length > 0
 		, 500
+		setTimeout ->
+			$('.close-banner').fadeIn()
+		, 750
 
 	thankUserForEmail: (event, data) ->
 		$('.optin-text.bold').text('THANKS FOR SIGNING UP!')
