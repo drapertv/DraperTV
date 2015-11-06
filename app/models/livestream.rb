@@ -7,6 +7,7 @@ class Livestream < ActiveRecord::Base
   
   after_create :expire_cache
   after_create :limit_slug_to_four_words
+  after_create :convert_time_to_utc
   after_update :expire_cache
   before_destroy :expire_cache
 
@@ -36,8 +37,8 @@ class Livestream < ActiveRecord::Base
   end
 
   def formatted_stream_date
-  	pst_stream_date = stream_date - 7.hours
-  	pst_current_time = Time.now.utc - 7.hours
+  	pst_stream_date = stream_date - 8.hours
+  	pst_current_time = Time.now.utc - 8.hours
   	if stream_date - Time.now < 24.hours && pst_stream_date.day == pst_current_time.day
       if stream_date < Time.now
         elapsed_time
@@ -66,7 +67,7 @@ class Livestream < ActiveRecord::Base
     if livestream.stream_date < Time.now
       "#{livestream.title} NOW"
     else
-      "#{livestream.title} - #{(livestream.stream_date - 7.hours).strftime("%B %-d, at %l:%M%P PST")}"
+      "#{livestream.title} - #{(livestream.stream_date - 8.hours).strftime("%B %-d, at %l:%M%P PST")}"
     end
   end
 
@@ -76,7 +77,7 @@ class Livestream < ActiveRecord::Base
     if livestream.stream_date < Time.now
       time = "LIVESTREAM - NOW"
     else
-      time = "LIVESTREAM - #{(livestream.stream_date - 7.hours).strftime('%B %-d, %l:%M%P PST')}"
+      time = "LIVESTREAM - #{(livestream.stream_date - 8.hours).strftime('%B %-d, %l:%M%P PST')}"
     end
     {livestream: livestream, time: time}
   end
@@ -110,6 +111,10 @@ class Livestream < ActiveRecord::Base
   end
 
   private
+
+  def convert_time_to_utc
+    update_attributes stream_date: stream_date + 8.hours
+  end
 
   def expire_cache
     ActionController::Base.new.expire_fragment('all_livestreams')
