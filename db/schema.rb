@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103221508) do
+ActiveRecord::Schema.define(version: 20151109212121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 20151103221508) do
     t.boolean  "popular"
     t.string   "vthumbnail"
     t.boolean  "public",      default: false
+    t.string   "lexica_id"
   end
 
   add_index "livestreams", ["slug"], name: "index_livestreams_on_slug", unique: true, using: :btree
@@ -286,6 +287,7 @@ ActiveRecord::Schema.define(version: 20151103221508) do
     t.string   "wistia_id"
     t.string   "slug"
     t.boolean  "public",       default: false
+    t.string   "lexica_id"
   end
 
   add_index "videos", ["slug"], name: "index_videos_on_slug", using: :btree

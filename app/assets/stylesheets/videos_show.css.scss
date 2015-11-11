@@ -115,7 +115,7 @@ iframe {
 			}
 		}
 		.content.video-content {
-			width: 656px;
+			width: 640px;
 			border: none;
 			height: auto;
 			padding: 0px;
@@ -123,15 +123,15 @@ iframe {
 		}
 		.video-page, .livestream-page {
 			.video-player, .video-player iframe {
-				width: 656px;
-				height: 369px;
+				width: 640px;
+				height: 360px;
 			}
 			.video-length {
 				display: none;
 			}
 			#ytplayer {
-				width: 656px;
-				height: 369px;
+				width: 640px;
+				height: 360px;
 			}
 			.featured-tabs {
 				order: initial;
@@ -176,7 +176,7 @@ iframe {
 			}
 			.video-side-bar {
 				width: 304px;
-				height: 369px;
+				height: 360px;
 				background: #343434;
 				overflow: hidden;
 			}
@@ -247,7 +247,7 @@ iframe {
 			}
 		}
 		.video-page > .content:nth-child(3n - 1), .content {
-			width: 656px;
+			width: 640px;
 			padding: 0px;
 			border: none;
 			margin: 0px 0px 50px 0px;

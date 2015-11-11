@@ -135,17 +135,17 @@
       justify-content: space-between;
       min-height: initial;
       iframe {
-        width: 656px;
+        width: 640px;
         height: 369px;
       }
       .livestream-main-content {
-        width: 656px;
+        width: 640px;
       }
       .livestream-side-content {
-        width: 284px;
+        width: 300px;
         .content {
           border: none;
-          width: 284px;
+          width: 300px;
           box-sizing: border-box;
           padding: 0px;
           margin-bottom: 0px;
@@ -216,7 +216,7 @@
 
     }
     .livestream-main-content .content:nth-child(3n - 1) {
-      width: 656px;
+      width: 640px;
       padding: 0px;
       border: none;
       margin: 20px 0px 0px 0px;
@@ -248,6 +248,7 @@
     border-radius: 5px;
     z-index: 10;
     display: none;
+    box-shadow: 0px 2px 4px black;
 
     .banner-livestream-title {
       font-weight: 700;
