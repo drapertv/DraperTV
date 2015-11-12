@@ -33,7 +33,7 @@
       </div>
       <div class="video-series-list">
         <% @series.videos.sort_by(&:id).each_with_index do |video, i| %>
-          <%= link_to video_path(video) do %>
+          <%= link_to video_path(video), data: {no_turbolink: true} do %>
             <div class="video <%= 'video-current' if video == @video %>">
               <p class="video-number"><%= i + 1 %>.</p>
               <p class="video-title"><%= video.title %></p>
@@ -105,7 +105,7 @@
       <div class="content-expand">
         <div class="content-expand-content">
           <% @series.videos.each do |video| %>
-            <%= link_to video_path(video) do %>
+            <%= link_to video_path(video), data: {no_turbolink: true} do %>
               <div class="video <%= 'video-current' if video == @video %>">
                 <p class="video-title"><%= video.title %></p>
                 <p class="video-subtitle"><%= video.length %></p>
@@ -124,35 +124,40 @@
     <% end %>
 </section>
 <script>
-  // 2. This code loads the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  // 3. This function creates an <iframe> (and YouTube player)
-  //    after the API code downloads.
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      videoId: "<%= @video.url %>",
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
-    });
-  }
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
 
 
-  function onPlayerStateChange(newState) {    
-    if (newState.data == 0) {
-      console.log($('.video-current').parent().next()) 
-      location.href = $('.video-current').parent().next().attr('href')
+
+      // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: "<%= @video.url %>",
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
     }
-  }
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+
+
+    function onPlayerStateChange(newState) {    
+      if (newState.data == 0) {
+        console.log($('.video-current').parent().next()) 
+        location.href = $('.video-current').parent().next().attr('href')
+      }
+    }
+
+    
 </script>
 
 

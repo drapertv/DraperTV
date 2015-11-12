@@ -18,7 +18,7 @@
     </div>
     <div class="content-expand-content hide-section">
       <% videos.each do |video| %>
-        <%= link_to video_path(video) do %>
+        <%= link_to video_path(video), data: {no_turbolink: true} do %>
           <div class="video">
             <p class="video-title"><%= video.title %></p>
             <p class="video-subtitle"><%= video.length %></p>

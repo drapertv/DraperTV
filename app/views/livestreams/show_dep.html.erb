@@ -41,7 +41,7 @@
       <div id="suggested-videos">
           <div class="related-header">SUGGESTED VIDEOS</div>
             <% @livestream.suggested[0..5].each do |video| %>
-              <%= link_to video_path(video) do %>
+              <%= link_to video_path(video), data: {no_turbolink: true} do %>
                 <div class="suggested-video">
                   <div class="video-length"><%= video.length %></div>
                   <%= image_tag video.vthumbnail, :class => "suggested-video-thumbnail" %>

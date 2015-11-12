@@ -46,7 +46,7 @@
               </div>
               <div class="content-expand-content hide-section">
                 <% series.videos.each do |video| %>
-                  <%= link_to video_path(video) do %>
+                  <%= link_to video_path(video), data: {no_turbolink: true} do %>
                     <div class="video">
                       <p class="video-title"><%= video.title %></p>
                       <p class="video-subtitle"><%= video.length %></p>
@@ -109,7 +109,7 @@
         <% @popular.each do |content| %>
           <% if content.class == Series %>
             <div class="related-content">
-              <%= link_to video_path(content.first_video) do %>
+              <%= link_to video_path(content.first_video), data: {no_turbolink: true} do %>
                 <div class="content-image-container">
                   <%= image_tag content.first_video.vthumbnail_url(:seriesthumb), :class => "content-thumbnail" %>
                 </div>
