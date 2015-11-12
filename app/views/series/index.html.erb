@@ -20,11 +20,13 @@
       <% end %>
     <% end %>
   </div>
-  <div class="section-content-list">
-    <% @series.each do |media| %>
-      <% if media %>
-        <%= render partial: "#{media.class.to_s.downcase.pluralize}/show", locals: {media.class.to_s.downcase.to_sym => media} %>
+  <% cache('all_series') do %>
+    <div class="section-content-list">
+      <% @series.each do |media| %>
+        <% if media %>
+          <%= render partial: "#{media.class.to_s.downcase.pluralize}/show", locals: {media.class.to_s.downcase.to_sym => media} %>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </section>

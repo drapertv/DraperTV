@@ -118,6 +118,7 @@ class Livestream < ActiveRecord::Base
 
   def expire_cache
     ActionController::Base.new.expire_fragment('all_livestreams')
+    ActionController::Base.new.expire_fragment('homepage')
   end
 
   def limit_slug_to_four_words

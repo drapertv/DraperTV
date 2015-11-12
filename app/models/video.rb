@@ -50,5 +50,6 @@ class Video < ActiveRecord::Base
 		ActionController::Base.new.expire_fragment('all_videos')
 		ActionController::Base.new.expire_fragment('featured_videos')
 		ActionController::Base.new.expire_fragment('all_series')
+    ActionController::Base.new.expire_fragment('homepage')
 	end
 end

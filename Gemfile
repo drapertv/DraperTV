@@ -16,7 +16,7 @@ gem 'cancancan', '~> 1.10'
 
 
 #Servers
-gem 'thin'
+gem "passenger"
 gem 'spring', '~> 1.3.6',        group: :development
 
 #CurlStuff

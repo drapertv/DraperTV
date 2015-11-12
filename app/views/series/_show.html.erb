@@ -1,6 +1,7 @@
 <div class="content">
+  <% videos = series.videos.order(:id) %>
   <%= link_to series_link(@browser, series), :class => "content-link" do %>
-    <%= image_tag series.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
+    <%= image_tag videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
     <div class="content-text">
       <div class="content-title">
         <h3><%= series.title %></h3>
@@ -13,10 +14,10 @@
   <div class="content-expand">
     <div class="content-expand-header no-desk">
       <div class="arrow"></div>
-      <p><%= series.videos.count %> videos</p>
+      <p><%= videos.count %> videos</p>
     </div>
     <div class="content-expand-content hide-section">
-      <% series.videos.order(:id).each do |video| %>
+      <% videos.each do |video| %>
         <%= link_to video_path(video) do %>
           <div class="video">
             <p class="video-title"><%= video.title %></p>
