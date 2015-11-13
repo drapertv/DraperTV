@@ -20,7 +20,6 @@
       <% end %>
     <% end %>
   </div>
-  <% cache('all_series') do %>
     <div class="section-content-list">
       <% @series.each do |media| %>
         <% if media %>
@@ -28,5 +27,4 @@
         <% end %>
       <% end %>
     </div>
-  <% end %>
 </section>
