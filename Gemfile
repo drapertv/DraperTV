@@ -13,6 +13,7 @@ gem 'pg'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'cancancan', '~> 1.10'
+gem 'sanitize'
 
 
 #Servers

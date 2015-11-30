@@ -27,6 +27,13 @@ body:not(.show-scroll-bar)::-webkit-scrollbar, body:not(.show-scroll-bar) *::-we
   }
 }
 
+.linkified a {
+  color: $blue;
+}
+.linkified a:hover {
+  text-decoration: underline;
+}
+
 h1, h2, h3, h4, p, small, input {
   font-family: 'proxima-nova', "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

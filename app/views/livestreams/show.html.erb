@@ -11,9 +11,9 @@
           <div class="arrow"></div>
           <p>About</p>
         </div>
-        <div class="content-expand-content hide-section">
+        <div class="content-expand-content hide-section linkify">
           <p>
-            <%= @livestream.description %>
+            <%= @livestream.formatted_description.html_safe %>
           </p>
         </div>
       </div>

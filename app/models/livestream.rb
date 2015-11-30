@@ -110,6 +110,12 @@ class Livestream < ActiveRecord::Base
     where('stream_date < (?)', Time.now + 24.hours).where('stream_date > (?)', Time.now).select {|n| n.stream_date.day == Time.now.utc.day}
   end
 
+  def formatted_description
+    return nil if description.nil?
+    description.gsub("\n", "<br>")
+  end
+
+
   private
 
   def convert_time_to_utc
@@ -123,6 +129,10 @@ class Livestream < ActiveRecord::Base
 
   def limit_slug_to_four_words
     update_attributes slug: slug.split("-")[0..3].join("-")
+  end
+
+  def sanitize_description
+    update_attributes body: Sanitize.fragment(description, elements: ["br"])   
   end
 
 end

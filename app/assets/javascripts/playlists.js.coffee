@@ -7,6 +7,23 @@ Playlist =
 		$('body').on 'mousemove', '.scroll-grey, .scroll-green', @moveScrollPercentOnMouseMove
 		$('body').on 'mouseleave', '.scroll-grey, .scroll-green', @continueChangeOnMouseLeave
 		Playlist.scrollBarIsPaused = false
+		@linkifyLinks()
+
+	linkifyLinks: ->
+		$('.linkify, .linkify p, .linkify div').each ->
+			linkifiedText = Playlist.linkify $(@).html()
+			$(@).html linkifiedText
+		$('.linkify').removeClass('linkify').addClass('linkified')
+
+	linkify: (inputText) ->
+		replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim
+		replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>')
+		replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim
+		replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>')
+		replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim
+		replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>')
+		replacedText;
+		
 
 	continueChangeOnMouseLeave: ->
 		Playlist.scrollBarIsPaused = false
