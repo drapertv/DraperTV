@@ -65,7 +65,8 @@ iframe {
 	body {
 		.video-info-container {
 			@include flexbox;
-			.email-optin {
+		}
+		.email-optin {
 				width: 304px;
 				display: block;
 				padding: 20px 25px;
@@ -113,7 +114,6 @@ iframe {
 					color: $teal;
 				}
 			}
-		}
 		.content.video-content {
 			width: 640px;
 			border: none;

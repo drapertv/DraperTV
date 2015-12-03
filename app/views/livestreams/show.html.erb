@@ -85,7 +85,7 @@
         <% end %>
       <% end %>
     </div>
-
+    <div class="livestream-side">
      <% if @livestream.live? || @livestream.upcoming? %>
       <div class="livestream-side-content no-mobile">
         <div class="section-title">
@@ -146,7 +146,21 @@
           <% end %>
         <% end %>
       </div>
-    <% end %> 
+    <% end %>
+    <div class="email-optin">
+      <p class="optin-text bold">
+        SIGN UP FOR NEWS FROM DRAPERTV!
+      </p> 
+      <p class="optin-text">
+        Enter your email for the latest videos, livestreams, news, and startup tips. 
+      </p> 
+      <%= form_for Email.new, remote: true do |f| %>
+      <%= f.text_field :full_name, :class => "email-form-input", placeholder: "First Name", required: true %>
+        <%= f.email_field :body, :class => "email-form-input", placeholder: "Email" %>
+        <%= f.submit "Submit", :class => "submit-email" %>
+      <% end %> 
+    </div>
+    </div> 
 </section>
 
 <section class="courses-container">

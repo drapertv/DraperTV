@@ -134,15 +134,23 @@
       flex-direction: row;
       justify-content: space-between;
       min-height: initial;
+      .email-optin {
+        display: block;
+        margin-top: 20px;
+      }
       iframe {
         width: 640px;
         height: 369px;
+      }
+      .livestream-side {
+        margin-left: 20px;
       }
       .livestream-main-content {
         width: 640px;
       }
       .livestream-side-content {
         width: 300px;
+        display: block;
         .content {
           border: none;
           width: 300px;
@@ -284,7 +292,8 @@
     fill-opacity: 1;
   }
   .livestream-side-content {
-    height: 100%;
+    height: 370px;
+    overflow: scroll;
   .content {
     margin-left: 0px;
   }
