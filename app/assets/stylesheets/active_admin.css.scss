@@ -1,2 +1,10 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
+
+
+.welcome-back {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 40px;
+}
