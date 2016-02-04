@@ -25,64 +25,8 @@
         <h1>POPULAR</h1>
     </div>
     <div class="featured-popular-content content-list no-desk">
-      <% Series.popular.each do |series| %>
-        <% if series.class == Series %>
-          <div class="content">
-            <%= link_to series_link(@browser, series), :class => "content-link" do %>
-              <%= image_tag series.videos.first.vthumbnail_url(:seriesthumb), :class => "series-thumbnail" %>
-              <div class="content-text">
-                <div class="content-title">
-                  <h3><%= series.title %></h3>
-                </div>
-                <div class="content-subtitle">
-                  <h4><%= series.name %></h4>
-                </div>
-              </div>
-            <% end %>
-            <div class="content-expand">
-              <div class="content-expand-header no-desk">
-                <div class="arrow"></div>
-                <p><%= series.videos.count %> videos</p>
-              </div>
-              <div class="content-expand-content hide-section">
-                <% series.videos.each do |video| %>
-                  <%= link_to video_path(video), data: {no_turbolink: true} do %>
-                    <div class="video">
-                      <p class="video-title"><%= video.title %></p>
-                      <p class="video-subtitle"><%= video.length %></p>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% else %>
-          <div class="content livestream">
-              <% livestream = series %>
-              <%= link_to livestream_path(livestream), :class => "content-link" do %>
-                <%= image_tag livestream.vthumbnail_url, :class => "livestream-thumbnail" %>
-                <div class="content-text livestream-text">
-                  <div class="content-title">
-                    <h3><%= livestream.title %></h3>
-                  </div>
-                  <div class="content-date">
-                    <h3><%= livestream.formatted_stream_date %></h3>
-                  </div>
-                </div>
-              <% end %>
-              <div class="content-expand">
-                <div class="content-expand-header">
-                  <div class="arrow"></div>
-                  <p>About</p>
-                </div>
-                <div class="content-expand-content hide-section">
-                  <p>
-                    <%= livestream.description[0..275] %><%= "..." if livestream.description.length > 300 %>
-                  </p>
-                </div>
-              </div>
-            </div>
-        <% end %>
+      <% @popular.each do |media| %>
+        <%= render partial: "#{media.class.to_s.downcase.pluralize}/show", locals: {media.class.to_s.downcase.to_sym => media} %>
       <% end %>
     </div>
     <div class="livestream-side">

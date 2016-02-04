@@ -2,8 +2,6 @@ class Search < ActiveRecord::Base
 	belongs_to :user
 
 	
-
-
 	# Results are ordered by title, speaker_name, and description
 	# results from each field are ordered by playlist, video, and challenges
 	
@@ -23,7 +21,7 @@ class Search < ActiveRecord::Base
 	private
 
 	def self.search_model_for models, terms, field
-		models.select {|n| n.send(field).downcase =~ /#{Regexp.escape(terms)}/ && n.public  }
+		models.select {|n| n.send(field).downcase =~ /#{Regexp.escape(terms)}/ && n.public}
 	end
 
 end

@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   validates_presence_of :email
-  mount_uploader :avatar, AvatarUploader
   has_many :authorizations
   has_many :searches
   has_many :comment, dependent: :destroy
