@@ -23,11 +23,11 @@ class VthumbnailUploader < CarrierWave::Uploader::Base
   end
 
   version :list do 
-    process :resize_to_fill => [240, 144]
+    process :resize_to_fill => [256, 144]
   end
 
   version :seriesthumb do 
-    process :resize_to_fill => [240, 144]
+    process :resize_to_fill => [256, 144]
   end
 
   def extension_white_list
