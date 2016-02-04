@@ -73,6 +73,7 @@ Home =
 			$(".#{$(@).attr('data-show')}").toggleClass('hide-section')
 
 	expandContentOnClick: ->
+		console.log "triggered"
 		$(@).parents('.content').find('.content-expand-content').toggle()
 		$(@).children('.arrow').toggleClass('rotate180')
 
