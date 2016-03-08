@@ -1,0 +1,44 @@
+<header id="global-header">
+  <div class="header-left">
+    <%= link_to "http://www.drapertv.com" do %>
+      <%= image_tag 'drapertvlogo.svg', :class => "header-item logo" %>
+    <% end %>
+  </div>
+  <div class="header-right">
+    <li class="header-item">
+      <%= link_to series_index_path do %>
+        SPEAKERS
+      <% end %>
+    </li>
+    <li class="header-item">
+      <%= link_to livestreams_path do %>
+        LIVESTREAMS
+      <% end %>
+    </li>
+    <li class="header-item">
+      <%= link_to "http://www.draperuniversity.com" do %>
+        STUDENTS
+      <% end %>
+    </li>
+    <li class="header-item">
+      <%= link_to "http://courses.drapertv.com" do %>
+        COURSES
+      <% end %>
+    </li>
+    <li class="header-item">
+      <%= link_to "http://www.draperuniversity.com" do %>
+        DRAPER ECOSYSTEM
+      <% end %>
+    </li>
+    <li class="header-item">
+      <%= link_to "http://www.draperuniversity.com/blog/" do %>
+        ABOUT
+      <% end %>
+    </li>
+    
+    <%= image_tag "search-icon.png", :class => "search header-item" %>
+    <%= form_for Search.new do |f| %>
+      <%= f.text_field :terms, :class => "search-input hidden", placeholder: "Search" %>
+    <% end %>
+  </div>
+</header>

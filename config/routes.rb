@@ -6,13 +6,11 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   mount StripeEvent::Engine => '/stripe'
 
-  unauthenticated :user do
-    root to: 'series#index'
-  end
 
-  authenticated :user do
-    root :to => 'series#index', as: :authenticated_root
-  end
+
+
+  root :to => 'series#index'
+
 
   resources :videos
 
