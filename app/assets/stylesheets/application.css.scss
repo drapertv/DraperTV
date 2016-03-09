@@ -10,13 +10,11 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require shared/bootstrap_override
  *= require shared/animate
  *= require vendor/font-awesome.min
  *= require vendor/simple-line-icons
  *= require vendor/slick
  *= require vendor/slick-theme
- *= require shared/font
  *= require shared/app
  *= require_self
  *= require shared/layouts

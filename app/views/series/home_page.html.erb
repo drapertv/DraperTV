@@ -1,85 +1,12 @@
-<section class="main home" id="mobile-wrapper">
-  <% if @browser.mobile? || @browser.tablet? %>
-    <div class="featured-carousel no-desk ">
-      <% @featured.each_with_index do |series, i| %>
-        <%= link_to series_link(browser, series) do %>
-          <div class="featured-item" style='background-image: url(<%= url_for(series.first_video.vthumbnail_url) %>);'>
-            <div class="featured-overlay">
-              <div class="featured-text">
-                <h3><%= series.name %></h3>
-                <h1><%= series.title %></h1>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+<% series = @featured.first %>
+<div class="featured-item">
+  <%=  image_tag series.first_video.vthumbnail_url, :class => "featured_video "%>
+  <div class="featured-info">
+    <div class="featured-text">
+      <h3><%= series.name %></h3>
+      <h1><%= series.title %></h1>
     </div>
-    <%= render partial: "carousel", locals: {html_class: "no-mobile" } %>
-  <% else %>
-    <%= render partial: "carousel", locals: {html_class: nil }  %>
-  <% end %>
-  <div class="tagline-container no-mobile">
-    <p class="tagline">Entrepreneurship & Startups broken down</p>
-    <p class="tagline-sub">Startup knowledge for every stage. Pick a topic below to get started.</p>
   </div>
-
-  <% cache('homepage') do %>
-    <div class="featured-tabs">
-      <button class="featured-popular blue tabs-selected" data-show="featured-popular-content">
-        <h3 class="blue">Popular</h3>
-      </button>
-      <button class="featured-new" data-show="featured-new-content">
-        <h3 class="green">New</h3>
-      </button>
-      <button class="featured-topics orange no-desk" data-show="featured-topics-content">
-        <h3 class="orange">Topics</h3>
-      </button>
-    </div>
-
-    <div class="featured-popular-content content-list">
-      <% @popular.each do |media| %>
-        <%= render partial: "#{media.class.to_s.downcase.pluralize}/show", locals: {media.class.to_s.downcase.to_sym => media} %>
-      <% end %>
-    </div>
-
-    <div class="featured-new-content content-list hide-section">
-      <% @new.each do |series| %>
-        <%= render partial: "series/show", locals: {series: series} %>
-      <% end %>
-    </div>
-
-    <div class="featured-topics-content content-list hide-section">
-      <div class="featured-categories">
-        <% @categories.each_with_index do |cat, i| %>
-          <div class="vertical flip-container <%= 'no-hover' if @browser.mobile? || @browser.tablet? %>">
-            <h3 class="<%= @colors[i] %>"><%= cat.upcase %></h3>
-            <div class="flipper">
-              <div class="front">
-                <%= link_to series_index_path(category: cat), :class => "categories-item" do %>
-                  <div class="categories-icon <%= cat.downcase.gsub("& "," ").gsub(" ", "") %>-icon">
-                  
-                    <%= image_tag "#{cat.gsub(" ", "-").downcase}-icon.png", :class => "category-icon" %>
-                  </div>
-                <% end %>
-              </div>
-              <div class="back no-mobile">
-                <div class="cateogories-item">
-                  <div class="categories-icon <%= cat.downcase.gsub("& "," ").gsub(" ", "") %>-icon"></div>
-                  <%= link_to series_index_path(category: cat), :class => "series-count" do %>
-                    <span><%= Series.tagged_with(cat).count %></span></br> series
-                  <% end %>
-                  <% chapters = Chapter.where(topic_name: cat.upcase) %>
-                  <% if !chapters.empty? %>
-                    <%= link_to "http://courses.drapertv.com/topics/#{cat.downcase.gsub(" & "," ").gsub(" ", "-")}", :class => "courses-count" do %>
-                      <span><%= chapters.count %></span></br> courses
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>  
-</section>
+  <div class="featured-gradient">
+  </div>
+</div>

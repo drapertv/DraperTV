@@ -122,26 +122,6 @@ header > a {
   margin: 0 auto;
 }
 
-.header-item {
-  height: 30px;
-  display: inline-block;
-  color: rgba(255,255,255,0.5);
-  cursor: pointer;
-  // margin-right: 20px;
-}
-
-.header-item:hover {
-  opacity: 1;
-}
-
-.search.header-item {
-  margin-right: 0px;
-  opacity: 1;
-}
-
-.menu.header-item {
-  opacity: 1;
-}
 
 .menu {
   width: 30px;
@@ -377,9 +357,6 @@ footer > small {
   body {
       .main {
         min-height: calc(100vh - 110px);
-      }
-      .header-item {
-          margin: 0px 15px 0px 0px;
       }
       .section-title {
         padding: 0px;

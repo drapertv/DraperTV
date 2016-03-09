@@ -36,13 +36,11 @@
     </script>
   </head>
     <body>
-      <%= render partial: "layouts/global_header" %>
-        <%= yield %>
-        <div class="notifications no-mobile">
-            <%= render partial: "livestreams/banner" %>
-            <%= render partial: "layouts/application_link" %>
-        </div>
-
+      <%= render partial: "layouts/header" %>
+        <section class="main-content">
+            <%= yield %>    
+        </section>
+        
         <footer>
           <small>All rights reserved, Draper Collective, LLC.</small>
           <small>Made with <span class="red">blood</span>, <span class="orange">sweat</span>, and <span class="blue">tears</span> in San Mateo, CA</small>

@@ -3,11 +3,6 @@
 
 /*** General ***/
 
-#content-container {
-  min-height: 100vh;
-  padding-top: 50px;
-  background: white;
-}
 body {
   background: $light-gray;
   @include flexbox;
@@ -16,79 +11,8 @@ body {
   overflow-x: hidden;
 }
 
-.main-page {
-  height: 100vh;
+.main-content {
+  min-height: calc(100vh - 60px);
 }
 
-// .main.home {
-//   height: calc(100vh - 60px);
-//   overflow-y: scroll;
-// }
-.page-description {
-  display: none;
-}
-
-
-/*** Positioning ***/
-
-.centered {
-	margin-left: auto;
-	margin-right: auto;
-	float: none;
-}
-
-
-/***** Modals ******/
-
-.modal-overlay {
-  height: 100%;
-  width: 100%;
-  background: rgba(0,0,0,.7);
-}
-
-.no-mobile {
-  display: none;
-} 
-
-.livestream-banner {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  body {
-    background: white;
-    .main {
-      width: 960px;
-      margin: 0 auto;
-      padding-top: 20px;
-      @include flexbox;
-      flex-direction: column;
-    }
-    .page-description {
-      display: initial;
-    }
-    .main.freeze {
-      padding-top: 130px;
-    }
-    .no-mobile {
-      display: initial;
-    }
-    .no-desk {
-      display: none !important; 
-    }
-    header.no-mobile, header .no-mobile  {
-      display: block;
-    }
-    footer {
-      margin-top: 0px;
-      text-align: left;
-    }
-    .notifications {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1;
-    }
-  }
-}
 
