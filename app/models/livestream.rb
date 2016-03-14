@@ -19,6 +19,11 @@ class Livestream < ActiveRecord::Base
 
   include Extensions::Suggestable
 
+
+  def self.shown_on_front_page
+    all.limit(5)
+  end
+
   def comment_form_path
 	  [self, Comment.new]
   end
@@ -109,6 +114,14 @@ class Livestream < ActiveRecord::Base
 
   def speaker_title
     title
+  end
+
+  def thumbnail_title
+    title.split("-")[-1]
+  end
+
+  def speaker_name 
+    title.split("-")[0..-2].join("-").strip
   end
 
   def self.today

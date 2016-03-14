@@ -1,5 +1,5 @@
 class SeriesController < InheritedResources::Base
-  before_filter :set_categories_and_colors, only: ["index", "show"]
+  before_filter :set_categories_and_colors
 
   def index
     @og_title = "Series - DraperTV"
@@ -21,20 +21,17 @@ class SeriesController < InheritedResources::Base
         @series = @series.to_a.insert(i - 1, Chapter.where(topic_name: params[:category].upcase).all.sample)
       end
     end
+  end
 
-    # if requesting the homepage
-    if !request.original_url.split("/").last.include? "series"
-      @featured = Series.where(show_on_front_page: true)
-      @popular = Series.popular
-      @og_title = "DraperTV"
-      @og_image = @featured.first.first_video.vthumbnail_url
+  def home_page
+      @featured = Series.featured
       
-      @featured = Series.all.limit(6) if @featured.length < 1
-      @popular = Series.all.limit(6) if @popular.length < 1
-      @popular = @popular.to_a.insert(2, Chapter.all.sample)
-      @new = Series.order('created_at desc').limit(6)
-      render "home_page"
-    end
+      popular = Series.popular
+      speakers = Series.shown_on_front_page
+      livestreams = Livestream.shown_on_front_page
+      students = popular
+      @media = [{title: "Must Watch", content: popular}, {title: "Speakers", content: popular}, {title: "Livestreams", content: livestreams},{title: "Students", content: students}]
+      @og_image = @featured.first.first_video.vthumbnail_url
   end
 
   def show
@@ -44,8 +41,8 @@ class SeriesController < InheritedResources::Base
   private
 
     def set_categories_and_colors
-      @categories = ["Attitude", "Starting Up", "Product", "Sales", "Marketing", "Fundraising", "Hiring", "Biz & Finance", "Legal", "Auxiliary"]
-      @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "grey"]
+      @categories = ["Attitude", "Starting Up", "Product", "Sales", "Marketing", "Fundraising", "Hiring", "Biz & Finance", "Legal"]
+      @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black"]
     end
 end
 

@@ -5,6 +5,13 @@ class Series < ActiveRecord::Base
   delegate :vthumbnail, to: :first_video
   include Extensions::Publishable
 
+
+
+  def self.shown_on_front_page
+    order('created_at desc').limit(5)
+    limit(5)
+  end
+
 #Method to update the Array field of the playlist
   def video_ids_raw
     self.video_ids.join("\n,") unless self.video_ids.nil?
@@ -31,6 +38,10 @@ class Series < ActiveRecord::Base
   	Speaker.find(author_id)
   end
 
+  def speaker_name 
+    speaker.name
+  end
+
   def challenge
     challenges.first
   end
@@ -39,16 +50,23 @@ class Series < ActiveRecord::Base
     speaker.title
   end
 
+  def thumbnail_title 
+    title
+  end
+
   def description
-    ""
+    first_video.description
   end 
 
-  def self.front_page
-    where(show_on_front_page: true)
+  def self.featured
+    series = where(show_on_front_page: true)
+    series = limit(5) if series.length < 1
+    limit(5)
   end
 
   def self.popular
-    (where(popular: true) + Livestream.where(popular: true))[0..4].shuffle
+    where(popular: true).limit(5)
+    limit 5
   end
 
   def self.switch_tags

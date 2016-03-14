@@ -1,12 +1,54 @@
-<% series = @featured.first %>
 <div class="featured-item">
-  <%=  image_tag series.first_video.vthumbnail_url, :class => "featured_video "%>
+  <% series = @featured.first %>
+  <%=  image_tag series.first_video.vthumbnail_url, :class => "featured-video "%>
   <div class="featured-info">
-    <div class="featured-text">
-      <h3><%= series.name %></h3>
-      <h1><%= series.title %></h1>
-    </div>
+      <h3><%= series.name %>, <%= series.speaker_title %></h3>
+      <h1><%= series.title %></h1> 
+      <div class="featured-action-icons">
+        <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+        <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+      </div>
+      <p><%= series.description %></p>
   </div>
   <div class="featured-gradient">
   </div>
 </div>
+
+<section id="media-lists">
+  <% @media.each do |media| %>
+    <div class="media-list">
+      <h3 class="media-title"><%= media[:title] %></h3>
+      <div class="media-thumbnails">
+        <% media[:content].each do |content| %>
+          <div class="media-thumbnail">
+            <div class="media-info">
+              <div class="media-speaker-name">
+                <%= content.speaker_name %>
+              </div>
+              <div class="media-title">
+                <%= content.thumbnail_title%>
+              </div>
+            </div>
+            <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
+            <div class="thumbnail-gradient"></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+    <div class="media-list">
+      <h3 class="media-title">Courses</h3>
+      <div class="media-thumbnails">
+        <% @categories.each_with_index do |course, i| %>
+          <div class="course-thumbnail <%= @colors[i] %>-b">
+          
+          <div class="course-name white">
+            <%= course %>
+          </div>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+</section>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 
 
-  root :to => 'series#index'
+  root :to => 'series#home_page'
 
 
   resources :videos

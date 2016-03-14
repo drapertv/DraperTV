@@ -1,13 +1,16 @@
 @import 'shared/variables';
 @import 'shared/mixins';
 
+////// FEATURED CONTENT ///////////
 
 .featured-item {
-	height: 34vw;
+	height: 34.5vw;
 	width: 100vw;
 	background: black;
-	img {
-		height: 100%;
+	position: relative;
+	padding: 100px 0px 0px 60px;
+	overflow-y: hidden;
+	.featured-video {
 		width: 68%;
 		position: absolute;
 		right: 0;
@@ -17,7 +20,104 @@
 		height: 100%;
 		position: absolute;
 		left: 32%;
+		top: 0;
 		width: 15%;
 		background: -webkit-linear-gradient(left, rgba(0,0,0,1) , rgba(0,0,0,0));
 	}
+	.featured-info {
+		width: calc(32vw - 60px);
+		h3 {
+			color: $landing-gray;
+			font-size: 20px;
+			font-weight: 400;
+		}
+		h1 {
+			color: white;
+			font-size: 46px;
+			font-weight: 700;
+		}
+		p {
+			color: $landing-gray;
+			font-size: 14px;
+			margin-top: 10px;
+		}
+		.featured-action-icons {
+			margin-top: 10px;
+			height: 22px;
+			.action-icon {
+				height: 22px;
+				width: 22px;
+				margin-right: 5px;
+			}
+		}
+	}
 }
+
+/////// MEDIA LIST //////////////
+
+
+.media-thumbnails {
+	@include flexbox;
+}
+.media-thumbnail {
+	height: 144px;
+	width: 256px;
+	margin: 0px 4px;
+	position: relative;
+	.thumbnail-img {
+		height: 100%;
+	}
+	.thumbnail-gradient {
+		position: absolute;
+		height: 88px;
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		background: -webkit-linear-gradient(bottom, rgba(0,0,0,1) , rgba(0,0,0,0));
+	}
+	.media-info {
+		position: absolute;
+		bottom: 8px;
+		left: 8px;
+		z-index: 1;
+		.media-speaker-name	{
+			font-size: 12px;
+			color: white;
+			margin-bottom: 4px;
+		}
+		.media-title {
+			font-size: 16px;
+			font-weight: 700;
+			color: white;
+		}
+	}
+}
+
+.course-thumbnail {
+	margin: 0px 4px;
+	height: 138px;
+	width: 138px;
+	position: relative;
+}
+
+.course-name {
+	position: absolute;
+	width: 100%;
+	bottom: 8px;
+	text-align: center;
+	font-size: 16px;
+}
+
+#media-lists {
+	padding: 36px 60px;
+	.media-list {
+		margin-bottom: 36px;
+	}
+	h3 {
+		color: $dark-gray;
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 12px;
+	}
+}
+
