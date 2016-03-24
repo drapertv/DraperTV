@@ -1,44 +1,41 @@
-    <div class="scroll-percent-container no-mobile">
-      <div class="scroll-grey"></div>
-      <div class="scroll-green"></div>
-      <div class="scroll-percent"></div>
-    </div>
-    <section class="main livestreams">
-      <div class="section-title">
-        <h1>LIVESTREAMS</h1>
-      </div>
-       <p class="page-description">
-        Watch live as top Silicon Valley speakers teach startup skills and entrepreneurship at Draper University. Live or upcoming Livestreams are listed below, and archived when over so you can watch them later. Be part of the action on DraperTV with live Q&A through @Draper_U on Twitter.
-      </p>
-      <div class="section-content-list">
-        <% if @upcoming_livestreams.length + @current_livestreams.length < 1 %>
-          <div class="no-content">
-            <i class="fa fa-video-camera"></i>
-            <p>Looks like there aren't any live or upcoming Livestreams. Check out our past livestreams below!</p>
+<div class="featured-item header-banner">
+  <% series = Series.first %>
+  <%=  image_tag series.first_video.vthumbnail_url, :class => "featured-video "%>
+  <div class="featured-gradient">
+  </div>
+  <div class="banner-content">
+    <h3 class="banner-title">Livestreams</h3>
+    <p class="banner-desc">Watch live as top Silicon Valley speakers teach startup skills and entrepreneurship at Draper University. Be part of the action on DraperTV with live Q&A through @Draper_U on Twitter.</p>
+  </div>
+</div>
+<div class="sort-bar">
+  <div class="notify-button">
+    Notify Me
+  </div>  
+  <div class="sort-options">
+  </div>
+</div>
+
+<section class="media-container">
+  <% @media.each do |media| %>
+    <div class="media-list">
+      <h3 class="media-title"><%= media[:title] %></h3>
+      <div class="media-thumbnails wrap">
+        <% media[:content].each do |content| %>
+          <div class="media-thumbnail">
+            <div class="media-info">
+              <div class="media-speaker-name">
+                <%= content.speaker_name %>
+              </div>
+              <div class="media-title">
+                <%= content.thumbnail_title%>
+              </div>
+            </div>
+            <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
+            <div class="thumbnail-gradient"></div>
           </div>
         <% end %>
-        <% (@future_livestreams).each do |livestream| %>
-          <% if livestream.class == Livestream %>
-            <%= render partial: "show", locals: {livestream: livestream} %>
-          <% else %>
-            <%= render partial: "chapters/show", locals: {chapter: livestream} %>
-          <% end %>
-        <% end %>
       </div>
-      <div class="section-title">
-        <h1>ARCHIVE</h1>
-      </div>
-      <div class="section-content-list">
-        <% @past_livestreams.each do |livestream| %>
-          <% if livestream.class == Livestream %>
-            <%= render partial: "show", locals: {livestream: livestream} %>
-          <% else %>
-            <%= render partial: "chapters/show", locals: {chapter: livestream} %>
-          <% end %>
-        <% end %>
-      </div>
-    </section>
-
-    <script>
-
-    </script>
+    </div>
+  <% end %>
+</section>

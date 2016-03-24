@@ -36,15 +36,12 @@
     </script>
   </head>
     <body>
-      <%= render partial: "layouts/header" %>
-        <section class="main-content">
+        <%= render partial: "layouts/header" %>
+        <main class="main-content">
             <%= yield %>    
-        </section>
-        
-        <footer>
-          <small>All rights reserved, Draper Collective, LLC.</small>
-          <small>Made with <span class="red">blood</span>, <span class="orange">sweat</span>, and <span class="blue">tears</span> in San Mateo, CA</small>
-        </footer>
+        </main>
+        <%= render partial: "layouts/footer" %>
+
         <script>
             $('img.svg').each(function(){
                 var $img = $(this);

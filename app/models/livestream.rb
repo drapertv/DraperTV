@@ -13,8 +13,8 @@ class Livestream < ActiveRecord::Base
 
   mount_uploader :vthumbnail, VthumbnailUploader
 
-  scope :upcoming, -> { where("stream_date > ?", Time.now) }
-  scope :past, -> { where("stream_date < ?", Time.now - 90.minutes) }
+  scope :upcoming, -> { where("stream_date > ?", Time.now).order('stream_date asc') }
+  scope :past, -> { where("stream_date < ?", Time.now - 90.minutes).order('stream_date desc') }
   scope :current, -> {where("stream_date > ? and stream_date < ?", Time.now - 90.minutes, Time.now )}
 
   include Extensions::Suggestable

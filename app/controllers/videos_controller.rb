@@ -7,13 +7,13 @@ class VideosController < ApplicationController
     @video = Video.friendly.find(params[:id])
     @og_title = "#{@video.title} - DraperTV"
     @series = @video.series
+    @videos = @series.videos.order(:id)
     @og_description = @series.first_video.description
     
     @og_image = @series.first_video.vthumbnail_url
     @featured = @video.suggested(@series.category_list)[0..5]
 
-    @featured[2] = Chapter.all.sample
-    @featured[5] = Chapter.all.sample
+    @media = {title: "Similar", content: Series.popular}
 
 
     if @video.url

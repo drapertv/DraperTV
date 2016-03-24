@@ -1,0 +1,111 @@
+@import 'shared/variables';
+@import 'shared/mixins';
+
+
+.featured-item.about {
+  .featured-info {
+    width: 100%;
+    text-align: center;
+    bottom: 36px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    h1 {
+      font-size: 55px;
+      font-weight: 300;
+    }
+    h3 {
+      color: white;
+      font-size: 28px;
+      font-weight: 300;
+      margin-top: 4px;
+    }
+  }
+  .about-img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .featured-gradient {
+    width: 100%;
+    height: 170px;
+    bottom: 0;
+    left: 0;
+    background: -webkit-linear-gradient(bottom, rgba(0,0,0,1) , rgba(0,0,0,0));
+    top: initial;
+  }
+}
+
+////////////////// About Content //////////////////////////
+
+.about-content {
+  @include flexbox;
+  @include justify-content(space-between);
+  padding: 36px 60px;
+  background: white;
+  h3 {
+    font-size: 20px;
+    color: $dark-gray;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  p {
+    color: $gray;
+    font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .about-section {
+    margin-bottom: 36px;
+  }
+  .about-left {
+    width: 58%;
+    .team-members {
+      @include flexbox;
+      @include flex-wrap(wrap);
+      .team-member {
+        width: calc(29vw - 90px);
+        margin-bottom: 36px;
+        img {
+          width: 100%;
+          height: calc(29vw - 90px);
+          margin-bottom: 12px
+        }
+        .member-name {
+          color: $dark-gray;
+          font-weight: 600;
+        }
+        .member-position {
+          font-weight: 300;
+        }
+        .member-email {
+          color: $blue;
+          font-weight: 300;
+        }
+      }
+      .team-member:nth-child(2n) {
+        margin-left: 60px;
+      }
+    }
+    .former-staff h3 {
+      margin-bottom: 4px;
+    }
+  }
+  .about-right {
+    width: 37%;
+    .site-info {
+      @include flexbox;
+      img {
+        height: 45px;
+        width: 45px;
+        margin-right: 18px;
+        border-radius: 50%;
+      }
+      .info-text {
+        width: calc(100% - 63px);
+        margin-bottom: 36px;
+      }
+    }
+  }
+}

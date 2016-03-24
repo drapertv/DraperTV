@@ -2,24 +2,3 @@
 @import 'shared/mixins';
 
 
-.section-title > h4 {
-  color: #c0c0c0;
-}
-
-.highlighted {
-  background: #D3E2F0;
-}
-
-@media (min-width: 1024px) {
-	body {
-		.results {
-			@include flexbox;
-			flex-wrap: wrap;
-		}
-		.content-expand-content {
-			p {
-				padding: 0px;
-			}
-		}
-	}
-}

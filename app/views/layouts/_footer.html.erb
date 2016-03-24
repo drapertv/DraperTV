@@ -1,24 +1,37 @@
-    <footer id="landing-footer" class="landing-section no-mobile">
-      <div class="section-content">
-        <!-- <div class="footer-item">
-          <p class="footer-item-title blue">DRAPER<span class="italic bold">TV</span></p>
-          <p class="footer-item-link">About</p>
-          <p class="footer-item-link">Contact Us</p>
-        </div>
-
-        <div class="footer-item">
-          <p class="footer-item-title green">UPGRADE</p>
-          <p class="footer-item-link">DRAPER<span class="italic bold">TV</span>+</p>
-        </div>
-
-        <div class="footer-item">
-          <p class="footer-item-title orange">HELP</p>
-          <p class="footer-item-link">Basics</p>
-          <p class="footer-item-link">FAQ</p>
-        </div> -->
-
-        <p class="footer-notes">
-          All rights reserved, Draper Collective, LLC.
-        </p>
+<footer>
+  <div class="footer-main">
+    <div class="left">
+      <h3>Get DraperTV email updates</h3>
+      <p>Subscribe to receive email notifications whenever new videos are available.</p>
+      <div class="email-selection">
+        <p>All Videos</p>
+        <p>Livestream Event Only</p>
       </div>
-    </footer>
+      <%= text_field_tag :email, nil, :class => "footer-email", placeholder: "Email Address" %>
+      <%= submit_tag "Submit", :class => "submit-footer-email" %>
+
+
+    </div>
+    <div class="right">
+      <div class="ecosystem">
+        <h3>Draper Ecosystem</h3>
+        <li>Draper University</li>
+        <li> - Residential Program</li>
+        <li> - Executive Program</li>
+        <li class="important">Hero City</li>
+        <li>VCx</li>
+        <li>Draper Associates</li>
+        <li>Draper Venture Network</li>
+      </div>
+      <div class="social-media">
+        <h3>Follow DraperTV</h3>
+        <li class="important">Youtube</li>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>Twitter</li>
+        <li>Pinterest</li>
+      </div>
+    </div>
+  </div>
+  <p class="footer-footer">All rights reserved, Draper Collective LLC </p>
+</footer>

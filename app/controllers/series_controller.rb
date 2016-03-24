@@ -5,22 +5,6 @@ class SeriesController < InheritedResources::Base
     @og_title = "Series - DraperTV"
     @meta_description = "Watch talks given by top Silicon Valley startup founders at Draper University. Learn about startups and entrepreneurship with DraperTV on topics like Vision, Fundraising, Marketing, Product, and Sales."
     @series = Series.all.order("created_at desc")
-
-    if params[:category]
-      @category = params[:category]
-      @color = @colors[@categories.find_index(@category)]
-      @series = Series.tagged_with(params[:category].upcase)
-    end
-
-    indexes = (1..@series.count).to_a.reject! {|n| n % 9 != 8}
-    indexes.each do |i|
-      if !params[:category]
-        chapter = Chapter.all.sample
-        @series = @series.to_a.insert(i - 1, chapter)
-      else
-        @series = @series.to_a.insert(i - 1, Chapter.where(topic_name: params[:category].upcase).all.sample)
-      end
-    end
   end
 
   def home_page

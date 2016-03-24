@@ -3,6 +3,7 @@ class Series < ActiveRecord::Base
   acts_as_taggable_on :category
 	delegate :profilepic_url, :name, to: :speaker
   delegate :vthumbnail, to: :first_video
+  delegate :vthumbnail_url, to: :first_video
   include Extensions::Publishable
 
 

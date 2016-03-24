@@ -1,125 +1,51 @@
+<section class="video-player-container livestream">
+  <div class="video-player">
+    <iframe src="<%= @livestream.src_url %>" height="240" frameborder="0" scrolling="no"></iframe>
+  </div>
+</section>
+<section class="video-info">
+  <div class="video-info-main">
+    <h1 class="video-title">
+      <%= @livestream.title.upcase %>
+    </h1>
+    <p class="video-speaker-info">
+      <%= @livestream.title %>
+    </p>
 
-<section class="main livestream-page">
-  <div class="livestream-main-content">
-    <div class="livestream-player">
-      <iframe src="<%= @livestream.src_url %>" height="240" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="content">
-      <h2 class="content-title"><%= @livestream.title %></h2>
-      <div class="content-expand">
-        <div class="content-expand-header">
-          <div class="arrow"></div>
-          <p>About</p>
-        </div>
-        <div class="content-expand-content hide-section linkify">
-          <p>
-            <%= @livestream.formatted_description.html_safe %>
-          </p>
-        </div>
-      </div>
+    <div class="video-about">
+      <h3>About</h3>
+      <p><%= @livestream.description %></p>
     </div>
   </div>
-  
 
-    <div class="section-title no-desk">
-        <h1>POPULAR</h1>
-    </div>
-    <div class="featured-popular-content content-list no-desk">
-      <% @popular.each do |media| %>
-        <%= render partial: "#{media.class.to_s.downcase.pluralize}/show", locals: {media.class.to_s.downcase.to_sym => media} %>
+  <div class="video-info-side">
+    <div class="video-info-item blue-item">Speaker Series</div>
+    <div class="video-info-item teal-item">Notify Me</div>
+  </div>
+</section>
+<section class="media-container single-row">
+  <div class="media-list">
+    <h3 class="media-title"><%= @media[:title] %></h3>
+    <div class="media-thumbnails">
+      <% @media[:content].each do |content| %>
+        <div class="media-thumbnail">
+          <div class="media-info">
+            <div class="media-speaker-name">
+              <%= content.speaker_name %>
+            </div>
+            <div class="media-title">
+              <%= content.thumbnail_title%>
+            </div>
+          </div>
+          <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
+          <div class="thumbnail-gradient"></div>
+        </div>
       <% end %>
     </div>
-    <div class="livestream-side">
-     <% if @livestream.live? || @livestream.upcoming? %>
-      <div class="livestream-side-content no-mobile">
-        <div class="section-title">
-          <h1>TWITTER</h1>
-          <h4>@Draper_U</h4>
-        </div>
-        <div class="content">
-          <a class="twitter-timeline" href="https://twitter.com/Draper_U" data-widget-id="603280664935276544" data-chrome="noheader transparent nofooter"></a>
-        </div>
-        <div class="content tweet-button">
-          <a href="https://twitter.com/intent/tweet?screen_name=Draper_U">
-            <h2><i class="fa fa-twitter"></i> &nbsp;Tweet to @Draper_U</h2>
-          </a>
-        </div>
-      </div>
-    <% else %>
-      <div class="livestream-side-content no-mobile">
-        <div class="section-title">
-          <h1>POPULAR</h1>
-        </div>
-        <% @popular.each do |content| %>
-          <% if content.class == Series %>
-            <div class="related-content">
-              <%= link_to video_path(content.first_video), data: {no_turbolink: true} do %>
-                <div class="content-image-container">
-                  <%= image_tag content.first_video.vthumbnail_url(:seriesthumb), :class => "content-thumbnail" %>
-                </div>
-                <div class="related-content-info">
-                  <p class="related-content-title"><%= content.title %></p>
-                  <p class="related-content-subtitle"><span class="blue">Series - </span><%= content.name %></p>
-                </div>
-              <% end %>
-            </div>
-          <% elsif content.class == Livestream %>
-             <div class="related-content">
-               <%= link_to livestream_path(content) do %>
-                <div class="content-image-container">
-                  <%= image_tag content.vthumbnail_url, :class => "content-thumbnail" %>
-                </div>
-                <div class="related-content-info">
-                  <p class="related-content-title"><%= content.title %></p>
-                  <p class="related-content-subtitle"><span class="red">Livestream - </span><%= content.formatted_stream_date %></p>
-                </div>
-              <% end %>
-            </div>
-          <% else %>
-            <div class="related-content">
-               <%= link_to content.url do %>
-                <div class="content-image-container">
-                  <%= image_tag content.image_url, :class => "content-thumbnail" %>
-                </div>
-                <div class="related-content-info">
-                  <p class="related-content-title"><%= content.title %></p>
-                  <p class="related-content-subtitle"><span class="yellow">Course - </span><%= content.topic_name.downcase.split(" ").map(&:capitalize).join(" ") %></p>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="email-optin">
-      <p class="optin-text bold">
-        SIGN UP FOR NEWS FROM DRAPERTV!
-      </p> 
-      <p class="optin-text">
-        Enter your email for the latest videos, livestreams, news, and startup tips. 
-      </p> 
-      <%= form_for Email.new, remote: true do |f| %>
-      <%= f.text_field :full_name, :class => "email-form-input", placeholder: "First Name", required: true %>
-        <%= f.email_field :body, :class => "email-form-input", placeholder: "Email" %>
-        <%= f.submit "Submit", :class => "submit-email" %>
-      <% end %> 
-    </div>
-    </div> 
-</section>
-
-<section class="courses-container">
-  <div class="tagline-container no-mobile">
-    <p class="tagline yellow">Learn more with DraperTV Courses</p>
-    <p class="tagline-sub">Startup knowledge for every stage. Pick a course below to get started.</p>
-  </div>
-
-  <div class="section-content-list">
-    <% @chapters.each do |chapter| %>
-      <%= render partial: "#{chapter.class.to_s.downcase.pluralize}/show", locals: {chapter.class.to_s.downcase.to_sym => chapter} %>
-    <% end %>
   </div>
 </section>
 
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-</script>
+
+
+
+

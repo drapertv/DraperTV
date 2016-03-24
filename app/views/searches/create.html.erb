@@ -1,26 +1,38 @@
-<div class="scroll-percent-container no-mobile">
-  <div class="scroll-grey"></div>
-  <div class="scroll-green"></div>
-  <div class="scroll-percent"></div>
-</div>
-<div class="main">
-  <div class="section-title">
-    <h1>"<%= @terms %>"</h1>
-    <h4><%= @count %> results</h4>
+<div class="featured-item header-banner">
+  <% series = Series.first %>
+  <%=  image_tag series.first_video.vthumbnail_url, :class => "featured-video "%>
+  <div class="featured-gradient">
   </div>
-  <div class="results">
-    <% @results.each do |result| %>
-      <%= render partial: "#{result.class.to_s.downcase.pluralize}/show", locals: {result.class.to_s.downcase.to_sym => result} %>
-    <% end %>
+  <div class="banner-content">
+    <h3 class="banner-title">Search Results for '<%= @terms %>'</h3>
+  </div>
+</div>
+<div class="sort-bar">
+  <div></div> 
+  <div class="sort-options">
+    <div>Sorted By:</div>
+    <div class="date-sort">Newest</div>
+    <div class="industry-sort">All Industries</div>
   </div>
 </div>
 
-<script>
-  $('#search_terms').val("<%= @terms %>")
-  history.pushState({state:1}, "State 1", "?terms=<%= @terms %>")
-
-  $('.results h3, .results h4, .results p').each(function() {
-    console.log($(this).html())
-    $(this).html($(this).html().replace(/(<%= @terms %>)/gi, "<span class='highlighted'>$1</span>"))
-  })
-</script>
+<section class="media-container">
+  <div class="media-list">
+    <div class="media-thumbnails wrap">
+      <% @results.each do |content| %>
+        <div class="media-thumbnail">
+          <div class="media-info">
+            <div class="media-speaker-name">
+              <%= content.speaker_name %>
+            </div>
+            <div class="media-title">
+              <%= content.thumbnail_title %>
+            </div>
+          </div>
+          <%= image_tag content.vthumbnail_url(:seriesthumb), :class => "thumbnail-img" %>
+          <div class="thumbnail-gradient"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

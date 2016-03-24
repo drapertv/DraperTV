@@ -20,14 +20,14 @@
  *= require shared/layouts
  *= require shared/master
  *= require shared/header
- *= require errors
+ *= require shared/footer
  *= require master
  *= require playlists_index
  *= require videos_show
- *= require visitors_home
  *= require livestreams_index
  *= require search_index
  *= require home_page
+ *= require about
  */
 
 // @import "bootstrap-sprockets";

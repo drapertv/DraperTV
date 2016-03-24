@@ -1,30 +1,41 @@
-<section class="main series-page">
-  <div class="scroll-percent-container no-mobile">
-    <div class="scroll-grey"></div>
-    <div class="scroll-green"></div>
-    <div class="scroll-percent"></div>
+<div class="featured-item header-banner">
+  <% series = Series.first %>
+  <%=  image_tag series.first_video.vthumbnail_url, :class => "featured-video "%>
+  <div class="featured-gradient">
   </div>
-  <div class="section-title">
-    <h1 class="<%= @color || "blue" %>"><%= @category ? @category.upcase : "SERIES" %></h1>
-    <div class="section-title-menu">
-      <%= image_tag 'menu-icon.png' %>
+  <div class="banner-content">
+    <h3 class="banner-title">Speaker Series</h3>
+    <p class="banner-desc">Watch talks given at Draper University by top Silicon Valley startup founders and executives. Each lecture is curated into a series of short videos highlighting important topics our speakers present.</p>
+  </div>
+</div>
+<div class="sort-bar">
+  <div class="notify-button">
+    Notify Me
+  </div>  
+  <div class="sort-options">
+    <div>Sorted By:</div>
+    <div class="date-sort">Newest</div>
+    <div class="industry-sort">All Industries</div>
+  </div>
+</div>
+
+<section class="media-container">
+  <div class="media-list">
+    <div class="media-thumbnails wrap">
+      <% @series.each do |content| %>
+        <div class="media-thumbnail">
+          <div class="media-info">
+            <div class="media-speaker-name">
+              <%= content.speaker_name %>
+            </div>
+            <div class="media-title">
+              <%= content.thumbnail_title%>
+            </div>
+          </div>
+          <%= image_tag content.vthumbnail.url(:seriesthumb), :class => "thumbnail-img" %>
+          <div class="thumbnail-gradient"></div>
+        </div>
+      <% end %>
     </div>
   </div>
-  <p class="page-description">
-    Watch talks given by top Silicon Valley startup founders and executives at Draper University. Each lecture is curated into a series of short videos highlighting important topics our speakers present. 
-  </p>
-  <div class="categories hide-section">
-    <% @categories.each_with_index do |cat , i| %>
-      <%= link_to series_index_path(category: cat) do %>
-        <h3 class="categories-item <%= @colors[i] %>"><%= cat %></h3>
-      <% end %>
-    <% end %>
-  </div>
-    <div class="section-content-list">
-      <% @series.each do |media| %>
-        <% if media %>
-          <%= render partial: "#{media.class.to_s.downcase.pluralize}/show", locals: {media.class.to_s.downcase.to_sym => media} %>
-        <% end %>
-      <% end %>
-    </div>
 </section>

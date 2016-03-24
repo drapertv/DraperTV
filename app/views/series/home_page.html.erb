@@ -1,6 +1,6 @@
 <div class="featured-item">
   <% series = @featured.first %>
-  <%=  image_tag series.first_video.vthumbnail_url, :class => "featured-video "%>
+  <%=  image_tag series.vthumbnail_url, :class => "featured-video "%>
   <div class="featured-info">
       <h3><%= series.name %>, <%= series.speaker_title %></h3>
       <h1><%= series.title %></h1> 
@@ -14,13 +14,13 @@
   </div>
 </div>
 
-<section id="media-lists">
+<section class="media-container">
   <% @media.each do |media| %>
     <div class="media-list">
       <h3 class="media-title"><%= media[:title] %></h3>
       <div class="media-thumbnails">
         <% media[:content].each do |content| %>
-          <div class="media-thumbnail">
+          <div class="media-thumbnail <%= content.class.to_s.downcase %>">
             <div class="media-info">
               <div class="media-speaker-name">
                 <%= content.speaker_name %>
@@ -31,6 +31,7 @@
             </div>
             <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
             <div class="thumbnail-gradient"></div>
+            <div class="thumbnail-description"><%= content.description %></div>
           </div>
         <% end %>
       </div>
@@ -50,5 +51,4 @@
         <% end %>
       </div>
     </div>
-
 </section>

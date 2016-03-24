@@ -2,10 +2,6 @@
 @import 'variables';
 
 
-/** Reset **/
-
-
-
 /**** Mobile ****/
 
 
@@ -16,22 +12,18 @@
 	display: none;
 }
 
-img.svg {
-	display: none;
-}
-
 .hidden {
 	display: none;
 }
 
-.app body, body {
+body {
 	overflow-y: scroll;
 }
 
 
 
 @media(max-width: 1024px) {
-body {
+	body {
 	.mobile {
 		display: block;
 	}
@@ -41,8 +33,6 @@ body {
 	}
 }
 
-
-
 /*** Text Formatting **/
 
 div, h1, h2, h3, h4, h5, h6 {
@@ -51,8 +41,6 @@ div, h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	line-height: 1;
 }
-
-
 
 b {
 	font-weight: 700;
@@ -79,13 +67,6 @@ p {
 
 input:focus {outline: none; }
 textarea:focus {outline: none; }
-
-.text-elipsis {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 /****** lists ******/
 
