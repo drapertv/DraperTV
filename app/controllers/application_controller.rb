@@ -41,12 +41,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_device_type #allows use of @browser.mobile? in views
-    request.variant = :phone if browser.mobile?
-  end
-
-  def check_mobile
-    browser = Browser.new
-    @mobile = browser.mobile?
+    @browser = Browser.new("Some User Agent", accept_language: "en-us")
+    @mobile = @browser.device.mobile? || @browser.device.tablet?
   end
 
   def resource

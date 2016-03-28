@@ -54,7 +54,7 @@ gem 'autoprefixer-rails'
 gem 'rails_12factor', group: :production
 gem 'simple_form'
 
-gem 'browser'
+gem 'browser', :git => 'git://github.com/fnando/browser.git'
 
 
 #Cloud baby Cloud!
