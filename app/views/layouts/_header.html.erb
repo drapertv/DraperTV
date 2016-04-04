@@ -25,20 +25,26 @@
         COURSES
       <% end %>
     </li>
-    <li class="header-item">
+    <li class="header-item dropdown-container">
       <%= link_to "http://www.draperuniversity.com" do %>
         DRAPER ECOSYSTEM
       <% end %>
+      <ul class="dropdown">
+        <li>DRAPER UNIVERSITY</li>
+        <li>HERO CITY</li>
+        <li>VCx</li>
+        <li>DRAPER ASSOCIATES</li>
+        <li>DRAPER VENTURE NETWORK</li>
+      </ul>
     </li>
     <li class="header-item">
       <%= link_to about_path do %>
         ABOUT
       <% end %>
     </li>
-    
-    <%= image_tag "search-icon.png", :class => "search-icon header-item" %>
     <%= form_for Search.new do |f| %>
       <%= f.text_field :terms, :class => "search-input hidden", placeholder: "Search" %>
     <% end %>
+    <%= image_tag "search-icon.png", :class => "search-icon header-item" %>
   </div>
 </header>

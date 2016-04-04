@@ -1,16 +1,70 @@
-<div class="featured-item">
-  <% series = @featured.first %>
-  <%=  image_tag series.vthumbnail_url, :class => "featured-video "%>
-  <div class="featured-info">
-      <h3><%= series.name %>, <%= series.speaker_title %></h3>
-      <h1><%= series.title %></h1> 
-      <div class="featured-action-icons">
-        <%= image_tag "attitudedone.svg", :class => "action-icon" %>
-        <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+<div class="featured-banner">
+  <div class="featured-items">
+    <div class="featured-item">
+      <% series = @featured.first %>
+        <div class="featured-video-container">
+          <%= image_tag series.vthumbnail_url, :class => "featured-video "%>
+          <%= link_to video_path(series.first_video) do %>
+            <%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
+          <% end %>
+        </div> 
+      <div class="featured-info">
+        <h3><%= series.name %>, <%= series.speaker_title %></h3>
+        <h1><%= series.title %></h1> 
+        <div class="featured-action-icons">
+          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+        </div>
+        <p><%= series.description %></p>
       </div>
-      <p><%= series.description %></p>
+      <div class="featured-gradient">
+      </div>
+    </div>
+    <div class="featured-item">
+      <% series = @featured.first %>
+        <div class="featured-video-container">
+          <%= image_tag series.vthumbnail_url, :class => "featured-video "%>
+          <%= link_to video_path(series.first_video) do %>
+            <%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
+          <% end %>
+        </div> 
+      <div class="featured-info">
+        <h3><%= series.name %>, <%= series.speaker_title %></h3>
+        <h1><%= series.title %></h1> 
+        <div class="featured-action-icons">
+          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+        </div>
+        <p><%= series.description %></p>
+      </div>
+      <div class="featured-gradient">
+      </div>
+    </div>
+    <div class="featured-item">
+      <% series = @featured.first %>
+        <div class="featured-video-container">
+          <%= image_tag series.vthumbnail_url, :class => "featured-video "%>
+          <%= link_to video_path(series.first_video) do %>
+            <%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
+          <% end %>
+        </div> 
+      <div class="featured-info">
+        <h3><%= series.name %>, <%= series.speaker_title %></h3>
+        <h1><%= series.title %></h1> 
+        <div class="featured-action-icons">
+          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+        </div>
+        <p><%= series.description %></p>
+      </div>
+      <div class="featured-gradient">
+      </div>
+    </div>
   </div>
-  <div class="featured-gradient">
+  <div class="featured-nav">
+    <div class="dot active" data-go-to="0"></div>
+    <div class="dot" data-go-to="1"></div>
+    <div class="dot" data-go-to="2"></div>
   </div>
 </div>
 
@@ -20,19 +74,21 @@
       <h3 class="media-title"><%= media[:title] %></h3>
       <div class="media-thumbnails">
         <% media[:content].each do |content| %>
-          <div class="media-thumbnail <%= content.class.to_s.downcase %>">
-            <div class="media-info">
-              <div class="media-speaker-name">
-                <%= content.speaker_name %>
+          <%= link_to media_path(content) do %>
+            <div class="media-thumbnail <%= content.class.to_s.downcase %>">
+              <div class="media-info">
+                <div class="media-speaker-name">
+                  <%= content.speaker_name %>
+                </div>
+                <div class="media-title">
+                  <%= content.thumbnail_title%>
+                </div>
               </div>
-              <div class="media-title">
-                <%= content.thumbnail_title%>
-              </div>
+              <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
+              <div class="thumbnail-gradient"></div>
+              <div class="thumbnail-description"><%= content.description %></div>
             </div>
-            <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
-            <div class="thumbnail-gradient"></div>
-            <div class="thumbnail-description"><%= content.description %></div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>

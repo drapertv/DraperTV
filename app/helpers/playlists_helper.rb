@@ -1,10 +1,10 @@
 module PlaylistsHelper
 
-	def series_link browser, series
-		if browser.mobile?
-			series_path(series)
-		else
-			video_path(series.first_video)
-		end
+	def media_path content
+		if content.class == Video
+      video_path content
+    else
+      livestream_path content
+    end
 	end
 end

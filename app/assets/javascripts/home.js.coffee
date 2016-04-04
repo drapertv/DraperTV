@@ -2,6 +2,10 @@ Home =
 	init: ->
 		$('body').on 'mouseenter', '.media-thumbnail', @showDescriptionAfterDelay
 		$('body').on 'mouseleave', '.media-thumbnail', @hideDescription
+		$('body').on 'click', '.dot', @moveSlide
+		$('body').on 'afterChange', @adjustDotShading
+		$('body').on 'click', '.search-icon', @showSearchBox
+		@initCarousel()
 
 	hideDescription: ->
 		thumbnail = $(@)
@@ -20,6 +24,25 @@ Home =
 		else
 			console.log "added immedietly"
 			thumbnail.addClass('show-description')
+
+	initCarousel: ->
+		$('.featured-items').slick()
+
+	moveSlide: ->
+		slideNumber = $(@).attr('data-go-to')
+		$('.dot').removeClass('active')
+		$(@).addClass('active')
+		$('.featured-items').slick('slickGoTo', slideNumber)
+
+	adjustDotShading: (event, slick, currentSlide, nextSlide) ->
+		$('.dot').removeClass('active')
+		$(".dot[data-go-to=#{currentSlide}]").addClass('active')
+
+	showSearchBox: -> 
+		$('.header-right .header-item:not(.search-icon)').addClass('animated fadeOut').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
+			$('.search-input').show()
+
+
 		
 
 		

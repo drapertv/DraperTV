@@ -2,19 +2,66 @@
 @import 'shared/mixins';
 
 ////// FEATURED CONTENT ///////////
-
-.featured-item {
+.slick-arrow {
+	display: none !important;
+}
+.featured-banner {
+	position: relative;
+	height: 34.5vw;
+}
+.featured-nav {
+  position: absolute;
+  bottom: 20px;
+  background: none;
+  height: 30px;
+  width: auto;
+  left: calc(50vw - 50px);
+  @include flexbox;
+	.dot {
+		height: 10px;
+		width: 10px;
+		background: rgba(255,255,255,0.5);
+		cursor: pointer;
+		border-radius: 50%;
+	}
+	.dot.active {
+		background: white;
+	}
+	.dot:nth-child(2n) {
+		margin: 0px 12px;
+	}
+}
+.featured-items {
 	height: 34.5vw;
 	width: 100vw;
-	background: black;
 	position: relative;
-	padding: 100px 0px 0px 60px;
 	overflow-y: hidden;
-	.featured-video {
+	.featured-item {
+		padding: 100px 0px 0px 60px;
+		height: 34.5vw;
+		width: 100vw;
+		background: black;
+		position: relative;
+	}
+	.featured-video-container {
 		width: 68%;
 		position: absolute;
 		right: 0;
 		top: 0;
+		.featured-play-btn {
+			height: 120px;
+			width: 120px;
+			left: calc(50% - 60px);
+			top: calc(17.25vw - 60px);
+			position: absolute;
+			display: none;
+		}
+	}
+	.featured-video-container:hover .featured-play-btn {
+		display: block;
+	}
+	.featured-video {
+		width: 100%;
 	}
 	.featured-gradient {
 		height: 100%;
@@ -68,7 +115,7 @@
 	.thumbnail-description {
 		display: none;
 		width: 288px;
-		height: 162px;
+		height: auto;
 		position: absolute;
 		top: 100%;
 		left: 0;
