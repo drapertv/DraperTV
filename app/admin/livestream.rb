@@ -1,6 +1,6 @@
 ActiveAdmin.register Livestream do
 
-  permit_params :title, :description, :src_url, :image_url, :stream_date, :slug, :popular, :vthumbnail, :public
+  permit_params :title, :description, :src_url, :image_url, :stream_date, :slug, :popular, :vthumbnail, :public, :ready_to_notify
 
   index do
     column :title
@@ -20,6 +20,7 @@ ActiveAdmin.register Livestream do
      f.inputs :popular
      f.inputs :public
      f.inputs :vthumbnail
+     f.inputs :ready_to_notify
    end
   f.actions
  end

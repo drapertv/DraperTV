@@ -10,10 +10,16 @@
         </div> 
       <div class="featured-info">
         <h3><%= series.name %>, <%= series.speaker_title %></h3>
-        <h1><%= series.title %></h1> 
+        <h1><%= series.title.upcase %></h1> 
         <div class="featured-action-icons">
-          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
-          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+          <div class="action-icon type-icon" data-width="128">
+            <%= image_tag "attitudedone.svg", :class => "action-icon-img" %>
+            <p class="action-icon-text">Speaker Series</p>
+          </div>
+          <div class="action-icon notify-icon show-notify-modal" data-width="93">
+            <%= image_tag "attitudedone.svg", :class => "action-icon-img" %>
+            <p class="action-icon-text">Notify Me</p>
+          </div>
         </div>
         <p><%= series.description %></p>
       </div>
@@ -76,7 +82,17 @@
         <% media[:content].each do |content| %>
           <%= link_to media_path(content) do %>
             <div class="media-thumbnail <%= content.class.to_s.downcase %>">
+              <% if content.class == Livestream %>
+                <div class="media-date">
+                  <%= content.formatted_stream_date %>
+                </div>
+              <% end %>
               <div class="media-info">
+                <% if content.class == Livestream %>
+                  <div class="notify-button show-notify-modal" data-livestream-id="<%= content.id %>">
+                    Notify Me
+                  </div>
+                <% end %>
                 <div class="media-speaker-name">
                   <%= content.speaker_name %>
                 </div>

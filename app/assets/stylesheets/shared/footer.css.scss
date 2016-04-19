@@ -4,6 +4,7 @@
 footer {
   border-top: 1px solid $blue;
   background: white;
+  overflow-x: scroll;
   .footer-main {
     @include flexbox;
     width: 720px;
@@ -26,31 +27,6 @@ footer {
       p {
         color: $gray;
         margin-bottom: 24px;
-      }
-      .email-selection {
-        @include flexbox;
-        margin-bottom: 24px;
-        *:nth-child(2n) {
-          margin-left: 26px;
-        }
-      }
-      input {
-        height: 31px;
-        font-size: 14px;
-        width: 100%;
-        display: block;
-        border: 0px;
-        border-bottom: 1px solid $border-gray;
-        margin-bottom: 24px;
-      }
-      .submit-footer-email {
-        height: 32px;
-        border: 1px solid $teal;
-        padding: 0px 18px;
-        border-radius: 50px;
-        color: $teal;
-        width: auto;
-        background: $light-gray;
       }
     }
     .right {
@@ -80,4 +56,63 @@ footer {
     margin-left: 60px;
     margin-bottom: 23px;
   }
+}
+
+.email-selection {
+  @include flexbox;
+  margin-bottom: 24px;
+  .email-option:first-child {
+    margin-left: 0px ;
+  }
+}
+.email-option {
+  @include flexbox;
+  margin-left: 26px;
+  label {
+    margin-left: 6px;
+    color: $gray;
+  }
+}
+.footer-email {
+  height: 31px;
+  font-size: 14px;
+  width: 100%;
+  display: block;
+  border: 0px;
+  border-bottom: 1px solid $border-gray;
+  margin-bottom: 24px;
+}
+.submit-footer-email {
+  height: 32px;
+  border: 1px solid $teal;
+  padding: 0px 18px;
+  border-radius: 50px;
+  color: $teal;
+  width: auto;
+  background: $light-gray;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width: 500px) {
+  footer {
+    padding: 20px;
+    overflow-x: hidden;
+    .footer-main {
+      @include flex-direction(column);
+      height: auto;
+      .left, .right {
+        padding: 0px;
+        border: none;
+      }
+      .left {
+        margin-bottom: 40px;
+      }
+    }
+    .footer-footer {
+      margin-left: 0px;
+    }
+
+  }
+  
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329215900) do
+ActiveRecord::Schema.define(version: 20160411211946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 20160329215900) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "livestream_notify_lists", force: true do |t|
-    t.integer "users", array: true
+    t.integer "emails", array: true
   end
 
   create_table "livestreams", force: true do |t|
@@ -135,11 +135,18 @@ ActiveRecord::Schema.define(version: 20160329215900) do
     t.string   "slug"
     t.boolean  "popular"
     t.string   "vthumbnail"
-    t.boolean  "public",      default: false
+    t.boolean  "public",          default: false
     t.string   "lexica_id"
+    t.boolean  "ready_to_notify", default: false
+    t.boolean  "notified",        default: false
   end
 
   add_index "livestreams", ["slug"], name: "index_livestreams_on_slug", unique: true, using: :btree
+
+  create_table "notifications", force: true do |t|
+    t.integer "email_id"
+    t.integer "livestream_id"
+  end
 
   create_table "quotes", force: true do |t|
     t.integer  "author_id"
@@ -181,6 +188,12 @@ ActiveRecord::Schema.define(version: 20160329215900) do
     t.boolean  "show_on_front_page"
     t.boolean  "popular"
     t.boolean  "public",             default: false
+    t.boolean  "ready_to_notify",    default: false
+    t.boolean  "notified",           default: false
+  end
+
+  create_table "series_notify_lists", force: true do |t|
+    t.integer "emails", array: true
   end
 
   create_table "speakers", force: true do |t|

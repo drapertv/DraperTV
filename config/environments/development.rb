@@ -45,13 +45,14 @@ Rails.application.configure do
   # }
   # config.action_mailer.deconfig.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  :address              => "smtp.live.com",
-  :port                 => 587,
-  :domain               => 'draperuniversity.com',
-  :user_name            => 'alee',
-  :password             => 'Andylee1',
-  :authentication       => :login,
-  :enable_starttls_auto => true  }
+    address: "smtp.mandrillapp.com",
+    port: 587,
+    domain: Rails.application.secrets.domain_name,
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: Rails.application.secrets.email_provider_username,
+    password: Rails.application.secrets.email_provider_password
+  }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp

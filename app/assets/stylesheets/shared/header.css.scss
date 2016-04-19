@@ -114,5 +114,20 @@
 	color: white;
 }
 
+
+@media (max-width: 1024px) {
+	#global-header {
+		padding: 0px 30px;
+	}
+	.logo.header-item {
+		width: 24px;
+	}
+}
+
+@media (max-width: 768px) {
+	.logo.header-item {
+		width: 24px;
+	}
+}
 	
 

@@ -1,0 +1,47 @@
+@import 'variables';
+@import 'mixins';
+
+.modal-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 2;
+  @include flexbox;
+  @include justify-content(center);
+  @include flex-direction(column);
+  display: none;
+  .modal {
+    width: 520px;
+    background: white;
+    margin: 0 auto;
+    .modal-header {
+      @include flexbox;
+      @include justify-content(space-between);
+      background: $teal;
+      padding: 14px 24px;
+    }
+    .modal-header h3 {
+      font-weight: 700;
+      font-size: 18px;
+      color: white;
+    }
+    .modal-header .close {
+      cursor: pointer;
+      height: 22px;
+      width: 22px;
+    }
+    .modal-content {
+      padding: 14px 24px;
+      p {
+        color: $gray;
+        font-size: 14px;
+      }
+      .modal-form {
+        margin-top: 24px;
+      }
+    }
+  }
+}

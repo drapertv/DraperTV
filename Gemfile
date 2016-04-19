@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.0'
 gem 'rails', '4.1.6'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
@@ -14,7 +14,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'cancancan', '~> 1.10'
 gem 'sanitize'
-
+gem 'sidekiq'
 
 #Servers
 gem "passenger"

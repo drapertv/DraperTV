@@ -4,6 +4,9 @@ class Series < ActiveRecord::Base
 	delegate :profilepic_url, :name, to: :speaker
   delegate :vthumbnail, to: :first_video
   delegate :vthumbnail_url, to: :first_video
+
+  after_create :check_if_ready_to_notify
+  after_update :check_if_ready_to_notify
   include Extensions::Publishable
 
 
@@ -72,6 +75,18 @@ class Series < ActiveRecord::Base
 
   def self.switch_tags
     ActsAsTaggableOn::Tagging.all.where(taggable_type:"Playlist").update_all taggable_type: "Series"
+  end
+
+  private
+
+  def check_if_ready_to_notify 
+    if ready_to_notify && !notified
+      emails = Email.find(SeriesNotifyList.instance.emails).map(&:body)
+      emails.each do |email|
+        UserMailer.notification_email(self, email).deliver
+      end
+      update_attributes notified: true
+    end
   end
 
 

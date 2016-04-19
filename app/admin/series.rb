@@ -1,7 +1,7 @@
 ActiveAdmin.register Series do
 
 
-  permit_params :title, :price, :video_ids,:author_id, :video_ids_raw, :popular, :category_list, :show_on_front_page, :public
+  permit_params :title, :price, :video_ids,:author_id, :video_ids_raw, :popular, :category_list, :show_on_front_page, :public, :ready_to_notify
 
   index do
     column :id
@@ -22,6 +22,7 @@ ActiveAdmin.register Series do
     f.inputs :popular
     f.inputs :show_on_front_page
     f.inputs :public
+    f.inputs :ready_to_notify
    end
   f.actions
  end

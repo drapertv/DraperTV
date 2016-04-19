@@ -38,5 +38,5 @@
 </section>
 
 <script type="text/javascript">
-  window.location = "?terms=<%= @terms %>"
+  history.pushState({state:1}, "State 1", "?terms=<%= @terms %>")
 </script>

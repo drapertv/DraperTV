@@ -71,7 +71,7 @@
 	background: white;
 	@include flexbox;
 	.video-info-main {
-		width: 890px;
+		width: calc(63vw - 15.6px);
 		padding-right: 60px;
 		border-right: 1px solid $border-gray;
 		padding: 36px 60px;

@@ -1,7 +1,8 @@
-class LivestreamNotifyList < ActiveRecord::Base
+class SeriesNotifyList < ActiveRecord::Base
   acts_as_singleton
 
-   def self.add_email_id id
+
+  def self.add_email_id id
     if !instance.emails 
       instance.update_attributes emails: [id]
     elsif !instance.emails.include?(id)
@@ -10,5 +11,6 @@ class LivestreamNotifyList < ActiveRecord::Base
     else  
     end
   end
+
 
 end

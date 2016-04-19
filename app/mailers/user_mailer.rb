@@ -5,9 +5,8 @@ class UserMailer < ActionMailer::Base
 		mail(:to => user.email, :subject => "Subscription Cancelled")
 	end
 
-	def invite_email email, name, code
-		@name = name
-		@code = code
-		mail(:to => email, :subject => "Draper TV Courses")
+	def notification_email media, email
+		@media = media
+		mail(:to => email, :subject => "Yo shit be ready")
 	end
 end

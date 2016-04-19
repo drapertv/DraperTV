@@ -133,6 +133,25 @@ class Livestream < ActiveRecord::Base
     description.gsub("\n", "<br>")
   end
 
+  def notify
+    if ready_to_notify && !notified
+
+      emails_subscribed_to_all = []
+      if LivestreamNotifyList.instance.emails
+        emails_subscribed_to_all = Email.find(LivestreamNotifyList.instance.emails).map(&:body)
+      end
+
+      emails_subscribed_to_this_item = Email.find(Notification.where(livestream_id: id).pluck(:email_id)).map(&:body)
+
+      emails = (emails_subscribed_to_all + emails_subscribed_to_this_item).uniq
+      
+      emails.each do |email|
+        UserMailer.notification_email(self, email).deliver
+      end
+      update_attributes notified: true
+    end
+  end
+
 
   private
 

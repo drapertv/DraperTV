@@ -2,13 +2,24 @@
   <div class="footer-main">
     <div class="left">
       <h3>Get DraperTV email updates</h3>
-      <p>Subscribe to receive email notifications whenever new videos are available.</p>
-      <div class="email-selection">
-        <p>All Videos</p>
-        <p>Livestream Event Only</p>
-      </div>
-      <%= text_field_tag :email, nil, :class => "footer-email", placeholder: "Email Address" %>
-      <%= submit_tag "Submit", :class => "submit-footer-email" %>
+      <p class="hidden submit-confirmation">Thanks! A confirmation email has been sent to your inbox.</p>
+      <p class="hide-on-submit">Subscribe to receive email notifications whenever new videos are available.</p>
+      <%= form_tag "/notifications", remote: true, :class => "hide-on-submit notifications-form" do %>
+        <div class="email-selection">
+          <div class="email-option">
+            <%= check_box_tag :all_videos, true %>
+            <%= label_tag :all_videos, "All Videos" %>
+            <div class="check"></div>
+          </div>
+          <div class="email-option">
+            <%= check_box_tag :all_livestreams, true %>
+            <%= label_tag :all_livestreams, "All Livestreams" %>
+            <div class="check"></div>
+          </div>
+        </div>
+        <%= text_field_tag :email, nil, :class => "footer-email", placeholder: "Email Address" %>
+        <%= submit_tag "Submit", :class => "submit-footer-email" %>
+      <% end %>
 
 
     </div>
@@ -35,3 +46,4 @@
   </div>
   <p class="footer-footer">All rights reserved, Draper Collective LLC </p>
 </footer>
+<%= render partial: "notifications/modal" %>

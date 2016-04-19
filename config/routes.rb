@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :livestreams
   resources :searches
   resources :series
+  resources :notifications
 
   get '/about', to: "pages#about", as: "about"
 
