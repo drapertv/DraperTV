@@ -9,6 +9,8 @@
     bottom: 36px;
     position: absolute;
     z-index: 1;
+    background: none;
+    height: auto;
     left: 0;
     h1 {
       font-size: 55px;
@@ -34,6 +36,7 @@
     left: 0;
     background: -webkit-linear-gradient(bottom, rgba(0,0,0,1) , rgba(0,0,0,0));
     top: initial;
+    z-index: 0;
   }
 }
 
@@ -58,6 +61,9 @@
   }
   .about-section {
     margin-bottom: 36px;
+  }
+  .about-section.mobile-view {
+    display: none;
   }
   .about-left {
     width: 58%;
@@ -93,8 +99,9 @@
     }
   }
   .about-right {
-    width: 37%;
-    .site-info {
+    width: 37%;  
+  }
+  .site-info {
       @include flexbox;
       img {
         height: 45px;
@@ -107,5 +114,92 @@
         margin-bottom: 36px;
       }
     }
+
+}
+
+@media (max-width: 1439px) {
+  .about-content {
+    padding: 36px 30px;
   }
+}
+
+@media (max-width: 1023px) {
+  .featured-item.about {
+    .featured-info {
+      h1 {
+        font-size: 40px;
+        letter-spacing: 1px;
+      }
+      h3 {
+        font-size: 21px; 
+      }
+    }
+  }
+  .about-content {
+    padding: 26px 20px;
+    @include flex-direction(column);
+    .about-left {
+      width: 100%;
+      .team-members {
+        .team-member {
+          width: calc(50vw - 30px);
+          img {
+            height: calc(50vw - 30px);
+          }
+        }
+        .team-member:nth-child(2n) {
+          margin-left: 20px;
+        }
+      }
+    }
+    .about-right {
+      display: none;
+    }
+    .about-section {
+      border-bottom: 1px solid $border-gray;
+      padding-bottom: 26px;
+    }
+    .about-section.mobile-view {
+      display: block;
+    }
+    .about-section.last {
+      border: none;
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+
+@media (max-width: 540px) {
+  .featured-item.about {
+    .featured-info {
+      h1 {
+        font-size: 22px;
+        letter-spacing: 1px;
+      }
+      h3 {
+        font-size: 14px; 
+        display: block;
+      }
+    }
+  }
+  .about-content {
+    padding: 20px;
+    .about-left {
+      .team-members {
+        .team-member {
+          width: 100%;
+          margin-bottom: 20px;
+          img {
+            height: calc(100vw - 40px);
+          }
+        }
+        .team-member:nth-child(2n) {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+
 }

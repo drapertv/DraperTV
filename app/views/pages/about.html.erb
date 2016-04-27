@@ -1,21 +1,56 @@
-<div class="featured-item about">
-  <%=  image_tag Video.first.vthumbnail_url, :class => "about-img" %>
-  <div class="featured-info">
-    <h1>Build your startup with the best</h1>
-    <h3>Learn from the top founders and leaders in Silicon Valley.</h3>
-  </div>
-  <div class="featured-gradient">
+<div class="featured-banner">
+  <div class="featured-items">
+    <div class="featured-item about">
+      <%=  image_tag Video.first.vthumbnail_url, :class => "about-img" %>
+      <div class="featured-info">
+        <h1>Build your startup with the best</h1>
+        <h3>Learn from the top founders and leaders in Silicon Valley.</h3>
+      </div>
+      <div class="featured-gradient">
+      </div>
+</div>
+
   </div>
 </div>
 
 <div class="about-content">
   <div class="about-left">
-    <div class="about-section">
+    <div class="about-section about-text">
       <h3>ABOUT US</h3>
       <p>Launched in March 2015 and based in San Mateo, California, DraperTV spreads the entrepreneurial mindset and stories from founders and leaders in Silicon Valley all across the world.<br><br>
 
       Whether you are a budding entrepreneur or change leader looking to start your first venture, a founder looking for guidance on your business, or interested in being more entrepreneurial wherever you are, we look forward to helping you build an entrepreneurial mindset with our collection of videos, events, and courses.
       </p>
+    </div>
+    <div class="about-section mobile-view">
+      <div class="site-info">
+        <%=  image_tag Video.first.vthumbnail_url, :class => "info-img" %>
+        <div class="info-text">
+          <h3>SPEAKER SERIES</h3>
+          <p>Learn from noted entrepreneurs such as Elon Musk of Tesla & SpaceX, Tony Hsieh of Zappos, or Leah Busque of TaskRabbit in our Speaker Series, edited to provide quick lessons from their experience building their companies and leading the charge in their respective industries. </p>
+        </div>
+      </div>
+      <div class="site-info">
+        <%=  image_tag Video.first.vthumbnail_url, :class => "info-img" %>
+        <div class="info-text">
+          <h3>LIVESTREAM EVENTS</h3>
+          <p>Join us in our Livestream Events to watch live as our speakers present to students at Draper University, and have your questions answered live through Twitter: @Draper_U.</p>
+        </div>
+      </div>
+      <div class="site-info">
+        <%=  image_tag Video.first.vthumbnail_url, :class => "info-img" %>
+        <div class="info-text">
+          <h3>STUDENT PITCHES & TESTIMONIALS</h3>
+          <p>See the future with our Student Pitches and watch them pitch their startups and launch their careers onstage to a panel of Silicon Valley VC and startup executives.</p>
+        </div>
+      </div>
+      <div class="site-info">
+        <%=  image_tag Video.first.vthumbnail_url, :class => "info-img" %>
+        <div class="info-text">
+          <h3>COURSES</h3>
+          <p>Follow our curated Courses with interactive activities, speaker videos, and online discussions to learn more about entrepreneurship. Our Courses will challenge you to apply the entrepreneurial mindset to your life every day, in every way.</p>
+        </div>
+      </div>
     </div>
     <div class="about-section">
       <h3>THE TEAM</h3>
@@ -51,7 +86,7 @@
         <h3>Yad Faeq</h3>
       </div>
     </div>
-    <div class="about-section">
+    <div class="about-section last">
       <h3>DRAPER ECOSYSTEM</h3>
       <p>DraperTV is a Draper University product. Draper University runs various programs that works intensively with students from all across the entrepreneurial spectrum to teach and prepare them to find investment and build successful startups. These programs include our 7 week Residential Program, our 2 week Executive Education course, our 9 month Masters Program, and our co-working space/incubator, Hero City.
       </p>

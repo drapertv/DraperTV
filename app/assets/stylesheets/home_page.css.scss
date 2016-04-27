@@ -73,7 +73,7 @@
 	}
 	.featured-info {
 		width: 32vw;
-		padding: 100px 0px 0px 60px;
+		padding: 80px 0px 0px 60px;
 		height: 100%;
 		background: black;
 		h3 {
@@ -146,7 +146,7 @@
 	.thumbnail-description {
 		display: none;
 		width: 288px;
-		height: auto;
+		height: 144px;
 		position: absolute;
 		top: 100%;
 		left: 0;
@@ -154,6 +154,12 @@
 		padding: 8px;
 		color: $dark-gray;
 		box-shadow: 0px 0px 15px black;
+	  -webkit-line-clamp: 9;
+	  -webkit-box-orient: vertical;
+	  text-overflow: ellipsis;
+	}
+	p {
+		overflow: hidden;
 	}
 	.thumbnail-img {
 		height: 100%;
@@ -242,7 +248,7 @@
 		background: rgba(0,0,0,0.8);
 	}
 	.thumbnail-description {
-		display: block;
+		display: -webkit-box;
 	}
 	.notify-button{
 		display: block;
@@ -283,7 +289,7 @@
 //// MEDIA QUERIES ////
 
 
-@media (max-width: 1024px) {
+@media (max-width: 1439px) {
 	.featured-items {
 		.featured-info {
 			padding: 50px 0px 0px 30px;
@@ -300,6 +306,9 @@
 	}
 	.media-container {
 		padding: 36px 30px;
+		.media-list {
+			margin: 0 auto;
+		}
 	}
 	.media-thumbnail {
 		height: 104px;
@@ -320,13 +329,14 @@
 		margin-right: -49px;
 		margin-left: -48px;
 		margin-bottom: -40px;
+		transform: translate(0px, -29px);
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
 	.featured-items {
 		.featured-info {
-			padding: 30px 0px 0px 20px;
+			padding: 30px 20px 0px 20px;
 			h1 {
 				font-size: 30px;
 			}
@@ -347,10 +357,10 @@
 	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 540px) {
 	.featured-items {
 		.featured-info {
-			padding: 30px 0px 0px 20px;
+			padding: 30px 20px 0px 20px;
 			h1 {
 				font-size: 22px;
 				letter-spacing: 2px;

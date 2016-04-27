@@ -1,6 +1,13 @@
 <section class="video-player-container">
   <div class="video-player">
-    <div id="player"></div>
+    <%= @video_yt_embed %>
+  </div>
+  <div class="series-playlist-info-open">
+     <p><%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
+     <%= @videos.count %> episodes</p> 
+  </div>
+  <div class="series-playlist-info-hide">
+     <%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
   </div>
   <div class="series-playlist-info">
     <h3 class="series-count"><%= @videos.count %> episodes<h3>
@@ -26,6 +33,11 @@
       <%= @video.speaker.name %>, <%= @video.speaker_title %>
     </p>
 
+    <div class="video-actions">
+      <div class="video-info-item blue-item">Speaker Series</div>
+      <div class="video-info-item teal-item">Notify Me</div>
+    </div>
+
     <div class="video-about">
       <h3>About</h3>
       <p><%= @series.description %></p>
@@ -37,7 +49,7 @@
     <div class="video-info-item teal-item">Notify Me</div>
   </div>
 </section>
-<section class="media-container single-row">
+<section class="media-container single-row index-view">
   <div class="media-list">
     <h3 class="media-title"><%= @media[:title] %></h3>
     <div class="media-thumbnails">
@@ -61,35 +73,5 @@
 
 
 
-
-<script>
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        videoId: "<%= @video.url %>",
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
-    function onPlayerStateChange(newState) {    
-      if (newState.data == 0) {
-        // console.log($('.video-current').parent().next()) 
-        // location.href = $('.video-current').parent().next().attr('href')
-      }
-    }    
-</script>
 
 

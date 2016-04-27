@@ -1,4 +1,8 @@
 @import 'shared/variables';
 @import 'shared/mixins';
 
-
+@media (max-width: 540px) {
+  .search-description {
+    display: none;
+  }
+}

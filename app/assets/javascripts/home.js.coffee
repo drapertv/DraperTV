@@ -20,7 +20,7 @@ Home =
 		, 20
 
 	showDescriptionAfterDelay: ->
-		if $(window).width() > 500
+		if $(window).width() > 540
 			thumbnail = $(@)
 			mediaList = thumbnail.parents('.media-list')
 			if mediaList.find('.media-thumbnail.show-description').length < 1	

@@ -1,14 +1,7 @@
-<div class="featured-item header-banner">
-  <% series = Series.first %>
-  <%=  image_tag series.first_video.vthumbnail_url, :class => "featured-video "%>
-  <div class="featured-gradient">
-  </div>
-  <div class="banner-content">
-    <h3 class="banner-title">Search Results for '<%= @terms %>'</h3>
-  </div>
-</div>
 <div class="sort-bar">
-  <div></div> 
+  <div>
+    <h3 class="search-description">Search Results for '<%= @terms %>'</h3>
+  </div> 
   <div class="sort-options">
     <div>Sorted By:</div>
     <div class="date-sort">Newest</div>
@@ -16,7 +9,7 @@
   </div>
 </div>
 
-<section class="media-container">
+<section class="media-container index-view">
   <div class="media-list">
     <div class="media-thumbnails wrap">
       <% @results.each do |content| %>
