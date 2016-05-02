@@ -4,10 +4,10 @@
       <% series = @featured.first %>
         <div class="featured-video-container">
           <%= image_tag series.vthumbnail_url, :class => "featured-video "%>
-          <%= link_to video_path(series.first_video) do %>
-            <%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
-          <% end %>
         </div> 
+         <%= link_to video_path(series.first_video), :class => "featured-play-link" do %>
+          <%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
+        <% end %>
       <div class="featured-info">
         <h3><%= series.name %>, <%= series.speaker_title %></h3>
         <h1><%= series.title.upcase %></h1> 
@@ -21,7 +21,9 @@
             <p class="action-icon-text">Notify Me</p>
           </div>
         </div>
-        <p><%= series.description %></p>
+        <div class="featured-description">
+          <p><%= series.description %></p>
+        </div>
       </div>
       <div class="featured-gradient">
       </div>
@@ -41,7 +43,10 @@
           <%= image_tag "attitudedone.svg", :class => "action-icon" %>
           <%= image_tag "attitudedone.svg", :class => "action-icon" %>
         </div>
-        <p><%= series.description %></p>
+        <div class="featured-description">
+          <p><%= series.description %></p>
+        </div>
+        
       </div>
       <div class="featured-gradient">
       </div>
@@ -68,9 +73,9 @@
     </div>
   </div>
   <div class="featured-nav">
-    <div class="dot active" data-go-to="0"></div>
-    <div class="dot" data-go-to="1"></div>
-    <div class="dot" data-go-to="2"></div>
+    <div class="dot active left" data-go-to="0"></div>
+    <div class="dot right" data-go-to="1"></div>
+    <div class="dot right" data-go-to="2"></div>
   </div>
 </div>
 
