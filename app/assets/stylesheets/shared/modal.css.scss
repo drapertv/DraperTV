@@ -35,6 +35,7 @@
     }
     .modal-content {
       padding: 14px 24px;
+      padding-bottom: 24px;
       p {
         color: $gray;
         font-size: 14px;
@@ -42,6 +43,12 @@
       .modal-form {
         margin-top: 24px;
       }
+      .submit-confirmation {
+        text-align: center;
+      }
+    }
+    .footer-email {
+      font-size: 18px;
     }
   }
 }

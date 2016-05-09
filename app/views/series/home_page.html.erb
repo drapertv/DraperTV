@@ -1,76 +1,39 @@
 <div class="featured-banner">
   <div class="featured-items">
-    <div class="featured-item">
-      <% series = @featured.first %>
-        <div class="featured-video-container">
-          <%= image_tag series.vthumbnail_url, :class => "featured-video "%>
-        </div> 
-         <%= link_to video_path(series.first_video), :class => "featured-play-link" do %>
-          <%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
-        <% end %>
-      <div class="featured-info">
-        <h3><%= series.name %>, <%= series.speaker_title %></h3>
-        <h1><%= series.title.upcase %></h1> 
-        <div class="featured-action-icons">
-          <div class="action-icon type-icon" data-width="128">
-            <%= image_tag "attitudedone.svg", :class => "action-icon-img" %>
-            <p class="action-icon-text">Speaker Series</p>
-          </div>
-          <div class="action-icon notify-icon show-notify-modal" data-width="93">
-            <%= image_tag "attitudedone.svg", :class => "action-icon-img" %>
-            <p class="action-icon-text">Notify Me</p>
-          </div>
-        </div>
-        <div class="featured-description">
-          <p><%= series.description %></p>
-        </div>
-      </div>
-      <div class="featured-gradient">
-      </div>
-    </div>
-    <div class="featured-item">
-      <% series = @featured.first %>
-        <div class="featured-video-container">
-          <%= image_tag series.vthumbnail_url, :class => "featured-video "%>
-          <%= link_to video_path(series.first_video) do %>
-            <%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
+    <%= @featured.each do |media| %>
+      <div class="featured-item">
+          <div class="featured-video-container">
+            <%= image_tag media.vthumbnail_url, :class => "featured-video "%>
+          </div> 
+           <%= link_to media_path(media), :class => "featured-play-link" do %>
+            <div class="featured-play-btn">
+              <div class="play-triangle">
+                
+              </div>
+            </div>
           <% end %>
-        </div> 
-      <div class="featured-info">
-        <h3><%= series.name %>, <%= series.speaker_title %></h3>
-        <h1><%= series.title %></h1> 
-        <div class="featured-action-icons">
-          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
-          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
+        <div class="featured-info">
+          <h3><%= media.featured_top_info %></h3>
+          <h1><%= media.featured_title %></h1> 
+          <h2><%= media.featured_subtitle%></h2>
+          <div class="featured-action-icons">
+            <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="128">
+              <%= image_tag "speaker-white.png", :class => "action-icon-img" %>
+              <p class="action-icon-text">Speaker Series</p>
+            </div>
+            <div class="action-icon notify-icon show-notify-modal" data-width="93">
+              <%= image_tag "notify-black.png", :class => "action-icon-img" %>
+              <p class="action-icon-text">Notify Me</p>
+            </div>
+          </div>
+          <div class="featured-description">
+            <p><%= media.description %></p>
+          </div>
         </div>
-        <div class="featured-description">
-          <p><%= series.description %></p>
+        <div class="featured-gradient">
         </div>
-        
       </div>
-      <div class="featured-gradient">
-      </div>
-    </div>
-    <div class="featured-item">
-      <% series = @featured.first %>
-        <div class="featured-video-container">
-          <%= image_tag series.vthumbnail_url, :class => "featured-video "%>
-          <%= link_to video_path(series.first_video) do %>
-            <%= image_tag "attitudedone.svg", :class => "featured-play-btn" %>
-          <% end %>
-        </div> 
-      <div class="featured-info">
-        <h3><%= series.name %>, <%= series.speaker_title %></h3>
-        <h1><%= series.title %></h1> 
-        <div class="featured-action-icons">
-          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
-          <%= image_tag "attitudedone.svg", :class => "action-icon" %>
-        </div>
-        <p><%= series.description %></p>
-      </div>
-      <div class="featured-gradient">
-      </div>
-    </div>
+    <% end %>
   </div>
   <div class="featured-nav">
     <div class="dot active left" data-go-to="0"></div>
@@ -81,8 +44,13 @@
 
 <section class="media-container">
   <% @media.each do |media| %>
-    <div class="media-list">
-      <h3 class="media-title"><%= media[:title] %></h3>
+    <div class="media-list <%= media[:title].downcase.gsub(" ", "-") %>">
+      <div class="media-header">
+        <h3><%= media[:title] %></h3> 
+        <%= link_to media_list_path(media[:content]) do %>
+          <%= image_tag "triangle.svg" %>
+        <% end %>
+      </div>
       <div class="media-thumbnails">
         <% media[:content].each do |content| %>
           <%= link_to media_path(content) do %>
@@ -115,16 +83,38 @@
     </div>
   <% end %>
     <div class="media-list">
-      <h3 class="media-title">Courses</h3>
+      <div class="media-header">
+        <h3>Courses</h3>
+        <%= link_to "http://courses.drapertv.com" do %>
+          <%= image_tag "triangle.svg" %>
+        <% end %>
+      </div>
       <div class="media-thumbnails">
         <% @categories.each_with_index do |course, i| %>
-          <div class="course-thumbnail <%= @colors[i] %>-b">
-          
-          <div class="course-name white">
-            <%= course %>
-          </div>
+          <%= link_to "http://courses.drapertv.com/topics/#{course.downcase.gsub(" &", "").gsub(" ", "-")}" do %>
+            <div class="course-thumbnail">
+              <%= image_tag (course.downcase.gsub(" ", "-") + "-thumbnail.png"), :class => "course-thumbnail-img" %>
+              <div class="course-overlay <%= @colors[i] %>-b">
+                
+              </div>
+              <%= image_tag (course.downcase.gsub(" ", "-") + "-icon.png"), :class => "course-icon" %>
 
-          </div>
+
+              <div class="course-name white">
+                <%= course %>
+              </div>
+
+              <div class="course-description">
+                <h3>
+                  <%= course %>
+                </h3>
+                <% Chapter.chapters_for(course).each do |chapter| %>
+                  <li><%= chapter.name.downcase.camelcase %></li>
+                <% end %>
+              </div>
+
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

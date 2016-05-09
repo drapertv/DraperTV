@@ -9,4 +9,13 @@ module PlaylistsHelper
       livestream_path content
     end
 	end
+
+  def media_list_path media
+    content = media.first
+    if content.class == Video || content.class == Series
+      series_index_path
+    else
+      livestreams_path
+    end
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411211946) do
+ActiveRecord::Schema.define(version: 20160503220705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,10 +135,11 @@ ActiveRecord::Schema.define(version: 20160411211946) do
     t.string   "slug"
     t.boolean  "popular"
     t.string   "vthumbnail"
-    t.boolean  "public",          default: false
+    t.boolean  "public",             default: false
     t.string   "lexica_id"
-    t.boolean  "ready_to_notify", default: false
-    t.boolean  "notified",        default: false
+    t.boolean  "ready_to_notify",    default: false
+    t.boolean  "notified",           default: false
+    t.boolean  "show_on_front_page"
   end
 
   add_index "livestreams", ["slug"], name: "index_livestreams_on_slug", unique: true, using: :btree

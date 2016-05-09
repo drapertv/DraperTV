@@ -11,10 +11,10 @@ class SeriesController < InheritedResources::Base
       @featured = Series.featured
       
       popular = Series.popular
-      speakers = Series.shown_on_front_page
-      livestreams = Livestream.shown_on_front_page
+      speakers = Series.newest
+      livestreams = Livestream.closest_to_now
       students = popular
-      @media = [{title: "Must Watch", content: popular}, {title: "Speakers", content: popular}, {title: "Livestreams", content: livestreams},{title: "Students", content: students}]
+      @media = [{title: "Must Watch", content: popular}, {title: "Speakers", content: speakers}, {title: "Livestreams", content: livestreams},{title: "Students", content: students}]
       @og_image = @featured.first.first_video.vthumbnail_url
   end
 

@@ -63,14 +63,43 @@ class Series < ActiveRecord::Base
   end 
 
   def self.featured
-    series = where(show_on_front_page: true)
-    series = limit(5) if series.length < 1
-    limit(5)
+    front_page_media = nil
+    manually_selected_to_front_page = Series.where(show_on_front_page: true).to_a + Livestream.where(show_on_front_page: true).to_a 
+    
+    if manually_selected_to_front_page.count < 3
+      featured_series = Series.order('created_at desc').limit(2).to_a
+      featured_livestream = Livestream.next_livestream
+      if !featured_livestream
+        featured_livestream = [Livestream.last]
+      end
+      auto_populated_featured_media = featured_series + featured_livestream
+      front_page_media = (manually_selected_to_front_page + auto_populated_featured_media)[0..2]
+    else
+      front_page_media = manually_selected_to_front_page
+    end
+    front_page_media
   end
+
+  def featured_top_info
+    "#{name}, #{speaker_title}"
+  end
+
+  def featured_title
+    title.upcase
+  end
+
+  def featured_subtitle
+    nil
+  end
+
 
   def self.popular
     where(popular: true).limit(5)
     limit 5
+  end
+
+  def self.newest
+    order('created_at desc').limit(5)
   end
 
   def self.switch_tags

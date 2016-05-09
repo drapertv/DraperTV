@@ -1,7 +1,7 @@
 Home =
 	init: ->
-		$('body').on 'mouseenter', '.media-thumbnail', @showDescriptionAfterDelay
-		$('body').on 'mouseleave', '.media-thumbnail', @hideDescription
+		$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail', @showDescriptionAfterDelay
+		$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @hideDescription
 		$('body').on 'click', '.dot', @moveSlide
 		$('body').on 'afterChange', @adjustDotShading
 		$('body').on 'click', '.search-icon', @showSearchBox

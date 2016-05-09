@@ -24,6 +24,18 @@ class Livestream < ActiveRecord::Base
     all.limit(5)
   end
 
+  def featured_top_info
+    formatted_stream_date
+  end
+
+  def featured_title
+    speaker_name.upcase
+  end
+
+  def featured_subtitle 
+    thumbnail_title.upcase
+  end
+
   def comment_form_path
 	  [self, Comment.new]
   end
@@ -96,6 +108,11 @@ class Livestream < ActiveRecord::Base
     Livestream.where('stream_date > (?)', Time.now - 90.minutes).order(:stream_date).first
   end
 
+  def self.closest_to_now
+    livestreams = [next_livestream] + Livestream.where('stream_date > (?)', Time.now - 90.minutes).order(:stream_date).limit(4).to_a + Livestream.where('stream_date < (?)', Time.now - 90.minutes).order('stream_date desc').limit(5).to_a
+    livestreams.compact[0..4]
+  end
+
   def live?
     Time.now - stream_date < 90.minutes && Time.now - stream_date > 0
   end
@@ -117,11 +134,11 @@ class Livestream < ActiveRecord::Base
   end
 
   def thumbnail_title
-    title.split("-")[-1]
+    title.split("-", 2)[-1]
   end
 
   def speaker_name 
-    title.split("-")[0..-2].join("-").strip
+    title.split("- ")[0..-2].join("-").strip
   end
 
   def self.today
