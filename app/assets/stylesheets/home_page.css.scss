@@ -131,7 +131,7 @@
 			color: $landing-gray;
 			font-size: 20px;
 			font-weight: 400;
-			margin-bottom: 4px;
+			margin-bottom: 6px;
 			letter-spacing: 1px;
 		}
 		h1 {
@@ -139,6 +139,7 @@
 			font-size: 46px;
 			font-weight: 700;
 			letter-spacing: 3.5px;
+			line-height: 1.1;
 		}
 		h2 {
 			font-size: 20px;
@@ -153,6 +154,7 @@
 	  	-webkit-box-orient: vertical;
 	  	text-overflow: ellipsis;
 	  	height: 71px;
+	  	margin-top: 12px;
 		}
 		p {
 			color: $landing-gray;
@@ -160,10 +162,10 @@
 			margin-top: 10px;
 			height: 71px;
 			overflow: hidden;
-			
+			line-height: 1.3;
 		}
 		.featured-action-icons {
-			margin-top: 10px;
+			margin-top: 12px;
 			height: 22px;
 			@include flexbox;
 			.action-icon {
@@ -176,6 +178,7 @@
 				position: relative;
 				p {
 					display: none;
+					opacity: 0;
 				}
 			}
 			.action-icon.series.active {
@@ -230,7 +233,7 @@
 	margin: 0px 4px;
 	position: relative;
 	margin-bottom: 36px;
-	transition-duration: 0.5s;
+	// transition: width 0.5s, height 0.5s;
 	.thumbnail-description {
 		display: none;
 		width: 288px;
@@ -286,6 +289,14 @@
 			padding-right: 7px;
 			margin-bottom: 4px;
 			display: none;
+			@include align-items(center);
+			@include flexbox;
+			@include justify-content(space-between);
+			visibility: hidden;
+			.notify-icon {
+				height: 24px;
+				width: 24px;
+			}
 		}
 		.media-speaker-name	{
 			font-size: 14px;
@@ -328,6 +339,9 @@
     overflow: hidden;
     color: white;
 	}
+	.notify-button {
+		visibility: initial;
+	}
 }
 
 .media-thumbnail.show-description:hover {
@@ -351,9 +365,6 @@
 		width: 288px;
 		color: $dark-gray;
 		padding: 8px;
-	}
-	.notify-button{
-		display: block;
 	}
 	.media-info {
 		.media-speaker-name {
@@ -455,6 +466,9 @@
 		font-size: 20px;
 		font-weight: 600;
 		margin-right: 10px;
+		}
+		img {
+			padding-top: 4px;
 		}
 	}
 }

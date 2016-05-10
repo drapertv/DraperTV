@@ -27,7 +27,7 @@ Home =
 				setTimeout ->
 					if thumbnail.is(":hover")
 						thumbnail.addClass('show-description')
-				, 1500
+				, 500
 			else
 				console.log "added immedietly"
 				thumbnail.addClass('show-description')
@@ -71,16 +71,20 @@ Home =
 		$(@).find('p').animate 
 			right: '5%'
 		, 250
+		$(@).find('p').animate 
+			opacity: "1"
+		, 100
 
 	hideActionIconText: ->
 		actionIcon = $(@)
 		if $(@).hasClass('notify-icon')
 			$('.action-icon').removeClass('active').attr('style', '')
+			actionIcon.find('p').attr('style', '')
 			return
 		else
 			setTimeout ->
-				console.log "triggered"
 				$('.action-icon').removeClass('active').attr('style', '') unless $('.action-icon.active').length > 1 && actionIcon.hasClass('type-icon')
+				actionIcon.find('p').attr('style', '')
 			, 100
 
 	showNotifyModal: (e) ->
