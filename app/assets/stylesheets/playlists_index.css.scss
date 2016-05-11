@@ -89,9 +89,9 @@
 
 @media (max-width: 1023px) {
   .media-container.index-view {
-    padding: 26px calc(50vw - 286.5px);
+    padding: 26px calc(50vw - 379.5px);
     .media-list {
-      width: 573px;
+      width: 759px;
     }
   }
   .featured-item.header-banner .banner-content {
@@ -108,7 +108,15 @@
   .sort-bar .sort-options div:first-child {
     margin-left: 0px;
   }
+}
 
+@media (max-width: 633px) {
+  .media-container.index-view {
+    padding: 26px calc(50vw - 286.5px);
+    .media-list {
+      width: 573px;
+    }
+  }
 }
 
 @media (max-width: 540px) {
