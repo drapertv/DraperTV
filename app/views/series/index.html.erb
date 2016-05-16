@@ -1,17 +1,18 @@
 <div class="featured-item header-banner">
   <% series = Series.first %>
-  <%=  image_tag series.first_video.vthumbnail_url, :class => "featured-video "%>
+  <%=  image_tag "speakers.png", :class => "banner-img"%>
   <div class="featured-gradient">
   </div>
   <div class="banner-content">
-    <h3 class="banner-title">Speaker Series</h3>
+    <h3 class="banner-title">SPEAKER SERIES</h3>
     <p class="banner-desc">Watch talks given at Draper University by top Silicon Valley startup founders and executives. Each lecture is curated into a series of short videos highlighting important topics our speakers present.</p>
   </div>
 </div>
 <div class="sort-bar">
-  <div class="notify-button">
-    Notify Me
-  </div>  
+  <div class="notify-button show-notify-modal">
+    <%= image_tag "notify-white.png", :class => "notify-icon" %> 
+    <p>Notify Me</p>
+  </div>
   <div class="sort-options">
     <div>Sorted By:</div>
     <div class="date-sort">Newest</div>
@@ -35,7 +36,7 @@
             </div>
             <%= image_tag content.vthumbnail.url(:seriesthumb), :class => "thumbnail-img" %>
             <div class="thumbnail-gradient"></div>
-            <div class="thumbnail-description"><%= content.description %></div>
+            <div class="thumbnail-description"><p><%= content.description %></p></div>
           </div>
         <% end %>
       <% end %>

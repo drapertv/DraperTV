@@ -6,9 +6,6 @@
   padding: 0;
 }
 
-body:not(.show-scroll-bar)::-webkit-scrollbar, body:not(.show-scroll-bar) *::-webkit-scrollbar {
-    display: none;
-}
 
 @media (max-width: 768px) {
   html {
@@ -35,6 +32,9 @@ h1, h2, h3, h4, p, small, input {
   -webkit-font-smoothing: antialiased;
 }
 
+p {
+  line-height: 1.2;
+}
 a {
   color: black;
   text-decoration: none;
@@ -54,7 +54,7 @@ small {
 .red {color: #e1474c;}
 .grey {color: #919191;}
 .darkgrey {color: #666666;}
-.black {color: #000000;}
+.black {color: #414141;}
 .white {color: #ffffff;}
 .purple {color: #a53a6a;}
 
@@ -68,7 +68,7 @@ small {
 .red-b {background: #e1474c;}
 .grey-b {background: #919191;}
 .darkgrey-b {background: #666666;}
-.black-b {background: #000000;}
+.black-b {background: #414141;}
 .white-b {background: #ffffff;}
 .purple-b {background: #a53a6a;}
 

@@ -23,14 +23,25 @@ Home =
 		if $(window).width() > 540
 			thumbnail = $(@)
 			mediaList = thumbnail.parents('.media-list')
+			# if no thumbnails currently showing description
 			if mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').length < 1	
+				# add after delay
 				setTimeout ->
 					if thumbnail.is(":hover")
 						thumbnail.addClass('show-description')
 				, 500
 			else
-				console.log "added immedietly"
-				thumbnail.addClass('show-description')
+				previouslyEnlargedThumbnail = mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').first()
+				# if moving mouse to a adjacent thumbnail in the same row
+				if previouslyEnlargedThumbnail.parent().next().children()[0] == thumbnail[0] || previouslyEnlargedThumbnail.parent().prev().children()[0] == thumbnail[0]
+					thumbnail.addClass('show-description')
+				else
+					# add description after delay
+					setTimeout ->
+						if thumbnail.is(":hover")
+							thumbnail.addClass('show-description')
+					, 500
+
 
 	initCarousel: ->
 		$('.featured-items').slick()

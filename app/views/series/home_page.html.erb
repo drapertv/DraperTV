@@ -46,8 +46,8 @@
   <% @media.each do |media| %>
     <div class="media-list <%= media[:title].downcase.gsub(" ", "-") %>">
       <div class="media-header">
-        <h3><%= media[:title] %></h3> 
         <%= link_to media_list_path(media[:content]) do %>
+          <h3><%= media[:title] %></h3> 
           <%= image_tag "triangle.svg" %>
         <% end %>
       </div>
@@ -63,7 +63,7 @@
               <div class="media-info">
                 <% if content.class == Livestream %>
                   <div class="notify-button show-notify-modal" data-livestream-id="<%= content.id %>">
-                    <%= image_tag "notify-white.png", :class => "notify-icon" %> 
+                    <%= image_tag "notify-black.png", :class => "notify-icon" %> 
                     <p>Notify Me</p>
                   </div>
                 <% end %>
@@ -86,8 +86,9 @@
   <% end %>
     <div class="media-list">
       <div class="media-header">
-        <h3>Courses</h3>
         <%= link_to "http://courses.drapertv.com" do %>
+          <h3>Courses</h3>
+        
           <%= image_tag "triangle.svg" %>
         <% end %>
       </div>
