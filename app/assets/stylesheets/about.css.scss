@@ -12,15 +12,21 @@
     background: none;
     height: auto;
     left: 0;
+    padding: 0;
     h1 {
       font-size: 55px;
       font-weight: 300;
+      width: 100%;
+      text-align: center;
     }
     h3 {
       color: white;
       font-size: 28px;
       font-weight: 300;
       margin-top: 4px;
+      margin-bottom: 0px;
+      width: 100%;
+      text-align: center;
     }
   }
   .about-img {
@@ -61,6 +67,15 @@
   }
   .about-section {
     margin-bottom: 36px;
+    a {
+      color: $blue;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+  .about-section.last {
+    margin-bottom: 0px;
   }
   .about-section.mobile-view {
     display: none;
@@ -70,17 +85,22 @@
     .team-members {
       @include flexbox;
       @include flex-wrap(wrap);
+      @include justify-content(space-between);
       .team-member {
-        width: calc(29vw - 90px);
+        width: calc(29vw - 60px);
         margin-bottom: 36px;
         img {
           width: 100%;
-          height: calc(29vw - 90px);
+          height: calc(29vw - 60px);
           margin-bottom: 12px
         }
         .member-name {
           color: $dark-gray;
           font-weight: 600;
+        }
+        .member-name:hover, .member-email:hover {
+          color: $blue;
+          text-decoration: underline;
         }
         .member-position {
           font-weight: 300;
@@ -90,36 +110,72 @@
           font-weight: 300;
         }
       }
-      .team-member:nth-child(2n) {
-        margin-left: 60px;
-      }
     }
     .former-staff h3 {
       margin-bottom: 4px;
+    }
+    .former-staff h3:hover {
+      color: $blue;
+      text-decoration: underline;
     }
   }
   .about-right {
     width: 37%;  
   }
   .site-info {
-      @include flexbox;
-      img {
-        height: 45px;
-        width: 45px;
-        margin-right: 18px;
-        border-radius: 50%;
-      }
-      .info-text {
-        width: calc(100% - 63px);
-        margin-bottom: 36px;
-      }
+    @include flexbox;
+    img {
+      height: 45px;
+      width: 45px;
+      margin-right: 18px;
+      border-radius: 50%;
     }
+    .info-text {
+      width: calc(100% - 63px);
+      margin-bottom: 36px;
+    }
+    h3:hover, a:hover {
+      text-decoration: underline;
+    }
+    p a {
+      color: $blue;
+    } 
+  }
+
 
 }
 
 @media (max-width: 1439px) {
   .about-content {
+    margin: 0 auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 1320px;
+    .about-left {
+      .team-members .team-member {
+        width: calc(29vw - (50vw - 660px));
+        img {
+          height: calc(29vw - (50vw - 660px));
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1379px) {
+  .about-content {
     padding: 36px 30px;
+    margin: 0;
+    width: 100%;
+    .about-left {
+      .team-members .team-member {
+        width: calc(29vw - 30px);
+        img {
+          height: calc(29vw - 30px);
+        }
+      }
+    }
+
   }
 }
 
@@ -136,15 +192,18 @@
     }
   }
   .about-content {
-    padding: 26px 20px;
+    width: 728px;
+    margin: 0 auto;
+    padding-left: 0px;
+    padding-right: 0px;
     @include flex-direction(column);
     .about-left {
       width: 100%;
       .team-members {
         .team-member {
-          width: calc(50vw - 30px);
+          width: calc(728px / 2 - 10px);
           img {
-            height: calc(50vw - 30px);
+            height: calc(728px / 2 - 10px);
           }
         }
         .team-member:nth-child(2n) {
@@ -171,7 +230,7 @@
 }
 
 
-@media (max-width: 540px) {
+@media (max-width: 748px) {
   .featured-item.about {
     .featured-info {
       h1 {
@@ -186,6 +245,9 @@
   }
   .about-content {
     padding: 20px;
+    margin: 0;
+    width: 100%;
+    padding-left: 30px;
     .about-left {
       .team-members {
         .team-member {
