@@ -12,17 +12,17 @@
       <%= form_tag "/notifications", :class => "modal-form hide-on-submit notifications-form", remote: true do %>
         <div class="email-selection">
           <div class="email-option">
-            <%= check_box_tag :all_videos, true %>
+            <%= radio_button_tag :notification_option, :all_videos %>
             <%= label_tag :all_videos, "All Videos" %>
             <div class="check"></div>
           </div>
           <div class="email-option">
-            <%= check_box_tag :all_livestreams, true %>
+            <%= radio_button_tag :notification_option,  :all_livestreams %>
             <%= label_tag :all_livestreams, "All Livestreams" %>
             <div class="check"></div>
           </div>
           <div class="email-option">
-            <%= check_box_tag :livestream, "livestream" %>
+            <%= radio_button_tag :notification_option,  :livestream %>
             <%= label_tag :livestream, "This Livestream Event" %>
             <div class="check"></div>
           </div>
