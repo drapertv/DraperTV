@@ -233,6 +233,10 @@
 	margin: 0px 4px;
 	position: relative;
 	margin-bottom: 36px;
+	@include flexbox;
+	overflow: hidden;
+	@include align-items(center);
+
 	// transition: width 0.5s, height 0.5s;
 	.thumbnail-description {
 		display: none;
