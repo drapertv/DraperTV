@@ -17,10 +17,12 @@
           <h1><%= media.featured_title %></h1> 
           <h2><%= media.featured_subtitle%></h2>
           <div class="featured-action-icons">
-            <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="128">
-              <%= image_tag "speaker-white.png", :class => "action-icon-img" %>
-              <p class="action-icon-text">Speaker Series</p>
-            </div>
+            <%= link_to '/speakers' do %>
+              <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="128">
+                <%= image_tag "speaker-white.png", :class => "action-icon-img" %>
+                <p class="action-icon-text">Speaker Series</p>
+              </div>
+            <% end %>
             <div class="action-icon notify-icon show-notify-modal" data-width="93">
               <%= image_tag "notify-black.png", :class => "action-icon-img" %>
               <p class="action-icon-text">Notify Me</p>
@@ -46,9 +48,16 @@
   <% @media.each do |media| %>
     <div class="media-list <%= media[:title].downcase.gsub(" ", "-") %>">
       <div class="media-header">
-        <%= link_to media_list_path(media[:content]) do %>
-          <h3><%= media[:title] %></h3> 
-          <%= image_tag "triangle.svg" %>
+        <% if media[:title] == "Must Watch" %>
+          <a>
+            <h3><%= media[:title] %></h3> 
+            <%= image_tag "triangle.svg" %>
+          </a>
+        <% else %>
+          <%= link_to media_list_path(media[:content]) do %>
+            <h3><%= media[:title] %></h3> 
+            <%= image_tag "triangle.svg" %>
+          <% end %>
         <% end %>
       </div>
       <div class="media-thumbnails">
