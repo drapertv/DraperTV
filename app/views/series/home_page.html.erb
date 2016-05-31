@@ -7,8 +7,7 @@
           </div> 
            <%= link_to media_path(media), :class => "featured-play-link" do %>
             <div class="featured-play-btn">
-              <div class="play-triangle">
-                
+              <div class="play-triangle">          
               </div>
             </div>
           <% end %>
@@ -61,9 +60,9 @@
         <% end %>
       </div>
       <div class="media-thumbnails">
-        <% media[:content].each do |content| %>
+        <% media[:content].each_with_index do |content, i| %>
           <%= link_to media_path(content) do %>
-            <div class="media-thumbnail <%= content.class.to_s.downcase %>">
+            <div class="media-thumbnail <%= content.class.to_s.downcase %> <%= 'first-in-row' if i == 0 %>">
               <% if content.class == Livestream %>
                 <div class="media-date">
                   <%= content.formatted_stream_date %>
@@ -97,25 +96,20 @@
       <div class="media-header">
         <%= link_to "http://courses.drapertv.com" do %>
           <h3>Courses</h3>
-        
           <%= image_tag "triangle.svg" %>
         <% end %>
       </div>
-      <div class="media-thumbnails">
+      <div class="media-thumbnails course-thumbnails">
         <% @categories.each_with_index do |course, i| %>
           <%= link_to "http://courses.drapertv.com/topics/#{course.downcase.gsub(" &", "").gsub(" ", "-")}" do %>
             <div class="course-thumbnail">
               <%= image_tag (course.downcase.gsub(" ", "-") + "-thumbnail.png"), :class => "course-thumbnail-img" %>
-              <div class="course-overlay <%= @colors[i] %>-b">
-                
+              <div class="course-overlay <%= @colors[i] %>-b">              
               </div>
               <%= image_tag (course.downcase.gsub(" ", "-") + "-icon.png"), :class => "course-icon" %>
-
-
               <div class="course-name white">
                 <%= course %>
               </div>
-
               <div class="course-description">
                 <h3>
                   <%= course %>

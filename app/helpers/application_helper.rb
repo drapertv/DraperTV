@@ -26,7 +26,6 @@ module ApplicationHelper
 	end
 
 	def current_page
-		binding.pry
 		if request.request_uri.include?("videos")
 			"videos"
 		elsif request.request_uri.include?("playlists")

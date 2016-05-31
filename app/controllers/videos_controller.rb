@@ -5,21 +5,18 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.friendly.find(params[:id])
-    @og_title = "#{@video.title} - DraperTV"
     @series = @video.series
     @videos = @series.videos.order(:id)
-    @og_description = @series.first_video.description
-    
-    @og_image = @series.first_video.vthumbnail_url
     @featured = @video.suggested(@series.category_list)[0..5]
-
     @media = {title: "Similar", content: Series.popular}
-
 
     if @video.url
       @video_yt_embed = ActiveSupport::SafeBuffer.new(%Q{<iframe id="ytplayer" type="text/html" width="662" height="494" src="https://www.youtube.com/embed/#{@video.url}?autoplay=1&rel=0&showinfo=0&color=red&theme=dark&modestbranding=1" frameborder="0" allowfullscreen> </iframe>})
     end
-    @video.increment_view_count
+
+    @og_title = "#{@video.title} - DraperTV"
+    @og_description = @series.first_video.description
+    @og_image = @series.first_video.vthumbnail_url
   end
 
   private

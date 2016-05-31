@@ -12,7 +12,7 @@ class SearchesController < ApplicationController
 
   def index
   	@terms = params[:terms]
-    @og_title = "Search for \"#{@terms}\" - DraperTV"  	
+    @og_title = "DraperTV - Search for \"#{@terms}\" - DraperTV"  	
     @results = Search.search_for(@terms).uniq
     @count = @results.count
   	render 'create'

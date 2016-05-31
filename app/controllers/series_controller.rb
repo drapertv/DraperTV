@@ -4,7 +4,7 @@ class SeriesController < InheritedResources::Base
   def index
     @og_title = "Series - DraperTV"
     @meta_description = "Watch talks given by top Silicon Valley startup founders at Draper University. Learn about startups and entrepreneurship with DraperTV on topics like Vision, Fundraising, Marketing, Product, and Sales."
-    @series = Series.all.order("created_at desc")
+    @series = Series.order("created_at desc")
   end
 
   def home_page
@@ -13,15 +13,14 @@ class SeriesController < InheritedResources::Base
       popular = Series.popular
       speakers = Series.newest
       livestreams = Livestream.closest_to_now
-      students = popular
+      
+      students = popular #to be implemented when we finish creating student videos
+
       @media = [{title: "Must Watch", content: popular}, {title: "Speakers", content: speakers}, {title: "Livestreams", content: livestreams},{title: "Students", content: students}]
-      @og_image = @featured.first.first_video.vthumbnail_url
+      
+      @og_image = @featured.first.vthumbnail_url
   end
-
-  def show
-    @series = Series.find(params[:id])
-  end
-
+  
   private
 
     def set_categories_and_colors

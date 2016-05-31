@@ -29,37 +29,50 @@ Home =
 				# show after delay
 				setTimeout ->
 					if thumbnail.is(":hover")
-						Home.scaleThumbnail thumbnail
+						Home.scaleThumbnail(thumbnail)
 				, 500
 			else
 				previouslyEnlargedThumbnail = mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').first()
 				# if moving mouse to a adjacent thumbnail in the same row
 				if previouslyEnlargedThumbnail.parent().next().children()[0] == thumbnail[0] || previouslyEnlargedThumbnail.parent().prev().children()[0] == thumbnail[0]
-					Home.scaleThumbnail thumbnail
+					Home.scaleThumbnail(thumbnail)
 				else #moving to a non adjacent thumbnail
 					# show description after delay
 					setTimeout ->
 						if thumbnail.is(":hover")
-							Home.scaleThumbnail thumbnail
+							Home.scaleThumbnail(thumbnail)
 					, 500
 
 	scaleThumbnail: (thumbnail) ->
 		thumbnail.addClass('show-description')
-		height = thumbnail.height()
-		scaleAmount = (162 / height)
-		#enlarge Thumbnail and all child elements
-		thumbnail.css('transform', "scale(#{scaleAmount})")
-		shrinkAmount = 1/ scaleAmount
+		unless thumbnail.hasClass('course-thumbnail')
+			height = thumbnail.height()
+			scaleAmount = (162 / height)
+			#enlarge thumbnail and all child elements
+			thumbnail.css('transform', "scale(#{scaleAmount})")
+			shrinkAmount = 1/ scaleAmount
 
-		#shrink fonts of child elements
-		Home.shrinkFontsOfCollection thumbnail.find("*"), shrinkAmount
-		Home.shrinkPaddingOfCollection thumbnail.find(".thumbnail-description"), shrinkAmount
-		thumbnail.find('.thumbnail-description').css('padding')
-		#animate description sliding out
-		thumbnail.find('.thumbnail-description').animate 
-			top: "#{height}px"
-		, 400, ->
-			thumbnail.find('.thumbnail-description').css("box-shadow", "0px 0px 15px black")
+			#shrink fonts of child elements
+			Home.shrinkFontsOfCollection thumbnail.find("*"), shrinkAmount
+			Home.shrinkPaddingOfCollection thumbnail.find(".thumbnail-description"), shrinkAmount
+			thumbnail.find('.thumbnail-description').css('padding')
+			#animate description sliding out
+			thumbnail.find('.thumbnail-description').animate 
+				top: "#{height}px"
+			, 400, ->
+				thumbnail.find('.thumbnail-description').css("box-shadow", "0px 0px 15px black")
+
+			#adjust margins for first and last visible elements in row
+			width = thumbnail.width()
+			scaledWidth = width * scaleAmount
+			widthDifference = (scaledWidth - width) / 2
+			thumbnailMargins = parseInt(thumbnail.css('margin-right')) * 2
+			
+			if thumbnail.hasClass('first-in-row')
+				thumbnail.css('margin-left', "#{widthDifference}px").css('margin-right', "-#{widthDifference - thumbnailMargins}px")
+
+			if thumbnail.parent().next().find('.media-thumbnail:visible').length < 1
+				thumbnail.css('margin-right', "#{widthDifference}px").css('margin-left', "-#{widthDifference - thumbnailMargins}px")
 
 
 	shrinkFontsOfCollection: (elements, shrinkAmount) ->

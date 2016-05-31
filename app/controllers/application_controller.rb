@@ -2,41 +2,9 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_device_type
   before_filter :set_og_tags
 
   helper ApplicationHelper
-
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => exception.message
-  end
-
-  helper_method :resource, :resource_name, :devise_mapping
-  def resource_name
-    :user
-  end
-
-  def set_device_type #allows use of @browser.mobile? in views
-    request.variant = :phone if browser.mobile?
-  end
-
-  def check_mobile
-    browser = Browser.new
-    @mobile = browser.mobile?
-  end
-
-  def resource
-    @resource ||= User.new
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
-  end
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :remember_me, :email, :password, :password_confirmation) }
-  end
 
   def set_og_tags
     @og_title = "DraperTV"
