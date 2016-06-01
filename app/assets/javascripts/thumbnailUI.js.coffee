@@ -4,6 +4,7 @@ ThumbnailUI =
 	init: ->
 		$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
 		$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
+		$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
 		$(window).on 'resize', @adjustLastCourseThumbnail
 		@adjustLastCourseThumbnail()
 
@@ -37,6 +38,17 @@ ThumbnailUI =
 						if thumbnail.is ":hover"
 							ThumbnailUI.animate thumbnail
 					, 500
+
+	animateTitle: ->
+		title = $(@).find('.media-title')
+		title.css('height', 'auto')
+		if title.height() > 20
+			title.css('height', '16px')
+			title.parents('.media-info').animate
+				bottom: "30px"
+			, 400
+		else
+			title.css('height', '16px')
 
 	adjustLastCourseThumbnail: ->
 		if $(window).width() <= 968 && $(window).width() > 640
