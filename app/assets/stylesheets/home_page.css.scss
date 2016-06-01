@@ -1,5 +1,5 @@
-@import 'shared/variables';
-@import 'shared/mixins';
+@import 'global/variables';
+@import 'global/mixins';
 
 ////// FEATURED CONTENT ///////////
 .slick-arrow {
@@ -727,8 +727,6 @@
 		}
 	}
 }
-
-
 
 @media (max-width: 540px) {
 	.featured-items {

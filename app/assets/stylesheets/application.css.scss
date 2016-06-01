@@ -10,19 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require shared/animate
+ *= require global/animate
  *= require vendor/font-awesome.min
  *= require vendor/simple-line-icons
  *= require vendor/slick
  *= require vendor/slick-theme
- *= require shared/app
  *= require_self
- *= require shared/layouts
- *= require shared/master
- *= require shared/header
- *= require shared/footer
- *= require shared/modal
- *= require master
+ *= require global/layouts
+ *= require global/master
+ *= require global/header
+ *= require global/footer
+ *= require global/modal
  *= require playlists_index
  *= require videos_show
  *= require livestreams_index

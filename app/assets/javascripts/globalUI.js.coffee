@@ -1,0 +1,41 @@
+# js for site wide UI (headers, footers, modals etc.) 
+
+GlobalUI =
+	init: ->
+    $('body').on 'click', '.search-icon', @showSearchBox
+    $('body').on 'click', '.hide-search', @hideSearchBox
+    $('body').on 'click', '.show-notify-modal', @showNotifyModal
+    $('body').on 'click', '.modal-container, .modal-container .close', @hideNotifyModal
+    $('body').on 'ajax:success', '.notifications-form', @showSubmitConfirmation
+
+  showSearchBox: -> 
+    $('.header-right .header-item:not(.search-icon)').addClass('animated fadeOut').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
+      $('.header-item:not(.search-icon, .logo)').hide()
+      $('.search-input').show()
+    $(@).addClass('hide-search')
+
+  hideSearchBox: ->
+    $('.header-right .header-item:not(.search-icon)').removeClass('animated').removeClass('fadeOut')
+    $('.search-input').hide()
+    $('.header-item:not(.search-icon, .logo)').show()
+    $(@).removeClass('hide-search')
+
+  showNotifyModal: (e) ->
+    e.preventDefault()
+    $('.submit-confirmation').hide()
+    $('.hide-on-submit').show()
+    $('.modal-container').css('display', 'flex')
+    $('#livestream').val($(@).attr('data-livestream-id'))
+
+  hideNotifyModal: (e) ->
+    $('.modal-container').hide() if $(e.target).hasClass('close') || $(e.target).parents('.modal').length < 1
+
+  showSubmitConfirmation: (event, data) ->
+    $('.submit-confirmation').show()
+    $('.hide-on-submit').hide()
+    $('.notifications-form')[1].reset()
+
+ready = ->
+	GlobalUI.init()
+$(document).ready ready
+$(document).on 'page:load', ready
