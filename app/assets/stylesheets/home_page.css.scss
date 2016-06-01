@@ -430,8 +430,12 @@
 	@include justify-content(center);
 	@include align-items(center);
 	cursor: pointer;
+	overflow: hidden;
+	transition-duration: 0.4s;
 	.course-description {
-		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0; 
 		z-index: 1;
 		height: 100%;
 		width: 100%;
@@ -462,7 +466,8 @@
 		opacity: 0.9;
 	}
 	.course-icon {
-		width: 30px;
+		width: 52px;
+		height: 49px;
 		height: auto;
 		z-index: 1;
 	}
@@ -476,10 +481,13 @@
 
 .course-thumbnail.show-description {
 	.course-icon, .course-name {
-		display: none;
+		transform: translateY(-500px);
+		transition-duration: 1s; 
 	}
 	.course-description {
 		display: block;
+		transform: translateY(-100%);
+		transition-duration: 0.4s; 
 	}
 }
 

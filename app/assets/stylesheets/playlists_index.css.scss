@@ -19,10 +19,16 @@
     background: black;
     width: 600px;
     .banner-title {
+      @include flexbox;
+      @include align-items(center);
       font-size: 26px;
       color: white;
       font-weight: 600;
       margin-bottom: 12px;
+      .speaker-icon {
+        height: 22px;
+        margin-right: 10px;
+      }
     }
     .banner-desc {
       color: $gray;
@@ -95,6 +101,10 @@
       padding-left: calc((100vw - 1320px) / 2);
     }
   }
+  .sort-bar {
+    padding-left: calc((100vw - 1320px) / 2); 
+    padding-right: calc((100vw - 1320px) / 2); 
+  }
 }
 
 @media (max-width: 1379px) {
@@ -107,6 +117,10 @@
     .banner-content {
       padding-left: 30px;
     }
+  }
+  .sort-bar {
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 

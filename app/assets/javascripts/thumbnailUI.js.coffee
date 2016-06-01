@@ -40,6 +40,7 @@ ThumbnailUI =
 					, 500
 
 	animateTitle: ->
+		#only animate if no other thumbnails are expanded
 		if $('.media-thumbnail.show-description, .course-thumbnail.show-description').length < 1	
 			title = $(@).find('.media-title')
 			title.css('height', 'auto')
