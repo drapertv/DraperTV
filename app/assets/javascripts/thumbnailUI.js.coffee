@@ -40,15 +40,18 @@ ThumbnailUI =
 					, 500
 
 	animateTitle: ->
-		title = $(@).find('.media-title')
-		title.css('height', 'auto')
-		if title.height() > 20
-			title.css('height', '16px')
-			title.parents('.media-info').animate
-				bottom: "30px"
-			, 400
-		else
-			title.css('height', '16px')
+		if $('.media-thumbnail.show-description, .course-thumbnail.show-description').length < 1	
+			title = $(@).find('.media-title')
+			title.css('height', 'auto')
+			if title.height() > 20
+				title.css('height', '16px')
+				title.parents('.media-info').animate
+					bottom: "26px"
+				, 400, ->
+					title.css('height', 'auto')
+					title.parents('.media-info').css('bottom', '8px')
+			else
+				title.css('height', '16px')
 
 	adjustLastCourseThumbnail: ->
 		if $(window).width() <= 968 && $(window).width() > 640
@@ -75,21 +78,22 @@ ThumbnailUI =
 
 		unless thumbnail.hasClass 'course-thumbnail' 
 			height = thumbnail.height()
+			width = thumbnail.width()
 			scaleAmount = (162 / height)
 			#enlarge thumbnail and all child elements
 			thumbnail.css 'transform', "scale(#{scaleAmount})" 
 			shrinkAmount = 1/ scaleAmount
 
 			#shrink fonts of child elements
-			ThumbnailUI.shrinkFonts thumbnail.find("*"), shrinkAmount
+			ThumbnailUI.shrinkFonts thumbnail.find("*:not('.action-icon p')"), shrinkAmount
 			ThumbnailUI.shrinkPaddings thumbnail.find(".thumbnail-description"), shrinkAmount
+			# ThumbnailUI.shrinkDimensions thumbnail.find('.action-icon, img'), shrinkAmount
 			thumbnail.find('.thumbnail-description').css('padding')
 			#slide out description
 			thumbnail.find('.thumbnail-description').animate 
 				top: "#{height}px"
 			, 400, ->
 				thumbnail.find('.thumbnail-description').css("box-shadow", "0px 0px 15px black")
-
 			#adjust margins if animating first or last visible elements in row
 			width = thumbnail.width()
 			scaledWidth = width * scaleAmount
@@ -117,6 +121,16 @@ ThumbnailUI =
 			shrunkPaddingVertical = shrinkAmount * paddingVertical
 			shrunkPaddingHorizontal = shrinkAmount * paddingHorizontal
 			$(@).css('padding', "#{shrunkPaddingVertical}px #{shrunkPaddingHorizontal}px")
+
+	shrinkDimensions: (collection, shrinkAmount) ->
+		collection.each (i) ->
+			width = $(@).width()
+			height = $(@).height()
+			shrunkWidth = shrinkAmount * width
+			shrunkHeight = shrinkAmount * height
+
+			$(@).css('width', "#{shrunkWidth}px").attr('data-width', "#{shrunkWidth}px").css('height', "#{shrunkHeight}px")
+			console.log $(@)
 
 	unanimate: (thumbnail) ->
 		thumbnail.attr('style', '')

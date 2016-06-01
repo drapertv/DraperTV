@@ -362,6 +362,14 @@
 			display: none;
 		}
 	}
+	.notify-button:hover {
+		// width: 90px;
+		p {
+			display: block;
+			color: $teal;
+			opacity: 0;
+		}
+	}
 }
 
 .media-thumbnail:hover.livestream {
@@ -400,6 +408,7 @@
 		}
 		.media-title {
 			font-size: 18px;
+			height: auto;
 		}
 	}
 	.media-date {
