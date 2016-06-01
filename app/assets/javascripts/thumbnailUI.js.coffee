@@ -2,8 +2,10 @@
 
 ThumbnailUI =
 	init: ->
-		$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail', @animateAfterDelay
+		$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
 		$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
+		$(window).on 'resize', @adjustLastCourseThumbnail
+		@adjustLastCourseThumbnail()
 
 	undoAnimation: ->
 		thumbnail = $(@)
@@ -35,6 +37,26 @@ ThumbnailUI =
 						if thumbnail.is ":hover"
 							ThumbnailUI.animate thumbnail
 					, 500
+
+	adjustLastCourseThumbnail: ->
+		if $(window).width() <= 968 && $(window).width() > 640
+			# undo any previous changes
+			$('.course-thumbnail').removeClass('see-more')
+			$('.link-changed').attr('href', $('.link-changed').attr('link-buffer'))
+
+			# mark last visible thumbnail
+			lastCourseThumbnail = $('.course-thumbnail:visible').last()
+			lastCourseThumbnail.addClass('see-more')
+			
+			# change link to redirect to courses site
+			link = lastCourseThumbnail.parent()
+			link.addClass('link-changed')
+			link.attr('link-buffer', link.attr('href'))
+			link.attr('href', link.attr('data-see-more'))
+		else
+			# restore to default
+			$('.course-thumbnail').removeClass('see-more')
+			$('.link-changed').attr('href', $('.link-changed').attr('link-buffer'))
 
 	animate: (thumbnail) ->
 		thumbnail.addClass 'show-description' 

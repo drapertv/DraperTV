@@ -474,6 +474,10 @@
 	}
 }
 
+.see-more {
+	display: none;
+}
+
 .course-name {
 	position: absolute;
 	width: 100%;
@@ -634,6 +638,19 @@
 	}
 	.course-thumbnails a:nth-child(9n) {
 		display: none;
+	}
+	.course-thumbnail.see-more {
+		display: flex;
+		.course-overlay {
+			background: $black;
+		}
+		.default {
+			display: none;
+		}
+		.see-more {
+			display: block;
+			color: white;
+		}
 	}
 }
 

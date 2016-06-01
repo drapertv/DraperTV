@@ -101,14 +101,18 @@
       </div>
       <div class="media-thumbnails course-thumbnails">
         <% @categories.each_with_index do |course, i| %>
-          <%= link_to "http://courses.drapertv.com/topics/#{course.downcase.gsub(" &", "").gsub(" ", "-")}" do %>
+          <%= link_to "http://courses.drapertv.com/topics/#{course.downcase.gsub(" &", "").gsub(" ", "-")}", data: {"see-more" => "http://courses.drapertv.com"} do %>
             <div class="course-thumbnail">
               <%= image_tag (course.downcase.gsub(" ", "-") + "-thumbnail.png"), :class => "course-thumbnail-img" %>
               <div class="course-overlay <%= @colors[i] %>-b">              
               </div>
-              <%= image_tag (course.downcase.gsub(" ", "-") + "-icon.png"), :class => "course-icon" %>
-              <div class="course-name white">
+              <%= image_tag (course.downcase.gsub(" ", "-") + "-icon.png"), :class => "course-icon default" %>
+              <%= image_tag 'see-more.svg', :class => "course-icon see-more" %>
+              <div class="course-name white default">
                 <%= course %>
+              </div>
+              <div class="course-name see-more">
+                See More
               </div>
               <div class="course-description">
                 <h3>
