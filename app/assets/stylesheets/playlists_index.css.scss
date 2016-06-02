@@ -4,10 +4,10 @@
 ///// Banner ////////
 .featured-item.header-banner {
   height: 150px;
-  overflow-y: hidden;
   position: relative;
+  overflow: hidden;
   .banner-img {
-    width: 100%;
+    width: 1440px;
     height: 100%;
   }
   .banner-content {

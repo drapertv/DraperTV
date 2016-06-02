@@ -8,12 +8,12 @@
         <div class="email-selection">
           <div class="email-option">
             <%= radio_button_tag :notification_option, :all_videos %>
-            <%= label_tag :all_videos, "All Videos" %>
+            <%= label_tag :all_videos, "All videos" %>
             <div class="check"></div>
           </div>
           <div class="email-option">
             <%= radio_button_tag :notification_option,  :all_livestreams %>
-            <%= label_tag :all_livestreams, "All Livestreams" %>
+            <%= label_tag :all_livestreams, "Livestream events only" %>
             <div class="check"></div>
           </div>
         </div>
@@ -55,8 +55,7 @@
         </li>
       </div>
       <div class="social-media">
-        <h3>Follow Draper Unversity</h3>
-        
+        <h3>Follow DraperTV</h3>
         <li><%= link_to "Youtube", "http://www.youtube.com/drapertv" %></li>
         <li><%= link_to "Facebook", "http://www.facebook.com/draperuniversity" %></li>
         <li><%= link_to "Instagram", "http://www.instagram.com/draperuniversity" %></li>
@@ -64,6 +63,9 @@
       </div>
     </div>
   </div>
-  <p class="footer-footer">All rights reserved, Draper Collective LLC </p>
+  <div class="footer-footer">
+    <p class="left">All rights reserved, Draper Collective LLC</p> 
+    <p class="right">Made with <%= link_to "blood", "https://www.youtube.com/watch?v=QcIy9NiNbmo", :class => "blood", target: "_blank" %>, <%= link_to "sweat", "https://en.wikipedia.org/wiki/Perspiration", :class => "sweat", target: "_blank" %>, and <%= link_to "tears", "https://media.giphy.com/media/l41lXn9ggMEV8Wnte/giphy.gif", :class => "tears", target: "_blank" %> in San Mateo, CA.</p>
+  </div>
 </footer>
 <%= render partial: "notifications/modal" %>
