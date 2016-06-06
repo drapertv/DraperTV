@@ -12,6 +12,8 @@ BannerUI =
     $('.dot').removeClass('active')
     $(@).addClass('active')
     $('.featured-items').slick('slickGoTo', slideNumber)
+    $('.featured-info').hide()
+    $($('.featured-info')[slideNumber]).show().addClass('animated fadeIn')
 
     $($('.dot')[1]).removeClass('left').removeClass('right')
     if $('.dot.left').hasClass('active')

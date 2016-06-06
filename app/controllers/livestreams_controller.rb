@@ -17,22 +17,18 @@ class LivestreamsController < InheritedResources::Base
     @og_description = "Livestreaming the best of Silicon Valley"
     @meta_description = "Watch live as top Silicon Valley speakers teach startup skills and entrepreneurship at Draper University. Be part of the action on DraperTV with live Q&A through @Draper_U on Twitter."
    
+    @current_livestreams = Livestream.current.order('stream_date asc')
     @upcoming_livestreams = Livestream.upcoming.order('stream_date asc')
-    @past_livestreams = Livestream.past.order('stream_date desc')
-    @current_livestreams = Livestream.current
-    @future_livestreams = @current_livestreams + @upcoming_livestreams
+    @future_livestreams = (@current_livestreams + @upcoming_livestreams)
 
-    @media = [{title: "Upcoming & Live Events", content: @future_livestreams}, {title: "Archived Events", content: @past_livestreams}]
+    @media = [{title: "Upcoming & Live Events", content: @future_livestreams}, {title: "Archived Events", content: [], lazy_load: "lazy-load"}]
 
-    if !@current_livestreams.empty?
-      @og_image = @current_livestreams.first.image_url
-    elsif !@upcoming_livestreams.empty?
-      @og_image = @upcoming_livestreams.first.image_url
-    else
-      @og_image = @past_livestreams.first.image_url
+    if params[:list] == "true"
+      quantity = params[:quantity]
+      @livestreams = Livestream.past.offset(params[:offset]).order('created_at desc').limit(params[:quantity])
+      render partial: "list" and return
     end
 
-    
   end
 
   def hidebanner

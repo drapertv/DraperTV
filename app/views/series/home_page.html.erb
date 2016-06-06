@@ -1,4 +1,30 @@
 <div class="featured-banner">
+  <div class="featured-infos">
+    <% @featured.each do |media| %>
+      <div class="featured-info">
+        <h3><%= media.featured_top_info %></h3>
+        <h1><%= media.featured_title %></h1> 
+        <h2><%= media.featured_subtitle%></h2>
+        <div class="featured-action-icons">
+          <%= link_to '/speakers' do %>
+            <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="128">
+              <%= image_tag "speaker-white.png", :class => "action-icon-img" %>
+              <p class="action-icon-text">Speaker Series</p>
+            </div>
+          <% end %>
+          <div class="action-icon notify-icon show-notify-modal" data-width="93">
+            <%= image_tag "notify-black.png", :class => "action-icon-img" %>
+            <p class="action-icon-text">Notify Me</p>
+          </div>
+        </div>
+        <div class="featured-description">
+          <p><%= media.description %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="featured-gradient">
+  </div>
   <div class="featured-items">
     <%= @featured.each do |media| %>
       <div class="featured-item">
@@ -11,28 +37,6 @@
               </div>
             </div>
           <% end %>
-        <div class="featured-info">
-          <h3><%= media.featured_top_info %></h3>
-          <h1><%= media.featured_title %></h1> 
-          <h2><%= media.featured_subtitle%></h2>
-          <div class="featured-action-icons">
-            <%= link_to '/speakers' do %>
-              <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="128">
-                <%= image_tag "speaker-white.png", :class => "action-icon-img" %>
-                <p class="action-icon-text">Speaker Series</p>
-              </div>
-            <% end %>
-            <div class="action-icon notify-icon show-notify-modal" data-width="93">
-              <%= image_tag "notify-black.png", :class => "action-icon-img" %>
-              <p class="action-icon-text">Notify Me</p>
-            </div>
-          </div>
-          <div class="featured-description">
-            <p><%= media.description %></p>
-          </div>
-        </div>
-        <div class="featured-gradient">
-        </div>
       </div>
     <% end %>
   </div>

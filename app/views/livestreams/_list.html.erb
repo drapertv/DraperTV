@@ -1,0 +1,20 @@
+<% @livestreams.each do |content| %>
+  <%= link_to media_path(content) do %>
+    <div class="media-thumbnail">
+      <div class="media-date">
+        <%= content.formatted_stream_date %>
+      </div>
+      <div class="media-info">
+        <div class="media-speaker-name">
+          <%= content.speaker_name %>
+        </div>
+        <div class="media-title">
+          <%= content.thumbnail_title%>
+        </div>
+      </div>
+      <%= image_tag content.vthumbnail.url(:seriesthumb), :class => "thumbnail-img" %>
+      <div class="thumbnail-gradient"></div>
+      <div class="thumbnail-description"><p><%= content.description %></p></div>
+    </div>
+  <% end %>
+<% end %>

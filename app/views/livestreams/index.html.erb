@@ -19,25 +19,35 @@
   <% @media.each do |media| %>
     <div class="media-list">
       <h3 class="media-title"><%= media[:title] %></h3>
-      <div class="media-thumbnails wrap lazy-load">
+      <div class="media-thumbnails wrap <%= media[:lazy_load] %>">
         <% media[:content].each do |content| %>
-          <%= link_to media_path(content) do %>
-            <div class="media-thumbnail">
-              <div class="media-info">
-                <div class="media-speaker-name">
-                  <%= content.speaker_name %>
+          <% unless media[:lazy_load] %>
+            <%= link_to media_path(content) do %>
+              <div class="media-thumbnail">
+                <div class="media-date">
+                  <%= content.formatted_stream_date %>
                 </div>
-                <div class="media-title">
-                  <%= content.thumbnail_title%>
+                <div class="media-info">
+                  <div class="media-speaker-name">
+                    <%= content.speaker_name %>
+                  </div>
+                  <div class="media-title">
+                    <%= content.thumbnail_title%>
+                  </div>
                 </div>
+                <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
+                <div class="thumbnail-gradient"></div>
+                <div class="thumbnail-description"><%= content.description %></div>
               </div>
-              <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
-              <div class="thumbnail-gradient"></div>
-              <div class="thumbnail-description"><%= content.description %></div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
+      <% if media[:lazy_load] %>
+        <div id="load-more" offset="0">
+          See More
+        </div>
+      <% end %>
     </div>
   <% end %>
 </section>

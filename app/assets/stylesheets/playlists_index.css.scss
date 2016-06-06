@@ -95,8 +95,8 @@
 }
 
 #load-more {
-  width: 108px;
-  height: 32px;
+  width: 114px;
+  height: 34px;
   text-align: center;
   margin: 0px auto;
   border-radius: 50px;
@@ -122,6 +122,10 @@
   .sort-bar {
     padding-left: calc((100vw - 1320px) / 2); 
     padding-right: calc((100vw - 1320px) / 2); 
+  }
+  #load-more {
+    height: 32px;
+    width: 108px;
   }
 }
 

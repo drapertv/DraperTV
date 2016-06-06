@@ -19,8 +19,7 @@ mediaIndexUI =
     $.get "#{mediaLocation}?offset=#{offset}&list=true&quantity=#{quantity}", (data) ->
       $('.media-thumbnails.lazy-load').append(data)
       #update offset
-      $('#load-more').attr('offset', $('.media-thumbnail').length)
-
+      $('#load-more').attr('offset', $('.lazy-load .media-thumbnail').length)
 
       mediaIndexUI.currentlyLoading = false
       #if no more to load
@@ -36,8 +35,6 @@ mediaIndexUI =
     if $(window).scrollTop() > loadingThreshold && !mediaIndexUI.currentlyLoading
       mediaIndexUI.currentlyLoading = true 
       mediaIndexUI.fetchMedia()
-
-
       
   mediaBatchQuantity: ->
     switch true
@@ -53,12 +50,9 @@ mediaIndexUI =
     quantityToFetch
 
 
-
-    
-
 ready = ->
   mediaIndexUI.init()
 
-if window.location.pathname == "/speakers"
-  $(document).ready ready
-  $(document).on 'page:load', ready
+
+$(document).ready ready
+$(document).on 'page:load', ready
