@@ -1,4 +1,4 @@
-# js for site wide UI (headers, footers, modals etc.) 
+# js for site wide UI (headers, footers, modals, buttons etc.) 
 
 GlobalUI =
 	init: ->
@@ -7,6 +7,8 @@ GlobalUI =
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
     $('body').on 'click', '.modal-container, .modal-container .close', @hideNotifyModal
     $('body').on 'ajax:success', '.notifications-form', @showSubmitConfirmation
+    $('body').on 'mouseenter', '.action-icon', @showActionIconText
+    $('body').on 'mouseleave', '.action-icon', @hideActionIconText
 
   showSearchBox: -> 
     $('.header-right .header-item:not(.search-icon)').addClass('animated fadeOut').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
@@ -34,6 +36,30 @@ GlobalUI =
     $('.submit-confirmation').show()
     $('.hide-on-submit').hide()
     $('.notifications-form')[1].reset()
+
+  showActionIconText: ->
+    $(@).addClass('active').animate 
+      width: $(@).attr('data-width') + "px"
+    , 250
+    $(@).find('p').animate 
+      right: '5%'
+    , 250
+    $(@).find('p').animate 
+      opacity: "1"
+    , 100
+
+  hideActionIconText: ->
+    actionIcon = $(@)
+    if $(@).hasClass('notify-icon')
+      $('.action-icon').removeClass('active').attr('style', '')
+      actionIcon.find('p').attr('style', '')
+      return
+    else
+      setTimeout ->
+        unless $('.action-icon.active').length > 1 && actionIcon.hasClass('type-icon')
+          $('.action-icon').removeClass('active').attr('style', '') 
+          actionIcon.find('p').attr('style', '')
+      , 300
 
 ready = ->
 	GlobalUI.init()

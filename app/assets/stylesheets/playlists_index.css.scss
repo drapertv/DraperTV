@@ -6,6 +6,8 @@
   height: 150px;
   position: relative;
   overflow: hidden;
+  background: image-url("speakers.png");
+  background-size: cover;
   .banner-img {
     width: 1440px;
     height: 100%;
@@ -87,7 +89,23 @@
   @include flex-wrap(wrap);
 }
 .media-container.index-view {
-  padding-bottom: 0px;
+  .media-thumbnails a:nth-child(5n), .media-thumbnails a:nth-child(4n), .media-thumbnails a:nth-child(3n) {
+    display: flex;
+  }
+}
+
+#load-more {
+  width: 108px;
+  height: 32px;
+  text-align: center;
+  margin: 0px auto;
+  border-radius: 50px;
+  border: 1px solid $blue;
+  color: $blue;
+  font-weight: 700;
+  background: white;
+  line-height: 32px;
+  cursor: pointer;
 }
 
 @media (max-width: 1439px) {
@@ -192,14 +210,14 @@
       margin: 0;
       margin-bottom: 20px;
     }
-    .media-thumbnails a:nth-child(5n), .media-thumbnails a:nth-child(4n), .media-thumbnails a:nth-child(3n) {
-      display: flex;
-    }
     .media-thumbnail:nth-child(2n) {
       margin-left: 1px;
     }
   }
   .sort-options div:first-child {
+    display: none;
+  }
+  #load-more {
     display: none;
   }
 }

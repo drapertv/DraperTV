@@ -1,5 +1,4 @@
 # js for thumbnail animations for speakers, livestreams, students etc.
-
 ThumbnailUI =
 	init: ->
 		$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
@@ -43,8 +42,11 @@ ThumbnailUI =
 		#only animate if no other thumbnails are expanded
 		if $('.media-thumbnail.show-description, .course-thumbnail.show-description').length < 1	
 			title = $(@).find('.media-title')
+			#remove height limitation to check title height
 			title.css('height', 'auto')
+			# if the title is more than 1 line it will be greater than 20px
 			if title.height() > 20
+				#put height limitation back
 				title.css('height', '16px')
 				title.parents('.media-info').animate
 					bottom: "26px"
@@ -88,23 +90,23 @@ ThumbnailUI =
 			#shrink fonts of child elements
 			ThumbnailUI.shrinkFonts thumbnail.find("*:not('.action-icon p')"), shrinkAmount
 			ThumbnailUI.shrinkPaddings thumbnail.find(".thumbnail-description"), shrinkAmount
-			# ThumbnailUI.shrinkDimensions thumbnail.find('.action-icon, img'), shrinkAmount
-			thumbnail.find('.thumbnail-description').css('padding')
+			
 			#slide out description
 			thumbnail.find('.thumbnail-description').animate 
 				top: "#{height}px"
 			, 400, ->
 				thumbnail.find('.thumbnail-description').css("box-shadow", "0px 0px 15px black")
-			#adjust margins if animating first or last visible elements in row
+			
+			#adjust margins if animating first or last visible elements in row so they don't bleed off the page
 			width = thumbnail.width()
 			scaledWidth = width * scaleAmount
 			widthDifference = (scaledWidth - width) / 2
 			thumbnailMargins = parseInt(thumbnail.css('margin-right')) * 2
 			
-			if thumbnail.hasClass('first-in-row')
+			if thumbnail[0].getBoundingClientRect().left < 100 #if first in row
 				thumbnail.css('margin-left', "#{widthDifference}px").css('margin-right', "-#{widthDifference - thumbnailMargins}px")
 
-			if thumbnail.parent().next().find('.media-thumbnail:visible').length < 1
+			if $(window).width() - thumbnail[0].getBoundingClientRect().right < 100 #if last in row
 				thumbnail.css('margin-right', "#{widthDifference}px").css('margin-left', "-#{widthDifference - thumbnailMargins}px")
 
 
@@ -123,15 +125,13 @@ ThumbnailUI =
 			shrunkPaddingHorizontal = shrinkAmount * paddingHorizontal
 			$(@).css('padding', "#{shrunkPaddingVertical}px #{shrunkPaddingHorizontal}px")
 
-	shrinkDimensions: (collection, shrinkAmount) ->
-		collection.each (i) ->
-			width = $(@).width()
-			height = $(@).height()
-			shrunkWidth = shrinkAmount * width
-			shrunkHeight = shrinkAmount * height
-
-			$(@).css('width', "#{shrunkWidth}px").attr('data-width', "#{shrunkWidth}px").css('height', "#{shrunkHeight}px")
-			console.log $(@)
+	# shrinkDimensions: (collection, shrinkAmount) ->
+	# 	collection.each (i) ->
+	# 		width = $(@).width()
+	# 		height = $(@).height()
+	# 		shrunkWidth = shrinkAmount * width
+	# 		shrunkHeight = shrinkAmount * height
+	# 		$(@).css('width', "#{shrunkWidth}px").attr('data-width', "#{shrunkWidth}px").css('height', "#{shrunkHeight}px")
 
 	unanimate: (thumbnail) ->
 		thumbnail.attr('style', '')

@@ -4,12 +4,18 @@ class SeriesController < InheritedResources::Base
   def index
     @og_title = "Series - DraperTV"
     @meta_description = "Watch talks given by top Silicon Valley startup founders at Draper University. Learn about startups and entrepreneurship with DraperTV on topics like Vision, Fundraising, Marketing, Product, and Sales."
-    @series = Series.order("created_at desc")
+    @series = Series.order("created_at desc").limit(30)
+
+    if params[:list] == "true"
+      quantity = params[:quantity]
+      @series = Series.offset(params[:offset]).order('created_at desc').limit(params[:quantity])
+      render partial: "list" and return
+    end
   end
 
   def home_page
       @featured = Series.featured
-      
+
       popular = Series.popular
       speakers = Series.newest
       livestreams = Livestream.closest_to_now
