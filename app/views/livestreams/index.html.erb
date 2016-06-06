@@ -19,7 +19,7 @@
   <% @media.each do |media| %>
     <div class="media-list">
       <h3 class="media-title"><%= media[:title] %></h3>
-      <div class="media-thumbnails wrap">
+      <div class="media-thumbnails wrap lazy-load">
         <% media[:content].each do |content| %>
           <%= link_to media_path(content) do %>
             <div class="media-thumbnail">

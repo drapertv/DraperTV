@@ -17,7 +17,7 @@ mediaIndexUI =
     quantity = mediaIndexUI.mediaBatchQuantity()
     
     $.get "#{mediaLocation}?offset=#{offset}&list=true&quantity=#{quantity}", (data) ->
-      $('.media-thumbnails.wrap').append(data)
+      $('.media-thumbnails.lazy-load').append(data)
       #update offset
       $('#load-more').attr('offset', $('.media-thumbnail').length)
 
@@ -58,5 +58,7 @@ mediaIndexUI =
 
 ready = ->
   mediaIndexUI.init()
-$(document).ready ready
-$(document).on 'page:load', ready
+
+if window.location.pathname == "/speakers"
+  $(document).ready ready
+  $(document).on 'page:load', ready

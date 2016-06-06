@@ -24,7 +24,6 @@ class LivestreamsController < InheritedResources::Base
 
     @media = [{title: "Upcoming & Live Events", content: @future_livestreams}, {title: "Archived Events", content: @past_livestreams}]
 
- 
     if !@current_livestreams.empty?
       @og_image = @current_livestreams.first.image_url
     elsif !@upcoming_livestreams.empty?
@@ -32,6 +31,8 @@ class LivestreamsController < InheritedResources::Base
     else
       @og_image = @past_livestreams.first.image_url
     end
+
+    
   end
 
   def hidebanner
