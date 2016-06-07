@@ -28,7 +28,7 @@ window.mediaSortingUI =
     
     $('.media-thumbnails').each ->
       container = $(@)
-      thumbnails = container.find('.media-thumbnail')
+      thumbnails = container.find('a')
       sortedThumbnails = window.mediaSortingUI.sortCollection thumbnails, criteria, direction
       $(sortedThumbnails).detach().appendTo(container)
 
@@ -48,8 +48,8 @@ window.mediaSortingUI =
 
   sortCollection: (collection, criteria, direction) ->
     collection.sort (a,b) ->
-      attributeA = a.getAttribute("data-#{criteria}")
-      attributeB = b.getAttribute("data-#{criteria}")
+      attributeA = $(a).children()[0].getAttribute("data-#{criteria}")
+      attributeB = $(b).children()[0].getAttribute("data-#{criteria}")
 
       if attributeA > attributeB 
         1
