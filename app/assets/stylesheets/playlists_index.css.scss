@@ -69,6 +69,7 @@
   }
   .sort-options {
     @include flexbox;
+    z-index: 2;
     div {
       margin-left: 25px;
       font-size: 14px;
@@ -79,6 +80,25 @@
     .date-sort, .industry-sort {
      border-bottom: 1px solid $gray;
      width: 140px;
+     cursor: pointer;
+     position: relative;
+     @include flexbox;
+     @include justify-content(space-between);
+     @include align-items(center);
+     .sort-dropdown {
+      position: absolute;
+      // display: none;
+      top: 0;
+      background: white;
+      width: 100%;
+      left: 0;
+      z-index: 1;
+      border: 1px solid $border-gray;
+      border-radius: 5px;
+      padding: 4px 8px;
+      display: none;
+
+     }
     }
   }
 }

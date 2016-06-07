@@ -5,7 +5,6 @@ mediaIndexUI =
     @windowWidth = $(window).width()
     @fetchMedia()
     @currentlyLoading = false
-
     if @windowWidth > 640
       $('#load-more').on 'click', @fetchMedia
     else
@@ -46,8 +45,6 @@ mediaIndexUI =
         quantityToFetch = 36
       else
         quantityToFetch = 12
-
-    quantityToFetch
 
 
 ready = ->
