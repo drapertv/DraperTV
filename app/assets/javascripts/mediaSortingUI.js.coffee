@@ -6,8 +6,8 @@ window.mediaSortingUI =
     $('body').on 'click', '.order-sort li', @sortOrderByOption
     $('body').on 'click', '.industry-sort li', @sortIndustryByOption
 
-
   openDropdown: (e) ->
+    $('.sort-dropdown').hide()
     if e.toElement.tagName != 'LI' 
       $(@).find('.sort-dropdown').show()
 
