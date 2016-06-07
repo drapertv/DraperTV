@@ -8,10 +8,40 @@
   </div>
 </div>
 <div class="sort-bar">
-  <div class="notify-button">
-    Notify Me
-  </div>  
+  <div class="notify-button show-notify-modal">
+    <%= image_tag "notify-white.png", :class => "notify-icon" %> 
+    <p>Notify Me</p>
+  </div>
   <div class="sort-options">
+    <div>Sorted By:</div>
+    <div class="order-sort sorter">
+      <p>Newest</p >
+      <%= image_tag "dropdown-triangle.svg", :class => 'open-dropdown' %>
+      <ul class="sort-dropdown">
+        <li class="current" data-sort-criteria="date" data-sort-direction="asc">Newest</li>
+        <li data-sort-criteria="date" data-sort-direction='desc'>Oldest</li>
+        <li data-sort-criteria="speaker" data-sort-direction='asc'>Speaker A-Z</li>
+        <li data-sort-criteria="speaker" data-sort-direction='desc'>Speaker Z-A</li>
+        <li data-sort-criteria="views" data-sort-direction='desc'>Most Viewed</li>
+      </ul>
+    </div>
+    <div class="industry-sort sorter">
+      <p>All Industries</p>
+      <%= image_tag "dropdown-triangle.svg", :class => 'open-dropdown' %>
+      <ul class="sort-dropdown">
+        <li class="current">All Industries</li>
+        <li>Industry 1</li>
+        <li>Industry 2</li>
+        <li>Industry 3</li>
+        <li>Industry 4</li>
+        <li>Industry 5</li>
+        <li>Industry 6</li>
+        <li>Industry 7</li>
+        <li>Industry 8</li>
+        <li>Industry 9</li>
+        <li>Industry 10</li>
+      </ul>
+    </div>
   </div>
 </div>
 

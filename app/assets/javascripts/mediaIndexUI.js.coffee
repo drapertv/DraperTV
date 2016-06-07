@@ -1,6 +1,6 @@
 # js for series/livestream index views
 
-mediaIndexUI =
+window.mediaIndexUI =
   init: ->
     @windowWidth = $(window).width()
     @fetchMedia()
@@ -13,17 +13,19 @@ mediaIndexUI =
   fetchMedia: ->
     mediaLocation = window.location.pathname
     offset = $('#load-more').attr('offset')
-    quantity = mediaIndexUI.mediaBatchQuantity()
+    quantity = window.mediaIndexUI.mediaBatchQuantity()
     
     $.get "#{mediaLocation}?offset=#{offset}&list=true&quantity=#{quantity}", (data) ->
       $('.media-thumbnails.lazy-load').append(data)
       #update offset
       $('#load-more').attr('offset', $('.lazy-load .media-thumbnail').length)
 
-      mediaIndexUI.currentlyLoading = false
+      window.mediaIndexUI.currentlyLoading = false
       #if no more to load
       if $(data).find('.media-thumbnail').length < quantity
         $('#load-more').hide()
+
+      window.mediaSortingUI.sortAllBySelectedOptions()
 
   lazyLoadThumbnails: ->
     heightOfContentAboveThumbnails = 280
@@ -32,23 +34,23 @@ mediaIndexUI =
     #loading threshold is around 3rd to last row
     loadingThreshold = Math.ceil(($('.media-thumbnail').length / 2) - 4) * thumbnailHeight # + heightOfContentAboveThumbnails
     if $(window).scrollTop() > loadingThreshold && !mediaIndexUI.currentlyLoading
-      mediaIndexUI.currentlyLoading = true 
-      mediaIndexUI.fetchMedia()
+      window.mediaIndexUI.currentlyLoading = true 
+      window.mediaIndexUI.fetchMedia()
       
   mediaBatchQuantity: ->
     switch true
-      when mediaIndexUI.windowWidth > 1024
+      when window.mediaIndexUI.windowWidth > 1024
         quantityToFetch = 30
-      when mediaIndexUI.windowWidth > 824
+      when window.mediaIndexUI.windowWidth > 824
         quantityToFetch = 48
-      when mediaIndexUI.windowWidth > 640
+      when window.mediaIndexUI.windowWidth > 640
         quantityToFetch = 36
       else
         quantityToFetch = 12
 
 
 ready = ->
-  mediaIndexUI.init()
+  window.mediaIndexUI.init()
 
 
 $(document).ready ready

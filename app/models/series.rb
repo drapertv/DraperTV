@@ -46,10 +46,6 @@ class Series < ActiveRecord::Base
     speaker.name
   end
 
-  def challenge
-    challenges.first
-  end
-
   def speaker_title
     speaker.title
   end
@@ -92,7 +88,6 @@ class Series < ActiveRecord::Base
     nil
   end
 
-
   def self.popular
     where(popular: true).limit(5)
     limit 5
@@ -105,6 +100,15 @@ class Series < ActiveRecord::Base
   def self.switch_tags
     ActsAsTaggableOn::Tagging.all.where(taggable_type:"Playlist").update_all taggable_type: "Series"
   end
+
+  def seconds_elapsed_since_creation
+    (Time.now - created_at).floor
+  end
+
+  def industries
+    (1..10).map {|n| "industry-#{n}"}.sample(3).join(" ")
+  end
+
 
   private
 

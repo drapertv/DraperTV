@@ -15,7 +15,6 @@ class SeriesController < InheritedResources::Base
 
   def home_page
       @featured = Series.featured
-
       popular = Series.popular
       speakers = Series.newest
       livestreams = Livestream.closest_to_now

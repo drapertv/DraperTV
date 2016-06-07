@@ -13,21 +13,22 @@
   </div>
   <div class="sort-options">
     <div>Sorted By:</div>
-    <div class="date-sort sorter">
+    <div class="order-sort sorter">
       <p>Newest</p >
       <%= image_tag "dropdown-triangle.svg", :class => 'open-dropdown' %>
       <ul class="sort-dropdown">
-        <li data-sort-criteria="date" data-sort-order='desc'>Newest</li>
-        <li data-sort-criteria="date" data-sort-order='asc'>Oldest</li>
-        <li data-sort-criteria="speaker" data-sort-order='asc'>Speaker A-Z</li>
-        <li data-sort-criteria="speaker" data-sort-order='desc'>Speaker Z-A</li>
-        <li data-sort-criteria="views" data-sort-order='desc'>Most Viewed</li>
+        <li class="current" data-sort-criteria="date" data-sort-direction="asc">Newest</li>
+        <li data-sort-criteria="date" data-sort-direction='desc'>Oldest</li>
+        <li data-sort-criteria="speaker" data-sort-direction='asc'>Speaker A-Z</li>
+        <li data-sort-criteria="speaker" data-sort-direction='desc'>Speaker Z-A</li>
+        <li data-sort-criteria="views" data-sort-direction='desc'>Most Viewed</li>
       </ul>
     </div>
     <div class="industry-sort sorter">
       <p>All Industries</p>
       <%= image_tag "dropdown-triangle.svg", :class => 'open-dropdown' %>
       <ul class="sort-dropdown">
+        <li class="current">All Industries</li>
         <li>Industry 1</li>
         <li>Industry 2</li>
         <li>Industry 3</li>
@@ -46,7 +47,7 @@
 <section class="media-container index-view">
   <div class="media-list">
     <div class="media-thumbnails wrap lazy-load">
-      
+          <!-- Content loaded in with ajax  -->
     </div>
     <div id="load-more" offset="0">
       See More
