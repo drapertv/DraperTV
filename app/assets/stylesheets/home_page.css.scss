@@ -8,6 +8,7 @@
 .featured-banner {
 	position: relative;
 	height: 34.5vw;
+	overflow: hidden;
 	@include flexbox;
 	.featured-infos {
 		width: 32vw;
@@ -555,19 +556,22 @@
 //// MEDIA QUERIES ////
 
 @media (max-width: 1379px) {
-	.featured-items {
-		.featured-info {
-			padding: 50px 0px 0px 30px;
-			h1 {
-				font-size: 34px;
-			}
-			h3 {
-				font-size: 16px;
-			}
-			p {
-				font-size: 12px;
-			}
+	.featured-banner {
+		.featured-infos {
+			.featured-info {
+				padding: 50px 0px 0px 30px;
+				h1 {
+					font-size: 34px;
+				}
+				h3 {
+					font-size: 16px;
+				}
+				p {
+					font-size: 12px;
+				}
+			}	
 		}
+		
 	}
 	.media-container {
 		padding: 36px 30px;
@@ -602,17 +606,19 @@
 }
 
 @media (max-width: 1023px) {
-	.featured-items {
-		.featured-info {
-			padding: 30px 20px 0px 20px;
-			h1 {
-				font-size: 30px;
-			}
-			h3 {
-				font-size: 14px;
-			}
-			p {
-				display: none;
+	.featured-banner {
+		.featured-infos {
+			.featured-info {
+				padding: 30px 20px 0px 20px;
+				h1 {
+					font-size: 30px;
+				}
+				h3 {
+					font-size: 14px;
+				}
+				p {
+					display: none;
+				}
 			}
 		}
 	}
@@ -774,18 +780,20 @@
 }
 
 @media (max-width: 540px) {
-	.featured-items {
-		.featured-info {
-			padding: 30px 20px 0px 20px;
-			h1 {
-				font-size: 22px;
-				letter-spacing: 2px;
-			}
-			h3, p, .featured-action-icons,  {
-				display: none;
-			}
-			p {
-				display: none;
+	.featured-banners {
+		.featured-infos {
+			.featured-info {
+				padding: 30px 20px 0px 20px;
+				h1 {
+					font-size: 22px;
+					letter-spacing: 2px;
+				}
+				h3, p, .featured-action-icons,  {
+					display: none;
+				}
+				p {
+					display: none;
+				}
 			}
 		}
 	}
