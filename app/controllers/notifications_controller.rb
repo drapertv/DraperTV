@@ -2,7 +2,6 @@ class NotificationsController < ApplicationController
 
   def create
     email = Email.find_or_create_by(body: params[:email])
-    binding.pry
     if params[:notification_options] == "all_videos"
       SeriesNotifyList.add_email_id email.id
       LivestreamNotifyList.add_email_id email.id
