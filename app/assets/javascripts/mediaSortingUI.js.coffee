@@ -26,7 +26,7 @@ window.mediaSortingUI =
     criteria = $(@).attr('data-sort-criteria')
     direction = $(@).attr('data-sort-direction')
     
-    $('.media-thumbnails').each ->
+    $('.media-thumbnails.sortable').each ->
       container = $(@)
       thumbnails = container.find('a')
       sortedThumbnails = window.mediaSortingUI.sortCollection thumbnails, criteria, direction

@@ -86,7 +86,7 @@
                   <%= content.thumbnail_title%>
                 </div>
               </div>
-              <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
+              <%= image_tag content.vthumbnail_url(:seriesthumb), :class => "thumbnail-img" %>
               <div class="thumbnail-gradient"></div>
               <div class="thumbnail-overlay-gradient"></div>
               <div class="thumbnail-description"><p><%= content.description %></p></div>
