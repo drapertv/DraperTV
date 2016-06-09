@@ -14,3 +14,8 @@ h3.media-title {
   font-weight: 600;
 }
 
+@media (max-width: 640px) {
+  h3.media-title {
+    padding-left: 20px;
+  }
+}
