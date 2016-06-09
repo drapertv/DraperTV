@@ -4,7 +4,7 @@
 //// Video Player ///////
 
 .video-player-container {
-	height: 34.5vw;
+	height: 36vw;
 	width: 100%;
 	background: black;
 	padding: 12px calc((100vw - 1320px) / 2 );
@@ -55,13 +55,14 @@
 			}
 			.video-list-item:hover {
 				p {
-					color: $light-gray;
+					color: $highlight-gray;
+					font-weight: 600;
 				}
 			}
 			.video-list-item.active {
 				p {
-					color: $light-gray;
-					font-weight: 600;
+					color: $highlight-gray;
+					
 				}
 			}
 		}
@@ -90,16 +91,20 @@
 		.video-speaker-info {
 			font-size: 20px;
 			color: $gray;
+			margin-top: 4px;
 		}
 		.video-about {
 			margin-top: 26px;
 			h3 {
-				font-weight: 700;
+				font-weight: 600;
 				color: $dark-gray;
+				font-size: 20px;
 			}
 			p {
-				margin-top: 4px;
+				margin-top: 6px;
+				font-size: 20px;
 				color: $gray;
+				font-weight: 300;
 			}
 		}
 	}
@@ -141,6 +146,7 @@
 	.video-info {
 		.video-info-main {
 			padding-left: 30px; 
+			width: calc(63vw - 9px);
 		}
 	}
 }
