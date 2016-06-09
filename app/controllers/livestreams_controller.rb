@@ -4,7 +4,7 @@ class LivestreamsController < InheritedResources::Base
 
   def show
     @livestream = Livestream.friendly.find(params[:id])
-    @media = {title: "Similar", content: Series.popular}
+    @media = {title: "Similar Videos", content: Series.popular}
 
     @og_title = "#{@livestream.title} - DraperTV"
     @og_description = @livestream.description
