@@ -56,17 +56,6 @@
   padding: 24px 60px;
   @include flexbox;
   @include justify-content(space-between);
-  .notify-button {
-    color: $teal;
-    height: 24px;
-    border: 1px solid $teal;
-    border-radius: 50px;
-    width: 100px;
-    background: white;
-    text-align: right;
-    visibility: initial;
-    cursor: pointer;
-  }
   .sort-options {
     @include flexbox;
     z-index: 2;
@@ -102,6 +91,26 @@
     }
   }
 }
+.action-icon.expanded {
+  height: 24px;
+  border-radius: 50px;
+  width: auto;
+  background: white;
+  text-align: right;
+  visibility: initial;
+  cursor: pointer;
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(space-between);
+  padding-right: 6px;
+  margin-right: 6px;
+  img {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+  }
+}
+
 
 ////// Media /////////
 

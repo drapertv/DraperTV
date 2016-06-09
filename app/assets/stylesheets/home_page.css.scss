@@ -632,6 +632,15 @@
 				}
 			}
 		}
+		.featured-nav {
+			.dot:nth-child(2n) {
+				margin: 0px 16px;
+			}
+		}
+		.featured-items .featured-play-link:hover .featured-play-btn {
+			display: none;
+		}
+		
 	}
 
 	.media-thumbnail {
@@ -747,6 +756,9 @@
 
 
 @media (max-width: 640px) {
+	.featured-banner .featured-nav {
+		display: none;
+	}
 	.media-container {
 		padding: 20px 0px;
 	}

@@ -12,4 +12,11 @@ h3.media-title {
   color: $dark-gray;
   margin-bottom: 12px;
   font-weight: 600;
+
+}
+
+@media (max-width: 640px) {
+  h3.media-title {
+    padding-left: 20px;
+  }
 }

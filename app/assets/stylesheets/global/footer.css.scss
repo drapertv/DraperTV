@@ -142,6 +142,11 @@ footer {
     }
     .footer-footer {
       margin-left: 0px;
+      @include flex-direction(column);
+      p {
+        margin-top: 10px;
+      }
+
     }
 
   }

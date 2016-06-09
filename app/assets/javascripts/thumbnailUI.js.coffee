@@ -28,6 +28,7 @@ ThumbnailUI =
 						ThumbnailUI.animate thumbnail 
 				, 500
 			else
+				console.log "trig"
 				previouslyEnlargedThumbnail = mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').first()
 				# if moving mouse to a adjacent thumbnail in the same row
 				if previouslyEnlargedThumbnail.parent().next().children()[0] == thumbnail[0] || previouslyEnlargedThumbnail.parent().prev().children()[0] == thumbnail[0]
