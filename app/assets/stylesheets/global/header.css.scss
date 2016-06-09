@@ -36,6 +36,9 @@
 	letter-spacing: 1px;
 	font-size: 12px;
 }
+.header-item.logo.mobile-logo {
+	display: none;
+}
 .header-item.logo {
 	height: 36px; 
 	width: 156px;
@@ -155,14 +158,20 @@
 	// #global-header {
 	// 	padding: 0px 30px;
 	// }
+	.desk-logo {
+		display: none;
+	}
+	.header-item.logo.mobile-logo {
+		display: block;
+	}
 	.logo.header-item {
-		width: 24px;
+		width: 26px;
 	}
 }
 
 @media (max-width: 768px) {
 	.logo.header-item {
-		width: 24px;
+		width: 26px;
 	}
 }
 

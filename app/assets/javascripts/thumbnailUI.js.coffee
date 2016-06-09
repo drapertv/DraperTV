@@ -5,6 +5,7 @@ ThumbnailUI =
 		$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
 		$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
 		$(window).on 'resize', @adjustLastCourseThumbnail
+		@markMultilineTitles()
 		@adjustLastCourseThumbnail()
 
 	undoAnimation: ->
@@ -48,13 +49,20 @@ ThumbnailUI =
 			if title.height() > 20
 				#put height limitation back
 				title.css('height', '16px')
-				title.parents('.media-info').animate
-					bottom: "26px"
-				, 400, ->
-					title.css('height', 'auto')
-					title.parents('.media-info').css('bottom', '8px')
+				# title.parents('.media-info').animate
+				# 	bottom: "26px"
+				# , 400, ->
+				# 	# title.css('height', 'auto')
+					# title.parents('.media-info').css('bottom', '8px')
 			else
 				title.css('height', '16px')
+
+	markMultilineTitles: ->
+		$('.media-title').each ->
+			$(@).css('height', 'auto')
+			if $(@).height() > 20
+				$(@).parents('.media-info').addClass 'multiline'
+			$(@).attr('style', '')
 
 	adjustLastCourseThumbnail: ->
 		if $(window).width() <= 968 && $(window).width() > 640

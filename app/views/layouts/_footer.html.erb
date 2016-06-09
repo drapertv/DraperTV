@@ -7,7 +7,7 @@
       <%= form_tag "/notifications", remote: true, :class => "hide-on-submit notifications-form" do %>
         <div class="email-selection">
           <div class="email-option">
-            <%= radio_button_tag :notification_option, :all_videos %>
+            <%= radio_button_tag :notification_option, :all_videos, checked: true %>
             <%= label_tag :all_videos, "All videos" %>
             <div class="check"></div>
           </div>

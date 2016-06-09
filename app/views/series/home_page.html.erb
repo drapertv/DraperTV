@@ -2,9 +2,11 @@
   <div class="featured-infos">
     <% @featured.each do |media| %>
       <div class="featured-info">
-        <h3><%= media.featured_top_info %></h3>
-        <h1><%= media.featured_title %></h1> 
-        <h2><%= media.featured_subtitle%></h2>
+        <%= link_to media_path(media) do %>
+          <h3><%= media.featured_top_info %></h3>
+          <h1><%= media.featured_title %></h1> 
+          <h2><%= media.featured_subtitle%></h2>
+        <% end %>
         <div class="featured-action-icons">
           <%= link_to '/speakers' do %>
             <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="128">
@@ -17,9 +19,11 @@
             <p class="action-icon-text">Notify Me</p>
           </div>
         </div>
-        <div class="featured-description">
-          <p><%= media.description %></p>
-        </div>
+        <%= link_to media_path(media) do %>
+          <div class="featured-description">
+            <p><%= media.description %></p>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
