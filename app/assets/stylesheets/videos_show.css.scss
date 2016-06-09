@@ -7,7 +7,7 @@
 	height: 34.5vw;
 	width: 100%;
 	background: black;
-	padding: 12px 60px;
+	padding: 12px calc((100vw - 1320px) / 2 );
 	@include flexbox;
 	.video-player {
 		height: 100%;
@@ -75,9 +75,9 @@
 	@include flexbox;
 	.video-info-main {
 		width: calc(63vw - 15.6px);
-		padding-right: 60px;
 		border-right: 1px solid $border-gray;
 		padding: 36px 60px;
+		padding-left: calc((100vw - 1320px) / 2);
 		.video-title {
 			font-size: 36px;
 			letter-spacing: 2.5px;
@@ -132,6 +132,19 @@
 		margin-bottom: 0px;
 	}
 }
+
+
+@media (max-width: 1379px) {
+	.video-player-container {
+		padding: 12px 30px;
+	}
+	.video-info {
+		.video-info-main {
+			padding-left: 30px; 
+		}
+	}
+}
+
 
 @media (max-width: 1023px) {
 

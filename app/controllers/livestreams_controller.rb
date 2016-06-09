@@ -21,7 +21,7 @@ class LivestreamsController < InheritedResources::Base
     @upcoming_livestreams = Livestream.upcoming.order('stream_date asc')
     @future_livestreams = (@current_livestreams + @upcoming_livestreams)
 
-    @media = [{title: "Upcoming & Live Events", content: @future_livestreams}, {title: "Archived Events", content: [], lazy_load: "lazy-load"}]
+    @media = [{title: "Upcoming & Live Events", content: @future_livestreams, hide: @future_livestreams.empty? }, {title: "Archived Events", content: [], lazy_load: "lazy-load"}]
 
     if params[:list] == "true"
       quantity = params[:quantity]

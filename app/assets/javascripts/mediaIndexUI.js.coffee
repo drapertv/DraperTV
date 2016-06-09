@@ -2,13 +2,18 @@
 
 window.mediaIndexUI =
   init: ->
+    console.log "init"
     @windowWidth = $(window).width()
-    @fetchMedia()
+    @fetchInitialMedia()
     @currentlyLoading = false
     if @windowWidth > 640
       $('#load-more').on 'click', @fetchMedia
     else
       $(window).scroll @lazyLoadThumbnails
+
+  fetchInitialMedia: ->
+    if $('.lazy-load .media-thumbnail').length < 1
+      window.mediaIndexUI.fetchMedia()
     
   fetchMedia: ->
     mediaLocation = window.location.pathname
@@ -48,10 +53,9 @@ window.mediaIndexUI =
       else
         quantityToFetch = 12
 
-
 ready = ->
   window.mediaIndexUI.init()
 
 
-$(document).ready ready
-$(document).on 'page:load', ready
+# $(document).ready ready
+$(document).on 'ready page:load', ready

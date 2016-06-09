@@ -63,12 +63,8 @@ window.mediaSortingUI =
     else
       return collection.get().reverse()
 
-
-
-
 ready = ->
   window.mediaSortingUI.init()
-
 
 $(document).ready ready
 $(document).on 'page:load', ready
