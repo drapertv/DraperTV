@@ -1,9 +1,10 @@
 @mixin flexbox {
-	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flexbox;
 	display: flex;
+	display: -webkit-box;
+	
 }
 
 %flexbox { @include flexbox; }

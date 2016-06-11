@@ -1,6 +1,7 @@
 # js for thumbnail animations for speakers, livestreams, students etc.
 ThumbnailUI =
 	init: ->
+		console.log "binding"
 		$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
 		$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
 		$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
@@ -28,7 +29,6 @@ ThumbnailUI =
 						ThumbnailUI.animate thumbnail 
 				, 500
 			else
-				console.log "trig"
 				previouslyEnlargedThumbnail = mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').first()
 				# if moving mouse to a adjacent thumbnail in the same row
 				if previouslyEnlargedThumbnail.parent().next().children()[0] == thumbnail[0] || previouslyEnlargedThumbnail.parent().prev().children()[0] == thumbnail[0]

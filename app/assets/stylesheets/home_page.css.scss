@@ -98,6 +98,7 @@
 					color: $teal;
 					text-align: right;
 					margin: 0;
+					top: 0;
 					right: 100%;
 				}
 			}
@@ -125,7 +126,7 @@
   bottom: 12px;
   background: none;
   width: auto;
-  left: calc(50vw - 50px);
+  left: calc(50vw - 27px);
   @include flexbox;
 	.dot {
 		height: 10px;
@@ -169,12 +170,12 @@
 }
 .featured-items {
 	height: 34.5vw;
-	width: 100vw;
+	width: 68vw;
 	position: relative;
 	overflow-y: hidden;
 	.featured-item {
 		height: 34.5vw;
-		width: 100vw;
+		width: 68vw;
 		position: relative;
 	}
 	.featured-video-container {
@@ -440,7 +441,7 @@
 		font-size: 16px;
 	}
 	.notify-button {
-		margin-bottom: 10px;
+		margin-bottom: 6px;
 	}
 }
 
@@ -481,6 +482,7 @@
 		height: 100%;
 		position: absolute;
 		left: 0;
+		top: 0;
 	}
 	.course-overlay {
 		width: 100%;
@@ -488,12 +490,16 @@
 		position: absolute;
 		left: 0;
 		opacity: 0.9;
+		top: 0;
 	}
 	.course-icon {
 		width: 52px;
 		height: 49px;
 		height: auto;
 		z-index: 1;
+		position: absolute;
+		left: calc(50% - 26px);
+		top: calc(50% - 25px);
 	}
 }
 
@@ -756,11 +762,17 @@
 
 
 @media (max-width: 640px) {
+	.featured-banner .featured-infos .featured-info .featured-action-icons, .featured-info h3 {
+		display: none;
+	}
 	.featured-banner .featured-nav {
 		display: none;
 	}
 	.media-container {
 		padding: 20px 0px;
+		.media-header {
+			margin-left: 20px;
+		}
 	}
 	.media-thumbnail {
 		width: calc((100vw - 2px) / 2);
@@ -775,6 +787,9 @@
 		margin-left: 2px;
 	}
 	.media-thumbnail:hover {
+		.thumbnail-gradient {
+			display: none;
+		}
 		.thumbnail-description {
 			width: calc((100vw - 2px) / 2);
 		}
