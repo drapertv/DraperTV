@@ -115,6 +115,10 @@
 ////// Media /////////
 
 .media-thumbnails.wrap {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
   @include flex-wrap(wrap);
 }
 .media-container.index-view {
