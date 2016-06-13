@@ -793,6 +793,11 @@
 		.thumbnail-description {
 			width: calc((100vw - 2px) / 2);
 		}
+		.media-info {
+			.action-icon {
+				display: none;
+			}
+		}
 	}
 	.course-thumbnails {
 		width: 100vw;
