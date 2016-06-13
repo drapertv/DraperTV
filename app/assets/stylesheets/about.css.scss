@@ -3,6 +3,7 @@
 
 
 .featured-item.about {
+  width: 100vw;
   .featured-info {
     width: 100%;
     text-align: center;
@@ -90,6 +91,7 @@
     width: 58%;
     .team-members {
       @include flexbox;
+      display: flex;
       @include flex-wrap(wrap);
       @include justify-content(space-between);
       .team-member {
@@ -255,7 +257,6 @@
     padding: 20px;
     margin: 0;
     width: 100%;
-    padding-left: 30px;
     .about-left {
       .team-members {
         .team-member {

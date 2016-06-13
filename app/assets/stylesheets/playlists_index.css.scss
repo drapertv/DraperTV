@@ -258,6 +258,9 @@
       background: -webkit-linear-gradient(bottom, rgba(0,0,0,1) , rgba(0,0,0,0));
     }
   }
+  .sort-bar .sort-options .order-sort, .sort-bar .sort-options .industry-sort {
+    width: 100px;
+  }
   .sort-options {
     width: 100%;
   }
@@ -280,9 +283,14 @@
   }
 }
 
-@media (max-width: 400px) {
-  .sort-options {
-    div:first-child {
+@media (max-width: 370px) {
+  .sort-bar .sort-options {
+    margin: 0 auto;
+    width: auto;
+    .dropdowns {
+      margin: 0;
+    }
+    .sort-label {
       display: none;
     }
   }
