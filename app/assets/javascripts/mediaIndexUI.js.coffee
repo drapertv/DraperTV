@@ -2,7 +2,6 @@
 
 window.mediaIndexUI =
   init: ->
-    console.log "init"
     @windowWidth = $(window).width()
     @fetchInitialMedia()
     @currentlyLoading = false

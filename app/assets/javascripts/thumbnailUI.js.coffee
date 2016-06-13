@@ -1,10 +1,10 @@
 # js for thumbnail animations for speakers, livestreams, students etc.
 ThumbnailUI =
 	init: ->
-		console.log "binding"
-		$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
-		$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
-		$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
+		if $(window).width() > 640
+			$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
+			$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
+			$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
 		$(window).on 'resize', @adjustLastCourseThumbnail
 		@markMultilineTitles()
 		@adjustLastCourseThumbnail()

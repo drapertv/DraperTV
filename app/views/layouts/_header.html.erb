@@ -1,72 +1,100 @@
 <header id="global-header">
   <div class="header-content">
+    <%= image_tag "menu-mobile.png", :class => "header-mobile-menu" %>
+
     <div class="header-left">
-    <%= link_to root_path do %>
-      <%= image_tag 'logo.png', :class => "header-item logo desk-logo" %>
-      <%= image_tag 'logo-mobile.svg', :class => "header-item logo mobile-logo" %>
-    <% end %>
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png', :class => "header-item logo desk-logo" %>
+        <%= image_tag 'logo-mobile.svg', :class => "header-item logo mobile-logo" %>
+      <% end %>
+    </div>
+    <div class="header-right">
+      <li class="header-item <%= 'active' if request.original_url.include?("speakers") %>">
+        <%= link_to "/speakers" do %>
+          SPEAKERS
+        <% end %>
+      </li>
+      <li class="header-item <%= 'active' if request.original_url.include?("livestreams") %>">
+        <%= link_to livestreams_path do %>
+          LIVESTREAMS
+        <% end %>
+      </li>
+      <li class="header-item <%= 'active' if request.original_url.include?("students") %>">
+        <%= link_to "http://www.draperuniversity.com" do %>
+          STUDENTS
+        <% end %>
+      </li>
+      <li class="header-item">
+        <%= link_to "http://courses.drapertv.com" do %>
+          COURSES
+        <% end %>
+      </li>
+      <li class="header-item dropdown-container">
+        DRAPER ECOSYSTEM
+        <ul class="dropdown">
+          <li>
+            <%= link_to "http://www.draperuniversity.com" do %>
+              DRAPER UNIVERSITY
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "http://www.herocity.com" do %>
+                HERO CITY
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "http://www.vcxdu.com" do %>
+              VCx
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "http://www.draper.vc" do %>
+              DRAPER ASSOCIATES
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "http://www.drapernetwork.com" do %>
+              DRAPER VENTURE NETWORK
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <li class="header-item <%= 'active' if request.original_url.include?("about") %>">
+        <%= link_to about_path do %>
+          ABOUT
+        <% end %>
+      </li>
+      <%= form_for Search.new do |f| %>
+        <%= f.text_field :terms, :class => "search-input hidden", placeholder: "Search" %>
+      <% end %>
+      <%= image_tag "search.png", :class => "search-icon header-item" %>
+    </div>
   </div>
-  <div class="header-right">
-    <li class="header-item <%= 'active' if request.original_url.include?("speakers") %>">
+  <div class="mobile-dropdown">
+    <li class="<%= 'active' if request.original_url.include?("speakers") %>">
       <%= link_to "/speakers" do %>
         SPEAKERS
       <% end %>
     </li>
-    <li class="header-item <%= 'active' if request.original_url.include?("livestreams") %>">
+    <li class="<%= 'active' if request.original_url.include?("livestreams") %>">
       <%= link_to livestreams_path do %>
         LIVESTREAMS
       <% end %>
     </li>
-    <li class="header-item <%= 'active' if request.original_url.include?("students") %>">
+    <li class="<%= 'active' if request.original_url.include?("students") %>">
       <%= link_to "http://www.draperuniversity.com" do %>
         STUDENTS
       <% end %>
     </li>
-    <li class="header-item">
+    <li>
       <%= link_to "http://courses.drapertv.com" do %>
         COURSES
       <% end %>
     </li>
-    <li class="header-item dropdown-container">
-      DRAPER ECOSYSTEM
-      <ul class="dropdown">
-        <li>
-          <%= link_to "http://www.draperuniversity.com" do %>
-            DRAPER UNIVERSITY
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "http://www.herocity.com" do %>
-              HERO CITY
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "http://www.vcxdu.com" do %>
-            VCx
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "http://www.draper.vc" do %>
-            DRAPER ASSOCIATES
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "http://www.drapernetwork.com" do %>
-            DRAPER VENTURE NETWORK
-          <% end %>
-        </li>
-      </ul>
-    </li>
-    <li class="header-item <%= 'active' if request.original_url.include?("about") %>">
+    <li class="<%= 'active' if request.original_url.include?("about") %>">
       <%= link_to about_path do %>
         ABOUT
       <% end %>
     </li>
-    <%= form_for Search.new do |f| %>
-      <%= f.text_field :terms, :class => "search-input hidden", placeholder: "Search" %>
-    <% end %>
-    <%= image_tag "search.png", :class => "search-icon header-item" %>
   </div>
-  </div>
-  
 </header>

@@ -2,6 +2,7 @@
 
 GlobalUI =
 	init: ->
+    FastClick.attach(document.body);
     $('body').on 'click', '.search-icon', @showSearchBox
     $('body').on 'click', '.hide-search', @hideSearchBox
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
@@ -9,14 +10,29 @@ GlobalUI =
     $('body').on 'ajax:success', '.notifications-form', @showSubmitConfirmation
     $('body').on 'mouseenter', '.action-icon', @showActionIconText
     $('body').on 'mouseleave', '.action-icon', @hideActionIconText
+    $('body').on 'click', '.header-mobile-menu', @toggleMobileDropdown
+
+  toggleMobileDropdown: ->
+    console.log "toggling"
+    $('.mobile-dropdown').toggle()
 
   showSearchBox: -> 
+    $(@).addClass('hide-search')
+    if $(window).width() < 641 
+      $('.search-input').show()
+      $('.logo, .header-mobile-menu').hide()
+      return
+
     $('.header-right .header-item:not(.search-icon)').addClass('animated fadeOut').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
       $('.header-item:not(.search-icon, .logo)').hide()
       $('.search-input').show()
-    $(@).addClass('hide-search')
+    
 
   hideSearchBox: ->
+    if $(window).width() < 641 
+      $('.search-input').hide()
+      $('.mobile-logo, .header-mobile-menu').show()
+      return
     $('.header-right .header-item:not(.search-icon)').removeClass('animated').removeClass('fadeOut')
     $('.search-input').hide()
     $('.header-item:not(.search-icon, .logo)').show()
