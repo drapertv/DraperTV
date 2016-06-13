@@ -230,6 +230,7 @@
 
 .media-thumbnails {
 	@include flexbox;
+	display: flex;
 }
 .link-triangle {
 	width: 0;

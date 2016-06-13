@@ -58,6 +58,7 @@
   @include justify-content(space-between);
   .sort-options {
     @include flexbox;
+    @include justify-content(space-between);
     z-index: 2;
     div {
       margin-left: 25px;
@@ -65,6 +66,9 @@
       color: $gray;
       height: 22px;
       line-height: 22px;
+    }
+    .dropdowns {
+      @include flexbox;
     }
     .order-sort, .industry-sort {
      border-bottom: 1px solid $gray;
@@ -81,7 +85,7 @@
       background: white;
       width: 100%;
       left: 0;
-      z-index: 1;
+      z-index: 2;
       border: 1px solid $border-gray;
       border-radius: 5px;
       padding: 4px 8px;
@@ -100,6 +104,7 @@
   visibility: initial;
   cursor: pointer;
   @include flexbox;
+  display: flex;
   @include align-items(center);
   @include justify-content(space-between);
   padding-right: 6px;
@@ -119,6 +124,7 @@
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1 1 auto;
   @include flex-wrap(wrap);
 }
 .media-container.index-view {
@@ -240,6 +246,12 @@
       background: -webkit-linear-gradient(bottom, rgba(0,0,0,1) , rgba(0,0,0,0));
     }
   }
+  .sort-options {
+    width: 100%;
+  }
+  .action-icon.expanded {
+    display: none;
+  }
   .media-container.index-view {
     .media-thumbnail {
       width: calc(50vw - 1px);
@@ -251,11 +263,16 @@
       margin-left: 1px;
     }
   }
-  .sort-options div:first-child {
-    display: none;
-  }
   #load-more {
     display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .sort-options {
+    div:first-child {
+      display: none;
+    }
   }
 }
 

@@ -13,7 +13,6 @@ GlobalUI =
     $('body').on 'click', '.header-mobile-menu', @toggleMobileDropdown
 
   toggleMobileDropdown: ->
-    console.log "toggling"
     $('.mobile-dropdown').toggle()
 
   showSearchBox: -> 
