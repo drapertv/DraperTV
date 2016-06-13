@@ -110,14 +110,14 @@
   padding-right: 6px;
   margin-right: 6px;
   border-left: 0px;
-  svg {
+  svg, img {
     width: 24px;
     height: 24px;
     margin-right: 6px;
   }
 }
-.action-icon.expanded:hover {
-  svg {
+.action-icon.show-notify-modal.expanded:hover {
+  svg, img {
     * {
       fill: rgba(85, 199, 173, 1);
     }
