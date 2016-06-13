@@ -109,10 +109,22 @@
   @include justify-content(space-between);
   padding-right: 6px;
   margin-right: 6px;
-  img {
+  border-left: 0px;
+  svg {
     width: 24px;
     height: 24px;
     margin-right: 6px;
+  }
+}
+.action-icon.expanded:hover {
+  svg {
+    * {
+      fill: rgba(85, 199, 173, 1);
+    }
+  }
+  background: $teal;
+  p {
+    color: white;
   }
 }
 
