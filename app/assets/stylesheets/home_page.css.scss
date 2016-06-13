@@ -10,6 +10,7 @@
 	height: 34.5vw;
 	overflow: hidden;
 	@include flexbox;
+	display: flex;
 	.featured-infos {
 		width: 32vw;
 		background: black;
@@ -396,7 +397,7 @@
 
 .media-thumbnail:hover.livestream {
 	.media-info.multiline {
-		transform: translateY(-24px);
+		// transform: translateY(-24px);
 		transition: 0.4s;
 		.media-title {
 			overflow: visible;

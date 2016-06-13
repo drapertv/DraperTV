@@ -41,22 +41,14 @@ ThumbnailUI =
 					, 500
 
 	animateTitle: ->
-		#only animate if no other thumbnails are expanded
-		if $('.media-thumbnail.show-description, .course-thumbnail.show-description').length < 1	
-			title = $(@).find('.media-title')
-			#remove height limitation to check title height
-			title.css('height', 'auto')
-			# if the title is more than 1 line it will be greater than 20px
-			if title.height() > 20
-				#put height limitation back
-				title.css('height', '16px')
-				# title.parents('.media-info').animate
-				# 	bottom: "26px"
-				# , 400, ->
-				# 	# title.css('height', 'auto')
-					# title.parents('.media-info').css('bottom', '8px')
-			else
-				title.css('height', '16px')
+		title = $(@).find('.media-title')
+		#remove height limitation to check title height
+		title.css('height', 'auto')
+		 	# if the title is more than 1 line it will be greater than 20px
+		if title.height() > 20
+			title.parents('.media-info').css('transform', "translateY(-#{title.height() - 16}px)")
+		 	#put height limitation back
+			title.css('height', '16px')
 
 	markMultilineTitles: ->
 		$('.media-title').each ->
