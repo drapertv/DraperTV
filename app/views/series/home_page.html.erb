@@ -77,12 +77,6 @@
                 </div>
               <% end %>
               <div class="media-info">
-                <% if content.class == Livestream %>
-                  <div class="action-icon notify-button show-notify-modal" data-livestream-id="<%= content.id %>" data-width="100">
-                    <%= image_tag "notify-black.png", :class => "notify-icon" %> 
-                    <p>Notify Me</p>
-                  </div>
-                <% end %>
                 <div class="media-speaker-name">
                   <%= content.speaker_name %>
                 </div>

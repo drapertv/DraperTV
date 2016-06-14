@@ -197,7 +197,10 @@
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+	.main-content {
+		margin-top: 0px;
+	}
 	.header-mobile-menu {
 		display: block;
 		height: 20px;
