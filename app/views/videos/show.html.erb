@@ -3,8 +3,8 @@
     <%= @video_yt_embed %>
   </div>
   <div class="series-playlist-info-open">
-     <p><%= image_tag "dropdown-triangle.svg", :class => "featured-play-btn" %>
-     <%= @videos.count %> episodes</p> 
+     <%= image_tag "dropdown-triangle.svg", :class => "featured-play-btn" %>
+     <p><%= @videos.count %> episodes</p> 
   </div>
   <div class="series-playlist-info-hide">
      <%=image_tag "dropdown-triangle.svg", :class => "featured-play-btn" %>
@@ -34,8 +34,17 @@
     </p>
 
     <div class="video-actions">
-      <div class="video-info-item blue-item">Speaker Series</div>
-      <div class="video-info-item teal-item">Notify Me</div>
+      <%= link_to '/speakers' do %>
+      <div class="action-icon blue-item expanded">
+        <%= image_tag "speaker-icon.png", :class => "notify-icon svg non-hover" %> 
+        <%= image_tag "speaker-white.png", :class => "notify-icon svg hover" %> 
+        <p>Speaker Series</p>
+      </div>
+    <% end %>
+    <div class="action-icon teal-item show-notify-modal expanded">
+      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %> 
+      <p>Notify Me</p>
+    </div>
     </div>
 
     <div class="video-about">
@@ -47,7 +56,8 @@
   <div class="video-info-side">
     <%= link_to '/speakers' do %>
       <div class="action-icon blue-item expanded">
-        <%= image_tag "speaker-icon.png", :class => "notify-icon" %> 
+        <%= image_tag "speaker-icon.png", :class => "notify-icon svg non-hover" %> 
+        <%= image_tag "speaker-white.png", :class => "notify-icon svg hover" %> 
         <p>Speaker Series</p>
       </div>
     <% end %>

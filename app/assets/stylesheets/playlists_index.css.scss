@@ -110,13 +110,24 @@
   padding-right: 6px;
   margin-right: 6px;
   border-left: 0px;
+  position: relative;
+  padding-left: 30px;
   svg, img {
     width: 24px;
     height: 24px;
     margin-right: 6px;
+    position: absolute;
+    left: 0;
+    top: -1px;
+  }
+}
+.action-icon.teal-item.expanded:hover {
+  svg {
+    top: 0px;
   }
 }
 .action-icon.show-notify-modal.expanded:hover {
+  border: none;
   svg, img {
     * {
       fill: rgba(85, 199, 173, 1);

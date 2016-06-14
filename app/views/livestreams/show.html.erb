@@ -12,6 +12,20 @@
       <%= @livestream.title %>
     </p>
 
+    <div class="video-actions">
+      <%= link_to livestreams_path do %>
+        <div class="action-icon red-item expanded">
+          <%= image_tag "livestream-icon.png", :class => "notify-icon svg non-hover" %> 
+          <%= image_tag "livestream-icon.png", :class => "notify-icon svg hover" %> 
+          <p>Livestream Series</p>
+        </div>
+      <% end %>
+      <div class="action-icon teal-item show-notify-modal expanded">
+        <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %> 
+        <p>Notify Me</p>
+      </div>
+    </div>
+
     <div class="video-about">
       <h3>About</h3>
       <p><%= @livestream.description %></p>
@@ -19,8 +33,17 @@
   </div>
 
   <div class="video-info-side">
-    <div class="video-info-item blue-item">Speaker Series</div>
-    <div class="video-info-item teal-item">Notify Me</div>
+    <%= link_to livestreams_path do %>
+      <div class="action-icon red-item expanded">
+        <%= image_tag "livestream-icon.png", :class => "notify-icon svg non-hover" %> 
+        <%= image_tag "livestream-icon.png", :class => "notify-icon svg hover" %> 
+        <p>Livestream Series</p>
+      </div>
+    <% end %>
+    <div class="action-icon teal-item show-notify-modal expanded">
+      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %> 
+      <p>Notify Me</p>
+    </div>
   </div>
 </section>
 <section class="media-container single-row">

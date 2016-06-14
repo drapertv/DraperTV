@@ -9,11 +9,13 @@ Video =
 			$(@).hide()
 			$('.series-playlist-info').show()
 			$('.series-playlist-info-hide').css('display', 'flex')
+			$('.featured-play-btn').css('transform', 'rotate(270deg)')
 		else
 			$('.series-playlist-info').toggle()
 
 	hideSeriesPlaylistInfo: ->
 		$('.series-playlist-info-hide, .series-playlist-info').hide()
+		$('.featured-play-btn').attr('style', '')
 		$('.series-playlist-info-open').show()
 
 

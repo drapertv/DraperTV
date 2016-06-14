@@ -159,14 +159,43 @@ small {
 .white-b {background: #ffffff;}
 .purple-b {background: #a53a6a;}
 
-    .blue-item {
-      color: $blue;
-      border: 1px solid $blue;
-    }
-    .teal-item {
-      color: $teal;
-      border: 1px solid $teal;
-    }
+.blue-item {
+  color: $blue;
+  border: 1px solid $blue;
+  .hover {
+    display: none;
+  }
+}
+.expanded.blue-item:hover {
+  background: $blue;
+  color: white;
+}
+.expanded:hover {
+  background: $blue;
+  color: white;
+  .non-hover {
+    display: none;
+  }
+  .hover {
+    display: block;
+    border-radius: 50px;
+    background: white;
+  }
+}
+.teal-item {
+  color: $teal;
+  border: 1px solid $teal;
+}
+
+.red-item {
+  color: $red;
+  border: 1px solid $red;
+}
+
+.expanded.red-item:hover {
+  color: white;
+  background: $red;
+}
 
 
 //////

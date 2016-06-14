@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.2 (29753) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <ellipse id="path-1" cx="11" cy="11" rx="11" ry="11"></ellipse>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="22" height="22" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="22" height="22" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <ellipse id="path-5" cx="11" cy="11" rx="11" ry="11"></ellipse>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="22" height="22" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="Video" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-SD" transform="translate(-687.000000, -483.000000)">
+            <g id="Info" transform="translate(0.000000, 447.000000)">
+                <g id="Ancillary" transform="translate(687.000000, 36.000000)">
+                    <g id="Normal">
+                        <g id="Speaker-Series">
+                            <g id="Group">
+                                <g id="Icon">
+                                    <ellipse id="background" fill="#246DB4" cx="11" cy="11" rx="11" ry="11"></ellipse>
+                                    <g id="Profile">
+                                        <mask id="mask-3" fill="white">
+                                            <use xlink:href="#path-1"></use>
+                                        </mask>
+                                        <g id="Mask" stroke="#246DB4" mask="url(#mask-2)" stroke-width="2" opacity="0.45">
+                                            <use mask="url(#mask-4)" xlink:href="#path-1"></use>
+                                        </g>
+                                        <path d="M15.6666662,8.68533313 C15.7786662,6.09066658 13.6879996,4 10.9999997,4 C8.31199982,4 6.22133324,6.09066658 6.33333323,8.68533313 C6.44533323,11.2799997 8.53599981,13.3706663 10.9999997,13.3706663 C13.4639996,13.3706663 15.5546662,11.261333 15.6666662,8.68533313 L15.6666662,8.68533313 Z M7.34133319,14.1173329 L14.6586662,14.1173329 C16.5066661,14.1173329 17.9999994,15.6106662 17.9999994,17.4586661 L17.9999994,22 L4,22 L4,17.4586661 C4,15.6106662 5.49333327,14.1173329 7.34133319,14.1173329 Z" id="Shape" fill="#FFFFFF" mask="url(#mask-3)"></path>
+                                    </g>
+                                    <use id="background-copy" stroke="#246DB4" mask="url(#mask-6)" stroke-width="3" xlink:href="#path-5"></use>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
