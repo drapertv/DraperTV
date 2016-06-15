@@ -89,7 +89,6 @@ class Series < ActiveRecord::Base
   end
 
   def self.popular
-    where(popular: true).limit(5)
     limit 5
   end
 

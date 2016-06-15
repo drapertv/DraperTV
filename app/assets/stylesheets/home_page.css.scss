@@ -420,7 +420,7 @@
 	}
 	.thumbnail-description {
 		display: -webkit-box;
-		color: $dark-gray;
+		color: $gray;
 		padding: 10px 12px;
 		z-index: -1;
 		top: 0px;
@@ -512,16 +512,19 @@
 	border-bottom: 5px solid white;
   box-sizing: content-box;
   margin-bottom: -5px;
+  .course-overlay {
+  	opacity: 0.97;
+  }
 }
 
 .course-thumbnail.show-description {
 	.course-icon, .course-name {
-		transform: translateY(-500px);
-		transition-duration: 1s; 
+		opacity: 0;
+		transition-duration: 0.4s; 
 	}
 	.course-description {
 		display: block;
-		transform: translateY(-100%);
+		top: 0;
 		transition-duration: 0.4s; 
 	}
 }
@@ -618,7 +621,6 @@
 		.thumbnail-description {
 			width: calc((100vw - 100px)/5);
 			height: calc(((100vw - 100px)/5) * 9 / 16);
-
 		}
 	}
 	.course-thumbnail {

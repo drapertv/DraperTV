@@ -275,7 +275,7 @@
   .sort-options {
     width: 100%;
   }
-  .action-icon.expanded {
+  .action-icon.expanded:not(.livestream) {
     display: none;
   }
   .media-container.index-view {

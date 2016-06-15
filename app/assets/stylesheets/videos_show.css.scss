@@ -251,8 +251,10 @@
 			line-height: 50px; 
 			@include flexbox;
 			@include justify-content(center);
+			img {
+				transform: rotate(360deg);
+			}
 			p {
-				margin: 0 auto;
 				font-size: 18px;
 			}
 		}
@@ -265,6 +267,7 @@
 	.video-actions .teal-item.action-icon {
 		display: none;
 	}
+
 	.video-actions .action-icon {
 		display: block;
 		p {

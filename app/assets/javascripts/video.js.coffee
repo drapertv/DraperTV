@@ -2,6 +2,7 @@ Video =
 	init: ->
 		$('body').on 'click' ,'.series-playlist-info-open', @openSeriesPlaylistInfo
 		$('body').on 'click' ,'.series-playlist-info-hide', @hideSeriesPlaylistInfo
+		@triangleRotation = 0
 		# @linkifyLinks()
 
 	openSeriesPlaylistInfo: ->
@@ -11,6 +12,8 @@ Video =
 			$('.series-playlist-info-hide').css('display', 'flex')
 			$('.featured-play-btn').css('transform', 'rotate(270deg)')
 		else
+			Video.triangleRotation += 180
+			$('.featured-play-btn').css('transform', "rotate(#{Video.triangleRotation}deg)")
 			$('.series-playlist-info').toggle()
 
 	hideSeriesPlaylistInfo: ->

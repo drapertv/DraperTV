@@ -102,8 +102,8 @@ footer {
   border: 0px;
   border-bottom: 1px solid $border-gray;
   margin-bottom: 24px;
-  font-size: 12px;
 }
+.footer-email::-webkit-input-placeholder { color: #DADADA; }
 .submit-footer-email {
   height: 32px;
   border: 1px solid $teal;

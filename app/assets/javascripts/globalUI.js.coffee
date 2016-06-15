@@ -2,7 +2,7 @@
 
 GlobalUI =
 	init: ->
-    FastClick.attach(document.body);
+    FastClick.attach(document.body) if $(window).width() < 768
     $('body').on 'click', '.search-icon', @showSearchBox
     $('body').on 'click', '.hide-search', @hideSearchBox
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
