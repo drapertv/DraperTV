@@ -19,6 +19,7 @@
     margin: 0 auto;
     .modal-header {
       @include flexbox;
+      display: flex;
       @include justify-content(space-between);
       background: $teal;
       padding: 14px 24px;
@@ -34,8 +35,8 @@
     }
     .modal-header .close {
       cursor: pointer;
-      height: 22px;
-      width: 22px;
+      height: 14px;
+      width: 14px;
     }
     .modal-content {
       padding: 14px 24px;
@@ -54,6 +55,23 @@
     .footer-email {
       font-size: 18px;
       width: 100%;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .modal-container {
+    .modal {
+      width: 100vw;
+      height: 100vh;
+    }
+    .email-selection {
+      display: flex;
+      @include flex-direction(column);
+      div {
+        margin: 0;
+        margin-bottom: 8px;
+      }
     }
   }
 }

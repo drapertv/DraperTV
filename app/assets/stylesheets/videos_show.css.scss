@@ -264,8 +264,10 @@
 			height: auto;
 		}
 	}
-	.video-actions .teal-item.action-icon {
-		display: none;
+	.video-actions {
+		.teal-item.action-icon, .red-item.action-icon, .blue-item.action-icon {
+			display: block;
+		}
 	}
 
 	.video-actions .action-icon {

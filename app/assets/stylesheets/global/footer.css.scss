@@ -117,10 +117,13 @@ footer {
   font-size: 14px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 726px) {
   footer {
     padding: 20px;
     overflow-x: hidden;
+    .footer-email {
+      width: 100%;
+    }
     .footer-main {
       @include flex-direction(column);
       height: auto;

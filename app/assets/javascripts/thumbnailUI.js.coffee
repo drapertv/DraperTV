@@ -87,6 +87,8 @@ ThumbnailUI =
 			#enlarge thumbnail and all child elements
 			thumbnail.css 'transform', "scale(#{scaleAmount})" 
 			shrinkAmount = 1/ scaleAmount
+			# $('.media-info').attr('style', '') if thumbnail.find()
+			# move title down accordingly
 
 			#shrink fonts of child elements
 			ThumbnailUI.shrinkFonts thumbnail.find("*:not('.action-icon p')"), shrinkAmount

@@ -8,8 +8,11 @@ GlobalUI =
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
     $('body').on 'click', '.modal-container, .modal-container .close', @hideNotifyModal
     $('body').on 'ajax:success', '.notifications-form', @showSubmitConfirmation
-    $('body').on 'mouseenter', '.action-icon', @showActionIconText
-    $('body').on 'mouseleave', '.action-icon', @hideActionIconText
+    
+    if $(window).width() > 768
+      $('body').on 'mouseenter', '.action-icon', @showActionIconText
+      $('body').on 'mouseleave', '.action-icon', @hideActionIconText
+      
     $('body').on 'click', '.header-mobile-menu', @toggleMobileDropdown
 
   toggleMobileDropdown: ->

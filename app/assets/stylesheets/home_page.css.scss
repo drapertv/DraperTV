@@ -767,6 +767,34 @@
 	}
 }
 
+@media (max-width: 768px) {
+	.featured-banner .featured-infos .featured-info .featured-action-icons {
+		.action-icon {
+			width: auto;
+			display: flex;
+			height: 22px;
+			background: rgba(36,180,148, 0.5);
+			border-radius: 50px;
+
+			p {
+				display: block;
+				position: static;
+				line-height: 22px;
+				color: $teal;
+				text-align: right;
+				margin: 0 4px;
+				opacity: 1;
+			}
+		}
+		.action-icon.series {
+			background: rgba(36,109,180, 0.5);
+			p {
+				color: $blue;
+			}
+		}
+	}
+}
+
 
 @media (max-width: 640px) {
 	.featured-banner .featured-infos .featured-info .featured-action-icons, .featured-info h3 {
