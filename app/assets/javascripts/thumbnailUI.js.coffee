@@ -41,6 +41,7 @@ ThumbnailUI =
 					, 500
 
 	animateTitle: ->
+		thumbnail = $(@)
 		title = $(@).find('.media-title')
 		#remove height limitation to check title height
 		title.css('height', 'auto')
@@ -49,6 +50,12 @@ ThumbnailUI =
 			title.parents('.media-info').css('transform', "translateY(-#{title.height() - 16}px)")
 		 	#put height limitation back
 			title.css('height', '16px')
+		setTimeout -> 
+			if thumbnail.is ":hover"
+				title.css('height', 'auto')
+				title.parents('.media-info').css('transform', "translateY(#{0 - (title.height() - 16)}px)")
+				title.css('height', '16px')
+		, 500
 
 	markMultilineTitles: ->
 		$('.media-title').each ->

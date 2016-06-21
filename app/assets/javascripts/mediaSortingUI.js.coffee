@@ -21,29 +21,33 @@ window.mediaSortingUI =
     $(@).parents('.sort-dropdown').hide()
 
   sortOrderByOption: ->
-    $('.order-sort li.current').removeClass('current')
-    $(@).addClass('current')
-    criteria = $(@).attr('data-sort-criteria')
-    direction = $(@).attr('data-sort-direction')
-    
-    $('.media-thumbnails.sortable').each ->
-      container = $(@)
-      thumbnails = container.find('a')
-      sortedThumbnails = window.mediaSortingUI.sortCollection thumbnails, criteria, direction
-      $(sortedThumbnails).detach().appendTo(container)
+    window.mediaIndexUI.fetchMedia 'noLimit'
+    $(document).ajaxComplete ->
+      $('.order-sort li.current').removeClass('current')
+      $(@).addClass('current')
+      criteria = $(@).attr('data-sort-criteria')
+      direction = $(@).attr('data-sort-direction')
+      
+      $('.media-thumbnails.sortable').each ->
+        container = $(@)
+        thumbnails = container.find('a')
+        sortedThumbnails = window.mediaSortingUI.sortCollection thumbnails, criteria, direction
+        $(sortedThumbnails).detach().appendTo(container)
 
   sortAllBySelectedOptions: ->
     window.mediaSortingUI.sortOrderByOption.call($('.order-sort .current'))
     window.mediaSortingUI.sortIndustryByOption.call($('.industry-sort .current'))
 
   sortIndustryByOption: ->
-    $('.industry-sort li.current').removeClass('current')
-    $(@).addClass('current')
-    $('.media-thumbnail').hide().show()
-    unless $(@).text() == "All Industries"
-      industrySelector = $(@).text().toLowerCase().replace(' ', '-')
+    window.mediaIndexUI.fetchMedia 'noLimit'
+    $(document).ajaxComplete ->
+      $('.industry-sort li.current').removeClass('current')
+      $(@).addClass('current')
       $('.media-thumbnail').hide().show()
-      $(".media-thumbnail:not(.#{industrySelector})").hide()
+      unless $(@).text() == "All Industries"
+        industrySelector = $(@).text().toLowerCase().replace(' ', '-')
+        $('.media-thumbnail').hide().show()
+        $(".media-thumbnail:not(.#{industrySelector})").hide()
   
 
   sortCollection: (collection, criteria, direction) ->

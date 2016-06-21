@@ -21,11 +21,6 @@
             <%= label_tag :all_livestreams, "All Livestreams" %>
             <div class="check"></div>
           </div>
-          <div class="email-option">
-            <%= radio_button_tag :notification_option,  :livestream %>
-            <%= label_tag :livestream, "This Livestream Event" %>
-            <div class="check"></div>
-          </div>
         </div>
         <%= text_field_tag :email, nil, :class => "footer-email", placeholder: "Email Address" %>
         <%= submit_tag "Submit", :class => "submit-footer-email" %>

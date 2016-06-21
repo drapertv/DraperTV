@@ -95,7 +95,7 @@
 				p {
 					display: block;
 					position: absolute;
-					line-height: 22px;
+					line-height: 25px;
 					color: $teal;
 					text-align: right;
 					margin: 0;
@@ -230,7 +230,10 @@
 
 .media-thumbnails {
 	@include flexbox;
-	display: flex;
+	display: flex; 
+	a {
+		margin-bottom: 36px;
+	}
 }
 .link-triangle {
 	width: 0;
@@ -248,7 +251,6 @@
 	width: 256px;
 	margin: 0px 4px;
 	position: relative;
-	margin-bottom: 36px;
 	@include flexbox;
 	@include align-items(center);
 	z-index: 1;
@@ -498,13 +500,13 @@
 		top: 0;
 	}
 	.course-icon {
-		width: 52px;
-		height: 49px;
+		width: 40%;
+		height: 40%;
 		height: auto;
 		z-index: 1;
 		position: absolute;
-		left: calc(50% - 26px);
-		top: calc(50% - 25px);
+		left: 30%;
+		top: 30%;
 	}
 }
 
@@ -526,6 +528,7 @@
 		display: block;
 		top: 0;
 		transition-duration: 0.4s; 
+		overflow: scroll;
 	}
 }
 
@@ -809,11 +812,13 @@
 			margin-left: 20px;
 		}
 	}
+	.media-thumbnails a {
+		margin-bottom: 20px;
+	}
 	.media-thumbnail {
 		width: calc((100vw - 2px) / 2);
 		height: calc((100vw - 2px) / 2 * 9 / 16);
 		margin: 0;
-		margin-bottom: 20px;
 	}
 	.media-thumbnails:not(.course-thumbnails) a:nth-child(3n) {
 		display: none;
@@ -837,7 +842,7 @@
 	.course-thumbnails {
 		width: 100vw;
 		overflow-x: scroll;
-		a:first-child {
+		a:first-child .course-thumbnail {
 			margin-left: 0px;
 		}
 		a:nth-child(9n), a:nth-child(8n), a:nth-child(7n) {

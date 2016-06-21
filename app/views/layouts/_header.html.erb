@@ -91,6 +91,11 @@
         COURSES
       <% end %>
     </li>
+    <li>
+      <%= link_to "http://draperuniversity.com" do %>
+        DRAPER ECOSYSTEM
+      <% end %>
+    </li>
     <li class="<%= 'active' if request.original_url.include?("about") %>">
       <%= link_to about_path do %>
         ABOUT

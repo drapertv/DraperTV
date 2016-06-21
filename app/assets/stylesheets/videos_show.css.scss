@@ -92,6 +92,7 @@
 			font-size: 20px;
 			color: $gray;
 			margin-top: 4px;
+			letter-spacing: 1px;
 		}
 		.video-about {
 			margin-top: 26px;
@@ -126,6 +127,9 @@
 
 .media-container.single-row {
 	.media-thumbnail {
+		margin-bottom: 0px;
+	}
+	.media-thumbnail.show-description:hover {
 		margin-bottom: 0px;
 	}
 }

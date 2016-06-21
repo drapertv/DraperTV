@@ -14,11 +14,11 @@ window.mediaIndexUI =
     if $('.lazy-load .media-thumbnail').length < 1
       window.mediaIndexUI.fetchMedia()
     
-  fetchMedia: ->
+  fetchMedia: (noLimit) ->
     mediaLocation = window.location.pathname
     offset = $('#load-more').attr('offset')
     quantity = window.mediaIndexUI.mediaBatchQuantity()
-    
+    quantity = 100000 if noLimit
     $.get "#{mediaLocation}?offset=#{offset}&list=true&quantity=#{quantity}", (data) ->
       $('.media-thumbnails.lazy-load').append(data)
       #update offset
@@ -29,7 +29,7 @@ window.mediaIndexUI =
       if $(data).find('.media-thumbnail').length < quantity
         $('#load-more').hide()
 
-      window.mediaSortingUI.sortAllBySelectedOptions()
+      # window.mediaSortingUI.sortAllBySelectedOptions() if $('.livestream').length == 0
 
   lazyLoadThumbnails: ->
     heightOfContentAboveThumbnails = 280
