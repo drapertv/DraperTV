@@ -5,6 +5,8 @@ ThumbnailUI =
 			$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
 			$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
 			$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
+
+
 		$(window).on 'resize', @adjustLastCourseThumbnail
 		@markMultilineTitles()
 		@adjustLastCourseThumbnail()
@@ -16,6 +18,7 @@ ThumbnailUI =
 				ThumbnailUI.unanimate thumbnail
 		, 20
 
+
 	animateAfterDelay: ->
 		# only animate for sizes above mobile
 		if $(window).width() > 640
@@ -25,7 +28,7 @@ ThumbnailUI =
 			if mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').length < 1	
 				# animate after delay
 				setTimeout ->
-					if thumbnail.is ":hover" 
+					if thumbnail.is ":hover"
 						ThumbnailUI.animate thumbnail 
 				, 500
 			else

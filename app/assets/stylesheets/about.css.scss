@@ -253,7 +253,7 @@
     .featured-info {
       bottom: 10px;
       h1 {
-        font-size: 20px;
+        font-size: 24px;
         letter-spacing: 1px;
       }
       h3 {
@@ -281,5 +281,14 @@
       }
     }
   }
+}
 
+@media (max-width: 320px) {
+   .featured-item.about {
+    .featured-info {
+      h1 {
+        font-size: 20px;
+      }
+    }
+  }
 }

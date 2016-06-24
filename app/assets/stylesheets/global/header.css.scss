@@ -54,7 +54,6 @@
 	position: relative;
 	line-height: 60px;
 	font-size: 12px;
-	display: inline;
 	font-weight: 600;
 	margin: 0px 25px 0px 0px;
 	letter-spacing: 1px;
@@ -78,7 +77,7 @@
 	padding: 20px 24px;
 	width: 234px;
 	top: 100%;
-	left: -33%;
+	left: calc(-117px + 50%);
 	display: none;
 	background: white;
 	z-index: 1;

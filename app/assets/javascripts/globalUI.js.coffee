@@ -2,18 +2,23 @@
 
 GlobalUI =
 	init: ->
-    FastClick.attach(document.body) if $(window).width() < 768
+    FastClick.attach(document.body)  
     $('body').on 'click', '.search-icon', @showSearchBox
     $('body').on 'click', '.hide-search', @hideSearchBox
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
     $('body').on 'click', '.modal-container, .modal-container .close', @hideNotifyModal
     $('body').on 'ajax:success', '.notifications-form', @showSubmitConfirmation
-    
+    document.ontouchmove = @checkScrollable
+    @scrollable = true
     if $(window).width() > 768
       $('body').on 'mouseenter', '.action-icon', @showActionIconText
       $('body').on 'mouseleave', '.action-icon', @hideActionIconText
       
     $('body').on 'click', '.header-mobile-menu', @toggleMobileDropdown
+
+  checkScrollable: (e) ->
+    unless GlobalUI.scrollable
+      e.preventDefault()
 
   toggleMobileDropdown: ->
     $('.mobile-dropdown').toggle()
@@ -42,17 +47,22 @@ GlobalUI =
 
   showNotifyModal: (e) ->
     e.preventDefault()
+    $('html').css('overflow', 'hidden').css('z-index', '-1')
     $('.submit-confirmation').hide()
     $('.hide-on-submit').show()
     $('.modal-container').css('display', 'flex')
     $('#livestream').val($(@).attr('data-livestream-id'))
+    GlobalUI.scrollable = false
 
   hideNotifyModal: (e) ->
-    $('.modal-container').hide() if $(e.target).hasClass('close') || $(e.target).parents('.modal').length < 1
+    if $(e.target).hasClass('close') || $(e.target).parents('.modal').length < 1
+      $('.modal-container').hide() 
+      $('html').attr('style', '')
+      GlobalUI.scrollable = true
 
   showSubmitConfirmation: (event, data) ->
     $('.submit-confirmation').show()
-    $('.hide-on-submit').hide()
+    $('.hide-on-submit').css('position', 'absolute').css('opacity', '0')
     $('.notifications-form')[1].reset()
 
   showActionIconText: ->
