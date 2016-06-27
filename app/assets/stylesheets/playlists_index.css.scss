@@ -288,6 +288,9 @@
     .media-thumbnail:nth-child(2n) {
       margin-left: 1px;
     }
+    .media-thumbnails:not(.course-thumbnails) a:nth-child(2n) {
+      margin: 0;
+    }
   }
   #load-more {
     display: none;

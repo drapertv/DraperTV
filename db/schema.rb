@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503220705) do
+ActiveRecord::Schema.define(version: 20160627223130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,7 +191,10 @@ ActiveRecord::Schema.define(version: 20160503220705) do
     t.boolean  "public",             default: false
     t.boolean  "ready_to_notify",    default: false
     t.boolean  "notified",           default: false
+    t.string   "slug"
   end
+
+  add_index "series", ["slug"], name: "index_series_on_slug", using: :btree
 
   create_table "series_notify_lists", force: true do |t|
     t.integer "emails", array: true

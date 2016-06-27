@@ -108,6 +108,13 @@ class Series < ActiveRecord::Base
     (1..10).map {|n| "industry-#{n}"}.sample(3).join(" ")
   end
 
+  def self.populate_slugs
+    all.each do |series|
+      slug = series.speaker_name.downcase.gsub(/\W+/, '').gsub(" ", "-")
+      series.update_attributes slug: slug
+    end
+  end
+
 
   private
 

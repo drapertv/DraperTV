@@ -22,31 +22,17 @@ window.mediaSortingUI =
 
   sortOrderByOption: ->
     option = $(@)
-    if $('#load-more:visible').length == 1
-      window.mediaIndexUI.fetchMedia 'noLimit' 
-      $(document).ajaxComplete ->
-        $('.order-sort li.current').removeClass('current')
-        option.addClass('current')
-        criteria = option.attr('data-sort-criteria')
-        direction = option.attr('data-sort-direction')
-        
-        $('.media-thumbnails.sortable').each ->
-          container = $(@)
-          thumbnails = container.find('a')
-          sortedThumbnails = window.mediaSortingUI.sortCollection thumbnails, criteria, direction
-          $(sortedThumbnails).detach().appendTo(container)
-    else
-      $('.order-sort li.current').removeClass('current')
-      option.addClass('current')
-      criteria = option.attr('data-sort-criteria')
-      direction = option.attr('data-sort-direction')
-        
-      $('.media-thumbnails.sortable').each ->
-        container = $(@)
-        thumbnails = container.find('a')
-        sortedThumbnails = window.mediaSortingUI.sortCollection thumbnails, criteria, direction
-        $(sortedThumbnails).detach().appendTo(container)
 
+    $('.order-sort li.current').removeClass('current')
+    option.addClass('current')
+    criteria = option.attr('data-sort-criteria')
+    direction = option.attr('data-sort-direction')
+    
+    $('.media-thumbnails.sortable').each ->
+      container = $(@)
+      thumbnails = container.find('a')
+      sortedThumbnails = window.mediaSortingUI.sortCollection thumbnails, criteria, direction
+      $(sortedThumbnails).detach().appendTo(container)
 
   sortAllBySelectedOptions: ->
     window.mediaSortingUI.sortOrderByOption.call($('.order-sort .current'))
@@ -54,25 +40,16 @@ window.mediaSortingUI =
 
   sortIndustryByOption: ->
     option = $(@)
-    if $('#load-more:visible').length == 1
-      console.log option
-      window.mediaIndexUI.fetchMedia 'noLimit'
-      $(document).ajaxComplete ->
-        $('.industry-sort li.current').removeClass('current')
-        option.addClass('current')
-        $('.media-thumbnail').hide().show()
-        unless option.text() == "All Industries"
-          industrySelector = option.text().toLowerCase().replace(' ', '-')
-          $('.media-thumbnail').hide().show()
-          $(".media-thumbnail:not(.#{industrySelector})").hide()
-    else
-      $('.industry-sort li.current').removeClass('current')
-      $(@).addClass('current')
+    $('.industry-sort li.current').removeClass('current')
+    option.addClass('current')
+    $('.media-thumbnail').hide().show()
+    unless option.text() == "All Industries"
+      industrySelector = option.text().toLowerCase().replace(' ', '-')
       $('.media-thumbnail').hide().show()
-      unless $(@).text() == "All Industries"
-        industrySelector = $(@).text().toLowerCase().replace(' ', '-')
-        $('.media-thumbnail').hide().show()
-        $(".media-thumbnail:not(.#{industrySelector})").hide()
+      $(".media-thumbnail:not(.#{industrySelector})").hide()
+
+    if $(window).width() < 641
+      window.mediaSortingUI.adjustMobileThumbnailMargins()
 
   
 
@@ -92,6 +69,13 @@ window.mediaSortingUI =
       return collection
     else
       return collection.get().reverse()
+
+  adjustMobileThumbnailMargins: ->
+    $('.media-thumbnail').css('margin-left', '0px')
+    $('.media-thumbnail:visible').each (i) ->
+      if i % 2 == 1
+        $(@).css('margin-left', '1px')
+
 
 ready = ->
   window.mediaSortingUI.init()

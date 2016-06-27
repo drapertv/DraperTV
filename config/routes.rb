@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   get "/500", :to => "errors#internal_error"
   get "/401", :to => "errors#internal_error"
 
+  get "/:series_slug", :to => "series#director"
+
+  
+
+
 end

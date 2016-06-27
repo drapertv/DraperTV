@@ -2,7 +2,7 @@
 
 GlobalUI =
 	init: ->
-    FastClick.attach(document.body)  
+    # FastClick.attach(document.body)  
     $('body').on 'click', '.search-icon', @showSearchBox
     $('body').on 'click', '.hide-search', @hideSearchBox
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
@@ -21,6 +21,7 @@ GlobalUI =
       e.preventDefault()
 
   toggleMobileDropdown: ->
+    console.log "toggle"
     $('.mobile-dropdown').toggle()
 
   showSearchBox: -> 
@@ -39,6 +40,7 @@ GlobalUI =
     if $(window).width() < 641 
       $('.search-input').hide()
       $('.mobile-logo, .header-mobile-menu').show()
+      $(@).removeClass('hide-search')
       return
     $('.header-right .header-item:not(.search-icon)').removeClass('animated').removeClass('fadeOut')
     $('.search-input').hide()
@@ -92,4 +94,4 @@ GlobalUI =
 ready = ->
 	GlobalUI.init()
 $(document).ready ready
-$(document).on 'page:load', ready
+# $(document).on 'page:load', ready
