@@ -2,7 +2,7 @@
 
 GlobalUI =
 	init: ->
-    # FastClick.attach(document.body)  
+    FastClick.attach(document.body)  
     $('body').on 'click', '.search-icon', @showSearchBox
     $('body').on 'click', '.hide-search', @hideSearchBox
     $('body').on 'click', '.show-notify-modal', @showNotifyModal

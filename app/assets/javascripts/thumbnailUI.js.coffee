@@ -2,17 +2,20 @@
 ThumbnailUI =
 	init: ->
 		if $(window).width() > 640
-			$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
+			$('body').on 'mouseenter, click', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
 			$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
 			$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
+		
+		document.addEventListener "page:restore", @resetThumbnail
 
+		$(window).on 'click', @closeThumbnail
 
 		$(window).on 'resize', @adjustLastCourseThumbnail
 		@markMultilineTitles()
 		@adjustLastCourseThumbnail()
 
 	undoAnimation: ->
-		console.log "asdf"
+
 		thumbnail = $(@)
 		setTimeout ->
 				thumbnail.removeClass 'show-description'
@@ -36,7 +39,7 @@ ThumbnailUI =
 			else
 				previouslyEnlargedThumbnail = mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').first()
 				# if moving mouse to a adjacent thumbnail in the same row
-				if previouslyEnlargedThumbnail.parent().next().children()[0] == thumbnail[0] || previouslyEnlargedThumbnail.parent().prev().children()[0] == thumbnail[0]
+				if (previouslyEnlargedThumbnail.parent().next().children()[0] == thumbnail[0] || previouslyEnlargedThumbnail.parent().prev().children()[0] == thumbnail[0]) && $(window).width() >= 1024
 					ThumbnailUI.animate thumbnail
 				else #moving to a non adjacent thumbnail
 					# show description after delay
@@ -123,7 +126,9 @@ ThumbnailUI =
 			if $(window).width() - thumbnail[0].getBoundingClientRect().right < 100 #if last in row
 				thumbnail.css('margin-right', "#{widthDifference}px").css('margin-left', "-#{widthDifference - thumbnailMargins}px")
 
-			thumbnail.parent().removeClass 'disabled'			
+			setTimeout ->
+				thumbnail.parent().removeClass 'disabled'
+			, 500			
 
 	shrinkFonts: (collection, shrinkAmount) ->
 		collection.each (i) ->
@@ -151,6 +156,16 @@ ThumbnailUI =
 	unanimate: (thumbnail) ->
 		thumbnail.attr('style', '')
 		thumbnail.find('*').attr('style', '')
+
+	resetThumbnail: ->
+		$('.media-thumbnail').removeClass('show-description').attr('style', '')
+		$('.media-thumbnail').find('*').attr('style', '')
+
+	closeThumbnail: (e) ->
+		$('.media-thumbnail').each ->
+			ThumbnailUI.undoAnimation.call $(@)
+
+
 		
 ready = ->
 	ThumbnailUI.init()
