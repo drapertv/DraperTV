@@ -11,7 +11,7 @@
 	@include flexbox;
 	.video-player {
 		height: 100%;
-		width: 63%;
+		width: calc((36vw - 24px) * 16 / 9);
 	}
 	iframe {
 		height: 100%;
@@ -75,7 +75,7 @@
 	background: white;
 	@include flexbox;
 	.video-info-main {
-		width: calc(63vw - 15.6px);
+		width: calc((36vw - 24px) * 16 / 9 + ((100vw - 1320px) / 2 ));
 		border-right: 1px solid $border-gray;
 		padding: 36px 60px;
 		padding-left: calc((100vw - 1320px) / 2);
@@ -142,7 +142,7 @@
 	.video-info {
 		.video-info-main {
 			padding-left: 30px; 
-			width: calc(63vw - 9px);
+			width: calc((36vw - 24px) * 16 / 9 + 30px);
 		}
 	}
 }
@@ -165,6 +165,8 @@
 			height: 360px;
 			width: 324px;
 			right: calc(50vw - 320px);
+			opacity: 0.97;
+
 		}
 		.series-playlist-info-open {
 			@include flexbox;
@@ -193,6 +195,7 @@
 			width: 30px;
 			background: $darker-gray;
 			cursor: pointer;
+			opacity: 0.97;
 			@include flexbox;
 			@include align-items(center);
   		@include justify-content(center);
@@ -226,6 +229,7 @@
 	}
 	.media-container.single-row .media-thumbnails {
 		@include flex-wrap(wrap);
+		a {margin-bottom: 0px}
 		.media-thumbnail {
 			margin-bottom: 26px;
 		}
@@ -244,8 +248,8 @@
 		height: auto;
 		padding: 0px;
 		.video-player {
-			height: auto;
-			width: auto;
+			height: 56.25vw;
+			width: 100vw;;
 		}
 		@include flex-direction(column);
 		.series-playlist-info-open {
@@ -283,6 +287,14 @@
 	.video-actions .action-icon.expanded:hover {
 		svg {
 			top: 0;
+		}
+	}
+	.media-container.single-row .media-thumbnails {
+		.media-thumbnail {
+			margin-bottom: 20px;
+		}
+		.media-thumbnail:odd {
+			margin-left: 1px;
 		}
 	}
 }

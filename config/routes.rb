@@ -23,7 +23,4 @@ Rails.application.routes.draw do
 
   get "/:series_slug", :to => "series#director"
 
-  
-
-
 end

@@ -29,6 +29,7 @@ window.mediaIndexUI =
       #if no more to load
       if $(data).find('.media-thumbnail').length < quantity
         $('#load-more').hide()
+        $('.media-container').css('padding-bottom', '0px')
 
       window.mediaSortingUI.sortAllBySelectedOptions() if $('.livestream').length == 0
 

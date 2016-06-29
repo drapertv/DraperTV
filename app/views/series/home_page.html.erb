@@ -69,7 +69,7 @@
       </div>
       <div class="media-thumbnails">
         <% media[:content].each_with_index do |content, i| %>
-          <%= link_to media_path(content) do %>
+          <%= link_to media_path(content), :class => "disabled" do %>
             <div class="media-thumbnail <%= content.class.to_s.downcase %> <%= 'first-in-row' if i == 0 %>">
               <% if content.class == Livestream %>
                 <div class="media-date">

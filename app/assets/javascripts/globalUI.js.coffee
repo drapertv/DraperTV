@@ -8,6 +8,7 @@ GlobalUI =
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
     $('body').on 'click', '.modal-container, .modal-container .close', @hideNotifyModal
     $('body').on 'ajax:success', '.notifications-form', @showSubmitConfirmation
+    $('body').on 'click', '.disabled', @disableLink
     document.ontouchmove = @checkScrollable
     @scrollable = true
     if $(window).width() > 768
@@ -90,6 +91,9 @@ GlobalUI =
           $('.action-icon').removeClass('active').attr('style', '') 
           actionIcon.find('p').attr('style', '')
       , 300
+
+  disableLink: (e) ->
+    e.preventDefault()
 
 ready = ->
 	GlobalUI.init()

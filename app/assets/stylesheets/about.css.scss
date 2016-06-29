@@ -249,7 +249,10 @@
 
 
 @media (max-width: 748px) {
-  .featured-item.about {
+  .featured-item.about, .featured-banner {
+    min-height: 163px;
+    background-position-y: initial; 
+    background-size: cover;
     .featured-info {
       bottom: 10px;
       h1 {
@@ -259,6 +262,7 @@
       h3 {
         font-size: 14px; 
         display: block;
+        margin-top: 4px;
       }
     }
   }
@@ -285,6 +289,7 @@
 
 @media (max-width: 320px) {
    .featured-item.about {
+    background-position-x: -60px;
     .featured-info {
       h1 {
         font-size: 20px;

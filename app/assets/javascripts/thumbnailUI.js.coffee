@@ -12,9 +12,11 @@ ThumbnailUI =
 		@adjustLastCourseThumbnail()
 
 	undoAnimation: ->
+		console.log "asdf"
 		thumbnail = $(@)
 		setTimeout ->
 				thumbnail.removeClass 'show-description'
+				thumbnail.parent().addClass 'disabled'
 				ThumbnailUI.unanimate thumbnail
 		, 20
 
@@ -97,7 +99,6 @@ ThumbnailUI =
 			#enlarge thumbnail and all child elements
 			thumbnail.css 'transform', "scale(#{scaleAmount})" 
 			shrinkAmount = 1/ scaleAmount
-			# $('.media-info').attr('style', '') if thumbnail.find()
 			# move title down accordingly
 
 			#shrink fonts of child elements
@@ -122,6 +123,7 @@ ThumbnailUI =
 			if $(window).width() - thumbnail[0].getBoundingClientRect().right < 100 #if last in row
 				thumbnail.css('margin-right', "#{widthDifference}px").css('margin-left', "-#{widthDifference - thumbnailMargins}px")
 
+			thumbnail.parent().removeClass 'disabled'			
 
 	shrinkFonts: (collection, shrinkAmount) ->
 		collection.each (i) ->
@@ -138,13 +140,13 @@ ThumbnailUI =
 			shrunkPaddingHorizontal = shrinkAmount * paddingHorizontal
 			$(@).css('padding', "#{shrunkPaddingVertical}px #{shrunkPaddingHorizontal}px")
 
-	# shrinkDimensions: (collection, shrinkAmount) ->
-	# 	collection.each (i) ->
-	# 		width = $(@).width()
-	# 		height = $(@).height()
-	# 		shrunkWidth = shrinkAmount * width
-	# 		shrunkHeight = shrinkAmount * height
-	# 		$(@).css('width', "#{shrunkWidth}px").attr('data-width', "#{shrunkWidth}px").css('height', "#{shrunkHeight}px")
+	shrinkDimensions: (collection, shrinkAmount) ->
+		collection.each (i) ->
+			width = $(@).width()
+			height = $(@).height()
+			shrunkWidth = shrinkAmount * width
+			shrunkHeight = shrinkAmount * height
+			$(@).css('width', "#{shrunkWidth}px").attr('data-width', "#{shrunkWidth}px").css('height', "#{shrunkHeight}px")
 
 	unanimate: (thumbnail) ->
 		thumbnail.attr('style', '')

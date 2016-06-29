@@ -22,28 +22,36 @@
       <div class="site-info">
         <%=  image_tag "speaker-icon.png", :class => "info-img" %>
         <div class="info-text">
-          <h3>SPEAKER SERIES</h3>
+          <%= link_to "/speakers" do %>
+            <h3>SPEAKER SERIES</h3>
+          <% end %>
           <p>Learn from noted entrepreneurs such as Elon Musk of Tesla & SpaceX, Tony Hsieh of Zappos, or Leah Busque of TaskRabbit in our Speaker Series, edited to provide quick lessons from their experience building their companies and leading the charge in their respective industries. </p>
         </div>
       </div>
       <div class="site-info">
         <%=  image_tag "livestream-icon.png", :class => "info-img" %>
         <div class="info-text">
-          <h3>LIVESTREAM EVENTS</h3>
+          <%= link_to livestreams_path do %>
+            <h3>LIVESTREAM EVENTS</h3>
+          <% end %>
           <p>Join us in our Livestream Events to watch live as our speakers present to students at Draper University, and have your questions answered live through Twitter: <%= link_to "@Draper_U", "http://www.twitter.com/draper_u" %>.</p>
         </div>
       </div>
       <div class="site-info">
         <%=  image_tag "student-icon.png", :class => "info-img" %>
         <div class="info-text">
-          <h3>STUDENT PITCHES & TESTIMONIALS</h3>
+          <%= link_to "/speakers" do %>
+            <h3>STUDENT PITCHES & TESTIMONIALS</h3>
+          <% end %>
           <p>See the future with our Student Pitches and watch them pitch their startups and launch their careers onstage to a panel of Silicon Valley VC and startup executives.</p>
         </div>
       </div>
       <div class="site-info">
         <%=  image_tag "course-icon.png", :class => "info-img" %>
         <div class="info-text">
-          <h3>COURSES</h3>
+          <%= link_to "http://courses.drapertv.com" do %>
+            <h3>COURSES</h3>
+          <% end %>
           <p>Follow our curated Courses with interactive activities, speaker videos, and online discussions to learn more about entrepreneurship. Our Courses will challenge you to apply the entrepreneurial mindset to your life every day, in every way.</p>
         </div>
       </div>

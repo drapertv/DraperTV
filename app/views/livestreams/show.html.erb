@@ -51,7 +51,7 @@
     <h3 class="media-title"><%= @media[:title] %></h3>
     <div class="media-thumbnails">
       <% @media[:content].each do |content| %>
-        <%= link_to media_path content do %>
+        <%= link_to media_path(content), :class => "disabled" do %>
           <div class="media-thumbnail">
             <div class="media-info">
               <div class="media-speaker-name">
