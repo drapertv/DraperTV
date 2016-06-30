@@ -49,8 +49,9 @@ window.mediaSortingUI =
     $('.media-thumbnail').hide().show()
     unless option.text() == "All Industries"
       industrySelector = option.text().toLowerCase().replace(' ', '-')
-      $('.media-thumbnail').hide().show()
+      $('.media-thumbnail').show()
       $(".media-thumbnail:not(.#{industrySelector})").hide()
+
 
     if $(window).width() < 641
       window.mediaSortingUI.adjustMobileThumbnailMargins()
@@ -77,7 +78,7 @@ window.mediaSortingUI =
   adjustMobileThumbnailMargins: ->
     $('.media-thumbnail').css('margin-left', '0px')
     $('.media-thumbnail:visible').each (i) ->
-      console.log i
+
       if i % 2 == 1
         $(@).css('margin-left', '1px')
 

@@ -285,7 +285,7 @@
       margin: 0;
       margin-bottom: 20px;
     }
-    .media-thumbnail:nth-child(2n) {
+    a:nth-child(2n) .media-thumbnail {
       margin-left: 1px;
     }
     .media-thumbnails:not(.course-thumbnails) a:nth-child(2n) {

@@ -1,6 +1,6 @@
 <% @livestreams.each do |content| %>
   <%= link_to media_path(content) do %>
-    <div class="media-thumbnail <%= content.industries %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
+    <div class="media-thumbnail livestream <%= content.industries %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
       <div class="media-date">
         <%= content.formatted_stream_date %>
       </div>

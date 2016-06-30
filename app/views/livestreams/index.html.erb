@@ -25,7 +25,7 @@
         <% media[:content].each do |content| %>
           <% unless media[:lazy_load] %>
             <%= link_to media_path(content), :class => "disabled" do %>
-              <div class="media-thumbnail">
+              <div class="media-thumbnail livestream">
                 <div class="media-date">
                   <%= content.formatted_stream_date %>
                 </div>

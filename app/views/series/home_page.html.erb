@@ -30,7 +30,7 @@
   <div class="featured-gradient">
   </div>
   <div class="featured-items">
-    <%= @featured.each do |media| %>
+    <% @featured.each do |media| %>
       <div class="featured-item">
           <div class="featured-video-container">
             <%= image_tag media.vthumbnail_url, :class => "featured-video "%>

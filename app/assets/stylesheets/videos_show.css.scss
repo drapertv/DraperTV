@@ -22,7 +22,7 @@
 	}
 	.series-playlist-info {
 		background: $darker-gray;
-		width: 37%;
+		width: calc(100vw - ((36vw - 24px) * 16 / 9) - (100vw - 1320px));
 		height: 100%;
 		padding: 18px 24px;
 		.series-count {

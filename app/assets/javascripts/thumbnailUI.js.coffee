@@ -2,7 +2,7 @@
 ThumbnailUI =
 	init: ->
 		if $(window).width() > 640
-			$('body').on 'mouseenter, click', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
+			$('body').on 'mouseenter click', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
 			$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
 			$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
 		
@@ -25,6 +25,7 @@ ThumbnailUI =
 
 
 	animateAfterDelay: ->
+		console.log "Ay"
 		# only animate for sizes above mobile
 		if $(window).width() > 640
 			thumbnail = $(@)
@@ -162,8 +163,9 @@ ThumbnailUI =
 		$('.media-thumbnail').find('*').attr('style', '')
 
 	closeThumbnail: (e) ->
-		$('.media-thumbnail').each ->
-			ThumbnailUI.undoAnimation.call $(@)
+		if $(window).width <= 1024
+			$('.media-thumbnail').each ->
+				ThumbnailUI.undoAnimation.call $(@)
 
 
 		
