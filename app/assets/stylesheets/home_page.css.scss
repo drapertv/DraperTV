@@ -85,8 +85,11 @@
 			}
 			.action-icon.series.active {
 				background: rgba(36,109,180, 0.5);
+				height: 100%;
 				p {
 					color: $blue;
+					height: 100%;
+    			line-height: 22px;
 				}
 			}
 			.action-icon.active {
@@ -96,7 +99,7 @@
 				p {
 					display: block;
 					position: absolute;
-					line-height: 25px;
+					line-height: 22px;
 					color: $teal;
 					text-align: right;
 					margin: 0;

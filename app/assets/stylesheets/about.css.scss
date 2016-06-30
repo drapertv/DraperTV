@@ -5,7 +5,7 @@
 .featured-item.about {
   width: 100vw;
   background: image_url('about.png');
-  background-size: 100% auto;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 100%; 
   .featured-info {
