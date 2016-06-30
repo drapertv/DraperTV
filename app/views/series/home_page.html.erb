@@ -1,11 +1,34 @@
 <div class="featured-banner">
-  <div class="featured-infos">
+  <div class="featured-items">
+    <%= @featured.each do |media| %>
+      <div class="featured-item">
+          <div class="featured-video-container">
+            <%= image_tag media.vthumbnail_url, :class => "featured-video "%>
+          </div>
+           <%= link_to media_path(media), :class => "featured-play-link" do %>
+            <div class="featured-play-btn">
+              <div class="play-triangle">
+              </div>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="featured-nav">
+    <div class="dot active left" data-go-to="0"></div>
+    <div class="dot right" data-go-to="1"></div>
+    <div class="dot right" data-go-to="2"></div>
+  </div>
+  <div class="featured-overlay">
+  </div><div class="featured-gradient">
+  </div>
+  <div class="featured-infos"> <!--holds all infos-->
     <% @featured.each do |media| %>
       <div class="featured-info">
         <%= link_to media_path(media) do %>
-          <h3><%= media.featured_top_info %></h3>
-          <h1><%= media.featured_title %></h1> 
-          <h2><%= media.featured_subtitle%></h2>
+          <h2 class="featured-subtitle"><%= media.featured_top_info %></h2>
+          <h1 class="featured-title"><%= media.featured_title %></h1>
+          <h2 class="featured-livestream-subtitle"><%= media.featured_subtitle%></h2> <!--make featured-livestream-subtitle display: none; when there is no content-->
         <% end %>
         <div class="featured-action-icons">
           <%= link_to '/speakers' do %>
@@ -27,28 +50,58 @@
       </div>
     <% end %>
   </div>
-  <div class="featured-gradient">
-  </div>
-  <div class="featured-items">
+</div>
+
+  <!--<div class="featured-infos">
     <% @featured.each do |media| %>
+      <div class="featured-info">
+        <%= link_to media_path(media) do %>
+          <h3><%= media.featured_top_info %></h3>
+          <h1><%= media.featured_title %></h1>
+          <h2><%= media.featured_subtitle%></h2>
+        <% end %>
+        <div class="featured-action-icons">
+          <%= link_to '/speakers' do %>
+            <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="128">
+              <%= image_tag "speaker-white.png", :class => "action-icon-img" %>
+              <p class="action-icon-text">Speaker Series</p>
+            </div>
+          <% end %>
+          <div class="action-icon notify-icon show-notify-modal" data-width="93">
+            <%= image_tag "notify-black.png", :class => "action-icon-img" %>
+            <p class="action-icon-text">Notify Me</p>
+          </div>
+        </div>
+        <%= link_to media_path(media) do %>
+          <div class="featured-description">
+            <p><%= media.description %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>-->
+  <!--<div class="featured-gradient">
+  </div>-->
+  <!--<div class="featured-items">
+    <%= @featured.each do |media| %>
       <div class="featured-item">
           <div class="featured-video-container">
             <%= image_tag media.vthumbnail_url, :class => "featured-video "%>
-          </div> 
+          </div>
            <%= link_to media_path(media), :class => "featured-play-link" do %>
             <div class="featured-play-btn">
-              <div class="play-triangle">          
+              <div class="play-triangle">
               </div>
             </div>
           <% end %>
       </div>
     <% end %>
-  </div>
-  <div class="featured-nav">
+  </div>-->
+  <!--<div class="featured-nav">
     <div class="dot active left" data-go-to="0"></div>
     <div class="dot right" data-go-to="1"></div>
     <div class="dot right" data-go-to="2"></div>
-  </div>
+  </div>-->
 </div>
 
 <section class="media-container">
@@ -57,12 +110,12 @@
       <div class="media-header">
         <% if media[:title] == "Must Watch" %>
           <a>
-            <h3><%= media[:title] %></h3> 
+            <h3><%= media[:title] %></h3>
             <%= image_tag "triangle.svg" %>
           </a>
         <% else %>
           <%= link_to media_list_path(media[:content]) do %>
-            <h3><%= media[:title] %></h3> 
+            <h3><%= media[:title] %></h3>
             <%= image_tag "triangle.svg" %>
           <% end %>
         <% end %>
@@ -106,7 +159,7 @@
           <%= link_to "http://courses.drapertv.com/topics/#{course.downcase.gsub(" &", "").gsub(" ", "-")}", data: {"see-more" => "http://courses.drapertv.com"} do %>
             <div class="course-thumbnail">
               <%= image_tag (course.downcase.gsub(" ", "-") + "-thumbnail.png"), :class => "course-thumbnail-img" %>
-              <div class="course-overlay <%= @colors[i] %>-b">              
+              <div class="course-overlay <%= @colors[i] %>-b">
               </div>
               <%= image_tag (course.downcase.gsub(" ", "-") + "-icon.png"), :class => "course-icon default" %>
               <%= image_tag 'see-more.svg', :class => "course-icon see-more" %>
