@@ -5,7 +5,7 @@ ThumbnailUI =
 			$('body').on 'mouseenter click', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
 			$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
 			$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
-		
+
 		document.addEventListener "page:restore", @resetThumbnail
 
 		$(window).on 'click', @closeThumbnail
@@ -29,13 +29,13 @@ ThumbnailUI =
 		# only animate for sizes above mobile
 		if $(window).width() > 640
 			thumbnail = $(@)
-			mediaList = thumbnail.parents '.media-list' 
+			mediaList = thumbnail.parents '.media-list'
 			# if no thumbnails currently showing description
-			if mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').length < 1	
+			if mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').length < 1
 				# animate after delay
 				setTimeout ->
 					if thumbnail.is ":hover"
-						ThumbnailUI.animate thumbnail 
+						ThumbnailUI.animate thumbnail
 				, 500
 			else
 				previouslyEnlargedThumbnail = mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').first()
@@ -54,12 +54,13 @@ ThumbnailUI =
 		title = $(@).find('.media-title')
 		#remove height limitation to check title height
 		title.css('height', 'auto')
+		title.css('overflow', 'visible')
 		 	# if the title is more than 1 line it will be greater than 20px
 		if title.height() > 20
 			title.parents('.media-info').css('transform', "translateY(-#{title.height() - 16}px)")
 		 	#put height limitation back
 			title.css('height', '16px')
-		setTimeout -> 
+		setTimeout ->
 			if thumbnail.is ":hover"
 				title.css('height', 'auto')
 				title.parents('.media-info').css('transform', "translateY(#{0 - (title.height() - 16)}px)")
@@ -82,7 +83,7 @@ ThumbnailUI =
 			# mark last visible thumbnail
 			lastCourseThumbnail = $('.course-thumbnail:visible').last()
 			lastCourseThumbnail.addClass('see-more')
-			
+
 			# change link to redirect to courses site
 			link = lastCourseThumbnail.parent()
 			link.addClass('link-changed')
@@ -94,33 +95,33 @@ ThumbnailUI =
 			$('.link-changed').attr('href', $('.link-changed').attr('link-buffer'))
 
 	animate: (thumbnail) ->
-		thumbnail.addClass 'show-description' 
+		thumbnail.addClass 'show-description'
 
-		unless thumbnail.hasClass 'course-thumbnail' 
+		unless thumbnail.hasClass 'course-thumbnail'
 			height = thumbnail.height()
 			width = thumbnail.width()
 			scaleAmount = (162 / height)
 			#enlarge thumbnail and all child elements
-			thumbnail.css 'transform', "scale(#{scaleAmount})" 
+			thumbnail.css 'transform', "scale(#{scaleAmount})"
 			shrinkAmount = 1/ scaleAmount
 			# move title down accordingly
 
 			#shrink fonts of child elements
 			ThumbnailUI.shrinkFonts thumbnail.find("*:not('.action-icon p')"), shrinkAmount
 			ThumbnailUI.shrinkPaddings thumbnail.find(".thumbnail-description"), shrinkAmount
-			
+
 			#slide out description
-			thumbnail.find('.thumbnail-description').animate 
+			thumbnail.find('.thumbnail-description').animate
 				top: "#{height}px"
 			, 400, ->
-				thumbnail.find('.thumbnail-description').css("box-shadow", "0px 0px 15px black")
-			
+				thumbnail.find('.thumbnail-description').css("box-shadow", "0px 0px 20px 2px black")
+
 			#adjust margins if animating first or last visible elements in row so they don't bleed off the page
 			width = thumbnail.width()
 			scaledWidth = width * scaleAmount
 			widthDifference = (scaledWidth - width) / 2
 			thumbnailMargins = parseInt(thumbnail.css('margin-right')) * 2
-			
+
 			if thumbnail[0].getBoundingClientRect().left < 100 #if first in row
 				thumbnail.css('margin-left', "#{widthDifference}px").css('margin-right', "-#{widthDifference - thumbnailMargins}px")
 
@@ -129,7 +130,7 @@ ThumbnailUI =
 
 			setTimeout ->
 				thumbnail.parent().removeClass 'disabled'
-			, 500			
+			, 500
 
 	shrinkFonts: (collection, shrinkAmount) ->
 		collection.each (i) ->
@@ -141,7 +142,7 @@ ThumbnailUI =
 		collection.each (i) ->
 			paddingVertical = parseInt($(@).css('padding').split("px")[0])
 			paddingHorizontal = parseInt($(@).css('padding').split("px")[1])
-			
+
 			shrunkPaddingVertical = shrinkAmount * paddingVertical
 			shrunkPaddingHorizontal = shrinkAmount * paddingHorizontal
 			$(@).css('padding', "#{shrunkPaddingVertical}px #{shrunkPaddingHorizontal}px")
@@ -168,10 +169,8 @@ ThumbnailUI =
 				ThumbnailUI.undoAnimation.call $(@)
 
 
-		
+
 ready = ->
 	ThumbnailUI.init()
 # $(document).ready ready
 $(document).on 'ready page:load', ready
-
-
