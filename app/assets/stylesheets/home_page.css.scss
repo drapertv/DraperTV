@@ -236,7 +236,7 @@
 }
 */
 
-.featured-banner {
+.featured-banner{
 	width: 100vw;
 	height: 38.75vw;
 	position: relative;
@@ -363,7 +363,7 @@
 	z-index: 2;
 }
 
-.featured-gradient {
+.featured-gradient-home {
 	width: 15vw;
 	height: 100%;
 	background: -webkit-linear-gradient(left, black, rgba(0, 0, 0, 0));
@@ -845,7 +845,7 @@
 }
 
 @media (max-width: 1379px) {
-	.featured-banner {
+	.featured-banner.homepage {
 		.featured-infos {
 			width: 37.21vw;
 			left: 30px;
@@ -884,7 +884,7 @@
 }
 
 @media (max-width: 1279px){
-	.featured-banner {
+	.featured-banner.homepage {
 		.featured-infos {
 			.featured-subtitle {
 				font-size: 16px;
@@ -907,7 +907,7 @@
 }
 
 @media (max-width: 1023px) {
-	.featured-banner {
+	.featured-banner.homepage {
 		.featured-infos {
 			.featured-description {
 				display: none;
@@ -984,7 +984,7 @@
 }
 
 @media (max-width: 887px) {
-	.featured-banner {
+	.featured-banner.homepage {
 		height: initial;
 		margin-top: initial;
 		flex-direction: column;
@@ -1036,7 +1036,7 @@
 			display: none;
 		}
 
-		.featured-gradient {
+		.featured-gradient-home {
 			width: 100vw;
 			height: calc((100vw / 16 * 9) * 0.16);
 			background: -webkit-linear-gradient(bottom, black, rgba(0, 0, 0, 0));
@@ -1109,7 +1109,7 @@
 }
 
 @media (max-width: 768px) {
-	.featured-banner .featured-infos .featured-info .featured-action-icons {
+	.featured-banner.homepage .featured-infos .featured-info .featured-action-icons {
 		.action-icon {
 			width: auto;
 			display: flex;
@@ -1138,7 +1138,7 @@
 }
 
 @media (max-width: 640px) {
-	.featured-banner {
+	.featured-banner.homepage {
 		.featured-nav {
 			display: none;
 		}
@@ -1233,5 +1233,3 @@
 		}
 	}
 }
-
-
