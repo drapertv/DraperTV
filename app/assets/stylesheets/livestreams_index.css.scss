@@ -1,6 +1,12 @@
 @import 'global/variables';
 @import 'global/mixins';
 
+
+.section-head.livestream {
+  background-image: image_url("livestreams.png");
+  background-size: cover;
+}
+
 .video-player-container.livestream {
   .video-player {
     margin: 0 auto;

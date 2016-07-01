@@ -28,7 +28,9 @@
         <%= link_to media_path(media) do %>
           <h2 class="featured-subtitle"><%= media.featured_top_info %></h2>
           <h1 class="featured-title"><%= media.featured_title %></h1>
-          <h2 class="featured-livestream-subtitle"><%= media.featured_subtitle%></h2> <!--make featured-livestream-subtitle display: none; when there is no content-->
+          <% if media.featured_subtitle %>
+            <h2 class="featured-livestream-subtitle"><%= media.featured_subtitle%></h2> 
+          <% end %>
         <% end %>
         <div class="featured-action-icons">
           <%= link_to '/speakers' do %>
@@ -162,7 +164,7 @@
               <div class="course-overlay <%= @colors[i] %>-b">
               </div>
               <%= image_tag (course.downcase.gsub(" ", "-") + "-icon.png"), :class => "course-icon default" %>
-              <%= image_tag 'see-more.svg', :class => "course-icon see-more" %>
+              <%= image_tag 'see-more.png', :class => "course-icon see-more" %>
               <div class="course-name white default">
                 <%= course %>
               </div>
