@@ -8,6 +8,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 100%; 
+  height: 100%;
   .featured-info {
     width: 100%;
     text-align: center;
@@ -253,6 +254,9 @@
     min-height: 163px;
     background-position-y: initial; 
     background-size: cover;
+    .featured-gradient {
+      height: 100px;
+    }
     .featured-info {
       bottom: 10px;
       h1 {
@@ -262,7 +266,9 @@
       h3 {
         font-size: 14px; 
         display: block;
-        margin-top: 4px;
+        width: 220px; 
+        line-height: 1.2; 
+        margin: 6px auto 0;
       }
     }
   }

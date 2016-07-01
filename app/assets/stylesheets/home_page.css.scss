@@ -1099,8 +1099,9 @@
 
 @media (max-width: 782px) {
 	.course-thumbnail {
-		height: calc((100vw - 78px) / 6);
-		width: calc((100vw - 78px) / 6);
+		height: calc((100vw - 59px) / 6);
+		width: calc((100vw - 59px) / 6);
+		margin: 0px 1px;
 	}
 	.course-thumbnails a:nth-child(7n) {
 		display: none;
@@ -1169,6 +1170,9 @@
 		padding: 20px 0px;
 		.media-header {
 			margin-left: 20px;
+			a {
+				margin-bottom: 6px;
+			}
 		}
 	}
 	.media-thumbnails a {
@@ -1178,6 +1182,13 @@
 		width: calc((100vw - 2px) / 2);
 		height: calc((100vw - 2px) / 2 * 9 / 16);
 		margin: 0;
+		.media-info {
+			.media-title {
+				height: auto;
+				max-height: 2.4em;
+				overflow: hidden;
+			}
+		}
 	}
 	.media-thumbnails:not(.course-thumbnails) a:nth-child(3n) {
 		display: none;
@@ -1201,6 +1212,8 @@
 	.course-thumbnails {
 		width: 100vw;
 		overflow-x: scroll;
+		overflow-y: hidden;
+		height: 100px;
 		a:first-child .course-thumbnail {
 			margin-left: 0px;
 		}
@@ -1221,23 +1234,4 @@
 	}
 }
 
-// @media (max-width: 540px) {
-// 		.featured-infos {
-// 			.featured-info {
-// 				padding: 30px 20px 0px 20px;
-// 				h1 {
-// 					font-size: 22px;
-// 					letter-spacing: 2px;
-// 				}
-// 				h3, p, .featured-action-icons,  {
-// 					display: none;
-// 				}
-// 				p {
-// 					display: none;
-// 				}
-// 			}
-// 		}
-// 	.featured-nav {
-// 		display: none;
-// 	}
-// }
+
