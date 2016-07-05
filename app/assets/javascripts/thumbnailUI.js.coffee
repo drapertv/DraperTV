@@ -8,7 +8,7 @@ ThumbnailUI =
 
 		document.addEventListener "page:restore", @resetThumbnail
 
-		$(window).on 'click', @closeThumbnail
+		$(window).on 'touchstart', @closeThumbnail
 
 		$(window).on 'resize', @adjustLastCourseThumbnail
 		@markMultilineTitles()
@@ -24,6 +24,7 @@ ThumbnailUI =
 
 
 	animateAfterDelay: ->
+		ThumbnailUI.activeThumbnail = $(@)
 		# only animate for sizes above mobile
 		if $(window).width() > 640
 			thumbnail = $(@)
@@ -132,9 +133,11 @@ ThumbnailUI =
 
 	shrinkFonts: (collection, shrinkAmount) ->
 		collection.each (i) ->
-			fontSize = parseInt($(@).css('font-size'))
-			shrunkSize = shrinkAmount * fontSize
-			$(@).css('font-size', "#{shrunkSize}px")
+			unless $(@).hasClass 'shrunk'
+				fontSize = parseInt($(@).css('font-size'))
+				shrunkSize = shrinkAmount * fontSize
+				$(@).addClass('shrunk')
+				$(@).css('font-size', "#{shrunkSize}px")
 
 	shrinkPaddings: (collection, shrinkAmount) ->
 		collection.each (i) ->
@@ -156,15 +159,14 @@ ThumbnailUI =
 	unanimate: (thumbnail) ->
 		thumbnail.attr('style', '')
 		thumbnail.find('*').attr('style', '')
+		$('.shrunk').removeClass('shrunk')
 
 	resetThumbnail: ->
 		$('.media-thumbnail').removeClass('show-description').attr('style', '')
 		$('.media-thumbnail').find('*').attr('style', '')
 
 	closeThumbnail: (e) ->
-		if $(window).width <= 1024
-			$('.media-thumbnail').each ->
-				ThumbnailUI.undoAnimation.call $(@)
+		ThumbnailUI.undoAnimation ThumbnailUI.activeThumbnail
 
 
 
