@@ -6,18 +6,23 @@ BannerUI =
     @initCarousel()
 
   initCarousel: ->
-    $('.featured-items').slick()
+    $('.featured-items').slick({
+      speed: 700,
+      autoplay: true,
+      autoplaySpeed: 20000,
+      easing: 'swing'
+    });
 
   moveSlide: ->
     slideNumber = $(@).attr('data-go-to')
     $('.dot').removeClass('active')
     $($('.dot')[slideNumber]).addClass('active')
-    
+
     $('.featured-items').slick('slickGoTo', slideNumber)
     $('.featured-info').hide()
     $($('.featured-info')[slideNumber]).show().addClass('animated fadeIn')
 
-    
+
 
     # if $($('.dot')[0]).hasClass('active')
     #   $('.dot').removeClass('left').removeClass('right')
@@ -51,12 +56,8 @@ BannerUI =
 
     $('.featured-info').hide()
     $($('.featured-info')[nextSlide]).show().addClass('animated fadeIn')
-    
+
 ready = ->
   BannerUI.init()
 
 $(document).on 'ready page:load', ready
-
-
-
-

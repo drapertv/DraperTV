@@ -1,4 +1,4 @@
-<div class="featured-banner">
+<div class="featured-banner homepage">
   <div class="featured-items">
     <%= @featured.each do |media| %>
       <div class="featured-item">
@@ -20,7 +20,7 @@
     <div class="dot right" data-go-to="2"></div>
   </div>
   <div class="featured-overlay">
-  </div><div class="featured-gradient">
+  </div><div class="featured-gradient-home">
   </div>
   <div class="featured-infos"> <!--holds all infos-->
     <% @featured.each do |media| %>
@@ -29,7 +29,7 @@
           <h2 class="featured-subtitle"><%= media.featured_top_info %></h2>
           <h1 class="featured-title"><%= media.featured_title %></h1>
           <% if media.featured_subtitle %>
-            <h2 class="featured-livestream-subtitle"><%= media.featured_subtitle%></h2> 
+            <h2 class="featured-livestream-subtitle"><%= media.featured_subtitle%></h2>
           <% end %>
         <% end %>
         <div class="featured-action-icons">
