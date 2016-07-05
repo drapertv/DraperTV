@@ -1,9 +1,10 @@
 <header id="global-header">
   <div class="header-content">
     <%= image_tag "menu-mobile.png", :class => "header-mobile-menu" %>
+    <%= image_tag "close.png", :class => "header-mobile-menu close" %>
 
     <div class="header-left">
-      <%= link_to root_path do %>
+      <%= link_to root_path, data: { no_turbolink: true } do %>
         <%= image_tag 'logo.png', :class => "header-item logo desk-logo" %>
         <%= image_tag 'logo-mobile.svg', :class => "header-item logo mobile-logo" %>
       <% end %>

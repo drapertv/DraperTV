@@ -3,15 +3,22 @@ BannerUI =
     $('body').on 'click', '.dot', @moveSlide
     # $('body').on 'afterChange', @adjustDotShading
     $('body').on 'beforeChange', '.featured-items', @adjustDotShading
+    BannerUI.slicked = false
     @initCarousel()
+    
 
   initCarousel: ->
-    $('.featured-items').slick({
-      speed: 700,
-      autoplay: true,
-      autoplaySpeed: 20000,
-      easing: 'swing'
-    });
+    unless BannerUI.slicked
+      console.log "slicked"
+      console.log BannerUI.slicked
+      $('.featured-items').slick
+        speed: 700,
+        autoplay: true,
+        autoplaySpeed: 20000,
+        easing: 'swing'
+
+      BannerUI.slicked = true
+
 
   moveSlide: ->
     slideNumber = $(@).attr('data-go-to')
@@ -60,4 +67,5 @@ BannerUI =
 ready = ->
   BannerUI.init()
 
+# $(document).ready ready
 $(document).on 'ready page:load', ready

@@ -15,7 +15,6 @@ ThumbnailUI =
 		@adjustLastCourseThumbnail()
 
 	undoAnimation: ->
-
 		thumbnail = $(@)
 		setTimeout ->
 				thumbnail.removeClass 'show-description'
@@ -25,7 +24,6 @@ ThumbnailUI =
 
 
 	animateAfterDelay: ->
-		console.log "Ay"
 		# only animate for sizes above mobile
 		if $(window).width() > 640
 			thumbnail = $(@)

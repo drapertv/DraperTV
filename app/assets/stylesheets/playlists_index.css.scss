@@ -96,6 +96,11 @@
 }
 
 @media (max-width: 1023px){
+  .index-view .media-thumbnails {
+    a {
+      margin-bottom: 26px;
+    }
+  }
   .section-head {
     height: 163px;
     background-position: calc(100vw - 1123px) 0;
@@ -417,6 +422,10 @@
 }
 
 @media (max-width: 370px) {
+  .media-container.index-view .media-thumbnail {
+    margin-bottom: 16px;
+
+  }
   .sort-bar .sort-options {
     margin: 0 auto;
     width: auto;

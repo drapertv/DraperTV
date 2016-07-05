@@ -157,7 +157,7 @@
 		font-size: 16px;
 		margin-bottom: 30px;
 		letter-spacing: 1px;
-		font-weight: 500;
+		font-weight: 600;
 		height: auto;
 		line-height: initial;
 		color: white;
@@ -218,6 +218,10 @@
 		height: 18px;
 		width: 20px;
 		cursor: pointer;
+	}
+	.header-mobile-menu.close {
+		display: none;
+		height: 20px;
 	}
 	#global-header {
 		position: static;

@@ -24,21 +24,22 @@ GlobalUI =
   toggleMobileDropdown: ->
     console.log "toggle"
     $('.mobile-dropdown').toggle()
+    $('.header-mobile-menu').toggle()
 
   showSearchBox: -> 
     $(@).addClass('hide-search')
-    if $(window).width() < 641 
-      $('.search-input').show()
+    if $(window).width() < 768 
+      $('.search-input').show().focus()
       $('.logo, .header-mobile-menu').hide()
       return
 
     $('.header-right .header-item:not(.search-icon)').addClass('animated fadeOut').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
       $('.header-item:not(.search-icon, .logo)').hide()
-      $('.search-input').show()
+      $('.search-input').show().focus()
     
 
   hideSearchBox: ->
-    if $(window).width() < 641 
+    if $(window).width() < 768
       $('.search-input').hide()
       $('.mobile-logo, .header-mobile-menu').show()
       $(@).removeClass('hide-search')
@@ -93,7 +94,7 @@ GlobalUI =
       , 300
 
   disableLink: (e) ->
-    e.preventDefault()
+    e.preventDefault() if $(window).width() > 640
 
 ready = ->
 	GlobalUI.init()
