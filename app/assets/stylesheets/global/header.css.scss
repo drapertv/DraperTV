@@ -60,6 +60,7 @@
 	color: rgba(255,255,255,0.7);
 }
 .dropdown-container:hover {
+	cursor: default;
 	.dropdown {
 		display: block;
 	}
@@ -112,6 +113,7 @@
 }
 .header-item:hover {
 	color: white;
+	opacity: 1;
 	a {
 		color: white;
 	}
@@ -182,7 +184,7 @@
 	}
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
 	#global-header {
 		height: 50px;
 	}

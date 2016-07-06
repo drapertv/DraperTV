@@ -53,6 +53,7 @@ ThumbnailUI =
 		title = $(@).find('.media-title')
 		#remove height limitation to check title height
 		title.css('height', 'auto')
+		title.css('margin-bottom', '1px')
 		title.css('overflow', 'visible')
 		 	# if the title is more than 1 line it will be greater than 20px
 		if title.height() > 20

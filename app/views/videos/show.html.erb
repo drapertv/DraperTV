@@ -4,7 +4,7 @@
   </div>
   <div class="series-playlist-info-open">
      <%= image_tag "dropdown-triangle.svg", :class => "featured-play-btn" %>
-     <p><%= @videos.count %> episodes</p> 
+     <p><%= @videos.count %> episodes</p>
   </div>
   <div class="series-playlist-info-hide">
      <%=image_tag "dropdown-triangle.svg", :class => "featured-play-btn" %>
@@ -36,13 +36,13 @@
     <div class="video-actions">
       <%= link_to '/speakers' do %>
       <div class="action-icon blue-item expanded">
-        <%= image_tag "speaker-icon.png", :class => "notify-icon svg non-hover" %> 
-        <%= image_tag "speaker-white.png", :class => "notify-icon svg hover" %> 
+        <%= image_tag "speaker-icon.png", :class => "notify-icon svg non-hover" %>
+        <%= image_tag "speaker-white.png", :class => "notify-icon svg hover" %>
         <p>Speaker Series</p>
       </div>
     <% end %>
     <div class="action-icon teal-item show-notify-modal expanded">
-      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %> 
+      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %>
       <p>Notify Me</p>
     </div>
     </div>
@@ -56,13 +56,13 @@
   <div class="video-info-side">
     <%= link_to '/speakers' do %>
       <div class="action-icon blue-item expanded">
-        <%= image_tag "speaker-icon.png", :class => "notify-icon svg non-hover" %> 
-        <%= image_tag "speaker-white.png", :class => "notify-icon svg hover" %> 
+        <%= image_tag "speaker-icon.png", :class => "notify-icon svg non-hover" %>
+        <%= image_tag "speaker-white.png", :class => "notify-icon svg hover" %>
         <p>Speaker Series</p>
       </div>
     <% end %>
     <div class="action-icon teal-item show-notify-modal expanded">
-      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %> 
+      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %>
       <p>Notify Me</p>
     </div>
   </div>
@@ -84,6 +84,7 @@
             </div>
             <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
             <div class="thumbnail-gradient"></div>
+            <div class="thumbnail-overlay-gradient"></div>
             <div class="thumbnail-description"><p><%= content.description %></p></div>
           </div>
         <% end %>
@@ -91,8 +92,3 @@
     </div>
   </div>
 </section>
-
-
-
-
-
