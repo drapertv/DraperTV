@@ -2,7 +2,7 @@
 ThumbnailUI =
 	init: ->
 		if $(window).width() > 640
-			$('body').on 'mouseenter click', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
+			$('body').on 'mouseenter', '.media-thumbnail, .course-thumbnail:not(.see-more)', @animateAfterDelay
 			$('body').on 'mouseleave', '.media-thumbnail, .course-thumbnail', @undoAnimation
 			$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
 
@@ -23,7 +23,7 @@ ThumbnailUI =
 		, 20
 
 
-	animateAfterDelay: ->
+	animateAfterDelay: (e) ->
 		ThumbnailUI.activeThumbnail = $(@)
 		# only animate for sizes above mobile
 		if $(window).width() > 640
@@ -34,18 +34,18 @@ ThumbnailUI =
 				# animate after delay
 				setTimeout ->
 					if thumbnail.is ":hover"
-						ThumbnailUI.animate thumbnail
+						ThumbnailUI.animate thumbnail, e
 				, 500
 			else
 				previouslyEnlargedThumbnail = mediaList.find('.media-thumbnail.show-description, .course-thumbnail.show-description').first()
 				# if moving mouse to a adjacent thumbnail in the same row
 				if (previouslyEnlargedThumbnail.parent().next().children()[0] == thumbnail[0] || previouslyEnlargedThumbnail.parent().prev().children()[0] == thumbnail[0]) && $(window).width() >= 1024
-					ThumbnailUI.animate thumbnail
+					ThumbnailUI.animate thumbnail, e
 				else #moving to a non adjacent thumbnail
 					# show description after delay
 					setTimeout ->
 						if thumbnail.is ":hover"
-							ThumbnailUI.animate thumbnail
+							ThumbnailUI.animate thumbnail, e
 					, 500
 
 	animateTitle: ->
@@ -94,9 +94,8 @@ ThumbnailUI =
 			$('.course-thumbnail').removeClass('see-more')
 			$('.link-changed').attr('href', $('.link-changed').attr('link-buffer'))
 
-	animate: (thumbnail) ->
+	animate: (thumbnail, e) ->
 		thumbnail.addClass 'show-description'
-
 		unless thumbnail.hasClass 'course-thumbnail'
 			height = thumbnail.height()
 			width = thumbnail.width()

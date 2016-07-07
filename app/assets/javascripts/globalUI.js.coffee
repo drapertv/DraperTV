@@ -6,25 +6,38 @@ GlobalUI =
     $('body').on 'click', '.search-icon', @showSearchBox
     $('body').on 'click', '.hide-search', @hideSearchBox
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
-    $('body').on 'click', '.modal-container, .modal-container .close', @hideNotifyModal
+    $('body').on 'click touchstart', '.modal-container, .modal-container .close', @hideNotifyModal
     $('body').on 'ajax:success', '.notifications-form', @showSubmitConfirmation
     $('body').on 'click', '.disabled', @disableLink
+    $('body').on 'click', 'a', @freeze
     document.ontouchmove = @checkScrollable
     @scrollable = true
     if $(window).width() > 768
       $('body').on 'mouseenter', '.action-icon', @showActionIconText
       $('body').on 'mouseleave', '.action-icon', @hideActionIconText
       
-    $('body').on 'click', '.header-mobile-menu', @toggleMobileDropdown
+    $('body').on 'click', '.header-mobile-menu:not(.close)', @openMobileDropdown
+    $('body').on 'click', '.header-mobile-menu.close', @closeMobileDropdown
+
+  freeze: ->
+    throw new Error("Frozen");
 
   checkScrollable: (e) ->
     unless GlobalUI.scrollable
       e.preventDefault()
 
-  toggleMobileDropdown: ->
-    console.log "toggle"
-    $('.mobile-dropdown').toggle()
-    $('.header-mobile-menu').toggle()
+  openMobileDropdown: ->
+    $('.mobile-dropdown').show()
+    $(@).hide()
+    $('.header-mobile-menu.close').show()
+
+  closeMobileDropdown: ->
+    $('.mobile-dropdown').hide()
+    $('.header-mobile-menu').show()
+    $(@).hide()
+    $('.header-mobile-menu.close').hide()
+
+    # $('.header-content *').attr('style', '')
 
   showSearchBox: -> 
     $(@).addClass('hide-search')
@@ -41,7 +54,7 @@ GlobalUI =
   hideSearchBox: ->
     if $(window).width() < 768
       $('.search-input').hide()
-      $('.mobile-logo, .header-mobile-menu').show()
+      $('.mobile-logo, .header-mobile-menu:not(.close)').show()
       $(@).removeClass('hide-search')
       return
     $('.header-right .header-item:not(.search-icon)').removeClass('animated').removeClass('fadeOut')

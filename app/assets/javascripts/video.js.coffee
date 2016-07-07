@@ -6,7 +6,7 @@ Video =
 		# @linkifyLinks()
 
 	openSeriesPlaylistInfo: ->
-		if $(window).width() > 540
+		if $(window).width() > 640
 			$(@).hide()
 			$('.series-playlist-info').show()
 			$('.series-playlist-info-hide').css('display', 'flex')
@@ -14,11 +14,13 @@ Video =
 		else
 			Video.triangleRotation += 180
 			$('.featured-play-btn').css('transform', "rotate(#{Video.triangleRotation}deg)")
-			$('.series-playlist-info').toggle()
+			$('.series-playlist-info').toggleClass('mobile-show')
+			$('.series-playlist-info-open').toggleClass('shadow')
 
 	hideSeriesPlaylistInfo: ->
 		$('.series-playlist-info-hide, .series-playlist-info').hide()
 		$('.featured-play-btn').attr('style', '')
+		$('.series-count').show()
 		$('.series-playlist-info-open').show()
 
 

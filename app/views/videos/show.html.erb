@@ -3,11 +3,11 @@
     <%= @video_yt_embed %>
   </div>
   <div class="series-playlist-info-open">
-     <%= image_tag "dropdown-triangle.svg", :class => "featured-play-btn" %>
+     <%= image_tag "dropdown-triangle.svg", :class => "featured-play-btn svg" %>
      <p><%= @videos.count %> episodes</p>
   </div>
   <div class="series-playlist-info-hide">
-     <%=image_tag "dropdown-triangle.svg", :class => "featured-play-btn" %>
+     <%=image_tag "dropdown-triangle.svg", :class => "featured-play-btn svg" %>
   </div>
   <div class="series-playlist-info">
     <h3 class="series-count"><%= @videos.count %> episodes<h3>
@@ -73,7 +73,7 @@
     <div class="media-thumbnails">
       <% @media[:content].each do |content| %>
         <%= link_to media_path(content), :class => "disabled" do %>
-          <div class="media-thumbnail">
+          <div class="media-thumbnail <%= content.industries %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
             <div class="media-info">
               <div class="media-speaker-name">
                 <%= content.speaker_name %>
@@ -82,7 +82,7 @@
                 <%= content.thumbnail_title%>
               </div>
             </div>
-            <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
+            <%= image_tag content.vthumbnail.url(:seriesthumb), :class => "thumbnail-img" %>
             <div class="thumbnail-gradient"></div>
             <div class="thumbnail-overlay-gradient"></div>
             <div class="thumbnail-description"><p><%= content.description %></p></div>
