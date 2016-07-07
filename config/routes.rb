@@ -8,12 +8,14 @@ Rails.application.routes.draw do
 
   resources :videos
   resources :livestreams
+  resources :student_videos
   resources :searches
   resources :series
   get '/speakers', to: 'series#index'
   resources :notifications
 
   get '/about', to: "pages#about", as: "about"
+
 
 
   get "/404", :to => "errors#not_found"

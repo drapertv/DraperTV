@@ -44,6 +44,19 @@ class Video < ActiveRecord::Base
 		options ? series.videos.first.vthumbnail_url(options) : series.videos.first.vthumbnail_url
 	end
 
+  def seconds_elapsed_since_creation
+    (Time.now - created_at).floor
+  end
+
+  def industries
+    (1..10).map {|n| "industry-#{n}"}.sample(3).join(" ")
+  end
+
+  def thumbnail_title
+    title
+  end
+
+
 	private
 
 	def expire_cache

@@ -4,7 +4,6 @@ class SeriesController < InheritedResources::Base
   def index
     @og_title = "Series - DraperTV"
     @meta_description = "Watch talks given by top Silicon Valley startup founders at Draper University. Learn about startups and entrepreneurship with DraperTV on topics like Vision, Fundraising, Marketing, Product, and Sales."
-    @series = Series.order("created_at desc").limit(30)
 
     if params[:list] == "true"
       quantity = params[:quantity]

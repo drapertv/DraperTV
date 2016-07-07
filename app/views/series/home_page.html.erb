@@ -1,3 +1,6 @@
+<%= content_for :link_overlay do %>
+  <a href="#" class="background-link disabled"></a>
+<% end %>
 <div class="featured-banner homepage">
   <div class="featured-items">
     <%= @featured.each do |media| %>
@@ -54,57 +57,6 @@
   </div>
 </div>
 
-  <!--<div class="featured-infos">
-    <% @featured.each do |media| %>
-      <div class="featured-info">
-        <%= link_to media_path(media) do %>
-          <h3><%= media.featured_top_info %></h3>
-          <h1><%= media.featured_title %></h1>
-          <h2><%= media.featured_subtitle%></h2>
-        <% end %>
-        <div class="featured-action-icons">
-          <%= link_to '/speakers' do %>
-            <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="128">
-              <%= image_tag "speaker-white.png", :class => "action-icon-img" %>
-              <p class="action-icon-text">Speaker Series</p>
-            </div>
-          <% end %>
-          <div class="action-icon notify-icon show-notify-modal" data-width="93">
-            <%= image_tag "notify-black.png", :class => "action-icon-img" %>
-            <p class="action-icon-text">Notify Me</p>
-          </div>
-        </div>
-        <%= link_to media_path(media) do %>
-          <div class="featured-description">
-            <p><%= media.description %></p>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>-->
-  <!--<div class="featured-gradient">
-  </div>-->
-  <!--<div class="featured-items">
-    <%= @featured.each do |media| %>
-      <div class="featured-item">
-          <div class="featured-video-container">
-            <%= image_tag media.vthumbnail_url, :class => "featured-video "%>
-          </div>
-           <%= link_to media_path(media), :class => "featured-play-link" do %>
-            <div class="featured-play-btn">
-              <div class="play-triangle">
-              </div>
-            </div>
-          <% end %>
-      </div>
-    <% end %>
-  </div>-->
-  <!--<div class="featured-nav">
-    <div class="dot active left" data-go-to="0"></div>
-    <div class="dot right" data-go-to="1"></div>
-    <div class="dot right" data-go-to="2"></div>
-  </div>-->
-</div>
 
 <section class="media-container">
   <% @media.each do |media| %>
@@ -116,7 +68,7 @@
             <%= image_tag "triangle.svg" %>
           </a>
         <% else %>
-          <%= link_to media_list_path(media[:content]) do %>
+          <%= link_to media_list_path(media[:content]), :class => "disabled" do %>
             <h3><%= media[:title] %></h3>
             <%= image_tag "triangle.svg" %>
           <% end %>

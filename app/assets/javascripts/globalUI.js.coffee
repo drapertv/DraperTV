@@ -64,6 +64,7 @@ GlobalUI =
 
   showNotifyModal: (e) ->
     e.preventDefault()
+    console.log "ntify"
     $('html').css('overflow', 'hidden').css('z-index', '-1')
     $('.submit-confirmation').hide()
     $('.hide-on-submit').show()
@@ -112,4 +113,4 @@ GlobalUI =
 ready = ->
 	GlobalUI.init()
 $(document).ready ready
-# $(document).on 'page:load', ready
+$(document).on 'page:load', ready

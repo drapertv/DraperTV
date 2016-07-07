@@ -36,12 +36,12 @@
     </script>
   </head>
     <body>
+        <%= yield :link_overlay %>
         <%= render partial: "layouts/header" %>
         <main class="main-content">
             <%= yield %>    
         </main>
         <%= render partial: "layouts/footer" %>
-
         <script>
             $('img.svg').each(function(){
                 var $img = $(this);

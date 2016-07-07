@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627223130) do
+ActiveRecord::Schema.define(version: 20160707223259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -309,6 +309,7 @@ ActiveRecord::Schema.define(version: 20160627223130) do
     t.string   "slug"
     t.boolean  "public",       default: false
     t.string   "lexica_id"
+    t.string   "video_type"
   end
 
   add_index "videos", ["slug"], name: "index_videos_on_slug", using: :btree

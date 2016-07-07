@@ -20,8 +20,8 @@
           LIVESTREAMS
         <% end %>
       </li>
-      <li class="header-item <%= 'active' if request.original_url.include?("students") %>">
-        <%= link_to "http://www.draperuniversity.com" do %>
+      <li class="header-item <%= 'active' if request.original_url.include?("student_videos") %>">
+        <%= link_to student_videos_path do %>
           STUDENTS
         <% end %>
       </li>
@@ -82,8 +82,8 @@
         LIVESTREAMS
       <% end %>
     </li>
-    <li class="<%= 'active' if request.original_url.include?("students") %>">
-      <%= link_to "http://www.draperuniversity.com" do %>
+    <li class="<%= 'active' if request.original_url.include?("student_videos") %>">
+      <%= link_to student_videos_path do %>
         STUDENTS
       <% end %>
     </li>

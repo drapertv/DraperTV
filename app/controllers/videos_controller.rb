@@ -17,6 +17,10 @@ class VideosController < ApplicationController
     @og_title = "#{@video.title} - DraperTV"
     @og_description = @series.first_video.description
     @og_image = @series.first_video.vthumbnail_url
+
+    if @video.video_type == "student"
+      render "student_videos/show"
+    end
   end
 
   private

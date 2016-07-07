@@ -1,0 +1,79 @@
+<section class="video-player-container livestream">
+  <div class="video-player">
+    <script src="//fast.wistia.com/embed/medias/utc93cs0p7.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 28px 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_utc93cs0p7 videoFoam=true" style="height:100%;width:100%">&nbsp;</div></div></div>
+  </div>
+</section>
+<section class="video-info">
+  <div class="video-info-main">
+    <h1 class="video-title">
+      <%= @video.title.upcase %>
+    </h1>
+    <p class="video-speaker-info">
+      <%= @video.speaker.name %>, <%= @video.speaker_title %>
+    </p>
+
+    <div class="video-actions">
+      <%= link_to '/speakers' do %>
+      <div class="action-icon blue-item expanded">
+        <%= image_tag "speaker-icon.png", :class => "notify-icon svg non-hover" %>
+        <%= image_tag "speaker-white.png", :class => "notify-icon svg hover" %>
+        <p>Speaker Series</p>
+      </div>
+    <% end %>
+    <div class="action-icon teal-item show-notify-modal expanded">
+      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %>
+      <p>Notify Me</p>
+    </div>
+    </div>
+
+    <div class="video-about">
+      <h3>About </h3>
+      <p><%= @series.description %></p>
+    </div>
+  </div>
+
+  <div class="video-info-side">
+    <%= link_to '/speakers' do %>
+      <div class="action-icon blue-item expanded">
+        <%= image_tag "speaker-icon.png", :class => "notify-icon svg non-hover" %>
+        <%= image_tag "speaker-white.png", :class => "notify-icon svg hover" %>
+        <p>Speaker Series</p>
+      </div>
+    <% end %>
+    <div class="action-icon teal-item show-notify-modal expanded">
+      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %>
+      <p>Notify Me</p>
+    </div>
+  </div>
+</section>
+<section class="media-container single-row index-view">
+  <div class="media-list">
+    <h3 class="media-title"><%= @media[:title] %></h3>
+    <div class="media-thumbnails">
+      <% @media[:content].each do |content| %>
+        <%= link_to media_path(content), :class => "disabled" do %>
+          <div class="media-thumbnail <%= content.industries %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
+            <div class="media-info">
+              <div class="media-speaker-name">
+                <%= content.speaker_name %>
+              </div>
+              <div class="media-title">
+                <%= content.thumbnail_title%>
+              </div>
+            </div>
+            <%= image_tag content.vthumbnail.url(:seriesthumb), :class => "thumbnail-img" %>
+            <div class="thumbnail-gradient"></div>
+            <div class="thumbnail-overlay-gradient"></div>
+            <div class="thumbnail-description"><%= content.description %></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<script>
+  $('.thumbnail-description').each(function(){
+    this.text()
+  })
+</script>

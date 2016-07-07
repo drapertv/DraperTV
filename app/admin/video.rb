@@ -9,6 +9,7 @@ ActiveAdmin.register Video do
     column :author_id
     column :url
     column :category_list
+    column :video_type
 
     actions
   end
@@ -25,6 +26,7 @@ ActiveAdmin.register Video do
      f.inputs :description
      f.inputs :length
      f.inputs :wistia_id
+     f.inputs :video_type
      f.inputs :slug
      f.inputs :public
    end

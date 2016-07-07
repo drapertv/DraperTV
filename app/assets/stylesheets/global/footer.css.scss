@@ -5,6 +5,10 @@ footer {
   border-top: 2px solid $blue;
   background: white;
   overflow-x: scroll;
+  * {
+    position: relative;
+    z-index: 2;
+  }
   .footer-main {
     @include flexbox;
     width: 666px;
