@@ -14,6 +14,13 @@ window.mediaIndexUI =
   fetchInitialMedia: ->
     if $('.lazy-load .media-thumbnail').length < 1
       window.mediaIndexUI.fetchMedia()
+
+  markMultilineTitles: ->
+    $('.media-title').each ->
+      $(@).css('height', 'auto')
+      if $(@).height() > 20
+        $(@).parents('.media-info').addClass 'multiline'
+      $(@).attr('style', '')
     
   fetchMedia: (noLimit) ->
     mediaLocation = window.location.pathname
@@ -32,6 +39,7 @@ window.mediaIndexUI =
         $('.media-container').css('padding-bottom', '0px') if $('#load-more').length > 0
 
       window.mediaSortingUI.sortAllBySelectedOptions() if $('.livestream').length == 0
+      window.mediaIndexUI.markMultilineTitles()
 
   lazyLoadThumbnails: ->
     heightOfContentAboveThumbnails = 280

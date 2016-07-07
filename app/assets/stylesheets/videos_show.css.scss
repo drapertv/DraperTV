@@ -41,7 +41,7 @@
 				@include flexbox;
 				p {
 					color: $dark-gray;
-					font-weight: 600;
+					font-weight: 400;
 					font-size: 14px;
 				}
 				p.video-number {
@@ -192,6 +192,9 @@
 				margin-right: 10px;
 				transform: rotate(90deg);
 			}
+			p {
+				font-weight: 600;
+			}
 		}
 		.series-playlist-info-hide {
 			position: absolute;
@@ -262,6 +265,7 @@
 	.video-player-container {
 		height: auto;
 		padding: 0px;
+		background: #1a1a1a;
 		.video-player {
 			height: 56.25vw;
 			width: 100vw;;
@@ -279,7 +283,6 @@
 			}
 			p {
 				font-size: 18px;
-				font-weight: 600;
 			}
 			overflow: scroll;
 		}
@@ -293,6 +296,8 @@
 			position: static;
 			width: 100%;
 			height: auto;
+			background: none;
+			padding-bottom: 0px;
 		}
 		.series-playlist-info.mobile-show {
 			display: block;
