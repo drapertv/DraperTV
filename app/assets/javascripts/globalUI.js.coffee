@@ -3,7 +3,7 @@
 GlobalUI =
 	init: ->
     # FastClick.attach(document.body)  
-    $('body').on 'click', '.search-icon', @showSearchBox
+    $('body').on 'click', '.search-icon:not(.hide-search)', @showSearchBox
     $('body').on 'click', '.hide-search', @hideSearchBox
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
     $('body').on 'click touchstart', '.modal-container, .modal-container .close', @hideNotifyModal

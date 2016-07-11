@@ -28,6 +28,13 @@ body {
   line-height: 1.40;
   overflow-y: scroll;
 }
+input[type='submit'], input[type='text'] {
+    -webkit-appearance: none;
+}
+
+input[type='text'] {
+  border-radius: 0px;
+}
 
 @media(max-width: 1024px) {
 	body {
@@ -38,6 +45,11 @@ body {
 		display: none;
 	}
 	}
+}
+@media(max-width: 640px) {
+  .background-link {
+    display: none;
+  }
 }
 
 /*** Text Formatting **/

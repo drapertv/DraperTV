@@ -404,6 +404,9 @@
     display: none;
   }
   .media-container.index-view {
+    .media-thumbnails.wrap {
+      @include justify-content(space-between);
+    }
     .media-thumbnail {
       width: calc(50vw - 1px);
       height: calc(28vw);
