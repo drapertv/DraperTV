@@ -1,29 +1,33 @@
-<section class="video-player-container">
-  <div class="video-player">
-    <%= @video_yt_embed %>
-  </div>
-  <div class="series-playlist-info-open">
-     <%= image_tag "dropdown-triangle.svg", :class => "featured-play-btn svg" %>
-     <p><%= @videos.count %> episodes</p>
-  </div>
-  <div class="series-playlist-info-hide">
-     <%=image_tag "dropdown-triangle.svg", :class => "featured-play-btn svg" %>
-  </div>
-  <div class="series-playlist-info">
-    <h3 class="series-count"><%= @videos.count %> episodes<h3>
-    <ul class="series-list">
-      <% @videos.each_with_index do |video, i| %>
-        <%= link_to video_path video do%>
-          <li class="video-list-item <%= 'active' if video == @video %>">
-            <p class="video-number"><%= i + 1 %>.</p>
-            <p class="video-title"><%= video.title %></p>
-            <p class="video-length"><%= video.length %></p>
-          </li>
+<section class="lightbox">
+  <div class="videobox">
+    <div class="videoplayer">
+      <%= @video_yt_embed %>
+    </div>
+    <div class="series-playlist-info-open">
+       <%= image_tag "dropdown-triangle.svg", :class => "featured-play-btn svg" %>
+       <p><%= @videos.count %> episodes</p>
+    </div>
+    <div class="series-playlist-info-hide">
+       <%=image_tag "dropdown-triangle.svg", :class => "featured-play-btn svg" %>
+    </div>
+    <div class="series-playlist-info">
+      <h3 class="series-count"><%= @videos.count %> episodes<h3>
+      <ul class="series-list">
+        <% @videos.each_with_index do |video, i| %>
+          <%= link_to video_path video do%>
+            <li class="video-list-item <%= 'active' if video == @video %>">
+              <p class="video-number"><%= i + 1 %>.</p>
+              <p class="video-title"><%= video.title %></p>
+              <p class="video-length"><%= video.length %></p>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
   </div>
 </section>
+
+
 <section class="video-info">
   <div class="video-info-main">
     <h1 class="video-title">

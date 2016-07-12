@@ -46,18 +46,17 @@ window.mediaSortingUI =
     option = $(@)
     $('.industry-sort li.current').removeClass('current')
     option.addClass('current')
-    $('.media-thumbnail').hide().show()
+    $('.media-thumbnails a').hide().show()
     unless option.text() == "All Industries"
       industrySelector = option.text().toLowerCase().replace(' ', '-')
-      $('.media-thumbnail').show()
-      $(".media-thumbnail:not(.#{industrySelector})").hide()
+      $('.media-thumbnails a').show()
+      $(".media-thumbnail:not(.#{industrySelector})").parent().hide()
 
 
     if $(window).width() < 641
       window.mediaSortingUI.adjustMobileThumbnailMargins()
 
   
-
   sortCollection: (collection, criteria, direction) ->
     collection.sort (a,b) ->
       attributeA = $(a).children()[0].getAttribute("data-#{criteria}")
@@ -76,9 +75,11 @@ window.mediaSortingUI =
       return collection.get().reverse()
 
   adjustMobileThumbnailMargins: ->
+    $('.media-thumbnails a').css('margin-left', '0px')
+    $('.media-thumbnails a').css('margin-right', '0px')
     $('.media-thumbnail').css('margin-left', '0px')
-    $('.media-thumbnail:visible').each (i) ->
-
+    $('.media-thumbnails a:visible').each (i) ->
+      console.log $(@)
       if i % 2 == 1
         $(@).css('margin-left', '1px')
 

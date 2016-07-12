@@ -3,8 +3,8 @@
 window.mediaIndexUI =
   init: ->
     @windowWidth = $(window).width()
-    @fetchInitialMedia()
     @currentlyLoading = false
+    @fetchInitialMedia()
     if @windowWidth > 640
       $('#load-more').on 'click', @fetchMedia
     else
@@ -23,6 +23,7 @@ window.mediaIndexUI =
       $(@).attr('style', '')
     
   fetchMedia: (noLimit) ->
+    console.log "called"
     mediaLocation = window.location.pathname
     offset = $('#load-more').attr('offset')
     quantity = window.mediaIndexUI.mediaBatchQuantity()
@@ -44,10 +45,10 @@ window.mediaIndexUI =
   lazyLoadThumbnails: ->
     heightOfContentAboveThumbnails = 280
     thumbnailHeight = $('.media-thumbnail').height() + 20
-
+    console.log thumbnailHeight
     #loading threshold is around 3rd to last row
     loadingThreshold = Math.ceil(($('.media-thumbnail').length / 2) - 4) * thumbnailHeight # + heightOfContentAboveThumbnails
-    if $(window).scrollTop() > loadingThreshold && !mediaIndexUI.currentlyLoading
+    if ($(window).scrollTop() > loadingThreshold && !mediaIndexUI.currentlyLoading) && thumbnailHeight > 20
       window.mediaIndexUI.currentlyLoading = true 
       window.mediaIndexUI.fetchMedia()
       
