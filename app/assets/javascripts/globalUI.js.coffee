@@ -54,12 +54,12 @@ GlobalUI =
   hideSearchBox: ->
     if $(window).width() < 768
       $('.search-input').hide()
-      $('.mobile-logo, .header-mobile-menu:not(.close)').show()
+      $('.mobile-logo, .header-mobile-menu:not(.close), .logo').attr('style', '')
       $(@).removeClass('hide-search')
       return
     $('.header-right .header-item:not(.search-icon)').removeClass('animated').removeClass('fadeOut')
     $('.search-input').hide()
-    $('.header-item:not(.search-icon, .logo)').show()
+    $('.header-item:not(.search-icon, .logo)').attr('stlye', '')
     $(@).removeClass('hide-search')
 
   showNotifyModal: (e) ->
