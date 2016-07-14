@@ -460,11 +460,12 @@
 		}
 	}
 	.media-container.single-row .media-thumbnails {
+    @include justify-content(space-between);
 		.media-thumbnail {
 			margin-bottom: 20px;
 		}
-		.media-thumbnail:odd {
-			margin-left: 1px;
+		a:odd .media-thumbnail {
+			margin-left: 2px;
 		}
 	}
 }
