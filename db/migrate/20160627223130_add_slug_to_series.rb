@@ -4,4 +4,3 @@ class AddSlugToSeries < ActiveRecord::Migration
     add_index :series, :slug
   end
 end
-

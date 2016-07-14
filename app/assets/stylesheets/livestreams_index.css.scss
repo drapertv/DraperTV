@@ -1,16 +1,54 @@
 @import 'global/variables';
 @import 'global/mixins';
 
-
+///// BANNER /////
 .section-head.livestream {
-  background-image: image_url("livestreams.png");
-  background-size: cover;
+  .image {
+    background-image: url("livestreams-photo.png");
+  }
 }
 
 .section-head.students {
-  background-image: image_url("students.png");
-  background-size: cover;
+  .image {
+    background-image: url("students-photo.png");
+    background-position: calc(100vw - 1440px) 0;
+  }
 }
+
+@media (min-width: 1441px){
+  .section-head.students {
+    .image {
+      background-position: initial;
+    }
+  }
+}
+
+@media (max-width: 1023px){
+  .section-head.students {
+    .image {
+      background-position: calc(100vw - 1440px) 0;
+    }
+  }
+}
+
+@media (max-width: 639px){
+  .section-head.students {
+    .image {
+      background-position: calc(100vw - 1440px) 0;
+    }
+  }
+}
+
+@media (max-width: 350px){
+  .section-head.students {
+    .image {
+      background-position: calc(100vw - 1440px) 0;
+    }
+  }
+}
+
+//////////////////
+
 
 .video-player-container.livestream {
   .video-player {
