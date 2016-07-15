@@ -6,10 +6,10 @@ Video =
 		# @linkifyLinks()
 
 	openSeriesPlaylistInfo: ->
-		if $(window).width() > 640
+		if $(window).width() > 679
 			$(@).hide()
 			$('.series-playlist-info').show()
-			$('.series-playlist-info-hide').css('display', 'flex')
+			$('.series-playlist-info-hide').addClass('flex')
 			$('.featured-play-btn').css('transform', 'rotate(270deg)')
 		else
 			Video.triangleRotation += 180
@@ -18,10 +18,8 @@ Video =
 			$('.series-playlist-info-open').toggleClass('shadow')
 
 	hideSeriesPlaylistInfo: ->
-		$('.series-playlist-info-hide, .series-playlist-info').hide()
-		$('.featured-play-btn').attr('style', '')
-		$('.series-count').show()
-		$('.series-playlist-info-open').show()
+		$('.series-playlist-info-hide, .series-playlist-info, .featured-play-btn, .series-count, .series-playlist-info-open').attr('style', '')
+		$('.series-playlist-info-hide').removeClass('flex')
 
 
 
@@ -42,7 +40,7 @@ Video =
 	# 	replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim
 	# 	replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>')
 	# 	replacedText;
-		
+
 ready = ->
 	Video.init()
 $(document).ready ready

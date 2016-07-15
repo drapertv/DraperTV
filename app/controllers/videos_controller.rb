@@ -23,6 +23,11 @@ class VideosController < ApplicationController
     end
   end
 
+  def update_view_counts
+    Video.update_all_view_counts
+    render json: {updated: true}
+  end
+
   private
 
   def video_params

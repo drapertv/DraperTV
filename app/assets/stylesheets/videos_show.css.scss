@@ -19,7 +19,6 @@
   left: 50%;
   transform: translateX(-50%);
   @include flexbox;
-  //border: 1px solid red;
 }
 
 .videoplayer {
@@ -116,6 +115,9 @@
 
   .series-playlist-info {
     display: none;
+  }
+  .series-playlist-info-hide.flex {
+    display: flex;
   }
 }
 
@@ -376,15 +378,6 @@
 				padding-bottom: 26px;
 				border-bottom: 1px solid $border-gray;
 			}
-			.video-speaker-info {
-				font-size: 16px;
-			}
-			.video-about p {
-				font-size: 16px;
-			}
-			.video-title {
-				font-size: 24px;
-			}
 		}
 
 		.video-info-side {
@@ -409,13 +402,11 @@
 
 @media (max-width: 679px){
   .lightbox {
-    //height: calc(((100vw / 16) * 9) + 50px);
     height: auto;
   }
 
   .videobox {
     width: 100vw;
-    //height: calc((100vw / 16 ) * 9);
     height: auto;
     bottom: 0;
     background: $darker-gray;
@@ -493,75 +484,21 @@
 			margin-left: 2px;
 		}
 	}
-}
 
-
-@media (max-width: 640px) {
-	// .videobox {
-	// 	background: $darker-gray;
-	// }
-  //
-	// .series-playlist-info-open {
-	// 	position: static;
-	// 	width: 100%;
-	// 	height: 50px;
-	// 	line-height: 50px;
-	// 	@include flexbox;
-	// 	@include justify-content(center);
-	// 	svg {
-	// 		transform: rotate(360deg);
-	// 	}
-	// 	p {
-	// 		font-size: 18px;
-	// 	}
-	// 	overflow: scroll;
-	// }
-	// .series-playlist-info-open.shadow {
-	// 	box-shadow: 0px 5px 10px black;
-	// }
-	// .series-playlist-info-hide {
-	// 	height: 10px;
-	// }
-	// .series-playlist-info {
-	// 	position: static;
-	// 	width: 100%;
-	// 	height: auto;
-	// 	background: none;
-	// 	padding-bottom: 0px;
-	// }
-	// .series-playlist-info.mobile-show {
-	// 	display: block;
-	// 	.series-list {
-	// 		margin-top: 0px;
-	// 	}
-	// 	.series-count {
-	// 		display: none;
-	// 	}
-	// }
-	// .video-actions {
-	// 	.teal-item.action-icon, .red-item.action-icon, .blue-item.action-icon {
-	// 		display: block;
-	// 	}
-	// }
-  //
-	// .video-actions .action-icon {
-	// 	display: block;
-	// 	p {
-	// 		line-height: 24px;
-	// 	}
-	// }
-	// .video-actions .action-icon.expanded:hover {
-	// 	svg {
-	// 		top: 0;
-	// 	}
-	// }
-	// .media-container.single-row .media-thumbnails {
-  //   @include justify-content(space-between);
-	// 	.media-thumbnail {
-	// 		margin-bottom: 20px;
-	// 	}
-	// 	a:odd .media-thumbnail {
-	// 		margin-left: 2px;
-	// 	}
-	// }
+  .video-info {
+    .video-info-main {
+      .video-speaker-info {
+				font-size: 16px;
+			}
+			.video-about p {
+				font-size: 16px;
+			}
+      .video-about h3{
+        font-size: 16px;
+      }
+			.video-title {
+				font-size: 24px;
+			}
+    }
+  }
 }
