@@ -56,6 +56,18 @@ class Video < ActiveRecord::Base
     title
   end
 
+  def self.update_all_view_counts
+    all.each do |video|
+      youtube_video = Yt::Video.new id: video.url
+      begin 
+        video.update_attributes view_count: youtube_video.view_count
+      rescue
+        p video.title
+      end
+    end
+    Series.get_view_counts_from_videos
+  end
+
 
 	private
 

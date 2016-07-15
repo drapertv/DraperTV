@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root :to => 'series#home_page'
 
+
+
+  get '/videos/update_view_counts', to: 'videos#update_view_counts'
   resources :videos
   resources :livestreams
   resources :student_videos
@@ -15,6 +18,7 @@ Rails.application.routes.draw do
   resources :notifications
 
   get '/about', to: "pages#about", as: "about"
+
 
 
 

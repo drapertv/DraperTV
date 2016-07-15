@@ -89,7 +89,14 @@ class Series < ActiveRecord::Base
   end
 
   def self.popular
-    limit 5
+    order('view_count desc').limit(5)
+  end
+
+  def self.get_view_counts_from_videos
+    Series.all.each do |series|
+      view_count = series.videos.pluck(:view_count).inject(:+)
+      series.update_attributes view_count: view_count
+    end
   end
 
   def self.newest

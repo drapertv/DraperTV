@@ -85,6 +85,7 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
+gem 'yt'
 
 gem 'acts_as_votable'
 

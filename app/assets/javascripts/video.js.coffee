@@ -9,7 +9,7 @@ Video =
 		if $(window).width() > 640
 			$(@).hide()
 			$('.series-playlist-info').show()
-			$('.series-playlist-info-hide').css('display', 'flex')
+			$('.series-playlist-info-hide').addClass('flex')
 			$('.featured-play-btn').css('transform', 'rotate(270deg)')
 		else
 			Video.triangleRotation += 180
@@ -18,10 +18,8 @@ Video =
 			$('.series-playlist-info-open').toggleClass('shadow')
 
 	hideSeriesPlaylistInfo: ->
-		$('.series-playlist-info-hide, .series-playlist-info').hide()
-		$('.featured-play-btn').attr('style', '')
-		$('.series-count').show()
-		$('.series-playlist-info-open').show()
+		$('.series-playlist-info-hide, .series-playlist-info, .featured-play-btn, .series-count, .series-playlist-info-open').attr('style', '')
+		$('.series-playlist-info-hide').removeClass('flex')
 
 
 

@@ -29,11 +29,13 @@ GlobalUI =
   openMobileDropdown: ->
     $('.mobile-dropdown').show()
     $(@).hide()
+    $('.logo').hide()
     $('.header-mobile-menu.close').show()
 
   closeMobileDropdown: ->
     $('.mobile-dropdown').hide()
-    $('.header-mobile-menu').show()
+    $('.header-mobile-menu').attr('style', '')
+    $('.logo').attr('style', '')
     $(@).hide()
     $('.header-mobile-menu.close').hide()
 
