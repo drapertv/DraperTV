@@ -1,8 +1,11 @@
-<section class="video-player-container livestream">
-  <div class="video-player">
-    <iframe src="<%= @livestream.src_url %>" height="240" frameborder="0" scrolling="no"></iframe>
+<section class="lightbox">
+  <div class="videobox livestream">
+    <div class="videoplayer">
+      <iframe src="<%= @livestream.src_url %>" height="240" frameborder="0" scrolling="no"></iframe>
+    </div>
   </div>
 </section>
+
 <section class="video-info">
   <div class="video-info-main">
     <h1 class="video-title">
@@ -15,13 +18,13 @@
     <div class="video-actions">
       <%= link_to livestreams_path do %>
         <div class="action-icon red-item expanded">
-          <%= image_tag "livestream-icon.png", :class => "notify-icon svg non-hover" %> 
-          <%= image_tag "livestream-icon.png", :class => "notify-icon svg hover" %> 
+          <%= image_tag "livestream-icon.png", :class => "notify-icon svg non-hover" %>
+          <%= image_tag "livestream-icon.png", :class => "notify-icon svg hover" %>
           <p>Livestream Series</p>
         </div>
       <% end %>
       <div class="action-icon teal-item show-notify-modal expanded">
-        <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %> 
+        <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %>
         <p>Notify Me</p>
       </div>
     </div>
@@ -35,13 +38,13 @@
   <div class="video-info-side">
     <%= link_to livestreams_path do %>
       <div class="action-icon red-item expanded">
-        <%= image_tag "livestream-icon.png", :class => "notify-icon svg non-hover" %> 
-        <%= image_tag "livestream-icon.png", :class => "notify-icon svg hover" %> 
+        <%= image_tag "livestream-icon.png", :class => "notify-icon svg non-hover" %>
+        <%= image_tag "livestream-icon.png", :class => "notify-icon svg hover" %>
         <p>Livestream Series</p>
       </div>
     <% end %>
     <div class="action-icon teal-item show-notify-modal expanded">
-      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %> 
+      <%= image_tag "notify-icon.svg", :class => "notify-icon svg" %>
       <p>Notify Me</p>
     </div>
   </div>
@@ -70,8 +73,3 @@
     </div>
   </div>
 </section>
-
-
-
-
-

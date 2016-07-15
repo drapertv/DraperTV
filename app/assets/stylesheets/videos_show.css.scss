@@ -21,6 +21,12 @@
   @include flexbox;
 }
 
+.videobox.livestream {
+  width: calc(((38.75vw - 60px - 30px) / 9) * 16);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .videoplayer {
   height: 100%;
   width: calc(((38.75vw - 60px - 30px) / 9) * 16);
@@ -62,7 +68,7 @@
     height: 468px;
   }
 
-  .videoplayer {
+  .videoplayer, .videobox.livestream {
     width: 832px;
   }
 
@@ -83,8 +89,8 @@
     transform: initial;
   }
 
-  .videoplayer {
-    width: calc(((40.43vw - 60px - 30px) / 9) * 16)
+  .videoplayer, .videobox.livestream {
+    width: calc(((40.43vw - 60px - 30px) / 9) * 16);
   }
 
   .series-playlist-info {
@@ -278,7 +284,7 @@
     height: 360px;
   }
 
-  .videoplayer {
+  .videoplayer, .videobox.livestream {
     width: 640px;
   }
   .video-info .video-info-main {
@@ -415,7 +421,12 @@
     transform: initial;
   }
 
-  .videoplayer {
+  .videobox.livestream {
+    transform: initial;
+    left: auto;
+  }
+
+  .videoplayer, .videobox.livestream {
     width: 100vw;
   	position: static;
     height: calc((100vw / 16) * 9);
