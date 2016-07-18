@@ -189,10 +189,10 @@ ActiveRecord::Schema.define(version: 20160714230652) do
     t.boolean  "show_on_front_page"
     t.boolean  "popular"
     t.boolean  "public",             default: false
+    t.integer  "view_count"
     t.boolean  "ready_to_notify",    default: false
     t.boolean  "notified",           default: false
     t.string   "slug"
-    t.integer  "view_count"
   end
 
   add_index "series", ["slug"], name: "index_series_on_slug", using: :btree

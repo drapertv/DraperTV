@@ -6,7 +6,7 @@ Video =
 		# @linkifyLinks()
 
 	openSeriesPlaylistInfo: ->
-		if $(window).width() > 640
+		if $(window).width() > 679
 			$(@).hide()
 			$('.series-playlist-info').show()
 			$('.series-playlist-info-hide').addClass('flex')
@@ -40,7 +40,7 @@ Video =
 	# 	replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim
 	# 	replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>')
 	# 	replacedText;
-		
+
 ready = ->
 	Video.init()
 $(document).ready ready

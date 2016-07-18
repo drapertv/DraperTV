@@ -8,6 +8,7 @@
   height: 38.75vw;
   position: relative;
   background: black;
+  margin-top: -60px;
 }
 
 .videobox {
@@ -18,7 +19,12 @@
   left: 50%;
   transform: translateX(-50%);
   @include flexbox;
-  //border: 1px solid red;
+}
+
+.videobox.livestream {
+  width: calc(((38.75vw - 60px - 30px) / 9) * 16);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .videoplayer {
@@ -37,7 +43,6 @@
   width: calc((1440px - 120px) - (((38.75vw - 60px - 30px) / 9) * 16));
   background: #1A1A1A;
   vertical-align: top;
-
 }
 
 .series-playlist-info-hide, .series-playlist-info-open {
@@ -48,7 +53,7 @@
   .videobox {
     width: calc(100vw - 120px);
   }
-  
+
   .series-playlist-info {
     width: calc((100vw - 120px) - (((38.75vw - 60px - 30px) / 9) * 16));
   }
@@ -56,38 +61,38 @@
 
 @media (max-width: 1440px) and (min-width: 1380px){
   .lightbox {
-    height: 498px;
+    height: 558px;
   }
-  
+
   .videobox {
     height: 468px;
   }
-  
-  .videoplayer {
+
+  .videoplayer, .videobox.livestream {
     width: 832px;
   }
-  
+
   .series-playlist-info {
     width: calc((1440px - 120px) - 832px);
   }
 }
 
-@media (max-width: 1379px){  
+@media (max-width: 1379px){
   .lightbox {
-    height: calc(40.43vw - 60px);
+    height: 40.43vw;
   }
-  
+
   .videobox {
     width: calc(100vw - 60px);
     height: calc(40.43vw - 60px - 30px);
     left: 30px;
     transform: initial;
   }
-  
-  .videoplayer {
-    width: calc(((40.43vw - 60px - 30px) / 9) * 16)
+
+  .videoplayer, .videobox.livestream {
+    width: calc(((40.43vw - 60px - 30px) / 9) * 16);
   }
-  
+
   .series-playlist-info {
     width: calc((100vw - 60px) - (((40.43vw - 60px - 30px) / 9) * 16));
   }
@@ -103,13 +108,17 @@
     height: 50px;
   }
 
+  .lightbox {
+    margin-top: -50px;
+  }
+
   .videobox {
     width: 640px;
     left: 50%;
     transform: translateX(-50%);
     bottom: 20px;
   }
-  
+
   .series-playlist-info {
     display: none;
   }
@@ -117,8 +126,6 @@
     display: flex;
   }
 }
-
-
 
 
 .video-player-container {
@@ -151,7 +158,7 @@
 	.series-list {
 		margin-top: 18px;
 		.video-list-item {
-			height: 18px;
+			//height: 18px;
 			margin-bottom: 18px;
 			@include flexbox;
 			p {
@@ -165,6 +172,7 @@
 			p.video-title {
 				width: calc(100% - 70px);
 				margin-left: 10px;
+        line-height: 1.2;
 			}
 			p.video-length {
 				width: 38px;
@@ -181,7 +189,7 @@
 		.video-list-item.active {
 			p {
 				color: $highlight-gray;
-				
+
 			}
 		}
 	}
@@ -261,7 +269,7 @@
 	}
 	.video-info {
 		.video-info-main {
-			padding-left: 30px; 
+			padding-left: 30px;
 			width: calc(((40.43vw - 60px - 30px) / 9) * 16 + 30px);
 		}
 	}
@@ -269,20 +277,20 @@
 
 @media (max-width: 1112.9px){
   .lightbox {
-    height: 390px;
+    height: 450px;
   }
-  
+
   .videobox {
     height: 360px;
   }
-  
-  .videoplayer {
+
+  .videoplayer, .videobox.livestream {
     width: 640px;
   }
   .video-info .video-info-main {
   	width: 670px;
   }
-  
+
   .series-playlist-info {
     width: calc((100vw - 60px) - 640px);
   }
@@ -313,16 +321,26 @@
 			line-height: 30px;
 			color: $dark-gray;
 			cursor: pointer;
-			svg {
+      svg {
 				height: 10px;
 				width: 10px;
 				margin-right: 10px;
 				transform: rotate(90deg);
 			}
+      svg * {
+        fill: #5f5f5f;
+      }
 			p {
 				font-weight: 600;
 			}
 		}
+    .series-playlist-info-open:hover {
+      opacity: 1;
+      color: #c0c0c0;
+      svg * {
+        fill: #c0c0c0;
+      }
+    }
 		.series-playlist-info-hide {
 			position: absolute;
 			right: 319px;
@@ -339,8 +357,16 @@
   			height: 18px;
   			width: 16px;
   		}
+      svg * {
+        fill: #5f5f5f;
+      }
   		display: none;
 		}
+    .series-playlist-info-hide:hover {
+      svg * {
+        fill: #c0c0c0;
+      }
+    }
 
 	////// Video Info //////
 
@@ -358,15 +384,6 @@
 				padding-bottom: 26px;
 				border-bottom: 1px solid $border-gray;
 			}
-			.video-speaker-info {
-				font-size: 16px;
-			}
-			.video-about p {
-				font-size: 16px;
-			}
-			.video-title {
-				font-size: 24px;
-			}
 		}
 
 		.video-info-side {
@@ -382,69 +399,76 @@
 	}
 }
 
+@media (max-width: 767px){
+  .lightbox {
+    height: 400px;
+    margin-top: auto;
+  }
+}
+
 @media (max-width: 679px){
   .lightbox {
     height: auto;
   }
-  
+
   .videobox {
     width: 100vw;
     height: auto;
+    bottom: 0;
+    background: $darker-gray;
     position: static;
     @include flex-direction(column);
     transform: initial;
   }
-  
-  .videoplayer {
-  	position: static;
+
+  .videobox.livestream {
+    transform: initial;
+    left: auto;
+  }
+
+  .videoplayer, .videobox.livestream {
     width: 100vw;
+  	position: static;
     height: calc((100vw / 16) * 9);
   }
-}
 
-
-@media (max-width: 640px) {
-		.videobox {
-			background: $darker-gray;
+	.series-playlist-info-open {
+		position: static;
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		@include flexbox;
+		@include justify-content(center);
+		svg {
+			transform: rotate(360deg);
 		}
-
-		.series-playlist-info-open {
-			position: static;
-			width: 100%;
-			height: 50px;
-			line-height: 50px; 
-			@include flexbox;
-			@include justify-content(center);
-			svg {
-				transform: rotate(360deg);
-			}
-			p {
-				font-size: 18px;
-			}
-			overflow: scroll;
+		p {
+			font-size: 18px;
 		}
-		.series-playlist-info-open.shadow {
-			box-shadow: 0px 5px 10px black;
+		overflow: scroll;
+	}
+	.series-playlist-info-open.shadow {
+		box-shadow: 0px 5px 10px black;
+	}
+	.series-playlist-info-hide {
+		height: 10px;
+	}
+	.series-playlist-info {
+		position: static;
+		width: 100%;
+		height: auto;
+		background: none;
+		padding-bottom: 0px;
+	}
+	.series-playlist-info.mobile-show {
+		display: block;
+		.series-list {
+			margin-top: 0px;
 		}
-		.series-playlist-info-hide {
-			height: 10px;
+		.series-count {
+			display: none;
 		}
-		.series-playlist-info {
-			position: static;
-			width: 100%;
-			height: auto;
-			background: none;
-			padding-bottom: 0px;
-		}
-		.series-playlist-info.mobile-show {
-			display: block;
-			.series-list {
-				margin-top: 0px;
-			}
-			.series-count {
-				display: none;
-			}
-		}
+	}
 	.video-actions {
 		.teal-item.action-icon, .red-item.action-icon, .blue-item.action-icon {
 			display: block;
@@ -471,5 +495,21 @@
 			margin-left: 2px;
 		}
 	}
-}
 
+  .video-info {
+    .video-info-main {
+      .video-speaker-info {
+				font-size: 16px;
+			}
+			.video-about p {
+				font-size: 16px;
+			}
+      .video-about h3{
+        font-size: 16px;
+      }
+			.video-title {
+				font-size: 24px;
+			}
+    }
+  }
+}
