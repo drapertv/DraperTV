@@ -229,6 +229,7 @@
   padding: 24px 60px;
   @include flexbox;
   @include justify-content(space-between);
+  @include align-items(center);
   .sort-options {
     @include flexbox;
     @include justify-content(space-between);

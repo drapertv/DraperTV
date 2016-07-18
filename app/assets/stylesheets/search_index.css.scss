@@ -1,8 +1,8 @@
 @import 'global/variables';
 @import 'global/mixins';
 
-@media (max-width: 540px) {
-  .search-description {
+@media (max-width: 640px) {
+  .search-description-container {
     display: none;
   }
 }

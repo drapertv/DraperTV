@@ -33,15 +33,11 @@ GlobalUI =
     $('.header-mobile-menu.close').show()
 
   closeMobileDropdown: ->
-    $('.mobile-dropdown').hide()
-    $('.header-mobile-menu').attr('style', '')
-    $('.logo').attr('style', '')
-    $(@).hide()
-    $('.header-mobile-menu.close').hide()
-
-    # $('.header-content *').attr('style', '')
+    $('header *').attr('style', '')
+    # $('.header-mobile-menu').remove()
 
   showSearchBox: -> 
+
     $(@).addClass('hide-search')
     if $(window).width() < 768 
       $('.search-input').show().focus()
@@ -54,14 +50,16 @@ GlobalUI =
     
 
   hideSearchBox: ->
-    if $(window).width() < 768
-      $('.search-input').hide()
-      $('.mobile-logo, .header-mobile-menu:not(.close), .logo').attr('style', '')
-      $(@).removeClass('hide-search')
-      return
-    $('.header-right .header-item:not(.search-icon)').removeClass('animated').removeClass('fadeOut')
-    $('.search-input').hide()
-    $('.header-item:not(.search-icon, .logo)').attr('stlye', '')
+    $('header *').attr('style', '')
+    # if $(window).width() < 768
+    #   $('.search-input').attr('style', '')
+    #   $('.mobile-logo, .header-mobile-menu:not(.close), .logo').attr('style', '')
+    #   $(@).removeClass('hide-search')
+    #   return
+
+    # $('.header-right .header-item:not(.search-icon)').removeClass('animated').removeClass('fadeOut')
+    # $('.search-input').hide()
+    # $('.header-item:not(.search-icon, .logo)').attr('style', '')
     $(@).removeClass('hide-search')
 
   showNotifyModal: (e) ->

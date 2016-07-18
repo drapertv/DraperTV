@@ -1,30 +1,63 @@
 <div class="sort-bar">
-  <div>
+  <div class="search-description-container">
     <h3 class="search-description">Search Results for '<%= @terms %>'</h3>
   </div> 
   <div class="sort-options">
-    <div>Sorted By:</div>
-    <div class="date-sort">Newest</div>
-    <div class="industry-sort">All Industries</div>
+    <div class="sort-label">Sorted By:</div>
+    
+    <div class="dropdowns">
+      <div class="order-sort sorter">
+        <p>Newest</p >
+        <%= image_tag "dropdown-triangle.svg", :class => 'open-dropdown' %>
+        <ul class="sort-dropdown">
+          <li class="current" data-sort-criteria="date" data-sort-direction="asc">Newest</li>
+          <li data-sort-criteria="date" data-sort-direction='desc'>Oldest</li>
+          <li data-sort-criteria="speaker" data-sort-direction='asc'>Speaker A-Z</li>
+          <li data-sort-criteria="speaker" data-sort-direction='desc'>Speaker Z-A</li>
+          <li data-sort-criteria="views" data-sort-direction='desc'>Most Viewed</li>
+        </ul>
+      </div>
+      <div class="industry-sort sorter">
+        <p>All Industries</p>
+        <%= image_tag "dropdown-triangle.svg", :class => 'open-dropdown' %>
+        <ul class="sort-dropdown">
+          <li class="current">All Industries</li>
+          <li>Industry 1</li>
+          <li>Industry 2</li>
+          <li>Industry 3</li>
+          <li>Industry 4</li>
+          <li>Industry 5</li>
+          <li>Industry 6</li>
+          <li>Industry 7</li>
+          <li>Industry 8</li>
+          <li>Industry 9</li>
+          <li>Industry 10</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
-<section class="media-container index-view">
+<section class="media-container index-view search-results">
   <div class="media-list">
-    <div class="media-thumbnails wrap">
+    <div class="media-thumbnails wrap sortable">
       <% @results.each do |content| %>
-        <div class="media-thumbnail">
-          <div class="media-info">
-            <div class="media-speaker-name">
-              <%= content.speaker_name %>
+        <%= link_to media_path(content) do %>
+          <div class="media-thumbnail <%= content.industries %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
+            <div class="media-info">
+              <div class="media-speaker-name">
+                <%= content.speaker_name %>
+              </div>
+              <div class="media-title">
+                <%= content.thumbnail_title %>
+              </div>
             </div>
-            <div class="media-title">
-              <%= content.thumbnail_title %>
-            </div>
+            <%= image_tag content.vthumbnail_url(:seriesthumb), :class => "thumbnail-img" %>
+            <div class="thumbnail-gradient"></div>
+            <div class="thumbnail-overlay-gradient"></div>
+            <div class="thumbnail-description"><p><%= content.description %></p></div>
           </div>
-          <%= image_tag content.vthumbnail_url(:seriesthumb), :class => "thumbnail-img" %>
-          <div class="thumbnail-gradient"></div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

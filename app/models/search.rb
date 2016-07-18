@@ -9,10 +9,9 @@ class Search < ActiveRecord::Base
 		series = Series.all
 		videos = Video.all
 		livestreams = Livestream.all
-		chapters = Chapter.all 
 		terms = terms.downcase
 		results = [:title, :name, :speaker_title, :description].map do |field|
-			[series, videos, livestreams, chapters].map do |models|
+			[series, videos, livestreams].map do |models|
 				search_model_for(models, terms, field)
 			end
 		end.uniq.flatten

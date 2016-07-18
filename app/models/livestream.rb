@@ -53,6 +53,15 @@ class Livestream < ActiveRecord::Base
     end
   end
 
+  def seconds_elapsed_since_creation
+    (Time.now - created_at).floor
+  end
+
+  def industries
+    (1..10).map {|n| "industry-#{n}"}.sample(3).join(" ")
+  end
+
+
   def formatted_stream_date
   	pst_stream_date = stream_date - 8.hours
   	pst_current_time = Time.now.utc - 8.hours
@@ -110,7 +119,7 @@ class Livestream < ActiveRecord::Base
 
   def self.closest_to_now
     livestreams = [next_livestream] + Livestream.where('stream_date > (?)', Time.now - 90.minutes).order(:stream_date).limit(4).to_a + Livestream.where('stream_date < (?)', Time.now - 90.minutes).order('stream_date desc').limit(5).to_a
-    livestreams.compact[0..4]
+    livestreams.uniq.compact[0..4]
   end
 
   def live?

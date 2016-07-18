@@ -12,7 +12,8 @@ window.mediaIndexUI =
 
 
   fetchInitialMedia: ->
-    if $('.lazy-load .media-thumbnail').length < 1
+    if $('.lazy-load .media-thumbnail').length < 1 && $('.media-thumbnails.wrap').length > 0
+      console.log "callin"
       window.mediaIndexUI.fetchMedia()
 
   markMultilineTitles: ->
@@ -23,7 +24,6 @@ window.mediaIndexUI =
       $(@).attr('style', '')
     
   fetchMedia: (noLimit) ->
-    console.log "called"
     mediaLocation = window.location.pathname
     offset = $('#load-more').attr('offset')
     quantity = window.mediaIndexUI.mediaBatchQuantity()
