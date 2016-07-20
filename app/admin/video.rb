@@ -1,6 +1,6 @@
 ActiveAdmin.register Video do
 
-  permit_params :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name,:category_list, :video_id, :length, :slug, :public
+  permit_params :wistia_id, :video_type, :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name,:category_list, :video_id, :length, :slug, :public
 
   index do
     column :id
