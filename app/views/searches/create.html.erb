@@ -1,3 +1,7 @@
+<%= content_for :link_overlay do %>
+  <a href="#" class="background-link disabled home"></a>
+<% end %>
+
 <div class="sort-bar">
   <div class="search-description-container">
     <h3 class="search-description">Search Results for '<%= @terms %>'</h3>
@@ -42,7 +46,7 @@
   <div class="media-list">
     <div class="media-thumbnails wrap sortable">
       <% @results.each do |content| %>
-        <%= link_to media_path(content) do %>
+        <%= link_to media_path(content), :class => "disabled" do %>
           <div class="media-thumbnail <%= content.industries %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
             <div class="media-info">
               <div class="media-speaker-name">

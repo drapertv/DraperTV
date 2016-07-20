@@ -181,15 +181,6 @@ small {
 
 .expanded:hover {
   background: $blue;
-  color: white;
-  .non-hover {
-    display: none;
-  }
-  .hover {
-    display: block;
-    border-radius: 50px;
-    background: white;
-  }
 }
 .teal-item {
   color: $teal;

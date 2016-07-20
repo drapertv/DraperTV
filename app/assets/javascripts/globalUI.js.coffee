@@ -13,8 +13,8 @@ GlobalUI =
     document.ontouchmove = @checkScrollable
     @scrollable = true
     if $(window).width() > 768
-      $('body').on 'mouseenter', '.action-icon', @showActionIconText
-      $('body').on 'mouseleave', '.action-icon', @hideActionIconText
+      $('body').on 'mouseenter', '.action-icon:not(.expanded)', @showActionIconText
+      $('body').on 'mouseleave', '.action-icon:not(.expanded)', @hideActionIconText
       
     $('body').on 'click', '.header-mobile-menu:not(.close)', @openMobileDropdown
     $('body').on 'click', '.header-mobile-menu.close', @closeMobileDropdown
@@ -29,7 +29,6 @@ GlobalUI =
   openMobileDropdown: ->
     $('.mobile-dropdown').show()
     $(@).hide()
-    $('.logo').hide()
     $('.header-mobile-menu.close').show()
 
   closeMobileDropdown: ->
@@ -37,7 +36,6 @@ GlobalUI =
     # $('.header-mobile-menu').remove()
 
   showSearchBox: -> 
-
     $(@).addClass('hide-search')
     if $(window).width() < 768 
       $('.search-input').show().focus()
@@ -50,16 +48,19 @@ GlobalUI =
     
 
   hideSearchBox: ->
-    $('header *').attr('style', '')
-    # if $(window).width() < 768
-    #   $('.search-input').attr('style', '')
-    #   $('.mobile-logo, .header-mobile-menu:not(.close), .logo').attr('style', '')
-    #   $(@).removeClass('hide-search')
-    #   return
+    # $('header *').attr('style', '')
+    if $(window).width() < 768
+      $('.search-input').attr('style', '')
+      $('.mobile-logo, .header-mobile-menu:not(.close), .logo').attr('style', '')
+      $(@).removeClass('hide-search')
+      if $('.mobile-dropdown:visible').length > 0
+        $('.header-mobile-menu').hide()
+        $('.header-mobile-menu.close').show()
+      return
 
-    # $('.header-right .header-item:not(.search-icon)').removeClass('animated').removeClass('fadeOut')
-    # $('.search-input').hide()
-    # $('.header-item:not(.search-icon, .logo)').attr('style', '')
+    $('.header-right .header-item:not(.search-icon)').removeClass('animated').removeClass('fadeOut')
+    $('.search-input').hide()
+    $('.header-item:not(.search-icon, .logo)').attr('style', '')
     $(@).removeClass('hide-search')
 
   showNotifyModal: (e) ->

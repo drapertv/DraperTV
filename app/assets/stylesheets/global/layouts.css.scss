@@ -27,6 +27,14 @@ body {
   left: 0;
 }
 
+
+@media (max-width: 887px) {
+  .background-link {
+    top: calc(100vw / 16 * 9 + 60px);
+    height: calc(100vh - (100vw / 16 * 9 + 60px));
+  }
+}
+
 @media (max-width: 540px) {
   .main-content {margin-top: 0px;}
 }
