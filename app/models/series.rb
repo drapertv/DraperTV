@@ -16,6 +16,8 @@ class Series < ActiveRecord::Base
     limit(5)
   end
 
+
+
 #Method to update the Array field of the playlist
   def video_ids_raw
     self.video_ids.join("\n,") unless self.video_ids.nil?
@@ -57,6 +59,14 @@ class Series < ActiveRecord::Base
   def description
     first_video.description
   end 
+
+  def site_classification
+    "Speaker Series"
+  end
+
+  def featured_icon
+    "speaker-white.png"
+  end
 
   def self.featured
     front_page_media = nil

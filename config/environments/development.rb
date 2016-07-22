@@ -44,14 +44,14 @@ Rails.application.configure do
   #   password: Rails.application.secrets.email_provider_password
   # }
   # config.action_mailer.deconfig.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.mandrillapp.com",
-    port: 587,
-    domain: Rails.application.secrets.domain_name,
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: Rails.application.secrets.email_provider_username,
-    password: Rails.application.secrets.email_provider_password
+  ActionMailer::Base.smtp_settings = {
+    :user_name => 'DraperU',
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'drapertv.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }

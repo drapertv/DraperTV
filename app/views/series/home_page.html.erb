@@ -25,7 +25,7 @@
   <div class="featured-overlay">
   </div><div class="featured-gradient-home">
   </div>
-  <div class="featured-infos"> <!--holds all infos-->
+  <div class="featured-infos"> <!-- holds all infos -->
     <% @featured.each do |media| %>
       <div class="featured-info">
         <%= link_to media_path(media) do %>
@@ -37,9 +37,9 @@
         <% end %>
         <div class="featured-action-icons">
           <%= link_to '/speakers' do %>
-            <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="128">
-              <%= image_tag "speaker-white.png", :class => "action-icon-img" %>
-              <p class="action-icon-text">Speaker Series</p>
+            <div class="action-icon type-icon <%= media.class.to_s.downcase %>" data-width="<%= media.class == Series ? 128 : 140 %>">
+              <%= image_tag media.featured_icon, :class => "action-icon-img" %>
+              <p class="action-icon-text"><%= media.site_classification %></p>
             </div>
           <% end %>
           <div class="action-icon notify-icon show-notify-modal" data-width="93">
@@ -68,7 +68,7 @@
             <%= image_tag "triangle.svg" %>
           </a>
         <% else %>
-          <%= link_to media_list_path(media[:content]), :class => "disabled" do %>
+          <%= link_to media_list_path(media[:content]) do %>
             <h3><%= media[:title] %></h3>
             <%= image_tag "triangle.svg" %>
           <% end %>

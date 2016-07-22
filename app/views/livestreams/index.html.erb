@@ -60,3 +60,9 @@
     </div>
   <% end %>
 </section>
+<script>
+  $(document).ready(function() {
+    var height = $('footer').height()
+    $('.media-container').css('min-height', 'calc(100vh - 130px - ' + height + 'px)')
+  })    
+</script>

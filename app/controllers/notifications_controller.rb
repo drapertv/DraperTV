@@ -13,6 +13,8 @@ class NotificationsController < ApplicationController
     if params[:livestream]
       Notification.create email_id: email.id, livestream_id: params[:livestream]
     end
+
+    UserMailer.notification_email(Livestream.first, params[:email]).deliver
     render nothing: true
   end
 

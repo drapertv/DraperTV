@@ -16,11 +16,15 @@ ThumbnailUI =
 
 	undoAnimation: ->
 		thumbnail = $(@)
+		delay = 20
+		if thumbnail.hasClass('course-thumbnail')
+			delay = 150
+			
 		setTimeout ->
-				thumbnail.removeClass 'show-description'
-				thumbnail.parent().addClass 'disabled'
-				ThumbnailUI.unanimate thumbnail
-		, 20
+			thumbnail.removeClass 'show-description'
+			thumbnail.parent().addClass 'disabled'
+			ThumbnailUI.unanimate thumbnail
+		, delay
 
 
 	animateAfterDelay: (e) ->
@@ -41,6 +45,7 @@ ThumbnailUI =
 				# if moving mouse to a adjacent thumbnail in the same row
 				if (previouslyEnlargedThumbnail.parent().next().children()[0] == thumbnail[0] || previouslyEnlargedThumbnail.parent().prev().children()[0] == thumbnail[0]) && $(window).width() >= 1024
 					ThumbnailUI.animate thumbnail, e
+
 				else #moving to a non adjacent thumbnail
 					# show description after delay
 					setTimeout ->

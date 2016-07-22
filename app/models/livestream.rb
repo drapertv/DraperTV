@@ -150,6 +150,14 @@ class Livestream < ActiveRecord::Base
     title.split("- ")[0..-2].join("-").strip
   end
 
+  def site_classification
+    "Livestream Event"
+  end
+
+  def featured_icon
+    "livestream-black.png"
+  end
+
   def self.today
     where('stream_date < (?)', Time.now + 24.hours).where('stream_date > (?)', Time.now).select {|n| n.stream_date.day == Time.now.utc.day}
   end

@@ -42,11 +42,11 @@ GlobalUI =
       $('.logo, .header-mobile-menu').hide()
       return
 
+    $('.search-input').css('position', 'absolute').css('opacity', 0).show().focus()
     $('.header-right .header-item:not(.search-icon)').addClass('animated fadeOut').one 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', ->
       $('.header-item:not(.search-icon, .logo)').hide()
-      $('.search-input').show().focus()
+      $('.search-input').css('position', 'initial').css('opacity', 1)
     
-
   hideSearchBox: ->
     # $('header *').attr('style', '')
     if $(window).width() < 768
@@ -65,7 +65,6 @@ GlobalUI =
 
   showNotifyModal: (e) ->
     e.preventDefault()
-    console.log "ntify"
     $('html').css('overflow', 'hidden').css('z-index', '-1')
     $('.submit-confirmation').hide()
     $('.hide-on-submit').show()
@@ -94,19 +93,25 @@ GlobalUI =
     $(@).find('p').animate 
       opacity: "1"
     , 100
+    GlobalUI.iconUnhidable = true
+    setTimeout ->
+      GlobalUI.iconUnhidable = false
+    , 25
 
   hideActionIconText: ->
-    actionIcon = $(@)
-    if $(@).hasClass('notify-icon')
-      $('.action-icon').removeClass('active').attr('style', '')
-      actionIcon.find('p').attr('style', '')
-      return
-    else
-      setTimeout ->
-        unless $('.action-icon.active').length > 1 && actionIcon.hasClass('type-icon')
-          $('.action-icon').removeClass('active').attr('style', '') 
-          actionIcon.find('p').attr('style', '')
-      , 300
+    unless GlobalUI.iconUnhidable
+      actionIcon = $(@)
+      if $(@).hasClass('notify-icon')
+        $('.action-icon').removeClass('active').attr('style', '')
+        actionIcon.find('p').attr('style', '')
+        return
+      else
+        setTimeout ->
+          console.log "hiding"
+          unless $('.action-icon.active').length > 1 && actionIcon.hasClass('type-icon')
+            $('.action-icon').removeClass('active').attr('style', '') 
+            actionIcon.find('p').attr('style', '')
+        , 300
 
   disableLink: (e) ->
     e.preventDefault() if $(window).width() > 640

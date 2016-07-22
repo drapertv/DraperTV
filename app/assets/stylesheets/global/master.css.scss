@@ -192,11 +192,9 @@ small {
   border: 1px solid $red;
 }
 
-.expanded.red-item:hover {
-  color: white;
-  background: $red;
+.red-item:hover, .teal-item:hover, .yellow-item:hover {
+  cursor: initial;
 }
-
 
 //////
 

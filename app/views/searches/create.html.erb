@@ -70,3 +70,10 @@
 <script type="text/javascript">
   history.pushState({state:1}, "State 1", "?terms=<%= @terms %>")
 </script>
+
+<script>
+  $(document).ready(function() {
+    var height = $('footer').height()
+    $('.media-container').css('min-height', 'calc(100vh - 130px - ' + height + 'px)')
+  })    
+</script>
