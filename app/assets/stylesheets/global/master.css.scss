@@ -192,6 +192,11 @@ small {
   border: 1px solid $red;
 }
 
+.yellow-item {
+  color: $yellow;
+  border: 1px solid $yellow;
+}
+
 .red-item:hover, .teal-item:hover, .yellow-item:hover {
   cursor: initial;
 }

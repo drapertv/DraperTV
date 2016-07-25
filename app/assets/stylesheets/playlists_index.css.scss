@@ -299,6 +299,11 @@
     top: -1px;
   }
 }
+
+.action-icon.blue-item, .action-icon.red-item, .action-icon.yellow-item {
+  cursor: initial;
+}
+
 .action-icon.teal-item.expanded:hover {
   svg {
     top: 0px;
@@ -350,6 +355,7 @@
   cursor: pointer;
   z-index: 2;
   position: relative;
+  display: none;
 }
 
 @media (max-width: 1439px) {

@@ -13,7 +13,6 @@ window.mediaIndexUI =
 
   fetchInitialMedia: ->
     if $('.lazy-load .media-thumbnail').length < 1 && $('.media-thumbnails.wrap').length > 0
-      console.log "callin"
       window.mediaIndexUI.fetchMedia()
 
   markMultilineTitles: ->
@@ -30,6 +29,7 @@ window.mediaIndexUI =
     quantity = 100000 if noLimit == "noLimit"
     $.get "#{mediaLocation}?offset=#{offset}&list=true&quantity=#{quantity}", (data) ->
       $('.media-thumbnails.lazy-load').append(data)
+      $('#load-more').show()
       #update offset
       $('#load-more').attr('offset', $('.lazy-load .media-thumbnail').length)
 
