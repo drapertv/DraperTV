@@ -18,9 +18,9 @@
     <% end %>
   </div>
   <div class="featured-nav">
-    <div class="dot active left" data-go-to="0"></div>
-    <div class="dot right" data-go-to="1"></div>
-    <div class="dot right" data-go-to="2"></div>
+    <% @featured.each_with_index do |featured, i| %>
+      <div class="dot <%= 'right' if i > 0 %>" data-go-to="<%= i %>"></div>
+    <% end %>
   </div>
   <div class="featured-overlay">
   </div><div class="featured-gradient-home">

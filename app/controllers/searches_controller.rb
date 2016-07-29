@@ -1,5 +1,4 @@
 class SearchesController < ApplicationController
-  before_filter :set_categories_and_colors
   protect_from_forgery :except => :create 
 
   def create
@@ -17,12 +16,4 @@ class SearchesController < ApplicationController
     @count = @results.count
   	render 'create'
   end
-
-  private 
-
-    def set_categories_and_colors
-      @categories = ["Attitude", "Starting Up", "Product", "Sales", "Marketing", "Fundraising", "Hiring", "Biz & Finance", "Legal", "Auxiliary"]
-      @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "grey"]
-    end
-
 end

@@ -1,3 +1,5 @@
+#deprecated
+
 class Chapter < ActiveRecord::Base
 
 	def url

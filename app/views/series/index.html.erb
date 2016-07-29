@@ -22,22 +22,23 @@
   </div>
   <div class="sort-options">
     <div class="sort-label">Sorted By:</div>
-    
     <div class="dropdowns">
       <div class="order-sort sorter">
-        <p>Newest</p >
+        <p>Newest</p>
         <%= image_tag "dropdown-triangle.svg", :class => 'open-dropdown' %>
+        <%= select_tag :order, options_for_select(['Newest', 'Oldest', 'Speaker A-Z', 'Speaker Z-A', 'Most Viewed']), :class => "order-select" %>
         <ul class="sort-dropdown">
-          <li class="current" data-sort-criteria="date" data-sort-direction="asc">Newest</li>
-          <li data-sort-criteria="date" data-sort-direction='desc'>Oldest</li>
-          <li data-sort-criteria="speaker" data-sort-direction='asc'>Speaker A-Z</li>
-          <li data-sort-criteria="speaker" data-sort-direction='desc'>Speaker Z-A</li>
-          <li data-sort-criteria="views" data-sort-direction='desc'>Most Viewed</li>
+          <li class="current" data-sort-criteria="created_at" data-sort-direction="desc">Newest</li>
+          <li data-sort-criteria="created_at" data-sort-direction='asc'>Oldest</li>
+          <li data-sort-criteria="slug" data-sort-direction='asc'>Speaker A-Z</li>
+          <li data-sort-criteria="slug" data-sort-direction='desc'>Speaker Z-A</li>
+          <li data-sort-criteria="view_count" data-sort-direction='desc'>Most Viewed</li>
         </ul>
       </div>
       <div class="industry-sort sorter">
         <p>All Industries</p>
         <%= image_tag "dropdown-triangle.svg", :class => 'open-dropdown' %>
+        <%= select_tag :order, options_for_select(["All Industries"] + (1..10).map {|i| "Industry #{i}"}), :class => "industry-select" %>
         <ul class="sort-dropdown">
           <li class="current">All Industries</li>
           <li>Industry 1</li>

@@ -2,26 +2,25 @@
 
 GlobalUI =
 	init: ->
-    # FastClick.attach(document.body)  
+    # FastClick.attach(document.body) #turns all touch events into click events on mobile devices 
+    $('body').on 'click', '.disabled', @disableLink
+
     $('body').on 'click', '.search-icon:not(.hide-search)', @showSearchBox
     $('body').on 'click', '.hide-search', @hideSearchBox
     $('body').on 'click', '.show-notify-modal', @showNotifyModal
     $('body').on 'click touchstart', '.modal-container, .modal-container .close', @hideNotifyModal
     $('body').on 'ajax:success', '.notifications-form', @showSubmitConfirmation
-    $('body').on 'click', '.disabled', @disableLink
-    $('body').on 'click', 'a', @freeze
+    
     document.ontouchmove = @checkScrollable
     @scrollable = true
-    if $(window).width() > 768
+    
+    $('body').on 'click', '.header-mobile-menu:not(.close)', @openMobileDropdown
+    $('body').on 'click', '.header-mobile-menu.close', @closeMobileDropdown
+    
+    if $(window).width() > 768 #action icons are the series, livestreams, student video, and notify button indicators
       $('body').on 'mouseenter', '.action-icon:not(.expanded)', @showActionIconText
       $('body').on 'mouseleave', '.action-icon:not(.expanded)', @hideActionIconText
       
-    $('body').on 'click', '.header-mobile-menu:not(.close)', @openMobileDropdown
-    $('body').on 'click', '.header-mobile-menu.close', @closeMobileDropdown
-
-  freeze: ->
-    throw new Error("Frozen");
-
   checkScrollable: (e) ->
     unless GlobalUI.scrollable
       e.preventDefault()
@@ -48,7 +47,6 @@ GlobalUI =
       $('.search-input').css('position', 'initial').css('opacity', 1)
     
   hideSearchBox: ->
-    # $('header *').attr('style', '')
     if $(window).width() < 768
       $('.search-input').attr('style', '')
       $('.mobile-logo, .header-mobile-menu:not(.close), .logo').attr('style', '')

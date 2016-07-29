@@ -235,6 +235,13 @@
     @include justify-content(space-between);
     z-index: 2;
     position: relative;
+    select {
+      position: absolute;
+      opacity: 0;
+      right: 0;
+      height: 0;
+      width: 0;
+    }
     div {
       margin-left: 25px;
       font-size: 14px;

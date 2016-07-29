@@ -17,8 +17,4 @@ class NotificationsController < ApplicationController
     UserMailer.notification_email(Livestream.first, params[:email]).deliver
     render nothing: true
   end
-
-private
-
-
 end

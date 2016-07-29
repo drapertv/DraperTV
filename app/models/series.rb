@@ -6,19 +6,12 @@ class Series < ActiveRecord::Base
   delegate :vthumbnail_url, to: :first_video
 
   after_create :check_if_ready_to_notify
+  after_create :populate_video_speaker_fields
+  after_save :populate_video_speaker_fields
   after_update :check_if_ready_to_notify
   include Extensions::Publishable
 
-
-
-  def self.shown_on_front_page
-    order('created_at desc').limit(5)
-    limit(5)
-  end
-
-
-
-#Method to update the Array field of the playlist
+  #Method to update the Array field of the playlist
   def video_ids_raw
     self.video_ids.join("\n,") unless self.video_ids.nil?
   end
@@ -142,6 +135,14 @@ class Series < ActiveRecord::Base
         UserMailer.notification_email(self, email).deliver
       end
       update_attributes notified: true
+    end
+  end
+
+  def populate_video_speaker_fields
+    unless videos.empty?
+      videos.each do |video|
+        video.update_attributes speaker: speaker_name
+      end
     end
   end
 

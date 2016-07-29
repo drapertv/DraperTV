@@ -28,11 +28,11 @@
         <p>Newest</p >
         <%= image_tag "dropdown-triangle.svg", :class => 'open-dropdown' %>
         <ul class="sort-dropdown">
-          <li class="current" data-sort-criteria="date" data-sort-direction="asc">Newest</li>
-          <li data-sort-criteria="date" data-sort-direction='desc'>Oldest</li>
+          <li class="current" data-sort-criteria="created_at" data-sort-direction="desc">Newest</li>
+          <li data-sort-criteria="created_at" data-sort-direction='asc'>Oldest</li>
           <li data-sort-criteria="speaker" data-sort-direction='asc'>Speaker A-Z</li>
           <li data-sort-criteria="speaker" data-sort-direction='desc'>Speaker Z-A</li>
-          <li data-sort-criteria="views" data-sort-direction='desc'>Most Viewed</li>
+          <li data-sort-criteria="view_count" data-sort-direction='desc'>Most Viewed</li>
         </ul>
       </div>
       <div class="industry-sort sorter">

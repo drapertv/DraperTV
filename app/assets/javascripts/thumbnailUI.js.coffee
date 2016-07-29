@@ -7,13 +7,12 @@ ThumbnailUI =
 			$('body').on 'mouseenter', '.media-thumbnail.livestream', @animateTitle
 
 		document.addEventListener "page:restore", @resetThumbnail
-
 		$(window).on 'touchstart', @closeThumbnail
 
 		$(window).on 'resize', @adjustLastCourseThumbnail
-		@markMultilineTitles()
 		@adjustLastCourseThumbnail()
-
+		@markMultilineTitles() #sets up for thumbnail title animations
+		
 	undoAnimation: ->
 		thumbnail = $(@)
 		delay = 20
@@ -25,7 +24,6 @@ ThumbnailUI =
 			thumbnail.parent().addClass 'disabled'
 			ThumbnailUI.unanimate thumbnail
 		, delay
-
 
 	animateAfterDelay: (e) ->
 		ThumbnailUI.activeThumbnail = $(@)
@@ -85,7 +83,7 @@ ThumbnailUI =
 			$('.course-thumbnail').removeClass('see-more')
 			$('.link-changed').attr('href', $('.link-changed').attr('link-buffer'))
 
-			# mark last visible thumbnail
+			# mark last visible thumbnail with see-more class
 			lastCourseThumbnail = $('.course-thumbnail:visible').last()
 			lastCourseThumbnail.addClass('see-more')
 
@@ -172,9 +170,7 @@ ThumbnailUI =
 
 	closeThumbnail: (e) ->
 		ThumbnailUI.undoAnimation ThumbnailUI.activeThumbnail
-
-
-
+		
 ready = ->
 	ThumbnailUI.init()
 # $(document).ready ready

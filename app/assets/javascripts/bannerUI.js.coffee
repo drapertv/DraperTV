@@ -1,24 +1,18 @@
 BannerUI =
   init: ->
     $('body').on 'click', '.dot', @moveSlide
-    # $('body').on 'afterChange', @adjustDotShading
     $('body').on 'beforeChange', '.featured-items', @adjustDotShading
     BannerUI.slicked = false
     @initCarousel()
     
-
   initCarousel: ->
     unless BannerUI.slicked
-      console.log "slicked"
-      console.log BannerUI.slicked
       $('.featured-items').slick
         speed: 700,
         autoplay: true,
         autoplaySpeed: 20000,
         easing: 'swing'
-
       BannerUI.slicked = true
-
 
   moveSlide: ->
     slideNumber = $(@).attr('data-go-to')
@@ -29,37 +23,15 @@ BannerUI =
     $('.featured-info').hide()
     $($('.featured-info')[slideNumber]).show().addClass('animated fadeIn')
 
-
-
-    # if $($('.dot')[0]).hasClass('active')
-    #   $('.dot').removeClass('left').removeClass('right')
-    #   $($('.dot')[1]).addClass('right')
-    #   $($('.dot')[2]).addClass('right')
-    # else if $($('.dot')[1]).hasClass('active')
-    #   $('.dot').removeClass('left').removeClass('right')
-    #   $($('.dot')[0]).addClass('left')
-    #   $($('.dot')[2]).addClass('right')
-    # else
-    #   $('.dot').removeClass('left').removeClass('right')
-    #   $($('.dot')[0]).addClass('left')
-    #   $($('.dot')[1]).addClass('left')
-
   adjustDotShading: (event, slick, currentSlide, nextSlide) ->
     $('.dot').removeClass('active')
-    $(".dot[data-go-to=#{nextSlide}]").addClass('active')
-
-    if $($('.dot')[0]).hasClass('active')
-      $('.dot').removeClass('left').removeClass('right')
-      $($('.dot')[1]).addClass('right')
-      $($('.dot')[2]).addClass('right')
-    else if $($('.dot')[1]).hasClass('active')
-      $('.dot').removeClass('left').removeClass('right')
-      $($('.dot')[0]).addClass('left')
-      $($('.dot')[2]).addClass('right')
-    else
-      $('.dot').removeClass('left').removeClass('right')
-      $($('.dot')[0]).addClass('left')
-      $($('.dot')[1]).addClass('left')
+    currentDot = $(".dot[data-go-to=#{nextSlide}]")
+    currentDot.addClass('active')
+    
+    currentDot.prevAll().each ->
+      $(@).removeClass('left').removeClass('right').addClass('left')
+    currentDot.nextAll().each ->
+      $(@).removeClass('left').removeClass('right').addClass('right')
 
     $('.featured-info').hide()
     $($('.featured-info')[nextSlide]).show().addClass('animated fadeIn')

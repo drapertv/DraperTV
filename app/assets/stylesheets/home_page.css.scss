@@ -795,7 +795,8 @@
 		.featured-items {
 			width: 100vw;
 			height: calc(100vw / 16 * 9);
-			position: static;
+			position: relative;
+			z-index: 2;
 			margin: 0;
 			.featured-item {
 				height: calc(100vw / 16 * 9);
@@ -919,7 +920,6 @@
 			height: 22px;
 			background: rgba(36,180,148, 0.5);
 			border-radius: 50px;
-
 			p {
 				display: block;
 				position: static;
@@ -935,6 +935,12 @@
 			background: rgba(36,109,180, 0.5);
 			p {
 				color: $blue;
+			}
+		}
+		.action-icon.livestream {
+			background: rgba(225, 71, 76, 0.5);
+			p {
+				color: $red;
 			}
 		}
 	}

@@ -1,3 +1,5 @@
+#deprecated
+
 class Ability
 	include CanCan::Ability
 

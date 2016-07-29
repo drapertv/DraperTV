@@ -1,7 +1,4 @@
 class VideosController < ApplicationController
-  # load_and_authorize_resource
-
-  before_filter :set_categories_and_colors
 
   def show
     @video = Video.friendly.find(params[:id])
@@ -23,7 +20,7 @@ class VideosController < ApplicationController
     end
   end
 
-  def update_view_counts
+  def update_view_counts # called every 24 hours by 3rd party service
     Video.update_all_view_counts
     render json: {updated: true}
   end
@@ -33,9 +30,4 @@ class VideosController < ApplicationController
   def video_params
     params.require(:video).permit(:view_count, :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name,:category_list, :demand_array)
   end
-
-    def set_categories_and_colors
-      @categories = ["Attitude", "Starting Up", "Product", "Sales", "Marketing", "Fundraising", "Hiring", "Biz & Finance", "Legal", "Auxiliary"]
-      @colors = ["blue", "cyan", "teal", "green", "yellow", "orange", "red", "purple", "black", "grey"]
-    end
 end
