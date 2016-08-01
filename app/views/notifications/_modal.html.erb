@@ -7,7 +7,22 @@
       <%= image_tag "close.png", :class => "close" %>
     </div>
     <div class="modal-content">
+    <div class="icon--order-success svg">
+      <svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px">
+        <g fill="none" stroke="#24B494" stroke-width="2">
+          <circle cx="36" cy="36" r="35" style="stroke-dasharray:240px, 240px; stroke-dashoffset: 480px;"></circle>
+          <path d="M17.417,37.778l9.93,9.909l25.444-25.393" style="stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"></path>
+        </g>
+      </svg>
+    </div>
       <p class="hidden submit-confirmation">Thanks! A confirmation email has been sent to your inbox.</p>
+      
+
+    
+
+
+
+
       <p class="hide-on-submit">Subscribe to receive email notifications whenever new videos are available or reminders for Livestream Events only.</p>
       <%= form_tag "/notifications", :class => "modal-form hide-on-submit notifications-form", remote: true do %>
         <div class="email-selection">

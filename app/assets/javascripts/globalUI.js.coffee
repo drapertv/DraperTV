@@ -73,11 +73,13 @@ GlobalUI =
   hideNotifyModal: (e) ->
     if $(e.target).hasClass('close') || $(e.target).parents('.modal').length < 1
       $('.modal-container').hide() 
+      $('.modal-container *').attr('style', '')
       $('html').attr('style', '')
       GlobalUI.scrollable = true
 
   showSubmitConfirmation: (event, data) ->
     $('.submit-confirmation').show()
+    $('.icon--order-success').css('display', 'flex');
     $('.hide-on-submit').css('position', 'absolute').css('opacity', '0')
     $('.notifications-form')[1].reset()
 
