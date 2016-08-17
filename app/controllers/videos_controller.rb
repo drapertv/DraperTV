@@ -4,7 +4,6 @@ class VideosController < ApplicationController
     @video = Video.friendly.find(params[:id])
     @series = @video.series
     @videos = @series.videos.order(:id)
-    @featured = @video.suggested(@series.category_list)[0..5]
     @media = {title: "Similar Videos", content: Series.popular}
 
     if @video.url
