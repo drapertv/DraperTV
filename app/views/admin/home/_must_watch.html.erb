@@ -1,0 +1,29 @@
+<h1>Must Watch</h1>
+
+<div class="admin-info-text">
+	<p>Enter slug to have item placed in a must watch slot.</p>
+	<p>5 videos are automatically generated from YouTube view
+counts. Entering slugs in the provided slots will override and replace the automatically generated result for that particular slot (in order).</p>
+</div>
+
+<div class="admin-table">
+	<%= form_tag '/popular' do %>
+		<% Series.popular_to_edit.each_with_index do |series , i| %>
+			<% if series %>
+				<div class="admin-row">
+					<div>
+						<%= text_field_tag "slug#{i}", series.slug %>
+					</div>
+				</div>
+			<% else %>
+				<div class="admin-row">
+					<div>
+						<%= text_field_tag "slug#{i}", nil %>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+
+		<%= submit_tag "Update All" %>
+	<% end %>
+</div>

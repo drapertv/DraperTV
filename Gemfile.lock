@@ -46,8 +46,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (3.5.0)
-      activerecord (>= 3.2, < 5)
     acts_as_singleton (0.0.8)
       activerecord (>= 3.1.0)
     acts_as_votable (0.10.0)
@@ -361,6 +359,8 @@ GEM
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     populator (1.0.0)
+    protected_attributes (1.1.3)
+      activemodel (>= 4.0.1, < 5.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -530,7 +530,6 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
-  acts-as-taggable-on (~> 3.4)
   acts_as_singleton
   acts_as_votable
   ancestry
@@ -576,6 +575,7 @@ DEPENDENCIES
   passenger
   pg
   populator
+  protected_attributes
   pry
   quiet_assets
   rails (= 4.1.6)

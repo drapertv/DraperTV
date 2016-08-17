@@ -1,15 +1,17 @@
 class Series < ActiveRecord::Base
   acts_as_votable
-  acts_as_taggable_on :category
 	delegate :profilepic_url, :name, to: :speaker
-  delegate :vthumbnail, to: :first_video
-  delegate :vthumbnail_url, to: :first_video
+
 
   after_create :check_if_ready_to_notify
   after_create :populate_video_speaker_fields
   after_save :populate_video_speaker_fields
   after_update :check_if_ready_to_notify
   include Extensions::Publishable
+  has_many :categorizations
+  has_many :categories, through: :categorizations
+
+  mount_uploader :vthumbnail, VthumbnailUploader
 
   #Method to update the Array field of the playlist
   def video_ids_raw
@@ -37,21 +39,13 @@ class Series < ActiveRecord::Base
   	Speaker.find(author_id)
   end
 
-  def speaker_name 
-    speaker.name
-  end
-
   def speaker_title
-    speaker.title
+    speaker_position
   end
 
   def thumbnail_title 
     title
   end
-
-  def description
-    first_video.description
-  end 
 
   def site_classification
     "Speaker Series"
@@ -79,6 +73,27 @@ class Series < ActiveRecord::Base
     front_page_media
   end
 
+  def self.featured_to_edit #for editing in the admin panel
+    manually_selected_to_front_page = Series.order(:id).where(show_on_front_page: true).to_a + Livestream.where(show_on_front_page: true).to_a 
+    manually_selected_to_front_page += [nil, nil, nil]
+    manually_selected_to_front_page[0..2]
+  end
+
+  def self.update_featured slugs
+    Series.update_all show_on_front_page: false
+    Livestream.update_all show_on_front_page: false
+    slugs.each do |slug|
+      media = Series.where slug: slug
+      unless media.empty?
+        media.first.update_attributes show_on_front_page: true
+      end
+      media = Livestream.where slug: slug
+      unless media.empty?
+        media.first.update_attributes show_on_front_page: true
+      end
+    end
+  end
+
   def featured_top_info
     "#{name}, #{speaker_title}"
   end
@@ -92,7 +107,23 @@ class Series < ActiveRecord::Base
   end
 
   def self.popular
-    order('view_count desc').limit(5)
+    (Series.where(popular: true) + order('view_count desc').limit(5))[0..4]
+  end
+
+  def self.popular_to_edit
+    manually_selected_to_front_page = Series.order(:id).where(popular: true).to_a
+    manually_selected_to_front_page += [nil, nil, nil, nil, nil]
+    manually_selected_to_front_page[0..4]
+  end
+
+  def self.update_popular slugs
+    Series.update_all popular: false
+    slugs.each do |slug|
+      media = Series.where slug: slug
+      unless media.empty?
+        media.first.update_attributes popular: true
+      end
+    end
   end
 
   def self.get_view_counts_from_videos
@@ -123,6 +154,17 @@ class Series < ActiveRecord::Base
       slug = series.speaker_name.downcase.gsub(/\W+/, '').gsub(" ", "-")
       series.update_attributes slug: slug
     end
+  end
+
+  ransacker :by_categorization, formatter: proc{ |v|
+    Category.find_by_name(v).series.pluck :id 
+    nil if !(Category.find_by_name(v).series.pluck :id)
+  } do |parent|
+    parent.table[:id]
+  end
+
+  def category
+    categories.first ? categories.first.name : "No Category"
   end
 
 

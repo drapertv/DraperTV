@@ -1,6 +1,7 @@
 ActiveAdmin.register AdminUser do
   permit_params :email, :password, :password_confirmation
-
+  menu false
+  
   index do
     selectable_column
     id_column
@@ -23,6 +24,28 @@ ActiveAdmin.register AdminUser do
       f.input :password_confirmation
     end
     f.actions
+  end
+
+  controller do 
+    def update
+      if params[:admin_user][:password] == ""
+        params[:admin_user].delete :password
+      end
+      admin_user = AdminUser.find params[:id]
+      admin_user.update_attributes params[:admin_user]
+      redirect_to '/admin/dashboard'
+    end
+
+    def destroy
+      admin_user = AdminUser.find params[:id]
+      admin_user.destroy
+      redirect_to '/admin/dashboard'
+    end
+
+    def create
+      AdminUser.create params[:admin_user]
+      redirect_to '/admin/dashboard'
+    end
   end
 
 end

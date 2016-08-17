@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :student_videos
   resources :searches
   resources :series
+  get '/series/:id/videos_form', to: 'series#videos_form'
+
+  post '/featured', to: 'series#update_featured'
+  post '/popular', to: 'series#update_popular'
   get '/speakers', to: 'series#index'
   resources :notifications
 

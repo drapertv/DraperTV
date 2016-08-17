@@ -1,6 +1,6 @@
 ActiveAdmin.register Video do
-
-  permit_params :wistia_id, :video_type, :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name,:category_list, :video_id, :length, :slug, :public
+  menu false
+  permit_params :wistia_id, :video_type, :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name, :video_id, :length, :slug, :public
 
   index do
     column :id
@@ -8,7 +8,6 @@ ActiveAdmin.register Video do
     column :description
     column :author_id
     column :url
-    column :category_list
     column :video_type
 
     actions
@@ -19,7 +18,6 @@ ActiveAdmin.register Video do
      f.inputs :title
      f.inputs :url
      f.inputs :author_id
-     f.inputs :category_list
      f.inputs :value
      f.inputs :video_id
      f.inputs :vthumbnail

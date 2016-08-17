@@ -14,7 +14,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'sanitize'
 gem 'sidekiq'
-
+gem 'protected_attributes'
 #Servers
 gem "passenger"
 gem 'spring', '~> 1.3.6',        group: :development
@@ -36,7 +36,6 @@ gem 'pry'
 
 
 gem 'dotenv-rails', :groups => [:development, :test]
-gem 'acts-as-taggable-on', '~> 3.4'
 gem 'ancestry'
 gem 'acts_as_singleton'
 

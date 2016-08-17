@@ -1,0 +1,45 @@
+<h1> About - Team</h1>
+<div class="admin-table">
+	<div class="admin-row">
+		<div>Thumbnail</div>
+		<div>Name</div>
+		<div>Position</div>
+		<div>Email</div>
+		<div>LinkedIn</div>
+		<div class="short">Current</div>
+		<div>Actions</div>
+	</div>
+	<% TeamMember.all.each do |member| %>
+		<%= form_tag admin_team_member_path(member), method: "patch" do %>
+			<div class="admin-row">
+				<div>
+					<%= image_tag member.profilepic_url %>
+				</div>
+				<div>
+					<%= text_field_tag :name, member.name, name: "team_member[name]" %>
+				</div>
+				<div>
+					<%= text_field_tag :position, member.position, name: "team_member[position]" %>
+				</div>
+				<div>
+					<%= text_field_tag :email, member.email, name: "team_member[email]" %>
+				</div>
+				<div>
+					<%= text_field_tag :linkedin, member.linkedin, name: "team_member[linkedin]" %>
+				</div>
+				<div class="short">
+					<%= check_box_tag "team_member[current]", member.current, name: "team_member[current]" %>
+				</div>
+				<div>
+					<a class="delete_link member_link" data-confirm="Are you sure you want to delete this?" data-method="delete" href="<%= admin_team_member_path(member) %>" rel="nofollow">Delete</a>
+					<%= submit_tag "Update", :class => "member_link" %>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+	<div>
+		<div>
+			<a href="/admin/team_members/new">Create New Team Member</a>
+		</div>
+	</div>
+</div>

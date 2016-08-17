@@ -1,10 +1,63 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
+@import 'global/variables';
+@import 'global/mixins';
 
+.admin_home h1 {
+	margin-top: 10px;
+}
 
-.welcome-back {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 40px;
+.admin-table input[type=text] {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.admin-table input.member_link {
+	width: initial;
+}
+
+.admin-table {
+	.admin-row form, .admin-row {
+		@include flexbox;
+		@include align-items(center);
+	}
+	.admin-row div {
+		width: 240px;
+		margin-right: 5px;
+	}
+	.admin-row .short {
+		width: 60px;
+	}
+}
+
+form fieldset ol > li.custom, form fieldset ol > li.select {
+    width: 74%;
+    margin: 0;
+    padding: 0 0 0 20%;
+}
+
+.admin-table > div, .admin-row {
+	margin: 5px 0px;
+}
+
+.video-form {
+	margin-top: 10px;
+	border-bottom: 1px solid black;
+	.video-field {
+		margin: 5px 0px;
+	}
+	.delete-button {
+		color: $red;
+		cursor: pointer;
+	}
+}
+
+.add-episode {
+	cursor: pointer;
+	font-size: 24px;
+	margin: 5px 0px;
+}
+
+.video-form.hidden {
+	display: none;
 }

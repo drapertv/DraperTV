@@ -1,4 +1,5 @@
 ActiveAdmin.register Speaker do
+menu false
 permit_params :name, :email, :profilepic, :bio,:title
 
 index do

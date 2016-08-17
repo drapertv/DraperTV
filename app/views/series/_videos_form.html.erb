@@ -1,0 +1,33 @@
+<% @series.videos.sort_by(&:id).each do |video| %>
+	<div class="video-form">
+		
+		<div>Episode Title</div>
+		<%= text_field_tag "video-#{video.id}[title]", video.title, :class => "video-field" %>
+		<div>Episode Slug</div>
+		<%= text_field_tag "video-#{video.id}[slug]", video.slug, :class => "video-field" %>
+		<div>Episode Length</div>
+		<%= text_field_tag "video-#{video.id}[length]", video.length, :class => "video-field" %>
+		<div>Episode Youtube URL</div>
+		<%= text_field_tag "video-#{video.id}[url]", video.url, :class => "video-field" %>
+		<div class="delete-button">Delete</div>
+	</div>
+<% end %>
+	
+	
+<% (1..9).each do |n| %>
+	<div class="video-form <%= 'hidden' if n > 1 %>">
+		<div>Episode Title</div>
+		<%= text_field_tag "video-new-#{n}[title]", nil, :class => "video-field" %>
+		<div>Episode Slug</div>
+		<%= text_field_tag "video-new-#{n}[slug]", nil, :class => "video-field" %>
+		<div>Episode Length</div>
+		<%= text_field_tag "video-new-#{n}[length]", nil, :class => "video-field" %>
+		<div>Episode Youtube URL</div>
+		<%= text_field_tag "video-new-#{n}[url]", nil, :class => "video-field" %>
+		<div class="delete-button">Delete</div>
+	</div>
+<% end %>
+
+<div class="add-episode">
+	Add Episode
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726232559) do
+ActiveRecord::Schema.define(version: 20160817041807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(version: 20160726232559) do
     t.string   "secret"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "categorizations", force: true do |t|
+    t.integer "series_id"
+    t.integer "category_id"
+    t.integer "livestream_id"
+    t.integer "video_id"
   end
 
   create_table "challenges", force: true do |t|
@@ -140,6 +151,8 @@ ActiveRecord::Schema.define(version: 20160726232559) do
     t.boolean  "ready_to_notify",    default: false
     t.boolean  "notified",           default: false
     t.boolean  "show_on_front_page"
+    t.string   "speaker_name"
+    t.string   "speaker_position"
   end
 
   add_index "livestreams", ["slug"], name: "index_livestreams_on_slug", unique: true, using: :btree
@@ -193,6 +206,10 @@ ActiveRecord::Schema.define(version: 20160726232559) do
     t.boolean  "notified",           default: false
     t.string   "slug"
     t.integer  "view_count"
+    t.string   "speaker_name"
+    t.string   "speaker_position"
+    t.string   "vthumbnail"
+    t.string   "description"
   end
 
   add_index "series", ["slug"], name: "index_series_on_slug", using: :btree
@@ -230,6 +247,15 @@ ActiveRecord::Schema.define(version: 20160726232559) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "team_members", force: true do |t|
+    t.string  "name"
+    t.string  "email"
+    t.string  "position"
+    t.string  "linkedin"
+    t.boolean "current"
+    t.string  "profilepic"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: ""
@@ -311,6 +337,7 @@ ActiveRecord::Schema.define(version: 20160726232559) do
     t.boolean  "public",       default: false
     t.string   "lexica_id"
     t.string   "video_type"
+    t.string   "student_name"
   end
 
   add_index "videos", ["slug"], name: "index_videos_on_slug", using: :btree

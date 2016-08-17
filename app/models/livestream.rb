@@ -2,8 +2,10 @@ class Livestream < ActiveRecord::Base
   has_many :comments, :as => :commentable
   extend FriendlyId
   friendly_id :title, use: :slugged
+
+  has_many :categorizations
+  has_many :categories, through: :categorizations
   
-  acts_as_taggable_on :category
   
   after_create :expire_cache
   after_create :limit_slug_to_four_words
@@ -22,6 +24,14 @@ class Livestream < ActiveRecord::Base
 
   def self.shown_on_front_page
     all.limit(5)
+  end
+
+  def category
+    if !categories.empty?
+      categories.first.name
+    else
+      "No Category"
+    end
   end
 
   def featured_top_info
@@ -63,6 +73,7 @@ class Livestream < ActiveRecord::Base
 
 
   def formatted_stream_date
+    return "Unknown" if !stream_date
   	pst_stream_date = stream_date - 8.hours
   	pst_current_time = Time.now.utc - 8.hours
   	# if stream date is/was today
@@ -90,6 +101,11 @@ class Livestream < ActiveRecord::Base
         pst_stream_date.strftime("#{days_ago.floor} day ago")
       end
   	end
+  end
+
+  def admin_stream_date
+    return "Unknown" if !stream_date
+    (stream_date - 8.hours).strftime("%B %-d, at %l:%M%P PST")
   end
 
   def self.next_livestream_info
@@ -138,17 +154,18 @@ class Livestream < ActiveRecord::Base
     title
   end
 
-  def speaker_title
-    title
-  end
-
   def thumbnail_title
     title.split("-", 2)[-1]
   end
 
-  def speaker_name 
-    title.split("- ")[0..-2].join("-").strip
+  def self.seed_speaker_name_and_position
+    all.each do |l|
+      speaker_name = l.title.split(" - ")[0]
+      speaker_position = l.title.split(" - ")[-1]
+      l.update_attributes speaker_name: speaker_name, speaker_position: speaker_position
+    end
   end
+
 
   def site_classification
     "Livestream Event"
@@ -193,6 +210,14 @@ class Livestream < ActiveRecord::Base
 
   def industries
     (1..10).map {|n| "industry-#{n}"}.sample(3).join(" ")
+  end
+
+  ransacker :by_categorization, formatter: proc{ |v|
+
+    Category.find_by_name(v).livestreams.pluck :id
+    nil if !(Category.find_by_name(v).livestreams.pluck :id)
+  } do |parent|
+    parent.table[:id]
   end
 
 

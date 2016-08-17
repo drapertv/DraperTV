@@ -1,0 +1,30 @@
+<h1> Featured</h1>
+
+<div class="admin-info-text">
+	<p>Enter slug to have item featured.</p>
+	<p>The Featured section is automatically filled with 3 items
+(the latest Speaker, Livestream, and Student videos, respectively). Entering slugs in the provided slots will place manually chosen items ahead of the automatically featured items in the carousel.</p>
+</div>
+
+<div class="admin-table">
+	<%= form_tag '/featured' do %>
+		<% Series.featured_to_edit.each_with_index do |series , i| %>
+			<% if series %>
+				<div class="admin-row">
+					<div>
+						<%= text_field_tag "slug#{i}", series.slug %>
+					</div>
+				</div>
+			<% else %>
+				<div class="admin-row">
+					<div>
+						<%= text_field_tag "slug#{i}", nil %>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+
+		<%= submit_tag "Update All" %>
+	<% end %>
+</div>
+

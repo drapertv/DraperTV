@@ -16,6 +16,11 @@ class SeriesController < InheritedResources::Base
     end
   end
 
+  def videos_form
+    @series = Series.find_by_id params[:id]
+    render partial: 'videos_form'
+  end
+
   def home_page
       @featured = Series.featured
       popular = Series.popular
@@ -33,6 +38,16 @@ class SeriesController < InheritedResources::Base
     slug = params[:series_slug]
     series = Series.find_by_slug slug
     redirect_to video_path series.first_video
+  end
+
+  def update_featured
+    Series.update_featured [params[:slug0], params[:slug1], params[:slug2]]
+    redirect_to '/admin/home'
+  end
+
+  def update_popular
+    Series.update_popular [params[:slug0], params[:slug1], params[:slug2], params[:slug3], params[:slug4]]
+    redirect_to '/admin/home'
   end
   
   private

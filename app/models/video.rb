@@ -1,15 +1,17 @@
 class Video < ActiveRecord::Base
-  acts_as_votable
-  acts_as_taggable # Alias for acts_as_taggable_on :tags
-  acts_as_taggable_on :category, :vfavs, :sfavs
 	has_many :comments, :as => :commentable
+  has_many :categories, through: :categorizations
+  has_many :categorizations
 
   mount_uploader :vthumbnail, VthumbnailUploader
+  # delegate :vthumbnail_url, to: :series
+  # delegate :vthumbnail, to: :series
+
   extend FriendlyId
   
   friendly_id :title, use: :slugged
 
-  delegate :speaker, :profilepic_url, :name, :challenge, :speaker_title, :speaker_name, :thumbnail_title, to: :series
+  delegate :speaker, :profilepic_url, :name, :challenge, :speaker_title, :speaker_name, :thumbnail_title, :description, to: :series
 
   after_update :expire_cache
   after_create :expire_cache
@@ -26,10 +28,6 @@ class Video < ActiveRecord::Base
 
 	def series
 		Series.where(author_id: author_id).first || Series.first
-	end
-
-	def categories
-		category_list.join " "
 	end
 
 	def comment_form_path
@@ -67,6 +65,23 @@ class Video < ActiveRecord::Base
     end
     Series.get_view_counts_from_videos
   end
+
+  def category
+    if !video_type
+      series.category
+    else
+      categories.first ? categories.first.name : "No Category"
+    end
+  end
+
+   ransacker :by_categorization, formatter: proc{ |v|
+
+    Category.find_by_name(v).videos.pluck :id
+    nil if !(Category.find_by_name(v).videos.pluck :id)
+  } do |parent|
+    parent.table[:id]
+  end
+
 
 
 	private
