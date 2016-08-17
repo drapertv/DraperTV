@@ -4,7 +4,11 @@ module PlaylistsHelper
 		if content.class == Video
       video_path content
     elsif content.class == Series
-      video_path content.first_video
+      if content.first_video
+        video_path content.first_video
+      else
+        video_path Video.first
+      end
     else
       livestream_path content
     end
