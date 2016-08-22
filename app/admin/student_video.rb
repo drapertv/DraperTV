@@ -8,6 +8,7 @@ ActiveAdmin.register Video, :as => 'Students' do
 
 
   index do
+    selectable_column
     column :title
     column :student_name
     column :category
@@ -25,6 +26,7 @@ ActiveAdmin.register Video, :as => 'Students' do
     f.inputs :student_name
     f.inputs :description
     f.inputs :slug
+    f.inputs :marketing_slug
     f.inputs :wistia_id
     f.actions
   end
@@ -61,7 +63,7 @@ ActiveAdmin.register Video, :as => 'Students' do
     end
 
     def video_params
-      params.require(:video).permit(:student_name, :wistia_id, :video_type, :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name, :video_id, :length, :slug, :public)
+      params.require(:video).permit(:marketing_slug, :student_name, :wistia_id, :video_type, :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name, :video_id, :length, :slug, :public)
     end
   end
  

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817041807) do
+ActiveRecord::Schema.define(version: 20160822000038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160817041807) do
     t.boolean  "show_on_front_page"
     t.string   "speaker_name"
     t.string   "speaker_position"
+    t.string   "marketing_slug"
   end
 
   add_index "livestreams", ["slug"], name: "index_livestreams_on_slug", unique: true, using: :btree
@@ -210,6 +211,7 @@ ActiveRecord::Schema.define(version: 20160817041807) do
     t.string   "speaker_position"
     t.string   "vthumbnail"
     t.string   "description"
+    t.string   "marketing_slug"
   end
 
   add_index "series", ["slug"], name: "index_series_on_slug", using: :btree
@@ -329,15 +331,16 @@ ActiveRecord::Schema.define(version: 20160817041807) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "video_id"
-    t.integer  "demand_array",                 array: true
-    t.integer  "view_count",   default: 0
+    t.integer  "demand_array",                   array: true
+    t.integer  "view_count",     default: 0
     t.string   "length"
     t.string   "wistia_id"
     t.string   "slug"
-    t.boolean  "public",       default: false
+    t.boolean  "public",         default: false
     t.string   "lexica_id"
     t.string   "video_type"
     t.string   "student_name"
+    t.string   "marketing_slug"
   end
 
   add_index "videos", ["slug"], name: "index_videos_on_slug", using: :btree

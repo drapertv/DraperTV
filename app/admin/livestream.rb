@@ -7,6 +7,7 @@ ActiveAdmin.register Livestream do
   filter :by_categorization_in, label: "Categorization", as: :select, collection: Category.all.pluck(:name)
 
   index do
+    selectable_column
     column :id
     column :speaker_name
     column :speaker_position
@@ -27,6 +28,7 @@ ActiveAdmin.register Livestream do
      f.inputs :stream_date
      f.inputs :description
      f.inputs :slug
+     f.inputs :marketing_slug
      f.inputs :src_url
      f.inputs :ready_to_notify
    end
@@ -59,7 +61,7 @@ ActiveAdmin.register Livestream do
     end
 
     def livestream_params
-      params.require(:livestream).permit(:title, :description, :src_url, :image_url, :stream_date, :slug, :popular, :vthumbnail, :public, :ready_to_notify, :speaker_name, :speaker_position)
+      params.require(:livestream).permit(:marketing_slug, :title, :description, :src_url, :image_url, :stream_date, :slug, :popular, :vthumbnail, :public, :ready_to_notify, :speaker_name, :speaker_position)
     end
   end
 

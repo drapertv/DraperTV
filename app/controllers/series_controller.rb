@@ -34,12 +34,6 @@ class SeriesController < InheritedResources::Base
       @og_image = @featured.first.vthumbnail_url
   end
 
-  def director
-    slug = params[:series_slug]
-    series = Series.find_by_slug slug
-    redirect_to video_path series.first_video
-  end
-
   def update_featured
     Series.update_featured [params[:slug0], params[:slug1], params[:slug2]]
     redirect_to '/admin/home'

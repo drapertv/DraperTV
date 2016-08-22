@@ -1,9 +1,7 @@
-marketing slug
 cropping tool
-team member view
 
-broken things
-about team members
+
+
 	
 	need data transfers
 video thumbnails

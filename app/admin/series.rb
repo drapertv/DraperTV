@@ -10,6 +10,7 @@ ActiveAdmin.register Series do
 
 
   index do
+    selectable_column
     column :title
     column :speaker_name
     column :speaker_position
@@ -32,6 +33,7 @@ ActiveAdmin.register Series do
     f.inputs :speaker_position
     f.inputs :description
     f.inputs :slug
+    f.inputs :marketing_slug
 
     div class: "episode-form" do 
       h1 "Episodes"
@@ -72,7 +74,7 @@ ActiveAdmin.register Series do
     end
 
     def series_params
-      params.require(:series).permit(:title, :slug, :description, :public, :ready_to_notify, :speaker_name, :speaker_position)
+      params.require(:series).permit(:vthumbnail, :marketing_slug, :title, :slug, :description, :public, :ready_to_notify, :speaker_name, :speaker_position)
     end
 
   end

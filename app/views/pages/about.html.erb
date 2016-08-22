@@ -59,47 +59,25 @@
     <div class="about-section">
       <h3>THE TEAM</h3>
       <div class="team-members">
-        <div class="team-member">
-          <%=  image_tag "hubert.png", :class => "member-img" %>
-          <%= link_to "https://www.linkedin.com/in/hubertka", target: '_blank' do %>
-            <p class="member-name">Hubert Ka</p>
-          <% end %>
-          <p class="member-position">Product Manager</p>
-          <%= mail_to "hubert@draperuniversity.com" do %>
-            <p class="member-email">hubert@draperuniversity.com</p>
-          <% end %>
-        </div>
-        <div class="team-member">
-          <%=  image_tag "mitch.png", :class => "member-img" %>
-          <%= link_to "https://www.linkedin.com/in/mitchel-mejia-31127528", target: '_blank' do %>
-            <p class="member-name">Mitchel Mejia</p>
-          <% end %>
-          <p class="member-position">Digital Media Producer</p>
-          <%= mail_to "mitch@draperuniversity.com" do %>
-            <p class="member-email">mitch@draperuniversity.com</p>
-          <% end %>
-        </div>
-        <div class="team-member">
-          <%=  image_tag "andy.png", :class => "member-img" %>
-          <%= link_to "https://www.linkedin.com/in/andy-lee-aa804865", target: '_blank' do %>
-            <p class="member-name">Andy Lee</p>
-          <% end %>
-          <p class="member-position">Developer</p>
-          <%= mail_to "alee@draperuniversity.com" do %>
-            <p class="member-email">alee@draperuniversity.com</p>
-          <% end %>
-        </div>
+        <% TeamMember.where(current: true).each do |member| %>
+          <div class="team-member">
+            <%=  image_tag member.profilepic_url , :class => "member-img" %>
+            <%= link_to member.linkedin, target: '_blank' do %>
+              <p class="member-name"><%= member.name %></p>
+            <% end %>
+            <p class="member-position"><%= member.position %></p>
+            <%= mail_to member.email do %>
+              <p class="member-email"><%= member.email %></p>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <div class="former-staff">
         <p>Former staff members:</p>
-        <%= link_to "https://www.linkedin.com/in/lorenzo-castillo-88098137", target: '_blank' do %>
-          <h3>Lorenzo Castillo</h3>
-        <% end %>
-        <%= link_to "https://www.linkedin.com/in/yadfaeq", target: '_blank' do %>
-          <h3>Yad Faeq</h3>
-        <% end %>
-        <%= link_to "https://www.linkedin.com/in/hsiakenneth", target: '_blank' do %>
-          <h3>Kenneth Hsia</h3>
+        <% TeamMember.where('current is null').each do |member| %>
+          <%= link_to member.linkedin, target: '_blank' do %>
+            <h3><%= member.name %></h3>
+          <% end %>
         <% end %>
       </div>
     </div>

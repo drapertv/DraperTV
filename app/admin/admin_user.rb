@@ -32,7 +32,7 @@ ActiveAdmin.register AdminUser do
         params[:admin_user].delete :password
       end
       admin_user = AdminUser.find params[:id]
-      admin_user.update_attributes params[:admin_user]
+      admin_user.update_attributes params.require[:admin_user].permit(:email, :password, :password_confirmation)
       redirect_to '/admin/dashboard'
     end
 

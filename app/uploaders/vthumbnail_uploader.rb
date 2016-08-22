@@ -18,16 +18,8 @@ class VthumbnailUploader < CarrierWave::Uploader::Base
     "elon-vid.png"
   end
 
-  version :thumb do
-    process :resize_to_fill => [280, 280]
-  end
-
-  version :list do 
-    process :resize_to_fill => [256, 144]
-  end
-
   version :seriesthumb do 
-    process :resize_to_fill => [256, 144]
+    process :resize_to_fill => [512, 288]
   end
 
   def extension_white_list

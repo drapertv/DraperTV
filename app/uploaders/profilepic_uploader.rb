@@ -18,15 +18,9 @@ class ProfilepicUploader < CarrierWave::Uploader::Base
     "tony-photo.png"
   end
 
-  version :seriesthumb do
-    process :resize_to_fill => [100, 135]
-  end
+  process :resize_to_fit => [340, 340]
 
-  version :thumb do
-    process :resize_to_fill => [280, 280]
-  end
 
-  
 
   def extension_white_list
     %w(jpg jpeg gif png)
