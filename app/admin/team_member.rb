@@ -25,7 +25,11 @@ ActiveAdmin.register TeamMember do
   controller do 
     def update
       team_member = TeamMember.find params[:id]
-      team_member.update_attributes params[:team_member]
+      team_member.update_attributes team_member_params
+      redirect_to '/admin/dashboard'
+    end
+
+    def index
       redirect_to '/admin/dashboard'
     end
 
@@ -36,8 +40,12 @@ ActiveAdmin.register TeamMember do
     end
 
     def create
-      TeamMember.create params[:team_member]
+      TeamMember.create team_member_params
       redirect_to '/admin/dashboard'
+    end
+
+    def team_member_params
+      params.require(:team_member).permit(:name, :email, :position, :linkedin, :current, :profilepic)
     end
 
   end

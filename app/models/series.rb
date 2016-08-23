@@ -28,7 +28,12 @@ class Series < ActiveRecord::Base
   end
 
   def videos
-  	Video.where('id in (?)', video_ids)
+  	found_videos = Video.where('id in (?)', video_ids)
+    if found_videos.first.order
+      return found_videos.order(:order)
+    else
+      return found_videos
+    end
   end
 
   def video_count
@@ -162,6 +167,21 @@ class Series < ActiveRecord::Base
   } do |parent|
     parent.table[:id]
   end
+
+  ransacker :by_episode_title, formatter: proc{ |v|
+    ids = Search.search_model_for(Video.all, v, :title).map(&:series).uniq.map(&:id)
+    ids == [] ? nil : ids
+  } do |parent|
+    parent.table[:id]
+  end
+
+  ransacker :by_episode_slug, formatter: proc{ |v|
+    ids = Search.search_model_for(Video.all, v, :slug).map(&:series).uniq.map(&:id)
+    ids == [] ? nil : ids
+  } do |parent|
+    parent.table[:id]
+  end
+
 
   def category
     categories.first ? categories.first.name : "No Category"

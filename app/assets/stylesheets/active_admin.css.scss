@@ -7,6 +7,10 @@
 	margin-top: 10px;
 }
 
+textarea {
+	resize: both;
+}
+
 .admin-table input[type=text] {
 	width: 100%;
 	box-sizing: border-box;
@@ -27,6 +31,10 @@
 	}
 	.admin-row .short {
 		width: 60px;
+	}
+	.admin-row img {
+		height: 40px;
+		width: 40px;
 	}
 }
 

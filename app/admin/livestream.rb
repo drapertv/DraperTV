@@ -14,6 +14,7 @@ ActiveAdmin.register Livestream do
     column :admin_stream_date
     column :category
     column :slug
+    column :marketing_slug
     actions
   end
 

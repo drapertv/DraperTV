@@ -10,17 +10,24 @@ class Search < ActiveRecord::Base
 		videos = Video.all
 		livestreams = Livestream.all
 		terms = terms.downcase
-		results = [:title, :name, :speaker_title, :description].map do |field|
+		results = [:title, :speaker_name, :speaker_position, :description].map do |field|
 			[series, videos, livestreams].map do |models|
 				search_model_for(models, terms, field)
 			end
 		end.uniq.flatten
 	end
 
-	private
+
 
 	def self.search_model_for models, terms, field
-		models.select {|n| n.send(field).downcase =~ /#{Regexp.escape(terms)}/ && n.public}
+		terms.gsub!(/[^0-9a-z ]/i, '')
+		models.select do |n| 
+			if n.send field
+				(n.send(field).downcase =~ /#{Regexp.escape(terms)}/ && n.public) 
+			else
+				nil
+			end
+		end
 	end
 
 end

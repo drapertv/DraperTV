@@ -13,6 +13,7 @@ ActiveAdmin.register Video, :as => 'Students' do
     column :student_name
     column :category
     column :slug
+    column :marketing_slug
     actions
   end
 

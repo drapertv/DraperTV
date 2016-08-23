@@ -17,6 +17,10 @@ ActiveAdmin.register Category do
       redirect_to '/admin/dashboard'
     end
 
+    def index
+      redirect_to '/admin/dashboard'
+    end
+
     def create
       Category.create params[:category]
       redirect_to '/admin/dashboard'

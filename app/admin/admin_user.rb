@@ -36,6 +36,10 @@ ActiveAdmin.register AdminUser do
       redirect_to '/admin/dashboard'
     end
 
+    def index
+      redirect_to '/admin/dashboard'
+    end
+
     def destroy
       admin_user = AdminUser.find params[:id]
       admin_user.destroy

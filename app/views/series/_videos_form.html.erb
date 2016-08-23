@@ -1,4 +1,4 @@
-<% @series.videos.sort_by(&:id).each do |video| %>
+<% @series.videos.each do |video| %>
 	<div class="video-form">
 		
 		<div>Episode Title</div>
@@ -9,6 +9,8 @@
 		<%= text_field_tag "video-#{video.id}[length]", video.length, :class => "video-field" %>
 		<div>Episode Youtube URL</div>
 		<%= text_field_tag "video-#{video.id}[url]", video.url, :class => "video-field" %>
+		<div>Episode Order</div>
+		<%= text_field_tag "video-#{video.id}[order]", video.order, :class => "video-field" %>
 		<div class="delete-button">Delete</div>
 	</div>
 <% end %>
@@ -24,6 +26,8 @@
 		<%= text_field_tag "video-new-#{n}[length]", nil, :class => "video-field" %>
 		<div>Episode Youtube URL</div>
 		<%= text_field_tag "video-new-#{n}[url]", nil, :class => "video-field" %>
+		<div>Episode Order</div>
+		<%= text_field_tag "video-new-#{n}[order]", nil, :class => "video-field" %>
 		<div class="delete-button">Delete</div>
 	</div>
 <% end %>
