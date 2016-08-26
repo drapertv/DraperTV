@@ -26,6 +26,11 @@ ActiveAdmin.register TeamMember do
     def update
       team_member = TeamMember.find params[:id]
       team_member.update_attributes team_member_params
+      if team_member_params[:current] == "on" 
+        team_member.update_attributes current: true
+      else
+        team_member.update_attributes current: false
+      end
       redirect_to '/admin/dashboard'
     end
 
