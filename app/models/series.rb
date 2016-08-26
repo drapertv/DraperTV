@@ -87,6 +87,7 @@ class Series < ActiveRecord::Base
   def self.update_featured slugs
     Series.update_all show_on_front_page: false
     Livestream.update_all show_on_front_page: false
+    # binding.pry
     slugs.each do |slug|
       media = Series.where slug: slug
       unless media.empty?
