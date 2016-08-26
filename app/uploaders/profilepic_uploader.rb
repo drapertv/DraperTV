@@ -18,7 +18,9 @@ class ProfilepicUploader < CarrierWave::Uploader::Base
     "tony-photo.png"
   end
 
-  process :resize_to_fit => [340, 340]
+  version :square do
+    process :resize_to_fit => [340, 340]
+  end
 
 
 
