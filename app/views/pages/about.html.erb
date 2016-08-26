@@ -74,7 +74,7 @@
       </div>
       <div class="former-staff">
         <p>Former staff members:</p>
-        <% TeamMember.where('current is null').each do |member| %>
+        <% TeamMember.where(current: false).each do |member| %>
           <%= link_to member.linkedin, target: '_blank' do %>
             <h3><%= member.name %></h3>
           <% end %>
