@@ -29,7 +29,7 @@ class Series < ActiveRecord::Base
 
   def videos
   	found_videos = Video.where('id in (?)', video_ids)
-    if found_videos.first.order
+    if found_videos.first && found_videos.first.order
       return found_videos.order(:order)
     else
       return found_videos
