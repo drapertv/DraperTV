@@ -1,7 +1,7 @@
 <h1> About - Team</h1>
 <div class="admin-table">
 	<div class="admin-row">
-		<div>Thumbnail</div>
+		<div class="short">Thumbnail</div>
 		<div>Name</div>
 		<div>Position</div>
 		<div>Email</div>
@@ -12,7 +12,7 @@
 	<% TeamMember.all.each do |member| %>
 		<%= form_tag admin_team_member_path(member), method: "patch" do %>
 			<div class="admin-row">
-				<div>
+				<div class="short">
 					<%= image_tag member.profilepic_url %>
 				</div>
 				<div>

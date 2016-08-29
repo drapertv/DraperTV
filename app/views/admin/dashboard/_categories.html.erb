@@ -1,22 +1,22 @@
 <h1>Categories</h1>
 <div class="admin-table">
 	<div class="admin-row">
-		<div>ID</div>
+		<div class="short">ID</div>
 		<div>Name</div>
-		<div># of Items</div>
+		<div class="short"># of Items</div>
 		<div>Actions</div>
 	</div>
 	<% Category.all.each do |cat| %>
-		
+
 			<div class="admin-row">
 				<%= form_tag admin_category_path(cat), method: "patch" do %>
-					<div>
+					<div class="short">
 						<%= cat.id %>
 					</div>
 					<div>
 						<%= text_field_tag :name, cat.name, name: "category[name]" %>
 					</div>
-					<div>
+					<div class="short">
 						<%= cat.series.count %>
 					</div>
 					<div>
