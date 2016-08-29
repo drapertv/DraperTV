@@ -203,10 +203,10 @@ ActiveRecord::Schema.define(version: 20160823225656) do
     t.boolean  "show_on_front_page"
     t.boolean  "popular"
     t.boolean  "public",             default: false
+    t.integer  "view_count"
     t.boolean  "ready_to_notify",    default: false
     t.boolean  "notified",           default: false
     t.string   "slug"
-    t.integer  "view_count"
     t.string   "speaker_name"
     t.string   "speaker_position"
     t.string   "vthumbnail"

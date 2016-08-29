@@ -21,6 +21,8 @@ textarea {
 }
 
 .admin-table {
+	padding-bottom: 30px;
+
 	.admin-row form, .admin-row {
 		@include flexbox;
 		@include align-items(center);
@@ -48,6 +50,10 @@ form fieldset ol > li.custom, form fieldset ol > li.select {
 	margin: 5px 0px;
 }
 
+.episode-form {
+	margin-left: 10px;
+}
+
 .video-form {
 	margin-top: 10px;
 	border-bottom: 1px solid black;
@@ -57,6 +63,7 @@ form fieldset ol > li.custom, form fieldset ol > li.select {
 	.delete-button {
 		color: $red;
 		cursor: pointer;
+		margin: 10px 0 20px;
 	}
 }
 
