@@ -31,10 +31,10 @@
 <section class="video-info">
   <div class="video-info-main">
     <h1 class="video-title">
-      <%= @video.title.upcase %>
+      <%= @series.title.upcase %>
     </h1>
     <p class="video-speaker-info">
-      <%= @video.speaker.name %>, <%= @video.speaker_position %>
+      <%= @video.speaker_name %>, <%= @video.speaker_position %>
     </p>
 
     <div class="video-actions">
@@ -50,7 +50,7 @@
 
     <div class="video-about">
       <h3>About </h3>
-      <p><%= @series.description %></p>
+      <p><%= @series.html_description  %></p>
     </div>
   </div>
 
@@ -83,7 +83,7 @@
             <%= image_tag content.vthumbnail.url(:seriesthumb), :class => "thumbnail-img" %>
             <div class="thumbnail-gradient"></div>
             <div class="thumbnail-overlay-gradient"></div>
-            <div class="thumbnail-description"><p><%= content.description %></p></div>
+            <div class="thumbnail-description"><p><%= content.html_description %></p></div>
           </div>
         <% end %>
       <% end %>

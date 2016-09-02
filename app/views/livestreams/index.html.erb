@@ -32,7 +32,7 @@
         <% media[:content].each do |content| %>
           <% unless media[:lazy_load] %>
             <%= link_to media_path(content), :class => "disabled" do %>
-              <div class="media-thumbnail livestream">
+              <div class="media-thumbnail livestream <%= content.category_name %>">
                 <div class="media-date">
                   <%= content.formatted_stream_date %>
                 </div>
@@ -46,7 +46,7 @@
                 </div>
                 <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>
                 <div class="thumbnail-gradient"></div>
-                <div class="thumbnail-description"><%= content.description %></div>
+                <div class="thumbnail-description"><%= content.html_description %></div>
               </div>
             <% end %>
           <% end %>

@@ -5,6 +5,8 @@ class Livestream < ActiveRecord::Base
 
   has_many :categorizations
   has_many :categories, through: :categorizations
+
+  validates :title, :speaker_name, :speaker_position, :slug, :stream_date, :src_url, :presence => true
   
   
   after_create :expire_cache
@@ -208,8 +210,8 @@ class Livestream < ActiveRecord::Base
   end
 
 
-  def industries
-    (1..10).map {|n| "industry-#{n}"}.sample(3).join(" ")
+  def category_name
+    categories.pluck(:name).first.gsub(" ", "-").downcase unless categories.empty?
   end
 
   ransacker :by_categorization, formatter: proc{ |v|
@@ -218,6 +220,10 @@ class Livestream < ActiveRecord::Base
     nil if !(Category.find_by_name(v).livestreams.pluck :id)
   } do |parent|
     parent.table[:id]
+  end
+
+  def html_description
+    description.gsub("\n", "<br>").html_safe if description
   end
 
 
@@ -237,6 +243,7 @@ class Livestream < ActiveRecord::Base
   end
 
   def sanitize_description
+    binding.pry
     update_attributes body: Sanitize.fragment(description, elements: ["br"])   
   end
 

@@ -45,7 +45,7 @@ ActiveAdmin.register Livestream do
       livestream = Livestream.create livestream_params
       category_name = params[:livestream][:category]
       category = Category.find_by_name category_name
-      Categorization.create livestream_id: livestream.id, category_id: category.id
+      Categorization.create livestream_id: livestream.id, category_id: category.id if category
       redirect_to admin_livestreams_path
     end
 
@@ -54,7 +54,7 @@ ActiveAdmin.register Livestream do
       category_name = params[:livestream][:category]
       category = Category.find_by_name category_name
       Categorization.find_by_livestream_id(livestream.id).destroy if Categorization.find_by_livestream_id(livestream.id)
-      Categorization.create livestream_id: livestream.id, category_id: category.id
+      Categorization.create livestream_id: livestream.id, category_id: category.id if category
 
       livestream.update_attributes livestream_params
 

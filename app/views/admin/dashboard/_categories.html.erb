@@ -7,7 +7,6 @@
 		<div>Actions</div>
 	</div>
 	<% Category.all.each do |cat| %>
-
 			<div class="admin-row">
 				<%= form_tag admin_category_path(cat), method: "patch" do %>
 					<div class="short">

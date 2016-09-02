@@ -76,3 +76,7 @@ form fieldset ol > li.custom, form fieldset ol > li.select {
 .video-form.hidden {
 	display: none;
 }
+
+form fieldset ol > li label abbr {
+	color: $red;
+}

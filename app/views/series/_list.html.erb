@@ -1,6 +1,6 @@
 <% @series.each do |content| %>
   <%= link_to media_path(content), :class => "disabled" do %>
-    <div class="media-thumbnail <%= content.industries %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
+    <div class="media-thumbnail <%= content.category_name %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
       <div class="media-info">
         <div class="media-speaker-name">
           <%= content.speaker_name %>
@@ -12,7 +12,7 @@
       <%= image_tag content.vthumbnail.url(:seriesthumb), :class => "thumbnail-img" %>
       <div class="thumbnail-gradient"></div>
       <div class="thumbnail-overlay-gradient"></div>
-      <div class="thumbnail-description"><p><%= content.description %></p></div>
+      <div class="thumbnail-description"><p><%= content.html_description %></p></div>
     </div>
   <% end %>
 <% end %>

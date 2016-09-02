@@ -49,7 +49,7 @@
         </div>
         <%= link_to media_path(media) do %>
           <div class="featured-description">
-            <p><%= media.description %></p>
+            <p><%= media.html_description  %></p>
           </div>
         <% end %>
       </div>
@@ -94,7 +94,7 @@
               <%= image_tag content.vthumbnail_url(:seriesthumb), :class => "thumbnail-img" %>
               <div class="thumbnail-gradient"></div>
               <div class="thumbnail-overlay-gradient"></div>
-              <div class="thumbnail-description"><p><%= content.description %></p></div>
+              <div class="thumbnail-description"><p><%= content.html_description  %></p></div>
             </div>
           <% end %>
         <% end %>

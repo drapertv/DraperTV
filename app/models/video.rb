@@ -7,11 +7,14 @@ class Video < ActiveRecord::Base
   # delegate :vthumbnail_url, to: :series
   # delegate :vthumbnail, to: :series
 
+  validates :title, :student_name, :slug, :presence => true
+  
+
   extend FriendlyId
   
   friendly_id :title, use: :slugged
 
-  delegate :speaker, :profilepic_url, :name, :challenge, :speaker_position, :speaker_name, :thumbnail_title, :description, to: :series
+  delegate :profilepic_url, :name, :challenge, :speaker_position, :speaker_name, :thumbnail_title, :description, to: :series
 
   after_update :expire_cache
   after_create :expire_cache
@@ -50,6 +53,10 @@ class Video < ActiveRecord::Base
     (1..10).map {|n| "industry-#{n}"}.sample(3).join(" ")
   end
 
+  def html_description
+    description.gsub("\n", "<br>").html_safe if description
+  end
+
   def thumbnail_title
     title
   end
@@ -72,6 +79,10 @@ class Video < ActiveRecord::Base
     else
       categories.first ? categories.first.name : "No Category"
     end
+  end
+
+  def category_name
+    categories.pluck(:name).first.gsub(" ", "-").downcase unless categories.empty?
   end
 
    ransacker :by_categorization, formatter: proc{ |v|

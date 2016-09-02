@@ -1,6 +1,7 @@
 class Series < ActiveRecord::Base
   acts_as_votable
-	delegate :profilepic_url, :name, to: :speaker
+
+  validates :title, :speaker_name, :speaker_position, :slug, :presence => true
 
 
   after_create :check_if_ready_to_notify
@@ -40,16 +41,16 @@ class Series < ActiveRecord::Base
     videos.count
   end
 
-  def speaker
-  	Speaker.find(author_id)
-  end
-
   def speaker_title
     speaker_position
   end
 
   def thumbnail_title 
     title
+  end
+
+  def html_description
+    description.gsub("\n", "<br>").html_safe if description
   end
 
   def site_classification
@@ -101,7 +102,7 @@ class Series < ActiveRecord::Base
   end
 
   def featured_top_info
-    "#{name}, #{speaker_title}"
+    "#{speaker_name}, #{speaker_position}"
   end
 
   def featured_title
@@ -160,6 +161,10 @@ class Series < ActiveRecord::Base
       slug = series.speaker_name.downcase.gsub(/\W+/, '').gsub(" ", "-")
       series.update_attributes slug: slug
     end
+  end
+
+  def category_name
+    categories.pluck(:name).first.gsub(" ", "-").downcase unless categories.empty?
   end
 
   ransacker :by_categorization, formatter: proc{ |v|

@@ -45,7 +45,7 @@ ActiveAdmin.register Video, :as => 'Students' do
       video = Video.create video_params
       category_name = params[:video][:category]
       category = Category.find_by_name category_name
-      Categorization.create video_id: video.id, category_id: category.id
+      Categorization.create video_id: video.id, category_id: category.id if category
       video.update_attributes video_type: "student"
 
       redirect_to admin_students_path
@@ -57,7 +57,7 @@ ActiveAdmin.register Video, :as => 'Students' do
       category_name = params[:video][:category]
       category = Category.find_by_name category_name
       Categorization.find_by_video_id(video.id).destroy if Categorization.find_by_video_id(video.id)
-      Categorization.create video_id: video.id, category_id: category.id
+      Categorization.create video_id: video.id, category_id: category.id if category
       video.update_attributes video_params
 
       redirect_to admin_students_path

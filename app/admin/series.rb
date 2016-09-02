@@ -31,7 +31,7 @@ ActiveAdmin.register Series, :as => 'Speakers' do
     li "Date Created: #{f.object.created_at}", class: "custom"
     li "Episode Count: #{f.object.video_count}", class: "custom"
     li "View Count: #{f.object.view_count || 0}", class: "custom"
-    f.inputs :title
+    f.inputs :title 
     f.inputs :speaker_name
     f.inputs :speaker_position
     f.inputs :description
@@ -71,10 +71,32 @@ ActiveAdmin.register Series, :as => 'Speakers' do
         end
       end
 
-      Series.find(params[:id]).update_attributes video_ids: series_video_ids
+      series.update_attributes video_ids: series_video_ids
       series.update_attributes series_params
       redirect_to admin_speakers_path
     end
+
+    def create
+      series = Series.create series_params
+      category_name = params[:series][:category]
+      category = Category.find_by_name category_name
+      Categorization.find_by_series_id(series.id).destroy if Categorization.find_by_series_id(series.id)
+      Categorization.create series_id: series.id, category_id: category.id if category
+
+      series_video_ids = []
+      (1..9).each do |n|
+        if params["video-new-#{n}"] && params["video-new-#{n}"]["title"] != ""
+          new_video = Video.create params.require("video-new-#{n}").permit(:title, :slug, :length, :url)
+          series_video_ids << new_video.id
+        end
+      end
+
+      series.update_attributes video_ids: series_video_ids
+      series.update_attributes series_params
+      redirect_to admin_speakers_path
+
+    end
+
 
     def series_params
       params.require(:series).permit(:vthumbnail, :marketing_slug, :title, :slug, :description, :public, :ready_to_notify, :speaker_name, :speaker_position)
