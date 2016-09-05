@@ -105,6 +105,12 @@ class Livestream < ActiveRecord::Base
   	end
   end
 
+  def self.live_tomorrow
+    start_of_tomorrow = Time.parse((Date.today + 1).to_s).utc - 8.hours 
+    end_of_tomorrow = Time.parse((Date.today + 2).to_s).utc - 8.hours
+    where('stream_date < (?)', end_of_tomorrow).where('stream_date > (?)', start_of_tomorrow).order('stream_date asc')
+  end
+
   def admin_stream_date
     return "Unknown" if !stream_date
     (stream_date - 8.hours).strftime("%B %-d, at %l:%M%P PST")
@@ -224,6 +230,14 @@ class Livestream < ActiveRecord::Base
 
   def html_description
     description.gsub("\n", "<br>").html_safe if description
+  end
+
+  def self.biweekly_latest
+    where('stream_date < (?)', Time.now).order('created_at desc').limit(2)
+  end
+
+  def self.biweekly_latest_titles
+    biweekly_latest.pluck(:title).join(" | ")
   end
 
 

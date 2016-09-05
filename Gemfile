@@ -14,6 +14,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'sanitize'
 gem 'sidekiq'
+gem 'sidetiq'
 gem 'protected_attributes'
 #Servers
 gem "passenger"

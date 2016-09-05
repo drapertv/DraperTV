@@ -64,7 +64,7 @@ class Series < ActiveRecord::Base
   def self.featured
     front_page_media = nil
     manually_selected_to_front_page = Series.where(show_on_front_page: true).to_a + Livestream.where(show_on_front_page: true).to_a 
-    
+    manually_selected_to_front_page = manually_selected_to_front_page.sort_by(&:order)
     if manually_selected_to_front_page.count < 3
       featured_series = Series.order('created_at desc').limit(2).to_a
       featured_livestream = Livestream.next_livestream
@@ -80,7 +80,8 @@ class Series < ActiveRecord::Base
   end
 
   def self.featured_to_edit #for editing in the admin panel
-    manually_selected_to_front_page = Series.order(:id).where(show_on_front_page: true).to_a + Livestream.where(show_on_front_page: true).to_a 
+    manually_selected_to_front_page = Series.where(show_on_front_page: true).to_a + Livestream.where(show_on_front_page: true).to_a 
+    manually_selected_to_front_page = manually_selected_to_front_page.sort_by(&:order)
     manually_selected_to_front_page += [nil, nil, nil]
     manually_selected_to_front_page[0..2]
   end
@@ -89,14 +90,14 @@ class Series < ActiveRecord::Base
     Series.update_all show_on_front_page: false
     Livestream.update_all show_on_front_page: false
     # binding.pry
-    slugs.each do |slug|
+    slugs.each_with_index do |slug, i|
       media = Series.where slug: slug
       unless media.empty?
-        media.first.update_attributes show_on_front_page: true
+        media.first.update_attributes show_on_front_page: true, order: i
       end
       media = Livestream.where slug: slug
       unless media.empty?
-        media.first.update_attributes show_on_front_page: true
+        media.first.update_attributes show_on_front_page: true, order: i
       end
     end
   end
@@ -114,21 +115,22 @@ class Series < ActiveRecord::Base
   end
 
   def self.popular
-    (Series.where(popular: true) + order('view_count desc').limit(5))[0..4]
+    (Series.where(popular: true).order(:order) + order('view_count desc').limit(5))[0..4]
   end
 
   def self.popular_to_edit
-    manually_selected_to_front_page = Series.order(:id).where(popular: true).to_a
+    manually_selected_to_front_page = Series.where(popular: true).to_a
+    manually_selected_to_front_page = manually_selected_to_front_page.sort_by(&:order)
     manually_selected_to_front_page += [nil, nil, nil, nil, nil]
     manually_selected_to_front_page[0..4]
   end
 
   def self.update_popular slugs
     Series.update_all popular: false
-    slugs.each do |slug|
+    slugs.each_with_index do |slug, i|
       media = Series.where slug: slug
       unless media.empty?
-        media.first.update_attributes popular: true
+        media.first.update_attributes popular: true, order: i
       end
     end
   end
@@ -191,6 +193,14 @@ class Series < ActiveRecord::Base
 
   def category
     categories.first ? categories.first.name : "No Category"
+  end
+
+  def self.biweekly_latest
+    order('created_at desc').limit(4)
+  end
+
+  def self.biweekly_latest_titles
+   biweekly_latest.pluck(:title).join(" | ")
   end
 
 

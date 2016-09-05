@@ -1,12 +1,28 @@
 class UserMailer < ActionMailer::Base
 	default :from => "Notifier@drapertv.com"
 
-	def expire_email(user)
-		mail(:to => user.email, :subject => "Subscription Cancelled")
+	def signup_all email
+		mail(:to => email, :subject => "Welcome to DraperTV!")
 	end
 
-	def notification_email media, email
-		@media = media
-		mail(:to => email, :subject => "Yo shit be ready")
+	def signup_live email
+		mail(:to => email, :subject => "Welcome to DraperTV!")
+	end
+
+	def biweekly_all email
+		@series = [[Series.biweekly_latest[0..1]],[Series.biweekly_latest[2..-1]]]
+		@titles = Series.biweekly_latest_titles
+		mail(:to => email, :subject => "DraperTV Newsletter")
+	end
+
+	def biweekly_live email
+		@livestreams = Livestream.biweekly_latest
+		@titles = Livestream.biweekly_latest_titles
+		mail(:to => email, :subject => "DraperTV Newsletter")
+	end
+
+	def update_live email
+		@livestreams = Livestream.live_tomorrow
+		mail(:to => email, :subject => "DraperTV Newsletter")
 	end
 end

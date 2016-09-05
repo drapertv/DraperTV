@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823225656) do
+ActiveRecord::Schema.define(version: 20160902210951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20160823225656) do
     t.string   "speaker_name"
     t.string   "speaker_position"
     t.string   "marketing_slug"
+    t.integer  "order"
   end
 
   add_index "livestreams", ["slug"], name: "index_livestreams_on_slug", unique: true, using: :btree
@@ -203,15 +204,16 @@ ActiveRecord::Schema.define(version: 20160823225656) do
     t.boolean  "show_on_front_page"
     t.boolean  "popular"
     t.boolean  "public",             default: false
-    t.integer  "view_count"
     t.boolean  "ready_to_notify",    default: false
     t.boolean  "notified",           default: false
     t.string   "slug"
+    t.integer  "view_count"
     t.string   "speaker_name"
     t.string   "speaker_position"
     t.string   "vthumbnail"
     t.text     "description"
     t.string   "marketing_slug"
+    t.integer  "order"
   end
 
   add_index "series", ["slug"], name: "index_series_on_slug", using: :btree

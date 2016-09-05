@@ -9,13 +9,13 @@
     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="bodyTable" style="background: white; font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
       <tr height="70">
         <td> <!--preheader-->
-          <span style="color: transparent; height:0; max-height: 0; max-width: 0; overflow: hidden; visibility: hidden; width: 0;">Best of the Week. Here are some of the top videos from DraperTV | Lessons from TaskRabbit | Developing Siri and AI | Live gaming and the origin of Twitch | Tips to a successful product launch</span> <!--FOR ANDY - REPLACE THE 4 TITLES AT END OF PREHEADER WITH TITLES OF THE 4 LATEST SPEAKER SERIES-->
+          <span style="color: transparent; height:0; max-height: 0; max-width: 0; overflow: hidden; visibility: hidden; width: 0;">Best of the Week. Here are some of the top videos from DraperTV | <%= @titles %></span> <!--FOR ANDY - REPLACE THE 4 TITLES AT END OF PREHEADER WITH TITLES OF THE 4 LATEST SPEAKER SERIES-->
         </td>
       </tr> <!--top padding-->
       <tr> <!--header-->
         <td align="center" style="line-height: 0;">
           <a href="http://www.drapertv.com/">
-            <img src="https://s3.postimg.org/r7sre9ab7/Logo.png" height="70" style="border: none;" alt="DraperTV." /> <!--FOR ANDY - REPLACE WITH LINK FROM ASSETS: Email_Logo.png-->
+            <img src="<%= URI.join(root_url, image_path('email-logo.png')) %>" height="70" style="border: none;" alt="DraperTV." /> <!--FOR ANDY - REPLACE WITH LINK FROM ASSETS: Email_Logo.png-->
           </a>
         </td>
       </tr>
@@ -39,95 +39,36 @@
                   <tr height="60"></tr> <!--content spacing-->
                 </table>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
-                  <tr> <!--horizontal item-->
-                    <td style="line-height: 0;"> <!--left item-->
-                      <a href="http://www.drapertv.com/videos/early-days-of-task-rabbit" style="text-decoration: none; color: inherit;"> <!--FOR ANDY - REPLACE WITH LATEST SPEAKER SERIES URL-->
-                        <table border="0" cellpadding="0" cellspacing="0" width="281" align="left" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
-                          <tr> <!--item thumbnail-->
-                            <td>
-                              <img src="https://s3.postimg.org/d7usxuiub/Leah.png" height="281" style="border: none;" alt="Lessons_from_TaskRabbit." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. LESSONS FROM TASKRABBIT)-->
-                            </td>
-                          </tr>
-                          <tr> <!--item info-->
-                            <td height="147" align="center" style="background: white;">
-                              <p style="width: 235px; line-height: 1.2; margin: 0 0 0 0;"> <!--item title-->
-                                Lessons from TaskRabbit <!--FOR ANDY - REPLACE TITLE WITH TITLE OF LATEST SPEAKER SERIES-->
-                              </p>
-                              <p style="width: 235px; font-size: 14px; line-height: 1.2; margin: 20px 0 0 0; font-weight: 300;"> <!--item sub-title-->
-                                Leah Busque, Founder &amp; CEO of TaskRabbit <!--FOR ANDY - PLACE SUBTITLE WITH SPEAKER NAME, SPEAKER POSITION OF LATEST SPEAKER SERIES-->
-                              </p>
-                            </td>
-                          </tr>
-                        </table>
-                      </a>
-                    </td>
-                    <td style="line-height: 0;"> <!--right item-->
-                      <a href="http://www.drapertv.com/videos/working-towards-a-goal" style="text-decoration: none; color: inherit;"> <!--FOR ANDY - REPLACE WITH 2ND LATEST SPEAKER SERIES URL-->
-                        <table border="0" cellpadding="0" cellspacing="0" width="281" align="right" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
-                          <tr> <!--item thumbnail-->
-                            <td>
-                              <img src="https://s14.postimg.org/rm32tksu9/Adam.png" height="281" style="border: none;" alt="Developing_Siri_and_AI." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. DEVELOPING SIRI AND AI)-->
-                            </td>
-                          </tr>
-                          <tr> <!--item info-->
-                            <td height="147" align="center" style="background: white;">
-                              <p style="width: 235px; line-height: 1.2; margin: 0 0 0 0;"> <!--item title-->
-                                Developing Siri and AI <!--FOR ANDY - REPLACE TITLE WITH TITLE OF 2ND LATEST SPEAKER SERIES-->
-                              </p>
-                              <p style="width: 235px; font-size: 14px; line-height: 1.2; margin: 20px 0 0 0; font-weight: 300;"> <!--item sub-title-->
-                                Adam Cheyer, Co-founder &amp; VP Engineering of Viv Labs <!--FOR ANDY - PLACE SUBTITLE WITH SPEAKER NAME, SPEAKER POSITION OF 2ND LATEST SPEAKER SERIES-->
-                              </p>
-                            </td>
-                          </tr>
-                        </table>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr height="30"></tr> <!--content spacing-->
-                  <tr> <!--horizontal item-->
-                    <td style="line-height: 0;"> <!--left item-->
-                      <a href="http://www.drapertv.com/videos/beofre-justintv" style="text-decoration: none; color: inherit;"> <!--FOR ANDY - REPLACE WITH 3RD LATEST SPEAKER SERIES URL-->
-                        <table border="0" cellpadding="0" cellspacing="0" width="281" align="left" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
-                          <tr> <!--item thumbnail-->
-                            <td>
-                              <img src="https://s9.postimg.org/cm3nbmua7/Justin.png" height="281" style="border: none;" alt="Live_gaming_and_the_origin_of_Twitch." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. LIVE GAMING AND THE ORIGIN OF TWITCH)-->
-                            </td>
-                          </tr>
-                          <tr> <!--item info-->
-                            <td height="147" align="center" style="background: white;">
-                              <p style="width: 235px; line-height: 1.2; margin: 0 0 0 0;"> <!--item title-->
-                                Live gaming and the origin of Twitch <!--FOR ANDY - REPLACE TITLE WITH TITLE OF 3RD LATEST SPEAKER SERIES-->
-                              </p>
-                              <p style="width: 235px; font-size: 14px; line-height: 1.2; margin: 20px 0 0 0; font-weight: 300;"> <!--item sub-title-->
-                                Justin Kan, Co-founder &amp; CEO of Twitch <!--FOR ANDY - PLACE SUBTITLE WITH SPEAKER NAME, SPEAKER POSITION OF 4TH LATEST SPEAKER SERIES-->
-                              </p>
-                            </td>
-                          </tr>
-                        </table>
-                      </a>
-                    </td>
-                    <td style="line-height: 0;"> <!--right item-->
-                      <a href="http://www.drapertv.com/videos/what-is-the-league-dating-app" style="text-decoration: none; color: inherit;"> <!--FOR ANDY - REPLACE WITH 4TH LATEST SPEAKER SERIES URL-->
-                        <table border="0" cellpadding="0" cellspacing="0" width="281" align="right" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
-                          <tr> <!--item thumbnail-->
-                            <td>
-                              <img src="https://s13.postimg.org/g1qfwnwuf/Amanda.png" height="281" style="border: none;" alt="Tips_to_a_successful_product_launch." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. TIPS TO A SUCCESSFUL PRODUCT LAUNCH)-->
-                            </td>
-                          </tr>
-                          <tr> <!--item info-->
-                            <td height="147" align="center" style="background: white;">
-                              <p style="width: 235px; line-height: 1.2; margin: 0 0 0 0;"> <!--item title-->
-                                Tips to a successful product launch <!--FOR ANDY - REPLACE TITLE WITH TITLE OF 4TH LATEST SPEAKER SERIES-->
-                              </p>
-                              <p style="width: 235px; font-size: 14px; line-height: 1.2; margin: 20px 0 0 0; font-weight: 300;"> <!--item sub-title-->
-                                Amanda Bradford, Founder &amp; CEO of The League <!--FOR ANDY - PLACE SUBTITLE WITH SPEAKER NAME, SPEAKER POSITION OF 4TH LATEST SPEAKER SERIES-->
-                              </p>
-                            </td>
-                          </tr>
-                        </table>
-                      </a>
-                    </td>
-                  </tr>
+                  <% @series.each_with_index do |row, i| %>
+                    <tr>
+                      <% row.each do |series| %>
+                        <td style="line-height: 0;"> <!--left item-->
+                          <a href="<%= video_url(series.first_video) %>" style="text-decoration: none; color: inherit;"> <!--FOR ANDY - REPLACE WITH LATEST SPEAKER SERIES URL-->
+                            <table border="0" cellpadding="0" cellspacing="0" width="281" align="left" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
+                              <tr> <!--item thumbnail-->
+                                <td>
+                                  <img src="<%= series.vthumbnail_url(:square) %>" height="281" style="border: none;" alt="Lessons_from_TaskRabbit." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. LESSONS FROM TASKRABBIT)-->
+                                </td>
+                              </tr>
+                              <tr> <!--item info-->
+                                <td height="147" align="center" style="background: white;">
+                                  <p style="width: 235px; line-height: 1.2; margin: 0 0 0 0;"> <!--item title-->
+                                    <%= series.title %> <!--FOR ANDY - REPLACE TITLE WITH TITLE OF LATEST SPEAKER SERIES-->
+                                  </p>
+                                  <p style="width: 235px; font-size: 14px; line-height: 1.2; margin: 20px 0 0 0; font-weight: 300;"> <!--item sub-title-->
+                                    <%= series.speaker_name %>, <%= series.speaker_position %> <!--FOR ANDY - PLACE SUBTITLE WITH SPEAKER NAME, SPEAKER POSITION OF LATEST SPEAKER SERIES-->
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </a>
+                        </td>
+                      <% end %>
+                    </tr>
+                    <% if i == 0 %>
+                      <tr height="30"></tr> <!--content spacing-->
+                    <% end %> 
+                  <% end %>
                 </table>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
                   <tr height="60"></tr> <!--content spacing-->

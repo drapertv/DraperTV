@@ -30,7 +30,7 @@ class Video < ActiveRecord::Base
 	end
 
 	def series
-		Series.where(author_id: author_id).first || Series.first
+		Series.where("'#{id}' = ANY (video_ids) ").first || Series.first
 	end
 
 	def comment_form_path

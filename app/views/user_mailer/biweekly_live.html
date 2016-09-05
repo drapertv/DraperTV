@@ -9,13 +9,13 @@
     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="bodyTable" style="background: white; font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
       <tr height="70">
         <td> <!--preheader-->
-          <span style="color: transparent; height:0; max-height: 0; max-width: 0; overflow: hidden; visibility: hidden; width: 0;">Newest of the Week. Here are the next scheduled livestream events from DraperTV | Emily Drabant Conley | Zander Adell</span> <!--FOR ANDY - REPLACE THE 2 TITLES AT END OF PREHEADER WITH TITLES (SPEAKER NAMES) OF THE 2 LATEST LIVESTREAM EVENTS-->
+          <span style="color: transparent; height:0; max-height: 0; max-width: 0; overflow: hidden; visibility: hidden; width: 0;">Newest of the Week. Here are the next scheduled livestream events from DraperTV | <%= @titles %></span> <!--FOR ANDY - REPLACE THE 2 TITLES AT END OF PREHEADER WITH TITLES (SPEAKER NAMES) OF THE 2 LATEST LIVESTREAM EVENTS-->
         </td>
       </tr> <!--top padding-->
       <tr> <!--header-->
         <td align="center" style="line-height: 0;">
           <a href="http://www.drapertv.com/">
-            <img src="https://s3.postimg.org/r7sre9ab7/Logo.png" height="70" style="border: none;" alt="DraperTV." /> <!--FOR ANDY - REPLACE WITH LINK FROM ASSETS: Email_Logo.png-->
+            <img src="<%= URI.join(root_url, image_path('email-logo.png')) %>" height="70" style="border: none;" alt="DraperTV." /> <!--FOR ANDY - REPLACE WITH LINK FROM ASSETS: Email_Logo.png-->
           </a>
         </td>
       </tr>
@@ -39,69 +39,42 @@
                   <tr height="60"></tr> <!--content spacing-->
                 </table>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
-                  <tr> <!--horizontal item-->
-                    <td style="line-height: 0;"> <!--left item-->
-                      <a href="http://www.drapertv.com/livestreams/emily-drabant"> <!--FOR ANDY - REPLACE HREF WITH LATEST LIVESTREAM EVENT URL-->
-                        <img src="https://s16.postimg.org/dxki5x9lx/Emily.png" height="295" style="border: none;" alt="Emily_Drabant_Conley." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. EMILY DRABANT CONLEY)-->
-                      </a>
-                    </td>
-                    <td style="line-height: 0;"> <!--right item-->
-                      <a href="http://www.drapertv.com/livestreams/emily-drabant" style="text-decoration: none; color: inherit;"> <!--FOR ANDY - REPLACE HREF WITH LATEST LIVESTREAM EVENT URL-->
-                        <table border="0" cellpadding="0" cellspacing="0" height="295" width="295" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500; background: white; text-align: center;">
-                          <tr height="48"> <!--item type-->
-                            <td align="center" style="vertical-align: top;">
-                              <p style="font-size: 18px; line-height: 1; color: white; background: #E1474C; padding: 15px 0; margin: 0 0 0 0;">
-                                September 25, at 10:00am PST <!--FOR ANDY - REPLACE DATE WITH STREAM DATE OF LATEST LIVESTREAM EVENT-->
-                              </p>
-                            </td>
-                          </tr>
-                          <tr height="199"> <!--item info-->
-                            <td align="center">
-                              <p style="width: 235px; line-height: 1.2; margin: 0 0 0 0;"> <!--item title-->
-                                Emily Drabant Conley <!--FOR ANDY - REPLACE TITLE WITH SPEAKER NAME OF LATEST LIVESTREAM EVENT-->
-                              </p>
-                              <p style="width: 235px; font-size: 14px; line-height: 1.2; margin: 20px 0 0 0; font-weight: 300;"> <!--item sub-title-->
-                                23andMe, VP of Business Development <!--FOR ANDY - REPLACE SUBTITLE WITH SPEAKER POSITION OF LATEST LIVESTREAM EVENT-->
-                              </p>
-                            </td>
-                          </tr>
-                          <tr height="48"></tr>
-                        </table>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr height="30"></tr> <!--content spacing-->
-                  <tr> <!--horizontal item-->
-                    <td style="line-height: 0;"> <!--right item-->
-                      <a href="http://www.drapertv.com/livestreams/zander-adell"> <!--FOR ANDY - REPLACE HREF WITH 2ND LATEST LIVESTREAM EVENT URL-->
-                        <img src="https://s3.postimg.org/3t5xupm03/Zander.png" height="295" style="border: none;" alt="Zander_Adell." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. ZANDER ADELL)-->
-                      </a>
-                    </td>
-                    <td style="line-height: 0;"> <!--left item-->
-                      <a href="http://www.drapertv.com/livestreams/zander-adell" style="text-decoration: none; color: inherit;"> <!--FOR ANDY - REPLACE HREF WITH 2ND LATEST LIVESTREAM EVENT URL-->
-                        <table border="0" cellpadding="0" cellspacing="0" height="295" width="295" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500; background: white; text-align: center;">
-                          <tr height="48"> <!--item type-->
-                            <td align="center" style="vertical-align: top;">
-                              <p style="font-size: 18px; line-height: 1; color: white; background: #E1474C; padding: 15px 0; margin: 0 0 0 0;">
-                                November 30, at 12:30pm PST <!--FOR ANDY - REPLACE DATE WITH STREAM DATE OF 2ND LATEST LIVESTREAM EVENT-->
-                              </p>
-                            </td>
-                          </tr>
-                          <tr height="199"> <!--item info-->
-                            <td align="center">
-                              <p style="width: 235px; line-height: 1.2; margin: 0 0 0 0;"> <!--item title-->
-                                Zander Adell <!--FOR ANDY - REPLACE TITLE WITH SPEAKER NAME OF 2ND LATEST LIVESTREAM EVENT-->
-                              </p>
-                              <p style="width: 235px; font-size: 14px; line-height: 1.2; margin: 20px 0 0 0; font-weight: 300;"> <!--item sub-title-->
-                                Doorman, Co-founder &amp; CEO <!--FOR ANDY - REPLACE SUBTITLE WITH SPEAKER POSITION OF 2ND LATEST LIVESTREAM EVENT-->
-                              </p>
-                            </td>
-                          </tr>
-                          <tr height="48"></tr>
-                        </table>
-                      </a>
-                    </td>
-                  </tr>
+                  <%= @livestreams.each_with_index do |livestream, i| %>
+                    <tr> <!--horizontal item-->
+                      <td style="line-height: 0;"> <!--left item-->
+                        <a href="<%= livestream_url(livestream) %>"> <!--FOR ANDY - REPLACE HREF WITH LATEST LIVESTREAM EVENT URL-->
+                          <img src="<%= livestream.vthumbnail_url(:square) %>" height="295" style="border: none;" alt="Emily_Drabant_Conley." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. EMILY DRABANT CONLEY)-->
+                        </a>
+                      </td>
+                      <td style="line-height: 0;"> <!--right item-->
+                        <a href="<%= livestream_url(livestream) %>" style="text-decoration: none; color: inherit;"> <!--FOR ANDY - REPLACE HREF WITH LATEST LIVESTREAM EVENT URL-->
+                          <table border="0" cellpadding="0" cellspacing="0" height="295" width="295" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500; background: white; text-align: center;">
+                            <tr height="48"> <!--item type-->
+                              <td align="center" style="vertical-align: top;">
+                                <p style="font-size: 18px; line-height: 1; color: white; background: #E1474C; padding: 15px 0; margin: 0 0 0 0;">
+                                  <%= livestream.admin_stream_date %> <!--FOR ANDY - REPLACE DATE WITH STREAM DATE OF LATEST LIVESTREAM EVENT-->
+                                </p>
+                              </td>
+                            </tr>
+                            <tr height="199"> <!--item info-->
+                              <td align="center">
+                                <p style="width: 235px; line-height: 1.2; margin: 0 0 0 0;"> <!--item title-->
+                                  <%= livestream.speaker_name %><!--FOR ANDY - REPLACE TITLE WITH SPEAKER NAME OF LATEST LIVESTREAM EVENT-->
+                                </p>
+                                <p style="width: 235px; font-size: 14px; line-height: 1.2; margin: 20px 0 0 0; font-weight: 300;"> <!--item sub-title-->
+                                  <%= livestream.speaker_position %> <!--FOR ANDY - REPLACE SUBTITLE WITH SPEAKER POSITION OF LATEST LIVESTREAM EVENT-->
+                                </p>
+                              </td>
+                            </tr>
+                            <tr height="48"></tr>
+                          </table>
+                        </a>
+                      </td>
+                    </tr>
+                    <% if i == 0 %>
+                      <tr height="30"></tr> <!--content spacing-->
+                    <% end %>
+                  <% end %> 
                 </table>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500;">
                   <tr height="60"></tr> <!--content spacing-->
