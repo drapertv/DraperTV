@@ -3,7 +3,7 @@ class VideosController < ApplicationController
   def show
     @video = Video.friendly.find(params[:id])
     @series = @video.series
-    @videos = @series.videos.order(:id)
+    @videos = @series.videos
     @media = {title: "Similar Videos", content: Series.popular}
 
     if @video.url
