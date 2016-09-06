@@ -12,7 +12,7 @@
 			<% if series %>
 				<div class="admin-row">
 					<div>
-						<%= text_field_tag "slug#{i}", series.slug %>
+						<%= text_field_tag "slug#{i}", (series.show_on_front_page ? series.slug : nil) %>
 					</div>
 				</div>
 			<% else %>

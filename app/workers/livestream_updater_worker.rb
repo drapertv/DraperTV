@@ -10,7 +10,7 @@ class LivestreamUpdaterWorker
     unless Livestream.live_tomorrow.empty?
       LivestreamNotifiyList.instance.emails.each do |email_id|
       	email = Email.find email_id
-      	UserMailer.update_live(email, next_livestream).deliver
+      	UserMailer.update_live(email).deliver
       end
     end
   end

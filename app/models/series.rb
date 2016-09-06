@@ -1,7 +1,7 @@
 class Series < ActiveRecord::Base
   acts_as_votable
 
-  validates :title, :speaker_name, :speaker_position, :slug, :presence => true
+  # validates :title, :speaker_name, :speaker_position, :slug, :presence => true
 
 
   after_create :check_if_ready_to_notify
@@ -33,7 +33,7 @@ class Series < ActiveRecord::Base
     if found_videos.first && found_videos.first.order
       return found_videos.order(:order)
     else
-      return found_videos
+      return [Video.first]
     end
   end
 
@@ -45,7 +45,7 @@ class Series < ActiveRecord::Base
     speaker_position
   end
 
-  def thumbnail_title 
+  def speaker_position 
     title
   end
 
@@ -65,30 +65,53 @@ class Series < ActiveRecord::Base
     front_page_media = nil
     manually_selected_to_front_page = Series.where(show_on_front_page: true).to_a + Livestream.where(show_on_front_page: true).to_a 
     manually_selected_to_front_page = manually_selected_to_front_page.sort_by(&:order)
+    
+    
     if manually_selected_to_front_page.count < 3
+      
+      items = [nil,nil,nil]
+      manually_selected_to_front_page.each do |media|
+        if media.order
+          items[media.order.to_i] = media
+        end
+      end
+
       featured_series = Series.order('created_at desc').limit(2).to_a
       featured_livestream = Livestream.next_livestream
       if !featured_livestream
         featured_livestream = [Livestream.last]
       end
       auto_populated_featured_media = featured_series + featured_livestream
-      front_page_media = (manually_selected_to_front_page + auto_populated_featured_media)[0..2]
+      
+      counter = -1
+      items.map! do |item|
+        if item == nil
+          counter += 1
+          auto_populated_featured_media[counter]
+        else
+          item
+        end
+      end
+      front_page_media = items
     else
       front_page_media = manually_selected_to_front_page
     end
     front_page_media
   end
 
+  def self.reorder_collection collection
+    items = [nil,nil,nil,nil,nil]
+    
+
+  end
+
   def self.featured_to_edit #for editing in the admin panel
-    manually_selected_to_front_page = Series.where(show_on_front_page: true).to_a + Livestream.where(show_on_front_page: true).to_a 
-    manually_selected_to_front_page = manually_selected_to_front_page.sort_by(&:order)
-    manually_selected_to_front_page += [nil, nil, nil]
-    manually_selected_to_front_page[0..2]
+    featured
   end
 
   def self.update_featured slugs
-    Series.update_all show_on_front_page: false
-    Livestream.update_all show_on_front_page: false
+    Series.update_all show_on_front_page: false, order: nil
+    Livestream.update_all show_on_front_page: false, order: nil
     # binding.pry
     slugs.each_with_index do |slug, i|
       media = Series.where slug: slug
@@ -115,14 +138,34 @@ class Series < ActiveRecord::Base
   end
 
   def self.popular
-    (Series.where(popular: true).order(:order) + order('view_count desc').limit(5))[0..4]
+    manually_popular = where(popular: true).order(:order)
+    auto_populated_popular = order('view_count desc').limit(5)
+
+    if manually_popular.count < 5
+      items = [nil,nil,nil,nil,nil]
+      manually_popular.each do |media|
+        if media.order
+          items[media.order.to_i] = media
+        end
+      end
+    
+
+      counter = -1
+      items.map! do |item|
+        if item == nil
+          counter += 1
+          auto_populated_popular[counter]
+        else
+          item
+        end
+      end
+      return items
+    end
+    manually_popular
   end
 
   def self.popular_to_edit
-    manually_selected_to_front_page = Series.where(popular: true).to_a
-    manually_selected_to_front_page = manually_selected_to_front_page.sort_by(&:order)
-    manually_selected_to_front_page += [nil, nil, nil, nil, nil]
-    manually_selected_to_front_page[0..4]
+    popular
   end
 
   def self.update_popular slugs

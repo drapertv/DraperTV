@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
 	end
 
 	def biweekly_all email
-		@series = [[Series.biweekly_latest[0..1]],[Series.biweekly_latest[2..-1]]]
+		@series = [Series.biweekly_latest[0..1],Series.biweekly_latest[2..-1]]
 		@titles = Series.biweekly_latest_titles
 		mail(:to => email, :subject => "DraperTV Newsletter")
 	end

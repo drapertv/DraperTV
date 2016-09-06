@@ -45,7 +45,7 @@ class Livestream < ActiveRecord::Base
   end
 
   def featured_subtitle 
-    thumbnail_title.upcase
+    speaker_position.upcase
   end
 
   def comment_form_path
@@ -162,10 +162,6 @@ class Livestream < ActiveRecord::Base
     title
   end
 
-  def thumbnail_title
-    title.split("-", 2)[-1]
-  end
-
   def self.seed_speaker_name_and_position
     all.each do |l|
       speaker_name = l.title.split(" - ")[0]
@@ -173,7 +169,6 @@ class Livestream < ActiveRecord::Base
       l.update_attributes speaker_name: speaker_name, speaker_position: speaker_position
     end
   end
-
 
   def site_classification
     "Livestream Event"
