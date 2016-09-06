@@ -27,7 +27,7 @@ class SeriesController < InheritedResources::Base
       speakers = Series.newest
       livestreams = Livestream.closest_to_now
       
-      students = popular #to be implemented when we finish creating student videos
+      students = Video.student
 
       @media = [{title: "Must Watch", content: popular}, {title: "Speakers", content: speakers}, {title: "Livestreams", content: livestreams},{title: "Students", content: students}]
       

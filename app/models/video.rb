@@ -9,6 +9,7 @@ class Video < ActiveRecord::Base
 
   validates :title, :student_name, :slug, :presence => true
   
+  scope :student, -> { where(video_type: "student") }
 
   extend FriendlyId
   
