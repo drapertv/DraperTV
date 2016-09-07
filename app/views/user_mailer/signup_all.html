@@ -42,12 +42,12 @@
                   <tr> <!--horizontal item-->
                     <td style="line-height: 0;"> <!--left item-->
                       <% series = Series.order("created_at").last %>
-                      <a href="<%= video_url(series.first_video) %>"><!--FOR ANDY - REPLACE HREF WITH LATEST SPEAKER SERIES URL-->
+                      <a href="<%= video_url(series.first_video) %>" style="text-decoration: none;"><!--FOR ANDY - REPLACE HREF WITH LATEST SPEAKER SERIES URL-->
                         <img src="<%= series.vthumbnail_url(:square) %>" height="295" width="295" style="border: none;" alt="Lessons_from_TaskRabbit." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. LESSONS FROM TASKRABBIT)-->
                       </a>
                     </td>
                     <td style="line-height: 0;"> <!--right item-->
-                      <a href="<%= video_url(series.first_video) %>">
+                      <a href="<%= video_url(series.first_video) %>" style="text-decoration: none;">
                       <!--FOR ANDY - REPLACE HREF WITH LATEST SPEAKER SERIES URL-->
                         <table border="0" cellpadding="0" cellspacing="0" height="295" width="295" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500; background: white; text-align: center;">
                           <tr height="48"> <!--item type-->
@@ -76,7 +76,7 @@
                   <tr> <!--horizontal item-->
                     <td style="line-height: 0;"> <!--left item-->
                       <% livestream = Livestream.past.first %>
-                      <a href="<%= livestream_url(livestream) %>"><!--FOR ANDY - REPLACE HREF WITH LATEST LIVESTREAM EVENT URL-->
+                      <a href="<%= livestream_url(livestream) %>" style="text-decoration: none;"><!--FOR ANDY - REPLACE HREF WITH LATEST LIVESTREAM EVENT URL-->
                         <table border="0" cellpadding="0" cellspacing="0" height="295" width="295" style="font-family: proxima nova, source sans pro, helvetica neue, helvetica, arial, sans-serif; font-size: 20px; color: #414141; letter-spacing: 0.2px; font-weight: 500; background: white; text-align: center;">
                           <tr height="48"> <!--item type-->
                             <td align="center" style="vertical-align: top;">
@@ -100,7 +100,7 @@
                       </a>
                     </td>
                     <td style="line-height: 0;"> <!--right item-->
-                      <a href="<%= livestream_url(livestream) %>"><!--FOR ANDY - REPLACE HREF WITH LATEST LIVESTREAM EVENT URL-->
+                      <a href="<%= livestream_url(livestream) %>" style="text-decoration: none;"><!--FOR ANDY - REPLACE HREF WITH LATEST LIVESTREAM EVENT URL-->
                         <img src="<%= livestream.vthumbnail_url(:square) %>" height="295" width="295" style="border: none;" alt="Zander_Adell." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. ZANDER ADELL)-->
                       </a>
                     </td>
@@ -144,7 +144,7 @@
               <td>
                 <p style="line-height: 1.2; font-size: 12px;">
                   DraperTV is a product of <a href="http://www.draperuniversity.com/" style="color: inherit;">Draper University</a>.<br><br>
-                  If at any time you wish to stop receiving our emails, you can <a href="[unsubscribe]" style="color: inherit;">unsubcribe here</a>. <!--FOR ANDY - REPLACE [UNSUBSCRIBE] HREF WITH APPROPRIATE VALUE-->You may also contact us at <a href="mailto:support@drapertv.com" style="color: #35B3DE;">support@drapertv.com</a>.
+                  If at any time you wish to stop receiving our emails, you can <a href="<%= unsubscribe_url(unsubscribe_key: @unsubscribe_key) %>" style="color: inherit;">unsubcribe here</a>. <!--FOR ANDY - REPLACE [UNSUBSCRIBE] HREF WITH APPROPRIATE VALUE-->You may also contact us at <a href="mailto:support@drapertv.com" style="color: #35B3DE;">support@drapertv.com</a>.
                 </p>
               </td>
               <td width="30"></td> <!--right padding-->

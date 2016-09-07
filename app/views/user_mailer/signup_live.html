@@ -99,7 +99,7 @@
                       </a>
                     </td>
                     <td style="line-height: 0;"> <!--right item-->
-                      <a href="<%= livestream_url(livestream) %>"> <!--FOR ANDY - REPLACE HREF WITH 2ND LATEST LIVESTREAM EVENT URL-->
+                      <a href="<%= livestream_url(livestream) %>" style="text-decoration: none;"> <!--FOR ANDY - REPLACE HREF WITH 2ND LATEST LIVESTREAM EVENT URL-->
                         <img src="<%= livestream.vthumbnail_url(:square) %>" height="295" width="295" style="border: none;" alt="Zander_Adell." /> <!--FOR ANDY - REPLACE SRC AND ALT WITH CORRESPONDING THUMBNAIL (CROP TO SQUARE FROM CENTER OF IMAGE) AND ALT VALUE WITH ITEM TITLE (I.E. ZANDER ADELL)-->
                       </a>
                     </td>
@@ -143,7 +143,7 @@
               <td>
                 <p style="line-height: 1.2; font-size: 12px;">
                   DraperTV is a product of <a href="http://www.draperuniversity.com/" style="color: inherit;">Draper University</a>.<br><br>
-                  If at any time you wish to stop receiving our emails, you can <a href="[unsubscribe]" style="color: inherit;">unsubcribe here</a>. <!--FOR ANDY - REPLACE [UNSUBSCRIBE] HREF WITH APPROPRIATE VALUE-->You may also contact us at <a href="mailto:support@drapertv.com" style="color: #35B3DE;">support@drapertv.com</a>.
+                  If at any time you wish to stop receiving our emails, you can <a href="<%= unsubscribe_url(unsubscribe_key: @unsubscribe_key) %>" style="color: inherit;">unsubcribe here</a>. <!--FOR ANDY - REPLACE [UNSUBSCRIBE] HREF WITH APPROPRIATE VALUE-->You may also contact us at <a href="mailto:support@drapertv.com" style="color: #35B3DE;">support@drapertv.com</a>.
                 </p>
               </td>
               <td width="30"></td> <!--right padding-->

@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   post '/featured', to: 'series#update_featured'
   post '/popular', to: 'series#update_popular'
   get '/speakers', to: 'series#index'
-  resources :notifications
+  resources :notifications, only: 'create'
+  get '/unsubscribe/:unsubscribe_key', to: 'notifications#destroy', as: 'unsubscribe'
 
   get '/about', to: "pages#about", as: "about"
 

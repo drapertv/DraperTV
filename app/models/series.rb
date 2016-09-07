@@ -47,10 +47,6 @@ class Series < ActiveRecord::Base
     speaker_position
   end
 
-  def speaker_position 
-    title
-  end
-
   def html_description
     description.gsub("\n", "<br>").html_safe if description
   end

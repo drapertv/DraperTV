@@ -11,4 +11,10 @@ class LivestreamNotifyList < ActiveRecord::Base
     end
   end
 
+  def self.remove_email_id id
+    new_email_list = instance.emails
+    new_email_list.delete id
+    instance.update_attributes emails: new_email_list
+  end
+
 end

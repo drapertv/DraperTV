@@ -27,6 +27,14 @@ body {
   left: 0;
 }
 
+.unsub-text {
+  height: calc(100vh - 365px);
+  padding: 20px 40px;
+  font-size: 24px;
+  text-align: center;
+  line-height: calc(100vh - 420px);
+}
+
 
 @media (max-width: 887px) {
   .background-link {
