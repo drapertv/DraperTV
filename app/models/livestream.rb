@@ -170,6 +170,18 @@ class Livestream < ActiveRecord::Base
     end
   end
 
+  def self.seed_slugs
+    all.each do |livestream|
+      slug = nil
+      if livestream.speaker_name
+        slug = livestream.speaker_name.downcase.gsub(/\W+/, '').gsub(" ", "-") + "-l#{livestream.id}"
+      else
+        slug = "l-#{livestream.id}"
+      end
+      livestream.update_attributes slug: slug
+    end
+  end
+
   def site_classification
     "Livestream Event"
   end

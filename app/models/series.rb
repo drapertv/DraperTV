@@ -210,6 +210,24 @@ class Series < ActiveRecord::Base
     end
   end
 
+  def self.populate_video_speaker_fields
+    all.each do |series|
+      if series.author_id
+        speaker = Speaker.find(series.author_id)
+        speaker_name = speaker.name
+        speaker_position = speaker.title
+        series.update_attributes speaker_name: speaker_name, speaker_position: speaker_position
+      end
+    end
+  end
+
+  def self.populate_speaker_and_slug_for_series_and_livestreams
+    populate_video_speaker_fields
+    populate_slugs
+    Livestream.seed_speaker_name_and_position
+    Livestream.seed_slugs
+  end
+
   def category_name
     categories.pluck(:name).first.gsub(" ", "-").downcase unless categories.empty?
   end
