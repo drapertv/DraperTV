@@ -78,6 +78,10 @@ class Video < ActiveRecord::Base
     end
   end
 
+  def thumbnail_title
+    title
+  end
+
   def category_name
     categories.pluck(:name).first.gsub(" ", "-").downcase unless categories.empty?
   end

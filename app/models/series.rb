@@ -59,6 +59,10 @@ class Series < ActiveRecord::Base
     "speaker-white.png"
   end
 
+  def thumbnail_title
+    title
+  end
+
   def self.featured
     front_page_media = nil
     manually_selected_to_front_page = Series.where(show_on_front_page: true).to_a + Livestream.where(show_on_front_page: true).to_a 

@@ -162,6 +162,10 @@ class Livestream < ActiveRecord::Base
     title
   end
 
+  def thumbnail_title
+    title
+  end
+
   def self.seed_speaker_name_and_position
     all.each do |l|
       speaker_name = l.title.split(" - ")[0]
