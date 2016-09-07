@@ -11,8 +11,11 @@
     <h1 class="video-title">
       <%= @livestream.speaker_name.upcase %>
     </h1>
+    <p class="video-speaker-info livestream">
+      <%= @livestream.speaker_position.upcase %>
+    </p>
     <p class="video-speaker-info">
-      <%= @livestream.speaker_position %>
+      <%= @livestream.admin_stream_date %>
     </p>
 
     <div class="video-actions">
