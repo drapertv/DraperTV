@@ -79,6 +79,9 @@ class Livestream < ActiveRecord::Base
   	pst_stream_date = stream_date - 8.hours
   	pst_current_time = Time.now.utc - 8.hours
   	# if stream date is/was today
+    if live? 
+      return "LIVE NOW"
+    end
     if stream_date - Time.now < 24.hours && stream_date - Time.now > -24.hours && pst_stream_date.day == pst_current_time.day
       if stream_date < Time.now
         elapsed_time
@@ -103,9 +106,6 @@ class Livestream < ActiveRecord::Base
         pst_stream_date.strftime("#{days_ago.floor} day ago")
       end
   	end
-    if live? 
-      "LIVE NOW"
-    end
   end
 
   def self.live_tomorrow
