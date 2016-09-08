@@ -269,6 +269,11 @@
 		margin-bottom: 36px;
 	}
 }
+.media-thumbnails.course-thumbnails {
+	a {
+		margin-bottom: 0px;
+	}
+}
 .link-triangle {
 	width: 0;
   height: 0;
@@ -483,7 +488,7 @@
 }
 
 .media-thumbnails.course-thumbnails {
-	display: -webkit-box;
+	// display: -webkit-box;
 }
 
 .course-thumbnail {
@@ -725,7 +730,7 @@
 		display: none;
 	}
 
-	.media-thumbnails a {
+	.media-thumbnails:not(.course-thumbnails) a {
 		margin-bottom: 26px;
 	}
 
