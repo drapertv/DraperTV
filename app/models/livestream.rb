@@ -6,7 +6,7 @@ class Livestream < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, through: :categorizations
 
-  validates :title, :speaker_name, :speaker_position, :slug, :stream_date, :src_url, :presence => true
+  validates :speaker_name, :speaker_position, :slug, :stream_date, :src_url, :presence => true
   
   
   after_create :expire_cache
@@ -163,7 +163,7 @@ class Livestream < ActiveRecord::Base
   end
 
   def thumbnail_title
-    title
+    speaker_positione
   end
 
   def self.seed_speaker_name_and_position

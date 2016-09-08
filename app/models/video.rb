@@ -15,7 +15,7 @@ class Video < ActiveRecord::Base
   
   friendly_id :title, use: :slugged
 
-  delegate :profilepic_url, :name, :challenge, :speaker_position, :speaker_name, :speaker_position, :description, to: :series
+  delegate :profilepic_url, :name, :challenge, :speaker_position, :speaker_name, :speaker_position, to: :series
 
   after_update :expire_cache
   after_create :expire_cache
@@ -55,7 +55,7 @@ class Video < ActiveRecord::Base
   end
 
   def html_description
-    description.gsub("\n", "<br>").html_safe if description
+    series.description.gsub("\n", "<br>").html_safe if series.description
   end
 
   def self.update_all_view_counts

@@ -228,6 +228,16 @@ class Series < ActiveRecord::Base
     Livestream.seed_slugs
   end
 
+  def self.populate_descriptions
+    all.each do |series|
+      series.videos.each do |video|
+        if video.description != nil && video.description.length > 0
+          series.update_attributes description: video.description
+        end
+      end
+    end
+  end
+
   def category_name
     categories.pluck(:name).first.gsub(" ", "-").downcase unless categories.empty?
   end
