@@ -7,7 +7,7 @@ class Video < ActiveRecord::Base
   # delegate :vthumbnail_url, to: :series
   # delegate :vthumbnail, to: :series
 
-  validates :title, :student_name, :slug, :presence => true
+  validates :title, :slug, :presence => true
   
   scope :student, -> { where(video_type: "student") }
 
