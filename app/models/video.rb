@@ -15,7 +15,7 @@ class Video < ActiveRecord::Base
   
   friendly_id :title, use: :slugged
 
-  delegate :profilepic_url, :name, :challenge, :speaker_position, :speaker_name, :speaker_position, to: :series
+  delegate :profilepic_url, :challenge, :speaker_position, :speaker_name, :speaker_position, to: :series
 
   after_update :expire_cache
   after_create :expire_cache
