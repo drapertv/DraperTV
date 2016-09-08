@@ -15,7 +15,7 @@
       <%= @livestream.speaker_position.upcase %>
     </p>
     <p class="video-speaker-info">
-      <%= @livestream.admin_stream_date %>
+      <%= @livestream.formatted_stream_date %>
     </p>
 
     <div class="video-actions">
@@ -58,7 +58,7 @@
                 <%= content.speaker_name %>
               </div>
               <div class="media-title">
-                <%= content.speaker_position%>
+                <%= content.thumbnail_title %>
               </div>
             </div>
             <%= image_tag content.vthumbnail.url, :class => "thumbnail-img" %>

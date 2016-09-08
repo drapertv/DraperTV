@@ -103,6 +103,9 @@ class Livestream < ActiveRecord::Base
         pst_stream_date.strftime("#{days_ago.floor} day ago")
       end
   	end
+    if live? 
+      "LIVE NOW"
+    end
   end
 
   def self.live_tomorrow
@@ -163,7 +166,7 @@ class Livestream < ActiveRecord::Base
   end
 
   def thumbnail_title
-    speaker_positione
+    speaker_position
   end
 
   def self.seed_speaker_name_and_position

@@ -83,7 +83,7 @@ class Series < ActiveRecord::Base
       if !featured_livestream
         featured_livestream = [Livestream.last]
       end
-      auto_populated_featured_media = featured_series + featured_livestream
+      auto_populated_featured_media = featured_series + [featured_livestream]
       
       counter = -1
       items.map! do |item|
