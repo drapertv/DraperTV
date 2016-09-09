@@ -44,6 +44,10 @@ class Livestream < ActiveRecord::Base
     speaker_name.upcase
   end
 
+  def thumbnail_speaker_name
+    speaker_name
+  end
+
   def featured_subtitle 
     speaker_position.upcase
   end

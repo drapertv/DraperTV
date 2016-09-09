@@ -63,6 +63,10 @@ class Series < ActiveRecord::Base
     title
   end
 
+  def thumbnail_speaker_name
+    speaker_name
+  end
+
   def self.featured
     front_page_media = nil
     manually_selected_to_front_page = Series.where(show_on_front_page: true).to_a + Livestream.where(show_on_front_page: true).to_a 

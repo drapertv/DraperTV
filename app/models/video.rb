@@ -55,7 +55,12 @@ class Video < ActiveRecord::Base
   end
 
   def html_description
-    series.description.gsub("\n", "<br>").html_safe if series.description
+    if video_type == "student"
+      description
+    else
+      series.description.gsub("\n", "<br>").html_safe if series.description
+    end
+    
   end
 
   def self.update_all_view_counts
@@ -80,6 +85,14 @@ class Video < ActiveRecord::Base
 
   def thumbnail_title
     title
+  end
+
+  def thumbnail_speaker_name
+    if video_type == "student"
+      student_name
+    else
+      series.speaker_name
+    end
   end
 
   def category_name
