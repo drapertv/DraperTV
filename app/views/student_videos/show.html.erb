@@ -6,10 +6,10 @@
 <section class="video-info">
   <div class="video-info-main">
     <h1 class="video-title">
-      <%= @video.title.upcase %>
+      <%= @video.thumbnail_title.upcase %>
     </h1>
     <p class="video-speaker-info">
-      <%= @video.speaker_name %>, <%= @video.speaker_position %>
+      <%= @video.student_name %>
     </p>
 
     <div class="video-actions">
@@ -25,7 +25,7 @@
 
     <div class="video-about">
       <h3>About </h3>
-      <p><%= @series.description %></p>
+      <p><%= @video.html_description %></p>
     </div>
   </div>
 
@@ -52,7 +52,7 @@
                 <%= content.speaker_name %>
               </div>
               <div class="media-title">
-                <%= content.speaker_position%>
+                <%= content.thumbnail_title %>
               </div>
             </div>
             <%= image_tag content.vthumbnail.url(:seriesthumb), :class => "thumbnail-img" %>
