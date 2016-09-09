@@ -3,10 +3,10 @@
     <div class="media-thumbnail <%= content.category_name %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
       <div class="media-info">
         <div class="media-speaker-name">
-          <%= content.speaker_name %>
+          <%= content.student_name %>
         </div>
         <div class="media-title">
-          <%= content.speaker_position%>
+          <%= content.title %>
         </div>
       </div>
       <%= image_tag content.thumbnail, :class => "thumbnail-img" %>

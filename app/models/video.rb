@@ -43,7 +43,7 @@ class Video < ActiveRecord::Base
 	end
 
 	def thumbnail options=nil
-		options ? series.videos.first.vthumbnail_url(options) : series.videos.first.vthumbnail_url
+		options ? vthumbnail_url(options) : vthumbnail_url
 	end
 
   def seconds_elapsed_since_creation
