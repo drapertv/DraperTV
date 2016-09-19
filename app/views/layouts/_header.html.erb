@@ -20,8 +20,8 @@
           LIVESTREAMS
         <% end %>
       </li>
-      <li class="header-item <%= 'active' if request.original_url.include?("student_videos") %>">
-        <%= link_to student_videos_path do %>
+      <li class="header-item <%= 'active' if request.original_url.include?("students") %>">
+        <%= link_to '/students' do %>
           STUDENTS
         <% end %>
       </li>

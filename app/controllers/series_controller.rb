@@ -2,7 +2,7 @@ class SeriesController < InheritedResources::Base
   before_filter :set_categories_and_colors
 
   def index
-    @og_title = "Series - DraperTV"
+    @og_title = "Speakers - DraperTV"
     @meta_description = "Watch talks given by top Silicon Valley startup founders at Draper University. Learn about startups and entrepreneurship with DraperTV on topics like Vision, Fundraising, Marketing, Product, and Sales."
 
     if params[:list] == "true"

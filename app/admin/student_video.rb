@@ -4,8 +4,7 @@ ActiveAdmin.register Video, :as => 'Students' do
   filter :title
   filter :student_name
   filter :slug
-  filter :by_categorization_in, label: "Categorization", as: :select, collection: Category.all.pluck(:name)
-
+  filter :by_session_in, label: "Session", as: :select, collection: Session.all.pluck(:name)
 
   index do
     selectable_column
@@ -14,6 +13,7 @@ ActiveAdmin.register Video, :as => 'Students' do
     column :category
     column :slug
     column :marketing_slug
+    column :session
     actions
   end
 
@@ -29,6 +29,7 @@ ActiveAdmin.register Video, :as => 'Students' do
     f.inputs :slug
     f.inputs :marketing_slug
     f.inputs :wistia_id
+    f.inputs :session
     f.actions
   end
 
@@ -64,7 +65,7 @@ ActiveAdmin.register Video, :as => 'Students' do
     end
 
     def video_params
-      params.require(:video).permit(:marketing_slug, :student_name, :wistia_id, :video_type, :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name, :video_id, :length, :slug, :public)
+      params.require(:video).permit(:session_id, :marketing_slug, :student_name, :wistia_id, :video_type, :title, :author_id, :speaker, :description, :url, :value,:vthumbnail, :name, :video_id, :length, :slug, :public)
     end
   end
  

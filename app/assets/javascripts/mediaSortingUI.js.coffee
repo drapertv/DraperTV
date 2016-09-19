@@ -45,6 +45,7 @@ window.mediaSortingUI =
     option.addClass('current')
     $('.media-thumbnails a').hide().show()
     unless option.text() == "All Industries"
+      console.log option.text()
       industrySelector = option.text().toLowerCase().replace(' ', '-')
       $('.media-thumbnails a').show()
       $(".media-thumbnail:not(.#{industrySelector})").parent().hide()

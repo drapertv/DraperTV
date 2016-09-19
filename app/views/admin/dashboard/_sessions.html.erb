@@ -1,0 +1,29 @@
+<h1>Sessions</h1>
+<div class="admin-table">
+	<div class="admin-row">
+		<div class="short">ID</div>
+		<div>Name</div>
+		<div>Actions</div>
+	</div>
+	<% Session.all.each do |sess| %>
+			<div class="admin-row">
+				<%= form_tag admin_session_path(sess), method: "patch" do %>
+					<div class="short">
+						<%= sess.id %>
+					</div>
+					<div>
+						<%= text_field_tag :name, sess.name, name: "session[name]" %>
+					</div>
+					<div>
+						<a class="delete_link member_link" data-confirm="Are you sure you want to delete this?" data-method="delete" href="/admin/sessions/<%= sess.id %>" rel="nofollow">Delete</a>
+						<%= submit_tag "Update", :class => "member_link" %>
+					</div>
+				<% end %>
+			</div>
+	<% end %>
+	<div>
+		<div>
+			<a href="/admin/sessions/new">Create New Session</a>
+		</div>
+	</div>
+</div>

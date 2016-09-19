@@ -27,13 +27,4 @@ class LivestreamsController < InheritedResources::Base
     @media = [{title: "Upcoming & Live Events", content: @future_livestreams, hide: @future_livestreams.empty? }, {title: "Archived Events", content: [], lazy_load: "lazy-load"}]
   end
 
-  # def hidebanner
-  #   if params["hide_type"] == "livestream"
-  #     session[:hidden_livestream_id] = Livestream.next_livestream.id
-  #     render json: {hidden_id: Livestream.next_livestream.id}
-  #   else
-  #     session[:hide_application_link] = true
-  #     render nothing: true;
-  #   end
-  # end
 end

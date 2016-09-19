@@ -1,6 +1,6 @@
 <% @student_videos.each do |content| %>
   <%= link_to media_path(content), :class => "disabled" do %>
-    <div class="media-thumbnail <%= content.category_name %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
+    <div class="media-thumbnail <%= content.session_name %>" data-date="<%= content.seconds_elapsed_since_creation %>" data-speaker="<%= content.speaker_name %>" data-views="<%= rand(10000) %>">
       <div class="media-info">
         <div class="media-speaker-name">
           <%= content.student_name %>

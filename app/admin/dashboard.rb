@@ -6,5 +6,6 @@ ActiveAdmin.register_page "Dashboard" do
     render partial: "admin_users"
     render partial: "about_team"
     render partial: "categories"
+    render partial: "sessions"
   end 
 end

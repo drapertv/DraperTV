@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root :to => 'series#home_page'
 
-
-
   get '/videos/update_view_counts', to: 'videos#update_view_counts'
-  resources :videos
+  get '/videos/:series_slug/:video_slug', to: 'videos#show', as: 'video'
+  resources :videos, except: 'show'
   resources :livestreams
+  get '/students', to: 'student_videos#index'
+  get '/students/:student_slug', to: 'videos#show', as: 'student'
   resources :student_videos
   resources :searches
   resources :series

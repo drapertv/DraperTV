@@ -2,6 +2,7 @@ class Video < ActiveRecord::Base
 	has_many :comments, :as => :commentable
   has_many :categories, through: :categorizations
   has_many :categorizations
+  belongs_to :session
 
   mount_uploader :vthumbnail, VthumbnailUploader
   # delegate :vthumbnail_url, to: :series
@@ -99,10 +100,14 @@ class Video < ActiveRecord::Base
     categories.pluck(:name).first.gsub(" ", "-").downcase unless categories.empty?
   end
 
-   ransacker :by_categorization, formatter: proc{ |v|
+  def session_name
+    session.name.gsub(" ", "-").downcase unless !session
+  end
 
-    Category.find_by_name(v).videos.pluck :id
-    nil if !(Category.find_by_name(v).videos.pluck :id)
+
+  ransacker :by_session, formatter: proc{ |v|
+    Session.find_by_name(v).videos.pluck :id
+    # nil if !(Session.find_by_name(v).videos.pluck :id)
   } do |parent|
     parent.table[:id]
   end

@@ -14,7 +14,7 @@
       <h3 class="series-count"><%= @videos.count %> episodes<h3>
       <ul class="series-list">
         <% @videos.each_with_index do |video, i| %>
-          <%= link_to video_path video do%>
+          <%= link_to video_path series_slug: @series.slug, video_slug: video.slug do%>
             <li class="video-list-item <%= 'active' if video == @video %>">
               <p class="video-number"><%= i + 1 %>.</p>
               <p class="video-title"><%= video.title %></p>
