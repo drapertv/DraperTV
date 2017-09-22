@@ -25,21 +25,12 @@ For example starting an electric car company that changes world or a dating app.
 You gonna like it when you face a wall with your startup and you will immediately reduce it to rubble or make it disappear.
 
 
-Problems? Issues?
------------
-
-Need help? Ask on Stack Overflow with the tag ...
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-
-
 Ruby on Rails
 -------------
 
 This application requires:
 
-- Ruby 1.9.3
+- Ruby 2.2.5
 - Rails 4.1.6
 
 Learn more about ...
